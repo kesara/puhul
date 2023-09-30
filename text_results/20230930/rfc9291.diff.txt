@@ -1,0 +1,692 @@
+182,215c182,219
+<    Ethernet Segment (ES):  Refers to the set of Ethernet links that are
+<       used by a customer site (device or network) to connect to one or
+<       more Provider Edges (PEs).
+< 
+<    L2VPN Service Model (L2SM):  Describes the service characterization
+<       of an L2VPN that interconnects a set of sites from the customer's
+<       perspective.  The customer service model does not provide details
+<       on the service provider network.  An L2VPN customer service model
+<       is defined in [RFC8466].
+< 
+<    L2VPN Network Model (L2NM):  Refers to the YANG data model that
+<       describes an L2VPN service with a network-centric view.  It
+<       contains information on the service provider network and might
+<       include allocated resources.  Network controllers can use it to
+<       manage the Layer 2 VPN service configuration in the service
+<       provider's network.  The corresponding YANG module can be used by
+<       a service orchestrator to request a VPN service to a network
+<       controller or to expose the list of active L2VPN services.  The
+<       L2NM can also be used to retrieve a set of L2VPN-related state
+<       information (including Operations, Administration, and Maintenance
+<       (OAM)).
+< 
+<    MAC-VRF:  Refers to a Virtual Routing and Forwarding (VRF) table for
+<       Media Access Control (MAC) addresses on a PE.
+< 
+<    Network controller:  Denotes a functional entity responsible for the
+<       management of the service provider network.
+< 
+<    Service orchestrator:  Refers to a functional entity that interacts
+<       with the customer of an L2VPN relying upon, e.g., the L2SM.  The
+<       service orchestrator is responsible for the Customer Edge to
+<       Provider Edge (CE-PE) attachment circuits, the PE selection, and
+<       requesting the activation of the L2VPN service to a network
+<       controller.
+---
+>    Ethernet Segment (ES):
+>       Refers to the set of Ethernet links that are used by a customer
+>       site (device or network) to connect to one or more Provider Edges
+>       (PEs).
+> 
+>    L2VPN Service Model (L2SM):
+>       Describes the service characterization of an L2VPN that
+>       interconnects a set of sites from the customer's perspective.  The
+>       customer service model does not provide details on the service
+>       provider network.  An L2VPN customer service model is defined in
+>       [RFC8466].
+> 
+>    L2VPN Network Model (L2NM):
+>       Refers to the YANG data model that describes an L2VPN service with
+>       a network-centric view.  It contains information on the service
+>       provider network and might include allocated resources.  Network
+>       controllers can use it to manage the Layer 2 VPN service
+>       configuration in the service provider's network.  The
+>       corresponding YANG module can be used by a service orchestrator to
+>       request a VPN service to a network controller or to expose the
+>       list of active L2VPN services.  The L2NM can also be used to
+>       retrieve a set of L2VPN-related state information (including
+>       Operations, Administration, and Maintenance (OAM)).
+> 
+>    MAC-VRF:
+>       Refers to a Virtual Routing and Forwarding (VRF) table for Media
+>       Access Control (MAC) addresses on a PE.
+> 
+>    Network controller:
+>       Denotes a functional entity responsible for the management of the
+>       service provider network.
+> 
+>    Service orchestrator:
+>       Refers to a functional entity that interacts with the customer of
+>       an L2VPN relying upon, e.g., the L2SM.  The service orchestrator
+>       is responsible for the Customer Edge to Provider Edge (CE-PE)
+>       attachment circuits, the PE selection, and requesting the
+>       activation of the L2VPN service to a network controller.
+220,229c224,235
+<    VPN node:  An abstraction that represents a set of policies applied
+<       on a PE and belongs to a single VPN service.  A VPN service
+<       involves one or more VPN nodes.  The VPN node will identify the
+<       service providers' node on which the VPN is deployed.
+< 
+<    VPN network access:  An abstraction that represents the network
+<       interfaces that are associated with a given VPN node.  Traffic
+<       coming from the VPN network access belongs to the VPN.  The
+<       attachment circuits (bearers) between CEs and PEs are terminated
+<       in the VPN network access.
+---
+>    VPN node:
+>       An abstraction that represents a set of policies applied on a PE
+>       and belongs to a single VPN service.  A VPN service involves one
+>       or more VPN nodes.  The VPN node will identify the service
+>       providers' node on which the VPN is deployed.
+> 
+>    VPN network access:
+>       An abstraction that represents the network interfaces that are
+>       associated with a given VPN node.  Traffic coming from the VPN
+>       network access belongs to the VPN.  The attachment circuits
+>       (bearers) between CEs and PEs are terminated in the VPN network
+>       access.
+430,434c436,441
+<    Network Topology Modules:  An L2VPN involves nodes that are part of a
+<       topology managed by the service provider network.  Such a topology
+<       can be represented using the network topology module in [RFC8345]
+<       or its extension, such as a network YANG module for Service
+<       Attachment Points (SAPs) [YANG-SAPS].
+---
+>    Network Topology Modules:
+>       An L2VPN involves nodes that are part of a topology managed by the
+>       service provider network.  Such a topology can be represented
+>       using the network topology module in [RFC8345] or its extension,
+>       such as a network YANG module for Service Attachment Points (SAPs)
+>       [YANG-SAPS].
+509,530c516,543
+<       'esi-type-0-operator':  The ESI is directly configured by the VPN
+<          service provider.  The configured value is provided in
+<          'ethernet-segment-identifier'.
+< 
+<       'esi-type-1-lacp':  The ESI is auto-generated from the IEEE
+<          802.1AX Link Aggregation Control Protocol (LACP) [IEEE802.1AX].
+< 
+<       'esi-type-2-bridge':  The ESI is auto-generated and determined
+<          based on the Layer 2 bridge protocol.
+< 
+<       'esi-type-3-mac':  The ESI is a MAC-based ESI value that can be
+<          auto-generated or configured by the VPN service provider.
+< 
+<       'esi-type-4-router-id':  The ESI is auto-generated or configured
+<          by the VPN service provider based on the Router ID.  The
+<          'router-id' supplied in Section 7.5 can be used to auto-derive
+<          an ESI when this type is used.
+< 
+<       'esi-type-5-asn':  The ESI is auto-generated or configured by the
+<          VPN service provider based on the Autonomous System (AS)
+<          number.  The 'local-autonomous-system' supplied in Section 7.4
+<          can be used to auto-derive an ESI when this type is used.
+---
+>       'esi-type-0-operator':
+>          The ESI is directly configured by the VPN service provider.
+>          The configured value is provided in 'ethernet-segment-
+>          identifier'.
+> 
+>       'esi-type-1-lacp':
+>          The ESI is auto-generated from the IEEE 802.1AX Link
+>          Aggregation Control Protocol (LACP) [IEEE802.1AX].
+> 
+>       'esi-type-2-bridge':
+>          The ESI is auto-generated and determined based on the Layer 2
+>          bridge protocol.
+> 
+>       'esi-type-3-mac':
+>          The ESI is a MAC-based ESI value that can be auto-generated or
+>          configured by the VPN service provider.
+> 
+>       'esi-type-4-router-id':
+>          The ESI is auto-generated or configured by the VPN service
+>          provider based on the Router ID.  The 'router-id' supplied in
+>          Section 7.5 can be used to auto-derive an ESI when this type is
+>          used.
+> 
+>       'esi-type-5-asn':
+>          The ESI is auto-generated or configured by the VPN service
+>          provider based on the Autonomous System (AS) number.  The
+>          'local-autonomous-system' supplied in Section 7.4 can be used
+>          to auto-derive an ESI when this type is used.
+535,538c548,551
+<    'esi-redundancy-mode':  Specifies the EVPN redundancy mode for a
+<       given ES.  The following modes are supported: Single-Active
+<       (Section 14.1.1 of [RFC7432]) or All-Active (Section 14.1.2 of
+<       [RFC7432]).
+---
+>    'esi-redundancy-mode':
+>       Specifies the EVPN redundancy mode for a given ES.  The following
+>       modes are supported: Single-Active (Section 14.1.1 of [RFC7432])
+>       or All-Active (Section 14.1.2 of [RFC7432]).
+556,557c569,571
+<    'split-horizon-filtering':  Controls the activation of the split-
+<       horizon filtering for an ES (Section 8.3 of [RFC7432]).
+---
+>    'split-horizon-filtering':
+>       Controls the activation of the split-horizon filtering for an ES
+>       (Section 8.3 of [RFC7432]).
+561,563c575,578
+<       'backbone-src-mac':  Associates a Provider Backbone MAC (B-MAC)
+<          address with an ES.  This is particularly useful for All-Active
+<          multihomed ESes (Section 9.1 of [RFC7623]).
+---
+>       'backbone-src-mac':
+>          Associates a Provider Backbone MAC (B-MAC) address with an ES.
+>          This is particularly useful for All-Active multihomed ESes
+>          (Section 9.1 of [RFC7623]).
+653,677c668,695
+<    'external-connectivity-identifier':  This identifier refers to a
+<       profile that defines the external connectivity provided to a VPN
+<       service (or a subset of VPN sites).  External connectivity may be
+<       access to the Internet or restricted connectivity such as access
+<       to a public/private cloud.
+< 
+<    'encryption-profile-identifier':  An encryption profile refers to a
+<       set of policies related to the encryption schemes and setup that
+<       can be applied when building and offering a VPN service.
+< 
+<    'qos-profile-identifier':  A Quality of Service (QoS) profile refers
+<       to a set of policies such as classification, marking, and actions
+<       (e.g., [RFC3644]).
+< 
+<    'bfd-profile-identifier':  A Bidirectional Forwarding Detection (BFD)
+<       profile refers to a set of BFD policies [RFC5880] that can be
+<       invoked when building a VPN service.
+< 
+<    'forwarding-profile-identifier':  A forwarding profile refers to the
+<       policies that apply to the forwarding of packets conveyed within a
+<       VPN.  Such policies may consist of, for example, applying ACLs.
+< 
+<    'routing-profile-identifier':  A routing profile refers to a set of
+<       routing policies that will be invoked (e.g., BGP policies) when
+<       delivering the VPN service.
+---
+>    'external-connectivity-identifier':
+>       This identifier refers to a profile that defines the external
+>       connectivity provided to a VPN service (or a subset of VPN sites).
+>       External connectivity may be access to the Internet or restricted
+>       connectivity such as access to a public/private cloud.
+> 
+>    'encryption-profile-identifier':
+>       An encryption profile refers to a set of policies related to the
+>       encryption schemes and setup that can be applied when building and
+>       offering a VPN service.
+> 
+>    'qos-profile-identifier':
+>       A Quality of Service (QoS) profile refers to a set of policies
+>       such as classification, marking, and actions (e.g., [RFC3644]).
+> 
+>    'bfd-profile-identifier':
+>       A Bidirectional Forwarding Detection (BFD) profile refers to a set
+>       of BFD policies [RFC5880] that can be invoked when building a VPN
+>       service.
+> 
+>    'forwarding-profile-identifier':
+>       A forwarding profile refers to the policies that apply to the
+>       forwarding of packets conveyed within a VPN.  Such policies may
+>       consist of, for example, applying ACLs.
+> 
+>    'routing-profile-identifier':
+>       A routing profile refers to a set of routing policies that will be
+>       invoked (e.g., BGP policies) when delivering the VPN service.
+723,727c741,747
+<    'vpn-id':  An identifier that is used to uniquely identify the L2VPN
+<       service within the L2NM scope.
+< 
+<    'vpn-name':  Associates a name with the service in order to
+<       facilitate the identification of the service.
+---
+>    'vpn-id':
+>       An identifier that is used to uniquely identify the L2VPN service
+>       within the L2NM scope.
+> 
+>    'vpn-name':
+>       Associates a name with the service in order to facilitate the
+>       identification of the service.
+734,735c754,755
+<    'customer-name':  Indicates the name of the customer who ordered the
+<       service.
+---
+>    'customer-name':
+>       Indicates the name of the customer who ordered the service.
+737,743c757,764
+<    'parent-service-id':  Refers to an identifier of the parent service
+<       (e.g., the L2SM, IETF network slice, and VPN+) that triggered the
+<       creation of the L2VPN service.  This identifier is used to easily
+<       correlate the (network) service as built in the network with a
+<       service order.  A controller can use that correlation to enrich or
+<       populate some fields (e.g., description fields) as a function of
+<       local deployments.
+---
+>    'parent-service-id':
+>       Refers to an identifier of the parent service (e.g., the L2SM,
+>       IETF network slice, and VPN+) that triggered the creation of the
+>       L2VPN service.  This identifier is used to easily correlate the
+>       (network) service as built in the network with a service order.  A
+>       controller can use that correlation to enrich or populate some
+>       fields (e.g., description fields) as a function of local
+>       deployments.
+748,753c769,776
+<       'vpls':  Virtual Private LAN Service (VPLS) as defined in
+<          [RFC4761] or [RFC4762].  This type is also used for
+<          hierarchical VPLS (H-VPLS) (Section 10 of [RFC4762]).
+< 
+<       'vpws':  Virtual Private Wire Service (VPWS) as defined in
+<          Section 3.1.1 of [RFC4664].
+---
+>       'vpls':
+>          Virtual Private LAN Service (VPLS) as defined in [RFC4761] or
+>          [RFC4762].  This type is also used for hierarchical VPLS
+>          (H-VPLS) (Section 10 of [RFC4762]).
+> 
+>       'vpws':
+>          Virtual Private Wire Service (VPWS) as defined in Section 3.1.1
+>          of [RFC4664].
+757,758c780,781
+<       'pbb-evpn':  Provider Backbone Bridging (PBB) EVPNs as defined in
+<          [RFC7623].
+---
+>       'pbb-evpn':
+>          Provider Backbone Bridging (PBB) EVPNs as defined in [RFC7623].
+767,772c790,796
+<    'vpn-service-topology':  Indicates the network topology for the
+<       service: hub-spoke, any-to-any, or custom.  These types are
+<       defined in [RFC9181].
+< 
+<    'bgp-ad-enabled':  Controls whether BGP auto-discovery is enabled.
+<       If so, additional data nodes are included (Section 7.5.1).
+---
+>    'vpn-service-topology':
+>       Indicates the network topology for the service: hub-spoke, any-to-
+>       any, or custom.  These types are defined in [RFC9181].
+> 
+>    'bgp-ad-enabled':
+>       Controls whether BGP auto-discovery is enabled.  If so, additional
+>       data nodes are included (Section 7.5.1).
+781,793c805,820
+<          'l2vpn-bgp':  The service is a Multipoint VPLS that uses a BGP
+<             control plane as described in [RFC4761] and [RFC6624].
+< 
+<          'evpn-bgp':  The service is a Multipoint VPLS that uses a BGP
+<             control plane but also includes the additional EVPN features
+<             and related parameters as described in [RFC7432] and
+<             [RFC7209].
+< 
+<       'ldp-signaling':  A Multipoint VPLS that uses a mesh of LDP-
+<          signaled pseudowires [RFC6074].
+< 
+<       'l2tp-signaling':  The L2NM uses L2TP-signaled pseudowires as
+<          described in [RFC6074].
+---
+>          'l2vpn-bgp':
+>             The service is a Multipoint VPLS that uses a BGP control
+>             plane as described in [RFC4761] and [RFC6624].
+> 
+>          'evpn-bgp':
+>             The service is a Multipoint VPLS that uses a BGP control
+>             plane but also includes the additional EVPN features and
+>             related parameters as described in [RFC7432] and [RFC7209].
+> 
+>       'ldp-signaling':
+>          A Multipoint VPLS that uses a mesh of LDP-signaled pseudowires
+>          [RFC6074].
+> 
+>       'l2tp-signaling':
+>          The L2NM uses L2TP-signaled pseudowires as described in
+>          [RFC6074].
+949,950c976,978
+<    'profile-id':  Uniquely identifies a global parameter profile in the
+<       context of an L2VPN service.
+---
+>    'profile-id':
+>       Uniquely identifies a global parameter profile in the context of
+>       an L2VPN service.
+965,976c993,1015
+<    'local-autonomous-system':  Indicates the Autonomous System Number
+<       (ASN) that is configured for the VPN node.  The ASN can be used to
+<       auto-derive some other attributes such as RDs or Ethernet Segment
+<       Identifiers (ESIs).
+< 
+<    'svc-mtu':  Is the service MTU for an L2VPN service (i.e., a Layer 2
+<       MTU including an L2 frame header/trailer).  It is also known as
+<       the maximum transmission unit or maximum frame size.  It is
+<       expressed in bytes.
+< 
+<    'ce-vlan-preservation':  Is set to preserve the Customer Edge VLAN
+<       (CE VLAN) IDs from ingress to egress, i.e., CE VLAN tags of the
+---
+>    'local-autonomous-system':
+>       Indicates the Autonomous System Number (ASN) that is configured
+>       for the VPN node.  The ASN can be used to auto-derive some other
+>       attributes such as RDs or Ethernet Segment Identifiers (ESIs).
+> 
+>    'svc-mtu':
+>       Is the service MTU for an L2VPN service (i.e., a Layer 2 MTU
+>       including an L2 frame header/trailer).  It is also known as the
+>       maximum transmission unit or maximum frame size.  It is expressed
+>       in bytes.
+> 
+>    'ce-vlan-preservation':
+>       Is set to preserve the Customer Edge VLAN (CE VLAN) IDs from
+>       ingress to egress, i.e., CE VLAN tags of the egress frame are
+>       identical to those of the ingress frame that yielded this egress
+>       service frame.  If all-to-one bundling within a site is enabled,
+>       then preservation applies to all ingress service frames.  If all-
+>       to-one bundling is disabled, then preservation applies to tagged
+>       Ingress service frames having CE VLAN ID 1 through 4094.
+> 
+>    'ce-vlan-cos-preservation':
+>       Controls the CE VLAN Class of Service (CoS) preservation.  When
+>       set, Priority Code Point (PCP) bits in the CE VLAN tag of the
+978,991c1017,1022
+<       yielded this egress service frame.  If all-to-one bundling within
+<       a site is enabled, then preservation applies to all ingress
+<       service frames.  If all-to-one bundling is disabled, then
+<       preservation applies to tagged Ingress service frames having CE
+<       VLAN ID 1 through 4094.
+< 
+<    'ce-vlan-cos-preservation':  Controls the CE VLAN Class of Service
+<       (CoS) preservation.  When set, Priority Code Point (PCP) bits in
+<       the CE VLAN tag of the egress frame are identical to those of the
+<       ingress frame that yielded this egress service frame.
+< 
+<    'control-word-negotiation':  Controls whether control-word
+<       negotiation is enabled (if set to true) or not (if set to false).
+<       Refer to Section 7 of [RFC8077] for more details.
+---
+>       yielded this egress service frame.
+> 
+>    'control-word-negotiation':
+>       Controls whether control-word negotiation is enabled (if set to
+>       true) or not (if set to false).  Refer to Section 7 of [RFC8077]
+>       for more details.
+999,1000c1030,1032
+<          'limit-number':  Maximum number of MAC addresses learned from
+<             the customer for a single service instance.
+---
+>          'limit-number':
+>             Maximum number of MAC addresses learned from the customer
+>             for a single service instance.
+1004,1006c1036,1039
+<          'action':  Specifies the action when the upper limit is
+<             exceeded: drop the packet, flood the packet, or simply send
+<             a warning message.
+---
+>          'action':
+>             Specifies the action when the upper limit is exceeded: drop
+>             the packet, flood the packet, or simply send a warning
+>             message.
+1010c1043,1044
+<          'window':  The time interval over which a MAC mobility event is
+---
+>          'window':
+>             The time interval over which a MAC mobility event is
+1013,1019c1047,1055
+<          'frequency':  The number of times to detect MAC duplication,
+<             where a 'duplicate MAC address' situation has occurred
+<             within the 'window' time interval, and the duplicate MAC
+<             address has been added to a list of duplicate MAC addresses.
+< 
+<          'retry-timer':  The retry timer.  When the retry timer expires,
+<             the duplicate MAC address will be flushed from the MAC-VRF.
+---
+>          'frequency':
+>             The number of times to detect MAC duplication, where a
+>             'duplicate MAC address' situation has occurred within the
+>             'window' time interval, and the duplicate MAC address has
+>             been added to a list of duplicate MAC addresses.
+> 
+>          'retry-timer':
+>             The retry timer.  When the retry timer expires, the
+>             duplicate MAC address will be flushed from the MAC-VRF.
+1021,1022c1057,1058
+<          'protection-type':  It defines the loop prevention type (e.g.,
+<             shut).
+---
+>          'protection-type':
+>             It defines the loop prevention type (e.g., shut).
+1083,1084c1119,1121
+<    'vpn-node-id':  Used to uniquely identify a node that enables a VPN
+<       network access.
+---
+>    'vpn-node-id':
+>       Used to uniquely identify a node that enables a VPN network
+>       access.
+1088,1096c1125,1136
+<    'ne-id':  Includes an identifier of the network element where the VPN
+<       node is deployed.
+< 
+<    'role':  Indicates the role of the VPN instance profile in the VPN.
+<       Role values are defined in [RFC9181] (e.g., 'any-to-any-role',
+<       'spoke-role', and 'hub-role').
+< 
+<    'router-id':  Indicates a 32-bit number that is used to uniquely
+<       identify a router within an AS.
+---
+>    'ne-id':
+>       Includes an identifier of the network element where the VPN node
+>       is deployed.
+> 
+>    'role':
+>       Indicates the role of the VPN instance profile in the VPN.  Role
+>       values are defined in [RFC9181] (e.g., 'any-to-any-role', 'spoke-
+>       role', and 'hub-role').
+> 
+>    'router-id':
+>       Indicates a 32-bit number that is used to uniquely identify a
+>       router within an AS.
+1111,1114c1151,1155
+<    'status':  Tracks the status of a node involved in a VPN service.
+<       Both operational and administrative status are maintained.  A
+<       mismatch between the administrative status vs. the operational
+<       status can be used as a trigger to detect anomalies.
+---
+>    'status':
+>       Tracks the status of a node involved in a VPN service.  Both
+>       operational and administrative status are maintained.  A mismatch
+>       between the administrative status vs. the operational status can
+>       be used as a trigger to detect anomalies.
+1248,1250c1289,1300
+<    'advertise-mtu':  Controls whether MTU is advertised when setting a
+<       pseudowire (e.g., Section 4.3 of [RFC4667], Section 5.1 of
+<       [RFC6624], or Section 6.1 of [RFC4762]).
+---
+>    'advertise-mtu':
+>       Controls whether MTU is advertised when setting a pseudowire
+>       (e.g., Section 4.3 of [RFC4667], Section 5.1 of [RFC6624], or
+>       Section 6.1 of [RFC4762]).
+> 
+>    'mtu-allow-mismatch':
+>       When set to true, it allows an MTU mismatch for a pseudowire (see,
+>       e.g., Section 4.3 of [RFC4667]).
+> 
+>    'signaling-type':
+>       Indicates the signaling type.  This type inherits the value of
+>       'signaling-type' defined at the service level (Section 7.3).
+1252,1259c1302,1303
+<    'mtu-allow-mismatch':  When set to true, it allows an MTU mismatch
+<       for a pseudowire (see, e.g., Section 4.3 of [RFC4667]).
+< 
+<    'signaling-type':  Indicates the signaling type.  This type inherits
+<       the value of 'signaling-type' defined at the service level
+<       (Section 7.3).
+< 
+<    'bgp':  Is provided when BGP is used for L2VPN signaling.  Refer to
+---
+>    'bgp':
+>       Is provided when BGP is used for L2VPN signaling.  Refer to
+1262,1268c1306,1314
+<    'ldp':  The model supports the configuration of the parameters that
+<       are discussed in Section 6 of [RFC4762].  Refer to Section 7.5.2.2
+<       for more details.
+< 
+<    'l2tp':  The model supports the configuration of the parameters that
+<       are discussed in Section 4 of [RFC4667].  Refer to Section 7.5.2.3
+<       for more details.
+---
+>    'ldp':
+>       The model supports the configuration of the parameters that are
+>       discussed in Section 6 of [RFC4762].  Refer to Section 7.5.2.2 for
+>       more details.
+> 
+>    'l2tp':
+>       The model supports the configuration of the parameters that are
+>       discussed in Section 4 of [RFC4667].  Refer to Section 7.5.2.3 for
+>       more details.
+1495,1496c1541,1542
+<    'description':  Includes a textual description of the VPN network
+<       access.
+---
+>    'description':
+>       Includes a textual description of the VPN network access.
+1498,1499c1544,1545
+<    'interface-id':  Indicates the interface on which the VPN network
+<       access is bound.
+---
+>    'interface-id':
+>       Indicates the interface on which the VPN network access is bound.
+1501,1514c1547,1563
+<    'active-vpn-node-profile':  Provides a pointer to an active 'global-
+<       parameters-profile' at the VPN node level.  Referencing an active
+<       'global-parameters-profile' implies that all associated data nodes
+<       will be inherited by the VPN network access.  However, some of the
+<       inherited data nodes (e.g., ACL policies) can be overridden at the
+<       VPN network access level.  In such case, adjusted values take
+<       precedence over inherited values.
+< 
+<    'status':  Indicates the administrative and operational status of the
+<       VPN network access.
+< 
+<    'connection':  Represents and groups the set of Layer 2 connectivity
+<       from where the traffic of the L2VPN in a particular VPN network
+<       access is coming.  See Section 7.6.1.
+---
+>    'active-vpn-node-profile':
+>       Provides a pointer to an active 'global-parameters-profile' at the
+>       VPN node level.  Referencing an active 'global-parameters-profile'
+>       implies that all associated data nodes will be inherited by the
+>       VPN network access.  However, some of the inherited data nodes
+>       (e.g., ACL policies) can be overridden at the VPN network access
+>       level.  In such case, adjusted values take precedence over
+>       inherited values.
+> 
+>    'status':
+>       Indicates the administrative and operational status of the VPN
+>       network access.
+> 
+>    'connection':
+>       Represents and groups the set of Layer 2 connectivity from where
+>       the traffic of the L2VPN in a particular VPN network access is
+>       coming.  See Section 7.6.1.
+1524,1530c1573,1580
+<    'group':  Is used for grouping VPN network accesses by assigning the
+<       same identifier to these accesses.  The precedence attribute is
+<       used to differentiate the primary and secondary accesses for a
+<       service with multiple accesses.  An example to illustrate the use
+<       of this container for redundancy purposes is provided in
+<       Appendix A.6.  This container is also used to identify the link of
+<       an ES by allocating the same ESI.  An example to illustrate this
+---
+>    'group':
+>       Is used for grouping VPN network accesses by assigning the same
+>       identifier to these accesses.  The precedence attribute is used to
+>       differentiate the primary and secondary accesses for a service
+>       with multiple accesses.  An example to illustrate the use of this
+>       container for redundancy purposes is provided in Appendix A.6.
+>       This container is also used to identify the link of an ES by
+>       allocating the same ESI.  An example to illustrate this
+1536,1538c1586,1588
+<    'service':  Specifies the service parameters (e.g., QoS and
+<       multicast) to apply for a given VPN network access.  See
+<       Section 7.6.4.
+---
+>    'service':
+>       Specifies the service parameters (e.g., QoS and multicast) to
+>       apply for a given VPN network access.  See Section 7.6.4.
+1814,1815c1864,1865
+<    'mtu':  Specifies the Layer 2 MTU, in bytes, for the VPN network
+<       access.
+---
+>    'mtu':
+>       Specifies the Layer 2 MTU, in bytes, for the VPN network access.
+1840,1841c1890,1892
+<       'bw-per-site':  The bandwidth is to all VPN network accesses that
+<          belong to the same site.
+---
+>       'bw-per-site':
+>          The bandwidth is to all VPN network accesses that belong to the
+>          same site.
+5638,5655c5689,5708
+<    'vpn-profiles':  This container includes a set of sensitive data that
+<       influences how the L3VPN service is delivered.  For example, an
+<       attacker who has access to these data nodes may be able to
+<       manipulate routing policies, QoS policies, or encryption
+<       properties.  These data nodes are defined with "nacm:default-deny-
+<       write" tagging [RFC9181].
+< 
+<    'ethernet-segments' and 'vpn-services':  An attacker who is able to
+<       access network nodes can undertake various attacks, such as
+<       deleting a running L2VPN service, interrupting all the traffic of
+<       a client.  In addition, an attacker may modify the attributes of a
+<       running service (e.g., QoS, bandwidth) or an ES, leading to
+<       malfunctioning of the service and therefore to SLA violations.  In
+<       addition, an attacker could attempt to create an L2VPN service,
+<       add a new network access, or intercept/redirect the traffic to a
+<       non-authorized node.  In addition to using NACM to prevent
+<       authorized access, such activity can be detected by adequately
+<       monitoring and tracking network configuration changes.
+---
+>    'vpn-profiles':
+>       This container includes a set of sensitive data that influences
+>       how the L3VPN service is delivered.  For example, an attacker who
+>       has access to these data nodes may be able to manipulate routing
+>       policies, QoS policies, or encryption properties.  These data
+>       nodes are defined with "nacm:default-deny-write" tagging
+>       [RFC9181].
+> 
+>    'ethernet-segments' and 'vpn-services':
+>       An attacker who is able to access network nodes can undertake
+>       various attacks, such as deleting a running L2VPN service,
+>       interrupting all the traffic of a client.  In addition, an
+>       attacker may modify the attributes of a running service (e.g.,
+>       QoS, bandwidth) or an ES, leading to malfunctioning of the service
+>       and therefore to SLA violations.  In addition, an attacker could
+>       attempt to create an L2VPN service, add a new network access, or
+>       intercept/redirect the traffic to a non-authorized node.  In
+>       addition to using NACM to prevent authorized access, such activity
+>       can be detected by adequately monitoring and tracking network
+>       configuration changes.
+5663,5666c5716,5720
+<    'customer-name' and 'ip-connection':  An attacker can retrieve
+<       privacy-related information that can be used to track a customer.
+<       Disclosing such information may be considered a violation of the
+<       customer-provider trust relationship.
+---
+>    'customer-name' and 'ip-connection':
+>       An attacker can retrieve privacy-related information that can be
+>       used to track a customer.  Disclosing such information may be
+>       considered a violation of the customer-provider trust
+>       relationship.
+5746c5800,5801
+<    "reference":   Replicates the reference from the registry with the
+---
+>    "reference": 
+>                   Replicates the reference from the registry with the
+5781c5836,5837
+<    "reference":   Replicates the reference from the registry with the
+---
+>    "reference": 
+>                   Replicates the reference from the registry with the

@@ -1,0 +1,247 @@
+346,347c346,348
+<    VPN 1:  This service topology supports Hub-and-Spoke communications
+<       for "customer 1", connecting the customer's access at three sites:
+---
+>    VPN 1:
+>       This service topology supports Hub-and-Spoke communications for
+>       "customer 1", connecting the customer's access at three sites:
+353c354,355
+<    VPN 2:  This service topology supports any-to-any communications for
+---
+>    VPN 2:
+>       This service topology supports any-to-any communications for
+430,435c432,437
+<    "vpn-service-topology":  Indicates the type of VPN service topology.
+<       This model supports "any-to-any", "hub-spoke" (where Hubs can
+<       exchange traffic), and "hub-spoke-disjoint" (where Hubs cannot
+<       exchange traffic), which are taken from [RFC9181].  These VPN
+<       service topology types can be used to describe how VPN sites
+<       communicate with each other.
+---
+>    "vpn-service-topology":
+>       Indicates the type of VPN service topology.  This model supports
+>       "any-to-any", "hub-spoke" (where Hubs can exchange traffic), and
+>       "hub-spoke-disjoint" (where Hubs cannot exchange traffic), which
+>       are taken from [RFC9181].  These VPN service topology types can be
+>       used to describe how VPN sites communicate with each other.
+454,461c456,464
+<    "node-type":  Indicates the device type of the PE, P device, or
+<       Autonomous System Border Router (ASBR) as defined in [RFC4026] and
+<       [RFC4364] so that the performance metric between any two nodes
+<       that each have a specific node type can be reported.
+< 
+<    "entry-summary":  Lists a set of IPv4 statistics, IPv6 statistics,
+<       and MAC statistics.  The detailed statistics are specified
+<       separately.
+---
+>    "node-type":
+>       Indicates the device type of the PE, P device, or Autonomous
+>       System Border Router (ASBR) as defined in [RFC4026] and [RFC4364]
+>       so that the performance metric between any two nodes that each
+>       have a specific node type can be reported.
+> 
+>    "entry-summary":
+>       Lists a set of IPv4 statistics, IPv6 statistics, and MAC
+>       statistics.  The detailed statistics are specified separately.
+465,467c468,471
+<    "role":  Defines the role in a particular VPN service topology.  The
+<       roles are taken from [RFC9181] (e.g., "any-to-any-role", "spoke-
+<       role", and "hub-role").
+---
+>    "role":
+>       Defines the role in a particular VPN service topology.  The roles
+>       are taken from [RFC9181] (e.g., "any-to-any-role", "spoke-role",
+>       and "hub-role").
+593,597c597,602
+<    Percentile parameters:  The module supports reporting delay and
+<       jitter metrics with percentile values.  There are three percentile
+<       values for configuring various percentile reporting levels.  By
+<       default, low percentile (10th percentile), intermediate percentile
+<       (50th percentile), and high percentile (90th percentile) are used.
+---
+>    Percentile parameters:
+>       The module supports reporting delay and jitter metrics with
+>       percentile values.  There are three percentile values for
+>       configuring various percentile reporting levels.  By default, low
+>       percentile (10th percentile), intermediate percentile (50th
+>       percentile), and high percentile (90th percentile) are used.
+610,611c615,616
+<    Measurement interval ("measurement-interval"):  Specifies the
+<       performance measurement interval, in seconds.
+---
+>    Measurement interval ("measurement-interval"):
+>       Specifies the performance measurement interval, in seconds.
+613,636c618,646
+<    Start time ("start-time"):  Indicates the start time of the
+<       performance measurement for link statistics.
+< 
+<    End time ("end-time"):  Indicates the end time of the performance
+<       measurement for link statistics.
+< 
+<    PM source ("pm-source"):  Indicates the performance monitoring
+<       source.  The data for the topology link can be based, e.g., on BGP
+<       - Link State (BGP-LS) [RFC8571].  The statistics of the VPN
+<       abstract links can be collected based upon VPN OAM mechanisms,
+<       e.g., OAM mechanisms referenced in [RFC9182] or Ethernet service
+<       OAM [ITU-T-Y-1731] referenced in [RFC9291].  Alternatively, the
+<       data can be based upon the underlay technology OAM mechanisms,
+<       e.g., Generic Routing Encapsulation (GRE) tunnel OAM.
+< 
+<    Loss statistics:  A set of one-way loss statistics attributes that
+<       are used to measure end-to-end loss between VPN sites or between
+<       any two network nodes.  The exact loss value or the loss
+<       percentage can be reported.
+< 
+<    Delay statistics:  A set of one-way delay statistics attributes that
+<       are used to measure end-to-end latency between VPN sites or
+<       between any two network nodes.  The peak/min values or percentile
+<       values can be reported.
+---
+>    Start time ("start-time"):
+>       Indicates the start time of the performance measurement for link
+>       statistics.
+> 
+>    End time ("end-time"):
+>       Indicates the end time of the performance measurement for link
+>       statistics.
+> 
+>    PM source ("pm-source"):
+>       Indicates the performance monitoring source.  The data for the
+>       topology link can be based, e.g., on BGP - Link State (BGP-LS)
+>       [RFC8571].  The statistics of the VPN abstract links can be
+>       collected based upon VPN OAM mechanisms, e.g., OAM mechanisms
+>       referenced in [RFC9182] or Ethernet service OAM [ITU-T-Y-1731]
+>       referenced in [RFC9291].  Alternatively, the data can be based
+>       upon the underlay technology OAM mechanisms, e.g., Generic Routing
+>       Encapsulation (GRE) tunnel OAM.
+> 
+>    Loss statistics:
+>       A set of one-way loss statistics attributes that are used to
+>       measure end-to-end loss between VPN sites or between any two
+>       network nodes.  The exact loss value or the loss percentage can be
+>       reported.
+> 
+>    Delay statistics:
+>       A set of one-way delay statistics attributes that are used to
+>       measure end-to-end latency between VPN sites or between any two
+>       network nodes.  The peak/min values or percentile values can be
+>       reported.
+643,669c653,680
+<    PM statistics per class:  "one-way-pm-statistics-per-class" lists
+<       performance measurement statistics for the topology link or the
+<       abstract link between VPN PEs with given "class-id" names.  The
+<       list is defined separately from "one-way-pm-statistics", which is
+<       used to collect generic metrics for unspecified "class-id" names.
+< 
+<    VPN PM type ("vpn-pm-type"):  Indicates the VPN performance type,
+<       which can be "inter-vpn-access-interface" PM or "vpn-tunnel" PM.
+<       These two methods are common VPN measurement methods.  The "inter-
+<       VPN-access-interface" PM is used to monitor the performance of
+<       logical point-to-point VPN connections between source and
+<       destination VPN access interfaces.  And the "vpn-tunnel" PM is
+<       used to monitor the performance of VPN tunnels.  The "inter-VPN-
+<       access-interface" PM includes PE-PE monitoring.  Therefore,
+<       usually only one of the two methods is used.  The "inter-VPN-
+<       access-interface" PM is defined as an empty leaf, which is not
+<       bound to a specific VPN access interface.  The source or
+<       destination VPN access interface of the measurement can be
+<       augmented as needed.
+< 
+<    VPN tunnel type ("vpn-tunnel-type"):  Indicates the abstract link
+<       protocol-type of a VPN, such as GRE or IP-in-IP.  The leaf refers
+<       to an identifier of the "underlay-transport" defined in [RFC9181],
+<       which describes the transport technology that carries the traffic
+<       of the VPN service.  In the case of multiple types of tunnels
+<       between a single pair of VPN nodes, a separate link for each type
+<       of tunnel can be created.
+---
+>    PM statistics per class:
+>       "one-way-pm-statistics-per-class" lists performance measurement
+>       statistics for the topology link or the abstract link between VPN
+>       PEs with given "class-id" names.  The list is defined separately
+>       from "one-way-pm-statistics", which is used to collect generic
+>       metrics for unspecified "class-id" names.
+> 
+>    VPN PM type ("vpn-pm-type"):
+>       Indicates the VPN performance type, which can be "inter-vpn-
+>       access-interface" PM or "vpn-tunnel" PM.  These two methods are
+>       common VPN measurement methods.  The "inter-VPN-access-interface"
+>       PM is used to monitor the performance of logical point-to-point
+>       VPN connections between source and destination VPN access
+>       interfaces.  And the "vpn-tunnel" PM is used to monitor the
+>       performance of VPN tunnels.  The "inter-VPN-access-interface" PM
+>       includes PE-PE monitoring.  Therefore, usually only one of the two
+>       methods is used.  The "inter-VPN-access-interface" PM is defined
+>       as an empty leaf, which is not bound to a specific VPN access
+>       interface.  The source or destination VPN access interface of the
+>       measurement can be augmented as needed.
+> 
+>    VPN tunnel type ("vpn-tunnel-type"):
+>       Indicates the abstract link protocol-type of a VPN, such as GRE or
+>       IP-in-IP.  The leaf refers to an identifier of the "underlay-
+>       transport" defined in [RFC9181], which describes the transport
+>       technology that carries the traffic of the VPN service.  In the
+>       case of multiple types of tunnels between a single pair of VPN
+>       nodes, a separate link for each type of tunnel can be created.
+674,675c685,686
+<    Last updated time ("last-updated"):  Indicates the date and time when
+<       the counters were last updated.
+---
+>    Last updated time ("last-updated"):
+>       Indicates the date and time when the counters were last updated.
+677,691c688,703
+<    Inbound statistics:  A set of inbound statistics attributes that are
+<       used to measure the inbound statistics of the termination point,
+<       such as received packets, received packets with errors, etc.
+< 
+<    Outbound statistics:  A set of outbound statistics attributes that
+<       are used to measure the outbound statistics of the termination
+<       point, such as sent packets, packets that could not be sent due to
+<       errors, etc.
+< 
+<    VPN network access ("vpn-network-access"):  Lists counters of the VPN
+<       network access defined in the L3NM [RFC9182] or the L2NM
+<       [RFC9291].  When multiple VPN network accesses are created using
+<       the same physical port, finer-grained metrics can be monitored.
+<       If a TP is associated with only a single VPN, this list is not
+<       required.
+---
+>    Inbound statistics:
+>       A set of inbound statistics attributes that are used to measure
+>       the inbound statistics of the termination point, such as received
+>       packets, received packets with errors, etc.
+> 
+>    Outbound statistics:
+>       A set of outbound statistics attributes that are used to measure
+>       the outbound statistics of the termination point, such as sent
+>       packets, packets that could not be sent due to errors, etc.
+> 
+>    VPN network access ("vpn-network-access"):
+>       Lists counters of the VPN network access defined in the L3NM
+>       [RFC9182] or the L2NM [RFC9291].  When multiple VPN network
+>       accesses are created using the same physical port, finer-grained
+>       metrics can be monitored.  If a TP is associated with only a
+>       single VPN, this list is not required.
+1516,1518c1528,1531
+<    "/nw:networks/nw:network/nw:node":  Unauthorized read access to this
+<       subtree can disclose the operational state information of underlay
+<       network instances or VPN instances.
+---
+>    "/nw:networks/nw:network/nw:node":
+>       Unauthorized read access to this subtree can disclose the
+>       operational state information of underlay network instances or VPN
+>       instances.
+1521,1522c1534,1536
+<    statistics":  Unauthorized read access to this subtree can disclose
+<       the operational state information of underlay network links or VPN
+---
+>    statistics":
+>       Unauthorized read access to this subtree can disclose the
+>       operational state information of underlay network links or VPN
+1526,1527c1540,1542
+<    statistics":  Unauthorized read access to this subtree can disclose
+<       the operational state information of underlay network termination
+---
+>    statistics":
+>       Unauthorized read access to this subtree can disclose the
+>       operational state information of underlay network termination

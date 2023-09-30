@@ -1,0 +1,122 @@
+1040,1045c1040,1047
+<    all:  All candidates permitted by implementation policy will be
+<       gathered and used.
+< 
+<    relay:  All candidates except relay candidates will be filtered out.
+<       This obfuscates the location information that might be ascertained
+<       by the remote peer from the received candidates.  Depending on how
+---
+>    all:
+>       All candidates permitted by implementation policy will be gathered
+>       and used.
+> 
+>    relay:
+>       All candidates except relay candidates will be filtered out.  This
+>       obfuscates the location information that might be ascertained by
+>       the remote peer from the received candidates.  Depending on how
+1074,1097c1076,1101
+<    balanced:  The first "m=" section of each type (audio, video, or
+<       application) will contain transport parameters, which will allow
+<       an answerer to unbundle that section.  The second and any
+<       subsequent "m=" sections of each type will be marked bundle-only.
+<       The result is that if there are N distinct media types, then
+<       candidates will be gathered for N media streams.  This policy
+<       balances desire to multiplex with the need to ensure that basic
+<       audio and video can still be negotiated in legacy cases.  When
+<       acting as answerer, if there is no bundle group in the offer, the
+<       implementation will reject all but the first "m=" section of each
+<       type.
+< 
+<    max-compat:  All "m=" sections will contain transport parameters;
+<       none will be marked as bundle-only.  This policy will allow all
+<       streams to be received by non-bundle-aware endpoints but will
+<       require separate candidates to be gathered for each media stream.
+< 
+<    max-bundle:  Only the first "m=" section will contain transport
+<       parameters; all streams other than the first will be marked as
+<       bundle-only.  This policy aims to minimize candidate gathering and
+<       maximize multiplexing, at the cost of less compatibility with
+<       legacy endpoints.  When acting as answerer, the implementation
+<       will reject any "m=" sections other than the first "m=" section,
+<       unless they are in the same bundle group as that "m=" section.
+---
+>    balanced:
+>       The first "m=" section of each type (audio, video, or application)
+>       will contain transport parameters, which will allow an answerer to
+>       unbundle that section.  The second and any subsequent "m="
+>       sections of each type will be marked bundle-only.  The result is
+>       that if there are N distinct media types, then candidates will be
+>       gathered for N media streams.  This policy balances desire to
+>       multiplex with the need to ensure that basic audio and video can
+>       still be negotiated in legacy cases.  When acting as answerer, if
+>       there is no bundle group in the offer, the implementation will
+>       reject all but the first "m=" section of each type.
+> 
+>    max-compat:
+>       All "m=" sections will contain transport parameters; none will be
+>       marked as bundle-only.  This policy will allow all streams to be
+>       received by non-bundle-aware endpoints but will require separate
+>       candidates to be gathered for each media stream.
+> 
+>    max-bundle:
+>       Only the first "m=" section will contain transport parameters; all
+>       streams other than the first will be marked as bundle-only.  This
+>       policy aims to minimize candidate gathering and maximize
+>       multiplexing, at the cost of less compatibility with legacy
+>       endpoints.  When acting as answerer, the implementation will
+>       reject any "m=" sections other than the first "m=" section, unless
+>       they are in the same bundle group as that "m=" section.
+1106,1116c1110,1121
+<    negotiate:  The JSEP implementation will gather both RTP and RTCP
+<       candidates but also will offer "a=rtcp-mux", thus allowing for
+<       compatibility with either multiplexing or non-multiplexing
+<       endpoints.
+< 
+<    require:  The JSEP implementation will only gather RTP candidates and
+<       will insert an "a=rtcp-mux-only" indication into any new "m="
+<       sections in offers it generates.  This halves the number of
+<       candidates that the offerer needs to gather.  Applying a
+<       description with an "m=" section that does not contain an "a=rtcp-
+<       mux" attribute will cause an error to be returned.
+---
+>    negotiate:
+>       The JSEP implementation will gather both RTP and RTCP candidates
+>       but also will offer "a=rtcp-mux", thus allowing for compatibility
+>       with either multiplexing or non-multiplexing endpoints.
+> 
+>    require:
+>       The JSEP implementation will only gather RTP candidates and will
+>       insert an "a=rtcp-mux-only" indication into any new "m=" sections
+>       in offers it generates.  This halves the number of candidates that
+>       the offerer needs to gather.  Applying a description with an "m="
+>       section that does not contain an "a=rtcp-mux" attribute will cause
+>       an error to be returned.
+1467,1468c1472,1474
+<    null:  No SDP has been received from the other side, so it is not
+<       known if it can handle trickle.  This is the initial value before
+---
+>    null:
+>       No SDP has been received from the other side, so it is not known
+>       if it can handle trickle.  This is the initial value before
+1471,1472c1477,1479
+<    true:  SDP has been received from the other side indicating that it
+<       can support trickle.
+---
+>    true:
+>       SDP has been received from the other side indicating that it can
+>       support trickle.
+1474c1481,1482
+<    false:  SDP has been received from the other side indicating that it
+---
+>    false:
+>       SDP has been received from the other side indicating that it
+1784c1792
+<       and the value MUST be less than 2^(63)-1.  It is RECOMMENDED that
+---
+>       and the value MUST be less than 2^63-1.  It is RECOMMENDED that
+4880d4887
+< 
+4889d4895
+< 
+4895d4900
+< 
