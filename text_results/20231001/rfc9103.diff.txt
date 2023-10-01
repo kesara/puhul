@@ -1,0 +1,132 @@
+250c250,251
+<    XoT:   XFR-over-TLS mechanisms, as specified in this document, which
+---
+>    XoT: 
+>           XFR-over-TLS mechanisms, as specified in this document, which
+293,299c294,302
+<    Confidentiality:  Clearly using an encrypted transport for zone
+<       transfers will defeat zone content leakage that can occur via
+<       passive surveillance.
+< 
+<    Authentication:  Use of single or mutual TLS (mTLS) authentication
+<       (in combination with ACLs) can complement and potentially be an
+<       alternative to TSIG.
+---
+>    Confidentiality:
+>       Clearly using an encrypted transport for zone transfers will
+>       defeat zone content leakage that can occur via passive
+>       surveillance.
+> 
+>    Authentication:
+>       Use of single or mutual TLS (mTLS) authentication (in combination
+>       with ACLs) can complement and potentially be an alternative to
+>       TSIG.
+1529c1532
+<    DNS wire format and so should share the "dot" ALPN.
+---
+>    DNS wire format and so should share the dot ALPN.
+1538c1541,1542
+<    Pros:  Probing of the public IP address will show no support for TLS.
+---
+>    Pros:
+>       Probing of the public IP address will show no support for TLS.
+1542c1546,1547
+<    Cons:  Attackers passively observing traffic will still be able to
+---
+>    Cons:
+>       Attackers passively observing traffic will still be able to
+1552,1560c1557,1567
+<    Pros:  Connection management happens at setup time.  The maximum
+<       number of TLS connections a server will have to support can be
+<       easily assessed.  Once the connection is accepted, the server
+<       might well be willing to answer any query on that connection since
+<       it is coming from a configured secondary, and a specific response
+<       policy on the connection may not be needed (see below).
+< 
+<    Cons:  Currently, none of the major open-source implementations of a
+<       DNS authoritative server support such an option.
+---
+>    Pros:
+>       Connection management happens at setup time.  The maximum number
+>       of TLS connections a server will have to support can be easily
+>       assessed.  Once the connection is accepted, the server might well
+>       be willing to answer any query on that connection since it is
+>       coming from a configured secondary, and a specific response policy
+>       on the connection may not be needed (see below).
+> 
+>    Cons:
+>       Currently, none of the major open-source implementations of a DNS
+>       authoritative server support such an option.
+1570,1571c1577,1579
+<    Cons:  As above.  Also, this is not a recommended use of SNI.  For
+<       SNIs sent in the clear, this would still allow attackers passively
+---
+>    Cons:
+>       As above.  Also, this is not a recommended use of SNI.  For SNIs
+>       sent in the clear, this would still allow attackers passively
+1593c1601,1602
+<    strict:     REFUSE all queries on TLS connections, except SOA and
+---
+>    strict:   
+>                REFUSE all queries on TLS connections, except SOA and
+1596c1605,1606
+<    moderate:   REFUSE all queries on TLS connections until one is
+---
+>    moderate: 
+>                REFUSE all queries on TLS connections until one is
+1600c1610,1611
+<    complex:    apply a heuristic to determine which queries on a TLS
+---
+>    complex:  
+>                apply a heuristic to determine which queries on a TLS
+1603c1614,1615
+<    relaxed:    answer all non-XoT queries on all TLS connections with
+---
+>    relaxed:  
+>                answer all non-XoT queries on all TLS connections with
+1606,1616c1618,1629
+<    Pros:  Allows for flexible behavior by the server that could be
+<       changed over time.
+< 
+<    Cons:  The server must handle the burden of accepting all TLS
+<       connections just to perform XFRs with a small number of
+<       secondaries.  Client behavior to a REFUSED response is not clearly
+<       defined (see Section 7.8).  Currently, none of the major open-
+<       source implementations of a DNS authoritative server offer an
+<       option for different response policies in different transports
+<       (but such functionality could potentially be implemented using a
+<       proxy).
+---
+>    Pros:
+>       Allows for flexible behavior by the server that could be changed
+>       over time.
+> 
+>    Cons:
+>       The server must handle the burden of accepting all TLS connections
+>       just to perform XFRs with a small number of secondaries.  Client
+>       behavior to a REFUSED response is not clearly defined (see
+>       Section 7.8).  Currently, none of the major open-source
+>       implementations of a DNS authoritative server offer an option for
+>       different response policies in different transports (but such
+>       functionality could potentially be implemented using a proxy).
+1624,1626c1637,1640
+<    Pros:  This has the potential to allow a clean distinction between a
+<       XoT service and any future DoT-based service for answering
+<       recursive queries.
+---
+>    Pros:
+>       This has the potential to allow a clean distinction between a XoT
+>       service and any future DoT-based service for answering recursive
+>       queries.
+1649d1662
+< 
+1660d1672
+< 
+1671d1682
+< 
+1679d1689
+< 
+1687d1696
+< 
+1695d1703
+< 

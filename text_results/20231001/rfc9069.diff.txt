@@ -1,0 +1,101 @@
+296,302c296,303
+<    Pre-Policy Adj-RIB-Out:  The result before applying the outbound
+<       policy to an Adj-RIB-Out. This normally represents a similar view
+<       of the Loc-RIB but may contain additional routes based on BGP
+<       peering configuration.
+< 
+<    Post-Policy Adj-RIB-Out:  The result of applying the outbound policy
+<       to an Adj-RIB-Out. This MUST be what is actually sent to the peer.
+---
+>    Pre-Policy Adj-RIB-Out:
+>       The result before applying the outbound policy to an Adj-RIB-Out.
+>       This normally represents a similar view of the Loc-RIB but may
+>       contain additional routes based on BGP peering configuration.
+> 
+>    Post-Policy Adj-RIB-Out:
+>       The result of applying the outbound policy to an Adj-RIB-Out. This
+>       MUST be what is actually sent to the peer.
+357,376c358,380
+<    Peer Distinguisher:  Zero-filled if the Loc-RIB represents the global
+<       instance.  Otherwise, set to the route distinguisher or unique
+<       locally defined value of the particular instance to which the Loc-
+<       RIB belongs.
+< 
+<    Peer Address:  Zero-filled.  The remote peer address is not
+<       applicable.  The V flag is not applicable with the Loc-RIB
+<       Instance Peer Type considering addresses are zero-filled.
+< 
+<    Peer Autonomous System (AS):  Set to the primary router BGP
+<       autonomous system number (ASN).
+< 
+<    Peer BGP ID:  Set the ID to the router-id of the VRF instance if VRF
+<       is used; otherwise, set to the global instance router-id.
+< 
+<    Timestamp:  The time when the encapsulated routes were installed in
+<       the Loc-RIB, expressed in seconds and microseconds since midnight
+<       (zero hour), January 1, 1970 (UTC).  If zero, the time is
+<       unavailable.  Precision of the timestamp is implementation
+<       dependent.
+---
+>    Peer Distinguisher:
+>       Zero-filled if the Loc-RIB represents the global instance.
+>       Otherwise, set to the route distinguisher or unique locally
+>       defined value of the particular instance to which the Loc-RIB
+>       belongs.
+> 
+>    Peer Address:
+>       Zero-filled.  The remote peer address is not applicable.  The V
+>       flag is not applicable with the Loc-RIB Instance Peer Type
+>       considering addresses are zero-filled.
+> 
+>    Peer Autonomous System (AS):
+>       Set to the primary router BGP autonomous system number (ASN).
+> 
+>    Peer BGP ID:
+>       Set the ID to the router-id of the VRF instance if VRF is used;
+>       otherwise, set to the global instance router-id.
+> 
+>    Timestamp:
+>       The time when the encapsulated routes were installed in the Loc-
+>       RIB, expressed in seconds and microseconds since midnight (zero
+>       hour), January 1, 1970 (UTC).  If zero, the time is unavailable.
+>       Precision of the timestamp is implementation dependent.
+389,402c393,407
+<    Sent OPEN Message:  This is a fabricated BGP OPEN message.
+<       Capabilities MUST include the 4-octet ASN and all necessary
+<       capabilities to represent the Loc-RIB Route Monitoring messages.
+<       Only include capabilities if they will be used for Loc-RIB
+<       monitoring messages.  For example, if ADD-PATH is enabled for IPv6
+<       and Loc-RIB contains additional paths, the ADD-PATH capability
+<       should be included for IPv6.  In the case of ADD-PATH, the
+<       capability intent of advertise, receive, or both can be ignored
+<       since the presence of the capability indicates enough that
+<       additional paths will be used for IPv6.
+< 
+<    Received OPEN Message:  Repeat of the same sent OPEN message.  The
+<       duplication allows the BMP receiver to parse the expected received
+<       OPEN message as defined in Section 4.10 of [RFC7854].
+---
+>    Sent OPEN Message:
+>       This is a fabricated BGP OPEN message.  Capabilities MUST include
+>       the 4-octet ASN and all necessary capabilities to represent the
+>       Loc-RIB Route Monitoring messages.  Only include capabilities if
+>       they will be used for Loc-RIB monitoring messages.  For example,
+>       if ADD-PATH is enabled for IPv6 and Loc-RIB contains additional
+>       paths, the ADD-PATH capability should be included for IPv6.  In
+>       the case of ADD-PATH, the capability intent of advertise, receive,
+>       or both can be ignored since the presence of the capability
+>       indicates enough that additional paths will be used for IPv6.
+> 
+>    Received OPEN Message:
+>       Repeat of the same sent OPEN message.  The duplication allows the
+>       BMP receiver to parse the expected received OPEN message as
+>       defined in Section 4.10 of [RFC7854].
+679d683
+< 
+688d691
+< 
+697d699
+< 
+706d707
+< 
