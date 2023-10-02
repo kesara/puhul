@@ -1,0 +1,494 @@
+213,223c213,224
+<    6TiSCH (IPv6 over the TSCH mode of IEEE 802.15.4):  6TiSCH defines an
+<       adaptation sublayer for IPv6 over TSCH called 6top, a set of
+<       protocols for setting up a TSCH schedule in distributed approach,
+<       and a security solution. 6TiSCH may be extended in the future for
+<       other MAC/Physical Layer (PHY) pairs providing a service similar
+<       to TSCH.
+< 
+<    6top (6TiSCH Operation Sublayer):  The next higher layer of the IEEE
+<       Std 802.15.4 TSCH MAC layer.  6top provides the abstraction of an
+<       IP link over a TSCH MAC, schedules packets over TSCH cells, and
+<       exposes a management interface to schedule TSCH cells.
+---
+>    6TiSCH (IPv6 over the TSCH mode of IEEE 802.15.4):
+>       6TiSCH defines an adaptation sublayer for IPv6 over TSCH called
+>       6top, a set of protocols for setting up a TSCH schedule in
+>       distributed approach, and a security solution. 6TiSCH may be
+>       extended in the future for other MAC/Physical Layer (PHY) pairs
+>       providing a service similar to TSCH.
+> 
+>    6top (6TiSCH Operation Sublayer):
+>       The next higher layer of the IEEE Std 802.15.4 TSCH MAC layer.
+>       6top provides the abstraction of an IP link over a TSCH MAC,
+>       schedules packets over TSCH cells, and exposes a management
+>       interface to schedule TSCH cells.
+230,231c231,233
+<    6P transaction:  A 2-way or 3-way sequence of 6P messages used by
+<       Layer 2 peers to modify their communication schedule.
+---
+>    6P transaction:
+>       A 2-way or 3-way sequence of 6P messages used by Layer 2 peers to
+>       modify their communication schedule.
+238,256c240,260
+<    bundle:  A group of equivalent scheduled cells, i.e., cells
+<       identified by different slotOffset/channelOffset, which are
+<       scheduled for a same purpose, with the same neighbor, with the
+<       same flags, and the same slotframe.  The size of the bundle refers
+<       to the number of cells it contains.  For a given slotframe length,
+<       the size of the bundle translates directly into bandwidth.  A
+<       bundle is a local abstraction that represents a half-duplex link
+<       for either sending or receiving, with bandwidth that amounts to
+<       the sum of the cells in the bundle.
+< 
+<    Layer 2 vs. Layer 3 bundle:  Bundles are associated with either Layer
+<       2 (switching) or Layer 3 (routing) forwarding operations.  A pair
+<       of Layer 3 bundles (one for each direction) maps to an IP link
+<       with a neighbor, whereas a set of Layer 2 bundles (of an
+<       "arbitrary" cardinality and direction) corresponds to the relation
+<       of one or more incoming bundle(s) from the previous-hop
+<       neighbor(s) with one or more outgoing bundle(s) to the next-hop
+<       neighbor(s) along a Track as part of the switching role, which may
+<       include replication and elimination.
+---
+>    bundle:
+>       A group of equivalent scheduled cells, i.e., cells identified by
+>       different slotOffset/channelOffset, which are scheduled for a same
+>       purpose, with the same neighbor, with the same flags, and the same
+>       slotframe.  The size of the bundle refers to the number of cells
+>       it contains.  For a given slotframe length, the size of the bundle
+>       translates directly into bandwidth.  A bundle is a local
+>       abstraction that represents a half-duplex link for either sending
+>       or receiving, with bandwidth that amounts to the sum of the cells
+>       in the bundle.
+> 
+>    Layer 2 vs. Layer 3 bundle:
+>       Bundles are associated with either Layer 2 (switching) or Layer 3
+>       (routing) forwarding operations.  A pair of Layer 3 bundles (one
+>       for each direction) maps to an IP link with a neighbor, whereas a
+>       set of Layer 2 bundles (of an "arbitrary" cardinality and
+>       direction) corresponds to the relation of one or more incoming
+>       bundle(s) from the previous-hop neighbor(s) with one or more
+>       outgoing bundle(s) to the next-hop neighbor(s) along a Track as
+>       part of the switching role, which may include replication and
+>       elimination.
+265c269,270
+<    cell:  A unit of transmission resource in the CDU matrix, a cell is
+---
+>    cell:
+>       A unit of transmission resource in the CDU matrix, a cell is
+269,275c274,280
+<    Channel Distribution/Usage (CDU) matrix:  : A matrix of cells (i,j)
+<       representing the spectrum (channel) distribution among the
+<       different nodes in the 6TiSCH network.  The CDU matrix has width
+<       in timeslots equal to the period of the network scheduling
+<       operation, and height equal to the number of available channels.
+<       Every cell (i,j) in the CDU, identified by slotOffset/
+<       channelOffset, belongs to a specific chunk.
+---
+>    Channel Distribution/Usage (CDU) matrix:
+>       : A matrix of cells (i,j) representing the spectrum (channel)
+>       distribution among the different nodes in the 6TiSCH network.  The
+>       CDU matrix has width in timeslots equal to the period of the
+>       network scheduling operation, and height equal to the number of
+>       available channels.  Every cell (i,j) in the CDU, identified by
+>       slotOffset/channelOffset, belongs to a specific chunk.
+277c282,283
+<    channelOffset:  Identifies a row in the TSCH schedule.  The number of
+---
+>    channelOffset:
+>       Identifies a row in the TSCH schedule.  The number of
+283,285c289,292
+<    chunk:  A well-known list of cells, distributed in time and
+<       frequency, within a CDU matrix.  A chunk represents a portion of a
+<       CDU matrix.  The partition of the CDU matrix in chunks is globally
+---
+>    chunk:
+>       A well-known list of cells, distributed in time and frequency,
+>       within a CDU matrix.  A chunk represents a portion of a CDU
+>       matrix.  The partition of the CDU matrix in chunks is globally
+294,309c301,306
+<    CoJP (Constrained Join Protocol):  The Constrained Join Protocol
+<       (CoJP) enables a pledge to securely join a 6TiSCH network and
+<       obtain network parameters over a secure channel.  "Constrained
+<       Join Protocol (CoJP) for 6TiSCH" [RFC9031] defines the minimal
+<       CoJP setup with pre-shared keys defined.  In that mode, CoJP can
+<       operate with a single round-trip exchange.
+< 
+<    dedicated cell:  A cell that is reserved for a given node to transmit
+<       to a specific neighbor.
+< 
+<    deterministic network:  The generic concept of a deterministic
+<       network is defined in the "Deterministic Networking Architecture"
+<       [RFC8655] document.  When applied to 6TiSCH, it refers to the
+<       reservation of Tracks, which guarantees an end-to-end latency and
+<       optimizes the Packet Delivery Ratio (PDR) for well-characterized
+<       flows.
+---
+>    CoJP (Constrained Join Protocol):
+>       The Constrained Join Protocol (CoJP) enables a pledge to securely
+>       join a 6TiSCH network and obtain network parameters over a secure
+>       channel.  "Constrained Join Protocol (CoJP) for 6TiSCH" [RFC9031]
+>       defines the minimal CoJP setup with pre-shared keys defined.  In
+>       that mode, CoJP can operate with a single round-trip exchange.
+311,312c308,320
+<    distributed cell reservation:  A reservation of a cell done by one or
+<       more in-network entities.
+---
+>    dedicated cell:
+>       A cell that is reserved for a given node to transmit to a specific
+>       neighbor.
+> 
+>    deterministic network:
+>       The generic concept of a deterministic network is defined in the
+>       "Deterministic Networking Architecture" [RFC8655] document.  When
+>       applied to 6TiSCH, it refers to the reservation of Tracks, which
+>       guarantees an end-to-end latency and optimizes the Packet Delivery
+>       Ratio (PDR) for well-characterized flows.
+> 
+>    distributed cell reservation:
+>       A reservation of a cell done by one or more in-network entities.
+314,315c322,323
+<    distributed Track reservation:  A reservation of a Track done by one
+<       or more in-network entities.
+---
+>    distributed Track reservation:
+>       A reservation of a Track done by one or more in-network entities.
+322c330,331
+<    hard cell:  A scheduled cell that the 6top sublayer may not relocate.
+---
+>    hard cell:
+>       A scheduled cell that the 6top sublayer may not relocate.
+324c333,334
+<    hopping sequence:  Ordered sequence of frequencies, identified by a
+---
+>    hopping sequence:
+>       Ordered sequence of frequencies, identified by a
+328,349c338,367
+<    IE (Information Element):  Type-Length-Value containers placed at the
+<       end of the MAC header and used to pass data between layers or
+<       devices.  Some IE identifiers are managed by the IEEE
+<       [IEEE802154].  Some IE identifiers are managed by the IETF
+<       [RFC8137].  [RFC9032] uses one subtype to support the selection of
+<       the Join Proxy.
+< 
+<    join process:  The overall process that includes the discovery of the
+<       network by pledge(s) and the execution of the join protocol.
+< 
+<    join protocol:  The protocol that allows the pledge to join the
+<       network.  The join protocol encompasses authentication,
+<       authorization, and parameter distribution.  The join protocol is
+<       executed between the pledge and the JRC.
+< 
+<    joined node:  The new device after having completed the join process,
+<       often just called a node.
+< 
+<    JP (Join Proxy):  A node already part of the 6TiSCH network that
+<       serves as a relay to provide connectivity between the pledge and
+<       the JRC.  The JP announces the presence of the network by
+<       regularly sending EB frames.
+---
+>    IE (Information Element):
+>       Type-Length-Value containers placed at the end of the MAC header
+>       and used to pass data between layers or devices.  Some IE
+>       identifiers are managed by the IEEE [IEEE802154].  Some IE
+>       identifiers are managed by the IETF [RFC8137].  [RFC9032] uses one
+>       subtype to support the selection of the Join Proxy.
+> 
+>    join process:
+>       The overall process that includes the discovery of the network by
+>       pledge(s) and the execution of the join protocol.
+> 
+>    join protocol:
+>       The protocol that allows the pledge to join the network.  The join
+>       protocol encompasses authentication, authorization, and parameter
+>       distribution.  The join protocol is executed between the pledge
+>       and the JRC.
+> 
+>    joined node:
+>       The new device after having completed the join process, often just
+>       called a node.
+> 
+>    JP (Join Proxy):
+>       A node already part of the 6TiSCH network that serves as a relay
+>       to provide connectivity between the pledge and the JRC.  The JP
+>       announces the presence of the network by regularly sending EB
+>       frames.
+> 
+>    JRC (Join Registrar/Coordinator):
+>       Central entity responsible for the authentication, authorization,
+>       and configuration of the pledge.
+351,354c369,370
+<    JRC (Join Registrar/Coordinator):  Central entity responsible for the
+<       authentication, authorization, and configuration of the pledge.
+< 
+<    link:  A communication facility or medium over which nodes can
+---
+>    link:
+>       A communication facility or medium over which nodes can
+360,393c376,413
+<    operational technology:  OT refers to technology used in automation,
+<       for instance in industrial control networks.  The convergence of
+<       IT and OT is the main object of the Industrial Internet of Things
+<       (IIOT).
+< 
+<    pledge:  A new device that attempts to join a 6TiSCH network.
+< 
+<    (to) relocate a cell:  The action operated by the 6top sublayer of
+<       changing the slotOffset and/or channelOffset of a soft cell.
+< 
+<    (to) schedule a cell:  The action of turning an unscheduled cell into
+<       a scheduled cell.
+< 
+<    scheduled cell:  A cell that is assigned a neighbor MAC address
+<       (broadcast address is also possible) and one or more of the
+<       following flags: TX, RX, Shared, and Timekeeping.  A scheduled
+<       cell can be used by the IEEE Std 802.15.4 TSCH implementation to
+<       communicate.  A scheduled cell can either be a hard or a soft
+<       cell.
+< 
+<    SF (6top Scheduling Function):  The cell management entity that adds
+<       or deletes cells dynamically based on application networking
+<       requirements.  The cell negotiation with a neighbor is done using
+<       6P.
+< 
+<    SFID (6top Scheduling Function Identifier):  A 4-bit field
+<       identifying an SF.
+< 
+<    shared cell:  A cell marked with both the TX and Shared flags.  This
+<       cell can be used by more than one transmitter node.  A back-off
+<       algorithm is used to resolve contention.
+< 
+<    slotframe:  A collection of timeslots repeating in time, analogous to
+<       a superframe in that it defines periods of communication
+---
+>    operational technology:
+>       OT refers to technology used in automation, for instance in
+>       industrial control networks.  The convergence of IT and OT is the
+>       main object of the Industrial Internet of Things (IIOT).
+> 
+>    pledge:
+>       A new device that attempts to join a 6TiSCH network.
+> 
+>    (to) relocate a cell:
+>       The action operated by the 6top sublayer of changing the
+>       slotOffset and/or channelOffset of a soft cell.
+> 
+>    (to) schedule a cell:
+>       The action of turning an unscheduled cell into a scheduled cell.
+> 
+>    scheduled cell:
+>       A cell that is assigned a neighbor MAC address (broadcast address
+>       is also possible) and one or more of the following flags: TX, RX,
+>       Shared, and Timekeeping.  A scheduled cell can be used by the IEEE
+>       Std 802.15.4 TSCH implementation to communicate.  A scheduled cell
+>       can either be a hard or a soft cell.
+> 
+>    SF (6top Scheduling Function):
+>       The cell management entity that adds or deletes cells dynamically
+>       based on application networking requirements.  The cell
+>       negotiation with a neighbor is done using 6P.
+> 
+>    SFID (6top Scheduling Function Identifier):
+>       A 4-bit field identifying an SF.
+> 
+>    shared cell:
+>       A cell marked with both the TX and Shared flags.  This cell can be
+>       used by more than one transmitter node.  A back-off algorithm is
+>       used to resolve contention.
+> 
+>    slotframe:
+>       A collection of timeslots repeating in time, analogous to a
+>       superframe in that it defines periods of communication
+401,403c421,435
+<    slotOffset:  A column in the TSCH schedule, i.e., the number of
+<       timeslots since the beginning of the current iteration of the
+<       slotframe.
+---
+>    slotOffset:
+>       A column in the TSCH schedule, i.e., the number of timeslots since
+>       the beginning of the current iteration of the slotframe.
+> 
+>    soft cell:
+>       A scheduled cell that the 6top sublayer can relocate.
+> 
+>    time source neighbor:
+>       A neighbor that a node uses as its time reference, and to which it
+>       needs to keep its clock synchronized.
+> 
+>    timeslot:
+>       A basic communication unit in TSCH that allows a transmitter node
+>       to send a frame to a receiver neighbor and that allows the
+>       receiver neighbor to optionally send back an acknowledgment.
+405,415c437,438
+<    soft cell:  A scheduled cell that the 6top sublayer can relocate.
+< 
+<    time source neighbor:  A neighbor that a node uses as its time
+<       reference, and to which it needs to keep its clock synchronized.
+< 
+<    timeslot:  A basic communication unit in TSCH that allows a
+<       transmitter node to send a frame to a receiver neighbor and that
+<       allows the receiver neighbor to optionally send back an
+<       acknowledgment.
+< 
+<    Track:  A Track is a Directed Acyclic Graph (DAG) that is used as a
+---
+>    Track:
+>       A Track is a Directed Acyclic Graph (DAG) that is used as a
+426,431c449,455
+<    TrackID:  A TrackID is either globally unique or locally unique to
+<       the Track owner, in which case the identification of the owner
+<       must be provided together with the TrackID to provide a full
+<       reference to the Track.  Typically, the Track owner is the ingress
+<       of the Track, the IPv6 source address of packets along the Track
+<       can be used as identification of the owner, and a local InstanceID
+---
+>    TrackID:
+>       A TrackID is either globally unique or locally unique to the Track
+>       owner, in which case the identification of the owner must be
+>       provided together with the TrackID to provide a full reference to
+>       the Track.  Typically, the Track owner is the ingress of the
+>       Track, the IPv6 source address of packets along the Track can be
+>       used as identification of the owner, and a local InstanceID
+443,451c467,477
+<    TSCH Schedule:  A matrix of cells, with each cell indexed by a
+<       slotOffset and a channelOffset.  The TSCH schedule contains all
+<       the scheduled cells from all slotframes and is sufficient to
+<       qualify the communication in the TSCH network.  The number of
+<       channelOffset values (the "height" of the matrix) is equal to the
+<       number of available frequencies.
+< 
+<    Unscheduled Cell:  A cell that is not used by the IEEE Std 802.15.4
+<       TSCH implementation.
+---
+>    TSCH Schedule:
+>       A matrix of cells, with each cell indexed by a slotOffset and a
+>       channelOffset.  The TSCH schedule contains all the scheduled cells
+>       from all slotframes and is sufficient to qualify the communication
+>       in the TSCH network.  The number of channelOffset values (the
+>       "height" of the matrix) is equal to the number of available
+>       frequencies.
+> 
+>    Unscheduled Cell:
+>       A cell that is not used by the IEEE Std 802.15.4 TSCH
+>       implementation.
+459c485,486
+<    6LBR:  6LoWPAN Border Router (authoritative on Duplicate Address
+---
+>    6LBR:
+>       6LoWPAN Border Router (authoritative on Duplicate Address
+774,804c801,834
+<    Static Scheduling:  This refers to the minimal 6TiSCH operation
+<       whereby a static schedule is configured for the whole network for
+<       use in a Slotted ALOHA [S-ALOHA] fashion.  The static schedule is
+<       distributed through the native methods in the TSCH MAC layer and
+<       does not preclude other scheduling operations coexisting on a same
+<       6TiSCH network.  A static schedule is necessary for basic
+<       operations such as the join process and for interoperability
+<       during the network formation, which is specified as part of the
+<       Minimal 6TiSCH Configuration [RFC8180].
+< 
+<    Neighbor-to-Neighbor Scheduling:  This refers to the dynamic
+<       adaptation of the bandwidth of the links that are used for IPv6
+<       traffic between adjacent peers.  Scheduling Functions such as the
+<       "6TiSCH Minimal Scheduling Function (MSF)" [RFC9033] influence the
+<       operation of the MAC layer to add, update, and remove cells in its
+<       own and its peer's schedules using 6P [RFC8480] for the
+<       negotiation of the MAC resources.
+< 
+<    Centralized (or Remote) Monitoring and Schedule Management:  This
+<       refers to the central computation of a schedule and the capability
+<       to forward a frame based on the cell of arrival.  In that case,
+<       the related portion of the device schedule as well as other device
+<       resources are managed by an abstract Network Management Entity
+<       (NME), which may cooperate with the PCE to minimize the
+<       interaction with, and the load on, the constrained device.  This
+<       model is the TSCH adaption of the DetNet architecture [RFC8655],
+<       and it enables Traffic Engineering with deterministic properties.
+< 
+<    Hop-by-Hop Scheduling:  This refers to the possibility of reserving
+<       cells along a path for a particular flow using a distributed
+<       mechanism.
+---
+>    Static Scheduling:
+>       This refers to the minimal 6TiSCH operation whereby a static
+>       schedule is configured for the whole network for use in a Slotted
+>       ALOHA [S-ALOHA] fashion.  The static schedule is distributed
+>       through the native methods in the TSCH MAC layer and does not
+>       preclude other scheduling operations coexisting on a same 6TiSCH
+>       network.  A static schedule is necessary for basic operations such
+>       as the join process and for interoperability during the network
+>       formation, which is specified as part of the Minimal 6TiSCH
+>       Configuration [RFC8180].
+> 
+>    Neighbor-to-Neighbor Scheduling:
+>       This refers to the dynamic adaptation of the bandwidth of the
+>       links that are used for IPv6 traffic between adjacent peers.
+>       Scheduling Functions such as the "6TiSCH Minimal Scheduling
+>       Function (MSF)" [RFC9033] influence the operation of the MAC layer
+>       to add, update, and remove cells in its own and its peer's
+>       schedules using 6P [RFC8480] for the negotiation of the MAC
+>       resources.
+> 
+>    Centralized (or Remote) Monitoring and Schedule Management:
+>       This refers to the central computation of a schedule and the
+>       capability to forward a frame based on the cell of arrival.  In
+>       that case, the related portion of the device schedule as well as
+>       other device resources are managed by an abstract Network
+>       Management Entity (NME), which may cooperate with the PCE to
+>       minimize the interaction with, and the load on, the constrained
+>       device.  This model is the TSCH adaption of the DetNet
+>       architecture [RFC8655], and it enables Traffic Engineering with
+>       deterministic properties.
+> 
+>    Hop-by-Hop Scheduling:
+>       This refers to the possibility of reserving cells along a path for
+>       a particular flow using a distributed mechanism.
+858,861c888,892
+<    IPv6 Forwarding:  This is the classical IP forwarding model, with a
+<       Routing Information Base (RIB) that is installed by RPL and used
+<       to select a feasible successor per packet.  The packet is placed
+<       on an outgoing link, which the 6top sublayer maps into a (Layer 3)
+---
+>    IPv6 Forwarding:
+>       This is the classical IP forwarding model, with a Routing
+>       Information Base (RIB) that is installed by RPL and used to select
+>       a feasible successor per packet.  The packet is placed on an
+>       outgoing link, which the 6top sublayer maps into a (Layer 3)
+868,883c899,915
+<    GMPLS Track Forwarding:  This model corresponds to the Remote
+<       Monitoring and Schedule Management.  In this model, a central
+<       controller (hosting a PCE) computes and installs the schedules in
+<       the devices per flow.  The incoming (Layer 2) bundle of cells from
+<       the previous node along the path determines the outgoing (Layer 2)
+<       bundle towards the next hop for that flow as determined by the
+<       PCE.  The programmed sequence for bundles is called a Track and
+<       can assume DAG shapes that are more complex than a simple direct
+<       sequence of nodes.
+< 
+<    6LoWPAN Fragment Forwarding:  This is a hybrid model that derives
+<       from IPv6 forwarding for the case where packets must be fragmented
+<       at the 6LoWPAN sublayer.  The first fragment is forwarded like any
+<       IPv6 packet and leaves a state in the intermediate hops to enable
+<       forwarding of the next fragments that do not have an IP header
+<       without the need to recompose the packet at every hop.
+---
+>    GMPLS Track Forwarding:
+>       This model corresponds to the Remote Monitoring and Schedule
+>       Management.  In this model, a central controller (hosting a PCE)
+>       computes and installs the schedules in the devices per flow.  The
+>       incoming (Layer 2) bundle of cells from the previous node along
+>       the path determines the outgoing (Layer 2) bundle towards the next
+>       hop for that flow as determined by the PCE.  The programmed
+>       sequence for bundles is called a Track and can assume DAG shapes
+>       that are more complex than a simple direct sequence of nodes.
+> 
+>    6LoWPAN Fragment Forwarding:
+>       This is a hybrid model that derives from IPv6 forwarding for the
+>       case where packets must be fragmented at the 6LoWPAN sublayer.
+>       The first fragment is forwarded like any IPv6 packet and leaves a
+>       state in the intermediate hops to enable forwarding of the next
+>       fragments that do not have an IP header without the need to
+>       recompose the packet at every hop.
+3226d3257
+< 

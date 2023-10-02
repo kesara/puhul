@@ -1,0 +1,640 @@
+228c228,229
+<    Bundle:  A bundle is a PDU of BP, so named because negotiation of the
+---
+>    Bundle:
+>       A bundle is a PDU of BP, so named because negotiation of the
+236,265c237,271
+<    Block:  A Bundle Protocol block is one of the protocol data
+<       structures that together constitute a well-formed bundle.
+< 
+<    Application Data Unit:  An application data unit (ADU) is the unit of
+<       data whose conveyance to the bundle's destination is the purpose
+<       for the transmission of some bundle that is not a fragment (as
+<       defined below).
+< 
+<    Bundle payload:  A bundle payload (or simply "payload") is the
+<       content of the bundle's payload block.  The terms "bundle
+<       content", "bundle payload", and "payload" are used interchangeably
+<       in this document.  For a bundle that is not a fragment (as defined
+<       below), the payload is an ADU.
+< 
+<    Partial payload:  A partial payload is a payload that comprises
+<       either the first N bytes or the last N bytes of some other payload
+<       of length M, such that 0 < N < M.  Note that every partial payload
+<       is a payload and therefore can be further subdivided into partial
+<       payloads.
+< 
+<    Fragment:  A fragment, a.k.a. "fragmentary bundle", is a bundle whose
+<       payload block contains a partial payload.
+< 
+<    Bundle node:  A bundle node (or, in the context of this document,
+<       simply a "node") is any entity that can send and/or receive
+<       bundles.  Each bundle node has three conceptual components,
+<       defined below, as shown in Figure 2: a "Bundle Protocol Agent", a
+<       set of zero or more "convergence-layer adapters", and an
+<       "application agent".  ("CL1 PDUs" are the PDUs of the convergence-
+<       layer protocol used in network 1.)
+---
+>    Block:
+>       A Bundle Protocol block is one of the protocol data structures
+>       that together constitute a well-formed bundle.
+> 
+>    Application Data Unit:
+>       An application data unit (ADU) is the unit of data whose
+>       conveyance to the bundle's destination is the purpose for the
+>       transmission of some bundle that is not a fragment (as defined
+>       below).
+> 
+>    Bundle payload:
+>       A bundle payload (or simply "payload") is the content of the
+>       bundle's payload block.  The terms "bundle content", "bundle
+>       payload", and "payload" are used interchangeably in this document.
+>       For a bundle that is not a fragment (as defined below), the
+>       payload is an ADU.
+> 
+>    Partial payload:
+>       A partial payload is a payload that comprises either the first N
+>       bytes or the last N bytes of some other payload of length M, such
+>       that 0 < N < M.  Note that every partial payload is a payload and
+>       therefore can be further subdivided into partial payloads.
+> 
+>    Fragment:
+>       A fragment, a.k.a. "fragmentary bundle", is a bundle whose payload
+>       block contains a partial payload.
+> 
+>    Bundle node:
+>       A bundle node (or, in the context of this document, simply a
+>       "node") is any entity that can send and/or receive bundles.  Each
+>       bundle node has three conceptual components, defined below, as
+>       shown in Figure 2: a "Bundle Protocol Agent", a set of zero or
+>       more "convergence-layer adapters", and an "application agent".
+>       ("CL1 PDUs" are the PDUs of the convergence-layer protocol used in
+>       network 1.)
+306,373c312,415
+<    Bundle Protocol Agent:  The Bundle Protocol Agent (BPA) of a node is
+<       the node component that offers the BP services and executes the
+<       procedures of the Bundle Protocol.
+< 
+<    Convergence-layer adapter:  A convergence-layer adapter (CLA) is a
+<       node component that sends and receives bundles on behalf of the
+<       BPA, utilizing the services of some "integrated" protocol stack
+<       that is supported in one of the networks within which the node is
+<       functionally located.
+< 
+<    Application agent:  The application agent (AA) of a node is the node
+<       component that utilizes the BP services to effect communication
+<       for some user purpose.  The application agent in turn has two
+<       elements: an administrative element and an application-specific
+<       element.
+< 
+<    Application-specific element:  The application-specific element of an
+<       AA is the node component that constructs, requests transmission
+<       of, accepts delivery of, and processes units of user application
+<       data.
+< 
+<    Administrative element:  The administrative element of an AA is the
+<       node component that constructs and requests transmission of
+<       administrative records (defined below), including status reports,
+<       and accepts delivery of and processes any administrative records
+<       that the node receives.
+< 
+<    Administrative record:  A BP administrative record is an ADU that is
+<       exchanged between the administrative elements of nodes'
+<       application agents for some BP administrative purpose.  The only
+<       administrative record defined in this specification is the status
+<       report, discussed later.
+< 
+<    Bundle endpoint:  A bundle endpoint (or simply "endpoint") is a set
+<       of zero or more bundle nodes that all identify themselves for BP
+<       purposes by some common identifier, called a "bundle endpoint ID"
+<       (or, in this document, simply "endpoint ID"); endpoint IDs are
+<       described in detail in Section 4.2.5.1.
+< 
+<    Singleton endpoint:  A singleton endpoint is an endpoint that always
+<       contains exactly one member.
+< 
+<    Registration:  A registration is the state machine characterizing a
+<       given node's membership in a given endpoint.  Any single
+<       registration has an associated delivery failure action as defined
+<       below and must at any time be in one of two states: Active or
+<       Passive.  Registrations are local; information about a node's
+<       registrations is not expected to be available at other nodes, and
+<       the Bundle Protocol does not include a mechanism for distributing
+<       information about registrations.
+< 
+<    Delivery:  A bundle is considered to have been delivered at a node
+<       subject to a registration as soon as the ADU that is the payload
+<       of the bundle, together with any relevant metadata (an
+<       implementation matter), has been presented to the node's
+<       application agent in a manner consistent with the state of that
+<       registration.
+< 
+<    Deliverability:  A bundle is considered "deliverable" subject to a
+<       registration if and only if (a) the bundle's destination endpoint
+<       is the endpoint with which the registration is associated, (b) the
+<       bundle has not yet been delivered subject to this registration,
+<       and (c) the bundle has not yet been "abandoned" (as defined below)
+<       subject to this registration.
+< 
+<    Abandonment:  To abandon a bundle subject to some registration is to
+<       assert that the bundle is not deliverable subject to that
+<       registration.
+---
+>    Bundle Protocol Agent:
+>       The Bundle Protocol Agent (BPA) of a node is the node component
+>       that offers the BP services and executes the procedures of the
+>       Bundle Protocol.
+> 
+>    Convergence-layer adapter:
+>       A convergence-layer adapter (CLA) is a node component that sends
+>       and receives bundles on behalf of the BPA, utilizing the services
+>       of some "integrated" protocol stack that is supported in one of
+>       the networks within which the node is functionally located.
+> 
+>    Application agent:
+>       The application agent (AA) of a node is the node component that
+>       utilizes the BP services to effect communication for some user
+>       purpose.  The application agent in turn has two elements: an
+>       administrative element and an application-specific element.
+> 
+>    Application-specific element:
+>       The application-specific element of an AA is the node component
+>       that constructs, requests transmission of, accepts delivery of,
+>       and processes units of user application data.
+> 
+>    Administrative element:
+>       The administrative element of an AA is the node component that
+>       constructs and requests transmission of administrative records
+>       (defined below), including status reports, and accepts delivery of
+>       and processes any administrative records that the node receives.
+> 
+>    Administrative record:
+>       A BP administrative record is an ADU that is exchanged between the
+>       administrative elements of nodes' application agents for some BP
+>       administrative purpose.  The only administrative record defined in
+>       this specification is the status report, discussed later.
+> 
+>    Bundle endpoint:
+>       A bundle endpoint (or simply "endpoint") is a set of zero or more
+>       bundle nodes that all identify themselves for BP purposes by some
+>       common identifier, called a "bundle endpoint ID" (or, in this
+>       document, simply "endpoint ID"); endpoint IDs are described in
+>       detail in Section 4.2.5.1.
+> 
+>    Singleton endpoint:
+>       A singleton endpoint is an endpoint that always contains exactly
+>       one member.
+> 
+>    Registration:
+>       A registration is the state machine characterizing a given node's
+>       membership in a given endpoint.  Any single registration has an
+>       associated delivery failure action as defined below and must at
+>       any time be in one of two states: Active or Passive.
+>       Registrations are local; information about a node's registrations
+>       is not expected to be available at other nodes, and the Bundle
+>       Protocol does not include a mechanism for distributing information
+>       about registrations.
+> 
+>    Delivery:
+>       A bundle is considered to have been delivered at a node subject to
+>       a registration as soon as the ADU that is the payload of the
+>       bundle, together with any relevant metadata (an implementation
+>       matter), has been presented to the node's application agent in a
+>       manner consistent with the state of that registration.
+> 
+>    Deliverability:
+>       A bundle is considered "deliverable" subject to a registration if
+>       and only if (a) the bundle's destination endpoint is the endpoint
+>       with which the registration is associated, (b) the bundle has not
+>       yet been delivered subject to this registration, and (c) the
+>       bundle has not yet been "abandoned" (as defined below) subject to
+>       this registration.
+> 
+>    Abandonment:
+>       To abandon a bundle subject to some registration is to assert that
+>       the bundle is not deliverable subject to that registration.
+> 
+>    Delivery failure action:
+>       The delivery failure action of a registration is the action that
+>       is to be taken when a bundle that is "deliverable" subject to that
+>       registration is received at a time when the registration is in the
+>       Passive state.
+> 
+>    Destination:
+>       The destination of a bundle is the endpoint comprising the node(s)
+>       at which the bundle is to be delivered (as defined above).
+> 
+>    Transmission:
+>       A transmission is an attempt by a node's BPA to cause copies of a
+>       bundle to be delivered to one or more of the nodes that are
+>       members of some endpoint (the bundle's destination) in response to
+>       a transmission request issued by the node's application agent.
+> 
+>    Forwarding:
+>       To forward a bundle to a node is to invoke the services of one or
+>       more CLAs in a sustained effort to cause a copy of the bundle to
+>       be received by that node.
+> 
+>    Discarding:
+>       To discard a bundle is to cease all operations on the bundle and
+>       functionally erase all references to it.  The specific procedures
+>       by which this is accomplished are an implementation matter.
+> 
+>    Retention constraint:
+>       A retention constraint is an element of the state of a bundle that
+>       prevents the bundle from being discarded.  That is, a bundle
+>       cannot be discarded while it has any retention constraints.
+375,404c417,418
+<    Delivery failure action:  The delivery failure action of a
+<       registration is the action that is to be taken when a bundle that
+<       is "deliverable" subject to that registration is received at a
+<       time when the registration is in the Passive state.
+< 
+<    Destination:  The destination of a bundle is the endpoint comprising
+<       the node(s) at which the bundle is to be delivered (as defined
+<       above).
+< 
+<    Transmission:  A transmission is an attempt by a node's BPA to cause
+<       copies of a bundle to be delivered to one or more of the nodes
+<       that are members of some endpoint (the bundle's destination) in
+<       response to a transmission request issued by the node's
+<       application agent.
+< 
+<    Forwarding:  To forward a bundle to a node is to invoke the services
+<       of one or more CLAs in a sustained effort to cause a copy of the
+<       bundle to be received by that node.
+< 
+<    Discarding:  To discard a bundle is to cease all operations on the
+<       bundle and functionally erase all references to it.  The specific
+<       procedures by which this is accomplished are an implementation
+<       matter.
+< 
+<    Retention constraint:  A retention constraint is an element of the
+<       state of a bundle that prevents the bundle from being discarded.
+<       That is, a bundle cannot be discarded while it has any retention
+<       constraints.
+< 
+<    Deletion:  To delete a bundle is to remove unconditionally all of the
+---
+>    Deletion:
+>       To delete a bundle is to remove unconditionally all of the
+861,862c875,877
+<    Scheme syntax:  This specification uses the Augmented Backus-Naur
+<       Form (ABNF) notation of [RFC5234].
+---
+>    Scheme syntax:
+>       This specification uses the Augmented Backus-Naur Form (ABNF)
+>       notation of [RFC5234].
+874,876c889,892
+<    Scheme semantics:  URIs of the dtn scheme are used as endpoint
+<       identifiers in the Delay-Tolerant Networking (DTN) Bundle Protocol
+<       (BP) as described in the present document.
+---
+>    Scheme semantics:
+>       URIs of the dtn scheme are used as endpoint identifiers in the
+>       Delay-Tolerant Networking (DTN) Bundle Protocol (BP) as described
+>       in the present document.
+900,905c916,922
+<    Encoding considerations:  For transmission as a BP endpoint ID, the
+<       scheme-specific part of a URI of the dtn scheme SHALL be
+<       represented as a CBOR text string unless the EID's SSP is "none",
+<       in which case the SSP SHALL be represented as a CBOR unsigned
+<       integer with the value zero.  For all other purposes, URIs of the
+<       dtn scheme are encoded exclusively in US-ASCII characters.
+---
+>    Encoding considerations:
+>       For transmission as a BP endpoint ID, the scheme-specific part of
+>       a URI of the dtn scheme SHALL be represented as a CBOR text string
+>       unless the EID's SSP is "none", in which case the SSP SHALL be
+>       represented as a CBOR unsigned integer with the value zero.  For
+>       all other purposes, URIs of the dtn scheme are encoded exclusively
+>       in US-ASCII characters.
+911,948c928,969
+<       Reliability and consistency:  None of the BP endpoints identified
+<          by the URIs of the dtn scheme are guaranteed to be reachable at
+<          any time, and the identity of the processing entities operating
+<          on those endpoints is never guaranteed by the Bundle Protocol
+<          itself.  Verification of the signature provided by the Block
+<          Integrity Block targeting the bundle's primary block, as
+<          defined by Bundle Protocol Security [BPSEC], is required for
+<          this purpose.
+< 
+<       Malicious construction:  Malicious construction of a conformant
+<          dtn-scheme URI is limited to the malicious selection of node
+<          names and the malicious selection of demux strings.  That is, a
+<          maliciously constructed dtn-scheme URI could be used to direct
+<          a bundle to an endpoint that might be damaged by the arrival of
+<          that bundle or, alternatively, to declare a false source for a
+<          bundle and thereby cause incorrect processing at a node that
+<          receives the bundle.  In both cases (and indeed in all bundle
+<          processing), the node that receives a bundle should verify its
+<          authenticity and validity before operating on it in any way.
+< 
+<       Back-end transcoding:  The limited expressiveness of URIs of the
+<          dtn scheme effectively eliminates the possibility of threat due
+<          to errors in back-end transcoding.
+< 
+<       Rare IP address formats:  Not relevant, as IP addresses do not
+<          appear anywhere in conformant dtn-scheme URIs.
+< 
+<       Sensitive information:  Because dtn-scheme URIs are used only to
+<          represent the identities of Bundle Protocol endpoints, the risk
+<          of disclosure of sensitive information due to interception of
+<          these URIs is minimal.  Examination of dtn-scheme URIs could be
+<          used to support traffic analysis; where traffic analysis is a
+<          plausible danger, bundles should be conveyed by secure
+<          convergence-layer protocols that do not expose endpoint IDs.
+< 
+<       Semantic attacks:  The simplicity of dtn-scheme URI syntax
+<          minimizes the possibility of misinterpretation of a URI by a
+<          human user.
+---
+>       Reliability and consistency:
+>          None of the BP endpoints identified by the URIs of the dtn
+>          scheme are guaranteed to be reachable at any time, and the
+>          identity of the processing entities operating on those
+>          endpoints is never guaranteed by the Bundle Protocol itself.
+>          Verification of the signature provided by the Block Integrity
+>          Block targeting the bundle's primary block, as defined by
+>          Bundle Protocol Security [BPSEC], is required for this purpose.
+> 
+>       Malicious construction:
+>          Malicious construction of a conformant dtn-scheme URI is
+>          limited to the malicious selection of node names and the
+>          malicious selection of demux strings.  That is, a maliciously
+>          constructed dtn-scheme URI could be used to direct a bundle to
+>          an endpoint that might be damaged by the arrival of that bundle
+>          or, alternatively, to declare a false source for a bundle and
+>          thereby cause incorrect processing at a node that receives the
+>          bundle.  In both cases (and indeed in all bundle processing),
+>          the node that receives a bundle should verify its authenticity
+>          and validity before operating on it in any way.
+> 
+>       Back-end transcoding:
+>          The limited expressiveness of URIs of the dtn scheme
+>          effectively eliminates the possibility of threat due to errors
+>          in back-end transcoding.
+> 
+>       Rare IP address formats:
+>          Not relevant, as IP addresses do not appear anywhere in
+>          conformant dtn-scheme URIs.
+> 
+>       Sensitive information:
+>          Because dtn-scheme URIs are used only to represent the
+>          identities of Bundle Protocol endpoints, the risk of disclosure
+>          of sensitive information due to interception of these URIs is
+>          minimal.  Examination of dtn-scheme URIs could be used to
+>          support traffic analysis; where traffic analysis is a plausible
+>          danger, bundles should be conveyed by secure convergence-layer
+>          protocols that do not expose endpoint IDs.
+> 
+>       Semantic attacks:
+>          The simplicity of dtn-scheme URI syntax minimizes the
+>          possibility of misinterpretation of a URI by a human user.
+956,958c977,980
+<    Scheme syntax:  This specification uses the Augmented Backus-Naur
+<       Form (ABNF) notation of [RFC5234], including the core ABNF syntax
+<       rule for DIGIT defined by that specification.
+---
+>    Scheme syntax:
+>       This specification uses the Augmented Backus-Naur Form (ABNF)
+>       notation of [RFC5234], including the core ABNF syntax rule for
+>       DIGIT defined by that specification.
+970,972c992,995
+<    Scheme semantics:  URIs of the ipn scheme are used as endpoint
+<       identifiers in the Delay-Tolerant Networking (DTN) Bundle Protocol
+<       (BP) as described in the present document.
+---
+>    Scheme semantics:
+>       URIs of the ipn scheme are used as endpoint identifiers in the
+>       Delay-Tolerant Networking (DTN) Bundle Protocol (BP) as described
+>       in the present document.
+982,990c1005,1014
+<    Encoding considerations:  For transmission as a BP endpoint ID, the
+<       scheme-specific part of a URI of the ipn scheme SHALL be
+<       represented as a CBOR array comprising two items.  The first item
+<       of this array SHALL be the EID's node number (a number that
+<       identifies the node) represented as a CBOR unsigned integer.  The
+<       second item of this array SHALL be the EID's service number (a
+<       number that identifies some application service) represented as a
+<       CBOR unsigned integer.  For all other purposes, URIs of the ipn
+<       scheme are encoded exclusively in US-ASCII characters.
+---
+>    Encoding considerations:
+>       For transmission as a BP endpoint ID, the scheme-specific part of
+>       a URI of the ipn scheme SHALL be represented as a CBOR array
+>       comprising two items.  The first item of this array SHALL be the
+>       EID's node number (a number that identifies the node) represented
+>       as a CBOR unsigned integer.  The second item of this array SHALL
+>       be the EID's service number (a number that identifies some
+>       application service) represented as a CBOR unsigned integer.  For
+>       all other purposes, URIs of the ipn scheme are encoded exclusively
+>       in US-ASCII characters.
+996,1034c1020,1061
+<       Reliability and consistency:  None of the BP endpoints identified
+<          by the URIs of the ipn scheme are guaranteed to be reachable at
+<          any time, and the identity of the processing entities operating
+<          on those endpoints is never guaranteed by the Bundle Protocol
+<          itself.  Verification of the signature provided by the Block
+<          Integrity Block targeting the bundle's primary block, as
+<          defined by Bundle Protocol Security [BPSEC], is required for
+<          this purpose.
+< 
+<       Malicious construction:  Malicious construction of a conformant
+<          ipn-scheme URI is limited to the malicious selection of node
+<          numbers and the malicious selection of service numbers.  That
+<          is, a maliciously constructed ipn-scheme URI could be used to
+<          direct a bundle to an endpoint that might be damaged by the
+<          arrival of that bundle or, alternatively, to declare a false
+<          source for a bundle and thereby cause incorrect processing at a
+<          node that receives the bundle.  In both cases (and indeed in
+<          all bundle processing), the node that receives a bundle should
+<          verify its authenticity and validity before operating on it in
+<          any way.
+< 
+<       Back-end transcoding:  The limited expressiveness of URIs of the
+<          ipn scheme effectively eliminates the possibility of threat due
+<          to errors in back-end transcoding.
+< 
+<       Rare IP address formats:  Not relevant, as IP addresses do not
+<          appear anywhere in conformant ipn-scheme URIs.
+< 
+<       Sensitive information:  Because ipn-scheme URIs are used only to
+<          represent the identities of Bundle Protocol endpoints, the risk
+<          of disclosure of sensitive information due to interception of
+<          these URIs is minimal.  Examination of ipn-scheme URIs could be
+<          used to support traffic analysis; where traffic analysis is a
+<          plausible danger, bundles should be conveyed by secure
+<          convergence-layer protocols that do not expose endpoint IDs.
+< 
+<       Semantic attacks:  The simplicity of ipn-scheme URI syntax
+<          minimizes the possibility of misinterpretation of a URI by a
+<          human user.
+---
+>       Reliability and consistency:
+>          None of the BP endpoints identified by the URIs of the ipn
+>          scheme are guaranteed to be reachable at any time, and the
+>          identity of the processing entities operating on those
+>          endpoints is never guaranteed by the Bundle Protocol itself.
+>          Verification of the signature provided by the Block Integrity
+>          Block targeting the bundle's primary block, as defined by
+>          Bundle Protocol Security [BPSEC], is required for this purpose.
+> 
+>       Malicious construction:
+>          Malicious construction of a conformant ipn-scheme URI is
+>          limited to the malicious selection of node numbers and the
+>          malicious selection of service numbers.  That is, a maliciously
+>          constructed ipn-scheme URI could be used to direct a bundle to
+>          an endpoint that might be damaged by the arrival of that bundle
+>          or, alternatively, to declare a false source for a bundle and
+>          thereby cause incorrect processing at a node that receives the
+>          bundle.  In both cases (and indeed in all bundle processing),
+>          the node that receives a bundle should verify its authenticity
+>          and validity before operating on it in any way.
+> 
+>       Back-end transcoding:
+>          The limited expressiveness of URIs of the ipn scheme
+>          effectively eliminates the possibility of threat due to errors
+>          in back-end transcoding.
+> 
+>       Rare IP address formats:
+>          Not relevant, as IP addresses do not appear anywhere in
+>          conformant ipn-scheme URIs.
+> 
+>       Sensitive information:
+>          Because ipn-scheme URIs are used only to represent the
+>          identities of Bundle Protocol endpoints, the risk of disclosure
+>          of sensitive information due to interception of these URIs is
+>          minimal.  Examination of ipn-scheme URIs could be used to
+>          support traffic analysis; where traffic analysis is a plausible
+>          danger, bundles should be conveyed by secure convergence-layer
+>          protocols that do not expose endpoint IDs.
+> 
+>       Semantic attacks:
+>          The simplicity of ipn-scheme URI syntax minimizes the
+>          possibility of misinterpretation of a URI by a human user.
+1137,1138c1164,1166
+<    Version:  An unsigned integer value indicating the version of the
+<       Bundle Protocol that constructed this block.  The present document
+---
+>    Version:
+>       An unsigned integer value indicating the version of the Bundle
+>       Protocol that constructed this block.  The present document
+1151,1168c1179,1199
+<    Destination EID:  The Destination EID field identifies the bundle
+<       endpoint that is the bundle's destination, i.e., the endpoint that
+<       contains the node(s) at which the bundle is to be delivered.
+< 
+<    Source node ID:  The Source node ID field identifies the bundle node
+<       at which the bundle was initially transmitted, except that source
+<       node ID may be the null endpoint ID in the event that the bundle's
+<       source chooses to remain anonymous.
+< 
+<    Report-to EID:  The Report-to EID field identifies the bundle
+<       endpoint to which status reports pertaining to the forwarding and
+<       delivery of this bundle are to be transmitted.
+< 
+<    Creation Timestamp:  The creation timestamp comprises two unsigned
+<       integers that, together with the source node ID and (if the bundle
+<       is a fragment) the fragment offset and payload length, serve to
+<       identify the bundle.  See Section 4.2.7 for the definition of this
+<       field.
+---
+>    Destination EID:
+>       The Destination EID field identifies the bundle endpoint that is
+>       the bundle's destination, i.e., the endpoint that contains the
+>       node(s) at which the bundle is to be delivered.
+> 
+>    Source node ID:
+>       The Source node ID field identifies the bundle node at which the
+>       bundle was initially transmitted, except that source node ID may
+>       be the null endpoint ID in the event that the bundle's source
+>       chooses to remain anonymous.
+> 
+>    Report-to EID:
+>       The Report-to EID field identifies the bundle endpoint to which
+>       status reports pertaining to the forwarding and delivery of this
+>       bundle are to be transmitted.
+> 
+>    Creation Timestamp:
+>       The creation timestamp comprises two unsigned integers that,
+>       together with the source node ID and (if the bundle is a fragment)
+>       the fragment offset and payload length, serve to identify the
+>       bundle.  See Section 4.2.7 for the definition of this field.
+1197,1210c1228,1242
+<    Fragment offset:  If and only if the bundle processing control flags
+<       of this primary block indicate that the bundle is a fragment,
+<       fragment offset SHALL be present in the primary block.  Fragment
+<       offset SHALL be represented as a CBOR unsigned integer indicating
+<       the offset from the start of the original ADU at which the bytes
+<       comprising the payload of this bundle were located.
+< 
+<    Total Application Data Unit Length:  If and only if the bundle
+<       processing control flags of this primary block indicate that the
+<       bundle is a fragment, total application data unit length SHALL be
+<       present in the primary block.  Total application data unit length
+<       SHALL be represented as a CBOR unsigned integer indicating the
+<       total length of the original ADU of which this bundle's payload is
+<       a part.
+---
+>    Fragment offset:
+>       If and only if the bundle processing control flags of this primary
+>       block indicate that the bundle is a fragment, fragment offset
+>       SHALL be present in the primary block.  Fragment offset SHALL be
+>       represented as a CBOR unsigned integer indicating the offset from
+>       the start of the original ADU at which the bytes comprising the
+>       payload of this bundle were located.
+> 
+>    Total Application Data Unit Length:
+>       If and only if the bundle processing control flags of this primary
+>       block indicate that the bundle is a fragment, total application
+>       data unit length SHALL be present in the primary block.  Total
+>       application data unit length SHALL be represented as a CBOR
+>       unsigned integer indicating the total length of the original ADU
+>       of which this bundle's payload is a part.
+1231,1236c1263,1269
+<    Block type code:  An unsigned integer.  Bundle block type code 1
+<       indicates that the block is a Bundle Payload Block.  Other block
+<       type codes are described in Section 9.1.  Block type codes 192
+<       through 255 are not reserved and are available for private and/or
+<       experimental use.  All other block type code values are reserved
+<       for future use.
+---
+>    Block type code:
+>       An unsigned integer.  Bundle block type code 1 indicates that the
+>       block is a Bundle Payload Block.  Other block type codes are
+>       described in Section 9.1.  Block type codes 192 through 255 are
+>       not reserved and are available for private and/or experimental
+>       use.  All other block type code values are reserved for future
+>       use.
+1245,1255c1278,1289
+<    Block-type-specific data:  Represented as a single definite-length
+<       CBOR byte string, i.e., a CBOR byte string that is not of
+<       indefinite length.  For each type of block, the block-type-
+<       specific data byte string is the serialization, in a block-type-
+<       specific manner, of the data conveyed by that type of block;
+<       definitions of blocks are required to define the manner in which
+<       block-type-specific data are serialized within the block-type-
+<       specific data field.  For the Bundle Payload Block in particular
+<       (block type 1), the block-type-specific data field, termed the
+<       "payload", SHALL be an ADU, or some contiguous extent thereof,
+<       represented as a definite-length CBOR byte string.
+---
+>    Block-type-specific data:
+>       Represented as a single definite-length CBOR byte string, i.e., a
+>       CBOR byte string that is not of indefinite length.  For each type
+>       of block, the block-type-specific data byte string is the
+>       serialization, in a block-type-specific manner, of the data
+>       conveyed by that type of block; definitions of blocks are required
+>       to define the manner in which block-type-specific data are
+>       serialized within the block-type-specific data field.  For the
+>       Bundle Payload Block in particular (block type 1), the block-type-
+>       specific data field, termed the "payload", SHALL be an ADU, or
+>       some contiguous extent thereof, represented as a definite-length
+>       CBOR byte string.
+2970d3003
+< 
+2979d3011
+< 
+2988d3019
+< 

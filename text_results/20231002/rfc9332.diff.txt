@@ -1,0 +1,117 @@
+345,348c345,349
+<    Classic Service/Queue:  The Classic service is intended for all the
+<       congestion control behaviours that coexist with Reno [RFC5681]
+<       (e.g., Reno itself, CUBIC [RFC8312], and TFRC [RFC5348]).  The
+<       term 'Classic queue' means a queue providing the Classic service.
+---
+>    Classic Service/Queue:
+>       The Classic service is intended for all the congestion control
+>       behaviours that coexist with Reno [RFC5681] (e.g., Reno itself,
+>       CUBIC [RFC8312], and TFRC [RFC5348]).  The term 'Classic queue'
+>       means a queue providing the Classic service.
+351,384c352,388
+<    Queue:  The 'L4S' service is intended for traffic from Scalable
+<       congestion control algorithms, such as the Prague congestion
+<       control [PRAGUE-CC], which was derived from Data Center TCP
+<       [RFC8257].  The L4S service is for more general traffic than just
+<       Prague -- it allows the set of congestion controls with similar
+<       scaling properties to Prague to evolve, such as the examples
+<       listed below (Relentless, SCReAM, etc.).  The term 'L4S queue'
+<       means a queue providing the L4S service.
+< 
+<    Classic Congestion Control:  A congestion control behaviour that can
+<       coexist with standard Reno [RFC5681] without causing significantly
+<       negative impact on its flow rate [RFC5033].  With Classic
+<       congestion controls, such as Reno or CUBIC, because flow rate has
+<       scaled since TCP congestion control was first designed in 1988, it
+<       now takes hundreds of round trips (and growing) to recover after a
+<       congestion signal (whether a loss or an ECN mark) as shown in the
+<       examples in Section 5.1 of the L4S architecture [RFC9330] and in
+<       [RFC3649].  Therefore, control of queuing and utilization becomes
+<       very slack, and the slightest disturbances (e.g., from new flows
+<       starting) prevent a high rate from being attained.
+< 
+<    Scalable Congestion Control:  A congestion control where the average
+<       time from one congestion signal to the next (the recovery time)
+<       remains invariant as flow rate scales, all other factors being
+<       equal.  This maintains the same degree of control over queuing and
+<       utilization whatever the flow rate, as well as ensuring that high
+<       throughput is robust to disturbances.  For instance, DCTCP
+<       averages 2 congestion signals per round trip, whatever the flow
+<       rate, as do other recently developed Scalable congestion controls,
+<       e.g., Relentless TCP [RELENTLESS], Prague [PRAGUE-CC]
+<       [PragueLinux], BBRv2 [BBRv2] [BBR-CC], and the L4S variant of
+<       SCReAM for real-time media [SCReAM-L4S] [RFC8298].  For the public
+<       Internet, a Scalable transport has to comply with the requirements
+<       in Section 4 of [RFC9331] (a.k.a. the 'Prague L4S requirements').
+---
+>    Queue:
+>       The 'L4S' service is intended for traffic from Scalable congestion
+>       control algorithms, such as the Prague congestion control
+>       [PRAGUE-CC], which was derived from Data Center TCP [RFC8257].
+>       The L4S service is for more general traffic than just Prague -- it
+>       allows the set of congestion controls with similar scaling
+>       properties to Prague to evolve, such as the examples listed below
+>       (Relentless, SCReAM, etc.).  The term 'L4S queue' means a queue
+>       providing the L4S service.
+> 
+>    Classic Congestion Control:
+>       A congestion control behaviour that can coexist with standard Reno
+>       [RFC5681] without causing significantly negative impact on its
+>       flow rate [RFC5033].  With Classic congestion controls, such as
+>       Reno or CUBIC, because flow rate has scaled since TCP congestion
+>       control was first designed in 1988, it now takes hundreds of round
+>       trips (and growing) to recover after a congestion signal (whether
+>       a loss or an ECN mark) as shown in the examples in Section 5.1 of
+>       the L4S architecture [RFC9330] and in [RFC3649].  Therefore,
+>       control of queuing and utilization becomes very slack, and the
+>       slightest disturbances (e.g., from new flows starting) prevent a
+>       high rate from being attained.
+> 
+>    Scalable Congestion Control:
+>       A congestion control where the average time from one congestion
+>       signal to the next (the recovery time) remains invariant as flow
+>       rate scales, all other factors being equal.  This maintains the
+>       same degree of control over queuing and utilization whatever the
+>       flow rate, as well as ensuring that high throughput is robust to
+>       disturbances.  For instance, DCTCP averages 2 congestion signals
+>       per round trip, whatever the flow rate, as do other recently
+>       developed Scalable congestion controls, e.g., Relentless TCP
+>       [RELENTLESS], Prague [PRAGUE-CC] [PragueLinux], BBRv2 [BBRv2]
+>       [BBR-CC], and the L4S variant of SCReAM for real-time media
+>       [SCReAM-L4S] [RFC8298].  For the public Internet, a Scalable
+>       transport has to comply with the requirements in Section 4 of
+>       [RFC9331] (a.k.a. the 'Prague L4S requirements').
+386c390,391
+<    C:  Abbreviation for Classic, e.g., when used as a subscript.
+---
+>    C:
+>       Abbreviation for Classic, e.g., when used as a subscript.
+403,414c408,421
+<    Reno-friendly:  The subset of Classic traffic that is friendly to the
+<       standard Reno congestion control defined for TCP in [RFC5681].
+<       The TFRC spec [RFC5348] indirectly implies that 'friendly' is
+<       defined as "generally within a factor of two of the sending rate
+<       of a TCP flow under the same conditions".  'Reno-friendly' is used
+<       here in place of 'TCP-friendly', given the latter has become
+<       imprecise, because the TCP protocol is now used with so many
+<       different congestion control behaviours, and Reno is used in non-
+<       TCP transports, such as QUIC [RFC9000].
+< 
+<    DualQ or DualQ AQM:  Used loosely as shorthand for a Dual-Queue
+<       Coupled AQM, where the context makes 'Coupled AQM' obvious.
+---
+>    Reno-friendly:
+>       The subset of Classic traffic that is friendly to the standard
+>       Reno congestion control defined for TCP in [RFC5681].  The TFRC
+>       spec [RFC5348] indirectly implies that 'friendly' is defined as
+>       "generally within a factor of two of the sending rate of a TCP
+>       flow under the same conditions".  'Reno-friendly' is used here in
+>       place of 'TCP-friendly', given the latter has become imprecise,
+>       because the TCP protocol is now used with so many different
+>       congestion control behaviours, and Reno is used in non-TCP
+>       transports, such as QUIC [RFC9000].
+> 
+>    DualQ or DualQ AQM:
+>       Used loosely as shorthand for a Dual-Queue Coupled AQM, where the
+>       context makes 'Coupled AQM' obvious.

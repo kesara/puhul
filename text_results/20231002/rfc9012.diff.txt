@@ -1,0 +1,146 @@
+363,367c363,367
+<    Tunnel Type (2 octets):  Identifies a type of tunnel.  The field
+<       contains values from the IANA registry "BGP Tunnel Encapsulation
+<       Attribute Tunnel Types" [IANA-BGP-TUNNEL-ENCAP].  See
+<       Section 3.4.1 for discussion of special treatment of tunnel types
+<       with names of the form "X-in-Y".
+---
+>    Tunnel Type (2 octets):
+>       Identifies a type of tunnel.  The field contains values from the
+>       IANA registry "BGP Tunnel Encapsulation Attribute Tunnel Types"
+>       [IANA-BGP-TUNNEL-ENCAP].  See Section 3.4.1 for discussion of
+>       special treatment of tunnel types with names of the form "X-in-Y".
+387,400c387,402
+<    Sub-TLV Type (1 octet):  Each sub-TLV type defines a certain property
+<       about the Tunnel TLV that contains this sub-TLV.  The field
+<       contains values from the IANA registry "BGP Tunnel Encapsulation
+<       Attribute Sub-TLVs" [IANA-BGP-TUNNEL-ENCAP].
+< 
+<    Sub-TLV Length (1 or 2 octets):  The total number of octets of the
+<       Sub-TLV Value field.  The Sub-TLV Length field contains 1 octet if
+<       the Sub-TLV Type field contains a value in the range from 0-127.
+<       The Sub-TLV Length field contains two octets if the Sub-TLV Type
+<       field contains a value in the range from 128-255.
+< 
+<    Sub-TLV Value (variable):  Encodings of the Value field depend on the
+<       sub-TLV type.  The following subsections define the encoding in
+<       detail.
+---
+>    Sub-TLV Type (1 octet):
+>       Each sub-TLV type defines a certain property about the Tunnel TLV
+>       that contains this sub-TLV.  The field contains values from the
+>       IANA registry "BGP Tunnel Encapsulation Attribute Sub-TLVs"
+>       [IANA-BGP-TUNNEL-ENCAP].
+> 
+>    Sub-TLV Length (1 or 2 octets):
+>       The total number of octets of the Sub-TLV Value field.  The Sub-
+>       TLV Length field contains 1 octet if the Sub-TLV Type field
+>       contains a value in the range from 0-127.  The Sub-TLV Length
+>       field contains two octets if the Sub-TLV Type field contains a
+>       value in the range from 128-255.
+> 
+>    Sub-TLV Value (variable):
+>       Encodings of the Value field depend on the sub-TLV type.  The
+>       following subsections define the encoding in detail.
+589,595c591,599
+<    V:  This bit is set to 1 to indicate that a Virtual Network
+<       Identifier (VN-ID) is present in the Encapsulation sub-TLV.  If
+<       set to 0, the VN-ID field is disregarded.  Please see Section 9.
+< 
+<    M:  This bit is set to 1 to indicate that a Media Access Control
+<       (MAC) Address is present in the Encapsulation sub-TLV.  If set to
+<       0, the MAC Address field is disregarded.
+---
+>    V:
+>       This bit is set to 1 to indicate that a Virtual Network Identifier
+>       (VN-ID) is present in the Encapsulation sub-TLV.  If set to 0, the
+>       VN-ID field is disregarded.  Please see Section 9.
+> 
+>    M:
+>       This bit is set to 1 to indicate that a Media Access Control (MAC)
+>       Address is present in the Encapsulation sub-TLV.  If set to 0, the
+>       MAC Address field is disregarded.
+597c601,602
+<    R:  The remaining bits in the 8-bit Flags field are reserved for
+---
+>    R:
+>       The remaining bits in the 8-bit Flags field are reserved for
+603,609c608,616
+<    VN-ID:  If the V bit is set to 1, the VN-ID field contains a 3-octet
+<       VN-ID value.  If the V bit is set to 0, the VN-ID field MUST be
+<       set to zero on transmission and disregarded on receipt.
+< 
+<    MAC Address:  If the M bit is set to 1, this field contains a 6-octet
+<       Ethernet MAC address.  If the M bit is set to 0, this field MUST
+<       be set to all zeroes on transmission and disregarded on receipt.
+---
+>    VN-ID:
+>       If the V bit is set to 1, the VN-ID field contains a 3-octet VN-ID
+>       value.  If the V bit is set to 0, the VN-ID field MUST be set to
+>       zero on transmission and disregarded on receipt.
+> 
+>    MAC Address:
+>       If the M bit is set to 1, this field contains a 6-octet Ethernet
+>       MAC address.  If the M bit is set to 0, this field MUST be set to
+>       all zeroes on transmission and disregarded on receipt.
+667c674,675
+<    V:  This bit is set to 1 to indicate that a VN-ID is present in the
+---
+>    V:
+>       This bit is set to 1 to indicate that a VN-ID is present in the
+671c679,680
+<    M:  This bit is set to 1 to indicate that a MAC Address is present in
+---
+>    M:
+>       This bit is set to 1 to indicate that a MAC Address is present in
+675c684,685
+<    R:  The remaining bits in the 8-bit Flags field are reserved for
+---
+>    R:
+>       The remaining bits in the 8-bit Flags field are reserved for
+681,688c691,700
+<    VN-ID:  If the V bit is set to 1, the VN-ID field contains a 3-octet
+<       VN-ID value, used to set the NVGRE Virtual Subnet Identifier
+<       (VSID; see Section 9).  If the V bit is set to 0, the VN-ID field
+<       MUST be set to zero on transmission and disregarded on receipt.
+< 
+<    MAC Address:  If the M bit is set to 1, this field contains a 6-octet
+<       Ethernet MAC address.  If the M bit is set to 0, this field MUST
+<       be set to all zeroes on transmission and disregarded on receipt.
+---
+>    VN-ID:
+>       If the V bit is set to 1, the VN-ID field contains a 3-octet VN-ID
+>       value, used to set the NVGRE Virtual Subnet Identifier (VSID; see
+>       Section 9).  If the V bit is set to 0, the VN-ID field MUST be set
+>       to zero on transmission and disregarded on receipt.
+> 
+>    MAC Address:
+>       If the M bit is set to 1, this field contains a 6-octet Ethernet
+>       MAC address.  If the M bit is set to 0, this field MUST be set to
+>       all zeroes on transmission and disregarded on receipt.
+739,741c751,754
+<    Session ID:  A non-zero 4-octet value locally assigned by the
+<       advertising router that serves as a lookup key for the incoming
+<       packet's context.
+---
+>    Session ID:
+>       A non-zero 4-octet value locally assigned by the advertising
+>       router that serves as a lookup key for the incoming packet's
+>       context.
+959c972,973
+<    1:  The payload will be an MPLS packet with the embedded label at the
+---
+>    1:
+>        The payload will be an MPLS packet with the embedded label at the
+2226d2239
+< 
+2235d2247
+< 
+2249d2260
+< 
+2258d2268
+< 
+2264d2273
+< 
+2270d2278
+< 

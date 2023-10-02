@@ -1,0 +1,162 @@
+194,211c194,211
+<    MediaStreamTrack:  Part of the MediaStream concept defined by the W3C
+<       in the WebRTC API [W3C.WD-mediacapture-streams].  A
+<       MediaStreamTrack is an individual stream of media from any type of
+<       media source such as a microphone or a camera, but conceptual
+<       sources such as an audio mix or a video composition are also
+<       possible.
+< 
+<    Transport-layer flow:  A unidirectional flow of transport packets
+<       that are identified by a particular 5-tuple of source IP address,
+<       source port, destination IP address, destination port, and
+<       transport protocol.
+< 
+<    Bidirectional transport-layer flow:  A bidirectional transport-layer
+<       flow is a transport-layer flow that is symmetric.  That is, the
+<       transport-layer flow in the reverse direction has a 5-tuple where
+<       the source and destination address and ports are swapped compared
+<       to the forward path transport-layer flow, and the transport
+<       protocol is the same.
+---
+>    MediaStreamTrack:
+>       Part of the MediaStream concept defined by the W3C in the WebRTC
+>       API [W3C.WD-mediacapture-streams].  A MediaStreamTrack is an
+>       individual stream of media from any type of media source such as a
+>       microphone or a camera, but conceptual sources such as an audio
+>       mix or a video composition are also possible.
+> 
+>    Transport-layer flow:
+>       A unidirectional flow of transport packets that are identified by
+>       a particular 5-tuple of source IP address, source port,
+>       destination IP address, destination port, and transport protocol.
+> 
+>    Bidirectional transport-layer flow:
+>       A bidirectional transport-layer flow is a transport-layer flow
+>       that is symmetric.  That is, the transport-layer flow in the
+>       reverse direction has a 5-tuple where the source and destination
+>       address and ports are swapped compared to the forward path
+>       transport-layer flow, and the transport protocol is the same.
+1091,1108c1091,1110
+<    RTP profile:  The name of the RTP profile to be used in the session.
+<       The RTP/AVP [RFC3551] and RTP/AVPF [RFC4585] profiles can
+<       interoperate on a basic level, as can their secure variants, RTP/
+<       SAVP [RFC3711] and RTP/SAVPF [RFC5124].  The secure variants of
+<       the profiles do not directly interoperate with the nonsecure
+<       variants, due to the presence of additional header fields for
+<       authentication in SRTP packets and cryptographic transformation of
+<       the payload.  WebRTC requires the use of the RTP/SAVPF profile,
+<       and this MUST be signaled.  Interworking functions might transform
+<       this into the RTP/SAVP profile for a legacy use case by indicating
+<       to the WebRTC endpoint that the RTP/SAVPF is used and configuring
+<       a "trr-int" value of 4 seconds.
+< 
+<    Transport information:  Source and destination IP address(es) and
+<       ports for RTP and RTCP MUST be signaled for each RTP session.  In
+<       WebRTC, these transport addresses will be provided by Interactive
+<       Connectivity Establishment (ICE) [RFC8445] that signals candidates
+<       and arrives at nominated candidate address pairs.  If RTP and RTCP
+---
+>    RTP profile:
+>       The name of the RTP profile to be used in the session.  The RTP/
+>       AVP [RFC3551] and RTP/AVPF [RFC4585] profiles can interoperate on
+>       a basic level, as can their secure variants, RTP/SAVP [RFC3711]
+>       and RTP/SAVPF [RFC5124].  The secure variants of the profiles do
+>       not directly interoperate with the nonsecure variants, due to the
+>       presence of additional header fields for authentication in SRTP
+>       packets and cryptographic transformation of the payload.  WebRTC
+>       requires the use of the RTP/SAVPF profile, and this MUST be
+>       signaled.  Interworking functions might transform this into the
+>       RTP/SAVP profile for a legacy use case by indicating to the WebRTC
+>       endpoint that the RTP/SAVPF is used and configuring a "trr-int"
+>       value of 4 seconds.
+> 
+>    Transport information:
+>       Source and destination IP address(es) and ports for RTP and RTCP
+>       MUST be signaled for each RTP session.  In WebRTC, these transport
+>       addresses will be provided by Interactive Connectivity
+>       Establishment (ICE) [RFC8445] that signals candidates and arrives
+>       at nominated candidate address pairs.  If RTP and RTCP
+1113,1138c1115,1142
+<    RTP payload types, media formats, and format parameters:  The mapping
+<       between media type names (and hence the RTP payload formats to be
+<       used) and the RTP payload type numbers MUST be signaled.  Each
+<       media type MAY also have a number of media type parameters that
+<       MUST also be signaled to configure the codec and RTP payload
+<       format (the "a=fmtp:" line from SDP).  Section 4.3 of this memo
+<       discusses requirements for uniqueness of payload types.
+< 
+<    RTP extensions:  The use of any additional RTP header extensions and
+<       RTCP packet types, including any necessary parameters, MUST be
+<       signaled.  This signaling ensures that a WebRTC endpoint's
+<       behavior, especially when sending, is predictable and consistent.
+<       For robustness and compatibility with non-WebRTC systems that
+<       might be connected to a WebRTC session via a gateway,
+<       implementations are REQUIRED to ignore unknown RTCP packets and
+<       RTP header extensions (see also Section 4.1).
+< 
+<    RTCP bandwidth:  Support for exchanging RTCP bandwidth values with
+<       the endpoints will be necessary.  This SHALL be done as described
+<       in "Session Description Protocol (SDP) Bandwidth Modifiers for RTP
+<       Control Protocol (RTCP) Bandwidth" [RFC3556] if using SDP, or
+<       something semantically equivalent.  This also ensures that the
+<       endpoints have a common view of the RTCP bandwidth.  A common view
+<       of the RTCP bandwidth among different endpoints is important to
+<       prevent differences in RTCP packet timing and timeout intervals
+<       causing interoperability problems.
+---
+>    RTP payload types, media formats, and format parameters:
+>       The mapping between media type names (and hence the RTP payload
+>       formats to be used) and the RTP payload type numbers MUST be
+>       signaled.  Each media type MAY also have a number of media type
+>       parameters that MUST also be signaled to configure the codec and
+>       RTP payload format (the "a=fmtp:" line from SDP).  Section 4.3 of
+>       this memo discusses requirements for uniqueness of payload types.
+> 
+>    RTP extensions:
+>       The use of any additional RTP header extensions and RTCP packet
+>       types, including any necessary parameters, MUST be signaled.  This
+>       signaling ensures that a WebRTC endpoint's behavior, especially
+>       when sending, is predictable and consistent.  For robustness and
+>       compatibility with non-WebRTC systems that might be connected to a
+>       WebRTC session via a gateway, implementations are REQUIRED to
+>       ignore unknown RTCP packets and RTP header extensions (see also
+>       Section 4.1).
+> 
+>    RTCP bandwidth:
+>       Support for exchanging RTCP bandwidth values with the endpoints
+>       will be necessary.  This SHALL be done as described in "Session
+>       Description Protocol (SDP) Bandwidth Modifiers for RTP Control
+>       Protocol (RTCP) Bandwidth" [RFC3556] if using SDP, or something
+>       semantically equivalent.  This also ensures that the endpoints
+>       have a common view of the RTCP bandwidth.  A common view of the
+>       RTCP bandwidth among different endpoints is important to prevent
+>       differences in RTCP packet timing and timeout intervals causing
+>       interoperability problems.
+1587,1589c1591,1593
+<    DiffServ:  The endpoint marks a packet with a DiffServ code point to
+<       indicate to the network that the packet belongs to a particular
+<       class.
+---
+>    DiffServ:
+>       The endpoint marks a packet with a DiffServ code point to indicate
+>       to the network that the packet belongs to a particular class.
+1591c1595,1596
+<    Flow based:  Packets that need to be given a particular treatment are
+---
+>    Flow based:
+>       Packets that need to be given a particular treatment are
+1594,1596c1599,1602
+<    Deep packet inspection:  A network classifier (DPI) inspects the
+<       packet and tries to determine if the packet represents a
+<       particular application and type that is to be prioritized.
+---
+>    Deep packet inspection:
+>       A network classifier (DPI) inspects the packet and tries to
+>       determine if the packet represents a particular application and
+>       type that is to be prioritized.
+2173d2178
+< 
+2183d2187
+< 
+2194d2197
+< 

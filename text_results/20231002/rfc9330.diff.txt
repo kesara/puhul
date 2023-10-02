@@ -1,0 +1,273 @@
+340,361c340,362
+<    Classic Congestion Control:  A congestion control behaviour that can
+<       coexist with standard Reno [RFC5681] without causing significantly
+<       negative impact on its flow rate [RFC5033].  The scaling problem
+<       with Classic congestion control is explained, with examples, in
+<       Section 5.1 and in [RFC3649].
+< 
+<    Scalable Congestion Control:  A congestion control where the average
+<       time from one congestion signal to the next (the recovery time)
+<       remains invariant as flow rate scales, all other factors being
+<       equal.  For instance, DCTCP averages 2 congestion signals per
+<       round trip, whatever the flow rate, as do other recently developed
+<       Scalable congestion controls, e.g., Relentless TCP [RELENTLESS],
+<       Prague for TCP and QUIC [PRAGUE-CC] [PragueLinux], BBRv2 [BBRv2]
+<       [BBR-CC], and the L4S variant of SCReAM for real-time media
+<       [SCReAM-L4S] [RFC8298].  See Section 4.3 of [RFC9331] for more
+<       explanation.
+< 
+<    Classic Service:  The Classic service is intended for all the
+<       congestion control behaviours that coexist with Reno [RFC5681]
+<       (e.g., Reno itself, CUBIC [RFC8312], Compound [CTCP], and TFRC
+<       [RFC5348]).  The term 'Classic queue' means a queue providing the
+<       Classic service.
+---
+>    Classic Congestion Control:
+>       A congestion control behaviour that can coexist with standard Reno
+>       [RFC5681] without causing significantly negative impact on its
+>       flow rate [RFC5033].  The scaling problem with Classic congestion
+>       control is explained, with examples, in Section 5.1 and in
+>       [RFC3649].
+> 
+>    Scalable Congestion Control:
+>       A congestion control where the average time from one congestion
+>       signal to the next (the recovery time) remains invariant as flow
+>       rate scales, all other factors being equal.  For instance, DCTCP
+>       averages 2 congestion signals per round trip, whatever the flow
+>       rate, as do other recently developed Scalable congestion controls,
+>       e.g., Relentless TCP [RELENTLESS], Prague for TCP and QUIC
+>       [PRAGUE-CC] [PragueLinux], BBRv2 [BBRv2] [BBR-CC], and the L4S
+>       variant of SCReAM for real-time media [SCReAM-L4S] [RFC8298].  See
+>       Section 4.3 of [RFC9331] for more explanation.
+> 
+>    Classic Service:
+>       The Classic service is intended for all the congestion control
+>       behaviours that coexist with Reno [RFC5681] (e.g., Reno itself,
+>       CUBIC [RFC8312], Compound [CTCP], and TFRC [RFC5348]).  The term
+>       'Classic queue' means a queue providing the Classic service.
+384,392c385,394
+<    Reno-friendly:  The subset of Classic traffic that is friendly to the
+<       standard Reno congestion control defined for TCP in [RFC5681].
+<       The TFRC spec [RFC5348] indirectly implies that 'friendly' is
+<       defined as "generally within a factor of two of the sending rate
+<       of a TCP flow under the same conditions".  Reno-friendly is used
+<       here in place of 'TCP-friendly', given the latter has become
+<       imprecise, because the TCP protocol is now used with so many
+<       different congestion control behaviours, and Reno is used in non-
+<       TCP transports, such as QUIC [RFC9000].
+---
+>    Reno-friendly:
+>       The subset of Classic traffic that is friendly to the standard
+>       Reno congestion control defined for TCP in [RFC5681].  The TFRC
+>       spec [RFC5348] indirectly implies that 'friendly' is defined as
+>       "generally within a factor of two of the sending rate of a TCP
+>       flow under the same conditions".  Reno-friendly is used here in
+>       place of 'TCP-friendly', given the latter has become imprecise,
+>       because the TCP protocol is now used with so many different
+>       congestion control behaviours, and Reno is used in non-TCP
+>       transports, such as QUIC [RFC9000].
+407c409,410
+<    Site:  A home, mobile device, small enterprise, or campus where the
+---
+>    Site:
+>       A home, mobile device, small enterprise, or campus where the
+412,419c415,422
+<    Traffic Policing:  Limiting traffic by dropping packets or shifting
+<       them to a lower service class (as opposed to introducing delay,
+<       which is termed 'traffic shaping').  Policing can involve limiting
+<       the average rate and/or burst size.  Policing focused on limiting
+<       queuing but not the average flow rate is termed 'congestion
+<       policing', 'latency policing', 'burst policing', or 'queue
+<       protection' in this document.  Otherwise, the term rate policing
+<       is used.
+---
+>    Traffic Policing:
+>       Limiting traffic by dropping packets or shifting them to a lower
+>       service class (as opposed to introducing delay, which is termed
+>       'traffic shaping').  Policing can involve limiting the average
+>       rate and/or burst size.  Policing focused on limiting queuing but
+>       not the average flow rate is termed 'congestion policing',
+>       'latency policing', 'burst policing', or 'queue protection' in
+>       this document.  Otherwise, the term rate policing is used.
+732,760c735,767
+<    Latency isolation (network):  L4S congestion controls keep queue
+<       delay low, whereas Classic congestion controls need a queue of the
+<       order of the RTT to avoid underutilization.  One queue cannot have
+<       two lengths; therefore, L4S traffic needs to be isolated in a
+<       separate queue (e.g., DualQ) or queues (e.g., FQ).
+< 
+<    Coupled congestion notification:  Coupling the congestion
+<       notification between two queues as in the DualQ Coupled AQM is not
+<       necessarily essential, but it is a simple way to allow senders to
+<       determine their rate packet by packet, rather than be overridden
+<       by a network scheduler.  An alternative is for a network scheduler
+<       to control the rate of each application flow (see the discussion
+<       in Section 5.2).
+< 
+<    L4S packet identifier (protocol):  Once there are at least two
+<       treatments in the network, hosts need an identifier at the IP
+<       layer to distinguish which treatment they intend to use.
+< 
+<    Scalable congestion notification:  A Scalable congestion control in
+<       the host keeps the signalling frequency from the network high,
+<       whatever the flow rate, so that queue delay variations can be
+<       small when conditions are stable, and rate can track variations in
+<       available capacity as rapidly as possible otherwise.
+< 
+<    Low loss:  Latency is not the only concern of L4S.  The 'Low Loss'
+<       part of the name denotes that L4S generally achieves zero
+<       congestion loss due to its use of ECN.  Otherwise, loss would
+<       itself cause delay, particularly for short flows, due to
+<       retransmission delay [RFC2884].
+---
+>    Latency isolation (network):
+>       L4S congestion controls keep queue delay low, whereas Classic
+>       congestion controls need a queue of the order of the RTT to avoid
+>       underutilization.  One queue cannot have two lengths; therefore,
+>       L4S traffic needs to be isolated in a separate queue (e.g., DualQ)
+>       or queues (e.g., FQ).
+> 
+>    Coupled congestion notification:
+>       Coupling the congestion notification between two queues as in the
+>       DualQ Coupled AQM is not necessarily essential, but it is a simple
+>       way to allow senders to determine their rate packet by packet,
+>       rather than be overridden by a network scheduler.  An alternative
+>       is for a network scheduler to control the rate of each application
+>       flow (see the discussion in Section 5.2).
+> 
+>    L4S packet identifier (protocol):
+>       Once there are at least two treatments in the network, hosts need
+>       an identifier at the IP layer to distinguish which treatment they
+>       intend to use.
+> 
+>    Scalable congestion notification:
+>       A Scalable congestion control in the host keeps the signalling
+>       frequency from the network high, whatever the flow rate, so that
+>       queue delay variations can be small when conditions are stable,
+>       and rate can track variations in available capacity as rapidly as
+>       possible otherwise.
+> 
+>    Low loss:
+>       Latency is not the only concern of L4S.  The 'Low Loss' part of
+>       the name denotes that L4S generally achieves zero congestion loss
+>       due to its use of ECN.  Otherwise, loss would itself cause delay,
+>       particularly for short flows, due to retransmission delay
+>       [RFC2884].
+858,876c865,883
+<    State-of-the-art AQMs:  AQMs for Classic traffic, such as PIE and FQ-
+<       CoDel, give a significant reduction in queuing delay relative to
+<       no AQM at all.  L4S is intended to complement these AQMs and
+<       should not distract from the need to deploy them as widely as
+<       possible.  Nonetheless, AQMs alone cannot reduce queuing delay too
+<       far without significantly reducing link utilization, because the
+<       root cause of the problem is on the host -- where Classic
+<       congestion controls use large sawtoothing rate variations.  The
+<       L4S approach resolves this tension between delay and utilization
+<       by enabling hosts to minimize the amplitude of their sawteeth.  A
+<       single-queue Classic AQM is not sufficient to allow hosts to use
+<       small sawteeth for two reasons: i) smaller sawteeth would not get
+<       lower delay in an AQM designed for larger amplitude Classic
+<       sawteeth, because a queue can only have one length at a time and
+<       ii) much smaller sawteeth implies much more frequent sawteeth, so
+<       L4S flows would drive a Classic AQM into a high level of ECN-
+<       marking, which would appear as heavy congestion to Classic flows,
+<       which in turn would greatly reduce their rate as a result (see
+<       Section 6.4.4).
+---
+>    State-of-the-art AQMs:
+>       AQMs for Classic traffic, such as PIE and FQ-CoDel, give a
+>       significant reduction in queuing delay relative to no AQM at all.
+>       L4S is intended to complement these AQMs and should not distract
+>       from the need to deploy them as widely as possible.  Nonetheless,
+>       AQMs alone cannot reduce queuing delay too far without
+>       significantly reducing link utilization, because the root cause of
+>       the problem is on the host -- where Classic congestion controls
+>       use large sawtoothing rate variations.  The L4S approach resolves
+>       this tension between delay and utilization by enabling hosts to
+>       minimize the amplitude of their sawteeth.  A single-queue Classic
+>       AQM is not sufficient to allow hosts to use small sawteeth for two
+>       reasons: i) smaller sawteeth would not get lower delay in an AQM
+>       designed for larger amplitude Classic sawteeth, because a queue
+>       can only have one length at a time and ii) much smaller sawteeth
+>       implies much more frequent sawteeth, so L4S flows would drive a
+>       Classic AQM into a high level of ECN-marking, which would appear
+>       as heavy congestion to Classic flows, which in turn would greatly
+>       reduce their rate as a result (see Section 6.4.4).
+945,953c952,961
+<    Alternative Back-off ECN (ABE):  Here again, L4S is not an
+<       alternative to ABE but a complement that introduces much lower
+<       queuing delay.  ABE [RFC8511] alters the host behaviour in
+<       response to ECN marking to utilize a link better and give ECN
+<       flows faster throughput.  It uses ECT(0) and assumes the network
+<       still treats ECN and drop the same.  Therefore, ABE exploits any
+<       lower queuing delay that AQMs can provide.  But, as explained
+<       above, AQMs still cannot reduce queuing delay too much without
+<       losing link utilization (to allow for other, non-ABE, flows).
+---
+>    Alternative Back-off ECN (ABE):
+>       Here again, L4S is not an alternative to ABE but a complement that
+>       introduces much lower queuing delay.  ABE [RFC8511] alters the
+>       host behaviour in response to ECN marking to utilize a link better
+>       and give ECN flows faster throughput.  It uses ECT(0) and assumes
+>       the network still treats ECN and drop the same.  Therefore, ABE
+>       exploits any lower queuing delay that AQMs can provide.  But, as
+>       explained above, AQMs still cannot reduce queuing delay too much
+>       without losing link utilization (to allow for other, non-ABE,
+>       flows).
+1531,1548c1539,1557
+<    Distributed traffic scrubbing:  Rather than policing locally at each
+<       bottleneck, it may only be necessary to address problems
+<       reactively, e.g., punitively target any deployments of new bursty
+<       malware, in a similar way to how traffic from flooding attack
+<       sources is rerouted via scrubbing facilities.
+< 
+<    Local bottleneck per-flow scheduling:  Per-flow scheduling should
+<       inherently isolate non-bursty flows from bursty flows (see
+<       Section 5.2 for discussion of the merits of per-flow scheduling
+<       relative to per-flow policing).
+< 
+<    Distributed access subnet queue protection:  Per-flow queue
+<       protection could be arranged for a queue structure distributed
+<       across a subnet intercommunicating using lower layer control
+<       messages (see Section 2.1.4 of [QDyn]).  For instance, in a radio
+<       access network, user equipment already sends regular buffer status
+<       reports to a radio network controller, which could use this
+<       information to remotely police individual flows.
+---
+>    Distributed traffic scrubbing:
+>       Rather than policing locally at each bottleneck, it may only be
+>       necessary to address problems reactively, e.g., punitively target
+>       any deployments of new bursty malware, in a similar way to how
+>       traffic from flooding attack sources is rerouted via scrubbing
+>       facilities.
+> 
+>    Local bottleneck per-flow scheduling:
+>       Per-flow scheduling should inherently isolate non-bursty flows
+>       from bursty flows (see Section 5.2 for discussion of the merits of
+>       per-flow scheduling relative to per-flow policing).
+> 
+>    Distributed access subnet queue protection:
+>       Per-flow queue protection could be arranged for a queue structure
+>       distributed across a subnet intercommunicating using lower layer
+>       control messages (see Section 2.1.4 of [QDyn]).  For instance, in
+>       a radio access network, user equipment already sends regular
+>       buffer status reports to a radio network controller, which could
+>       use this information to remotely police individual flows.
+1562,1569c1571,1578
+<    Distributed core network queue protection:  The policing function
+<       could be divided between per-flow mechanisms at the network
+<       ingress that characterize the burstiness of each flow into a
+<       signal carried with the traffic and per-class mechanisms at
+<       bottlenecks that act on these signals if queuing actually occurs
+<       once the traffic converges.  This would be somewhat similar to
+<       [Nadas20], which is in turn similar to the idea behind core
+<       stateless fair queuing.
+---
+>    Distributed core network queue protection:
+>       The policing function could be divided between per-flow mechanisms
+>       at the network ingress that characterize the burstiness of each
+>       flow into a signal carried with the traffic and per-class
+>       mechanisms at bottlenecks that act on these signals if queuing
+>       actually occurs once the traffic converges.  This would be
+>       somewhat similar to [Nadas20], which is in turn similar to the
+>       idea behind core stateless fair queuing.

@@ -1,0 +1,221 @@
+167,178c167,178
+<    Default Destination/Candidate:  The default destination for a
+<       component of a data stream is the transport address that would be
+<       used by an agent that is not ICE aware.  A default candidate for a
+<       component is one whose transport address matches the default
+<       destination for that component.  For the RTP component, the
+<       default connection address is in the "c=" line of the SDP, and the
+<       port and transport protocol are in the "m=" line.  For the RTP
+<       Control Protocol (RTCP) component, the address and port are
+<       indicated using the "rtcp" attribute defined in [RFC3605], if
+<       present; otherwise, the RTCP component address is the same as the
+<       address of the RTP component, and its port is one greater than the
+<       port of the RTP component.
+---
+>    Default Destination/Candidate:
+>       The default destination for a component of a data stream is the
+>       transport address that would be used by an agent that is not ICE
+>       aware.  A default candidate for a component is one whose transport
+>       address matches the default destination for that component.  For
+>       the RTP component, the default connection address is in the "c="
+>       line of the SDP, and the port and transport protocol are in the
+>       "m=" line.  For the RTP Control Protocol (RTCP) component, the
+>       address and port are indicated using the "rtcp" attribute defined
+>       in [RFC3605], if present; otherwise, the RTCP component address is
+>       the same as the address of the RTP component, and its port is one
+>       greater than the port of the RTP component.
+388,390c388,391
+<    Note:  Within the scope of this document, "initial offer" refers to
+<       the first SDP offer that is sent in order to negotiate usage of
+<       ICE.  It might, or might not, be the initial SDP offer of the SDP
+---
+>    Note:
+>       Within the scope of this document, "initial offer" refers to the
+>       first SDP offer that is sent in order to negotiate usage of ICE.
+>       It might, or might not, be the initial SDP offer of the SDP
+393c394,395
+<    Note:  The procedures in this document only consider "m=" sections
+---
+>    Note:
+>       The procedures in this document only consider "m=" sections
+866,867c868,870
+<    <transport>:  indicates the transport protocol for the candidate.
+<       This specification only defines UDP.  However, extensibility is
+---
+>    <transport>:
+>       indicates the transport protocol for the candidate.  This
+>       specification only defines UDP.  However, extensibility is
+872,908c875,917
+<    <foundation>:  is composed of 1 to 32 <ice-char>s.  It is an
+<       identifier that is equivalent for two candidates that are of the
+<       same type, share the same base, and come from the same STUN
+<       server.  The foundation is used to optimize ICE performance in the
+<       Frozen algorithm as described in [RFC8445].
+< 
+<    <component-id>:  is a positive integer between 1 and 256 (inclusive)
+<       that identifies the specific component of the data stream for
+<       which this is a candidate.  It MUST start at 1 and MUST increment
+<       by 1 for each component of a particular candidate.  For data
+<       streams based on RTP, candidates for the actual RTP media MUST
+<       have a component ID of 1, and candidates for RTCP MUST have a
+<       component ID of 2.  See Section 13 of [RFC8445] for additional
+<       discussion on extending ICE to new data streams.
+< 
+<    <priority>:  is a positive integer between 1 and (2**31 - 1)
+<       inclusive.  The procedures for computing a candidate's priority
+<       are described in Section 5.1.2 of [RFC8445].
+< 
+<    <cand-type>:  encodes the type of candidate.  This specification
+<       defines the values "host", "srflx", "prflx", and "relay" for host,
+<       server-reflexive, peer-reflexive, and relayed candidates,
+<       respectively.  Specifications for new candidate types MUST define
+<       how, if at all, various steps in the ICE processing differ from
+<       the ones defined by this specification.
+< 
+<    <rel-addr> and <rel-port>:  convey transport addresses related to the
+<       candidate, useful for diagnostics and other purposes. <rel-addr>
+<       and <rel-port> MUST be present for server-reflexive, peer-
+<       reflexive, and relayed candidates.  If a candidate is server-
+<       reflexive or peer-reflexive, <rel-addr> and <rel-port> are equal
+<       to the base for that server-reflexive or peer-reflexive candidate.
+<       If the candidate is relayed, <rel-addr> and <rel-port> are equal
+<       to the mapped address in the Allocate response that provided the
+<       client with that relayed candidate (see Section 6.3 of [RFC5766]).
+<       If the candidate is a host candidate, <rel-addr> and <rel-port>
+<       MUST be omitted.
+---
+>    <foundation>:
+>       is composed of 1 to 32 <ice-char>s.  It is an identifier that is
+>       equivalent for two candidates that are of the same type, share the
+>       same base, and come from the same STUN server.  The foundation is
+>       used to optimize ICE performance in the Frozen algorithm as
+>       described in [RFC8445].
+> 
+>    <component-id>:
+>       is a positive integer between 1 and 256 (inclusive) that
+>       identifies the specific component of the data stream for which
+>       this is a candidate.  It MUST start at 1 and MUST increment by 1
+>       for each component of a particular candidate.  For data streams
+>       based on RTP, candidates for the actual RTP media MUST have a
+>       component ID of 1, and candidates for RTCP MUST have a component
+>       ID of 2.  See Section 13 of [RFC8445] for additional discussion on
+>       extending ICE to new data streams.
+> 
+>    <priority>:
+>       is a positive integer between 1 and (2**31 - 1) inclusive.  The
+>       procedures for computing a candidate's priority are described in
+>       Section 5.1.2 of [RFC8445].
+> 
+>    <cand-type>:
+>       encodes the type of candidate.  This specification defines the
+>       values "host", "srflx", "prflx", and "relay" for host, server-
+>       reflexive, peer-reflexive, and relayed candidates, respectively.
+>       Specifications for new candidate types MUST define how, if at all,
+>       various steps in the ICE processing differ from the ones defined
+>       by this specification.
+> 
+>    <rel-addr> and <rel-port>:
+>       convey transport addresses related to the candidate, useful for
+>       diagnostics and other purposes. <rel-addr> and <rel-port> MUST be
+>       present for server-reflexive, peer-reflexive, and relayed
+>       candidates.  If a candidate is server-reflexive or peer-reflexive,
+>       <rel-addr> and <rel-port> are equal to the base for that server-
+>       reflexive or peer-reflexive candidate.  If the candidate is
+>       relayed, <rel-addr> and <rel-port> are equal to the mapped address
+>       in the Allocate response that provided the client with that
+>       relayed candidate (see Section 6.3 of [RFC5766]).  If the
+>       candidate is a host candidate, <rel-addr> and <rel-port> MUST be
+>       omitted.
+> 
+1364,1368c1373,1378
+<    Purpose:  This attribute is used with Interactive Connectivity
+<       Establishment (ICE), and provides one of many possible candidate
+<       addresses for communication.  These addresses are validated with
+<       an end-to-end connectivity check using Session Traversal Utilities
+<       for NAT (STUN).
+---
+>    Purpose:
+>       This attribute is used with Interactive Connectivity Establishment
+>       (ICE), and provides one of many possible candidate addresses for
+>       communication.  These addresses are validated with an end-to-end
+>       connectivity check using Session Traversal Utilities for NAT
+>       (STUN).
+1388,1391c1398,1401
+<    Purpose:  This attribute is used with Interactive Connectivity
+<       Establishment (ICE), and provides the identity of the remote
+<       candidates that the offerer wishes the answerer to use in its
+<       answer.
+---
+>    Purpose:
+>       This attribute is used with Interactive Connectivity Establishment
+>       (ICE), and provides the identity of the remote candidates that the
+>       offerer wishes the answerer to use in its answer.
+1411,1414c1421,1425
+<    Purpose:  This attribute is used with Interactive Connectivity
+<       Establishment (ICE), and indicates that an agent has the minimum
+<       functionality required to support ICE inter-operation with a peer
+<       that has a full implementation.
+---
+>    Purpose:
+>       This attribute is used with Interactive Connectivity Establishment
+>       (ICE), and indicates that an agent has the minimum functionality
+>       required to support ICE inter-operation with a peer that has a
+>       full implementation.
+1434,1437c1445,1449
+<    Purpose:  This attribute is used with Interactive Connectivity
+<       Establishment (ICE), and indicates that an agent is ICE capable,
+<       but did not proceed with ICE due to a mismatch of candidates with
+<       the default destination for media signaled in the SDP.
+---
+>    Purpose:
+>       This attribute is used with Interactive Connectivity Establishment
+>       (ICE), and indicates that an agent is ICE capable, but did not
+>       proceed with ICE due to a mismatch of candidates with the default
+>       destination for media signaled in the SDP.
+1457,1459c1469,1472
+<    Purpose:  This attribute is used with Interactive Connectivity
+<       Establishment (ICE), and provides the password used to protect
+<       STUN connectivity checks.
+---
+>    Purpose:
+>       This attribute is used with Interactive Connectivity Establishment
+>       (ICE), and provides the password used to protect STUN connectivity
+>       checks.
+1479,1481c1492,1495
+<    Purpose:  This attribute is used with Interactive Connectivity
+<       Establishment (ICE), and provides the fragments used to construct
+<       the username in STUN connectivity checks.
+---
+>    Purpose:
+>       This attribute is used with Interactive Connectivity Establishment
+>       (ICE), and provides the fragments used to construct the username
+>       in STUN connectivity checks.
+1503,1505c1517,1520
+<    Purpose:  This attribute is used with Interactive Connectivity
+<       Establishment (ICE), and indicates the ICE options or extensions
+<       used by the agent.
+---
+>    Purpose:
+>       This attribute is used with Interactive Connectivity Establishment
+>       (ICE), and indicates the ICE options or extensions used by the
+>       agent.
+1528,1530c1543,1545
+<    Purpose:  This attribute is used with Interactive Connectivity
+<       Establishment (ICE) to indicate desired connectivity check pacing
+<       values.
+---
+>    Purpose:
+>       This attribute is used with Interactive Connectivity Establishment
+>       (ICE) to indicate desired connectivity check pacing values.
+1973d1987
+< 
+1981d1994
+< 
+1990d2002
+< 
+1999d2010
+< 
+2007d2017
+< 
+2016d2025
+< 

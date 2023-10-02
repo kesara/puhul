@@ -1,0 +1,332 @@
+422,423c422,424
+<    Description:  The intermediary encountered a timeout when trying to
+<       find an IP address for the next-hop hostname.
+---
+>    Description:
+>       The intermediary encountered a timeout when trying to find an IP
+>       address for the next-hop hostname.
+437,438c438,440
+<    Description:  The intermediary encountered a DNS error when trying to
+<       find an IP address for the next-hop hostname.
+---
+>    Description:
+>       The intermediary encountered a DNS error when trying to find an IP
+>       address for the next-hop hostname.
+442,443c444,446
+<       rcode:  A String conveying the DNS RCODE that indicates the error
+<          type.  See [RFC8499], Section 3.
+---
+>       rcode:
+>          A String conveying the DNS RCODE that indicates the error type.
+>          See [RFC8499], Section 3.
+458,463c461,466
+<    Description:  The intermediary cannot determine the appropriate next
+<       hop to use for this request; for example, it may not be
+<       configured.  Note that this error is specific to gateways, which
+<       typically require specific configuration to identify the "backend"
+<       server; forward proxies use in-band information to identify the
+<       origin server.
+---
+>    Description:
+>       The intermediary cannot determine the appropriate next hop to use
+>       for this request; for example, it may not be configured.  Note
+>       that this error is specific to gateways, which typically require
+>       specific configuration to identify the "backend" server; forward
+>       proxies use in-band information to identify the origin server.
+477,479c480,483
+<    Description:  The intermediary considers the next hop to be
+<       unavailable; e.g., recent attempts to communicate with it may have
+<       failed, or a health check may indicate that it is down.
+---
+>    Description:
+>       The intermediary considers the next hop to be unavailable; e.g.,
+>       recent attempts to communicate with it may have failed, or a
+>       health check may indicate that it is down.
+493,494c497,499
+<    Description:  The intermediary is configured to prohibit connections
+<       to the next-hop IP address.
+---
+>    Description:
+>       The intermediary is configured to prohibit connections to the
+>       next-hop IP address.
+538,539c543,545
+<    Description:  The intermediary's connection to the next hop was
+<       closed before a complete response was received.
+---
+>    Description:
+>       The intermediary's connection to the next hop was closed before a
+>       complete response was received.
+553,554c559,561
+<    Description:  The intermediary's attempt to open a connection to the
+<       next hop timed out.
+---
+>    Description:
+>       The intermediary's attempt to open a connection to the next hop
+>       timed out.
+568,570c575,578
+<    Description:  The intermediary was expecting data on a connection
+<       (e.g., part of a response) but did not receive any new data in a
+<       configured time limit.
+---
+>    Description:
+>       The intermediary was expecting data on a connection (e.g., part of
+>       a response) but did not receive any new data in a configured time
+>       limit.
+584,586c592,594
+<    Description:  The intermediary was attempting to write data to a
+<       connection but was not able to (e.g., because its buffers were
+<       full).
+---
+>    Description:
+>       The intermediary was attempting to write data to a connection but
+>       was not able to (e.g., because its buffers were full).
+600,602c608,610
+<    Description:  The intermediary is configured to limit the number of
+<       connections it has to the next hop, and that limit has been
+<       exceeded.
+---
+>    Description:
+>       The intermediary is configured to limit the number of connections
+>       it has to the next hop, and that limit has been exceeded.
+616,618c624,626
+<    Description:  The intermediary encountered a TLS error when
+<       communicating with the next hop, either during the handshake or
+<       afterwards.
+---
+>    Description:
+>       The intermediary encountered a TLS error when communicating with
+>       the next hop, either during the handshake or afterwards.
+628c636,637
+<    Notes:  Not appropriate when a TLS alert is received; see
+---
+>    Notes:
+>       Not appropriate when a TLS alert is received; see
+635,636c644,646
+<    Description:  The intermediary encountered an error when verifying
+<       the certificate presented by the next hop.
+---
+>    Description:
+>       The intermediary encountered an error when verifying the
+>       certificate presented by the next hop.
+655,659c665,671
+<       alert-id:  An Integer containing the applicable value from the
+<          "TLS Alerts" registry.  See [TLS].
+< 
+<       alert-message:  A Token or String containing the applicable
+<          description string from the "TLS Alerts" registry.  See [TLS].
+---
+>       alert-id:
+>          An Integer containing the applicable value from the "TLS
+>          Alerts" registry.  See [TLS].
+> 
+>       alert-message:
+>          A Token or String containing the applicable description string
+>          from the "TLS Alerts" registry.  See [TLS].
+671,674c683,687
+<    Description:  The intermediary is generating a client (4xx) response
+<       on the origin's behalf.  Applicable status codes include (but are
+<       not limited to) 400, 403, 405, 406, 408, 411, 413, 414, 415, 416,
+<       417, and 429.
+---
+>    Description:
+>       The intermediary is generating a client (4xx) response on the
+>       origin's behalf.  Applicable status codes include (but are not
+>       limited to) 400, 403, 405, 406, 408, 411, 413, 414, 415, 416, 417,
+>       and 429.
+688c701,702
+<    Notes:  This type helps distinguish between responses generated by
+---
+>    Notes:
+>       This type helps distinguish between responses generated by
+695c709,710
+<    Description:  The intermediary rejected the HTTP request based on its
+---
+>    Description:
+>       The intermediary rejected the HTTP request based on its
+711,712c726,728
+<    Description:  The intermediary received an incomplete response to the
+<       request from the next hop.
+---
+>    Description:
+>       The intermediary received an incomplete response to the request
+>       from the next hop.
+726,727c742,744
+<    Description:  The intermediary received a response to the request
+<       whose header section was considered too large.
+---
+>    Description:
+>       The intermediary received a response to the request whose header
+>       section was considered too large.
+731,733c748,751
+<       header-section-size:  An Integer indicating how large the received
+<          headers were.  Note that they might not be complete; i.e., the
+<          intermediary may have discarded or refused additional data.
+---
+>       header-section-size:
+>          An Integer indicating how large the received headers were.
+>          Note that they might not be complete; i.e., the intermediary
+>          may have discarded or refused additional data.
+745,747c763,765
+<    Description:  The intermediary received a response to the request
+<       containing an individual header field line that was considered too
+<       large.
+---
+>    Description:
+>       The intermediary received a response to the request containing an
+>       individual header field line that was considered too large.
+751,755c769,775
+<       header-name:  A String indicating the name of the header field
+<          that triggered the error.
+< 
+<       header-size:  An Integer indicating the size of the header field
+<          that triggered the error.
+---
+>       header-name:
+>          A String indicating the name of the header field that triggered
+>          the error.
+> 
+>       header-size:
+>          An Integer indicating the size of the header field that
+>          triggered the error.
+767,768c787,789
+<    Description:  The intermediary received a response to the request
+<       whose body was considered too large.
+---
+>    Description:
+>       The intermediary received a response to the request whose body was
+>       considered too large.
+772,774c793,796
+<       body-size:  An Integer indicating how large the received body was.
+<          Note that it may not have been complete; i.e., the intermediary
+<          may have discarded or refused additional data.
+---
+>       body-size:
+>          An Integer indicating how large the received body was.  Note
+>          that it may not have been complete; i.e., the intermediary may
+>          have discarded or refused additional data.
+786,787c808,810
+<    Description:  The intermediary received a response to the request
+<       whose trailer section was considered too large.
+---
+>    Description:
+>       The intermediary received a response to the request whose trailer
+>       section was considered too large.
+791,794c814,817
+<       trailer-section-size:  An Integer indicating how large the
+<          received trailers were.  Note that they might not be complete;
+<          i.e., the intermediary may have discarded or refused additional
+<          data.
+---
+>       trailer-section-size:
+>          An Integer indicating how large the received trailers were.
+>          Note that they might not be complete; i.e., the intermediary
+>          may have discarded or refused additional data.
+806,808c829,831
+<    Description:  The intermediary received a response to the request
+<       containing an individual trailer field line that was considered
+<       too large.
+---
+>    Description:
+>       The intermediary received a response to the request containing an
+>       individual trailer field line that was considered too large.
+812,816c835,841
+<       trailer-name:  A String indicating the name of the trailer field
+<          that triggered the error.
+< 
+<       trailer-size:  An Integer indicating the size of the trailer field
+<          that triggered the error.
+---
+>       trailer-name:
+>          A String indicating the name of the trailer field that
+>          triggered the error.
+> 
+>       trailer-size:
+>          An Integer indicating the size of the trailer field that
+>          triggered the error.
+828,829c853,855
+<    Description:  The intermediary encountered an error decoding the
+<       transfer coding of the response.
+---
+>    Description:
+>       The intermediary encountered an error decoding the transfer coding
+>       of the response.
+833,834c859,861
+<       coding:  A Token containing the specific coding (from the "HTTP
+<          Transfer Coding Registry") that caused the error.
+---
+>       coding:
+>          A Token containing the specific coding (from the "HTTP Transfer
+>          Coding Registry") that caused the error.
+846,847c873,875
+<    Description:  The intermediary encountered an error decoding the
+<       content coding of the response.
+---
+>    Description:
+>       The intermediary encountered an error decoding the content coding
+>       of the response.
+851,852c879,881
+<       coding:  A Token containing the specific coding (from the "HTTP
+<          Content Coding Registry") that caused the error.
+---
+>       coding:
+>          A Token containing the specific coding (from the "HTTP Content
+>          Coding Registry") that caused the error.
+864,865c893,895
+<    Description:  The intermediary reached a configured time limit
+<       waiting for the complete response.
+---
+>    Description:
+>       The intermediary reached a configured time limit waiting for the
+>       complete response.
+879,880c909,911
+<    Description:  The process of negotiating an upgrade of the HTTP
+<       version between the intermediary and the next hop failed.
+---
+>    Description:
+>       The process of negotiating an upgrade of the HTTP version between
+>       the intermediary and the next hop failed.
+894,896c925,928
+<    Description:  The intermediary encountered an HTTP protocol error
+<       when communicating with the next hop.  This error should only be
+<       used when a more specific one is not defined.
+---
+>    Description:
+>       The intermediary encountered an HTTP protocol error when
+>       communicating with the next hop.  This error should only be used
+>       when a more specific one is not defined.
+910,911c942,944
+<    Description:  The intermediary generated the response itself without
+<       attempting to connect to the next hop.
+---
+>    Description:
+>       The intermediary generated the response itself without attempting
+>       to connect to the next hop.
+926,927c959,961
+<    Description:  The intermediary encountered an internal error
+<       unrelated to the origin.
+---
+>    Description:
+>       The intermediary encountered an internal error unrelated to the
+>       origin.
+956,958c990,992
+<    Description:  The intermediary tried to forward the request to
+<       itself, or a loop has been detected using different means (e.g.,
+<       [RFC8586]).
+---
+>    Description:
+>       The intermediary tried to forward the request to itself, or a loop
+>       has been detected using different means (e.g., [RFC8586]).
+997,998c1031,1033
+<    Description:  [a description of the conditions that generate the
+<       proxy error type]
+---
+>    Description:
+>       [a description of the conditions that generate the proxy error
+>       type]
+1000,1001c1035,1037
+<    Extra Parameters:  [zero or more optional parameters, along with
+<       their allowable Structured Type(s)]
+---
+>    Extra Parameters:
+>       [zero or more optional parameters, along with their allowable
+>       Structured Type(s)]
