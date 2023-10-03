@@ -1,0 +1,270 @@
+438c438,439
+<    cur:  The instantaneous observation value of the metric from the most
+---
+>    cur:
+>       The instantaneous observation value of the metric from the most
+441,446c442,447
+<    percentile, with the letter 'p' followed by a number:  Gives the
+<       percentile specified by the number following the letter 'p'.  The
+<       number MUST be a non-negative JSON number in the range [0, 100]
+<       (i.e., greater than or equal to 0 and less than or equal to 100),
+<       followed by an optional decimal part, if higher precision is
+<       needed.  The decimal part should start with the '.' separator
+---
+>    percentile, with the letter 'p' followed by a number:
+>       Gives the percentile specified by the number following the letter
+>       'p'.  The number MUST be a non-negative JSON number in the range
+>       [0, 100] (i.e., greater than or equal to 0 and less than or equal
+>       to 100), followed by an optional decimal part, if higher precision
+>       is needed.  The decimal part should start with the '.' separator
+525,538c526,541
+<    Intended Semantics:  To specify the temporal and spatial aggregated
+<       delay of a stream of packets from the specified source to the
+<       specified destination.  The base semantics of the metric is the
+<       Unidirectional Delay metric as defined in [RFC8571], [RFC8570],
+<       and [RFC7471], but instead of specifying the delay for a link, it
+<       is the (temporal) aggregation of the link delays from the source
+<       to the destination.  A non-normative reference definition of the
+<       end-to-end one-way delay metric is provided in [RFC7679].  The
+<       spatial aggregation level is specified in the query context, e.g.,
+<       provider-defined identifier (PID) to PID, or endpoint to endpoint,
+<       where the PID is as defined in Section 5.1 of [RFC7285].
+< 
+<    Use:  This metric could be used as a cost metric constraint attribute
+<       or as a returned cost metric in the response.
+---
+>    Intended Semantics:
+>       To specify the temporal and spatial aggregated delay of a stream
+>       of packets from the specified source to the specified destination.
+>       The base semantics of the metric is the Unidirectional Delay
+>       metric as defined in [RFC8571], [RFC8570], and [RFC7471], but
+>       instead of specifying the delay for a link, it is the (temporal)
+>       aggregation of the link delays from the source to the destination.
+>       A non-normative reference definition of the end-to-end one-way
+>       delay metric is provided in [RFC7679].  The spatial aggregation
+>       level is specified in the query context, e.g., provider-defined
+>       identifier (PID) to PID, or endpoint to endpoint, where the PID is
+>       as defined in Section 5.1 of [RFC7285].
+> 
+>    Use:
+>       This metric could be used as a cost metric constraint attribute or
+>       as a returned cost metric in the response.
+640,641c643,644
+<    "nominal":  Typically, network one-way delay does not have a nominal
+<       value.
+---
+>    "nominal":
+>       Typically, network one-way delay does not have a nominal value.
+643c646,647
+<    "sla":  Many networks provide delay-related parameters in their
+---
+>    "sla":
+>       Many networks provide delay-related parameters in their
+652,657c656,662
+<    "estimation":  The exact estimation method is outside the scope of
+<       this document.  There can be multiple sources for estimating one-
+<       way delay.  For example, the ALTO server may estimate the end-to-
+<       end delay by aggregation of routing protocol link metrics; the
+<       server may also estimate the delay using active, end-to-end
+<       measurements -- for example, using the IPPM framework [RFC2330].
+---
+>    "estimation":
+>       The exact estimation method is outside the scope of this document.
+>       There can be multiple sources for estimating one-way delay.  For
+>       example, the ALTO server may estimate the end-to-end delay by
+>       aggregation of routing protocol link metrics; the server may also
+>       estimate the delay using active, end-to-end measurements -- for
+>       example, using the IPPM framework [RFC2330].
+715,716c720,722
+<    Use:  This metric could be used as a cost metric constraint attribute
+<       or as a returned cost metric in the response.
+---
+>    Use:
+>       This metric could be used as a cost metric constraint attribute or
+>       as a returned cost metric in the response.
+765,766c771,772
+<    "nominal":  Typically, network round-trip delay does not have a
+<       nominal value.
+---
+>    "nominal":
+>       Typically, network round-trip delay does not have a nominal value.
+812,813c818,820
+<    Use:  This metric could be used as a cost metric constraint attribute
+<       or as a returned cost metric in the response.
+---
+>    Use:
+>       This metric could be used as a cost metric constraint attribute or
+>       as a returned cost metric in the response.
+862,863c869,870
+<    "nominal":  Typically, network delay variation does not have a
+<       nominal value.
+---
+>    "nominal":
+>       Typically, network delay variation does not have a nominal value.
+890,897c897,905
+<    Intended Semantics:  To specify the temporal and spatial aggregated
+<       one-way packet loss rate from the specified source and the
+<       specified destination.  The base semantics of the metric is the
+<       Unidirectional Link Loss metric as defined in [RFC8571],
+<       [RFC8570], and [RFC7471], but instead of specifying the loss for a
+<       link, it is the aggregated loss of all links from the source to
+<       the destination.  The spatial aggregation level is specified in
+<       the query context (e.g., PID to PID, or endpoint to endpoint).
+---
+>    Intended Semantics:
+>       To specify the temporal and spatial aggregated one-way packet loss
+>       rate from the specified source and the specified destination.  The
+>       base semantics of the metric is the Unidirectional Link Loss
+>       metric as defined in [RFC8571], [RFC8570], and [RFC7471], but
+>       instead of specifying the loss for a link, it is the aggregated
+>       loss of all links from the source to the destination.  The spatial
+>       aggregation level is specified in the query context (e.g., PID to
+>       PID, or endpoint to endpoint).
+899,900c907,909
+<    Use:  This metric could be used as a cost metric constraint attribute
+<       or as a returned cost metric in the response.
+---
+>    Use:
+>       This metric could be used as a cost metric constraint attribute or
+>       as a returned cost metric in the response.
+949,950c958,960
+<    "nominal":  Typically, the packet loss rate does not have a nominal
+<       value, although some networks may specify zero losses.
+---
+>    "nominal":
+>       Typically, the packet loss rate does not have a nominal value,
+>       although some networks may specify zero losses.
+990,993c1000,1004
+<    Intended Semantics:  To specify the number of hops in the path from
+<       the specified source to the specified destination.  The hop count
+<       is a basic measurement of distance in a network and can be exposed
+<       as the number of router hops computed from the routing protocols
+---
+>    Intended Semantics:
+>       To specify the number of hops in the path from the specified
+>       source to the specified destination.  The hop count is a basic
+>       measurement of distance in a network and can be exposed as the
+>       number of router hops computed from the routing protocols
+998,999c1009,1011
+<    Use:  This metric could be used as a cost metric constraint attribute
+<       or as a returned cost metric in the response.
+---
+>    Use:
+>       This metric could be used as a cost metric constraint attribute or
+>       as a returned cost metric in the response.
+1052,1056c1064,1068
+<    "estimation":  The exact estimation method is outside the scope of
+<       this document.  An example of estimating hop count values is by
+<       importing from IGP routing protocols.  It is RECOMMENDED that the
+<       "parameters" field of an "estimation" hop count define the meaning
+<       of a hop.
+---
+>    "estimation":
+>       The exact estimation method is outside the scope of this document.
+>       An example of estimating hop count values is by importing from IGP
+>       routing protocols.  It is RECOMMENDED that the "parameters" field
+>       of an "estimation" hop count define the meaning of a hop.
+1079,1085c1091,1099
+<    Intended Semantics:  To give the throughput of a congestion control
+<       conforming TCP flow from the specified source to the specified
+<       destination.  The throughput SHOULD be interpreted as only an
+<       estimation, and the estimation is designed only for bulk flows.
+< 
+<    Use:  This metric could be used as a cost metric constraint attribute
+<       or as a returned cost metric in the response.
+---
+>    Intended Semantics:
+>       To give the throughput of a congestion control conforming TCP flow
+>       from the specified source to the specified destination.  The
+>       throughput SHOULD be interpreted as only an estimation, and the
+>       estimation is designed only for bulk flows.
+> 
+>    Use:
+>       This metric could be used as a cost metric constraint attribute or
+>       as a returned cost metric in the response.
+1134,1135c1148,1150
+<    "nominal":  Typically, TCP throughput does not have a nominal value
+<       and SHOULD NOT be generated.
+---
+>    "nominal":
+>       Typically, TCP throughput does not have a nominal value and SHOULD
+>       NOT be generated.
+1140,1151c1155,1167
+<    "estimation":  The exact estimation method is outside the scope of
+<       this document.  It is RECOMMENDED that the "parameters" field of
+<       an "estimation" TCP throughput metric include the following
+<       information: (1) the congestion control algorithm and (2) the
+<       estimation methodology.  To specify (1), it is RECOMMENDED that
+<       the "parameters" field (object) include a field named "congestion-
+<       control-algorithm", which provides a URI for the specification of
+<       the algorithm; for example, for an ALTO server to provide
+<       estimation of the throughput of a CUBIC congestion control flow,
+<       its "parameters" field includes the "congestion-control-algorithm"
+<       field, with value being set to the URI for [RFC9438]; for an
+<       ongoing congestion control algorithm such as BBR, a link to its
+---
+>    "estimation":
+>       The exact estimation method is outside the scope of this document.
+>       It is RECOMMENDED that the "parameters" field of an "estimation"
+>       TCP throughput metric include the following information: (1) the
+>       congestion control algorithm and (2) the estimation methodology.
+>       To specify (1), it is RECOMMENDED that the "parameters" field
+>       (object) include a field named "congestion-control-algorithm",
+>       which provides a URI for the specification of the algorithm; for
+>       example, for an ALTO server to provide estimation of the
+>       throughput of a CUBIC congestion control flow, its "parameters"
+>       field includes the "congestion-control-algorithm" field, with
+>       value being set to the URI for [RFC9438]; for an ongoing
+>       congestion control algorithm such as BBR, a link to its
+1193,1194c1209,1211
+<    Use:  This metric could be used as a cost metric constraint attribute
+<       or as a returned cost metric in the response.
+---
+>    Use:
+>       This metric could be used as a cost metric constraint attribute or
+>       as a returned cost metric in the response.
+1243,1244c1260,1261
+<    "nominal":  Typically, residual bandwidth does not have a nominal
+<       value.
+---
+>    "nominal":
+>       Typically, residual bandwidth does not have a nominal value.
+1280,1281c1297,1299
+<    Use:  This metric could be used as a cost metric constraint attribute
+<       or as a returned cost metric in the response.
+---
+>    Use:
+>       This metric could be used as a cost metric constraint attribute or
+>       as a returned cost metric in the response.
+1330,1331c1348,1349
+<    "nominal":  Typically, available bandwidth does not have a nominal
+<       value.
+---
+>    "nominal":
+>       Typically, available bandwidth does not have a nominal value.
+1333c1351,1352
+<    "sla":  Typically, available bandwidth does not have an SLA value.
+---
+>    "sla":
+>       Typically, available bandwidth does not have an SLA value.
+1531,1534c1550,1554
+<    Intended Semantics:  ALTO cost source types carry with them semantics
+<       to guide their usage by ALTO clients.  Hence, a document defining
+<       a new type should provide guidance to both ALTO service providers
+<       and applications utilizing ALTO clients as to how values of the
+---
+>    Intended Semantics:
+>       ALTO cost source types carry with them semantics to guide their
+>       usage by ALTO clients.  Hence, a document defining a new type
+>       should provide guidance to both ALTO service providers and
+>       applications utilizing ALTO clients as to how values of the
+1537,1540c1557,1560
+<    Security Considerations:  ALTO cost source types expose information
+<       to ALTO clients.  ALTO service providers should be made aware of
+<       the security ramifications related to the exposure of a cost
+<       source type.
+---
+>    Security Considerations:
+>       ALTO cost source types expose information to ALTO clients.  ALTO
+>       service providers should be made aware of the security
+>       ramifications related to the exposure of a cost source type.

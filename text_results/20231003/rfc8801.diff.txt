@@ -1,0 +1,196 @@
+124,125c124,125
+<        interface, such as when a local router can provide connectivity
+<        to two different Internet Service Providers.
+---
+>       interface, such as when a local router can provide connectivity to
+>       two different Internet Service Providers.
+184,185c184,186
+<    Provisioning Domain (PvD):  A set of network configuration
+<       information; for more information, see [RFC7556].
+---
+>    Provisioning Domain (PvD):
+>       A set of network configuration information; for more information,
+>       see [RFC7556].
+189,199c190,202
+<    Explicit PvD:  A PvD uniquely identified with a PvD ID.  For more
+<       information, see [RFC7556].
+< 
+<    Implicit PvD:  A PvD that, in the absence of a PvD ID, is identified
+<       by the host interface to which it is attached and the address of
+<       the advertising router.  See also [RFC7556].
+< 
+<    PvD-aware host:  A host that supports the association of network
+<       configuration information into PvDs and the use of these PvDs as
+<       described in this document.  Also named "PvD-aware node" in
+<       [RFC7556].
+---
+>    Explicit PvD:
+>       A PvD uniquely identified with a PvD ID.  For more information,
+>       see [RFC7556].
+> 
+>    Implicit PvD:
+>       A PvD that, in the absence of a PvD ID, is identified by the host
+>       interface to which it is attached and the address of the
+>       advertising router.  See also [RFC7556].
+> 
+>    PvD-aware host:
+>       A host that supports the association of network configuration
+>       information into PvDs and the use of these PvDs as described in
+>       this document.  Also named "PvD-aware node" in [RFC7556].
+244,247c247,251
+<    Length:  (8 bits) The length of the option in units of 8 octets,
+<       including the Type and Length fields, the Router Advertisement
+<       message header, if any, as well as the RA options that are
+<       included within the PvD Option.
+---
+>    Length:
+>       (8 bits) The length of the option in units of 8 octets, including
+>       the Type and Length fields, the Router Advertisement message
+>       header, if any, as well as the RA options that are included within
+>       the PvD Option.
+249c253,254
+<    H-flag:  (1 bit) 'HTTP' flag stating whether some PvD Additional
+---
+>    H-flag:
+>       (1 bit) 'HTTP' flag stating whether some PvD Additional
+253,257c258,264
+<    L-flag:  (1 bit) 'Legacy' flag stating whether the PvD is associated
+<       with IPv4 information assigned using DHCPv4 (see Section 3.4.2).
+< 
+<    R-flag:  (1 bit) 'Router Advertisement' flag stating whether the PvD
+<       Option header is followed (right after padding to the next 64-bit
+---
+>    L-flag:
+>       (1 bit) 'Legacy' flag stating whether the PvD is associated with
+>       IPv4 information assigned using DHCPv4 (see Section 3.4.2).
+> 
+>    R-flag:
+>       (1 bit) 'Router Advertisement' flag stating whether the PvD Option
+>       header is followed (right after padding to the next 64-bit
+265c272,273
+<    Delay:  (4 bits) Unsigned integer used to delay HTTP GET queries from
+---
+>    Delay:
+>       (4 bits) Unsigned integer used to delay HTTP GET queries from
+270,273c278,282
+<    Sequence Number:  (16 bits) Sequence number for the PvD Additional
+<       Information, as described in Section 4.  If the H-flag is not set,
+<       senders SHOULD set the Sequence Number to zero, and receivers
+<       SHOULD ignore the value.
+---
+>    Sequence Number:
+>       (16 bits) Sequence number for the PvD Additional Information, as
+>       described in Section 4.  If the H-flag is not set, senders SHOULD
+>       set the Sequence Number to zero, and receivers SHOULD ignore the
+>       value.
+283,296c292,305
+<    RA message header:  (16 octets) When the R-flag is set, a full Router
+<       Advertisement message header as specified in [RFC4861].  The
+<       sender MUST set the Type field to 134 (the value for "Router
+<       Advertisement") and set the Code field to 0.  Receivers MUST
+<       ignore both of these fields.  The Checksum field MUST be set to 0
+<       by the sender; non-zero checksums MUST be ignored by the receiver
+<       without causing the processing of the message to fail.  All other
+<       fields are to be set and parsed as specified in [RFC4861] or any
+<       updating documents.
+< 
+<    Options:  Zero or more RA options that would otherwise be valid as
+<       part of the Router Advertisement main body but are instead
+<       included in the PvD Option so as to be ignored by hosts that are
+<       not PvD aware.
+---
+>    RA message header:
+>       (16 octets) When the R-flag is set, a full Router Advertisement
+>       message header as specified in [RFC4861].  The sender MUST set the
+>       Type field to 134 (the value for "Router Advertisement") and set
+>       the Code field to 0.  Receivers MUST ignore both of these fields.
+>       The Checksum field MUST be set to 0 by the sender; non-zero
+>       checksums MUST be ignored by the receiver without causing the
+>       processing of the message to fail.  All other fields are to be set
+>       and parsed as specified in [RFC4861] or any updating documents.
+> 
+>    Options:
+>       Zero or more RA options that would otherwise be valid as part of
+>       the Router Advertisement main body but are instead included in the
+>       PvD Option so as to be ignored by hosts that are not PvD aware.
+434,436c443,445
+<    PvD's associated PIO defines the prefix "2001:db8:cafe::/64", a
+<    DHCPv6 IA_NA message that assigns the address
+<    "2001:db8:cafe::1234:4567" would be considered to match.
+---
+>    PvD's associated PIO defines the prefix 2001:db8:cafe::/64, a DHCPv6
+>    IA_NA message that assigns the address 2001:db8:cafe::1234:4567 would
+>    be considered to match.
+577,578c586,587
+<    by performing an HTTP-over-TLS [RFC2818] GET query to "https://<PvD-
+<    ID>/.well-known/pvd".  Inversely, hosts MUST NOT do so whenever the
+---
+>    by performing an HTTP-over-TLS [RFC2818] GET query to https://<PvD-
+>    ID>/.well-known/pvd.  Inversely, hosts MUST NOT do so whenever the
+641c650
+<       calculated as a random time between zero and 2^((10 + Delay))
+---
+>       calculated as a random time between zero and 2^(10 + Delay)
+654,655c663,664
+<    time between 0 and 2^((10 + 1)) milliseconds, i.e., between 0 and
+<    2048 milliseconds.
+---
+>    time between 0 and 2^(10 + 1) milliseconds, i.e., between 0 and 2048
+>    milliseconds.
+859,861c868,870
+<    "2001:db8:cafe::/64" and "2001:db8:f00d::/64", both associated with
+<    the same PvD (identified by "example.org.").  A non-PvD-aware host
+<    will only receive one prefix, "2001:db8:cafe::/64".
+---
+>    2001:db8:cafe::/64 and 2001:db8:f00d::/64, both associated with the
+>    same PvD (identified by "example.org.").  A non-PvD-aware host will
+>    only receive one prefix, 2001:db8:cafe::/64.
+911,917c920,926
+<    listed RA sent by their default router and use the
+<    "2001:db8:cafe::/64" prefix.  PvD-aware hosts will autonomously
+<    configure addresses from both PIOs but will only use the source
+<    address in "2001:db8:f00d::/64" to communicate past the first-hop
+<    router since only the router sending the second RA will be used as
+<    the default router; similarly, they will use the DNS server
+<    "2001:db8:f00d::53" when communicating from this address.
+---
+>    listed RA sent by their default router and use the 2001:db8:cafe::/64
+>    prefix.  PvD-aware hosts will autonomously configure addresses from
+>    both PIOs but will only use the source address in 2001:db8:f00d::/64
+>    to communicate past the first-hop router since only the router
+>    sending the second RA will be used as the default router; similarly,
+>    they will use the DNS server 2001:db8:f00d::53 when communicating
+>    from this address.
+1233,1234c1242,1244
+<    Encoding considerations:  Encoding considerations are identical to
+<       those specified for the "application/json" media type.
+---
+>    Encoding considerations:
+>       Encoding considerations are identical to those specified for the
+>       "application/json" media type.
+1238,1239c1248,1250
+<    Interoperability considerations:  This document specifies the format
+<       of conforming messages and the interpretation thereof.
+---
+>    Interoperability considerations:
+>       This document specifies the format of conforming messages and the
+>       interpretation thereof.
+1243,1245c1254,1257
+<    Applications that use this media type:  This media type is intended
+<       to be used by networks advertising additional Provisioning Domain
+<       information and clients looking up such information.
+---
+>    Applications that use this media type:
+>       This media type is intended to be used by networks advertising
+>       additional Provisioning Domain information and clients looking up
+>       such information.
+1473d1484
+< 
+1482d1492
+< 
+1491d1500
+< 
+1501d1509
+< 
+1510d1517
+< 
