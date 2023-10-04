@@ -1,0 +1,217 @@
+260c260,261
+<    AppIID:  Application Interface Identifier.  The IID that identifies
+---
+>    AppIID:
+>             Application Interface Identifier.  The IID that identifies
+263,264c264,266
+<    Compression Residue:  The bits that remain to be sent (beyond the
+<             RuleID itself) after applying the SCHC compression.
+---
+>    Compression Residue:
+>             The bits that remain to be sent (beyond the RuleID itself)
+>             after applying the SCHC compression.
+266c268,269
+<    Context:  A set of Rules used to compress/decompress headers, or to
+---
+>    Context:
+>             A set of Rules used to compress/decompress headers, or to
+271c274,275
+<    DevIID:  Device Interface Identifier.  The IID that identifies the
+---
+>    DevIID:
+>             Device Interface Identifier.  The IID that identifies the
+279c283,284
+<    L2:      Layer 2.  The immediate lower layer that SCHC interfaces
+---
+>    L2:    
+>             Layer 2.  The immediate lower layer that SCHC interfaces
+284c289,290
+<    L2 Word:  This is the minimum subdivision of payload data that the L2
+---
+>    L2 Word:
+>             This is the minimum subdivision of payload data that the L2
+290c296,297
+<    Padding:  Extra bits that may be appended by SCHC to a data unit that
+---
+>    Padding:
+>             Extra bits that may be appended by SCHC to a data unit that
+295c302,303
+<    Profile:  SCHC offers variations in the way it is operated, with a
+---
+>    Profile:
+>             SCHC offers variations in the way it is operated, with a
+303c311,312
+<    Rule:    Part of the Context that describes how a packet is
+---
+>    Rule:  
+>             Part of the Context that describes how a packet is
+308c317,318
+<    SCHC:    Static Context Header Compression and fragmentation (SCHC),
+---
+>    SCHC:  
+>             Static Context Header Compression and fragmentation (SCHC),
+311c321,322
+<    SCHC C/D:  SCHC Compressor/Decompressor, or SCHC Compression/
+---
+>    SCHC C/D:
+>             SCHC Compressor/Decompressor, or SCHC Compression/
+316c327,328
+<    SCHC F/R:  SCHC Fragmenter/Reassembler or SCHC Fragmentation/
+---
+>    SCHC F/R:
+>             SCHC Fragmenter/Reassembler or SCHC Fragmentation/
+321c333,334
+<    SCHC Packet:  A packet (e.g., an IPv6 packet) whose header has been
+---
+>    SCHC Packet:
+>             A packet (e.g., an IPv6 packet) whose header has been
+603c616,617
+<       Up:  this Field Descriptor is only applicable to packets traveling
+---
+>       Up:
+>          this Field Descriptor is only applicable to packets traveling
+606c620,621
+<       Dw:  this Field Descriptor is only applicable to packets traveling
+---
+>       Dw:
+>          this Field Descriptor is only applicable to packets traveling
+609,610c624,626
+<       Bi:  this Field Descriptor is applicable to packets traveling
+<          Uplink or Downlink.
+---
+>       Bi:
+>          this Field Descriptor is applicable to packets traveling Uplink
+>          or Downlink.
+687,692c703,709
+<    Compression:  if a valid Rule is found, each field of the header is
+<       compressed according to the CDAs of the Rule.  The fields are
+<       compressed in the order that the Field Descriptors appear in the
+<       Rule.  The compression of each field results in a residue, which
+<       may be empty.  The Compression Residue for the packet header is
+<       the concatenation of the non-empty residues for each field of the
+---
+>    Compression:
+>       if a valid Rule is found, each field of the header is compressed
+>       according to the CDAs of the Rule.  The fields are compressed in
+>       the order that the Field Descriptors appear in the Rule.  The
+>       compression of each field results in a residue, which may be
+>       empty.  The Compression Residue for the packet header is the
+>       concatenation of the non-empty residues for each field of the
+704,709c721,727
+<    Sending:  The RuleID is sent to the other end jointly with the
+<       Compression Residue (which could be empty) or the uncompressed
+<       header, and directly followed by the payload (see Figure 4).  The
+<       way the RuleID is sent will be specified in the Profile and is out
+<       of the scope of the present document.  For example, it could be
+<       included in an L2 header or sent as part of the L2 payload.
+---
+>    Sending:
+>       The RuleID is sent to the other end jointly with the Compression
+>       Residue (which could be empty) or the uncompressed header, and
+>       directly followed by the payload (see Figure 4).  The way the
+>       RuleID is sent will be specified in the Profile and is out of the
+>       scope of the present document.  For example, it could be included
+>       in an L2 header or sent as part of the L2 payload.
+740,757c758,779
+<    equal:  The match result is True if the field value in the packet
+<       matches the TV.
+< 
+<    ignore:  No matching is attempted between the field value in the
+<       packet and the TV in the Rule.  The result is always True.
+< 
+<    MSB(x):  A match is obtained if the most significant (leftmost) x
+<       bits of the packet header field value are equal to the TV in the
+<       Rule.  The x parameter of the MSB MO indicates how many bits are
+<       involved in the comparison.  If the FL is described as variable,
+<       the x parameter must be a multiple of the FL unit.  For example, x
+<       must be multiple of 8 if the unit of the variable length is bytes.
+< 
+<    match-mapping:  With match-mapping, TV is a list of values.  Each
+<       value of the list is identified by an index.  Compression is
+<       achieved by sending the index instead of the original header field
+<       value.  This operator matches if the header field value is equal
+<       to one of the values in the target list.
+---
+>    equal:
+>       The match result is True if the field value in the packet matches
+>       the TV.
+> 
+>    ignore:
+>       No matching is attempted between the field value in the packet and
+>       the TV in the Rule.  The result is always True.
+> 
+>    MSB(x):
+>       A match is obtained if the most significant (leftmost) x bits of
+>       the packet header field value are equal to the TV in the Rule.
+>       The x parameter of the MSB MO indicates how many bits are involved
+>       in the comparison.  If the FL is described as variable, the x
+>       parameter must be a multiple of the FL unit.  For example, x must
+>       be multiple of 8 if the unit of the variable length is bytes.
+> 
+>    match-mapping:
+>       With match-mapping, TV is a list of values.  Each value of the
+>       list is identified by an index.  Compression is achieved by
+>       sending the index instead of the original header field value.
+>       This operator matches if the header field value is equal to one of
+>       the values in the target list.
+767c789
+<      +--------------+------------------------+-----------------------+
+---
+>      +==============+========================+=======================+
+987,991c1009,1015
+<    SCHC Fragment:  A message that carries part of a SCHC Packet from the
+<       sender to the receiver.
+< 
+<    SCHC ACK:  An acknowledgement for fragmentation, by the receiver to
+<       the sender.  This message is used to indicate whether or not the
+---
+>    SCHC Fragment:
+>       A message that carries part of a SCHC Packet from the sender to
+>       the receiver.
+> 
+>    SCHC ACK:
+>       An acknowledgement for fragmentation, by the receiver to the
+>       sender.  This message is used to indicate whether or not the
+998,1002c1022,1028
+<    SCHC Sender-Abort:  A message by the sender telling the receiver that
+<       it has aborted the transmission of a fragmented SCHC Packet.
+< 
+<    SCHC Receiver-Abort:  A message by the receiver to tell the sender to
+<       abort the transmission of a fragmented SCHC Packet.
+---
+>    SCHC Sender-Abort:
+>       A message by the sender telling the receiver that it has aborted
+>       the transmission of a fragmented SCHC Packet.
+> 
+>    SCHC Receiver-Abort:
+>       A message by the receiver to tell the sender to abort the
+>       transmission of a fragmented SCHC Packet.
+1107,1108c1133,1139
+<    Inactivity Timer:  a SCHC Fragment receiver uses this timer to abort
+<       waiting for a SCHC F/R message.
+---
+>    Inactivity Timer:
+>       a SCHC Fragment receiver uses this timer to abort waiting for a
+>       SCHC F/R message.
+> 
+>    Retransmission Timer:
+>       a SCHC Fragment sender uses this timer to abort waiting for an
+>       expected SCHC ACK.
+1110,1113c1141,1142
+<    Retransmission Timer:  a SCHC Fragment sender uses this timer to
+<       abort waiting for an expected SCHC ACK.
+< 
+<    Attempts:  this counter counts the requests for SCHC ACKs, up to
+---
+>    Attempts:
+>       this counter counts the requests for SCHC ACKs, up to
+3748d3776
+< 
+3758d3785
+< 
+3767d3793
+< 
+3776d3801
+< 
+3785d3809
+< 

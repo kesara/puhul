@@ -1,0 +1,141 @@
+126,135c126,137
+<    RTP Sequence Number:  The receiver of an RTP flow needs to feed the
+<       sequence numbers of the received RTP packets back to the sender,
+<       so the sender can determine which packets were received and which
+<       were lost.  Packet loss is used as an indication of congestion by
+<       many congestion control algorithms.
+< 
+<    Packet Arrival Time:  The receiver of an RTP flow needs to feed the
+<       arrival time of each RTP packet back to the sender.  Packet delay
+<       and/or delay variation (jitter) is used as a congestion signal by
+<       some congestion control algorithms.
+---
+>    RTP Sequence Number:
+>       The receiver of an RTP flow needs to feed the sequence numbers of
+>       the received RTP packets back to the sender, so the sender can
+>       determine which packets were received and which were lost.  Packet
+>       loss is used as an indication of congestion by many congestion
+>       control algorithms.
+> 
+>    Packet Arrival Time:
+>       The receiver of an RTP flow needs to feed the arrival time of each
+>       RTP packet back to the sender.  Packet delay and/or delay
+>       variation (jitter) is used as a congestion signal by some
+>       congestion control algorithms.
+230,253c232,256
+<    Received (R, 1 bit):  A boolean that indicates whether the packet was
+<       received.  0 indicates that the packet was not yet received and
+<       the subsequent 15 bits (ECN and ATO) in this 16-bit packet metric
+<       block are also set to 0 and MUST be ignored.  1 indicates that the
+<       packet was received and the subsequent bits in the block need to
+<       be parsed.
+< 
+<    ECN (2 bits):  The echoed ECN mark of the packet.  These bits are set
+<       to 00 if not received or if ECN is not used.
+< 
+<    Arrival time offset (ATO, 13 bits):  The arrival time of the RTP
+<       packet at the receiver, as an offset before the time represented
+<       by the Report Timestamp (RTS) field of this RTCP congestion
+<       control feedback report.  The ATO field is in units of 1/1024
+<       seconds (this unit is chosen to give exact offsets from the RTS
+<       field) so, for example, an ATO value of 512 indicates that the
+<       corresponding RTP packet arrived exactly half a second before the
+<       time instant represented by the RTS field.  If the measured value
+<       is greater than 8189/1024 seconds (the value that would be coded
+<       as 0x1FFD), the value 0x1FFE MUST be reported to indicate an over-
+<       range measurement.  If the measurement is unavailable or if the
+<       arrival time of the RTP packet is after the time represented by
+<       the RTS field, then an ATO value of 0x1FFF MUST be reported for
+<       the packet.
+---
+>    Received (R, 1 bit):
+>       A boolean that indicates whether the packet was received.  0
+>       indicates that the packet was not yet received and the subsequent
+>       15 bits (ECN and ATO) in this 16-bit packet metric block are also
+>       set to 0 and MUST be ignored.  1 indicates that the packet was
+>       received and the subsequent bits in the block need to be parsed.
+> 
+>    ECN (2 bits):
+>       The echoed ECN mark of the packet.  These bits are set to 00 if
+>       not received or if ECN is not used.
+> 
+>    Arrival time offset (ATO, 13 bits):
+>       The arrival time of the RTP packet at the receiver, as an offset
+>       before the time represented by the Report Timestamp (RTS) field of
+>       this RTCP congestion control feedback report.  The ATO field is in
+>       units of 1/1024 seconds (this unit is chosen to give exact offsets
+>       from the RTS field) so, for example, an ATO value of 512 indicates
+>       that the corresponding RTP packet arrived exactly half a second
+>       before the time instant represented by the RTS field.  If the
+>       measured value is greater than 8189/1024 seconds (the value that
+>       would be coded as 0x1FFD), the value 0x1FFE MUST be reported to
+>       indicate an over-range measurement.  If the measurement is
+>       unavailable or if the arrival time of the RTP packet is after the
+>       time represented by the RTS field, then an ATO value of 0x1FFF
+>       MUST be reported for the packet.
+459,485c462,490
+<    RTCP Extended Reports (XRs):  Numerous RTCP XR blocks have been
+<       defined to report details of packet loss, arrival times [RFC3611],
+<       delay [RFC6843], and ECN marking [RFC6679].  It is possible to
+<       combine several such XR blocks into a compound RTCP packet, to
+<       report the detailed loss, arrival time, and ECN marking
+<       information needed for effective sender-based congestion control.
+<       However, the result has high overhead in terms of both bandwidth
+<       and complexity, due to the need to stack multiple reports.
+< 
+<    Transport-wide Congestion Control:  The format defined in this memo
+<       provides individual feedback on each SSRC.  An alternative is to
+<       add a header extension to each RTP packet, containing a single,
+<       transport-wide, packet sequence number, then have the receiver
+<       send RTCP reports giving feedback on these additional sequence
+<       numbers [RTP-Ext-for-CC].  Such an approach increases the size of
+<       each RTP packet by 8 octets, due to the header extension, but
+<       reduces the size of the RTCP feedback packets, and can simplify
+<       the rate calculation at the sender if it maintains a single rate
+<       limit that applies to all RTP packets sent, irrespective of their
+<       SSRC.  Equally, the use of transport-wide feedback makes it more
+<       difficult to adapt the sending rate, or respond to lost packets,
+<       based on the reception and/or loss patterns observed on a per-SSRC
+<       basis (for example, to perform differential rate control and
+<       repair for audio and video flows, based on knowledge of what
+<       packets from each flow were lost).  Transport-wide feedback is
+<       also a less natural fit with the wider RTP framework, which makes
+<       extensive use of per-SSRC sequence numbers and feedback.
+---
+>    RTCP Extended Reports (XRs):
+>       Numerous RTCP XR blocks have been defined to report details of
+>       packet loss, arrival times [RFC3611], delay [RFC6843], and ECN
+>       marking [RFC6679].  It is possible to combine several such XR
+>       blocks into a compound RTCP packet, to report the detailed loss,
+>       arrival time, and ECN marking information needed for effective
+>       sender-based congestion control.  However, the result has high
+>       overhead in terms of both bandwidth and complexity, due to the
+>       need to stack multiple reports.
+> 
+>    Transport-wide Congestion Control:
+>       The format defined in this memo provides individual feedback on
+>       each SSRC.  An alternative is to add a header extension to each
+>       RTP packet, containing a single, transport-wide, packet sequence
+>       number, then have the receiver send RTCP reports giving feedback
+>       on these additional sequence numbers [RTP-Ext-for-CC].  Such an
+>       approach increases the size of each RTP packet by 8 octets, due to
+>       the header extension, but reduces the size of the RTCP feedback
+>       packets, and can simplify the rate calculation at the sender if it
+>       maintains a single rate limit that applies to all RTP packets
+>       sent, irrespective of their SSRC.  Equally, the use of transport-
+>       wide feedback makes it more difficult to adapt the sending rate,
+>       or respond to lost packets, based on the reception and/or loss
+>       patterns observed on a per-SSRC basis (for example, to perform
+>       differential rate control and repair for audio and video flows,
+>       based on knowledge of what packets from each flow were lost).
+>       Transport-wide feedback is also a less natural fit with the wider
+>       RTP framework, which makes extensive use of per-SSRC sequence
+>       numbers and feedback.
+698d702
+< 
+709d712
+< 
+718d720
+< 
+728d729
+< 
