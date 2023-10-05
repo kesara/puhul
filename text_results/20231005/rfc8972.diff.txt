@@ -1,0 +1,241 @@
+369,370c369,371
+<    STAMP TLV Flags:  An eight-bit field.  The detailed format and
+<       interpretation of flags defined in this specification are below.
+---
+>    STAMP TLV Flags:
+>       An eight-bit field.  The detailed format and interpretation of
+>       flags defined in this specification are below.
+372c373,374
+<    Type:  A one-octet field that characterizes the interpretation of the
+---
+>    Type:
+>       A one-octet field that characterizes the interpretation of the
+379c381,382
+<    Value:  A variable-length field.  Its interpretation and encoding are
+---
+>    Value:
+>       A variable-length field.  Its interpretation and encoding are
+483,484c486,488
+<    Length:  A two-octet field equal to the length of the Extra Padding
+<       field in octets.
+---
+>    Length:
+>       A two-octet field equal to the length of the Extra Padding field
+>       in octets.
+531,532c535,537
+<    Destination Port:  A two-octet UDP destination port number of the
+<       received STAMP packet.
+---
+>    Destination Port:
+>       A two-octet UDP destination port number of the received STAMP
+>       packet.
+537,541c542,547
+<    Sub-TLVs:  A sequence of sub-TLVs, as defined further in this
+<       section.  The sub-TLVs are used by the Session-Sender to request
+<       location information with generic sub-TLV types, and the Session-
+<       Reflector responds with the corresponding more-specific sub-TLVs
+<       for the type of address (e.g., IPv4 or IPv6) used at the Session-
+---
+>    Sub-TLVs:
+>       A sequence of sub-TLVs, as defined further in this section.  The
+>       sub-TLVs are used by the Session-Sender to request location
+>       information with generic sub-TLV types, and the Session-Reflector
+>       responds with the corresponding more-specific sub-TLVs for the
+>       type of address (e.g., IPv4 or IPv6) used at the Session-
+556,559c562,565
+<    Source MAC Address sub-TLV:  A 12-octet sub-TLV.  The Type value is
+<       1.  The value of the Length field MUST be equal to 8.  The Value
+<       field is an 8-octet MBZ field that MUST be zeroed on transmission
+<       and ignored on receipt.
+---
+>    Source MAC Address sub-TLV:
+>       A 12-octet sub-TLV.  The Type value is 1.  The value of the Length
+>       field MUST be equal to 8.  The Value field is an 8-octet MBZ field
+>       that MUST be zeroed on transmission and ignored on receipt.
+582,590c588,596
+<    Source EUI-64 Address sub-TLV:  A 12-octet sub-TLV that includes the
+<       EUI-64 source MAC address.  The Type value is 3.  The value of the
+<       Length field MUST be equal to 8.  The Value field consists of an
+<       eight-octet EUI-64 field.
+< 
+<    Destination IP Address sub-TLV:  A 20-octet sub-TLV.  The Type value
+<       is 4.  The value of the Length field MUST be equal to 16.  The
+<       Value field consists of a 16-octet MBZ field that MUST be zeroed
+<       on transmit and ignored on receipt.
+---
+>    Source EUI-64 Address sub-TLV:
+>       A 12-octet sub-TLV that includes the EUI-64 source MAC address.
+>       The Type value is 3.  The value of the Length field MUST be equal
+>       to 8.  The Value field consists of an eight-octet EUI-64 field.
+> 
+>    Destination IP Address sub-TLV:
+>       A 20-octet sub-TLV.  The Type value is 4.  The value of the Length
+>       field MUST be equal to 16.  The Value field consists of a 16-octet
+>       MBZ field that MUST be zeroed on transmit and ignored on receipt.
+614,622c620,628
+<    Destination IPv6 Address sub-TLV:  A 20-octet sub-TLV that includes
+<       the IPv6 destination address.  The Type value is 6.  The value of
+<       the Length field MUST be equal to 16.  The Value field is a
+<       16-octet IPv6 Address field.
+< 
+<    Source IP Address sub-TLV:  A 20-octet sub-TLV.  The Type value is 7.
+<       The value of the Length field MUST be equal to 16.  The Value
+<       field is a 16-octet MBZ field that MUST be zeroed on transmit and
+<       ignored on receipt.
+---
+>    Destination IPv6 Address sub-TLV:
+>       A 20-octet sub-TLV that includes the IPv6 destination address.
+>       The Type value is 6.  The value of the Length field MUST be equal
+>       to 16.  The Value field is a 16-octet IPv6 Address field.
+> 
+>    Source IP Address sub-TLV:
+>       A 20-octet sub-TLV.  The Type value is 7.  The value of the Length
+>       field MUST be equal to 16.  The Value field is a 16-octet MBZ
+>       field that MUST be zeroed on transmit and ignored on receipt.
+634,637c640,643
+<    Source IPv6 Address sub-TLV:  A 20-octet sub-TLV that includes the
+<       IPv6 source address.  The Type value is 9.  The value of the
+<       Length field MUST be equal to 16.  The Value field is a 16-octet
+<       IPv6 Address field.
+---
+>    Source IPv6 Address sub-TLV:
+>       A 20-octet sub-TLV that includes the IPv6 source address.  The
+>       Type value is 9.  The value of the Length field MUST be equal to
+>       16.  The Value field is a 16-octet IPv6 Address field.
+722,728c728,743
+<    Length:  A two-octet field, set equal to the length of the Value
+<       field in octets (Figure 5).
+< 
+<    Sync Src In:  A one-octet field that characterizes the source of
+<       clock synchronization at the ingress of a Session-Reflector.
+<       There are several methods for synchronizing the clock, e.g., the
+<       Network Time Protocol (NTP) [RFC5905].  Table 7 lists the possible
+---
+>    Length:
+>       A two-octet field, set equal to the length of the Value field in
+>       octets (Figure 5).
+> 
+>    Sync Src In:
+>       A one-octet field that characterizes the source of clock
+>       synchronization at the ingress of a Session-Reflector.  There are
+>       several methods for synchronizing the clock, e.g., the Network
+>       Time Protocol (NTP) [RFC5905].  Table 7 lists the possible values.
+> 
+>    Timestamp In:
+>       A one-octet field that characterizes the method by which the
+>       ingress of the Session-Reflector obtained the timestamp T2.  A
+>       timestamp may be obtained with hardware assistance via a software
+>       API from a local wall clock or from a remote clock (the latter is
+>       referred to as a "control plane").  Table 9 lists the possible
+731,744c746,754
+<    Timestamp In:  A one-octet field that characterizes the method by
+<       which the ingress of the Session-Reflector obtained the timestamp
+<       T2.  A timestamp may be obtained with hardware assistance via a
+<       software API from a local wall clock or from a remote clock (the
+<       latter is referred to as a "control plane").  Table 9 lists the
+<       possible values.
+< 
+<    Sync Src Out:  A one-octet field that characterizes the source of
+<       clock synchronization at the egress of the Session-Reflector.
+<       Table 7 lists the possible values.
+< 
+<    Timestamp Out:  A one-octet field that characterizes the method by
+<       which the egress of the Session-Reflector obtained the timestamp
+<       T3.  Table 9 lists the possible values.
+---
+>    Sync Src Out:
+>       A one-octet field that characterizes the source of clock
+>       synchronization at the egress of the Session-Reflector.  Table 7
+>       lists the possible values.
+> 
+>    Timestamp Out:
+>       A one-octet field that characterizes the method by which the
+>       egress of the Session-Reflector obtained the timestamp T3.
+>       Table 9 lists the possible values.
+774c784,785
+<    DSCP1:  The Differentiated Services Code Point (DSCP) intended by the
+---
+>    DSCP1:
+>       The Differentiated Services Code Point (DSCP) intended by the
+778c789,790
+<    DSCP2:  The received value in the DSCP field at the ingress of the
+---
+>    DSCP2:
+>       The received value in the DSCP field at the ingress of the
+781,782c793,795
+<    ECN:  The received value in the ECN field at the ingress of the
+<       Session-Reflector.
+---
+>    ECN:
+>       The received value in the ECN field at the ingress of the Session-
+>       Reflector.
+847c860,861
+<    Length:  A two-octet field equal to the length of the Value field in
+---
+>    Length:
+>       A two-octet field equal to the length of the Value field in
+913,916c927,931
+<    Return Code:  A one-octet field that identifies the report signal,
+<       e.g., available or unavailable.  The value is supplied to the
+<       STAMP endpoint through some mechanism that is outside the scope of
+<       this document.  Section 5.6 lists the possible values.
+---
+>    Return Code:
+>       A one-octet field that identifies the report signal, e.g.,
+>       available or unavailable.  The value is supplied to the STAMP
+>       endpoint through some mechanism that is outside the scope of this
+>       document.  Section 5.6 lists the possible values.
+1003,1005c1018,1021
+<    Sequence Number:  A four-octet field indicating the sequence number
+<       of the last packet reflected in the same STAMP test session.
+<       Since the Session-Reflector runs in the stateful mode (defined in
+---
+>    Sequence Number:
+>       A four-octet field indicating the sequence number of the last
+>       packet reflected in the same STAMP test session.  Since the
+>       Session-Reflector runs in the stateful mode (defined in
+1009,1018c1025,1036
+<    Follow-Up Timestamp:  An eight-octet field, with the format indicated
+<       by the Z flag of the Error Estimate field of the STAMP base
+<       packet, which is contained in this reflected test packet
+<       transmitted by a Session-Reflector, as described in Section 4.2.1
+<       of [RFC8762].  It carries the timestamp when the reflected packet
+<       with the specified sequence number was sent.
+< 
+<    Timestamp M(ode):  A one-octet field that characterizes the method by
+<       which the entity that transmits a reflected STAMP packet obtained
+<       the Follow-Up Timestamp.  Table 9 lists the possible values.
+---
+>    Follow-Up Timestamp:
+>       An eight-octet field, with the format indicated by the Z flag of
+>       the Error Estimate field of the STAMP base packet, which is
+>       contained in this reflected test packet transmitted by a Session-
+>       Reflector, as described in Section 4.2.1 of [RFC8762].  It carries
+>       the timestamp when the reflected packet with the specified
+>       sequence number was sent.
+> 
+>    Timestamp M(ode):
+>       A one-octet field that characterizes the method by which the
+>       entity that transmits a reflected STAMP packet obtained the
+>       Follow-Up Timestamp.  Table 9 lists the possible values.
+1067,1068c1085,1087
+<    HMAC:  A 16-octet field that carries the HMAC digest of the text of
+<       all preceding TLVs.
+---
+>    HMAC:
+>       A 16-octet field that carries the HMAC digest of the text of all
+>       preceding TLVs.
+1466d1484
+< 
+1475d1492
+< 
+1481d1497
+< 
+1487d1502
+< 
+1493d1507
+< 
+1502d1515
+< 
+1511d1523
+< 

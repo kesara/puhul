@@ -1,0 +1,98 @@
+227,237c227,237
+<    Autonomous Rx Cell (AutoRxCell):  One cell at a
+<       [slotOffset,channelOffset] computed as a hash of the 64-bit
+<       Extended Unique Identifier (EUI-64) of the node itself (detailed
+<       next).  Its cell options bits are assigned as TX=0, RX=1,
+<       SHARED=0.
+< 
+<    Autonomous Tx Cell (AutoTxCell):  One cell at a
+<       [slotOffset,channelOffset] computed as a hash of the Layer 2
+<       EUI-64 destination address in the unicast frame to be transmitted
+<       (detailed in Section 4.4).  Its cell options bits are assigned as
+<       TX=1, RX=0, SHARED=1.
+---
+>    Autonomous Rx Cell (AutoRxCell):
+>       One cell at a [slotOffset,channelOffset] computed as a hash of the
+>       64-bit Extended Unique Identifier (EUI-64) of the node itself
+>       (detailed next).  Its cell options bits are assigned as TX=0,
+>       RX=1, SHARED=0.
+> 
+>    Autonomous Tx Cell (AutoTxCell):
+>       One cell at a [slotOffset,channelOffset] computed as a hash of the
+>       Layer 2 EUI-64 destination address in the unicast frame to be
+>       transmitted (detailed in Section 4.4).  Its cell options bits are
+>       assigned as TX=1, RX=0, SHARED=1.
+460,465c460,465
+<    NumCellsElapsed:  Counts the number of negotiated cells that have
+<       elapsed since the counter was initialized.  This counter is
+<       initialized at 0.  When the current cell is declared as a
+<       negotiated cell to the selected parent, NumCellsElapsed is
+<       incremented by exactly 1, regardless of whether the cell is used
+<       to transmit or receive a frame.
+---
+>    NumCellsElapsed:
+>       Counts the number of negotiated cells that have elapsed since the
+>       counter was initialized.  This counter is initialized at 0.  When
+>       the current cell is declared as a negotiated cell to the selected
+>       parent, NumCellsElapsed is incremented by exactly 1, regardless of
+>       whether the cell is used to transmit or receive a frame.
+577,582c577,584
+<    NumTx:  Counts the number of transmission attempts on that cell.
+<       Each time the node attempts to transmit a frame on that cell,
+<       NumTx is incremented by exactly 1.
+< 
+<    NumTxAck:  Counts the number of successful transmission attempts on
+<       that cell.  Each time the node receives an acknowledgment for a
+---
+>    NumTx:
+>       Counts the number of transmission attempts on that cell.  Each
+>       time the node attempts to transmit a frame on that cell, NumTx is
+>       incremented by exactly 1.
+> 
+>    NumTxAck:
+>       Counts the number of successful transmission attempts on that
+>       cell.  Each time the node receives an acknowledgment for a
+742c744,745
+<    nothing:  Indicates that this return code is not an error.  No error
+---
+>    nothing:
+>       Indicates that this return code is not an error.  No error
+745c748,749
+<    clear:  Abort the 6P Transaction.  Issue a 6P CLEAR command to that
+---
+>    clear:
+>       Abort the 6P Transaction.  Issue a 6P CLEAR command to that
+749,755c753,761
+<    quarantine:  Same behavior as for "clear".  In addition, remove the
+<       node from the neighbor and routing tables.  Place the node's
+<       identifier in a quarantine list for QUARANTINE_DURATION.  When in
+<       quarantine, drop all frames received from that node.
+< 
+<    waitretry:  Abort the 6P Transaction.  Wait for a duration randomly
+<       and uniformly chosen from [WAIT_DURATION_MIN,WAIT_DURATION_MAX].
+---
+>    quarantine:
+>       Same behavior as for "clear".  In addition, remove the node from
+>       the neighbor and routing tables.  Place the node's identifier in a
+>       quarantine list for QUARANTINE_DURATION.  When in quarantine, drop
+>       all frames received from that node.
+> 
+>    waitretry:
+>       Abort the 6P Transaction.  Wait for a duration randomly and
+>       uniformly chosen from [WAIT_DURATION_MIN,WAIT_DURATION_MAX].
+1044d1049
+< 
+1050d1054
+< 
+1056d1059
+< 
+1067d1069
+< 
+1076d1077
+< 
+1085d1085
+< 
+1094d1093
+< 
+1105d1103
+< 

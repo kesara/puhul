@@ -1,0 +1,855 @@
+252,255c252,256
+<    Data item:  A single piece of CBOR data.  The structure of a data
+<       item may contain zero, one, or more nested data items.  The term
+<       is used both for the data item in representation format and for
+<       the abstract idea that can be derived from that by a decoder; the
+---
+>    Data item:
+>       A single piece of CBOR data.  The structure of a data item may
+>       contain zero, one, or more nested data items.  The term is used
+>       both for the data item in representation format and for the
+>       abstract idea that can be derived from that by a decoder; the
+259,260c260,262
+<    Decoder:  A process that decodes a well-formed encoded CBOR data item
+<       and makes it available to an application.  Formally speaking, a
+---
+>    Decoder:
+>       A process that decodes a well-formed encoded CBOR data item and
+>       makes it available to an application.  Formally speaking, a
+265,266c267,282
+<    Encoder:  A process that generates the (well-formed) representation
+<       format of a CBOR data item from application information.
+---
+>    Encoder:
+>       A process that generates the (well-formed) representation format
+>       of a CBOR data item from application information.
+> 
+>    Data Stream:
+>       A sequence of zero or more data items, not further assembled into
+>       a larger containing data item (see [RFC8742] for one application).
+>       The independent data items that make up a data stream are
+>       sometimes also referred to as "top-level data items".
+> 
+>    Well-formed:
+>       A data item that follows the syntactic structure of CBOR.  A well-
+>       formed data item uses the initial bytes and the byte strings and/
+>       or data items that are implied by their values as defined in CBOR
+>       and does not include following extraneous data.  CBOR decoders by
+>       definition only return contents from well-formed data items.
+268,280c284,285
+<    Data Stream:  A sequence of zero or more data items, not further
+<       assembled into a larger containing data item (see [RFC8742] for
+<       one application).  The independent data items that make up a data
+<       stream are sometimes also referred to as "top-level data items".
+< 
+<    Well-formed:  A data item that follows the syntactic structure of
+<       CBOR.  A well-formed data item uses the initial bytes and the byte
+<       strings and/or data items that are implied by their values as
+<       defined in CBOR and does not include following extraneous data.
+<       CBOR decoders by definition only return contents from well-formed
+<       data items.
+< 
+<    Valid:  A data item that is well-formed and also follows the semantic
+---
+>    Valid:
+>       A data item that is well-formed and also follows the semantic
+283,292c288,299
+<    Expected:  Besides its normal English meaning, the term "expected" is
+<       used to describe requirements beyond CBOR validity that an
+<       application has on its input data.  Well-formed (processable at
+<       all), valid (checked by a validity-checking generic decoder), and
+<       expected (checked by the application) form a hierarchy of layers
+<       of acceptability.
+< 
+<    Stream decoder:  A process that decodes a data stream and makes each
+<       of the data items in the sequence available to an application as
+<       they are received.
+---
+>    Expected:
+>       Besides its normal English meaning, the term "expected" is used to
+>       describe requirements beyond CBOR validity that an application has
+>       on its input data.  Well-formed (processable at all), valid
+>       (checked by a validity-checking generic decoder), and expected
+>       (checked by the application) form a hierarchy of layers of
+>       acceptability.
+> 
+>    Stream decoder:
+>       A process that decodes a data stream and makes each of the data
+>       items in the sequence available to an application as they are
+>       received.
+302c309
+<    power of 64 is notated: 2^(64).  In the plain-text version of this
+---
+>    power of 64 is notated: 2^64.  In the plain-text version of this
+329c336
+<    language) may be set in "monospace" type; in plain text, this is
+---
+>    language) may be set in monospace type; in plain text, this is
+353c360
+<    *  an integer in the range -2^(64)..2^(64)-1 inclusive
+---
+>    *  an integer in the range -2^64..2^64-1 inclusive
+372c379
+<       the range 0..2^(64)-1) and the tag content (a data item)
+---
+>       the range 0..2^64-1) and the tag content (a data item)
+391,392c398,399
+<    *  "false", "true", "null", and "undefined" (simple values identified
+<       by 20..23, Section 3.3)
+---
+>    *  false, true, null, and undefined (simple values identified by
+>       20..23, Section 3.3)
+412c419
+<    decoders can represent "false", "true", and "null" ("undefined" is
+---
+>    decoders can represent false, true, and null (undefined is
+431,435c438,442
+<    have both "0" and "0.0" as keys, and an encoder MUST NOT encode "0.0"
+<    as an integer (major type 0, Section 3.1).  However, if a specific
+<    data model declares that floating-point and integer representations
+<    of integral values are equivalent, using both map keys "0" and "0.0"
+<    in a single map would be considered duplicates, even while encoded as
+---
+>    have both 0 and 0.0 as keys, and an encoder MUST NOT encode 0.0 as an
+>    integer (major type 0, Section 3.1).  However, if a specific data
+>    model declares that floating-point and integer representations of
+>    integral values are equivalent, using both map keys 0 and 0.0 in a
+>    single map would be considered duplicates, even while encoded as
+461,469c468,478
+<    24, 25, 26, or 27:  The argument's value is held in the following 1,
+<       2, 4, or 8 bytes, respectively, in network byte order.  For major
+<       type 7 and additional information value 25, 26, 27, these bytes
+<       are not used as an integer argument, but as a floating-point value
+<       (see Section 3.3).
+< 
+<    28, 29, 30:  These values are reserved for future additions to the
+<       CBOR format.  In the present version of CBOR, the encoded item is
+<       not well-formed.
+---
+>    24, 25, 26, or 27:
+>       The argument's value is held in the following 1, 2, 4, or 8 bytes,
+>       respectively, in network byte order.  For major type 7 and
+>       additional information value 25, 26, 27, these bytes are not used
+>       as an integer argument, but as a floating-point value (see
+>       Section 3.3).
+> 
+>    28, 29, 30:
+>       These values are reserved for future additions to the CBOR format.
+>       In the present version of CBOR, the encoded item is not well-
+>       formed.
+471c480,481
+<    31:  No argument value is derived.  If the major type is 0, 1, or 6,
+---
+>    31:
+>       No argument value is derived.  If the major type is 0, 1, or 6,
+507c517
+<       An unsigned integer in the range 0..2^(64)-1 inclusive.  The value
+---
+>       An unsigned integer in the range 0..2^64-1 inclusive.  The value
+515,518c525,528
+<       A negative integer in the range -2^(64)..-1 inclusive.  The value
+<       of the item is -1 minus the argument.  For example, the integer
+<       -500 would be 0b001_11001 (major type 1, additional information
+<       25) followed by the two bytes 0x01f3, which is 499 in decimal.
+---
+>       A negative integer in the range -2^64..-1 inclusive.  The value of
+>       the item is -1 minus the argument.  For example, the integer -500
+>       would be 0b001_11001 (major type 1, additional information 25)
+>       followed by the two bytes 0x01f3, which is 499 in decimal.
+573,575c583,585
+<       range 0..2^(64)-1 inclusive, is the argument and whose enclosed
+<       data item (_tag content_) is the single encoded data item that
+<       follows the head.  See Section 3.4.
+---
+>       range 0..2^64-1 inclusive, is the argument and whose enclosed data
+>       item (_tag content_) is the single encoded data item that follows
+>       the head.  See Section 3.4.
+872,875c882,885
+<    (This implies that an encoder cannot encode "false", "true", "null",
+<    or "undefined" in two-byte sequences and that only the one-byte
+<    variants of these are well-formed; more generally speaking, each
+<    simple value only has a single representation variant).
+---
+>    (This implies that an encoder cannot encode false, true, null, or
+>    undefined in two-byte sequences and that only the one-byte variants
+>    of these are well-formed; more generally speaking, each simple value
+>    only has a single representation variant).
+922,927c932,937
+<    As a matter of convention, many tags do not accept "null" or
+<    "undefined" values as tag content; instead, the expectation is that a
+<    "null" or "undefined" value can be used in place of the entire tag;
+<    Section 3.4.2 provides some further considerations for one specific
+<    tag about the handling of this convention in application protocols
+<    and in mapping to platform types.
+---
+>    As a matter of convention, many tags do not accept null or undefined
+>    values as tag content; instead, the expectation is that a null or
+>    undefined value can be used in place of the entire tag; Section 3.4.2
+>    provides some further considerations for one specific tag about the
+>    handling of this convention in application protocols and in mapping
+>    to platform types.
+1032c1042
+<    by the "date-time" production in [RFC3339], as refined by Section 3.3
+---
+>    by the date-time production in [RFC3339], as refined by Section 3.3
+1071,1079c1081,1089
+<    Note that platform types for date/time may include "null" or
+<    "undefined" values, which may also be desirable at an application
+<    protocol level.  While emitting tag number 1 values with non-finite
+<    tag content values (e.g., with NaN for undefined date/time values or
+<    with Infinity for an expiry date that is not set) may seem an obvious
+<    way to handle this, using untagged "null" or "undefined" avoids the
+<    use of non-finites and results in a shorter encoding.  Application
+<    protocol designers are encouraged to consider these cases and include
+<    clear guidelines for handling them.
+---
+>    Note that platform types for date/time may include null or undefined
+>    values, which may also be desirable at an application protocol level.
+>    While emitting tag number 1 values with non-finite tag content values
+>    (e.g., with NaN for undefined date/time values or with Infinity for
+>    an expiry date that is not set) may seem an obvious way to handle
+>    this, using untagged null or undefined avoids the use of non-finites
+>    and results in a shorter encoding.  Application protocol designers
+>    are encouraged to consider these cases and include clear guidelines
+>    for handling them.
+1109,1110c1119,1120
+<    For example, the number 18446744073709551616 (2^(64)) is represented
+<    as 0b110_00010 (major type 6, tag number 2), followed by 0b010_01001
+---
+>    For example, the number 18446744073709551616 (2^64) is represented as
+>    0b110_00010 (major type 6, tag number 2), followed by 0b010_01001
+1122,1125c1132,1135
+<    m*(10^(e)).  Protocols using tag number 5 extend the generic data
+<    model with data items representing arbitrary-length binary fractions
+<    of the form m*(2^(e)).  As with bignums, values of different types
+<    are not equal in the generic data model.
+---
+>    m*(10^e).  Protocols using tag number 5 extend the generic data model
+>    with data items representing arbitrary-length binary fractions of the
+>    form m*(2^e).  As with bignums, values of different types are not
+>    equal in the generic data model.
+1143c1153
+<    the value of a decimal fraction data item is m*(10^(e)).  Bigfloats
+---
+>    the value of a decimal fraction data item is m*(10^e).  Bigfloats
+1145,1146c1155,1156
+<    item is m*(2^(e)).  The exponent e MUST be represented in an integer
+<    of major type 0 or 1, while the mantissa can also be a bignum
+---
+>    item is m*(2^e).  The exponent e MUST be represented in an integer of
+>    major type 0 or 1, while the mantissa can also be a bignum
+1243c1253
+<       string doesn't match the "URI-reference" production, the string is
+---
+>       string doesn't match the URI-reference production, the string is
+1464c1474
+<    absolute value of 2^(64) or larger using tag numbers 2 or 3
+---
+>    absolute value of 2^64 or larger using tag numbers 2 or 3
+1649c1659
+<    "0x62c0ae" does not contain valid UTF-8 (because [RFC3629] requires
+---
+>    0x62c0ae does not contain valid UTF-8 (because [RFC3629] requires
+1654,1660c1664,1670
+<    text string with contents that do not match the "date-time"
+<    production of [RFC3339].  There is no requirement that generic
+<    encoders and decoders make unnatural choices for their application
+<    interface to enable the processing of invalid data.  Generic encoders
+<    and decoders are expected to forward simple values and tags even if
+<    their specific codepoints are not registered at the time the encoder/
+<    decoder is written (Section 5.4).
+---
+>    text string with contents that do not match the date-time production
+>    of [RFC3339].  There is no requirement that generic encoders and
+>    decoders make unnatural choices for their application interface to
+>    enable the processing of invalid data.  Generic encoders and decoders
+>    are expected to forward simple values and tags even if their specific
+>    codepoints are not registered at the time the encoder/decoder is
+>    written (Section 5.4).
+1699,1701c1709,1712
+<    Invalid UTF-8 string:  A decoder might or might not want to verify
+<       that the sequence of bytes in a UTF-8 string (major type 3) is
+<       actually valid UTF-8 and react appropriately.
+---
+>    Invalid UTF-8 string:
+>       A decoder might or might not want to verify that the sequence of
+>       bytes in a UTF-8 string (major type 3) is actually valid UTF-8 and
+>       react appropriately.
+1718,1724c1729,1736
+<    Inadmissible value for tag content:  The type of data item may be
+<       admissible for a tag's content, but the specific value may not be;
+<       e.g., a value of "yesterday" is not acceptable for the content of
+<       tag 0, even though it properly is a text string.  A decoder that
+<       normally ingests such tags into equivalent platform types might
+<       present this tag to the application in a similar way to how it
+<       would present a tag with an unknown tag number (Section 5.4).
+---
+>    Inadmissible value for tag content:
+>       The type of data item may be admissible for a tag's content, but
+>       the specific value may not be; e.g., a value of "yesterday" is not
+>       acceptable for the content of tag 0, even though it properly is a
+>       text string.  A decoder that normally ingests such tags into
+>       equivalent platform types might present this tag to the
+>       application in a similar way to how it would present a tag with an
+>       unknown tag number (Section 5.4).
+1782,1784c1794,1796
+<    -2^(64)..2^(64)-1 for 1+8-byte integers) than the typical platform
+<    signed integer representation of the same length (-2^(63)..2^(63)-1
+<    for 8-byte int64_t).  A protocol that uses numbers should define its
+---
+>    -2^64..2^64-1 for 1+8-byte integers) than the typical platform signed
+>    integer representation of the same length (-2^63..2^63-1 for 8-byte
+>    int64_t).  A protocol that uses numbers should define its
+1940,1942c1952,1954
+<    "undefined" might be used by an encoder as a substitute for a data
+<    item with an encoding problem, in order to allow the rest of the
+<    enclosing data items to be encoded without harm.
+---
+>    undefined might be used by an encoder as a substitute for a data item
+>    with an encoding problem, in order to allow the rest of the enclosing
+>    data items to be encoded without harm.
+2038,2047c2050,2059
+<       represented as integer is -2^(53)+1..2^(53)-1 (fully exploiting
+<       the range for exact integers in the binary64 representation often
+<       used for decoding JSON [RFC7493]).  A CBOR-based protocol, or a
+<       generic converter implementation, may choose -2^(32)..2^(32)-1 or
+<       -2^(64)..2^(64)-1 (fully using the integer ranges available in
+<       CBOR with uint32_t or uint64_t, respectively) or even
+<       -2^(31)..2^(31)-1 or -2^(63)..2^(63)-1 (using popular ranges for
+<       two's complement signed integers).  (If the JSON was generated
+<       from a JavaScript implementation, its precision is already limited
+<       to 53 bits maximum.)
+---
+>       represented as integer is -2^53+1..2^53-1 (fully exploiting the
+>       range for exact integers in the binary64 representation often used
+>       for decoding JSON [RFC7493]).  A CBOR-based protocol, or a generic
+>       converter implementation, may choose -2^32..2^32-1 or
+>       -2^64..2^64-1 (fully using the integer ranges available in CBOR
+>       with uint32_t or uint64_t, respectively) or even -2^31..2^31-1 or
+>       -2^63..2^63-1 (using popular ranges for two's complement signed
+>       integers).  (If the JSON was generated from a JavaScript
+>       implementation, its precision is already limited to 53 bits
+>       maximum.)
+2115,2133c2127,2132
+<    the "simple" space (values in major type 7):  Of the 24 efficient
+<       (and 224 slightly less efficient) values, only a small number have
+<       been allocated.  Implementations receiving an unknown simple data
+<       item may easily be able to process it as such, given that the
+<       structure of the value is indeed simple.  The IANA registry in
+<       Section 9.1 is the appropriate way to address the extensibility of
+<       this codepoint space.
+< 
+<    the "tag" space (values in major type 6):  The total codepoint space
+<       is abundant; only a tiny part of it has been allocated.  However,
+<       not all of these codepoints are equally efficient: the first 24
+<       only consume a single ("1+0") byte, and half of them have already
+<       been allocated.  The next 232 values only consume two ("1+1")
+<       bytes, with nearly a quarter already allocated.  These subspaces
+<       need some curation to last for a few more decades.
+<       Implementations receiving an unknown tag number can choose to
+<       process just the enclosed tag content or, preferably, to process
+<       the tag as an unknown tag number wrapping the tag content.  The
+<       IANA registry in Section 9.2 is the appropriate way to address the
+---
+>    the "simple" space (values in major type 7):
+>       Of the 24 efficient (and 224 slightly less efficient) values, only
+>       a small number have been allocated.  Implementations receiving an
+>       unknown simple data item may easily be able to process it as such,
+>       given that the structure of the value is indeed simple.  The IANA
+>       registry in Section 9.1 is the appropriate way to address the
+2136,2140c2135,2153
+<    the "additional information" space:  An implementation receiving an
+<       unknown additional information value has no way to continue
+<       decoding, so allocating codepoints in this space is a major step
+<       beyond just exercising an extension point.  There are also very
+<       few codepoints left.  See also Section 7.2.
+---
+>    the "tag" space (values in major type 6):
+>       The total codepoint space is abundant; only a tiny part of it has
+>       been allocated.  However, not all of these codepoints are equally
+>       efficient: the first 24 only consume a single ("1+0") byte, and
+>       half of them have already been allocated.  The next 232 values
+>       only consume two ("1+1") bytes, with nearly a quarter already
+>       allocated.  These subspaces need some curation to last for a few
+>       more decades.  Implementations receiving an unknown tag number can
+>       choose to process just the enclosed tag content or, preferably, to
+>       process the tag as an unknown tag number wrapping the tag content.
+>       The IANA registry in Section 9.2 is the appropriate way to address
+>       the extensibility of this codepoint space.
+> 
+>    the "additional information" space:
+>       An implementation receiving an unknown additional information
+>       value has no way to continue decoding, so allocating codepoints in
+>       this space is a major step beyond just exercising an extension
+>       point.  There are also very few codepoints left.  See also
+>       Section 7.2.
+2225c2238
+<    interested in this information.  For example, "_" or "_3".  Encoding
+---
+>    interested in this information.  For example, _ or _3.  Encoding
+2336,2338c2349,2351
+<    Person & email address to contact for further information:  IETF CBOR
+<       Working Group (cbor@ietf.org) or IETF Applications and Real-Time
+<       Area (art@ietf.org)
+---
+>    Person & email address to contact for further information:
+>       IETF CBOR Working Group (cbor@ietf.org) or IETF Applications and
+>       Real-Time Area (art@ietf.org)
+2399,2400c2412,2414
+<    Contact:  IETF CBOR Working Group (cbor@ietf.org) or IETF
+<       Applications and Real-Time Area (art@ietf.org)
+---
+>    Contact:
+>       IETF CBOR Working Group (cbor@ietf.org) or IETF Applications and
+>       Real-Time Area (art@ietf.org)
+2761c2775
+<    +==============================+====================================+
+---
+>     +============================+====================================+
+2763c2777
+<    +==============================+====================================+
+---
+>     +============================+====================================+
+2765c2779
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2767c2781
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2769c2783
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2771c2785
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2773c2787
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2775c2789
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2777c2791
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2779c2793
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2781c2795
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2783c2797
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2785c2799
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2787c2801
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2789c2803
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2791c2805
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2793c2807
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2795c2809
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2797c2811
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2799c2813
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2801c2815
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2803c2817
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2805c2819
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2807c2821
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2809c2823
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2811c2825
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2813c2827
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2815c2829
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2817c2831
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2819c2833
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2821c2835
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2823c2837
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2825c2839
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2827c2841
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2829c2843
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2831c2845
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2833c2847
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2835c2849
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2837c2851
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2839c2853
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2841c2855
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2843c2857
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2845c2859
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2847c2861
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2849c2863
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2851c2865
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2853c2867
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2855c2869
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2858c2872
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2860c2874
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2862c2876
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2864c2878
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2866c2880
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2869c2883
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2871c2885
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2873c2887
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2875c2889
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2877c2891
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2879c2893
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2881c2895
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2883c2897
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2885c2899
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2887c2901
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2889c2903
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2891c2905
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2893c2907
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2898c2912
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2900c2914
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2902c2916
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2904c2918
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2906,2909c2920,2923
+<    +------------------------------+------------------------------------+
+<    |{"a": "A", "b": "B", "c": "C",| 0xa5616161416162614261636143616461 |
+<    |"d": "D", "e": "E"}           | 4461656145                         |
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+>     |{"a": "A", "b": "B", "c":   | 0xa5616161416162614261636143616461 |
+>     |"C", "d": "D", "e": "E"}    | 4461656145                         |
+>     +----------------------------+------------------------------------+
+2911c2925
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2913c2927
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2915c2929
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2917c2931
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2919c2933
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2921c2935
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2923,2928c2937,2942
+<    +------------------------------+------------------------------------+
+<    |[_ 1, 2, 3, 4, 5, 6, 7, 8, 9, | 0x9f0102030405060708090a0b0c0d0e0f |
+<    |10, 11, 12, 13, 14, 15, 16,   | 101112131415161718181819ff         |
+<    |17, 18, 19, 20, 21, 22, 23,   |                                    |
+<    |24, 25]                       |                                    |
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+>     |[_ 1, 2, 3, 4, 5, 6, 7, 8,  | 0x9f0102030405060708090a0b0c0d0e0f |
+>     |9, 10, 11, 12, 13, 14, 15,  | 101112131415161718181819ff         |
+>     |16, 17, 18, 19, 20, 21, 22, |                                    |
+>     |23, 24, 25]                 |                                    |
+>     +----------------------------+------------------------------------+
+2930c2944
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2932c2946
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+2934c2948
+<    +------------------------------+------------------------------------+
+---
+>     +----------------------------+------------------------------------+
+3111c3125
+<    Note that "well_formed" returns the major type for well-formed
+---
+>    Note that well_formed returns the major type for well-formed
+3113,3115c3127,3129
+<    for a "break" stop code, only if "breakable" is set).  This is used
+<    in "well_formed_indefinite" to ascertain that indefinite-length
+<    strings only contain definite-length strings as chunks.
+---
+>    for a "break" stop code, only if breakable is set).  This is used in
+>    well_formed_indefinite to ascertain that indefinite-length strings
+>    only contain definite-length strings as chunks.
+3365,3378c3379,3394
+<    Too much data:  There are input bytes left that were not consumed.
+<       This is only an error if the application assumed that the input
+<       bytes would span exactly one data item.  Where the application
+<       uses the self-delimiting nature of CBOR encoding to permit
+<       additional data after the data item, as is done in CBOR sequences
+<       [RFC8742], for example, the CBOR decoder can simply indicate which
+<       part of the input has not been consumed.
+< 
+<    Too little data:  The input data available would need additional
+<       bytes added at their end for a complete CBOR data item.  This may
+<       indicate the input is truncated; it is also a common error when
+<       trying to decode random data as CBOR.  For some applications,
+<       however, this may not actually be an error, as the application may
+<       not be certain it has all the data yet and can obtain or wait for
+---
+>    Too much data:
+>       There are input bytes left that were not consumed.  This is only
+>       an error if the application assumed that the input bytes would
+>       span exactly one data item.  Where the application uses the self-
+>       delimiting nature of CBOR encoding to permit additional data after
+>       the data item, as is done in CBOR sequences [RFC8742], for
+>       example, the CBOR decoder can simply indicate which part of the
+>       input has not been consumed.
+> 
+>    Too little data:
+>       The input data available would need additional bytes added at
+>       their end for a complete CBOR data item.  This may indicate the
+>       input is truncated; it is also a common error when trying to
+>       decode random data as CBOR.  For some applications, however, this
+>       may not actually be an error, as the application may not be
+>       certain it has all the data yet and can obtain or wait for
+3384,3386c3400,3403
+<    Syntax error:  The input data are not consistent with the
+<       requirements of the CBOR encoding, and this cannot be remedied by
+<       adding (or removing) data at the end.
+---
+>    Syntax error:
+>       The input data are not consistent with the requirements of the
+>       CBOR encoding, and this cannot be remedied by adding (or removing)
+>       data at the end.
+3430,3439c3447,3457
+<    End of input in a head:  18, 19, 1a, 1b, 19 01, 1a 01 02, 1b 01 02 03
+<       04 05 06 07, 38, 58, 78, 98, 9a 01 ff 00, b8, d8, f8, f9 00, fa 00
+<       00, fb 00 00 00
+< 
+<    Definite-length strings with short data:  41, 61, 5a ff ff ff ff 00,
+<       5b ff ff ff ff ff ff ff ff 01 02 03, 7a ff ff ff ff 00, 7b 7f ff
+<       ff ff ff ff ff ff 01 02 03
+< 
+<    Definite-length maps and arrays not closed with enough items:  81, 81
+<       81 81 81 81 81 81 81 81, 82 00, a1, a2 01 02, a1 00, a2 00 00 00
+---
+>    End of input in a head:
+>       18, 19, 1a, 1b, 19 01, 1a 01 02, 1b 01 02 03 04 05 06 07, 38, 58,
+>       78, 98, 9a 01 ff 00, b8, d8, f8, f9 00, fa 00 00, fb 00 00 00
+> 
+>    Definite-length strings with short data:
+>       41, 61, 5a ff ff ff ff 00, 5b ff ff ff ff ff ff ff ff 01 02 03, 7a
+>       ff ff ff ff 00, 7b 7f ff ff ff ff ff ff ff 01 02 03
+> 
+>    Definite-length maps and arrays not closed with enough items:
+>       81, 81 81 81 81 81 81 81 81 81, 82 00, a1, a2 01 02, a1 00, a2 00
+>       00 00
+3447,3448c3465,3467
+<    code:  9f, 9f 01 02, bf, bf 01 02 01 02, 81 9f, 9f 80 00, 9f 9f 9f 9f
+<       9f ff ff ff ff, 9f 81 9f 81 9f 9f ff ff ff
+---
+>    code:
+>       9f, 9f 01 02, bf, bf 01 02 01 02, 81 9f, 9f 80 00, 9f 9f 9f 9f 9f
+>       ff ff ff ff, 9f 81 9f 81 9f 9f ff ff ff
+3454,3456c3473,3475
+<       Reserved additional information values:  1c, 1d, 1e, 3c, 3d, 3e,
+<          5c, 5d, 5e, 7c, 7d, 7e, 9c, 9d, 9e, bc, bd, be, dc, dd, de, fc,
+<          fd, fe,
+---
+>       Reserved additional information values:
+>          1c, 1d, 1e, 3c, 3d, 3e, 5c, 5d, 5e, 7c, 7d, 7e, 9c, 9d, 9e, bc,
+>          bd, be, dc, dd, de, fc, fd, fe,
+3463,3465c3482,3484
+<       Indefinite-length string chunks not of the correct type:  5f 00
+<          ff, 5f 21 ff, 5f 61 00 ff, 5f 80 ff, 5f a0 ff, 5f c0 00 ff, 5f
+<          e0 ff, 7f 41 00 ff
+---
+>       Indefinite-length string chunks not of the correct type:
+>          5f 00 ff, 5f 21 ff, 5f 61 00 ff, 5f 80 ff, 5f a0 ff, 5f c0 00
+>          ff, 5f e0 ff, 7f 41 00 ff
+3474,3476c3493,3495
+<       Break occurring in a definite-length array or map or a tag:  81
+<          ff, 82 00 ff, a1 ff, a1 ff 00, a1 00 ff, a2 00 00 ff, 9f 81 ff,
+<          9f 82 9f 81 9f 9f ff ff ff ff
+---
+>       Break occurring in a definite-length array or map or a tag:
+>          81 ff, 82 00 ff, a1 ff, a1 ff 00, a1 00 ff, a2 00 00 ff, 9f 81
+>          ff, 9f 82 9f 81 9f 9f ff ff ff ff
+3666d3684
+< 
+3673d3690
+< 
