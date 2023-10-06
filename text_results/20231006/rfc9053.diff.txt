@@ -1,0 +1,431 @@
+161,178c161,179
+<    Constrained Application Protocol (CoAP):  A specialized web transfer
+<       protocol for use in constrained systems.  It is defined in
+<       [RFC7252].
+< 
+<    Authenticated Encryption (AE) algorithms [RFC5116]:  Encryption
+<       algorithms that provide an authentication check of the contents
+<       along with the encryption service.  An example of an AE algorithm
+<       used in COSE is AES Key Wrap [RFC3394].  These algorithms are used
+<       for key encryption, but Authenticated Encryption with Associated
+<       Data (AEAD) algorithms would be preferred.
+< 
+<    AEAD algorithms [RFC5116]:  Encryption algorithms that provide the
+<       same authentication service of the content as AE algorithms do,
+<       and also allow associated data that is not part of the encrypted
+<       body to be included in the authentication service.  An example of
+<       an AEAD algorithm used in COSE is AES-GCM [RFC5116].  These
+<       algorithms are used for content encryption and can be used for key
+<       encryption as well.
+---
+>    Constrained Application Protocol (CoAP):
+>       A specialized web transfer protocol for use in constrained
+>       systems.  It is defined in [RFC7252].
+> 
+>    Authenticated Encryption (AE) algorithms [RFC5116]:
+>       Encryption algorithms that provide an authentication check of the
+>       contents along with the encryption service.  An example of an AE
+>       algorithm used in COSE is AES Key Wrap [RFC3394].  These
+>       algorithms are used for key encryption, but Authenticated
+>       Encryption with Associated Data (AEAD) algorithms would be
+>       preferred.
+> 
+>    AEAD algorithms [RFC5116]:
+>       Encryption algorithms that provide the same authentication service
+>       of the content as AE algorithms do, and also allow associated data
+>       that is not part of the encrypted body to be included in the
+>       authentication service.  An example of an AEAD algorithm used in
+>       COSE is AES-GCM [RFC5116].  These algorithms are used for content
+>       encryption and can be used for key encryption as well.
+675,681c676,684
+<    64 bits (8):  This produces a 64-bit authentication tag.  This
+<       implies that there is a 1 in 2^64 chance that a modified message
+<       will authenticate.
+< 
+<    128 bits (16):  This produces a 128-bit authentication tag.  This
+<       implies that there is a 1 in 2^128 chance that a modified message
+<       will authenticate.
+---
+>    64 bits (8):
+>       This produces a 64-bit authentication tag.  This implies that
+>       there is a 1 in 2^64 chance that a modified message will
+>       authenticate.
+> 
+>    128 bits (16):
+>       This produces a 128-bit authentication tag.  This implies that
+>       there is a 1 in 2^128 chance that a modified message will
+>       authenticate.
+863,876c866,881
+<    secret:  A shared value that is secret.  Secrets may be either
+<       previously shared or derived from operations like a Diffie-Hellman
+<       (DH) key agreement.
+< 
+<    salt:  An optional value that is used to change the generation
+<       process.  The salt value can be either public or private.  If the
+<       salt is public and carried in the message, then the "salt"
+<       algorithm header parameter defined in Table 9 is used.  While
+<       [RFC5869] suggests that the length of the salt be the same as the
+<       length of the underlying hash value, any positive salt length will
+<       improve the security, as different key values will be generated.
+<       This parameter is protected by being included in the key
+<       computation and does not need to be separately authenticated.  The
+<       salt value does not need to be unique for every message sent.
+---
+>    secret:
+>       A shared value that is secret.  Secrets may be either previously
+>       shared or derived from operations like a Diffie-Hellman (DH) key
+>       agreement.
+> 
+>    salt:
+>       An optional value that is used to change the generation process.
+>       The salt value can be either public or private.  If the salt is
+>       public and carried in the message, then the "salt" algorithm
+>       header parameter defined in Table 9 is used.  While [RFC5869]
+>       suggests that the length of the salt be the same as the length of
+>       the underlying hash value, any positive salt length will improve
+>       the security, as different key values will be generated.  This
+>       parameter is protected by being included in the key computation
+>       and does not need to be separately authenticated.  The salt value
+>       does not need to be unique for every message sent.
+880,885c885,891
+<    context information:  Information that describes the context in which
+<       the resulting value will be used.  Making this information
+<       specific to the context in which the material is going to be used
+<       ensures that the resulting material will always be tied to that
+<       usage.  The context structure defined in Section 5.2 is used by
+<       the KDFs in this document.
+---
+>    context information:
+>       Information that describes the context in which the resulting
+>       value will be used.  Making this information specific to the
+>       context in which the material is going to be used ensures that the
+>       resulting material will always be tied to that usage.  The context
+>       structure defined in Section 5.2 is used by the KDFs in this
+>       document.
+887c893,894
+<    PRF:  The underlying pseudorandom function to be used in the HKDF
+---
+>    PRF:
+>       The underlying pseudorandom function to be used in the HKDF
+1082,1091c1089,1099
+<    AlgorithmID:  This field indicates the algorithm for which the key
+<       material will be used.  This normally is either a key wrap
+<       algorithm identifier or a content encryption algorithm identifier.
+<       The values are from the "COSE Algorithms" registry.  This field is
+<       required to be present.  The field exists in the context
+<       information so that a different key is generated for each
+<       algorithm even if all of the other context information is the
+<       same.  In practice, this means if algorithm A is broken and thus
+<       finding the key is relatively easy, the key derived for algorithm
+<       B will not be the same as the key derived for algorithm A.
+---
+>    AlgorithmID:
+>       This field indicates the algorithm for which the key material will
+>       be used.  This normally is either a key wrap algorithm identifier
+>       or a content encryption algorithm identifier.  The values are from
+>       the "COSE Algorithms" registry.  This field is required to be
+>       present.  The field exists in the context information so that a
+>       different key is generated for each algorithm even if all of the
+>       other context information is the same.  In practice, this means if
+>       algorithm A is broken and thus finding the key is relatively easy,
+>       the key derived for algorithm B will not be the same as the key
+>       derived for algorithm A.
+1128c1136,1137
+<       other:  This contains other information that is defined by the
+---
+>       other:
+>          This contains other information that is defined by the
+1132,1133c1141,1143
+<    PartyVInfo:  This field holds information about PartyV.  The content
+<       of the structure is the same as for the PartyUInfo but for PartyV.
+---
+>    PartyVInfo:
+>       This field holds information about PartyV.  The content of the
+>       structure is the same as for the PartyUInfo but for PartyV.
+1138,1160c1148,1163
+<       keyDataLength:  This is set to the number of bits of the desired
+<          output value.  This practice means if algorithm A can use two
+<          different key lengths, the key derived for the longer key size
+<          will not contain the key for the shorter key size as a prefix.
+< 
+<       protected:  This field contains the protected parameter field.  If
+<          there are no elements in the "protected" field, then use a
+<          zero-length bstr.
+< 
+<       other:  This field is for free-form data defined by the
+<          application.  For example, an application could define two
+<          different byte strings to be placed here to generate different
+<          keys for a data stream versus a control stream.  This field is
+<          optional and will only be present if the application defines a
+<          structure for this information.  Applications that define this
+<          SHOULD use CBOR to encode the data so that types and lengths
+<          are correctly included.
+< 
+<    SuppPrivInfo:  This field contains private information that is
+<       mutually known private information.  An example of this
+<       information would be a pre-existing shared secret.  (This could,
+<       for example, be used in combination with an ECDH key agreement to
+<       provide a secondary proof of identity.)  The field is optional and
+---
+>       keyDataLength:
+>          This is set to the number of bits of the desired output value.
+>          This practice means if algorithm A can use two different key
+>          lengths, the key derived for the longer key size will not
+>          contain the key for the shorter key size as a prefix.
+> 
+>       protected:
+>          This field contains the protected parameter field.  If there
+>          are no elements in the "protected" field, then use a zero-
+>          length bstr.
+> 
+>       other:
+>          This field is for free-form data defined by the application.
+>          For example, an application could define two different byte
+>          strings to be placed here to generate different keys for a data
+>          stream versus a control stream.  This field is optional and
+1162,1163c1165,1166
+<       this information.  Applications that define this SHOULD use CBOR
+<       to encode the data so that types and lengths are correctly
+---
+>          this information.  Applications that define this SHOULD use
+>          CBOR to encode the data so that types and lengths are correctly
+1165a1169,1178
+>    SuppPrivInfo:
+>       This field contains private information that is mutually known
+>       private information.  An example of this information would be a
+>       pre-existing shared secret.  (This could, for example, be used in
+>       combination with an ECDH key agreement to provide a secondary
+>       proof of identity.)  The field is optional and will only be
+>       present if the application defines a structure for this
+>       information.  Applications that define this SHOULD use CBOR to
+>       encode the data so that types and lengths are correctly included.
+> 
+1389,1428c1402,1442
+<    Computed Secret to Shared Secret:  Once the computed secret is known,
+<       the resulting value needs to be converted to a byte string to run
+<       the KDF.  The x-coordinate is used for all of the curves defined
+<       in this document.  For curves X25519 and X448, the resulting value
+<       is used directly, as it is a byte string of a known length.  For
+<       the P-256, P-384, and P-521 curves, the x-coordinate is run
+<       through the Integer-to-Octet-String primitive (I2OSP) function
+<       defined in [RFC8017], using the same computation for n as is
+<       defined in Section 2.1.
+< 
+<    Ephemeral-Static or Static-Static:  The key agreement process may be
+<       done using either a static or an ephemeral key for the sender's
+<       side.  When using ephemeral keys, the sender MUST generate a new
+<       ephemeral key for every key agreement operation.  The ephemeral
+<       key is placed in the "ephemeral key" parameter and MUST be present
+<       for all algorithm identifiers that use ephemeral keys.  When using
+<       static keys, the sender MUST either generate a new random value or
+<       create a unique value for use as a KDF input.  For the KDFs used,
+<       this means that either the "salt" parameter for HKDF (Table 9) or
+<       the "PartyU nonce" parameter for the context structure (Table 10)
+<       MUST be present (both can be present if desired).  The value in
+<       the parameter MUST be unique for the pair of keys being used.  It
+<       is acceptable to use a global counter that is incremented for
+<       every Static-Static operation and use the resulting value.  Care
+<       must be taken that the counter is saved to permanent storage in a
+<       way that avoids reuse of that counter value.  When using static
+<       keys, the static key should be identified to the recipient.  The
+<       static key can be identified by providing either the key ("static
+<       key") or a key identifier for the static key ("static key id").
+<       Both of these header parameters are defined in Table 15.
+< 
+<    Key Derivation Algorithm:  The result of an ECDH key agreement
+<       process does not provide a uniformly random secret.  As such, it
+<       needs to be run through a KDF in order to produce a usable key.
+<       Processing the secret through a KDF also allows for the
+<       introduction of context material: how the key is going to be used
+<       and one-time material for Static-Static key agreement.  All of the
+<       algorithms defined in this document use one of the HKDF algorithms
+<       defined in Section 5.1 with the context structure defined in
+<       Section 5.2.
+---
+>    Computed Secret to Shared Secret:
+>       Once the computed secret is known, the resulting value needs to be
+>       converted to a byte string to run the KDF.  The x-coordinate is
+>       used for all of the curves defined in this document.  For curves
+>       X25519 and X448, the resulting value is used directly, as it is a
+>       byte string of a known length.  For the P-256, P-384, and P-521
+>       curves, the x-coordinate is run through the Integer-to-Octet-
+>       String primitive (I2OSP) function defined in [RFC8017], using the
+>       same computation for n as is defined in Section 2.1.
+> 
+>    Ephemeral-Static or Static-Static:
+>       The key agreement process may be done using either a static or an
+>       ephemeral key for the sender's side.  When using ephemeral keys,
+>       the sender MUST generate a new ephemeral key for every key
+>       agreement operation.  The ephemeral key is placed in the
+>       "ephemeral key" parameter and MUST be present for all algorithm
+>       identifiers that use ephemeral keys.  When using static keys, the
+>       sender MUST either generate a new random value or create a unique
+>       value for use as a KDF input.  For the KDFs used, this means that
+>       either the "salt" parameter for HKDF (Table 9) or the "PartyU
+>       nonce" parameter for the context structure (Table 10) MUST be
+>       present (both can be present if desired).  The value in the
+>       parameter MUST be unique for the pair of keys being used.  It is
+>       acceptable to use a global counter that is incremented for every
+>       Static-Static operation and use the resulting value.  Care must be
+>       taken that the counter is saved to permanent storage in a way that
+>       avoids reuse of that counter value.  When using static keys, the
+>       static key should be identified to the recipient.  The static key
+>       can be identified by providing either the key ("static key") or a
+>       key identifier for the static key ("static key id").  Both of
+>       these header parameters are defined in Table 15.
+> 
+>    Key Derivation Algorithm:
+>       The result of an ECDH key agreement process does not provide a
+>       uniformly random secret.  As such, it needs to be run through a
+>       KDF in order to produce a usable key.  Processing the secret
+>       through a KDF also allows for the introduction of context
+>       material: how the key is going to be used and one-time material
+>       for Static-Static key agreement.  All of the algorithms defined in
+>       this document use one of the HKDF algorithms defined in
+>       Section 5.1 with the context structure defined in Section 5.2.
+1445c1459
+<    +==========+=======+=========+==================+=====+=============+
+---
+>    +==========+=======+=========+==================+====+==============+
+1448,1451c1462,1466
+<    +==========+=======+=========+==================+=====+=============+
+<    |ECDH-ES + | -25   | HKDF -- | yes              |none |ECDH ES w/   |
+<    |HKDF-256  |       | SHA-256 |                  |     |HKDF --      |
+<    |          |       |         |                  |     |generate key |
+---
+>    +==========+=======+=========+==================+====+==============+
+>    | ECDH-ES  | -25   | HKDF -- | yes              |none| ECDH ES w/   |
+>    | +        |       | SHA-256 |                  |    | HKDF --      |
+>    | HKDF-256 |       |         |                  |    | generate     |
+>    |          |       |         |                  |    | key          |
+1453,1456c1468,1472
+<    +----------+-------+---------+------------------+-----+-------------+
+<    |ECDH-ES + | -26   | HKDF -- | yes              |none |ECDH ES w/   |
+<    |HKDF-512  |       | SHA-512 |                  |     |HKDF --      |
+<    |          |       |         |                  |     |generate key |
+---
+>    +----------+-------+---------+------------------+----+--------------+
+>    | ECDH-ES  | -26   | HKDF -- | yes              |none| ECDH ES w/   |
+>    | +        |       | SHA-512 |                  |    | HKDF --      |
+>    | HKDF-512 |       |         |                  |    | generate     |
+>    |          |       |         |                  |    | key          |
+1458,1461c1474,1478
+<    +----------+-------+---------+------------------+-----+-------------+
+<    |ECDH-SS + | -27   | HKDF -- | no               |none |ECDH SS w/   |
+<    |HKDF-256  |       | SHA-256 |                  |     |HKDF --      |
+<    |          |       |         |                  |     |generate key |
+---
+>    +----------+-------+---------+------------------+----+--------------+
+>    | ECDH-SS  | -27   | HKDF -- | no               |none| ECDH SS w/   |
+>    | +        |       | SHA-256 |                  |    | HKDF --      |
+>    | HKDF-256 |       |         |                  |    | generate     |
+>    |          |       |         |                  |    | key          |
+1463,1466c1480,1484
+<    +----------+-------+---------+------------------+-----+-------------+
+<    |ECDH-SS + | -28   | HKDF -- | no               |none |ECDH SS w/   |
+<    |HKDF-512  |       | SHA-512 |                  |     |HKDF --      |
+<    |          |       |         |                  |     |generate key |
+---
+>    +----------+-------+---------+------------------+----+--------------+
+>    | ECDH-SS  | -28   | HKDF -- | no               |none| ECDH SS w/   |
+>    | +        |       | SHA-512 |                  |    | HKDF --      |
+>    | HKDF-512 |       |         |                  |    | generate     |
+>    |          |       |         |                  |    | key          |
+1468c1486
+<    +----------+-------+---------+------------------+-----+-------------+
+---
+>    +----------+-------+---------+------------------+----+--------------+
+1555,1560c1573,1579
+<    +=========+=====+=========+==================+========+=============+
+<    |Name     |Value| KDF     | Ephemeral-Static |Key Wrap|Description  |
+<    +=========+=====+=========+==================+========+=============+
+<    |ECDH-ES +|-29  | HKDF -- | yes              |A128KW  |ECDH ES w/   |
+<    |A128KW   |     | SHA-256 |                  |        |HKDF and AES |
+<    |         |     |         |                  |        |Key Wrap w/  |
+---
+>    +=========+=====+=========+==================+======+==============+
+>    | Name    |Value| KDF     | Ephemeral-Static |Key   | Description  |
+>    |         |     |         |                  |Wrap  |              |
+>    +=========+=====+=========+==================+======+==============+
+>    | ECDH-ES |-29  | HKDF -- | yes              |A128KW| ECDH ES w/   |
+>    | +       |     | SHA-256 |                  |      | HKDF and AES |
+>    | A128KW  |     |         |                  |      | Key Wrap w/  |
+1562,1565c1581,1584
+<    +---------+-----+---------+------------------+--------+-------------+
+<    |ECDH-ES +|-30  | HKDF -- | yes              |A192KW  |ECDH ES w/   |
+<    |A192KW   |     | SHA-256 |                  |        |HKDF and AES |
+<    |         |     |         |                  |        |Key Wrap w/  |
+---
+>    +---------+-----+---------+------------------+------+--------------+
+>    | ECDH-ES |-30  | HKDF -- | yes              |A192KW| ECDH ES w/   |
+>    | +       |     | SHA-256 |                  |      | HKDF and AES |
+>    | A192KW  |     |         |                  |      | Key Wrap w/  |
+1567,1570c1586,1589
+<    +---------+-----+---------+------------------+--------+-------------+
+<    |ECDH-ES +|-31  | HKDF -- | yes              |A256KW  |ECDH ES w/   |
+<    |A256KW   |     | SHA-256 |                  |        |HKDF and AES |
+<    |         |     |         |                  |        |Key Wrap w/  |
+---
+>    +---------+-----+---------+------------------+------+--------------+
+>    | ECDH-ES |-31  | HKDF -- | yes              |A256KW| ECDH ES w/   |
+>    | +       |     | SHA-256 |                  |      | HKDF and AES |
+>    | A256KW  |     |         |                  |      | Key Wrap w/  |
+1572,1575c1591,1594
+<    +---------+-----+---------+------------------+--------+-------------+
+<    |ECDH-SS +|-32  | HKDF -- | no               |A128KW  |ECDH SS w/   |
+<    |A128KW   |     | SHA-256 |                  |        |HKDF and AES |
+<    |         |     |         |                  |        |Key Wrap w/  |
+---
+>    +---------+-----+---------+------------------+------+--------------+
+>    | ECDH-SS |-32  | HKDF -- | no               |A128KW| ECDH SS w/   |
+>    | +       |     | SHA-256 |                  |      | HKDF and AES |
+>    | A128KW  |     |         |                  |      | Key Wrap w/  |
+1577,1580c1596,1599
+<    +---------+-----+---------+------------------+--------+-------------+
+<    |ECDH-SS +|-33  | HKDF -- | no               |A192KW  |ECDH SS w/   |
+<    |A192KW   |     | SHA-256 |                  |        |HKDF and AES |
+<    |         |     |         |                  |        |Key Wrap w/  |
+---
+>    +---------+-----+---------+------------------+------+--------------+
+>    | ECDH-SS |-33  | HKDF -- | no               |A192KW| ECDH SS w/   |
+>    | +       |     | SHA-256 |                  |      | HKDF and AES |
+>    | A192KW  |     |         |                  |      | Key Wrap w/  |
+1582,1585c1601,1604
+<    +---------+-----+---------+------------------+--------+-------------+
+<    |ECDH-SS +|-34  | HKDF -- | no               |A256KW  |ECDH SS w/   |
+<    |A256KW   |     | SHA-256 |                  |        |HKDF and AES |
+<    |         |     |         |                  |        |Key Wrap w/  |
+---
+>    +---------+-----+---------+------------------+------+--------------+
+>    | ECDH-SS |-34  | HKDF -- | no               |A256KW| ECDH SS w/   |
+>    | +       |     | SHA-256 |                  |      | HKDF and AES |
+>    | A256KW  |     |         |                  |      | Key Wrap w/  |
+1587c1606
+<    +---------+-----+---------+------------------+--------+-------------+
+---
+>    +---------+-----+---------+------------------+------+--------------+
+1684c1703,1704
+<    crv:  This contains an identifier of the curve to be used with the
+---
+>    crv:
+>          This contains an identifier of the curve to be used with the
+1689c1709,1710
+<    x:    This contains the x-coordinate for the EC point.  The integer
+---
+>    x:  
+>          This contains the x-coordinate for the EC point.  The integer
+1693c1714,1715
+<    y:    This contains either the sign bit or the value of the
+---
+>    y:  
+>          This contains either the sign bit or the value of the
+1739c1761,1762
+<    crv:  This contains an identifier of the curve to be used with the
+---
+>    crv:
+>          This contains an identifier of the curve to be used with the
+1744c1767,1768
+<    x:    This contains the public key.  The byte string contains the
+---
+>    x:  
+>          This contains the public key.  The byte string contains the

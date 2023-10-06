@@ -1,0 +1,89 @@
+199,208c199,210
+<    GDR: Group Designated Router.  For each multicast flow, either a
+<       (*,G) for Any-Source Multicast (ASM) or an (S,G) for Source-
+<       Specific Multicast (SSM) [RFC4607], a hash algorithm (described
+<       below) is used to select one of the routers as a GDR.  The GDR is
+<       responsible for initiating the forwarding tree building process
+<       for the corresponding multicast flow.
+< 
+<    GDR Candidate:  a router that has the potential to become a GDR.
+<       There might be multiple GDR Candidates on a LAN, but only one can
+<       become the GDR for a specific multicast flow.
+---
+>    GDR: Group Designated Router.
+>       For each multicast flow, either a (*,G) for Any-Source Multicast
+>       (ASM) or an (S,G) for Source-Specific Multicast (SSM) [RFC4607], a
+>       hash algorithm (described below) is used to select one of the
+>       routers as a GDR.  The GDR is responsible for initiating the
+>       forwarding tree building process for the corresponding multicast
+>       flow.
+> 
+>    GDR Candidate:
+>       a router that has the potential to become a GDR.  There might be
+>       multiple GDR Candidates on a LAN, but only one can become the GDR
+>       for a specific multicast flow.
+518,520c520,523
+<    Hash Algorithm:  Hash algorithm type.  A value listed in the IANA
+<       "PIM Designated Router Load-Balancing Hash Algorithms" registry. 0
+<       is used for the hash algorithm defined in this document.
+---
+>    Hash Algorithm:
+>       Hash algorithm type.  A value listed in the IANA "PIM Designated
+>       Router Load-Balancing Hash Algorithms" registry. 0 is used for the
+>       hash algorithm defined in this document.
+546c549,550
+<    Length:  (3 + n) x (4 or 16) bytes, where n is the number of GDR
+---
+>    Length:
+>       (3 + n) x (4 or 16) bytes, where n is the number of GDR
+552,553c556,557
+<    Source Mask (32/128 bits):  Mask applied to source addresses as part
+<       of hash computation.
+---
+>    Source Mask (32/128 bits):
+>       Mask applied to source addresses as part of hash computation.
+666,671c670,675
+<    1.  If the local router is included in the "GDR Candidate
+<        Address(es)" field, it will look for its own address, or if it
+<        announces a non-zero Router ID, its own Router ID.  For each of
+<        the groups or source and group pairs, if the group is in SSM mode
+<        with local receiver interest, the router MUST run the hash
+<        algorithm to determine which of them is for the GDR.
+---
+>    1. If the local router is included in the "GDR Candidate Address(es)"
+>       field, it will look for its own address, or if it announces a non-
+>       zero Router ID, its own Router ID.  For each of the groups or
+>       source and group pairs, if the group is in SSM mode with local
+>       receiver interest, the router MUST run the hash algorithm to
+>       determine which of them is for the GDR.
+673,674c677,678
+<        *  If there is no change in the GDR status, then no further
+<           action is required.
+---
+>       *  If there is no change in the GDR status, then no further action
+>          is required.
+692,695c696,698
+<        then for each group (or each source and group pair if the group
+<        is in SSM mode) with local receiver interest, for which the
+<        router is the GDR, the router uses an Assert as explained in
+<        Section 5.7.
+---
+>       then for each group (or each source and group pair if the group is
+>       in SSM mode) with local receiver interest, for which the router is
+>       the GDR, the router uses an Assert as explained in Section 5.7.
+794c797
+<                     +-------+------------+-----------+
+---
+>                     +=======+============+===========+
+904d906
+< 
+913d914
+< 
+918d918
+< 
+927d926
+< 
+936d934
+< 
+946d943
+< 

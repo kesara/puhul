@@ -1,0 +1,146 @@
+226,260c226,264
+<    Federated:  A subnet that comprises a backbone, and one or more
+<       (wireless) access links, is said to be federated into one MLSN.
+<       The ND proxy operation of 6BBRs over the backbone extends IPv6 ND
+<       operation over the access links.
+< 
+<    Sleep Proxy:  A 6BBR acts as a Sleep Proxy if it answers IPv6 ND NSs
+<       over the backbone on behalf of the Registering Node that is in a
+<       sleep state and that cannot answer in due time.
+< 
+<    Routing Proxy:  A Routing Proxy provides IPv6 ND proxy functions and
+<       enables the MLSN operation over federated links that may not be
+<       compatible for bridging.  The Routing Proxy advertises its own
+<       link-layer address as the Target Link-Layer Address (TLLA) in the
+<       proxied Neighbor Advertisements (NAs) over the backbone and routes
+<       at the network layer between the federated links.
+< 
+<    Bridging Proxy:  A Bridging Proxy provides IPv6 ND proxy functions
+<       while preserving forwarding continuity at the link layer.  In that
+<       case, the link-layer address and the mobility of the Registering
+<       Node is visible across the bridged backbone.  The Bridging Proxy
+<       advertises the link-layer address of the Registering Node in the
+<       TLLAO in the proxied NAs over the backbone, and it proxies ND for
+<       all unicast addresses including link-local addresses.  Instead of
+<       replying on behalf of the Registering Node, a Bridging Proxy will
+<       preferably forward the NS(Lookup) and Neighbor Unreachability
+<       Detection (NUD) messages that target the Registered Address to the
+<       Registering Node as unicast frames, so it can respond in its own.
+< 
+<    Binding Table:  The Binding Table is an abstract database that is
+<       maintained by the 6BBR to store the state associated with its
+<       registrations.
+< 
+<    Binding:  A Binding is an abstract state associated to one
+<       registration; in other words, it's associated to one entry in the
+<       Binding Table.
+---
+>    Federated:
+>       A subnet that comprises a backbone, and one or more (wireless)
+>       access links, is said to be federated into one MLSN.  The ND proxy
+>       operation of 6BBRs over the backbone extends IPv6 ND operation
+>       over the access links.
+> 
+>    Sleep Proxy:
+>       A 6BBR acts as a Sleep Proxy if it answers IPv6 ND NSs over the
+>       backbone on behalf of the Registering Node that is in a sleep
+>       state and that cannot answer in due time.
+> 
+>    Routing Proxy:
+>       A Routing Proxy provides IPv6 ND proxy functions and enables the
+>       MLSN operation over federated links that may not be compatible for
+>       bridging.  The Routing Proxy advertises its own link-layer address
+>       as the Target Link-Layer Address (TLLA) in the proxied Neighbor
+>       Advertisements (NAs) over the backbone and routes at the network
+>       layer between the federated links.
+> 
+>    Bridging Proxy:
+>       A Bridging Proxy provides IPv6 ND proxy functions while preserving
+>       forwarding continuity at the link layer.  In that case, the link-
+>       layer address and the mobility of the Registering Node is visible
+>       across the bridged backbone.  The Bridging Proxy advertises the
+>       link-layer address of the Registering Node in the TLLAO in the
+>       proxied NAs over the backbone, and it proxies ND for all unicast
+>       addresses including link-local addresses.  Instead of replying on
+>       behalf of the Registering Node, a Bridging Proxy will preferably
+>       forward the NS(Lookup) and Neighbor Unreachability Detection (NUD)
+>       messages that target the Registered Address to the Registering
+>       Node as unicast frames, so it can respond in its own.
+> 
+>    Binding Table:
+>       The Binding Table is an abstract database that is maintained by
+>       the 6BBR to store the state associated with its registrations.
+> 
+>    Binding:
+>       A Binding is an abstract state associated to one registration; in
+>       other words, it's associated to one entry in the Binding Table.
+313c317,318
+<    6LoWPAN:  "Problem Statement and Requirements for IPv6 over Low-Power
+---
+>    6LoWPAN:
+>       "Problem Statement and Requirements for IPv6 over Low-Power
+316,321c321,326
+<    6LoWPAN ND:  Neighbor Discovery Optimization for IPv6 over Low-Power
+<       Wireless Personal Area Networks (6LoWPANs) [RFC6775],
+<       "Registration Extensions for IPv6 over Low-Power Wireless Personal
+<       Area Network (6LoWPAN) Neighbor Discovery" [RFC8505], and
+<       "Address-Protected Neighbor Discovery for Low-Power and Lossy
+<       Networks" [RFC8928].
+---
+>    6LoWPAN ND:
+>       Neighbor Discovery Optimization for IPv6 over Low-Power Wireless
+>       Personal Area Networks (6LoWPANs) [RFC6775], "Registration
+>       Extensions for IPv6 over Low-Power Wireless Personal Area Network
+>       (6LoWPAN) Neighbor Discovery" [RFC8505], and "Address-Protected
+>       Neighbor Discovery for Low-Power and Lossy Networks" [RFC8928].
+1342,1347c1347,1352
+<    Remote ND DoS attack avoidance:  the complete list of addresses in
+<       the network will be known to the 6LBR and available to the default
+<       router; with that information, the router does not need to send a
+<       multicast NS(Lookup) in case of a Neighbor Cache miss for an
+<       incoming packet, which is a source of remote DoS attack against
+<       the network.
+---
+>    Remote ND DoS attack avoidance:
+>       the complete list of addresses in the network will be known to the
+>       6LBR and available to the default router; with that information,
+>       the router does not need to send a multicast NS(Lookup) in case of
+>       a Neighbor Cache miss for an incoming packet, which is a source of
+>       remote DoS attack against the network.
+1352,1365c1357,1371
+<    Better DAD operation on wireless:  DAD has been found to fail to
+<       detect duplications on large Wi-Fi infrastructures due to the
+<       unreliable broadcast operation on wireless; using a 6LBR enables a
+<       unicast lookup.
+< 
+<    Less Layer 2 churn on the backbone:  Using the Routing Proxy
+<       approach, the link-layer address of the LLN devices and their
+<       mobility are not visible in the backbone; only the link-Layer
+<       addresses of the 6BBR and backbone nodes are visible at Layer 2 on
+<       the backbone.  This is mandatory for LLNs that cannot be bridged
+<       on the backbone and useful in any case to scale down, stabilize
+<       the forwarding tables at Layer 2, and avoid the gratuitous frames
+<       that are typically broadcasted to fix the transparent bridging
+<       tables when a wireless node roams from an AP to the next.
+---
+>    Better DAD operation on wireless:
+>       DAD has been found to fail to detect duplications on large Wi-Fi
+>       infrastructures due to the unreliable broadcast operation on
+>       wireless; using a 6LBR enables a unicast lookup.
+> 
+>    Less Layer 2 churn on the backbone:
+>       Using the Routing Proxy approach, the link-layer address of the
+>       LLN devices and their mobility are not visible in the backbone;
+>       only the link-Layer addresses of the 6BBR and backbone nodes are
+>       visible at Layer 2 on the backbone.  This is mandatory for LLNs
+>       that cannot be bridged on the backbone and useful in any case to
+>       scale down, stabilize the forwarding tables at Layer 2, and avoid
+>       the gratuitous frames that are typically broadcasted to fix the
+>       transparent bridging tables when a wireless node roams from an AP
+>       to the next.
+1750d1755
+< 
+1759d1763
+< 
+1769d1772
+< 

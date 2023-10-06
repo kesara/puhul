@@ -1,0 +1,248 @@
+249c249,250
+<    A:  The adaptation-layer endpoint of the LTE connection resides in
+---
+>    A:
+>        The adaptation-layer endpoint of the LTE connection resides in
+252c253,254
+<    B:  The adaptation-layer endpoint of the Wi-Fi connection resides in
+---
+>    B:
+>        The adaptation-layer endpoint of the Wi-Fi connection resides in
+255c257,258
+<    C:  The adaptation-layer endpoint of the LTE connection resides in
+---
+>    C:
+>        The adaptation-layer endpoint of the LTE connection resides in
+259c262,263
+<    D:  The adaptation-layer endpoint of the Wi-Fi connection resides in
+---
+>    D:
+>        The adaptation-layer endpoint of the Wi-Fi connection resides in
+264c268,269
+<    S:  The convergence-layer endpoint resides in the Multi-Access
+---
+>    S:
+>        The convergence-layer endpoint resides in the Multi-Access
+351,352c356,358
+<    IP Length:  Add the length of "GMA Trailer" to the length of the
+<       original IP packet.
+---
+>    IP Length:
+>       Add the length of "GMA Trailer" to the length of the original IP
+>       packet.
+356,357c362,364
+<    IP checksum:  Recalculate after changing "protocol type", "TTL", and
+<       "IP Length".
+---
+>    IP checksum:
+>       Recalculate after changing "protocol type", "TTL", and "IP
+>       Length".
+364,366c371,373
+<    Next Header (1 byte):  This is the IP protocol type of the (first)
+<       SDU in a PDU; it stores the value before it was overwritten to
+<       114.
+---
+>    Next Header (1 byte):
+>       This is the IP protocol type of the (first) SDU in a PDU; it
+>       stores the value before it was overwritten to 114.
+371,399c378,415
+<       Checksum Present (bit 0):  If the Checksum Present bit is set to
+<          1, then the Checksum field is present.
+< 
+<       Concatenation Present (bit 1):  If the Concatenation Present bit
+<          is set to 1, then the PDU carries multiple SDUs, and the First
+<          SDU Length field is present.
+< 
+<       Connection ID Present (bit 2):  If the Connection ID Present bit
+<          is set to 1, then the Connection ID field is present.
+< 
+<       Flow ID Present (bit 3):  If the Flow ID Present bit is set to 1,
+<          then the Flow ID field is present.
+< 
+<       Fragmentation Present (bit 4):  If the Fragmentation Present bit
+<          is set to 1, then the PDU carry a fragment of the SDU and the
+<          Fragmentation Control field is present.
+< 
+<       Delivery SN Present (bit 5):  If the Delivery SN (Sequence Number)
+<          Present bit is set to 1, then the Delivery SN field is present
+<          and contains the valid information.
+< 
+<       Flow SN Present (bit 6):  If the Flow SN Present bit is set to 1,
+<          then the Sequence Number field is present.
+< 
+<       Timestamp Present (bit 7):  If the Timestamp Present bit is set to
+<          1, then the Timestamp field is present.
+< 
+<       TTL Present (bit 8):  If the TTL Present bit is set to 1, then the
+<          TTL field is present.
+---
+>       Checksum Present (bit 0):
+>          If the Checksum Present bit is set to 1, then the Checksum
+>          field is present.
+> 
+>       Concatenation Present (bit 1):
+>          If the Concatenation Present bit is set to 1, then the PDU
+>          carries multiple SDUs, and the First SDU Length field is
+>          present.
+> 
+>       Connection ID Present (bit 2):
+>          If the Connection ID Present bit is set to 1, then the
+>          Connection ID field is present.
+> 
+>       Flow ID Present (bit 3):
+>          If the Flow ID Present bit is set to 1, then the Flow ID field
+>          is present.
+> 
+>       Fragmentation Present (bit 4):
+>          If the Fragmentation Present bit is set to 1, then the PDU
+>          carry a fragment of the SDU and the Fragmentation Control field
+>          is present.
+> 
+>       Delivery SN Present (bit 5):
+>          If the Delivery SN (Sequence Number) Present bit is set to 1,
+>          then the Delivery SN field is present and contains the valid
+>          information.
+> 
+>       Flow SN Present (bit 6):
+>          If the Flow SN Present bit is set to 1, then the Sequence
+>          Number field is present.
+> 
+>       Timestamp Present (bit 7):
+>          If the Timestamp Present bit is set to 1, then the Timestamp
+>          field is present.
+> 
+>       TTL Present (bit 8):
+>          If the TTL Present bit is set to 1, then the TTL field is
+>          present.
+403,405c419,421
+<       Version (bit 13~15):  This is the GMA version number; it is set to
+<          0 for the GMA encapsulation protocol specified in this
+<          document.
+---
+>       Version (bit 13~15):
+>          This is the GMA version number; it is set to 0 for the GMA
+>          encapsulation protocol specified in this document.
+413,421c429,438
+<    Checksum (1 byte):  This contains the (one's complement) checksum sum
+<       of all 8 bits in the trailer.  For purposes of computing the
+<       checksum, the value of the Checksum field is zero.  This field is
+<       present only if the Checksum Present bit is set to 1.
+< 
+<    First SDU Length (2 bytes):  This is the length of the first IP
+<       packet in the PDU, only included if a PDU contains multiple IP
+<       packets.  This field is present only if the Concatenation Present
+<       bit is set to 1.
+---
+>    Checksum (1 byte):
+>       This contains the (one's complement) checksum sum of all 8 bits in
+>       the trailer.  For purposes of computing the checksum, the value of
+>       the Checksum field is zero.  This field is present only if the
+>       Checksum Present bit is set to 1.
+> 
+>    First SDU Length (2 bytes):
+>       This is the length of the first IP packet in the PDU, only
+>       included if a PDU contains multiple IP packets.  This field is
+>       present only if the Concatenation Present bit is set to 1.
+428,465c445,476
+<       Anchor Connection ID (MSB 4 bits):  This contains an unsigned
+<          integer to identify the anchor connection.
+< 
+<       Delivery Connection ID (LSB 4 bits):  This contains an unsigned
+<          integer to identify the delivery connection.
+< 
+<    Flow ID (1 byte):  This contains an unsigned integer to identify the
+<       IP flow that a PDU belongs to, for example Data Radio Bearer (DRB)
+<       ID [LWIPEP] for a cellular (e.g., LTE) connection.  This field is
+<       present only if the Flow ID Present bit is set to 1.
+< 
+<    Fragmentation Control (FC) (1 byte):  This provides necessary
+<       information for reassembly, only needed if a PDU carries
+<       fragments.  This field is present only if the Fragmentation
+<       Present bit is set to 1.  Please refer to Section 5 for its
+<       detailed format and usage.
+< 
+<    Delivery SN (1 byte):  This contains an auto-incremented integer to
+<       indicate the GMA PDU transmission order on a delivery connection.
+<       Delivery SN is needed to measure packet loss of each delivery
+<       connection and therefore generated per delivery connection per
+<       flow.  This field is present only if the Delivery SN Present bit
+<       is set to 1.
+< 
+<    Flow SN (3 bytes):  This contains an auto-incremented integer to
+<       indicate the GMA SDU (IP packet) order of a flow.  Flow SN is
+<       needed for retransmission, reordering, and fragmentation.  It
+<       SHALL be generated per flow.  This field is present only if the
+<       Flow SN Present bit is set to 1.
+< 
+<    Timestamp (4 bytes):  This contains the current value of the
+<       timestamp clock of the transmitter in the unit of 1 millisecond.
+<       This field is present only if the Timestamp Present bit is set to
+<       1.
+< 
+<    TTL (1 byte):  This contains the TTL value of the original IP header
+<       if the GMA SDU is IPv4, or the Hop-Limit value of the IP header if
+<       the GMA SDU is IPv6.  This field is present only if the TTL
+---
+>       Anchor Connection ID (MSB 4 bits):
+>          This contains an unsigned integer to identify the anchor
+>          connection.
+> 
+>       Delivery Connection ID (LSB 4 bits):
+>          This contains an unsigned integer to identify the delivery
+>          connection.
+> 
+>    Flow ID (1 byte):
+>       This contains an unsigned integer to identify the IP flow that a
+>       PDU belongs to, for example Data Radio Bearer (DRB) ID [LWIPEP]
+>       for a cellular (e.g., LTE) connection.  This field is present only
+>       if the Flow ID Present bit is set to 1.
+> 
+>    Fragmentation Control (FC) (1 byte):
+>       This provides necessary information for reassembly, only needed if
+>       a PDU carries fragments.  This field is present only if the
+>       Fragmentation Present bit is set to 1.  Please refer to Section 5
+>       for its detailed format and usage.
+> 
+>    Delivery SN (1 byte):
+>       This contains an auto-incremented integer to indicate the GMA PDU
+>       transmission order on a delivery connection.  Delivery SN is
+>       needed to measure packet loss of each delivery connection and
+>       therefore generated per delivery connection per flow.  This field
+>       is present only if the Delivery SN Present bit is set to 1.
+> 
+>    Flow SN (3 bytes):
+>       This contains an auto-incremented integer to indicate the GMA SDU
+>       (IP packet) order of a flow.  Flow SN is needed for
+>       retransmission, reordering, and fragmentation.  It SHALL be
+>       generated per flow.  This field is present only if the Flow SN
+467a479,489
+>    Timestamp (4 bytes):
+>       This contains the current value of the timestamp clock of the
+>       transmitter in the unit of 1 millisecond.  This field is present
+>       only if the Timestamp Present bit is set to 1.
+> 
+>    TTL (1 byte):
+>       This contains the TTL value of the original IP header if the GMA
+>       SDU is IPv4, or the Hop-Limit value of the IP header if the GMA
+>       SDU is IPv6.  This field is present only if the TTL Present bit is
+>       set to 1.
+> 
+589,594c611,617
+<    Bit 7:  a More Fragment (MF) flag to indicate if the fragment is the
+<       last one (0) or not (1)
+< 
+<    Bit 0-6:  Fragment Offset (in units of fragments) to specify the
+<       offset of a particular fragment relative to the beginning of the
+<       SDU
+---
+>    Bit 7:
+>       a More Fragment (MF) flag to indicate if the fragment is the last
+>       one (0) or not (1)
+> 
+>    Bit 0-6:
+>       Fragment Offset (in units of fragments) to specify the offset of a
+>       particular fragment relative to the beginning of the SDU
+810d832
+< 
+816d837
+< 
