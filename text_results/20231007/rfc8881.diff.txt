@@ -1,0 +1,1102 @@
+517,518c517,519
+<    Byte:  In this document, a byte is an octet, i.e., a datum exactly 8
+<       bits in length.
+---
+>    Byte:
+>       In this document, a byte is an octet, i.e., a datum exactly 8 bits
+>       in length.
+537,551c538,555
+<    Client ID:  The client ID is a 64-bit quantity used as a unique,
+<       short-hand reference to a client-supplied verifier and client
+<       owner.  The server is responsible for supplying the client ID.
+< 
+<    Client Owner:  The client owner is a unique string, opaque to the
+<       server, that identifies a client.  Multiple network connections
+<       and source network addresses originating from those connections
+<       may share a client owner.  The server is expected to treat
+<       requests from connections with the same client owner as coming
+<       from the same client.
+< 
+<    File System:  The file system is the collection of objects on a
+<       server (as identified by the major identifier of a server owner,
+<       which is defined later in this section) that share the same fsid
+<       attribute (see Section 5.8.1.9).
+---
+>    Client ID:
+>       The client ID is a 64-bit quantity used as a unique, short-hand
+>       reference to a client-supplied verifier and client owner.  The
+>       server is responsible for supplying the client ID.
+> 
+>    Client Owner:
+>       The client owner is a unique string, opaque to the server, that
+>       identifies a client.  Multiple network connections and source
+>       network addresses originating from those connections may share a
+>       client owner.  The server is expected to treat requests from
+>       connections with the same client owner as coming from the same
+>       client.
+> 
+>    File System:
+>       The file system is the collection of objects on a server (as
+>       identified by the major identifier of a server owner, which is
+>       defined later in this section) that share the same fsid attribute
+>       (see Section 5.8.1.9).
+561c565,566
+<    Lock:  The term "lock" is used to refer to byte-range (in UNIX
+---
+>    Lock:
+>       The term "lock" is used to refer to byte-range (in UNIX
+565,572c570,577
+<    Secret State Verifier (SSV):  The SSV is a unique secret key shared
+<       between a client and server.  The SSV serves as the secret key for
+<       an internal (that is, internal to NFSv4.1) Generic Security
+<       Services (GSS) mechanism (the SSV GSS mechanism; see
+<       Section 2.10.9).  The SSV GSS mechanism uses the SSV to compute
+<       message integrity code (MIC) and Wrap tokens.  See
+<       Section 2.10.8.3 for more details on how NFSv4.1 uses the SSV and
+<       the SSV GSS mechanism.
+---
+>    Secret State Verifier (SSV):
+>       The SSV is a unique secret key shared between a client and server.
+>       The SSV serves as the secret key for an internal (that is,
+>       internal to NFSv4.1) Generic Security Services (GSS) mechanism
+>       (the SSV GSS mechanism; see Section 2.10.9).  The SSV GSS
+>       mechanism uses the SSV to compute message integrity code (MIC) and
+>       Wrap tokens.  See Section 2.10.8.3 for more details on how NFSv4.1
+>       uses the SSV and the SSV GSS mechanism.
+574c579,580
+<    Server:  The Server is the entity responsible for coordinating client
+---
+>    Server:
+>       The Server is the entity responsible for coordinating client
+578,586c584,592
+<    Server Owner:  The server owner identifies the server to the client.
+<       The server owner consists of a major identifier and a minor
+<       identifier.  When the client has two connections each to a peer
+<       with the same major identifier, the client assumes that both peers
+<       are the same server (the server namespace is the same via each
+<       connection) and that lock state is shareable across both
+<       connections.  When each peer has both the same major and minor
+<       identifiers, the client assumes that each connection might be
+<       associable with the same session.
+---
+>    Server Owner:
+>       The server owner identifies the server to the client.  The server
+>       owner consists of a major identifier and a minor identifier.  When
+>       the client has two connections each to a peer with the same major
+>       identifier, the client assumes that both peers are the same server
+>       (the server namespace is the same via each connection) and that
+>       lock state is shareable across both connections.  When each peer
+>       has both the same major and minor identifiers, the client assumes
+>       that each connection might be associable with the same session.
+612,619c618,627
+<    Stateid:  A stateid is a 128-bit quantity returned by a server that
+<       uniquely defines the open and locking states provided by the
+<       server for a specific open-owner or lock-owner/open-owner pair for
+<       a specific file and type of lock.
+< 
+<    Verifier:  A verifier is a 64-bit quantity generated by the client
+<       that the server can use to determine if the client has restarted
+<       and lost all previous lock state.
+---
+>    Stateid:
+>       A stateid is a 128-bit quantity returned by a server that uniquely
+>       defines the open and locking states provided by the server for a
+>       specific open-owner or lock-owner/open-owner pair for a specific
+>       file and type of lock.
+> 
+>    Verifier:
+>       A verifier is a 64-bit quantity generated by the client that the
+>       server can use to determine if the client has restarted and lost
+>       all previous lock state.
+1480,1488c1488,1495
+<    (a)  sec_policy_child <= sec_policy_parent (<= for subset).  This
+<         means that the set of security tuples specified on the security
+<         policy of a child directory is always a subset of its parent
+<         directory.
+< 
+<    (b)  sec_policy_child ^ sec_policy_parent != {} (^ for intersection,
+<         {} for the empty set).  This means that the set of security
+<         tuples specified on the security policy of a child directory
+<         always has a non-empty intersection with that of the parent.
+---
+>    (a)sec_policy_child <= sec_policy_parent (<= for subset).  This means
+>       that the set of security tuples specified on the security policy
+>       of a child directory is always a subset of its parent directory.
+> 
+>    (b)sec_policy_child ^ sec_policy_parent != {} (^ for intersection, {}
+>       for the empty set).  This means that the set of security tuples
+>       specified on the security policy of a child directory always has a
+>       non-empty intersection with that of the parent.
+1491,1494c1498,1501
+<         set of security tuples specified on the security policy of a
+<         child directory may not intersect with that of the parent.  In
+<         other words, there are no restrictions on how the system
+<         administrator may set up these tuples.
+---
+>       set of security tuples specified on the security policy of a child
+>       directory may not intersect with that of the parent.  In other
+>       words, there are no restrictions on how the system administrator
+>       may set up these tuples.
+1648,1649c1655,1656
+<    2.   Minor versions may add operations to the COMPOUND and
+<         CB_COMPOUND procedures.
+---
+>    2. Minor versions may add operations to the COMPOUND and CB_COMPOUND
+>       procedures.
+1655,1656c1662,1663
+<            represents sets of attributes and to the fattr4 that
+<            represents sets of attribute values.
+---
+>          represents sets of attributes and to the fattr4 that represents
+>          sets of attribute values.
+1666,1667c1673,1674
+<            new attributes in the midst of the current definitions would
+<            be too burdensome.
+---
+>          new attributes in the midst of the current definitions would be
+>          too burdensome.
+1680,1683c1687,1690
+<         *  adding bits to flag fields, such as new attributes to
+<            GETATTR's bitmap4 data type, and providing corresponding
+<            variants of opaque arrays, such as a notify4 used together
+<            with such bitmaps
+---
+>       *  adding bits to flag fields, such as new attributes to GETATTR's
+>          bitmap4 data type, and providing corresponding variants of
+>          opaque arrays, such as a notify4 used together with such
+>          bitmaps
+1698,1699c1705,1706
+<         This prevents the potential reuse of a particular operation
+<         "slot" in a future minor version.
+---
+>       This prevents the potential reuse of a particular operation "slot"
+>       in a future minor version.
+1707,1713c1714,1720
+<         Specifying that an operation MUST NOT be implemented is
+<         equivalent to obsoleting an operation.  For the client, it means
+<         that the operation MUST NOT be sent to the server.  For the
+<         server, an NFS error can be returned as opposed to "dropping"
+<         the request as an XDR decode error.  This approach allows for
+<         the obsolescence of an operation while maintaining its structure
+<         so that a future minor version can reintroduce the operation.
+---
+>       Specifying that an operation MUST NOT be implemented is equivalent
+>       to obsoleting an operation.  For the client, it means that the
+>       operation MUST NOT be sent to the server.  For the server, an NFS
+>       error can be returned as opposed to "dropping" the request as an
+>       XDR decode error.  This approach allows for the obsolescence of an
+>       operation while maintaining its structure so that a future minor
+>       version can reintroduce the operation.
+1718,1719c1725,1726
+<         2.  Minor versions may declare that a flag bit or enumeration
+<             value MUST NOT be implemented.
+---
+>       2. Minor versions may declare that a flag bit or enumeration value
+>          MUST NOT be implemented.
+1724,1725c1731,1732
+<    10.  Minor versions may upgrade features from OPTIONAL to
+<         RECOMMENDED, or RECOMMENDED to REQUIRED.
+---
+>    10.Minor versions may upgrade features from OPTIONAL to RECOMMENDED,
+>       or RECOMMENDED to REQUIRED.
+1735,1743c1742,1749
+<         feature as REQUIRED.  On the other hand, some classes of
+<         features are infrastructural and have broad effects.  Allowing
+<         infrastructural features to be RECOMMENDED or OPTIONAL
+<         complicates implementation of the minor version.
+< 
+<    13.  A client MUST NOT attempt to use a stateid, filehandle, or
+<         similar returned object from the COMPOUND procedure with minor
+<         version X for another COMPOUND procedure with minor version Y,
+<         where X != Y.
+---
+>       feature as REQUIRED.  On the other hand, some classes of features
+>       are infrastructural and have broad effects.  Allowing
+>       infrastructural features to be RECOMMENDED or OPTIONAL complicates
+>       implementation of the minor version.
+> 
+>    13.A client MUST NOT attempt to use a stateid, filehandle, or similar
+>       returned object from the COMPOUND procedure with minor version X
+>       for another COMPOUND procedure with minor version Y, where X != Y.
+2464,2471c2470,2476
+<    over four billion (2^(32)) replies in the reply cache is not
+<    practical.  In practice, previous versions of NFS have chosen to
+<    store a fixed number of replies in the cache, and to use a least
+<    recently used (LRU) approach to replacing cache entries with new
+<    entries when the cache is full.  In NFSv4.1, the number of
+<    outstanding requests is bounded by the size of the slot table, and a
+<    sequence ID per slot is used to tell the replier when it is safe to
+<    delete a cached reply.
+---
+>    over four billion (2^32) replies in the reply cache is not practical.
+>    In practice, previous versions of NFS have chosen to store a fixed
+>    number of replies in the cache, and to use a least recently used
+>    (LRU) approach to replacing cache entries with new entries when the
+>    cache is full.  In NFSv4.1, the number of outstanding requests is
+>    bounded by the size of the slot table, and a sequence ID per slot is
+>    used to tell the replier when it is safe to delete a cached reply.
+2485c2490
+<    unsigned value, and is therefore in the range 0..0xFFFFFFFF (2^(32) -
+---
+>    unsigned value, and is therefore in the range 0..0xFFFFFFFF (2^32 -
+2491c2496
+<    ID set to zero (i.e., (2^(32) - 1) + 1 mod 2^(32)).
+---
+>    ID set to zero (i.e., (2^32 - 1) + 1 mod 2^32).
+3330,3332c3335,3337
+<        effectively the same as the second scenario, but a disadvantage
+<        is that each user needs to be allocated at least one session
+<        each, so the approach suffers from lack of economy.
+---
+>       effectively the same as the second scenario, but a disadvantage is
+>       that each user needs to be allocated at least one session each, so
+>       the approach suffers from lack of economy.
+3927,3935c3932,3939
+<    2.  If the attempts succeed, the session is still alive, and this is
+<        a strong indicator that the server's network address has moved.
+<        The client might send an EXCHANGE_ID on the connection that
+<        returned NFS4ERR_BADSESSION to see if there are opportunities for
+<        client ID trunking (i.e., the same client ID and so_major_id
+<        value are returned).  The client might use DNS to see if the
+<        moved network address was replaced with another, so that the
+<        performance and availability benefits of session trunking can
+<        continue.
+---
+>    2. If the attempts succeed, the session is still alive, and this is a
+>       strong indicator that the server's network address has moved.  The
+>       client might send an EXCHANGE_ID on the connection that returned
+>       NFS4ERR_BADSESSION to see if there are opportunities for client ID
+>       trunking (i.e., the same client ID and so_major_id value are
+>       returned).  The client might use DNS to see if the moved network
+>       address was replaced with another, so that the performance and
+>       availability benefits of session trunking can continue.
+3943,3944c3947,3948
+<        those network addresses.  If the same server owner is returned
+<        but a new client ID is returned, this is a strong indicator of a
+---
+>       those network addresses.  If the same server owner is returned but
+>       a new client ID is returned, this is a strong indicator of a
+3946,3952c3950,3956
+<        are returned, then this is a strong indication that the server
+<        did delete the session, and the client will need to send a
+<        CREATE_SESSION if it has no other sessions for that client ID.
+<        If a different server owner is returned, the client can use DNS
+<        to find other network addresses.  If it does not, or if DNS does
+<        not find any other addresses for the server, then the client will
+<        be unable to provide NFSv4.1 service, and fatal errors should be
+---
+>       are returned, then this is a strong indication that the server did
+>       delete the session, and the client will need to send a
+>       CREATE_SESSION if it has no other sessions for that client ID.  If
+>       a different server owner is returned, the client can use DNS to
+>       find other network addresses.  If it does not, or if DNS does not
+>       find any other addresses for the server, then the client will be
+>       unable to provide NFSv4.1 service, and fatal errors should be
+4824,4848c4828,4855
+<    FH4_PERSISTENT  The value of FH4_PERSISTENT is used to indicate a
+<       persistent filehandle, which is valid until the object is removed
+<       from the file system.  The server will not return
+<       NFS4ERR_FHEXPIRED for this filehandle.  FH4_PERSISTENT is defined
+<       as a value in which none of the bits specified below are set.
+< 
+<    FH4_VOLATILE_ANY  The filehandle may expire at any time, except as
+<       specifically excluded (i.e., FH4_NO_EXPIRE_WITH_OPEN).
+< 
+<    FH4_NOEXPIRE_WITH_OPEN  May only be set when FH4_VOLATILE_ANY is set.
+<       If this bit is set, then the meaning of FH4_VOLATILE_ANY is
+<       qualified to exclude any expiration of the filehandle when it is
+<       open.
+< 
+<    FH4_VOL_MIGRATION  The filehandle will expire as a result of a file
+<       system transition (migration or replication), in those cases in
+<       which the continuity of filehandle use is not specified by handle
+<       class information within the fs_locations_info attribute.  When
+<       this bit is set, clients without access to fs_locations_info
+<       information should assume that filehandles will expire on file
+<       system transitions.
+< 
+<    FH4_VOL_RENAME  The filehandle will expire during rename.  This
+<       includes a rename by the requesting client or a rename by any
+<       other client.  If FH4_VOL_ANY is set, FH4_VOL_RENAME is redundant.
+---
+>    FH4_PERSISTENT
+>       The value of FH4_PERSISTENT is used to indicate a persistent
+>       filehandle, which is valid until the object is removed from the
+>       file system.  The server will not return NFS4ERR_FHEXPIRED for
+>       this filehandle.  FH4_PERSISTENT is defined as a value in which
+>       none of the bits specified below are set.
+> 
+>    FH4_VOLATILE_ANY
+>       The filehandle may expire at any time, except as specifically
+>       excluded (i.e., FH4_NO_EXPIRE_WITH_OPEN).
+> 
+>    FH4_NOEXPIRE_WITH_OPEN
+>       May only be set when FH4_VOLATILE_ANY is set.  If this bit is set,
+>       then the meaning of FH4_VOLATILE_ANY is qualified to exclude any
+>       expiration of the filehandle when it is open.
+> 
+>    FH4_VOL_MIGRATION
+>       The filehandle will expire as a result of a file system transition
+>       (migration or replication), in those cases in which the continuity
+>       of filehandle use is not specified by handle class information
+>       within the fs_locations_info attribute.  When this bit is set,
+>       clients without access to fs_locations_info information should
+>       assume that filehandles will expire on file system transitions.
+> 
+>    FH4_VOL_RENAME
+>       The filehandle will expire during rename.  This includes a rename
+>       by the requesting client or a rename by any other client.  If
+>       FH4_VOL_ANY is set, FH4_VOL_RENAME is redundant.
+5159c5166,5167
+<    Id:  The number assigned to the attribute.  In the event of conflicts
+---
+>    Id:
+>       The number assigned to the attribute.  In the event of conflicts
+5166,5169c5174,5178
+<    Acc:  Access allowed to the attribute.  R means read-only (GETATTR
+<       may retrieve, SETATTR may not set).  W means write-only (SETATTR
+<       may set, GETATTR may not retrieve).  R W means read/write (GETATTR
+<       may retrieve, SETATTR may set).
+---
+>    Acc:
+>       Access allowed to the attribute.  R means read-only (GETATTR may
+>       retrieve, SETATTR may not set).  W means write-only (SETATTR may
+>       set, GETATTR may not retrieve).  R W means read/write (GETATTR may
+>       retrieve, SETATTR may set).
+5171,5172c5180,5181
+<    Defined in:  The section of this specification that describes the
+<       attribute.
+---
+>    Defined in:
+>       The section of this specification that describes the attribute.
+7262,7265c7271,7273
+<        creating acl, dacl, or sacl attributes are implementation
+<        defined.  If either the dacl or sacl attribute is supported, then
+<        the ACL4_DEFAULTED flag SHOULD be set on the newly created
+<        attributes.
+---
+>       creating acl, dacl, or sacl attributes are implementation defined.
+>       If either the dacl or sacl attribute is supported, then the
+>       ACL4_DEFAULTED flag SHOULD be set on the newly created attributes.
+8258,8260c8266,8268
+<        session.  If CREATE_SESSION fails with NFS4ERR_STALE_CLIENTID,
+<        the client must establish a new client ID (see Section 8.1) and
+<        re-establish its lock state with the new client ID, after the
+---
+>       session.  If CREATE_SESSION fails with NFS4ERR_STALE_CLIENTID, the
+>       client must establish a new client ID (see Section 8.1) and re-
+>       establish its lock state with the new client ID, after the
+8264,8273c8272,8280
+<        session returns NFS4ERR_DEADSESSION, this indicates that a
+<        session is no longer usable for new, i.e., not satisfied from the
+<        reply cache, operations.  Once all pending operations are
+<        determined to be either performed before the retry or not
+<        performed, the client sends a CREATE_SESSION request with the
+<        client ID to re-establish the session.  If CREATE_SESSION fails
+<        with NFS4ERR_STALE_CLIENTID, the client must establish a new
+<        client ID (see Section 8.1) and re-establish its lock state after
+<        the CREATE_SESSION, with the new client ID, succeeds
+<        (Section 8.4.2.1).
+---
+>       session returns NFS4ERR_DEADSESSION, this indicates that a session
+>       is no longer usable for new, i.e., not satisfied from the reply
+>       cache, operations.  Once all pending operations are determined to
+>       be either performed before the retry or not performed, the client
+>       sends a CREATE_SESSION request with the client ID to re-establish
+>       the session.  If CREATE_SESSION fails with NFS4ERR_STALE_CLIENTID,
+>       the client must establish a new client ID (see Section 8.1) and
+>       re-establish its lock state after the CREATE_SESSION, with the new
+>       client ID, succeeds (Section 8.4.2.1).
+8558,8559c8565,8566
+<    2.  Client A and server experience mutual network partition, such
+<        that client A is unable to renew its lease.
+---
+>    2. Client A and server experience mutual network partition, such that
+>       client A is unable to renew its lease.
+8588,8590c8595,8597
+<    3.   Client A and server experience mutual network partition, such
+<         that client A is unable to reclaim all of its locks within the
+<         grace period.
+---
+>    3. Client A and server experience mutual network partition, such that
+>       client A is unable to reclaim all of its locks within the grace
+>       period.
+8592,8593c8599,8600
+<    4.   Server's reclaim grace period ends.  Client A has either no
+<         locks or an incomplete set of locks known to the server.
+---
+>    4. Server's reclaim grace period ends.  Client A has either no locks
+>       or an incomplete set of locks known to the server.
+8595,8596c8602,8603
+<    5.   Client B acquires a lock that would have conflicted with a lock
+<         of client A that was not reclaimed.
+---
+>    5. Client B acquires a lock that would have conflicted with a lock of
+>       client A that was not reclaimed.
+8673,8675c8680,8682
+<    2.  Record sufficient state in stable storage such that all known
+<        edge conditions involving server restart, including the two noted
+<        in this section, are detected.  It is acceptable to erroneously
+---
+>    2. Record sufficient state in stable storage such that all known edge
+>       conditions involving server restart, including the two noted in
+>       this section, are detected.  It is acceptable to erroneously
+11252,11266c11259,11276
+<    change_policy:  This attribute is useful for absent file systems and
+<       can be helpful in summarizing to the client when any of the
+<       location-related attributes change.
+< 
+<    fsid:  This attribute should be provided so that the client can
+<       determine file system boundaries, including, in particular, the
+<       boundary between present and absent file systems.  This value must
+<       be different from any other fsid on the current server and need
+<       have no particular relationship to fsids on any particular
+<       destination to which the client might be directed.
+< 
+<    mounted_on_fileid:  For objects at the top of an absent file system,
+<       this attribute needs to be available.  Since the fileid is within
+<       the present parent file system, there should be no need to
+<       reference the absent file system to provide this information.
+---
+>    change_policy:
+>       This attribute is useful for absent file systems and can be
+>       helpful in summarizing to the client when any of the location-
+>       related attributes change.
+> 
+>    fsid:
+>       This attribute should be provided so that the client can determine
+>       file system boundaries, including, in particular, the boundary
+>       between present and absent file systems.  This value must be
+>       different from any other fsid on the current server and need have
+>       no particular relationship to fsids on any particular destination
+>       to which the client might be directed.
+> 
+>    mounted_on_fileid:
+>       For objects at the top of an absent file system, this attribute
+>       needs to be available.  Since the fileid is within the present
+>       parent file system, there should be no need to reference the
+>       absent file system to provide this information.
+12834,12842c12844,12851
+<    2.  Making an initial determination of whether migration has
+<        occurred.  The initial determination will be based on whether the
+<        EXCHANGE_ID results indicate that the current location element is
+<        server-trunkable with that used to access the file system when
+<        access was terminated by receiving NFS4ERR_MOVED.  If it is, then
+<        migration has not occurred.  In that case, the transition is
+<        dealt with, at least initially, as one involving continued access
+<        to the same file system on the same server through a new network
+<        address.
+---
+>    2. Making an initial determination of whether migration has occurred.
+>       The initial determination will be based on whether the EXCHANGE_ID
+>       results indicate that the current location element is server-
+>       trunkable with that used to access the file system when access was
+>       terminated by receiving NFS4ERR_MOVED.  If it is, then migration
+>       has not occurred.  In that case, the transition is dealt with, at
+>       least initially, as one involving continued access to the same
+>       file system on the same server through a new network address.
+12851,12863c12860,12871
+<    4.  Verifying the trunking relationship assumed in step 2 as
+<        discussed in Section 2.10.5.1.  Although this step will generally
+<        confirm the initial determination, it is possible for
+<        verification to invalidate the initial determination of network
+<        address shift (without migration) and instead determine that
+<        migration had occurred.  There is no need to redo step 3 above,
+<        since it will be possible to continue use of the session
+<        established already.
+< 
+<    5.  Obtaining access to existing locking state and/or re-obtaining
+<        it.  How this is done depends on the final determination of
+<        whether migration has occurred and can be done as described below
+<        in Section 11.13.4 in the case of migration or as described in
+---
+>    4. Verifying the trunking relationship assumed in step 2 as discussed
+>       in Section 2.10.5.1.  Although this step will generally confirm
+>       the initial determination, it is possible for verification to
+>       invalidate the initial determination of network address shift
+>       (without migration) and instead determine that migration had
+>       occurred.  There is no need to redo step 3 above, since it will be
+>       possible to continue use of the session established already.
+> 
+>    5. Obtaining access to existing locking state and/or re-obtaining it.
+>       How this is done depends on the final determination of whether
+>       migration has occurred and can be done as described below in
+>       Section 11.13.4 in the case of migration or as described in
+12879,12882c12887,12890
+<    B:  In the case that the network address is session-trunkable with
+<        one used previously, a BIND_CONN_TO_SESSION is used to access
+<        that session using the new network address.  Otherwise, or if the
+<        bind operation fails, a CREATE_SESSION is done.
+---
+>    B: In the case that the network address is session-trunkable with one
+>       used previously, a BIND_CONN_TO_SESSION is used to access that
+>       session using the new network address.  Otherwise, or if the bind
+>       operation fails, a CREATE_SESSION is done.
+13199,13200c13207,13208
+<    4.  Those requests that accessed the migrating file system in order
+<        to obtain location or status information.
+---
+>    4. Those requests that accessed the migrating file system in order to
+>       obtain location or status information.
+15209,15214c15217,15222
+<    1.  Update the file's size using the last write offset provided by
+<        the client as either the true file size or as a hint of the file
+<        size.  If the metadata server has a method available, any new
+<        value for file size should be sanity-checked.  For example, the
+<        file must not be truncated if the client presents a last write
+<        offset less than the file's current size.
+---
+>    1. Update the file's size using the last write offset provided by the
+>       client as either the true file size or as a hint of the file size.
+>       If the metadata server has a method available, any new value for
+>       file size should be sanity-checked.  For example, the file must
+>       not be truncated if the client presents a last write offset less
+>       than the file's current size.
+15217,15219c15225,15227
+<        must have sufficient knowledge from other sources to determine
+<        the file's size.  For example, the metadata server queries the
+<        storage devices with the control protocol.
+---
+>       must have sufficient knowledge from other sources to determine the
+>       file's size.  For example, the metadata server queries the storage
+>       devices with the control protocol.
+15489,15490c15497,15498
+<        the LAYOUTGET must be waited for because it may be carrying
+<        layout information that will need to be returned to deal with the
+---
+>       the LAYOUTGET must be waited for because it may be carrying layout
+>       information that will need to be returned to deal with the
+15494,15495c15502,15503
+<        server will not respond to the LAYOUTGET until the
+<        CB_LAYOUTRECALL is processed.
+---
+>       server will not respond to the LAYOUTGET until the CB_LAYOUTRECALL
+>       is processed.
+15535,15536c15543,15544
+<        CB_LAYOUTRECALL.  The server returns NFS4ERR_RECALLCONFLICT to
+<        the client, which indicates to the client that there is a pending
+---
+>       CB_LAYOUTRECALL.  The server returns NFS4ERR_RECALLCONFLICT to the
+>       client, which indicates to the client that there is a pending
+15540,15545c15548,15553
+<        CB_LAYOUTRECALL, but the LAYOUTGET arrived before the
+<        LAYOUTRETURN and the response to CB_LAYOUTRECALL that completed
+<        that processing.  The "seqid" in the layout stateid of LAYOUTGET
+<        is equal to or greater than that of the "seqid" in
+<        CB_LAYOUTRECALL.  The server has not received a response to the
+<        CB_LAYOUTRECALL, so it returns NFS4ERR_RECALLCONFLICT.
+---
+>       CB_LAYOUTRECALL, but the LAYOUTGET arrived before the LAYOUTRETURN
+>       and the response to CB_LAYOUTRECALL that completed that
+>       processing.  The "seqid" in the layout stateid of LAYOUTGET is
+>       equal to or greater than that of the "seqid" in CB_LAYOUTRECALL.
+>       The server has not received a response to the CB_LAYOUTRECALL, so
+>       it returns NFS4ERR_RECALLCONFLICT.
+15548,15553c15556,15561
+<        CB_LAYOUTRECALL; the server received the CB_LAYOUTRECALL
+<        response, but the LAYOUTGET arrived before the LAYOUTRETURN that
+<        completed that processing.  The "seqid" in the layout stateid of
+<        LAYOUTGET is equal to that of the "seqid" in CB_LAYOUTRECALL.
+<        The server has received a response to the CB_LAYOUTRECALL, so it
+<        returns NFS4ERR_RETURNCONFLICT.
+---
+>       CB_LAYOUTRECALL; the server received the CB_LAYOUTRECALL response,
+>       but the LAYOUTGET arrived before the LAYOUTRETURN that completed
+>       that processing.  The "seqid" in the layout stateid of LAYOUTGET
+>       is equal to that of the "seqid" in CB_LAYOUTRECALL.  The server
+>       has received a response to the CB_LAYOUTRECALL, so it returns
+>       NFS4ERR_RETURNCONFLICT.
+15596c15604
+<    maximum VALID_SEQID_RANGE is (2^(32) - 2) (accounting for zero not
+---
+>    maximum VALID_SEQID_RANGE is (2^32 - 2) (accounting for zero not
+15869,15871c15877,15878
+<       1.  The client can obtain a layout via LAYOUTGET after the
+<           server's grace period and write the data to the storage
+<           devices.
+---
+>       1. The client can obtain a layout via LAYOUTGET after the server's
+>          grace period and write the data to the storage devices.
+16003,16006c16010,16013
+<    1.  The storage device uses NFSv4.1 as the storage protocol, i.e.,
+<        the same physical hardware is used to implement both a metadata
+<        and data server.  See Section 13.1 for a description of how
+<        multiple roles are handled.
+---
+>    1. The storage device uses NFSv4.1 as the storage protocol, i.e., the
+>       same physical hardware is used to implement both a metadata and
+>       data server.  See Section 13.1 for a description of how multiple
+>       roles are handled.
+16012,16015c16019,16022
+<        immaterial.  This is because it is always clear to the pNFS
+<        client and server, from the upper-layer protocol being used
+<        (NFSv4.1 or non-NFSv4.1), to which role the request to the common
+<        server network address is directed.
+---
+>       immaterial.  This is because it is always clear to the pNFS client
+>       and server, from the upper-layer protocol being used (NFSv4.1 or
+>       non-NFSv4.1), to which role the request to the common server
+>       network address is directed.
+16227,16232c16234,16235
+<    Unit.  A unit is a fixed-size quantity of data written to a data
+<       server.
+< 
+<    Pattern.  A pattern is a method of distributing one or more equal
+<       sized units across a set of data servers.  A pattern is iterated
+<       one or more times.
+---
+>    Unit.
+>       A unit is a fixed-size quantity of data written to a data server.
+16234,16240c16237,16251
+<    Stripe.  A stripe is a set of data distributed across a set of data
+<       servers in a pattern before that pattern repeats.
+< 
+<    Stripe Count.  A stripe count is the number of units in a pattern.
+< 
+<    Stripe Width.  A stripe width is the size of a stripe in bytes.  The
+<       stripe width = the stripe count * the size of the stripe unit.
+---
+>    Pattern.
+>       A pattern is a method of distributing one or more equal sized
+>       units across a set of data servers.  A pattern is iterated one or
+>       more times.
+> 
+>    Stripe.
+>       A stripe is a set of data distributed across a set of data servers
+>       in a pattern before that pattern repeats.
+> 
+>    Stripe Count.
+>       A stripe count is the number of units in a pattern.
+> 
+>    Stripe Width.
+>       A stripe width is the size of a stripe in bytes.  The stripe width
+>       = the stripe count * the size of the stripe unit.
+16339,16342c16350,16353
+<        each list can be one or more elements, and each element
+<        represents a data server address that may serve equally as the
+<        target of I/O operations (see Section 13.5).  The length of this
+<        array might be different than the stripe count.
+---
+>       each list can be one or more elements, and each element represents
+>       a data server address that may serve equally as the target of I/O
+>       operations (see Section 13.5).  The length of this array might be
+>       different than the stripe count.
+16371,16376c16382,16387
+<        nfsv4_1_file_layouthint4, a compact representation of how the
+<        data on a file on each data server is packed, whether the client
+<        should send COMMIT operations to the metadata server or data
+<        server, and the stripe unit size.  If a server returns two or
+<        more overlapping layouts, each stripe unit size in each
+<        overlapping layout MUST be the same.
+---
+>       nfsv4_1_file_layouthint4, a compact representation of how the data
+>       on a file on each data server is packed, whether the client should
+>       send COMMIT operations to the metadata server or data server, and
+>       the stripe unit size.  If a server returns two or more overlapping
+>       layouts, each stripe unit size in each overlapping layout MUST be
+>       the same.
+16381,16386c16392,16396
+<    4.  nfl_pattern_offset: This field is the logical offset into the
+<        file where the striping pattern starts.  It is required for
+<        converting the client's logical I/O offset (e.g., the current
+<        offset in a POSIX file descriptor before the read() or write()
+<        system call is sent) into the stripe unit number (see
+<        Section 13.4.1).
+---
+>    4. nfl_pattern_offset: This field is the logical offset into the file
+>       where the striping pattern starts.  It is required for converting
+>       the client's logical I/O offset (e.g., the current offset in a
+>       POSIX file descriptor before the read() or write() system call is
+>       sent) into the stripe unit number (see Section 13.4.1).
+16394,16395c16404,16405
+<        For example, via the LAYOUTGET operation, a client might request
+<        a layout starting at offset 1000 of a file that has its striping
+---
+>       For example, via the LAYOUTGET operation, a client might request a
+>       layout starting at offset 1000 of a file that has its striping
+16399,16401c16409,16411
+<        data servers in each element of the nflda_multipath_ds_list
+<        array.  The number of elements in nfl_fh_list depends on whether
+<        sparse or dense packing is being used.
+---
+>       data servers in each element of the nflda_multipath_ds_list array.
+>       The number of elements in nfl_fh_list depends on whether sparse or
+>       dense packing is being used.
+16406,16407c16416,16417
+<           -  Zero.  This means that filehandles used for each data
+<              server are the same as the filehandle returned by the OPEN
+---
+>          -  Zero.  This means that filehandles used for each data server
+>             are the same as the filehandle returned by the OPEN
+16415,16416c16425,16426
+<              data server in nflda_multipath_ds_list[X], the filehandle
+<              in nfl_fh_list[X] MUST be used.
+---
+>             data server in nflda_multipath_ds_list[X], the filehandle in
+>             nfl_fh_list[X] MUST be used.
+16426,16428c16436,16437
+<           time there exists i and j, (i != j), such that the
+<           intersection of
+<           nflda_multipath_ds_list[nflda_stripe_indices[i]] and
+---
+>          time there exists i and j, (i != j), such that the intersection
+>          of nflda_multipath_ds_list[nflda_stripe_indices[i]] and
+16895,16897c16904,16906
+<        within this class, with the following exception.  The exception
+<        is that if the operation uses a stateid that is incompatible with
+<        a data-server personality (e.g., a special stateid or the stateid
+---
+>       within this class, with the following exception.  The exception is
+>       that if the operation uses a stateid that is incompatible with a
+>       data-server personality (e.g., a special stateid or the stateid
+16899,16902c16908,16911
+<        is in class 3, as described below.  A COMPOUND containing
+<        multiple class 1 operations (and operations of no other class)
+<        MAY be sent to a server with multiple concurrent data server and
+<        non-data-server personalities.
+---
+>       is in class 3, as described below.  A COMPOUND containing multiple
+>       class 1 operations (and operations of no other class) MAY be sent
+>       to a server with multiple concurrent data server and non-data-
+>       server personalities.
+21258,21259c21267,21269
+<    ACCESS4_LOOKUP  Look up a name in a directory (no meaning for non-
+<       directory objects).
+---
+>    ACCESS4_LOOKUP
+>       Look up a name in a directory (no meaning for non-directory
+>       objects).
+25893,25894c25903,25904
+<        The principal that was defined in the RPC header's credential
+<        and/or verifier at the time the client record was established.
+---
+>       The principal that was defined in the RPC header's credential and/
+>       or verifier at the time the client record was established.
+25983,25984c25993,25994
+<        or lost connection, or the client is trying to determine if it
+<        can perform trunking.
+---
+>       or lost connection, or the client is trying to determine if it can
+>       perform trunking.
+25989,25991c25999,26001
+<        Since the record has been confirmed, the client must have
+<        received the server's reply from the initial EXCHANGE_ID request.
+<        Since the server has a confirmed record, and since
+---
+>       Since the record has been confirmed, the client must have received
+>       the server's reply from the initial EXCHANGE_ID request.  Since
+>       the server has a confirmed record, and since
+26000,26002c26010,26012
+<        If EXCHGID4_FLAG_UPD_CONFIRMED_REC_A is not set, and if the
+<        server has the following confirmed record, then this request is
+<        likely the result of a chance collision between the values of the
+---
+>       If EXCHGID4_FLAG_UPD_CONFIRMED_REC_A is not set, and if the server
+>       has the following confirmed record, then this request is likely
+>       the result of a chance collision between the values of the
+26006,26007c26016
+<        { ownerid_arg, *, old_principal_arg, old_clientid_ret, confirmed
+<        }
+---
+>       { ownerid_arg, *, old_principal_arg, old_clientid_ret, confirmed }
+26050,26053c26059,26061
+<        If EXCHGID4_FLAG_UPD_CONFIRMED_REC_A is not set, and if the
+<        server has the following confirmed client record, then this
+<        request is likely from a previously confirmed client that has
+<        restarted.
+---
+>       If EXCHGID4_FLAG_UPD_CONFIRMED_REC_A is not set, and if the server
+>       has the following confirmed client record, then this request is
+>       likely from a previously confirmed client that has restarted.
+26064,26065c26072,26073
+<        had maintained that information across restart, this request
+<        would not have been sent.  If the server supports neither the
+---
+>       had maintained that information across restart, this request would
+>       not have been sent.  If the server supports neither the
+26083,26086c26091,26094
+<        *  If the server subsequently receives a successful
+<           CREATE_SESSION that confirms clientid_ret, then the server
+<           atomically destroys the confirmed record and makes the
+<           unconfirmed record confirmed as described in Section 18.36.3.
+---
+>       *  If the server subsequently receives a successful CREATE_SESSION
+>          that confirms clientid_ret, then the server atomically destroys
+>          the confirmed record and makes the unconfirmed record confirmed
+>          as described in Section 18.36.3.
+26088,26089c26096,26097
+<        *  If the server instead subsequently receives an EXCHANGE_ID
+<           with the client owner equal to ownerid_arg, one strategy is to
+---
+>       *  If the server instead subsequently receives an EXCHANGE_ID with
+>          the client owner equal to ownerid_arg, one strategy is to
+26096,26097c26104,26105
+<        the following confirmed record, then this request is an attempt
+<        at an update.
+---
+>       the following confirmed record, then this request is an attempt at
+>       an update.
+26102,26105c26110,26112
+<        Since the record has been confirmed, the client must have
+<        received the server's reply from the initial EXCHANGE_ID request.
+<        The server allows the update, and the client record is left
+<        intact.
+---
+>       Since the record has been confirmed, the client must have received
+>       the server's reply from the initial EXCHANGE_ID request.  The
+>       server allows the update, and the client record is left intact.
+26109,26110c26116,26117
+<        If EXCHGID4_FLAG_UPD_CONFIRMED_REC_A is set, and the server has
+<        no confirmed record corresponding ownerid_arg, then the server
+---
+>       If EXCHGID4_FLAG_UPD_CONFIRMED_REC_A is set, and the server has no
+>       confirmed record corresponding ownerid_arg, then the server
+26215,26216c26222,26224
+<    csa_clientid:  This is the client ID with which the new session will
+<       be associated.  The corresponding result is csr_sessionid, the
+---
+>    csa_clientid:
+>       This is the client ID with which the new session will be
+>       associated.  The corresponding result is csr_sessionid, the
+26219,26222c26227,26230
+<    csa_sequence:  Each client ID serializes CREATE_SESSION via a per-
+<       client ID sequence number (see Section 18.36.4).  The
+<       corresponding result is csr_sequence, which MUST be equal to
+<       csa_sequence.
+---
+>    csa_sequence:
+>       Each client ID serializes CREATE_SESSION via a per-client ID
+>       sequence number (see Section 18.36.4).  The corresponding result
+>       is csr_sequence, which MUST be equal to csa_sequence.
+26497,26507c26505,26515
+<        previous CREATE_SESSION request, and the server returns the
+<        cached result.  If csa_sequenceid is not equal to the sequence ID
+<        in the slot, and is more than one greater (accounting for
+<        wraparound), then the server returns the error
+<        NFS4ERR_SEQ_MISORDERED, and does not change the slot.  If
+<        csa_sequenceid is equal to the slot's sequence ID + 1 (accounting
+<        for wraparound), then the slot's sequence ID is set to
+<        csa_sequenceid, and the CREATE_SESSION processing goes to the
+<        next phase.  A subsequent new CREATE_SESSION call over the same
+<        client ID MUST use a csa_sequenceid that is one greater than the
+<        sequence ID in the slot.
+---
+>       previous CREATE_SESSION request, and the server returns the cached
+>       result.  If csa_sequenceid is not equal to the sequence ID in the
+>       slot, and is more than one greater (accounting for wraparound),
+>       then the server returns the error NFS4ERR_SEQ_MISORDERED, and does
+>       not change the slot.  If csa_sequenceid is equal to the slot's
+>       sequence ID + 1 (accounting for wraparound), then the slot's
+>       sequence ID is set to csa_sequenceid, and the CREATE_SESSION
+>       processing goes to the next phase.  A subsequent new
+>       CREATE_SESSION call over the same client ID MUST use a
+>       csa_sequenceid that is one greater than the sequence ID in the
+>       slot.
+26511,26515c26519,26523
+<        client ID.  Otherwise, the client ID confirmation phase is
+<        skipped and only the session creation phase occurs.  Any case in
+<        which there is more than one record with identical values for
+<        client ID represents a server implementation error.  Operation in
+<        the potential valid cases is summarized as follows.
+---
+>       client ID.  Otherwise, the client ID confirmation phase is skipped
+>       and only the session creation phase occurs.  Any case in which
+>       there is more than one record with identical values for client ID
+>       represents a server implementation error.  Operation in the
+>       potential valid cases is summarized as follows.
+26551,26553c26559,26561
+<              Neither of these cases is permissible.  Processing stops
+<              and NFS4ERR_CLID_INUSE is returned to the client.  No
+<              changes are made to any client records on the server.
+---
+>             Neither of these cases is permissible.  Processing stops and
+>             NFS4ERR_CLID_INUSE is returned to the client.  No changes
+>             are made to any client records on the server.
+26568,26572c26576,26580
+<        sent has a sequence ID equal to zero, the server can simply
+<        return what is in the reply cache: NFS4ERR_SEQ_MISORDERED.  The
+<        client initializes its reply cache for receiving callbacks in the
+<        same way, and similarly, the first CB_SEQUENCE operation on a
+<        slot after session creation MUST have a sequence ID of one.
+---
+>       sent has a sequence ID equal to zero, the server can simply return
+>       what is in the reply cache: NFS4ERR_SEQ_MISORDERED.  The client
+>       initializes its reply cache for receiving callbacks in the same
+>       way, and similarly, the first CB_SEQUENCE operation on a slot
+>       after session creation MUST have a sequence ID of one.
+26581,26583c26589,26591
+<        change, then a non-retry MUST be sent.  The server will
+<        eventually dispose of any session that was created on the
+<        original connection.
+---
+>       change, then a non-retry MUST be sent.  The server will eventually
+>       dispose of any session that was created on the original
+>       connection.
+30307c30315
+<    theory be up to 2^(32) - 1 bytes in length, but in practice NFSv4.1
+---
+>    theory be up to 2^32 - 1 bytes in length, but in practice NFSv4.1
+30368,30369c30376,30377
+<    1.  The name of the notification type.  This name must have the
+<        prefix "NOTIFY_DEVICEID4_".  This name must be unique.
+---
+>    1. The name of the notification type.  This name must have the prefix
+>       "NOTIFY_DEVICEID4_".  This name must be unique.
+30372,30374c30380,30382
+<        the request from the registrant will use TBD1 instead of an
+<        actual value.  IANA MUST use a whole number that can be no higher
+<        than 2^(32)-1, and should be the next available value.  The value
+---
+>       the request from the registrant will use TBD1 instead of an actual
+>       value.  IANA MUST use a whole number that can be no higher than
+>       2^32-1, and should be the next available value.  The value
+30381,30382c30389,30390
+<    3.  The Standards Track RFC(s) that describe the notification.  If
+<        the RFC(s) have not yet been published, the registrant will use
+---
+>    3. The Standards Track RFC(s) that describe the notification.  If the
+>       RFC(s) have not yet been published, the registrant will use
+30387,30389c30395,30396
+<        revision to the NFSv4 protocol.  If the value is L, it means a
+<        new pNFS layout type.  Other values can be used with IESG
+<        Approval.
+---
+>       revision to the NFSv4 protocol.  If the value is L, it means a new
+>       pNFS layout type.  Other values can be used with IESG Approval.
+30395,30396c30402,30403
+<        minor version of NFSv4 approved, a Designated Expert should
+<        review the registry to make recommended updates as needed.
+---
+>       minor version of NFSv4 approved, a Designated Expert should review
+>       the registry to make recommended updates as needed.
+30449,30453c30456,30460
+<        higher than 2^(32)-1, and should be the next available value.
+<        The value must be unique.  A Designated Expert must be used to
+<        ensure that when the name of the recallable type and its value
+<        are added to the NFSv4 XDR description [10], the result continues
+<        to be a valid XDR description.
+---
+>       higher than 2^32-1, and should be the next available value.  The
+>       value must be unique.  A Designated Expert must be used to ensure
+>       that when the name of the recallable type and its value are added
+>       to the NFSv4 XDR description [10], the result continues to be a
+>       valid XDR description.
+30460,30463c30467,30470
+<        indicated by a single US-ASCII value.  If the value is N, it
+<        means a minor revision to the NFSv4 protocol.  If the value is L,
+<        it means a new pNFS layout type.  Other values can be used with
+<        IESG Approval.
+---
+>       indicated by a single US-ASCII value.  If the value is N, it means
+>       a minor revision to the NFSv4 protocol.  If the value is L, it
+>       means a new pNFS layout type.  Other values can be used with IESG
+>       Approval.
+30465,30470c30472,30477
+<    5.  The minor versions of NFSv4 that are allowed to use the
+<        recallable object type.  While these are numeric values, IANA
+<        will not allocate and assign them; the author of the relevant
+<        RFCs with IESG Approval assigns these numbers.  Each time there
+<        is a new minor version of NFSv4 approved, a Designated Expert
+<        should review the registry to make recommended updates as needed.
+---
+>    5. The minor versions of NFSv4 that are allowed to use the recallable
+>       object type.  While these are numeric values, IANA will not
+>       allocate and assign them; the author of the relevant RFCs with
+>       IESG Approval assigns these numbers.  Each time there is a new
+>       minor version of NFSv4 approved, a Designated Expert should review
+>       the registry to make recommended updates as needed.
+30528,30533c30535,30540
+<        the request from the registrant will use TBD1 instead of an
+<        actual value.  The value assigned must be unique.  A Designated
+<        Expert must be used to ensure that when the name of the layout
+<        type and its value are added to the NFSv4.1 layouttype4
+<        enumerated data type in the NFSv4.1 XDR description [10], the
+<        result continues to be a valid XDR description.
+---
+>       the request from the registrant will use TBD1 instead of an actual
+>       value.  The value assigned must be unique.  A Designated Expert
+>       must be used to ensure that when the name of the layout type and
+>       its value are added to the NFSv4.1 layouttype4 enumerated data
+>       type in the NFSv4.1 XDR description [10], the result continues to
+>       be a valid XDR description.
+30535,30536c30542,30543
+<    3.  The Standards Track RFC(s) that describe the notification.  If
+<        the RFC(s) have not yet been published, the registrant will use
+---
+>    3. The Standards Track RFC(s) that describe the notification.  If the
+>       RFC(s) have not yet been published, the registrant will use
+30543,30545c30550,30551
+<        revision to the NFSv4 protocol.  If the value is L, it means a
+<        new pNFS layout type.  Other values can be used with IESG
+<        Approval.
+---
+>       revision to the NFSv4 protocol.  If the value is L, it means a new
+>       pNFS layout type.  Other values can be used with IESG Approval.
+30551,30552c30557,30558
+<        minor version of NFSv4 approved, a Designated Expert should
+<        review the registry to make recommended updates as needed.
+---
+>       minor version of NFSv4 approved, a Designated Expert should review
+>       the registry to make recommended updates as needed.
+30621,30622c30627,30628
+<              for CB_NOTIFY_DEVICEID; each entry is to be presented in
+<              the form described in Section 22.3.
+---
+>             for CB_NOTIFY_DEVICEID; each entry is to be presented in the
+>             form described in Section 22.3.
+30627,30629c30633,30635
+<           server would restrict a READ or WRITE operation, how would
+<           pNFS via the layout similarly restrict a corresponding input
+<           or output operation?
+---
+>          server would restrict a READ or WRITE operation, how would pNFS
+>          via the layout similarly restrict a corresponding input or
+>          output operation?
+30684,30686c30690,30692
+<        with a "${" followed by a registered domain name, followed by
+<        ":", or it must start with "${FCFS.ietf.org".  The name must be
+<        no more than 64 UTF-8 characters long.  The name must be unique.
+---
+>       with a "${" followed by a registered domain name, followed by ":",
+>       or it must start with "${FCFS.ietf.org".  The name must be no more
+>       than 64 UTF-8 characters long.  The name must be unique.
+30690,30695c30696,30701
+<        yet been published, the registrant will use RFCTBD1, RFCTBD2,
+<        etc. instead of an actual RFC number.  Note that the RFCs do not
+<        have to be a part of an NFS minor version.  For assignments made
+<        on a First Come First Serve basis, an explanation (consuming no
+<        more than 1024 bytes, or more if IANA permits) of the purpose of
+<        the variable.  A reference to the explanation can be substituted.
+---
+>       yet been published, the registrant will use RFCTBD1, RFCTBD2, etc.
+>       instead of an actual RFC number.  Note that the RFCs do not have
+>       to be a part of an NFS minor version.  For assignments made on a
+>       First Come First Serve basis, an explanation (consuming no more
+>       than 1024 bytes, or more if IANA permits) of the purpose of the
+>       variable.  A reference to the explanation can be substituted.
+30748,30749c30754,30755
+<    1.  A value of the ${ietf.org:CPU_ARCH} variable.  The value must be
+<        1 to 32 UTF-8 characters long.  The value must be unique.
+---
+>    1. A value of the ${ietf.org:CPU_ARCH} variable.  The value must be 1
+>       to 32 UTF-8 characters long.  The value must be unique.
+30751,30753c30757,30759
+<    2.  An explanation (consuming no more than 1024 bytes, or more if
+<        IANA permits) of what CPU architecture the value denotes.  A
+<        reference to the explanation can be substituted.
+---
+>    2. An explanation (consuming no more than 1024 bytes, or more if IANA
+>       permits) of what CPU architecture the value denotes.  A reference
+>       to the explanation can be substituted.
+30781,30783c30787,30789
+<    2.  An explanation (consuming no more than 1024 bytes, or more if
+<        IANA permits) of what CPU architecture the value denotes.  A
+<        reference to the explanation can be substituted.
+---
+>    2. An explanation (consuming no more than 1024 bytes, or more if IANA
+>       permits) of what CPU architecture the value denotes.  A reference
+>       to the explanation can be substituted.
+31820d31825
+< 
+31830d31834
+< 
