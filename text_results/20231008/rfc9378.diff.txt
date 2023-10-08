@@ -1,0 +1,182 @@
+140c140,141
+<    VXLAN-GPE:  Virtual eXtensible Local Area Network - Generic Protocol
+---
+>    VXLAN-GPE:
+>               Virtual eXtensible Local Area Network - Generic Protocol
+254,274c255,276
+<    Proof of Transit:  Information that a verifier node can use to verify
+<       whether a packet has traversed all nodes that it is supposed to
+<       traverse is stored within the user data packet.  For example,
+<       Proof of Transit could be used to verify that a packet indeed
+<       passes through all services of a service function chain (e.g.,
+<       verify whether a packet indeed traversed the set of firewalls that
+<       it is expected to traverse) or whether a packet indeed took the
+<       expected path.
+< 
+<    Edge-to-Edge (E2E):  OAM information that is specific to the edges of
+<       an IOAM-Domain is collected and stored within the user data
+<       packet.  E2E OAM could be used to gather operational information
+<       about a particular network domain, such as the delay and jitter
+<       incurred by that network domain or the traffic matrix of the
+<       network domain.
+< 
+<    Direct Export:  OAM information about each IOAM node a packet
+<       traverses is collected and immediately exported to a collector.
+<       Direct Export could be used in situations where per-hop tracing
+<       information is desired, but gathering the information within the
+<       packet -- as with per-hop tracing -- is not feasible.  Rather than
+---
+>    Proof of Transit:
+>       Information that a verifier node can use to verify whether a
+>       packet has traversed all nodes that it is supposed to traverse is
+>       stored within the user data packet.  For example, Proof of Transit
+>       could be used to verify that a packet indeed passes through all
+>       services of a service function chain (e.g., verify whether a
+>       packet indeed traversed the set of firewalls that it is expected
+>       to traverse) or whether a packet indeed took the expected path.
+> 
+>    Edge-to-Edge (E2E):
+>       OAM information that is specific to the edges of an IOAM-Domain is
+>       collected and stored within the user data packet.  E2E OAM could
+>       be used to gather operational information about a particular
+>       network domain, such as the delay and jitter incurred by that
+>       network domain or the traffic matrix of the network domain.
+> 
+>    Direct Export:
+>       OAM information about each IOAM node a packet traverses is
+>       collected and immediately exported to a collector.  Direct Export
+>       could be used in situations where per-hop tracing information is
+>       desired, but gathering the information within the packet -- as
+>       with per-hop tracing -- is not feasible.  Rather than
+625,634c627,638
+<    Pre-allocated Trace Option:  This trace option is defined as a
+<       container of node data fields with pre-allocated space for each
+<       node to populate its information.  This option is useful for
+<       implementations where it is efficient to allocate the space once
+<       and index into the array to populate the data during transit
+<       (e.g., software forwarders often fall into this class).
+< 
+<    Incremental Trace Option:  This trace option is defined as a
+<       container of node data fields where each node allocates and pushes
+<       its node data immediately following the option header.
+---
+>    Pre-allocated Trace Option:
+>       This trace option is defined as a container of node data fields
+>       with pre-allocated space for each node to populate its
+>       information.  This option is useful for implementations where it
+>       is efficient to allocate the space once and index into the array
+>       to populate the data during transit (e.g., software forwarders
+>       often fall into this class).
+> 
+>    Incremental Trace Option:
+>       This trace option is defined as a container of node data fields
+>       where each node allocates and pushes its node data immediately
+>       following the option header.
+656,681c660,687
+<    Pre-allocated Trace Option:  For some implementations of packet
+<       forwarders, it is efficient to allocate the space for the maximum
+<       number of nodes that IOAM Trace Data-Fields should be collected
+<       from and insert/update information in the packet at flexible
+<       locations based on a pointer retrieved from a field in the packet.
+<       The IOAM encapsulating node allocates an array of the size of the
+<       maximum number of nodes that IOAM Trace Data-Fields should be
+<       collected from.  IOAM transit nodes index into the array to
+<       populate the data during transit.  Software forwarders often fall
+<       into this class of packet-forwarder implementations.  The maximum
+<       number of nodes that IOAM information could be collected from is
+<       configured by the operator on the IOAM encapsulating node.  The
+<       operator has to ensure that the packet with the pre-allocated
+<       array that carries the IOAM Data-Fields does not exceed the MTU of
+<       any of the links in the IOAM-Domain.
+< 
+<    Incremental Trace Option:  Looking up a pointer contained in the
+<       packet and inserting/updating information at a flexible location
+<       in the packet as a result of the pointer lookup is costly for some
+<       forwarding infrastructures.  Hardware-based packet-forwarding
+<       infrastructures often fall into this category.  Consequently,
+<       hardware-based packet forwarders could choose to support the IOAM
+<       Incremental Trace Option-Type.  The IOAM Incremental Trace Option-
+<       Type eliminates the need for the IOAM transit nodes to read the
+<       full array in the Trace Option-Type and allows packets to grow to
+<       the size of the MTU of the IOAM-Domain.  IOAM transit nodes will
+---
+>    Pre-allocated Trace Option:
+>       For some implementations of packet forwarders, it is efficient to
+>       allocate the space for the maximum number of nodes that IOAM Trace
+>       Data-Fields should be collected from and insert/update information
+>       in the packet at flexible locations based on a pointer retrieved
+>       from a field in the packet.  The IOAM encapsulating node allocates
+>       an array of the size of the maximum number of nodes that IOAM
+>       Trace Data-Fields should be collected from.  IOAM transit nodes
+>       index into the array to populate the data during transit.
+>       Software forwarders often fall into this class of packet-forwarder
+>       implementations.  The maximum number of nodes that IOAM
+>       information could be collected from is configured by the operator
+>       on the IOAM encapsulating node.  The operator has to ensure that
+>       the packet with the pre-allocated array that carries the IOAM
+>       Data-Fields does not exceed the MTU of any of the links in the
+>       IOAM-Domain.
+> 
+>    Incremental Trace Option:
+>       Looking up a pointer contained in the packet and inserting/
+>       updating information at a flexible location in the packet as a
+>       result of the pointer lookup is costly for some forwarding
+>       infrastructures.  Hardware-based packet-forwarding infrastructures
+>       often fall into this category.  Consequently, hardware-based
+>       packet forwarders could choose to support the IOAM Incremental
+>       Trace Option-Type.  The IOAM Incremental Trace Option-Type
+>       eliminates the need for the IOAM transit nodes to read the full
+>       array in the Trace Option-Type and allows packets to grow to the
+>       size of the MTU of the IOAM-Domain.  IOAM transit nodes will
+722,745c728,753
+<    Endpoint detailed active measurement:  Synthetic probe packets are
+<       sent between the source and destination.  These probe packets
+<       include a Trace Option-Type (i.e., either incremental or pre-
+<       allocated).  Since the probe packets are sent between the
+<       endpoints, these packets are treated as data packets by the IOAM-
+<       Domain and do not require special treatment at the IOAM layer.
+<       The source, which is also the IOAM encapsulating node, can choose
+<       to set the Active flag, providing an explicit indication that
+<       these probe packets are meant for telemetry collection.
+< 
+<    IOAM active measurement using probe packets:  Probe packets are
+<       generated and transmitted by an IOAM encapsulating node towards a
+<       destination that is also the IOAM decapsulating node.  Probe
+<       packets include a Trace Option-Type (i.e., either incremental or
+<       pre-allocated) that has its Active flag set.
+< 
+<    IOAM active measurement using replicated data packets:  Probe packets
+<       are created by an IOAM encapsulating node by selecting some or all
+<       of the en route data packets and replicating them.  A selected
+<       data packet that is replicated and its (possibly truncated) copy
+<       are forwarded with one or more IOAM options, while the original
+<       packet is forwarded, normally, without IOAM options.  To the
+<       extent possible, the original data packet and its replica are
+<       forwarded through the same path.  The replica includes a Trace
+---
+>    Endpoint detailed active measurement:
+>       Synthetic probe packets are sent between the source and
+>       destination.  These probe packets include a Trace Option-Type
+>       (i.e., either incremental or pre-allocated).  Since the probe
+>       packets are sent between the endpoints, these packets are treated
+>       as data packets by the IOAM-Domain and do not require special
+>       treatment at the IOAM layer.  The source, which is also the IOAM
+>       encapsulating node, can choose to set the Active flag, providing
+>       an explicit indication that these probe packets are meant for
+>       telemetry collection.
+> 
+>    IOAM active measurement using probe packets:
+>       Probe packets are generated and transmitted by an IOAM
+>       encapsulating node towards a destination that is also the IOAM
+>       decapsulating node.  Probe packets include a Trace Option-Type
+>       (i.e., either incremental or pre-allocated) that has its Active
+>       flag set.
+> 
+>    IOAM active measurement using replicated data packets:
+>       Probe packets are created by an IOAM encapsulating node by
+>       selecting some or all of the en route data packets and replicating
+>       them.  A selected data packet that is replicated and its (possibly
+>       truncated) copy are forwarded with one or more IOAM options, while
+>       the original packet is forwarded, normally, without IOAM options.
+>       To the extent possible, the original data packet and its replica
+>       are forwarded through the same path.  The replica includes a Trace

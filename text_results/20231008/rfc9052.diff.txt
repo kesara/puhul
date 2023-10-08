@@ -1,0 +1,398 @@
+300,301c300,302
+<    bool:  A boolean value (true: major type 7, value 21; false: major
+<       type 7, value 20).
+---
+>    bool:
+>       A boolean value (true: major type 7, value 21; false: major type
+>       7, value 20).
+328,329c329,331
+<    type1 .cbor type2:  Indicates that the contents of type1, usually
+<       bstr, contains a value of type2.
+---
+>    type1 .cbor type2:
+>       Indicates that the contents of type1, usually bstr, contains a
+>       value of type2.
+389,406c391,409
+<    Constrained Application Protocol (CoAP):  A specialized web transfer
+<       protocol for use in constrained systems.  It is defined in
+<       [RFC7252].
+< 
+<    Authenticated Encryption (AE) algorithms [RFC5116]:  Encryption
+<       algorithms that provide an authentication check of the contents
+<       along with the encryption service.  An example of an AE algorithm
+<       used in COSE is AES Key Wrap [RFC3394].  These algorithms are used
+<       for key encryption, but Authenticated Encryption with Associated
+<       Data (AEAD) algorithms would be preferred.
+< 
+<    AEAD algorithms [RFC5116]:  Encryption algorithms that provide the
+<       same authentication service of the content as AE algorithms do,
+<       and also allow associated data that is not part of the encrypted
+<       body to be included in the authentication service.  An example of
+<       an AEAD algorithm used in COSE is AES-GCM [RFC5116].  These
+<       algorithms are used for content encryption and can be used for key
+<       encryption as well.
+---
+>    Constrained Application Protocol (CoAP):
+>       A specialized web transfer protocol for use in constrained
+>       systems.  It is defined in [RFC7252].
+> 
+>    Authenticated Encryption (AE) algorithms [RFC5116]:
+>       Encryption algorithms that provide an authentication check of the
+>       contents along with the encryption service.  An example of an AE
+>       algorithm used in COSE is AES Key Wrap [RFC3394].  These
+>       algorithms are used for key encryption, but Authenticated
+>       Encryption with Associated Data (AEAD) algorithms would be
+>       preferred.
+> 
+>    AEAD algorithms [RFC5116]:
+>       Encryption algorithms that provide the same authentication service
+>       of the content as AE algorithms do, and also allow associated data
+>       that is not part of the encrypted body to be included in the
+>       authentication service.  An example of an AEAD algorithm used in
+>       COSE is AES-GCM [RFC5116].  These algorithms are used for content
+>       encryption and can be used for key encryption as well.
+591,592c594,596
+<    unprotected:  Contains parameters about the current layer that are
+<       not cryptographically protected.
+---
+>    unprotected:
+>       Contains parameters about the current layer that are not
+>       cryptographically protected.
+648,649c652,654
+<    alg:  This header parameter is used to indicate the algorithm used
+<       for the security processing.  This header parameter MUST be
+---
+>    alg:
+>       This header parameter is used to indicate the algorithm used for
+>       the security processing.  This header parameter MUST be
+699,708c704,714
+<    content type:  This header parameter is used to indicate the content
+<       type of the data in the "payload" or "ciphertext" field.  Integers
+<       are from the "CoAP Content-Formats" IANA registry table
+<       [COAP.Formats].  Text values follow the syntax of "<type-
+<       name>/<subtype-name>", where <type-name> and <subtype-name> are
+<       defined in Section 4.2 of [RFC6838].  Leading and trailing
+<       whitespace is not permitted.  Textual content type values, along
+<       with parameters and subparameters, can be located using the IANA
+<       "Media Types" registry.  Applications SHOULD provide this header
+<       parameter if the content structure is potentially ambiguous.
+---
+>    content type:
+>       This header parameter is used to indicate the content type of the
+>       data in the "payload" or "ciphertext" field.  Integers are from
+>       the "CoAP Content-Formats" IANA registry table [COAP.Formats].
+>       Text values follow the syntax of "<type-name>/<subtype-name>",
+>       where <type-name> and <subtype-name> are defined in Section 4.2 of
+>       [RFC6838].  Leading and trailing whitespace is not permitted.
+>       Textual content type values, along with parameters and
+>       subparameters, can be located using the IANA "Media Types"
+>       registry.  Applications SHOULD provide this header parameter if
+>       the content structure is potentially ambiguous.
+710c716,717
+<    kid:  This header parameter identifies one piece of data that can be
+---
+>    kid:
+>       This header parameter identifies one piece of data that can be
+723,727c730,735
+<    IV:  This header parameter holds the Initialization Vector (IV)
+<       value.  For some symmetric encryption algorithms, this may be
+<       referred to as a nonce.  The IV can be placed in the unprotected
+<       bucket, since for AE and AEAD algorithms, modifying the IV will
+<       cause the decryption to fail.
+---
+>    IV:
+>       This header parameter holds the Initialization Vector (IV) value.
+>       For some symmetric encryption algorithms, this may be referred to
+>       as a nonce.  The IV can be placed in the unprotected bucket, since
+>       for AE and AEAD algorithms, modifying the IV will cause the
+>       decryption to fail.
+870c878,879
+<    signatures:  This field is an array of signatures.  Each signature is
+---
+>    signatures:
+>       This field is an array of signatures.  Each signature is
+889,891c898,901
+<    signature:  This field contains the computed signature value.  The
+<       type of the field is a bstr.  Algorithms MUST specify padding if
+<       the signature value is not a multiple of 8 bits.
+---
+>    signature:
+>       This field contains the computed signature value.  The type of the
+>       field is a bstr.  Algorithms MUST specify padding if the signature
+>       value is not a multiple of 8 bits.
+929,930c939,941
+<    signature:  This field contains the computed signature value.  The
+<       type of the field is a bstr.
+---
+>    signature:
+>       This field contains the computed signature value.  The type of the
+>       field is a bstr.
+1112,1118c1123,1131
+<    ciphertext:  This field contains the ciphertext, encoded as a bstr.
+<       If the ciphertext is to be transported independently of the
+<       control information about the encryption process (i.e., detached
+<       content), then the field is encoded as a nil value.
+< 
+<    recipients:  This field contains an array of recipient information
+<       structures.  The type for the recipient information structure is a
+---
+>    ciphertext:
+>       This field contains the ciphertext, encoded as a bstr.  If the
+>       ciphertext is to be transported independently of the control
+>       information about the encryption process (i.e., detached content),
+>       then the field is encoded as a nil value.
+> 
+>    recipients:
+>       This field contains an array of recipient information structures.
+>       The type for the recipient information structure is a
+1136,1142c1149,1157
+<    ciphertext:  This field contains the encrypted key, encoded as a
+<       bstr.  All encoded keys are symmetric keys; the binary value of
+<       the key is the content.  If there is not an encrypted key, then
+<       this field is encoded as a nil value.
+< 
+<    recipients:  This field contains an array of recipient information
+<       structures.  The type for the recipient information structure is a
+---
+>    ciphertext:
+>       This field contains the encrypted key, encoded as a bstr.  All
+>       encoded keys are symmetric keys; the binary value of the key is
+>       the content.  If there is not an encrypted key, then this field is
+>       encoded as a nil value.
+> 
+>    recipients:
+>       This field contains an array of recipient information structures.
+>       The type for the recipient information structure is a
+1166c1181,1182
+<    direct:  The CEK is the same as the identified previously distributed
+---
+>    direct:
+>       The CEK is the same as the identified previously distributed
+1170,1182c1186,1202
+<    symmetric key-encryption keys (KEKs):  The CEK is encrypted using a
+<       previously distributed symmetric KEK.  Also known as key wrap.
+< 
+<    key agreement:  The recipient's public key and a sender's private key
+<       are used to generate a pairwise secret, a Key Derivation Function
+<       (KDF) is applied to derive a key, and then the CEK is either the
+<       derived key or encrypted by the derived key.
+< 
+<    key transport:  The CEK is encrypted with the recipient's public key.
+< 
+<    passwords:  The CEK is encrypted in a KEK that is derived from a
+<       password.  As of when this document was published, no password
+<       algorithms have been defined.
+---
+>    symmetric key-encryption keys (KEKs):
+>       The CEK is encrypted using a previously distributed symmetric KEK.
+>       Also known as key wrap.
+> 
+>    key agreement:
+>       The recipient's public key and a sender's private key are used to
+>       generate a pairwise secret, a Key Derivation Function (KDF) is
+>       applied to derive a key, and then the CEK is either the derived
+>       key or encrypted by the derived key.
+> 
+>    key transport:
+>       The CEK is encrypted with the recipient's public key.
+> 
+>    passwords:
+>       The CEK is encrypted in a KEK that is derived from a password.  As
+>       of when this document was published, no password algorithms have
+>       been defined.
+1275,1285c1295,1306
+<        No Recipients:  The key to be used is determined by the algorithm
+<           and key at the current layer.  Examples are key wrap keys
+<           (Section 8.5.2) and preshared secrets.
+< 
+<        Direct Encryption and Direct Key Agreement:  The key is
+<           determined by the key and algorithm in the recipient
+<           structure.  The encryption algorithm and size of the key to be
+<           used are inputs into the KDF used for the recipient.  (For
+<           direct, the KDF can be thought of as the identity operation.)
+<           Examples of these algorithms are found in Sections 6.1 and 6.3
+<           of [RFC9053].
+---
+>        No Recipients:
+>           The key to be used is determined by the algorithm and key at
+>           the current layer.  Examples are key wrap keys (Section 8.5.2)
+>           and preshared secrets.
+> 
+>        Direct Encryption and Direct Key Agreement:
+>           The key is determined by the key and algorithm in the
+>           recipient structure.  The encryption algorithm and size of the
+>           key to be used are inputs into the KDF used for the recipient.
+>           (For direct, the KDF can be thought of as the identity
+>           operation.)  Examples of these algorithms are found in
+>           Sections 6.1 and 6.3 of [RFC9053].
+1308,1319c1329,1343
+<        No Recipients:  The key to be used is determined by the algorithm
+<           and key at the current layer.  Examples are key wrap keys
+<           (Section 8.5.2) and preshared secrets.
+< 
+<        Direct Encryption and Direct Key Agreement:  The key is
+<           determined by the key and algorithm in the recipient
+<           structure.  The encryption algorithm and size of the key to be
+<           used are inputs into the KDF used for the recipient.  (For
+<           direct, the KDF can be thought of as the identity operation.)
+< 
+<        Other:  The key is determined by decoding and decrypting one of
+<           the recipient structures.
+---
+>        No Recipients:
+>           The key to be used is determined by the algorithm and key at
+>           the current layer.  Examples are key wrap keys (Section 8.5.2)
+>           and preshared secrets.
+> 
+>        Direct Encryption and Direct Key Agreement:
+>           The key is determined by the key and algorithm in the
+>           recipient structure.  The encryption algorithm and size of the
+>           key to be used are inputs into the KDF used for the recipient.
+>           (For direct, the KDF can be thought of as the identity
+>           operation.)
+> 
+>        Other:
+>           The key is determined by decoding and decrypting one of the
+>           recipient structures.
+1336,1346c1360,1371
+<        No Recipients:  The key to be used is determined by the algorithm
+<           and key at the current layer.  Examples are key wrap keys
+<           (Section 8.5.2) and preshared secrets.
+< 
+<        Direct Encryption and Direct Key Agreement:  The key is
+<           determined by the key and algorithm in the recipient
+<           structure.  The encryption algorithm and size of the key to be
+<           used are inputs into the KDF used for the recipient.  (For
+<           direct, the KDF can be thought of as the identity operation.)
+<           Examples of these algorithms are found in Sections 6.1 and 6.3
+<           of [RFC9053].
+---
+>        No Recipients:
+>           The key to be used is determined by the algorithm and key at
+>           the current layer.  Examples are key wrap keys (Section 8.5.2)
+>           and preshared secrets.
+> 
+>        Direct Encryption and Direct Key Agreement:
+>           The key is determined by the key and algorithm in the
+>           recipient structure.  The encryption algorithm and size of the
+>           key to be used are inputs into the KDF used for the recipient.
+>           (For direct, the KDF can be thought of as the identity
+>           operation.)  Examples of these algorithms are found in
+>           Sections 6.1 and 6.3 of [RFC9053].
+1368,1381c1393,1408
+<        No Recipients:  The key to be used is determined by the algorithm
+<           and key at the current layer.  Examples are key wrap keys
+<           (Section 8.5.2) and preshared secrets.
+< 
+<        Direct Encryption and Direct Key Agreement:  The key is
+<           determined by the key and algorithm in the recipient
+<           structure.  The encryption algorithm and size of the key to be
+<           used are inputs into the KDF used for the recipient.  (For
+<           direct, the KDF can be thought of as the identity operation.)
+<           Examples of these algorithms are found in Sections 6.1 and 6.3
+<           of [RFC9053].
+< 
+<        Other:  The key is determined by decoding and decrypting one of
+<           the recipient structures.
+---
+>        No Recipients:
+>           The key to be used is determined by the algorithm and key at
+>           the current layer.  Examples are key wrap keys (Section 8.5.2)
+>           and preshared secrets.
+> 
+>        Direct Encryption and Direct Key Agreement:
+>           The key is determined by the key and algorithm in the
+>           recipient structure.  The encryption algorithm and size of the
+>           key to be used are inputs into the KDF used for the recipient.
+>           (For direct, the KDF can be thought of as the identity
+>           operation.)  Examples of these algorithms are found in
+>           Sections 6.1 and 6.3 of [RFC9053].
+> 
+>        Other:
+>           The key is determined by decoding and decrypting one of the
+>           recipient structures.
+1435,1440c1462,1468
+<    payload:  This field contains the serialized content to be MACed.  If
+<       the payload is not present in the message, the application is
+<       required to supply the payload separately.  The payload is wrapped
+<       in a bstr to ensure that it is transported without changes.  If
+<       the payload is transported separately (i.e., detached content),
+<       then a nil CBOR value is placed in this location, and it is the
+---
+>    payload:
+>       This field contains the serialized content to be MACed.  If the
+>       payload is not present in the message, the application is required
+>       to supply the payload separately.  The payload is wrapped in a
+>       bstr to ensure that it is transported without changes.  If the
+>       payload is transported separately (i.e., detached content), then a
+>       nil CBOR value is placed in this location, and it is the
+1629c1657,1658
+<    kty:  This parameter is used to identify the family of keys for this
+---
+>    kty:
+>       This parameter is used to identify the family of keys for this
+1637,1645c1666,1674
+<    alg:  This parameter is used to restrict the algorithm that is used
+<       with the key.  If this parameter is present in the key structure,
+<       the application MUST verify that this algorithm matches the
+<       algorithm for which the key is being used.  If the algorithms do
+<       not match, then this key object MUST NOT be used to perform the
+<       cryptographic operation.  Note that the same key can be in a
+<       different key structure with a different or no algorithm
+<       specified; however, this is considered to be a poor security
+<       practice.
+---
+>    alg:
+>       This parameter is used to restrict the algorithm that is used with
+>       the key.  If this parameter is present in the key structure, the
+>       application MUST verify that this algorithm matches the algorithm
+>       for which the key is being used.  If the algorithms do not match,
+>       then this key object MUST NOT be used to perform the cryptographic
+>       operation.  Note that the same key can be in a different key
+>       structure with a different or no algorithm specified; however,
+>       this is considered to be a poor security practice.
+1647c1676,1677
+<    kid:  This parameter is used to give an identifier for a key.  The
+---
+>    kid:
+>       This parameter is used to give an identifier for a key.  The
+1656,1661c1686,1691
+<    key_ops:  This parameter is defined to restrict the set of operations
+<       that a key is to be used for.  The value of the field is an array
+<       of values from Table 5.  Algorithms define the values of key ops
+<       that are permitted to appear and are required for specific
+<       operations.  The set of values matches that in [RFC7517] and
+<       [W3C.WebCrypto].
+---
+>    key_ops:
+>       This parameter is defined to restrict the set of operations that a
+>       key is to be used for.  The value of the field is an array of
+>       values from Table 5.  Algorithms define the values of key ops that
+>       are permitted to appear and are required for specific operations.
+>       The set of values matches that in [RFC7517] and [W3C.WebCrypto].
+2006,2016c2036,2048
+<    Ephemeral-Static (ES) DH:  The sender of the message creates a one-
+<       time DH key and uses a static key for the recipient.  The use of
+<       the ephemeral sender key means that no additional random input is
+<       needed, as this is randomly generated for each message.
+< 
+<    Static-Static (SS) DH:  A static key is used for both the sender and
+<       the recipient.  The use of static keys allows for the recipient to
+<       get a weak version of data origination for the message.  When
+<       Static-Static key agreement is used, then some piece of unique
+<       data for the KDF is required to ensure that a different key is
+<       created for each message.
+---
+>    Ephemeral-Static (ES) DH:
+>       The sender of the message creates a one-time DH key and uses a
+>       static key for the recipient.  The use of the ephemeral sender key
+>       means that no additional random input is needed, as this is
+>       randomly generated for each message.
+> 
+>    Static-Static (SS) DH:
+>       A static key is used for both the sender and the recipient.  The
+>       use of static keys allows for the recipient to get a weak version
+>       of data origination for the message.  When Static-Static key
+>       agreement is used, then some piece of unique data for the KDF is
+>       required to ensure that a different key is created for each
+>       message.
