@@ -1,0 +1,149 @@
+213,219c213,221
+<    Calling services:  Web sites whose origin we can verify (optimally
+<       via HTTPS, but in some cases because we are on a topologically
+<       restricted network, such as behind a firewall, and can infer
+<       authentication from firewall behavior).
+< 
+<    Other users:  WebRTC peers whose origin we can verify
+<       cryptographically (optimally via DTLS-SRTP).
+---
+>    Calling services:
+>       Web sites whose origin we can verify (optimally via HTTPS, but in
+>       some cases because we are on a topologically restricted network,
+>       such as behind a firewall, and can infer authentication from
+>       firewall behavior).
+> 
+>    Other users:
+>       WebRTC peers whose origin we can verify cryptographically
+>       (optimally via DTLS-SRTP).
+707,713c709,716
+<    UI Requirement:  If the UI indication of camera/microphone use is
+<       displayed in the browser such that minimizing the browser window
+<       would hide the indication, or the JS creating an overlapping
+<       window would hide the indication, then the browser SHOULD stop
+<       camera and microphone input when the indication is hidden.  (Note:
+<       This may not be necessary in systems that are non-windows-based
+<       but that have good notifications support, such as phones.)
+---
+>    UI Requirement:
+>       If the UI indication of camera/microphone use is displayed in the
+>       browser such that minimizing the browser window would hide the
+>       indication, or the JS creating an overlapping window would hide
+>       the indication, then the browser SHOULD stop camera and microphone
+>       input when the indication is hidden.  (Note: This may not be
+>       necessary in systems that are non-windows-based but that have good
+>       notifications support, such as phones.)
+870,872c873,876
+<    API Requirement:  Unless the user specifically configures an external
+<       key pair, different key pairs MUST be used for each origin.  (This
+<       avoids creating a super-cookie.)
+---
+>    API Requirement:
+>       Unless the user specifically configures an external key pair,
+>       different key pairs MUST be used for each origin.  (This avoids
+>       creating a super-cookie.)
+900a905
+>  
+966,967c971,972
+<    Authenticating Party (AP):  The entity which is trying to establish
+<       its identity.
+---
+>    Authenticating Party (AP):
+>       The entity which is trying to establish its identity.
+969,970c974,975
+<    Identity Provider (IdP):  The entity which is vouching for the AP's
+<       identity.
+---
+>    Identity Provider (IdP):
+>       The entity which is vouching for the AP's identity.
+972,973c977,978
+<    Relying Party (RP):  The entity which is trying to verify the AP's
+<       identity.
+---
+>    Relying Party (RP):
+>       The entity which is trying to verify the AP's identity.
+990,1008c995,1014
+<    Authoritative:  IdPs which have verifiable control of some section of
+<       the identity space.  For instance, in the realm of email, the
+<       operator of "example.com" has complete control of the namespace
+<       ending in "@example.com".  Thus, "alice@example.com" is whoever
+<       the operator says it is.  Examples of systems with authoritative
+<       IdPs include DNSSEC, an identity system for SIP (see [RFC8224]),
+<       and Facebook Connect (Facebook identities only make sense within
+<       the context of the Facebook system).
+< 
+<    Third-Party:  IdPs which don't have control of their section of the
+<       identity space but instead verify users' identities via some
+<       unspecified mechanism and then attest to it.  Because the IdP
+<       doesn't actually control the namespace, RPs need to trust that the
+<       IdP is correctly verifying AP identities, and there can
+<       potentially be multiple IdPs attesting to the same section of the
+<       identity space.  Probably the best-known example of a third-party
+<       IdP is SSL/TLS certificates, where there are a large number of
+<       certificate authorities (CAs) all of whom can attest to any domain
+<       name.
+---
+>    Authoritative:
+>       IdPs which have verifiable control of some section of the identity
+>       space.  For instance, in the realm of email, the operator of
+>       "example.com" has complete control of the namespace ending in
+>       "@example.com".  Thus, "alice@example.com" is whoever the operator
+>       says it is.  Examples of systems with authoritative IdPs include
+>       DNSSEC, an identity system for SIP (see [RFC8224]), and Facebook
+>       Connect (Facebook identities only make sense within the context of
+>       the Facebook system).
+> 
+>    Third-Party:
+>       IdPs which don't have control of their section of the identity
+>       space but instead verify users' identities via some unspecified
+>       mechanism and then attest to it.  Because the IdP doesn't actually
+>       control the namespace, RPs need to trust that the IdP is correctly
+>       verifying AP identities, and there can potentially be multiple
+>       IdPs attesting to the same section of the identity space.
+>       Probably the best-known example of a third-party IdP is SSL/TLS
+>       certificates, where there are a large number of certificate
+>       authorities (CAs) all of whom can attest to any domain name.
+1202,1203c1208,1210
+<    protocol:  The specific IdP protocol which the IdP is using.  This is
+<       a completely opaque IdP-specific string, but allows an IdP to
+---
+>    protocol:
+>       The specific IdP protocol which the IdP is using.  This is a
+>       completely opaque IdP-specific string, but allows an IdP to
+1284c1291,1292
+<    idp:  The domain name of an IdP and the protocol string.  This MAY
+---
+>    idp:
+>       The domain name of an IdP and the protocol string.  This MAY
+1288,1290c1296,1299
+<    assertion:  An opaque value containing the assertion itself.  This is
+<       only interpretable by the identified IdP or the IdP code running
+<       in the client.
+---
+>    assertion:
+>       An opaque value containing the assertion itself.  This is only
+>       interpretable by the identified IdP or the IdP code running in the
+>       client.
+1355,1359c1364,1370
+<    identity:  The identity of the AP from the IdP's perspective.
+<       Details of this are provided in Section 8.1.
+< 
+<    contents:  The original unmodified string provided by the AP as input
+<       to the assertion generation process.
+---
+>    identity:
+>       The identity of the AP from the IdP's perspective.  Details of
+>       this are provided in Section 8.1.
+> 
+>    contents:
+>       The original unmodified string provided by the AP as input to the
+>       assertion generation process.
+1668,1669c1679,1681
+<    Purpose:  This attribute carries an identity assertion, binding an
+<       identity to the transport-level security session.
+---
+>    Purpose:
+>       This attribute carries an identity assertion, binding an identity
+>       to the transport-level security session.
+1898d1909
+< 

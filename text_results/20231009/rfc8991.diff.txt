@@ -1,0 +1,263 @@
+401,416c401,420
+<    Registration:  These functions allow an ASA to register itself with
+<       the GRASP core and allow a registered ASA to register the GRASP
+<       objectives that it will manipulate.
+< 
+<    Discovery:  This function allows an ASA that needs to initiate
+<       negotiation or synchronization of a particular objective to
+<       discover a peer willing to respond.
+< 
+<    Negotiation:  These functions allow an ASA to act as an initiator
+<       (requester) or responder (listener) for a GRASP negotiation
+<       session.  After initiation, negotiation is a symmetric process, so
+<       most of the functions can be used by either party.
+< 
+<    Synchronization:  These functions allow an ASA to act as an initiator
+<       (requester) or responder (listener and data source) for a GRASP
+<       synchronization session.
+---
+>    Registration:
+>       These functions allow an ASA to register itself with the GRASP
+>       core and allow a registered ASA to register the GRASP objectives
+>       that it will manipulate.
+> 
+>    Discovery:
+>       This function allows an ASA that needs to initiate negotiation or
+>       synchronization of a particular objective to discover a peer
+>       willing to respond.
+> 
+>    Negotiation:
+>       These functions allow an ASA to act as an initiator (requester) or
+>       responder (listener) for a GRASP negotiation session.  After
+>       initiation, negotiation is a symmetric process, so most of the
+>       functions can be used by either party.
+> 
+>    Synchronization:
+>       These functions allow an ASA to act as an initiator (requester) or
+>       responder (listener and data source) for a GRASP synchronization
+>       session.
+418,419c422,424
+<    Flooding:  These functions allow an ASA to send and receive an
+<       objective that is flooded to all nodes of the ACP.
+---
+>    Flooding:
+>       These functions allow an ASA to send and receive an objective that
+>       is flooded to all nodes of the ACP.
+444,448c449,455
+<    1 - Declined:  used to indicate that the other end has sent a GRASP
+<       Negotiation End message (M_END) with a Decline option (O_DECLINE).
+< 
+<    2 - No reply:  used in non-blocking calls to indicate that the other
+<       end has sent no reply so far (see Section 2.2).
+---
+>    1 - Declined:
+>       used to indicate that the other end has sent a GRASP Negotiation
+>       End message (M_END) with a Decline option (O_DECLINE).
+> 
+>    2 - No reply:
+>       used in non-blocking calls to indicate that the other end has sent
+>       no reply so far (see Section 2.2).
+484,493c491,502
+<       Note 3:  In some programming languages, the preferred
+<          implementation may be to represent the Boolean flags as bits in
+<          a single byte, which is how they are encoded in GRASP messages.
+<          In other languages, an enumeration might be preferable.
+< 
+<    loop_count (unsigned integer, uint8_t):  Limit on negotiation steps,
+<       etc. (default GRASP_DEF_LOOPCT; see [RFC8990]).  The 'loop_count'
+<       is set to a suitable value by the initiator of a negotiation, to
+<       prevent indefinite loops.  It is also used to limit the
+<       propagation of discovery and flood messages.
+---
+>       Note 3:
+>          In some programming languages, the preferred implementation may
+>          be to represent the Boolean flags as bits in a single byte,
+>          which is how they are encoded in GRASP messages.  In other
+>          languages, an enumeration might be preferable.
+> 
+>    loop_count (unsigned integer, uint8_t):
+>       Limit on negotiation steps, etc. (default GRASP_DEF_LOOPCT; see
+>       [RFC8990]).  The 'loop_count' is set to a suitable value by the
+>       initiator of a negotiation, to prevent indefinite loops.  It is
+>       also used to limit the propagation of discovery and flood
+>       messages.
+564,568c573,579
+<    ifi (unsigned integer):  The interface identifier index via which
+<       this was discovered (of limited use to most ASAs).
+< 
+<    expire (system dependent type):  The time on the local system clock
+<       when this locator will expire from the cache.
+---
+>    ifi (unsigned integer):
+>       The interface identifier index via which this was discovered (of
+>       limited use to most ASAs).
+> 
+>    expire (system dependent type):
+>       The time on the local system clock when this locator will expire
+>       from the cache.
+586,588c597,600
+<    protocol (unsigned integer):  Applicable transport protocol
+<       (IPPROTO_TCP or IPPROTO_UDP).  These constants are defined in the
+<       CDDL specification of GRASP [RFC8990].
+---
+>    protocol (unsigned integer):
+>       Applicable transport protocol (IPPROTO_TCP or IPPROTO_UDP).  These
+>       constants are defined in the CDDL specification of GRASP
+>       [RFC8990].
+839,847c851,860
+<          Threaded implementation:  This should be called in a separate
+<             thread if asynchronous operation is required.
+< 
+<          Event loop implementation:  An additional in/out
+<             'session_handle' parameter is used.  If the 'errorcode'
+<             parameter has the value 2 ('noReply'), no response has been
+<             received so far.  The 'session_handle' parameter must be
+<             presented in subsequent calls.  A callback may be used in
+<             the case of a non-zero timeout.
+---
+>          Threaded implementation:
+>             This should be called in a separate thread if asynchronous
+>             operation is required.
+> 
+>          Event loop implementation:
+>             An additional in/out 'session_handle' parameter is used.  If
+>             the 'errorcode' parameter has the value 2 ('noReply'), no
+>             response has been received so far.  The 'session_handle'
+>             parameter must be presented in subsequent calls.  A callback
+>             may be used in the case of a non-zero timeout.
+988,995c1001,1010
+<          Threaded implementation:  This should be called in a separate
+<             thread if asynchronous operation is required.
+< 
+<          Event loop implementation:  The 'session_handle' parameter is
+<             used to distinguish multiple simultaneous sessions.  If the
+<             'errorcode' parameter has the value 2 ('noReply'), no
+<             response has been received so far.  The 'session_handle'
+<             parameter must be presented in subsequent calls.
+---
+>          Threaded implementation:
+>             This should be called in a separate thread if asynchronous
+>             operation is required.
+> 
+>          Event loop implementation:
+>             The 'session_handle' parameter is used to distinguish
+>             multiple simultaneous sessions.  If the 'errorcode'
+>             parameter has the value 2 ('noReply'), no response has been
+>             received so far.  The 'session_handle' parameter must be
+>             presented in subsequent calls.
+1039,1052c1054,1068
+<          Threaded implementation:  It will block waiting for an incoming
+<             request, so it should be called in a separate thread if
+<             asynchronous operation is required.  Unless there is an
+<             unexpected failure, this call only returns after an incoming
+<             negotiation request.  If the ASA supports multiple
+<             simultaneous transactions, a new sub-thread must be spawned
+<             for each new session, so that listen_negotiate() can be
+<             called again immediately.
+< 
+<          Event loop implementation:  A 'session_handle' parameter is
+<             used to distinguish individual sessions.  If the ASA
+<             supports multiple simultaneous transactions, a new event
+<             must be inserted in the event loop for each new session, so
+<             that listen_negotiate() can be reactivated immediately.
+---
+>          Threaded implementation:
+>             It will block waiting for an incoming request, so it should
+>             be called in a separate thread if asynchronous operation is
+>             required.  Unless there is an unexpected failure, this call
+>             only returns after an incoming negotiation request.  If the
+>             ASA supports multiple simultaneous transactions, a new sub-
+>             thread must be spawned for each new session, so that
+>             listen_negotiate() can be called again immediately.
+> 
+>          Event loop implementation:
+>             A 'session_handle' parameter is used to distinguish
+>             individual sessions.  If the ASA supports multiple
+>             simultaneous transactions, a new event must be inserted in
+>             the event loop for each new session, so that
+>             listen_negotiate() can be reactivated immediately.
+1096,1097c1112,1114
+<          Threaded implementation:  Must be called from a different
+<             thread than 'listen_negotiate'.
+---
+>          Threaded implementation:
+>             Must be called from a different thread than
+>             'listen_negotiate'.
+1128,1134c1145,1152
+<          Threaded implementation:  Usually called in the same thread as
+<             the preceding 'request_negotiate' or 'listen_negotiate',
+<             with the same value of 'session_handle'.
+< 
+<          Event loop implementation:  Must use the same value of
+<             'session_handle' returned by the preceding
+<             'request_negotiate' or 'listen_negotiate'.
+---
+>          Threaded implementation:
+>             Usually called in the same thread as the preceding
+>             'request_negotiate' or 'listen_negotiate', with the same
+>             value of 'session_handle'.
+> 
+>          Event loop implementation:
+>             Must use the same value of 'session_handle' returned by the
+>             preceding 'request_negotiate' or 'listen_negotiate'.
+1160,1166c1178,1185
+<          Threaded implementation:  Called in the same thread as the
+<             preceding 'request_negotiate' or 'listen_negotiate', with
+<             the same value of 'session_handle'.
+< 
+<          Event loop implementation:  Must use the same value of
+<             'session_handle' returned by the preceding
+<             'request_negotiate' or 'listen_negotiate'.
+---
+>          Threaded implementation:
+>             Called in the same thread as the preceding
+>             'request_negotiate' or 'listen_negotiate', with the same
+>             value of 'session_handle'.
+> 
+>          Event loop implementation:
+>             Must use the same value of 'session_handle' returned by the
+>             preceding 'request_negotiate' or 'listen_negotiate'.
+1197,1203c1216,1223
+<          Threaded implementation:  Called in the same thread as the
+<             preceding 'request_negotiate' or 'listen_negotiate', with
+<             the same value of 'session_handle'.
+< 
+<          Event loop implementation:  Must use the same value of
+<             'session_handle' returned by the preceding
+<             'request_negotiate' or 'listen_negotiate'.
+---
+>          Threaded implementation:
+>             Called in the same thread as the preceding
+>             'request_negotiate' or 'listen_negotiate', with the same
+>             value of 'session_handle'.
+> 
+>          Event loop implementation:
+>             Must use the same value of 'session_handle' returned by the
+>             preceding 'request_negotiate' or 'listen_negotiate'.
+1253,1260c1273,1281
+<          Threaded implementation:  Call in a separate thread if
+<             asynchronous operation is required.
+< 
+<          Event loop implementation:  An additional in/out
+<             'session_handle' parameter is used, as in
+<             request_negotiate().  If the 'errorcode' parameter has the
+<             value 2 ('noReply'), no response has been received so far.
+<             The 'session_handle' parameter must be presented in
+---
+>          Threaded implementation:
+>             Call in a separate thread if asynchronous operation is
+>             required.
+> 
+>          Event loop implementation:
+>             An additional in/out 'session_handle' parameter is used, as
+>             in request_negotiate().  If the 'errorcode' parameter has
+>             the value 2 ('noReply'), no response has been received so
+>             far.  The 'session_handle' parameter must be presented in
+1713d1733
+< 
+1724d1743
+< 
+1734d1752
+< 
+1744d1761
+< 

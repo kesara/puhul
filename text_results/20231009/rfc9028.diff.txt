@@ -1,0 +1,196 @@
+1945c1945,1946
+<    Min Ta:     The minimum connectivity check transaction pacing value
+---
+>    Min Ta:   
+>                The minimum connectivity check transaction pacing value
+1978c1979,1980
+<    Protocol:   IANA-assigned, Internet Protocol number. 17 for UDP; 0
+---
+>    Protocol: 
+>                IANA-assigned, Internet Protocol number. 17 for UDP; 0
+1984c1986,1987
+<    Address:    An IPv6 address or an IPv4 address in "IPv4-mapped IPv6
+---
+>    Address:  
+>                An IPv6 address or an IPv4 address in "IPv4-mapped IPv6
+2226c2229,2230
+<    Address:    An IPv6 address or an IPv4 address in "IPv4-mapped IPv6
+---
+>    Address:  
+>                An IPv6 address or an IPv4 address in "IPv4-mapped IPv6
+2268c2272,2273
+<    RPort:      The transport-layer (UDP) port at the Data Relay Server
+---
+>    RPort:    
+>                The transport-layer (UDP) port at the Data Relay Server
+2278c2283,2284
+<    RAddress:   An IPv6 address, or an IPv4 address in "IPv4-mapped IPv6
+---
+>    RAddress: 
+>                An IPv6 address, or an IPv4 address in "IPv4-mapped IPv6
+2281c2287,2288
+<    PAddress:   An IPv6 address, or an IPv4 address in "IPv4-mapped IPv6
+---
+>    PAddress: 
+>                An IPv6 address, or an IPv4 address in "IPv4-mapped IPv6
+2494,2515c2501,2525
+<    REG_INFO:  The Control Relay Server advertises its available services
+<       using this parameter.  RELAY_UDP_HIP and RENDEZVOUS services MAY
+<       be included in the first advertisement for the HIP association,
+<       but subsequent ones MUST include only one of them as agreed in
+<       earlier registrations (see steps 2 and 3).
+< 
+<    REG_REQUEST:  The Control Relay Client chooses the services it
+<       requires using this parameter.  If the Control Relay Server
+<       offered both RENDEZVOUS or RELAY_UDP_HIP, the Control Relay Client
+<       MUST choose only one of them in the REG_REQUEST parameter.  Upon
+<       choosing one of the two, it persists throughout the lifetime of
+<       the HIP association, and the Control Relay Client MUST NOT
+<       register the other remaining one in a subsequent UPDATE message.
+< 
+<    REG_RESPONSE:  The Control Relay Server verifies the services
+<       requested by the Control Relay Client using this parameter.  If
+<       the Control Relay Server offered both RENDEZVOUS and RELAY_UDP_HIP
+<       service, and the Control Relay Client requested for both of them,
+<       the Control Relay Client MUST offer only RELAY_UDP_HIP service in
+<       the REG_RESPONSE parameter and include a REG_FAILED parameter in
+<       the same message, with RENDEZVOUS as the Registration Type and 9
+<       as the Failure Type.
+---
+>    REG_INFO:
+>       The Control Relay Server advertises its available services using
+>       this parameter.  RELAY_UDP_HIP and RENDEZVOUS services MAY be
+>       included in the first advertisement for the HIP association, but
+>       subsequent ones MUST include only one of them as agreed in earlier
+>       registrations (see steps 2 and 3).
+> 
+>    REG_REQUEST:
+>       The Control Relay Client chooses the services it requires using
+>       this parameter.  If the Control Relay Server offered both
+>       RENDEZVOUS or RELAY_UDP_HIP, the Control Relay Client MUST choose
+>       only one of them in the REG_REQUEST parameter.  Upon choosing one
+>       of the two, it persists throughout the lifetime of the HIP
+>       association, and the Control Relay Client MUST NOT register the
+>       other remaining one in a subsequent UPDATE message.
+> 
+>    REG_RESPONSE:
+>       The Control Relay Server verifies the services requested by the
+>       Control Relay Client using this parameter.  If the Control Relay
+>       Server offered both RENDEZVOUS and RELAY_UDP_HIP service, and the
+>       Control Relay Client requested for both of them, the Control Relay
+>       Client MUST offer only RELAY_UDP_HIP service in the REG_RESPONSE
+>       parameter and include a REG_FAILED parameter in the same message,
+>       with RENDEZVOUS as the Registration Type and 9 as the Failure
+>       Type.
+3011,3023c3021,3034
+<    Data Relay Registration:  a Data Relay Client acting as an Initiator
+<       with another peer host should register a new server-reflexive
+<       candidate for each local transport address candidate.  A Data
+<       Relay Client acting as a Responder should register a new server-
+<       reflexive candidate for each {local transport address candidate,
+<       new peer host} pair for the reasons described in Section 4.12.3.
+<       In both cases, the Data Relay Client should request the additional
+<       server-reflexive candidates by sending UPDATE messages originating
+<       from each of the local address candidates as described in
+<       Section 4.1.  As the UPDATE messages are originating from an
+<       unknown location from the viewpoint of the Data Relay Server, it
+<       must also include an ECHO_REQUEST_SIGNED in the response in order
+<       to test for return routability.
+---
+>    Data Relay Registration:
+>       a Data Relay Client acting as an Initiator with another peer host
+>       should register a new server-reflexive candidate for each local
+>       transport address candidate.  A Data Relay Client acting as a
+>       Responder should register a new server-reflexive candidate for
+>       each {local transport address candidate, new peer host} pair for
+>       the reasons described in Section 4.12.3.  In both cases, the Data
+>       Relay Client should request the additional server-reflexive
+>       candidates by sending UPDATE messages originating from each of the
+>       local address candidates as described in Section 4.1.  As the
+>       UPDATE messages are originating from an unknown location from the
+>       viewpoint of the Data Relay Server, it must also include an
+>       ECHO_REQUEST_SIGNED in the response in order to test for return
+>       routability.
+3031,3045c3042,3058
+<    PEER_PERMISSION parameter:  This needs to be extended or an
+<       additional parameter is needed to declare the specific local
+<       candidate of the Data Relay Client.  Alternatively, the use of the
+<       PEER_PERMISSION could be used as a wild card to open permissions
+<       for a specific peer to all of the candidates of the Data Relay
+<       Client.
+< 
+<    Connectivity checks:  The controlling host should be able to nominate
+<       multiple candidates (by repeating step 7 in Figure 5 in
+<       Section 4.6 using the additional candidate pairs).
+< 
+<    Keepalives:  These should be sent for all the nominated candidate
+<       pairs.  Similarly, the Control/Data Relay Client should send
+<       keepalives from its local candidates to its Control/Data Relay
+<       Server transport addresses.
+---
+>    PEER_PERMISSION parameter:
+>       This needs to be extended or an additional parameter is needed to
+>       declare the specific local candidate of the Data Relay Client.
+>       Alternatively, the use of the PEER_PERMISSION could be used as a
+>       wild card to open permissions for a specific peer to all of the
+>       candidates of the Data Relay Client.
+> 
+>    Connectivity checks:
+>       The controlling host should be able to nominate multiple
+>       candidates (by repeating step 7 in Figure 5 in Section 4.6 using
+>       the additional candidate pairs).
+> 
+>    Keepalives:
+>       These should be sent for all the nominated candidate pairs.
+>       Similarly, the Control/Data Relay Client should send keepalives
+>       from its local candidates to its Control/Data Relay Server
+>       transport addresses.
+3089,3108c3102,3122
+<    HIP Control Relay Server:  In this case, the A/AAAA records refer to
+<       a Control Relay Server, which will forward the packet to the
+<       corresponding Control Relay Client based on the destination HIT in
+<       the I1 packet.
+< 
+<    HIP Responder supporting UDP encapsulation:  In this case, the A/AAAA
+<       records refer to the end host.  Assuming the destination HIT
+<       belongs to the Responder, the Responder receives and processes the
+<       I1 packet according to the negotiated NAT traversal mechanism.
+<       The support for the protocol defined in this document, as opposed
+<       to the support defined in [RFC5770], is dynamically negotiated
+<       during the base exchange.  The details are specified in
+<       Section 4.3.
+< 
+<    HIP Rendezvous Server:  This entity is not listening to UDP port
+<       10500, so it will drop the I1 message.
+< 
+<    HIP Responder not supporting UDP encapsulation:  The targeted end
+<       host is not listening to UDP port 10500, so it will drop the I1
+<       message.
+---
+>    HIP Control Relay Server:
+>       In this case, the A/AAAA records refer to a Control Relay Server,
+>       which will forward the packet to the corresponding Control Relay
+>       Client based on the destination HIT in the I1 packet.
+> 
+>    HIP Responder supporting UDP encapsulation:
+>       In this case, the A/AAAA records refer to the end host.  Assuming
+>       the destination HIT belongs to the Responder, the Responder
+>       receives and processes the I1 packet according to the negotiated
+>       NAT traversal mechanism.  The support for the protocol defined in
+>       this document, as opposed to the support defined in [RFC5770], is
+>       dynamically negotiated during the base exchange.  The details are
+>       specified in Section 4.3.
+> 
+>    HIP Rendezvous Server:
+>       This entity is not listening to UDP port 10500, so it will drop
+>       the I1 message.
+> 
+>    HIP Responder not supporting UDP encapsulation:
+>       The targeted end host is not listening to UDP port 10500, so it
+>       will drop the I1 message.
+3155d3168
+< 
+3164d3176
+< 
+3173d3184
+< 

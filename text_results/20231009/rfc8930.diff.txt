@@ -1,0 +1,104 @@
+157,173c157,176
+<    6LoWPAN Fragment Forwarding Endpoints:  The 6LFF endpoints are the
+<       first and last nodes in an unbroken string of 6LFF nodes.  They
+<       are also the only points where the fragmentation and reassembly
+<       operations take place.
+< 
+<    Compressed Form:  This specification uses the generic term
+<       "compressed form" to refer to the format of a datagram after the
+<       action of [RFC6282] and possibly [RFC8138] for Routing Protocol
+<       for Low-Power and Lossy Network (RPL) [RFC6550] artifacts.
+< 
+<    Datagram_Size:  The size of the datagram in its compressed form
+<       before it is fragmented.
+< 
+<    Datagram_Tag:  An identifier of a datagram that is locally unique to
+<       the Layer 2 sender.  Associated with the link-layer address of the
+<       sender, this becomes a globally unique identifier for the datagram
+<       within the duration of its transmission.
+---
+>    6LoWPAN Fragment Forwarding Endpoints:
+>       The 6LFF endpoints are the first and last nodes in an unbroken
+>       string of 6LFF nodes.  They are also the only points where the
+>       fragmentation and reassembly operations take place.
+> 
+>    Compressed Form:
+>       This specification uses the generic term "compressed form" to
+>       refer to the format of a datagram after the action of [RFC6282]
+>       and possibly [RFC8138] for Routing Protocol for Low-Power and
+>       Lossy Network (RPL) [RFC6550] artifacts.
+> 
+>    Datagram_Size:
+>       The size of the datagram in its compressed form before it is
+>       fragmented.
+> 
+>    Datagram_Tag:
+>       An identifier of a datagram that is locally unique to the Layer 2
+>       sender.  Associated with the link-layer address of the sender,
+>       this becomes a globally unique identifier for the datagram within
+>       the duration of its transmission.
+175,176c178,179
+<    Fragment_Offset:  The offset of a fragment of a datagram in its
+<       compressed form.
+---
+>    Fragment_Offset:
+>       The offset of a fragment of a datagram in its compressed form.
+407,431c410,435
+<    Non-zero Packet Drop Probability:  The abstract data in a VRB table
+<       entry contains at a minimum the link-layer address of the
+<       predecessor and the successor, the Datagram_Tag used by the
+<       predecessor, and the local Datagram_Tag that this node will swap
+<       with it.  The VRB may need to store a few octets from the last
+<       fragment that may not have fit within MTU and that will be
+<       prepended to the next fragment.  This yields a small footprint
+<       that is 2 orders of magnitude smaller, compared to needing a
+<       1280-byte reassembly buffer for each packet.  Yet, the size of the
+<       VRB table necessarily remains finite.  In the extreme case where a
+<       node is required to concurrently forward more packets than it has
+<       entries in its VRB table, packets are dropped.
+< 
+<    No Fragment Recovery:  There is no mechanism in VRB for the node that
+<       reassembles a packet to request a single missing fragment.
+<       Dropping a fragment requires the whole packet to be resent.  This
+<       causes unnecessary traffic, as fragments are forwarded even when
+<       the destination node can never construct the original IPv6 packet.
+< 
+<    No Per-Fragment Routing:  All subsequent fragments follow the same
+<       sequence of hops from the source to the destination node as the
+<       first fragment, because the IP header is required in order to
+<       route the fragment and is only present in the first fragment.  A
+<       side effect is that the first fragment must always be forwarded
+<       first.
+---
+>    Non-zero Packet Drop Probability:
+>       The abstract data in a VRB table entry contains at a minimum the
+>       link-layer address of the predecessor and the successor, the
+>       Datagram_Tag used by the predecessor, and the local Datagram_Tag
+>       that this node will swap with it.  The VRB may need to store a few
+>       octets from the last fragment that may not have fit within MTU and
+>       that will be prepended to the next fragment.  This yields a small
+>       footprint that is 2 orders of magnitude smaller, compared to
+>       needing a 1280-byte reassembly buffer for each packet.  Yet, the
+>       size of the VRB table necessarily remains finite.  In the extreme
+>       case where a node is required to concurrently forward more packets
+>       than it has entries in its VRB table, packets are dropped.
+> 
+>    No Fragment Recovery:
+>       There is no mechanism in VRB for the node that reassembles a
+>       packet to request a single missing fragment.  Dropping a fragment
+>       requires the whole packet to be resent.  This causes unnecessary
+>       traffic, as fragments are forwarded even when the destination node
+>       can never construct the original IPv6 packet.
+> 
+>    No Per-Fragment Routing:
+>       All subsequent fragments follow the same sequence of hops from the
+>       source to the destination node as the first fragment, because the
+>       IP header is required in order to route the fragment and is only
+>       present in the first fragment.  A side effect is that the first
+>       fragment must always be forwarded first.
+612d615
+< 
+622d624
+< 
+632d633
+< 

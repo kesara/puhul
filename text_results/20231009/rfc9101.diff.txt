@@ -1,0 +1,455 @@
+121,122c121,122
+<    For example, the parameters "response_type", "client_id", "state",
+<    and "redirect_uri" are encoded in the URI of the request:
+---
+>    For example, the parameters response_type, client_id, state, and
+>    redirect_uri are encoded in the URI of the request:
+176,185c176,185
+<    The parameters "request" and "request_uri" are introduced as
+<    additional authorization request parameters for the OAuth 2.0
+<    [RFC6749] flows.  The "request" parameter is a JSON Web Token (JWT)
+<    [RFC7519] whose JWT Claims Set holds the JSON-encoded OAuth 2.0
+<    authorization request parameters.  Note that, in contrast to RFC
+<    7519, the elements of the Claims Set are encoded OAuth request
+<    parameters [IANA.OAuth.Parameters], supplemented with only a few of
+<    the IANA-managed JSON Web Token Claims [IANA.JWT.Claims], in
+<    particular, "iss" and "aud".  The JWT in the "request" parameter is
+<    integrity protected and source authenticated using JWS.
+---
+>    The parameters request and request_uri are introduced as additional
+>    authorization request parameters for the OAuth 2.0 [RFC6749] flows.
+>    The request parameter is a JSON Web Token (JWT) [RFC7519] whose JWT
+>    Claims Set holds the JSON-encoded OAuth 2.0 authorization request
+>    parameters.  Note that, in contrast to RFC 7519, the elements of the
+>    Claims Set are encoded OAuth request parameters
+>    [IANA.OAuth.Parameters], supplemented with only a few of the IANA-
+>    managed JSON Web Token Claims [IANA.JWT.Claims], in particular, iss
+>    and aud.  The JWT in the request parameter is integrity protected and
+>    source authenticated using JWS.
+188,189c188,189
+<    reference, in which case the parameter "request_uri" is used instead
+<    of "request".
+---
+>    reference, in which case the parameter request_uri is used instead of
+>    request.
+262c262
+<    the provider of the "request_uri" is a separate entity from the
+---
+>    the provider of the request_uri is a separate entity from the
+292,301c292,301
+<    "request" and "request_uri" parameters that are defined in this
+<    document.  The parameters are represented as the JWT Claims of the
+<    object.  Parameter names and string values MUST be included as JSON
+<    strings.  Since Request Objects are handled across domains and
+<    potentially outside of a closed ecosystem, per Section 8.1 of
+<    [RFC8259], these JSON strings MUST be encoded using UTF-8 [RFC3629].
+<    Numerical values MUST be included as JSON numbers.  The Request
+<    Object MAY include any extension parameters.  This JSON [RFC8259]
+<    object constitutes the JWT Claims Set defined in JWT [RFC7519].  The
+<    JWT Claims Set is then signed or signed and encrypted.
+---
+>    request and request_uri parameters that are defined in this document.
+>    The parameters are represented as the JWT Claims of the object.
+>    Parameter names and string values MUST be included as JSON strings.
+>    Since Request Objects are handled across domains and potentially
+>    outside of a closed ecosystem, per Section 8.1 of [RFC8259], these
+>    JSON strings MUST be encoded using UTF-8 [RFC3629].  Numerical values
+>    MUST be included as JSON numbers.  The Request Object MAY include any
+>    extension parameters.  This JSON [RFC8259] object constitutes the JWT
+>    Claims Set defined in JWT [RFC7519].  The JWT Claims Set is then
+>    signed or signed and encrypted.
+305,309c305,308
+<    Object SHOULD contain the Claims "iss" (issuer) and "aud" (audience)
+<    as members with their semantics being the same as defined in the JWT
+<    [RFC7519] specification.  The value of "aud" should be the value of
+<    the authorization server (AS) "issuer", as defined in RFC 8414
+<    [RFC8414].
+---
+>    Object SHOULD contain the Claims iss (issuer) and aud (audience) as
+>    members with their semantics being the same as defined in the JWT
+>    [RFC7519] specification.  The value of aud should be the value of the
+>    authorization server (AS) issuer, as defined in RFC 8414 [RFC8414].
+321,322c320,321
+<    metadata values "request_object_signing_alg",
+<    "request_object_encryption_alg", and "request_object_encryption_enc".
+---
+>    metadata values request_object_signing_alg,
+>    request_object_encryption_alg, and request_object_encryption_enc.
+326,328c325,327
+<    "request_object_signing_alg_values_supported",
+<    "request_object_encryption_alg_values_supported", and
+<    "request_object_encryption_enc_values_supported".
+---
+>    request_object_signing_alg_values_supported,
+>    request_object_encryption_alg_values_supported, and
+>    request_object_encryption_enc_values_supported.
+331,332c330,331
+<    or by reference, as described in Section 5.2.  "request" and
+<    "request_uri" parameters MUST NOT be included in Request Objects.
+---
+>    or by reference, as described in Section 5.2.  request and
+>    request_uri parameters MUST NOT be included in Request Objects.
+335,336c334,335
+<    "application/oauth-authz-req+jwt".  Note that some existing
+<    deployments may alternatively be using the type "application/jwt".
+---
+>    application/oauth-authz-req+jwt.  Note that some existing deployments
+>    may alternatively be using the type application/jwt.
+340c339
+<    extension parameters "nonce" and "max_age".
+---
+>    extension parameters nonce and max_age.
+354,356c353,355
+<    Signing it with the "RS256" algorithm [RFC7518] results in this
+<    Request Object value (with line wraps within values for display
+<    purposes only):
+---
+>    Signing it with the RS256 algorithm [RFC7518] results in this Request
+>    Object value (with line wraps within values for display purposes
+>    only):
+392c391
+<    endpoint URI using the "application/x-www-form-urlencoded" format:
+---
+>    endpoint URI using the application/x-www-form-urlencoded format:
+395c394
+<       REQUIRED unless "request_uri" is specified.  The Request Object
+---
+>       REQUIRED unless request_uri is specified.  The Request Object
+398c397
+<       present in the authorization request, "request_uri" MUST NOT be
+---
+>       present in the authorization request, request_uri MUST NOT be
+402c401
+<       REQUIRED unless "request" is specified.  The absolute URI, as
+---
+>       REQUIRED unless request is specified.  The absolute URI, as
+406c405
+<       is present in the authorization request, "request" MUST NOT be
+---
+>       is present in the authorization request, request MUST NOT be
+410,412c409,411
+<       REQUIRED.  OAuth 2.0 [RFC6749] "client_id".  The value MUST match
+<       the "request" or "request_uri" Request Object's (Section 2.1)
+<       "client_id".
+---
+>       REQUIRED.  OAuth 2.0 [RFC6749] client_id.  The value MUST match
+>       the request or request_uri Request Object's (Section 2.1)
+>       client_id.
+441c440
+<    authorization endpoint as the "request" parameter value.
+---
+>    authorization endpoint as the request parameter value.
+444,445c443,444
+<    "request" parameter (with line wraps within values for display
+<    purposes only):
+---
+>    request parameter (with line wraps within values for display purposes
+>    only):
+464c463
+<    The "request_uri" authorization request parameter enables OAuth
+---
+>    The request_uri authorization request parameter enables OAuth
+466,468c465,467
+<    value.  This parameter is used identically to the "request"
+<    parameter, except that the Request Object value is retrieved from the
+<    resource identified by the specified URI rather than passed by value.
+---
+>    value.  This parameter is used identically to the request parameter,
+>    except that the Request Object value is retrieved from the resource
+>    identified by the specified URI rather than passed by value.
+481,482c480,481
+<    The contents of the resource referenced by the "request_uri" MUST be
+<    a Request Object and MUST be reachable by the authorization server
+---
+>    The contents of the resource referenced by the request_uri MUST be a
+>    Request Object and MUST be reachable by the authorization server
+484,486c483,485
+<    server.  In the first case, the "request_uri" MUST be an "https" URI,
+<    as specified in Section 2.7.2 of [RFC7230].  In the second case, it
+<    MUST be a URN, as specified in [RFC8141].
+---
+>    server.  In the first case, the request_uri MUST be an https URI, as
+>    specified in Section 2.7.2 of [RFC7230].  In the second case, it MUST
+>    be a URN, as specified in [RFC8141].
+489c488
+<    resource that can be referenced by a "request_uri" (with line wraps
+---
+>    resource that can be referenced by a request_uri (with line wraps
+512c511
+<    URI.  This URI is the Request Object URI, "request_uri".
+---
+>    URI.  This URI is the Request Object URI, request_uri.
+516c515
+<    "request_uri" MUST have appropriate entropy for its lifetime so that
+---
+>    request_uri MUST have appropriate entropy for its lifetime so that
+519c518
+<    Capability URLs" [CapURLs].  It is RECOMMENDED that the "request_uri"
+---
+>    Capability URLs" [CapURLs].  It is RECOMMENDED that the request_uri
+536c535
+<    "request_uri" parameter (with line wraps within values for display
+---
+>    request_uri parameter (with line wraps within values for display
+547c546
+<    HTTP "GET" request to the "request_uri" to retrieve the referenced
+---
+>    HTTP GET request to the request_uri to retrieve the referenced
+591c590
+<    "invalid_request_object" error to the client in response to the
+---
+>    invalid_request_object error to the client in response to the
+597c596
+<    signed [RFC7515] Request Object.  If a "kid" Header Parameter is
+---
+>    signed [RFC7515] Request Object.  If a kid Header Parameter is
+600,601c599,600
+<    key associated with the client and the algorithm specified in the
+<    "alg" Header Parameter.  Algorithm verification MUST be performed, as
+---
+>    key associated with the client and the algorithm specified in the alg
+>    Header Parameter.  Algorithm verification MUST be performed, as
+606c605
+<    "invalid_request_object" error to the client in response to the
+---
+>    invalid_request_object error to the client in response to the
+615,616c614,615
+<    values in the "client_id" request parameter and in the Request Object
+<    "client_id" claim MUST be identical.  The authorization server then
+---
+>    values in the client_id request parameter and in the Request Object
+>    client_id claim MUST be identical.  The authorization server then
+632c631
+<       The "request_uri" in the authorization request returns an error or
+---
+>       The request_uri in the authorization request returns an error or
+639c638
+<       The authorization server does not support the use of the "request"
+---
+>       The authorization server does not support the use of the request
+644c643
+<       "request_uri" parameter.
+---
+>       request_uri parameter.
+669c668
+<       character "*".
+---
+>       character *.
+693c692
+<    Name:  "iss"
+---
+>    Name:  iss
+699c698
+<    Name:  "sub"
+---
+>    Name:  sub
+705c704
+<    Name:  "aud"
+---
+>    Name:  aud
+711c710
+<    Name:  "exp"
+---
+>    Name:  exp
+717c716
+<    Name:  "nbf"
+---
+>    Name:  nbf
+723c722
+<    Name:  "iat"
+---
+>    Name:  iat
+729c728
+<    Name:  "jti"
+---
+>    Name:  jti
+741,744c740,744
+<    Metadata Name:  "require_signed_request_object"
+<    Metadata Description:  Indicates where authorization request needs to
+<       be protected as Request Object and provided through either
+<       "request" or "request_uri parameter".
+---
+>    Metadata Name:  require_signed_request_object
+>    Metadata Description:
+>       Indicates where authorization request needs to be protected as
+>       Request Object and provided through either request or request_uri
+>       parameter.
+754,757c754,758
+<    Metadata Name:  "require_signed_request_object"
+<    Metadata Description:  Indicates where authorization request needs to
+<       be protected as Request Object and provided through either
+<       "request" or "request_uri parameter".
+---
+>    Metadata Name:  require_signed_request_object
+>    Metadata Description:
+>       Indicates where authorization request needs to be protected as
+>       Request Object and provided through either request or request_uri
+>       parameter.
+765,766c766,767
+<    This section registers the "application/oauth-authz-req+jwt" media
+<    type [RFC2046] in the "Media Types" registry [IANA.MediaTypes] in the
+---
+>    This section registers the application/oauth-authz-req+jwt media type
+>    [RFC2046] in the "Media Types" registry [IANA.MediaTypes] in the
+774,777c775,778
+<    Encoding considerations:  binary; a Request Object is a JWT; JWT
+<       values are encoded as a series of base64url-encoded values (some
+<       of which may be the empty string) separated by period (".")
+<       characters.
+---
+>    Encoding considerations:
+>       binary; a Request Object is a JWT; JWT values are encoded as a
+>       series of base64url-encoded values (some of which may be the empty
+>       string) separated by period (.) characters.
+781,782c782,784
+<    Applications that use this media type:  Applications that use Request
+<       Objects to make an OAuth 2.0 authorization request
+---
+>    Applications that use this media type:
+>       Applications that use Request Objects to make an OAuth 2.0
+>       authorization request
+810c812
+<    When sending the Authorization Request Object through the "request"
+---
+>    When sending the Authorization Request Object through the request
+866c868
+<    (a)  Protected resources ("protected_resources")
+---
+>    (a)  Protected resources (protected_resources)
+868c870
+<    (b)  Authorization endpoint ("authorization_endpoint")
+---
+>    (b)  Authorization endpoint (authorization_endpoint)
+870c872
+<    (c)  Redirection URI ("redirect_uri")
+---
+>    (c)  Redirection URI (redirect_uri)
+872c874
+<    (d)  Token endpoint ("token_endpoint")
+---
+>    (d)  Token endpoint (token_endpoint)
+883c885
+<    The introduction of "request_uri" introduces several attack
+---
+>    The introduction of request_uri introduces several attack
+890c892
+<    authorization server by pointing the "request_uri" to a URI that
+---
+>    authorization server by pointing the request_uri to a URI that
+895,896c897,898
+<    Similarly, a malicious client can specify a "request_uri" value that
+<    itself points to an authorization request URI that uses "request_uri"
+---
+>    Similarly, a malicious client can specify a request_uri value that
+>    itself points to an authorization request URI that uses request_uri
+900c902
+<    that the value of the "request_uri" parameter does not point to an
+---
+>    that the value of the request_uri parameter does not point to an
+902,904c904,906
+<    "application/oauth-authz-req+jwt", c) implement a timeout for
+<    obtaining the content of "request_uri", and d) not perform recursive
+<    GET on the "request_uri".
+---
+>    application/oauth-authz-req+jwt, c) implement a timeout for obtaining
+>    the content of request_uri, and d) not perform recursive GET on the
+>    request_uri.
+908,914c910,915
+<    The value of "request_uri" is not signed; thus, it can be tampered
+<    with by a man-in-the-browser attacker.  Several attack possibilities
+<    arise because of this.  For example, a) an attacker may create
+<    another file that the rewritten URI points to, making it possible to
+<    request extra scope, or b) an attacker may launch a DoS attack on a
+<    victim site by setting the value of "request_uri" to be that of the
+<    victim.
+---
+>    The value of request_uri is not signed; thus, it can be tampered with
+>    by a man-in-the-browser attacker.  Several attack possibilities arise
+>    because of this.  For example, a) an attacker may create another file
+>    that the rewritten URI points to, making it possible to request extra
+>    scope, or b) an attacker may launch a DoS attack on a victim site by
+>    setting the value of request_uri to be that of the victim.
+917c918
+<    that the value of the "request_uri" parameter does not point to an
+---
+>    that the value of the request_uri parameter does not point to an
+919,920c920,921
+<    "application/oauth-authz-req+jwt", and c) implement a timeout for
+<    obtaining the content of "request_uri".
+---
+>    application/oauth-authz-req+jwt, and c) implement a timeout for
+>    obtaining the content of request_uri.
+931c932
+<    "require_signed_request_object", whose values are both booleans.
+---
+>    require_signed_request_object, whose values are both booleans.
+933,934c934,935
+<    When the value of it as client metadata is "true", then the server
+<    MUST reject the authorization request from the client that does not
+---
+>    When the value of it as client metadata is true, then the server MUST
+>    reject the authorization request from the client that does not
+936,937c937,938
+<    the Request Object uses an "alg" value of "none" when this server
+<    metadata value is "true".  If omitted, the default value is "false".
+---
+>    the Request Object uses an alg value of none when this server
+>    metadata value is true.  If omitted, the default value is false.
+939,940c940,941
+<    When the value of it as server metadata is "true", then the server
+<    MUST reject the authorization request from any client that does not
+---
+>    When the value of it as server metadata is true, then the server MUST
+>    reject the authorization request from any client that does not
+942,943c943,944
+<    the Request Object uses an "alg" value of "none".  If omitted, the
+<    default value is "false".
+---
+>    the Request Object uses an alg value of none.  If omitted, the
+>    default value is false.
+945c946
+<    Note that even if "require_signed_request_object" metadata values are
+---
+>    Note that even if require_signed_request_object metadata values are
+965,966c966,967
+<    reason that neither "request" nor "request_uri" can appear in a
+<    Request Object.
+---
+>    reason that neither request nor request_uri can appear in a Request
+>    Object.
+978c979
+<    use the client ID as the "sub" value in a Request Object.
+---
+>    use the client ID as the sub value in a Request Object.
+982,983c983,984
+<    a Request Object by including a "typ" Header Parameter with the value
+<    "oauth-authz-req+jwt" (which is registered in Section 9.4.1).  Note,
+---
+>    a Request Object by including a typ Header Parameter with the value
+>    oauth-authz-req+jwt (which is registered in Section 9.4.1).  Note,
+1034c1035
+<         third-party service to get the "request_uri".
+---
+>         third-party service to get the request_uri.
+1038,1040c1039,1041
+<         service to get the "request_uri".  The trusted third-party
+<         service also verifies that the Request Object is consistent with
+<         the claims that the client is eligible for, per the prior step.
+---
+>         service to get the request_uri.  The trusted third-party service
+>         also verifies that the Request Object is consistent with the
+>         claims that the client is eligible for, per the prior step.
+1050c1051
+<    includes the "client_id" representing the client.
+---
+>    includes the client_id representing the client.
+1069c1070
+<    "request_uri" SHOULD be used only once and have a short validity
+---
+>    request_uri SHOULD be used only once and have a short validity
+1271d1271
+< 
+1284d1283
+< 
+1295d1293
+< 
