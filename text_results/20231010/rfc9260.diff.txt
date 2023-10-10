@@ -1,0 +1,846 @@
+362,364c362,364
+<    Active Destination Transport Address:  A transport address on a peer
+<       endpoint that a transmitting endpoint considers available for
+<       receiving user messages.
+---
+>    Active Destination Transport Address:
+>       A transport address on a peer endpoint that a transmitting
+>       endpoint considers available for receiving user messages.
+366,384c366,368
+<    Association Maximum DATA Chunk Size (AMDCS):  The smallest Path
+<       Maximum DATA Chunk Size (PMDCS) of all destination addresses.
+< 
+<    Bundling of Chunks:  An optional multiplexing operation, whereby more
+<       than one chunk can be carried in the same SCTP packet.
+< 
+<    Bundling of User Messages:  An optional multiplexing operation,
+<       whereby more than one user message can be carried in the same SCTP
+<       packet.  Each user message occupies its own DATA chunk.
+< 
+<    Chunk:  A unit of information within an SCTP packet, consisting of a
+<       chunk header and chunk-specific content.
+< 
+<    Congestion Window (cwnd):  An SCTP variable that limits outstanding
+<       data, in number of bytes, that a sender can send to a particular
+<       destination transport address before receiving an acknowledgement.
+< 
+<    Control Chunk:  A chunk not being used for transmitting user data,
+<       i.e., every chunk that is not a DATA chunk.
+---
+>    Association Maximum DATA Chunk Size (AMDCS):
+>       The smallest Path Maximum DATA Chunk Size (PMDCS) of all
+>       destination addresses.
+386,388c370,394
+<    Cumulative TSN Ack Point:  The Transmission Sequence Number (TSN) of
+<       the last DATA chunk acknowledged via the Cumulative TSN Ack field
+<       of a SACK chunk.
+---
+>    Bundling of Chunks:
+>       An optional multiplexing operation, whereby more than one chunk
+>       can be carried in the same SCTP packet.
+> 
+>    Bundling of User Messages:
+>       An optional multiplexing operation, whereby more than one user
+>       message can be carried in the same SCTP packet.  Each user message
+>       occupies its own DATA chunk.
+> 
+>    Chunk:
+>       A unit of information within an SCTP packet, consisting of a chunk
+>       header and chunk-specific content.
+> 
+>    Congestion Window (cwnd):
+>       An SCTP variable that limits outstanding data, in number of bytes,
+>       that a sender can send to a particular destination transport
+>       address before receiving an acknowledgement.
+> 
+>    Control Chunk:
+>       A chunk not being used for transmitting user data, i.e., every
+>       chunk that is not a DATA chunk.
+> 
+>    Cumulative TSN Ack Point:
+>       The Transmission Sequence Number (TSN) of the last DATA chunk
+>       acknowledged via the Cumulative TSN Ack field of a SACK chunk.
+390c396,397
+<    Flightsize:  The number of bytes of outstanding data to a particular
+---
+>    Flightsize:
+>       The number of bytes of outstanding data to a particular
+393,399c400,406
+<    Idle Destination Address:  An address that has not had user messages
+<       sent to it within some length of time, normally the 'HB.interval'
+<       or greater.
+< 
+<    Inactive Destination Transport Address:  An address that is
+<       considered inactive due to errors and unavailable to transport
+<       user messages.
+---
+>    Idle Destination Address:
+>       An address that has not had user messages sent to it within some
+>       length of time, normally the 'HB.interval' or greater.
+> 
+>    Inactive Destination Transport Address:
+>       An address that is considered inactive due to errors and
+>       unavailable to transport user messages.
+406,465c413,479
+<    Ordered Message:  A user message that is delivered in order with
+<       respect to all previous user messages sent within the stream on
+<       which the message was sent.
+< 
+<    Outstanding Data (or Data Outstanding or Data In Flight):  The total
+<       size of the DATA chunks associated with outstanding TSNs.  A
+<       retransmitted DATA chunk is counted once in outstanding data.  A
+<       DATA chunk that is classified as lost but that has not yet been
+<       retransmitted is not in outstanding data.
+< 
+<    Outstanding TSN (at an SCTP Endpoint):  A TSN (and the associated
+<       DATA chunk) that has been sent by the endpoint but for which it
+<       has not yet received an acknowledgement.
+< 
+<    "Out of the Blue" (OOTB) Packet:  A correctly formed packet, for
+<       which the receiver cannot identify the association it belongs to.
+<       See Section 8.4.
+< 
+<    Path:  The route taken by the SCTP packets sent by one SCTP endpoint
+<       to a specific destination transport address of its peer SCTP
+<       endpoint.  Sending to different destination transport addresses
+<       does not necessarily guarantee getting separate paths.  Within
+<       this specification, a path is identified by the destination
+<       transport address, since the routing is assumed to be stable.
+<       This includes, in particular, the source address being selected
+<       when sending packets to the destination address.
+< 
+<    Path Maximum DATA Chunk Size (PMDCS):  The maximum size (including
+<       the DATA chunk header) of a DATA chunk that fits into an SCTP
+<       packet not exceeding the PMTU of a particular destination address.
+< 
+<    Path Maximum Transmission Unit (PMTU):  The maximum size (including
+<       the SCTP common header and all chunks including their paddings) of
+<       an SCTP packet that can be sent to a particular destination
+<       address without using IP-level fragmentation.
+< 
+<    Primary Path:  The destination and source address that will be put
+<       into a packet outbound to the peer endpoint by default.  The
+<       definition includes the source address since an implementation MAY
+<       wish to specify both destination and source address to better
+<       control the return path taken by reply chunks and on which
+<       interface the packet is transmitted when the data sender is multi-
+<       homed.
+< 
+<    Receiver Window (rwnd):  An SCTP variable a data sender uses to store
+<       the most recently calculated receiver window of its peer, in
+<       number of bytes.  This gives the sender an indication of the space
+<       available in the receiver's inbound buffer.
+< 
+<    SCTP Association:  A protocol relationship between SCTP endpoints,
+<       composed of the two SCTP endpoints and protocol state information,
+<       including Verification Tags and the currently active set of
+<       Transmission Sequence Numbers (TSNs), etc.  An association can be
+<       uniquely identified by the transport addresses used by the
+<       endpoints in the association.  Two SCTP endpoints MUST NOT have
+<       more than one SCTP association between them at any given time.
+< 
+<    SCTP Endpoint:  The logical sender/receiver of SCTP packets.  On a
+<       multi-homed host, an SCTP endpoint is represented to its peers as
+<       a combination of a set of eligible destination transport addresses
+---
+>    Ordered Message:
+>       A user message that is delivered in order with respect to all
+>       previous user messages sent within the stream on which the message
+>       was sent.
+> 
+>    Outstanding Data (or Data Outstanding or Data In Flight):
+>       The total size of the DATA chunks associated with outstanding
+>       TSNs.  A retransmitted DATA chunk is counted once in outstanding
+>       data.  A DATA chunk that is classified as lost but that has not
+>       yet been retransmitted is not in outstanding data.
+> 
+>    Outstanding TSN (at an SCTP Endpoint):
+>       A TSN (and the associated DATA chunk) that has been sent by the
+>       endpoint but for which it has not yet received an acknowledgement.
+> 
+>    "Out of the Blue" (OOTB) Packet:
+>       A correctly formed packet, for which the receiver cannot identify
+>       the association it belongs to.  See Section 8.4.
+> 
+>    Path:
+>       The route taken by the SCTP packets sent by one SCTP endpoint to a
+>       specific destination transport address of its peer SCTP endpoint.
+>       Sending to different destination transport addresses does not
+>       necessarily guarantee getting separate paths.  Within this
+>       specification, a path is identified by the destination transport
+>       address, since the routing is assumed to be stable.  This
+>       includes, in particular, the source address being selected when
+>       sending packets to the destination address.
+> 
+>    Path Maximum DATA Chunk Size (PMDCS):
+>       The maximum size (including the DATA chunk header) of a DATA chunk
+>       that fits into an SCTP packet not exceeding the PMTU of a
+>       particular destination address.
+> 
+>    Path Maximum Transmission Unit (PMTU):
+>       The maximum size (including the SCTP common header and all chunks
+>       including their paddings) of an SCTP packet that can be sent to a
+>       particular destination address without using IP-level
+>       fragmentation.
+> 
+>    Primary Path:
+>       The destination and source address that will be put into a packet
+>       outbound to the peer endpoint by default.  The definition includes
+>       the source address since an implementation MAY wish to specify
+>       both destination and source address to better control the return
+>       path taken by reply chunks and on which interface the packet is
+>       transmitted when the data sender is multi-homed.
+> 
+>    Receiver Window (rwnd):
+>       An SCTP variable a data sender uses to store the most recently
+>       calculated receiver window of its peer, in number of bytes.  This
+>       gives the sender an indication of the space available in the
+>       receiver's inbound buffer.
+> 
+>    SCTP Association:
+>       A protocol relationship between SCTP endpoints, composed of the
+>       two SCTP endpoints and protocol state information, including
+>       Verification Tags and the currently active set of Transmission
+>       Sequence Numbers (TSNs), etc.  An association can be uniquely
+>       identified by the transport addresses used by the endpoints in the
+>       association.  Two SCTP endpoints MUST NOT have more than one SCTP
+>       association between them at any given time.
+> 
+>    SCTP Endpoint:
+>       The logical sender/receiver of SCTP packets.  On a multi-homed
+>       host, an SCTP endpoint is represented to its peers as a
+>       combination of a set of eligible destination transport addresses
+474,487c488,502
+<    SCTP Packet (or Packet):  The unit of data delivery across the
+<       interface between SCTP and the connectionless packet network
+<       (e.g., IP).  An SCTP packet includes the common SCTP header,
+<       possible SCTP control chunks, and user data encapsulated within
+<       SCTP DATA chunks.
+< 
+<    SCTP User Application (or SCTP User):  The logical higher-layer
+<       application entity that uses the services of SCTP, also called the
+<       Upper-Layer Protocol (ULP).
+< 
+<    Slow-Start Threshold (ssthresh):  An SCTP variable.  This is the
+<       threshold that the endpoint will use to determine whether to
+<       perform slow-start or congestion avoidance on a particular
+<       destination transport address.  Ssthresh is in number of bytes.
+---
+>    SCTP Packet (or Packet):
+>       The unit of data delivery across the interface between SCTP and
+>       the connectionless packet network (e.g., IP).  An SCTP packet
+>       includes the common SCTP header, possible SCTP control chunks, and
+>       user data encapsulated within SCTP DATA chunks.
+> 
+>    SCTP User Application (or SCTP User):
+>       The logical higher-layer application entity that uses the services
+>       of SCTP, also called the Upper-Layer Protocol (ULP).
+> 
+>    Slow-Start Threshold (ssthresh):
+>       An SCTP variable.  This is the threshold that the endpoint will
+>       use to determine whether to perform slow-start or congestion
+>       avoidance on a particular destination transport address.  Ssthresh
+>       is in number of bytes.
+502,543c517,563
+<    Stream Sequence Number:  A 16-bit sequence number used internally by
+<       SCTP to ensure sequenced delivery of the user messages within a
+<       given stream.  One Stream Sequence Number is attached to each
+<       ordered user message.
+< 
+<    Tie-Tags:  Two 32-bit random numbers that together make a 64-bit
+<       nonce.  These tags are used within a State Cookie and TCB so that
+<       a newly restarting association can be linked to the original
+<       association within the endpoint that did not restart and yet not
+<       reveal the true Verification Tags of an existing association.
+< 
+<    Transmission Control Block (TCB):  An internal data structure created
+<       by an SCTP endpoint for each of its existing SCTP associations to
+<       other SCTP endpoints.  TCB contains all the status and operational
+<       information for the endpoint to maintain and manage the
+<       corresponding association.
+< 
+<    Transmission Sequence Number (TSN):  A 32-bit sequence number used
+<       internally by SCTP.  One TSN is attached to each chunk containing
+<       user data to permit the receiving SCTP endpoint to acknowledge its
+<       receipt and detect duplicate deliveries.
+< 
+<    Transport Address:  A transport address is typically defined by a
+<       network-layer address, a transport-layer protocol, and a
+<       transport-layer port number.  In the case of SCTP running over IP,
+<       a transport address is defined by the combination of an IP address
+<       and an SCTP port number (where SCTP is the transport protocol).
+< 
+<    Unordered Message:  Unordered messages are "unordered" with respect
+<       to any other message; this includes both other unordered messages
+<       as well as other ordered messages.  An unordered message might be
+<       delivered prior to or later than ordered messages sent on the same
+<       stream.
+< 
+<    User Message:  The unit of data delivery across the interface between
+<       SCTP and its user.
+< 
+<    Verification Tag:  A 32-bit unsigned integer that is randomly
+<       generated.  The Verification Tag provides a key that allows a
+<       receiver to verify that the SCTP packet belongs to the current
+<       association and is not an old or stale packet from a previous
+<       association.
+---
+>    Stream Sequence Number:
+>       A 16-bit sequence number used internally by SCTP to ensure
+>       sequenced delivery of the user messages within a given stream.
+>       One Stream Sequence Number is attached to each ordered user
+>       message.
+> 
+>    Tie-Tags:
+>       Two 32-bit random numbers that together make a 64-bit nonce.
+>       These tags are used within a State Cookie and TCB so that a newly
+>       restarting association can be linked to the original association
+>       within the endpoint that did not restart and yet not reveal the
+>       true Verification Tags of an existing association.
+> 
+>    Transmission Control Block (TCB):
+>       An internal data structure created by an SCTP endpoint for each of
+>       its existing SCTP associations to other SCTP endpoints.  TCB
+>       contains all the status and operational information for the
+>       endpoint to maintain and manage the corresponding association.
+> 
+>    Transmission Sequence Number (TSN):
+>       A 32-bit sequence number used internally by SCTP.  One TSN is
+>       attached to each chunk containing user data to permit the
+>       receiving SCTP endpoint to acknowledge its receipt and detect
+>       duplicate deliveries.
+> 
+>    Transport Address:
+>       A transport address is typically defined by a network-layer
+>       address, a transport-layer protocol, and a transport-layer port
+>       number.  In the case of SCTP running over IP, a transport address
+>       is defined by the combination of an IP address and an SCTP port
+>       number (where SCTP is the transport protocol).
+> 
+>    Unordered Message:
+>       Unordered messages are "unordered" with respect to any other
+>       message; this includes both other unordered messages as well as
+>       other ordered messages.  An unordered message might be delivered
+>       prior to or later than ordered messages sent on the same stream.
+> 
+>    User Message:
+>       The unit of data delivery across the interface between SCTP and
+>       its user.
+> 
+>    Verification Tag:
+>       A 32-bit unsigned integer that is randomly generated.  The
+>       Verification Tag provides a key that allows a receiver to verify
+>       that the SCTP packet belongs to the current association and is not
+>       an old or stale packet from a previous association.
+5395,5398c5415,5418
+<       local eligible address list:  an address list that the local SCTP
+<          endpoint binds.  By default, if an address list is not
+<          included, all IP addresses assigned to the host are used by the
+<          local endpoint.
+---
+>       local eligible address list:
+>          an address list that the local SCTP endpoint binds.  By
+>          default, if an address list is not included, all IP addresses
+>          assigned to the host are used by the local endpoint.
+5446,5451c5466,5472
+<       initial destination transport addr list:  a non-empty list of
+<          transport addresses of the peer endpoint with which the
+<          association is to be established.
+< 
+<       outbound stream count:  the number of outbound streams the ULP
+<          would like to open towards this peer endpoint.
+---
+>       initial destination transport addr list:
+>          a non-empty list of transport addresses of the peer endpoint
+>          with which the association is to be established.
+> 
+>       outbound stream count:
+>          the number of outbound streams the ULP would like to open
+>          towards this peer endpoint.
+5508,5513c5529,5536
+<       context:  optional information provided that will be carried in
+<          the SEND FAILURE notification to the ULP if the transportation
+<          of this user message fails.
+< 
+<       stream id:  indicates which stream to send the data on.  If not
+<          specified, stream 0 will be used.
+---
+>       context:
+>          optional information provided that will be carried in the SEND
+>          FAILURE notification to the ULP if the transportation of this
+>          user message fails.
+> 
+>       stream id:
+>          indicates which stream to send the data on.  If not specified,
+>          stream 0 will be used.
+5532,5556c5555,5581
+<       destination transport address:  specified as one of the
+<          destination transport addresses of the peer endpoint to which
+<          this packet is sent.  Whenever possible, SCTP uses this
+<          destination transport address for sending the packets, instead
+<          of the current primary path.
+< 
+<       unordered flag:  this flag, if present, indicates that the user
+<          would like the data delivered in an unordered fashion to the
+<          peer (i.e., the U flag is set to 1 on all DATA chunks carrying
+<          this message).
+< 
+<       no-bundle flag:  instructs SCTP not to delay the sending of DATA
+<          chunks for this user data just to allow it to be bundled with
+<          other outbound DATA chunks.  When faced with network
+<          congestion, SCTP might still bundle the data, even when this
+<          flag is present.
+< 
+<       payload protocol-id:  a 32-bit unsigned integer that is to be
+<          passed to the peer, indicating the type of payload protocol
+<          data being transmitted.  Note that the upper layer is
+<          responsible for the host to network byte order conversion of
+<          this field, which is passed by SCTP as 4 bytes of opaque data.
+< 
+<       sack-immediately flag:  set the I bit on the last DATA chunk used
+<          for the user message to be transmitted.
+---
+>       destination transport address:
+>          specified as one of the destination transport addresses of the
+>          peer endpoint to which this packet is sent.  Whenever possible,
+>          SCTP uses this destination transport address for sending the
+>          packets, instead of the current primary path.
+> 
+>       unordered flag:
+>          this flag, if present, indicates that the user would like the
+>          data delivered in an unordered fashion to the peer (i.e., the U
+>          flag is set to 1 on all DATA chunks carrying this message).
+> 
+>       no-bundle flag:
+>          instructs SCTP not to delay the sending of DATA chunks for this
+>          user data just to allow it to be bundled with other outbound
+>          DATA chunks.  When faced with network congestion, SCTP might
+>          still bundle the data, even when this flag is present.
+> 
+>       payload protocol-id:
+>          a 32-bit unsigned integer that is to be passed to the peer,
+>          indicating the type of payload protocol data being transmitted.
+>          Note that the upper layer is responsible for the host to
+>          network byte order conversion of this field, which is passed by
+>          SCTP as 4 bytes of opaque data.
+> 
+>       sack-immediately flag:
+>          set the I bit on the last DATA chunk used for the user message
+>          to be transmitted.
+5574,5578c5599,5603
+<       destination transport address:  specified as one of the transport
+<          addresses of the peer endpoint, which is used as the primary
+<          address for sending packets.  This overrides the current
+<          primary address information maintained by the local SCTP
+<          endpoint.
+---
+>       destination transport address:
+>          specified as one of the transport addresses of the peer
+>          endpoint, which is used as the primary address for sending
+>          packets.  This overrides the current primary address
+>          information maintained by the local SCTP endpoint.
+5581,5583c5606,5608
+<       source transport address:  optionally, some implementations can
+<          allow you to set the default source address placed in all
+<          outgoing IP datagrams.
+---
+>       source transport address:
+>          optionally, some implementations can allow you to set the
+>          default source address placed in all outgoing IP datagrams.
+5607,5608c5632,5634
+<       buffer address:  the memory location indicated by the ULP to store
+<          the received message.
+---
+>       buffer address:
+>          the memory location indicated by the ULP to store the received
+>          message.
+5618,5629c5644,5657
+<       partial flag:  if this returned flag is set to 1, then this
+<          primitive contains a partial delivery of the whole message.
+<          When this flag is set, the stream id and stream sequence number
+<          accompanies this primitive.  When this flag is set to 0, it
+<          indicates that no more deliveries will be received for this
+<          stream sequence number.
+< 
+<       payload protocol-id:  a 32-bit unsigned integer that is received
+<          from the peer indicating the type of payload protocol of the
+<          received data.  Note that the upper layer is responsible for
+<          the host to network byte order conversion of this field, which
+<          is passed by SCTP as 4 bytes of opaque data.
+---
+>       partial flag:
+>          if this returned flag is set to 1, then this primitive contains
+>          a partial delivery of the whole message.  When this flag is
+>          set, the stream id and stream sequence number accompanies this
+>          primitive.  When this flag is set to 0, it indicates that no
+>          more deliveries will be received for this stream sequence
+>          number.
+> 
+>       payload protocol-id:
+>          a 32-bit unsigned integer that is received from the peer
+>          indicating the type of payload protocol of the received data.
+>          Note that the upper layer is responsible for the host to
+>          network byte order conversion of this field, which is passed by
+>          SCTP as 4 bytes of opaque data.
+5682,5683c5710,5712
+<       destination transport address:  specified as one of the transport
+<          addresses of the peer endpoint.
+---
+>       destination transport address:
+>          specified as one of the transport addresses of the peer
+>          endpoint.
+5685,5686c5714,5716
+<       new state:  the new state of heartbeat for this destination
+<          transport address (either enabled or disabled).
+---
+>       new state:
+>          the new state of heartbeat for this destination transport
+>          address (either enabled or disabled).
+5689,5692c5719,5723
+<       interval:  if present, indicates the frequency of the heartbeat if
+<          this is to enable heartbeat on a destination transport address.
+<          This value is added to the RTO of the destination transport
+<          address.  This value, if present, affects all destinations.
+---
+>       interval:
+>          if present, indicates the frequency of the heartbeat if this is
+>          to enable heartbeat on a destination transport address.  This
+>          value is added to the RTO of the destination transport address.
+>          This value, if present, affects all destinations.
+5707,5708c5738,5740
+<       destination transport address:  the transport address of the
+<          association on which a heartbeat is issued.
+---
+>       destination transport address:
+>          the transport address of the association on which a heartbeat
+>          is issued.
+5726,5727c5758,5760
+<       destination transport address:  the transport address of the
+<          association on which the SRTT measurement is to be reported.
+---
+>       destination transport address:
+>          the transport address of the association on which the SRTT
+>          measurement is to be reported.
+5745,5747c5778,5780
+<       destination transport address:  the transport address of the
+<          association on which the failure detection threshold is to be
+<          set.
+---
+>       destination transport address:
+>          the transport address of the association on which the failure
+>          detection threshold is to be set.
+5767,5770c5800,5803
+<       protocol parameter list:  the specific names and values of the
+<          protocol parameters (e.g., 'Association.Max.Retrans' (see
+<          Section 16) or other parameters like the DSCP) that the SCTP
+<          user wishes to customize.
+---
+>       protocol parameter list:
+>          the specific names and values of the protocol parameters (e.g.,
+>          'Association.Max.Retrans' (see Section 16) or other parameters
+>          like the DSCP) that the SCTP user wishes to customize.
+5773,5774c5806,5808
+<       destination transport address:  some of the protocol parameters
+<          might be set on a per-destination-transport-address basis.
+---
+>       destination transport address:
+>          some of the protocol parameters might be set on a per-
+>          destination-transport-address basis.
+5786,5787c5820,5822
+<       data retrieval id:  the identification passed to the ULP in the
+<          SEND FAILURE notification.
+---
+>       data retrieval id:
+>          the identification passed to the ULP in the SEND FAILURE
+>          notification.
+5789,5790c5824,5826
+<       buffer address:  the memory location indicated by the ULP to store
+<          the received message.
+---
+>       buffer address:
+>          the memory location indicated by the ULP to store the received
+>          message.
+5795,5810c5831,5850
+<       stream id:  this is a return value that is set to indicate which
+<          stream the data was sent to.
+< 
+<       stream sequence number:  this value is returned, indicating the
+<          Stream Sequence Number that was associated with the message.
+< 
+<       partial flag:  if this returned flag is set to 1, then this
+<          message is a partial delivery of the whole message.  When this
+<          flag is set, the stream id and stream sequence number
+<          accompanies this primitive.  When this flag is set to 0, it
+<          indicates that no more deliveries will be received for this
+<          stream sequence number.
+< 
+<       payload protocol-id:  The 32-bit unsigned integer that was set to
+<          be sent to the peer, indicating the type of payload protocol of
+<          the received data.
+---
+>       stream id:
+>          this is a return value that is set to indicate which stream the
+>          data was sent to.
+> 
+>       stream sequence number:
+>          this value is returned, indicating the Stream Sequence Number
+>          that was associated with the message.
+> 
+>       partial flag:
+>          if this returned flag is set to 1, then this message is a
+>          partial delivery of the whole message.  When this flag is set,
+>          the stream id and stream sequence number accompanies this
+>          primitive.  When this flag is set to 0, it indicates that no
+>          more deliveries will be received for this stream sequence
+>          number.
+> 
+>       payload protocol-id:
+>          The 32-bit unsigned integer that was set to be sent to the
+>          peer, indicating the type of payload protocol of the received
+>          data.
+5822,5823c5862,5864
+<       data retrieval id:  the identification passed to the ULP in the
+<          SEND FAILURE notification.
+---
+>       data retrieval id:
+>          the identification passed to the ULP in the SEND FAILURE
+>          notification.
+5825,5826c5866,5868
+<       buffer address:  the memory location indicated by the ULP to store
+<          the received message.
+---
+>       buffer address:
+>          the memory location indicated by the ULP to store the received
+>          message.
+5831,5846c5873,5891
+<       stream id:  this is a return value that is set to indicate which
+<          stream the data was sent to.
+< 
+<       stream sequence number:  this value is returned, indicating the
+<          Stream Sequence Number that was associated with the message.
+< 
+<       partial flag:  if this returned flag is set to 1, then this
+<          message is a partial delivery of the whole message.  When this
+<          flag is set, the stream id and stream sequence number
+<          accompanies this primitive.  When this flag is set to 0, it
+<          indicates that no more deliveries will be received for this
+<          stream sequence number.
+< 
+<       payload protocol-id:  the 32-bit unsigned integer that was sent to
+<          the peer indicating the type of payload protocol of the
+<          received data.
+---
+>       stream id:
+>          this is a return value that is set to indicate which stream the
+>          data was sent to.
+> 
+>       stream sequence number:
+>          this value is returned, indicating the Stream Sequence Number
+>          that was associated with the message.
+> 
+>       partial flag:
+>          if this returned flag is set to 1, then this message is a
+>          partial delivery of the whole message.  When this flag is set,
+>          the stream id and stream sequence number accompanies this
+>          primitive.  When this flag is set to 0, it indicates that no
+>          more deliveries will be received for this stream sequence
+>          number.
+> 
+>       payload protocol-id:
+>          the 32-bit unsigned integer that was sent to the peer
+>          indicating the type of payload protocol of the received data.
+5853,5855c5898,5901
+<       local SCTP instance name:  this is the value that was passed to
+<          the application in the initialize primitive and it indicates
+<          which SCTP instance is to be destroyed.
+---
+>       local SCTP instance name:
+>          this is the value that was passed to the application in the
+>          initialize primitive and it indicates which SCTP instance is to
+>          be destroyed.
+5893,5894c5939,5941
+<    mode:  indicates whether no part of the message never has been sent
+<       or if at least part of it has been sent but it is not completely
+---
+>    mode:
+>       indicates whether no part of the message never has been sent or if
+>       at least part of it has been sent but it is not completely
+5897,5898c5944,5946
+<    cause code:  indicating the reason of the failure, e.g., size too
+<       large, message life time expiration, etc.
+---
+>    cause code:
+>       indicating the reason of the failure, e.g., size too large,
+>       message life time expiration, etc.
+5913,5914c5961,5963
+<    destination transport address:  this indicates the destination
+<       transport address of the peer endpoint affected by the change.
+---
+>    destination transport address:
+>       this indicates the destination transport address of the peer
+>       endpoint affected by the change.
+5939,5944c5988,5995
+<    outbound stream count:  the maximum number of streams allowed to be
+<       used in this association by the ULP.
+< 
+<    inbound stream count:  the number of streams the peer endpoint has
+<       requested with this association (this might not be the same number
+<       as 'outbound stream count').
+---
+>    outbound stream count:
+>       the maximum number of streams allowed to be used in this
+>       association by the ULP.
+> 
+>    inbound stream count:
+>       the number of streams the peer endpoint has requested with this
+>       association (this might not be the same number as 'outbound stream
+>       count').
+5956,5958c6007,6010
+<    status:  this indicates what type of event has occurred; the status
+<       might indicate that a failure OR a normal termination event
+<       occurred in response to a shutdown or abort request.
+---
+>    status:
+>       this indicates what type of event has occurred; the status might
+>       indicate that a failure OR a normal termination event occurred in
+>       response to a shutdown or abort request.
+5978,5979c6030,6032
+<    error info:  this indicates the type of error and optionally some
+<       additional information received through the ERROR chunk.
+---
+>    error info:
+>       this indicates the type of error and optionally some additional
+>       information received through the ERROR chunk.
+6247c6300,6301
+<    Associations:  A list of current associations and mappings to the
+---
+>    Associations:
+>                   A list of current associations and mappings to the
+6260c6314,6315
+<    Address List:  The list of IP addresses that this instance has bound.
+---
+>    Address List:
+>                   The list of IP addresses that this instance has bound.
+6269,6272c6324,6325
+<    Peer Verification Tag:  Tag value to be sent in every packet and is
+<                   received in the INIT or INIT ACK chunk.
+< 
+<    My Verification Tag:  Tag expected in every inbound packet and sent
+---
+>    Peer Verification Tag:
+>                   Tag value to be sent in every packet and is received
+6274a6328,6331
+>    My Verification Tag:
+>                   Tag expected in every inbound packet and sent in the
+>                   INIT or INIT ACK chunk.
+> 
+6282,6287c6339,6345
+<    Peer Transport Address List:  A list of SCTP transport addresses to
+<                   which the peer is bound.  This information is derived
+<                   from the INIT or INIT ACK chunk and is used to
+<                   associate an inbound packet with a given association.
+<                   Normally, this information is hashed or keyed for
+<                   quick lookup and access of the TCB.
+---
+>    Peer Transport Address List:
+>                   A list of SCTP transport addresses to which the peer
+>                   is bound.  This information is derived from the INIT
+>                   or INIT ACK chunk and is used to associate an inbound
+>                   packet with a given association.  Normally, this
+>                   information is hashed or keyed for quick lookup and
+>                   access of the TCB.
+6289c6347,6348
+<    Primary Path:  This is the current primary destination transport
+---
+>    Primary Path:
+>                   This is the current primary destination transport
+6295,6296c6354,6356
+<    Overall Error Threshold:  The threshold for this association that, if
+<                   the Overall Error Count reaches, will cause this
+---
+>    Overall Error Threshold:
+>                   The threshold for this association that, if the
+>                   Overall Error Count reaches, will cause this
+6301c6361,6362
+<    Next TSN:      The next TSN number to be assigned to a new DATA
+---
+>    Next TSN:    
+>                   The next TSN number to be assigned to a new DATA
+6307,6309c6368,6371
+<    Last Rcvd TSN:  This is the last TSN received in sequence.  This
+<                   value is set initially by taking the peer's Initial
+<                   TSN, received in the INIT or INIT ACK chunk, and
+---
+>    Last Rcvd TSN:
+>                   This is the last TSN received in sequence.  This value
+>                   is set initially by taking the peer's Initial TSN,
+>                   received in the INIT or INIT ACK chunk, and
+6312c6374,6375
+<    Mapping Array:  An array of bits or bytes indicating which out-of-
+---
+>    Mapping Array:
+>                   An array of bits or bytes indicating which out-of-
+6319c6382,6383
+<    Ack State:     This flag indicates if the next received packet is to
+---
+>    Ack State:   
+>                   This flag indicates if the next received packet is to
+6328,6334c6392,6400
+<    Inbound Streams:  An array of structures to track the inbound
+<                   streams, normally including the next sequence number
+<                   expected and possibly the stream number.
+< 
+<    Outbound Streams:  An array of structures to track the outbound
+<                   streams, normally including the next sequence number
+<                   to be sent on the stream.
+---
+>    Inbound Streams:
+>                   An array of structures to track the inbound streams,
+>                   normally including the next sequence number expected
+>                   and possibly the stream number.
+> 
+>    Outbound Streams:
+>                   An array of structures to track the outbound streams,
+>                   normally including the next sequence number to be sent
+>                   on the stream.
+6338,6339c6404,6406
+<    Receive Buffer:  A buffer to store received user data that has not
+<                   been delivered to the upper layer.
+---
+>    Receive Buffer:
+>                   A buffer to store received user data that has not been
+>                   delivered to the upper layer.
+6344,6345c6411,6413
+<    Association Maximum DATA Chunk Size:  The smallest Path Maximum DATA
+<                   Chunk Size of all destination addresses.
+---
+>    Association Maximum DATA Chunk Size:
+>                   The smallest Path Maximum DATA Chunk Size of all
+>                   destination addresses.
+6355c6423,6424
+<    Error Threshold:  Current error threshold for this destination, i.e.,
+---
+>    Error Threshold:
+>                   Current error threshold for this destination, i.e.,
+6369,6370c6438,6440
+<    partial bytes acked:  The tracking method for increase of cwnd when
+<                   in congestion avoidance mode (see Section 7.2.2).
+---
+>    partial bytes acked:
+>                   The tracking method for increase of cwnd when in
+>                   congestion avoidance mode (see Section 7.2.2).
+6372c6442,6443
+<    state:         The current state of this destination, i.e., DOWN, UP,
+---
+>    state:       
+>                   The current state of this destination, i.e., DOWN, UP,
+6381c6452,6453
+<    RTO-Pending:   A flag used to track if one of the DATA chunks sent to
+---
+>    RTO-Pending: 
+>                   A flag used to track if one of the DATA chunks sent to
+6389c6461,6462
+<    last-time:     The time to which this destination was last sent.
+---
+>    last-time:   
+>                   The time to which this destination was last sent.

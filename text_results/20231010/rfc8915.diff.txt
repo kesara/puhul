@@ -1,0 +1,142 @@
+385,397c385,399
+<    C (Critical Bit):  Determines the disposition of unrecognized Record
+<       Types.  Implementations which receive a record with an
+<       unrecognized Record Type MUST ignore the record if the Critical
+<       Bit is 0 and MUST treat it as an error if the Critical Bit is 1
+<       (see Section 4.1.3).
+< 
+<    Record Type Number:  A 15-bit integer in network byte order.  The
+<       semantics of Record Types 0-7 are specified in this memo.
+<       Additional type numbers SHALL be tracked through the IANA "Network
+<       Time Security Key Establishment Record Types" registry.
+< 
+<    Body Length:  The length of the Record Body field, in octets, as a
+<       16-bit integer in network byte order.  Record bodies MAY have any
+---
+>    C (Critical Bit):
+>       Determines the disposition of unrecognized Record Types.
+>       Implementations which receive a record with an unrecognized Record
+>       Type MUST ignore the record if the Critical Bit is 0 and MUST
+>       treat it as an error if the Critical Bit is 1 (see Section 4.1.3).
+> 
+>    Record Type Number:
+>       A 15-bit integer in network byte order.  The semantics of Record
+>       Types 0-7 are specified in this memo.  Additional type numbers
+>       SHALL be tracked through the IANA "Network Time Security Key
+>       Establishment Record Types" registry.
+> 
+>    Body Length:
+>       The length of the Record Body field, in octets, as a 16-bit
+>       integer in network byte order.  Record bodies MAY have any
+795,815c797,821
+<    Nonce Length:  Two octets in network byte order, giving the length of
+<       the Nonce field, excluding any padding, interpreted as an unsigned
+<       integer.
+< 
+<    Ciphertext Length:  Two octets in network byte order, giving the
+<       length of the Ciphertext field, excluding any padding, interpreted
+<       as an unsigned integer.
+< 
+<    Nonce:  A nonce as required by the negotiated AEAD algorithm.  The
+<       end of the field is zero-padded to a word (four octets) boundary.
+< 
+<    Ciphertext:  The output of the negotiated AEAD algorithm.  The
+<       structure of this field is determined by the negotiated algorithm,
+<       but it typically contains an authentication tag in addition to the
+<       actual ciphertext.  The end of the field is zero-padded to a word
+<       (four octets) boundary.
+< 
+<    Additional Padding:  Clients that use a nonce length shorter than the
+<       maximum allowed by the negotiated AEAD algorithm may be required
+<       to include additional zero-padding.  The necessary length of this
+<       field is specified below.
+---
+>    Nonce Length:
+>       Two octets in network byte order, giving the length of the Nonce
+>       field, excluding any padding, interpreted as an unsigned integer.
+> 
+>    Ciphertext Length:
+>       Two octets in network byte order, giving the length of the
+>       Ciphertext field, excluding any padding, interpreted as an
+>       unsigned integer.
+> 
+>    Nonce:
+>       A nonce as required by the negotiated AEAD algorithm.  The end of
+>       the field is zero-padded to a word (four octets) boundary.
+> 
+>    Ciphertext:
+>       The output of the negotiated AEAD algorithm.  The structure of
+>       this field is determined by the negotiated algorithm, but it
+>       typically contains an authentication tag in addition to the actual
+>       ciphertext.  The end of the field is zero-padded to a word (four
+>       octets) boundary.
+> 
+>    Additional Padding:
+>       Clients that use a nonce length shorter than the maximum allowed
+>       by the negotiated AEAD algorithm may be required to include
+>       additional zero-padding.  The necessary length of this field is
+>       specified below.
+847c853,854
+<    K:  For packets sent from the client to the server, the C2S key SHALL
+---
+>    K:
+>        For packets sent from the client to the server, the C2S key SHALL
+1197c1204
+<    +================================+=======+===========+=========+====+
+---
+>    +==============================+=======+===========+===========+====+
+1199c1206
+<    +================================+=======+===========+=========+====+
+---
+>    +==============================+=======+===========+===========+====+
+1203c1210
+<    +--------------------------------+-------+-----------+---------+----+
+---
+>    +------------------------------+-------+-----------+-----------+----+
+1246,1247c1253,1254
+<    Record Type Number (REQUIRED):  An integer in the range 0-32767
+<       inclusive.
+---
+>    Record Type Number (REQUIRED):
+>       An integer in the range 0-32767 inclusive.
+1249,1250c1256,1257
+<    Description (REQUIRED):  A short text description of the purpose of
+<       the field.
+---
+>    Description (REQUIRED):
+>       A short text description of the purpose of the field.
+1252,1253c1259,1260
+<    Reference (REQUIRED):  A reference to a document specifying the
+<       semantics of the record.
+---
+>    Reference (REQUIRED):
+>       A reference to a document specifying the semantics of the record.
+1305,1306c1312,1314
+<    Protocol ID (REQUIRED):  An integer in the range 0-65535 inclusive,
+<       functioning as an identifier.
+---
+>    Protocol ID (REQUIRED):
+>       An integer in the range 0-65535 inclusive, functioning as an
+>       identifier.
+1308,1309c1316,1317
+<    Protocol Name (REQUIRED):  A short text string naming the protocol
+<       being identified.
+---
+>    Protocol Name (REQUIRED):
+>       A short text string naming the protocol being identified.
+1311,1312c1319,1320
+<    Reference (REQUIRED):  A reference to a relevant specification
+<       document.
+---
+>    Reference (REQUIRED):
+>       A reference to a relevant specification document.
+1783d1790
+< 
+1792d1798
+< 
+1802d1807
+< 
+1809d1813
+< 
+1817d1820
+< 

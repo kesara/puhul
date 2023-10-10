@@ -1,0 +1,212 @@
+285,286c285,287
+<    client:  The endpoint that initiates an HTTP/2 connection.  Clients
+<       send HTTP requests and receive HTTP responses.
+---
+>    client:
+>       The endpoint that initiates an HTTP/2 connection.  Clients send
+>       HTTP requests and receive HTTP responses.
+295,300c296,303
+<    frame:  The smallest unit of communication within an HTTP/2
+<       connection, consisting of a header and a variable-length sequence
+<       of octets structured according to the frame type.
+< 
+<    peer:  An endpoint.  When discussing a particular endpoint, "peer"
+<       refers to the endpoint that is remote to the primary subject of
+---
+>    frame:
+>       The smallest unit of communication within an HTTP/2 connection,
+>       consisting of a header and a variable-length sequence of octets
+>       structured according to the frame type.
+> 
+>    peer:
+>       An endpoint.  When discussing a particular endpoint, "peer" refers
+>       to the endpoint that is remote to the primary subject of
+307,308c310,312
+<    server:  The endpoint that accepts an HTTP/2 connection.  Servers
+<       receive HTTP requests and send HTTP responses.
+---
+>    server:
+>       The endpoint that accepts an HTTP/2 connection.  Servers receive
+>       HTTP requests and send HTTP responses.
+1318,1320c1322,1325
+<    Pad Length:  An 8-bit field containing the length of the frame
+<       padding in units of octets.  This field is conditional and is only
+<       present if the PADDED flag is set.
+---
+>    Pad Length:
+>       An 8-bit field containing the length of the frame padding in units
+>       of octets.  This field is conditional and is only present if the
+>       PADDED flag is set.
+1322c1327,1328
+<    Data:  Application data.  The amount of data is the remainder of the
+---
+>    Data:
+>       Application data.  The amount of data is the remainder of the
+1326c1332,1333
+<    Padding:  Padding octets that contain no application semantic value.
+---
+>    Padding:
+>       Padding octets that contain no application semantic value.
+1333,1338c1340,1347
+<    PADDED (0x08):  When set, the PADDED flag indicates that the Pad
+<       Length field and any padding that it describes are present.
+< 
+<    END_STREAM (0x01):  When set, the END_STREAM flag indicates that this
+<       frame is the last that the endpoint will send for the identified
+<       stream.  Setting this flag causes the stream to enter one of the
+---
+>    PADDED (0x08):
+>       When set, the PADDED flag indicates that the Pad Length field and
+>       any padding that it describes are present.
+> 
+>    END_STREAM (0x01):
+>       When set, the END_STREAM flag indicates that this frame is the
+>       last that the endpoint will send for the identified stream.
+>       Setting this flag causes the stream to enter one of the
+1406,1418c1415,1430
+<    Pad Length:  An 8-bit field containing the length of the frame
+<       padding in units of octets.  This field is only present if the
+<       PADDED flag is set.
+< 
+<    Exclusive:  A single-bit flag.  This field is only present if the
+<       PRIORITY flag is set.  Priority signals in HEADERS frames are
+<       deprecated; see Section 5.3.2.
+< 
+<    Stream Dependency:  A 31-bit stream identifier.  This field is only
+<       present if the PRIORITY flag is set.
+< 
+<    Weight:  An unsigned 8-bit integer.  This field is only present if
+<       the PRIORITY flag is set.
+---
+>    Pad Length:
+>       An 8-bit field containing the length of the frame padding in units
+>       of octets.  This field is only present if the PADDED flag is set.
+> 
+>    Exclusive:
+>       A single-bit flag.  This field is only present if the PRIORITY
+>       flag is set.  Priority signals in HEADERS frames are deprecated;
+>       see Section 5.3.2.
+> 
+>    Stream Dependency:
+>       A 31-bit stream identifier.  This field is only present if the
+>       PRIORITY flag is set.
+> 
+>    Weight:
+>       An unsigned 8-bit integer.  This field is only present if the
+>       PRIORITY flag is set.
+1422c1434,1435
+<    Padding:  Padding octets that contain no application semantic value.
+---
+>    Padding:
+>       Padding octets that contain no application semantic value.
+1600,1606c1613,1620
+<    ACK (0x01):  When set, the ACK flag indicates that this frame
+<       acknowledges receipt and application of the peer's SETTINGS frame.
+<       When this bit is set, the frame payload of the SETTINGS frame MUST
+<       be empty.  Receipt of a SETTINGS frame with the ACK flag set and a
+<       length field value other than 0 MUST be treated as a connection
+<       error (Section 5.4.1) of type FRAME_SIZE_ERROR.  For more
+<       information, see Section 6.5.3 ("Settings Synchronization").
+---
+>    ACK (0x01):
+>       When set, the ACK flag indicates that this frame acknowledges
+>       receipt and application of the peer's SETTINGS frame.  When this
+>       bit is set, the frame payload of the SETTINGS frame MUST be empty.
+>       Receipt of a SETTINGS frame with the ACK flag set and a length
+>       field value other than 0 MUST be treated as a connection error
+>       (Section 5.4.1) of type FRAME_SIZE_ERROR.  For more information,
+>       see Section 6.5.3 ("Settings Synchronization").
+1794,1801c1808,1816
+<    Pad Length:  An 8-bit field containing the length of the frame
+<       padding in units of octets.  This field is only present if the
+<       PADDED flag is set.
+< 
+<    Promised Stream ID:  An unsigned 31-bit integer that identifies the
+<       stream that is reserved by the PUSH_PROMISE.  The promised stream
+<       identifier MUST be a valid choice for the next stream sent by the
+<       sender (see "new stream identifier" in Section 5.1.1).
+---
+>    Pad Length:
+>       An 8-bit field containing the length of the frame padding in units
+>       of octets.  This field is only present if the PADDED flag is set.
+> 
+>    Promised Stream ID:
+>       An unsigned 31-bit integer that identifies the stream that is
+>       reserved by the PUSH_PROMISE.  The promised stream identifier MUST
+>       be a valid choice for the next stream sent by the sender (see "new
+>       stream identifier" in Section 5.1.1).
+1806c1821,1822
+<    Padding:  Padding octets that contain no application semantic value.
+---
+>    Padding:
+>       Padding octets that contain no application semantic value.
+1917,1920c1933,1936
+<    ACK (0x01):  When set, the ACK flag indicates that this PING frame is
+<       a PING response.  An endpoint MUST set this flag in PING
+<       responses.  An endpoint MUST NOT respond to PING frames containing
+<       this flag.
+---
+>    ACK (0x01):
+>       When set, the ACK flag indicates that this PING frame is a PING
+>       response.  An endpoint MUST set this flag in PING responses.  An
+>       endpoint MUST NOT respond to PING frames containing this flag.
+2315,2321c2331,2338
+<    NO_ERROR (0x00):  The associated condition is not a result of an
+<       error.  For example, a GOAWAY might include this code to indicate
+<       graceful shutdown of a connection.
+< 
+<    PROTOCOL_ERROR (0x01):  The endpoint detected an unspecific protocol
+<       error.  This error is for use when a more specific error code is
+<       not available.
+---
+>    NO_ERROR (0x00):
+>       The associated condition is not a result of an error.  For
+>       example, a GOAWAY might include this code to indicate graceful
+>       shutdown of a connection.
+> 
+>    PROTOCOL_ERROR (0x01):
+>       The endpoint detected an unspecific protocol error.  This error is
+>       for use when a more specific error code is not available.
+2326,2327c2343,2345
+<    FLOW_CONTROL_ERROR (0x03):  The endpoint detected that its peer
+<       violated the flow-control protocol.
+---
+>    FLOW_CONTROL_ERROR (0x03):
+>       The endpoint detected that its peer violated the flow-control
+>       protocol.
+2339,2347c2357,2367
+<    REFUSED_STREAM (0x07):  The endpoint refused the stream prior to
+<       performing any application processing (see Section 8.7 for
+<       details).
+< 
+<    CANCEL (0x08):  The endpoint uses this error code to indicate that
+<       the stream is no longer needed.
+< 
+<    COMPRESSION_ERROR (0x09):  The endpoint is unable to maintain the
+<       field section compression context for the connection.
+---
+>    REFUSED_STREAM (0x07):
+>       The endpoint refused the stream prior to performing any
+>       application processing (see Section 8.7 for details).
+> 
+>    CANCEL (0x08):
+>       The endpoint uses this error code to indicate that the stream is
+>       no longer needed.
+> 
+>    COMPRESSION_ERROR (0x09):
+>       The endpoint is unable to maintain the field section compression
+>       context for the connection.
+2352,2356c2372,2378
+<    ENHANCE_YOUR_CALM (0x0b):  The endpoint detected that its peer is
+<       exhibiting a behavior that might be generating excessive load.
+< 
+<    INADEQUATE_SECURITY (0x0c):  The underlying transport has properties
+<       that do not meet minimum security requirements (see Section 9.2).
+---
+>    ENHANCE_YOUR_CALM (0x0b):
+>       The endpoint detected that its peer is exhibiting a behavior that
+>       might be generating excessive load.
+> 
+>    INADEQUATE_SECURITY (0x0c):
+>       The underlying transport has properties that do not meet minimum
+>       security requirements (see Section 9.2).

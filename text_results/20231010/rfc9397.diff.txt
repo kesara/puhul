@@ -1,0 +1,240 @@
+232,254c232,258
+<    App Store:  An online location from which Untrusted Applications can
+<       be downloaded.
+< 
+<    Device:  A physical piece of hardware that hosts one or more TEEs,
+<       often along with an REE.
+< 
+<    Device Administrator:  An entity that is responsible for
+<       administration of a device, which could be the Device Owner.  A
+<       Device Administrator has privileges on the device to install and
+<       remove Untrusted Applications and TAs, approve or reject Trust
+<       Anchors, and approve or reject TA developers, among other possible
+<       privileges on the device.  A Device Administrator can manage the
+<       list of allowed TAMs by modifying the list of Trust Anchors on the
+<       device.  Although a Device Administrator may have privileges and
+<       device-specific controls to locally administer a device, the
+<       Device Administrator may choose to remotely administer a device
+<       through a TAM.
+< 
+<    Device Owner:  A device is always owned by someone.  In some cases,
+<       it is common for the (primary) device user to also own the device,
+<       making the device user/owner also the Device Administrator.  In
+<       enterprise environments, it is more common for the enterprise to
+<       own the device and for any device user to have no or limited
+---
+>    App Store:
+>       An online location from which Untrusted Applications can be
+>       downloaded.
+> 
+>    Device:
+>       A physical piece of hardware that hosts one or more TEEs, often
+>       along with an REE.
+> 
+>    Device Administrator:
+>       An entity that is responsible for administration of a device,
+>       which could be the Device Owner.  A Device Administrator has
+>       privileges on the device to install and remove Untrusted
+>       Applications and TAs, approve or reject Trust Anchors, and approve
+>       or reject TA developers, among other possible privileges on the
+>       device.  A Device Administrator can manage the list of allowed
+>       TAMs by modifying the list of Trust Anchors on the device.
+>       Although a Device Administrator may have privileges and device-
+>       specific controls to locally administer a device, the Device
+>       Administrator may choose to remotely administer a device through a
+>       TAM.
+> 
+>    Device Owner:
+>       A device is always owned by someone.  In some cases, it is common
+>       for the (primary) device user to also own the device, making the
+>       device user/owner also the Device Administrator.  In enterprise
+>       environments, it is more common for the enterprise to own the
+>       device and for any device user to have no or limited
+258,282c262,289
+<    Device User:  A human being that uses a device.  Many devices have a
+<       single device user.  Some devices have a primary device user with
+<       other human beings as secondary device users (e.g., a parent
+<       allowing children to use their tablet or laptop).  Other devices
+<       are not used by a human being; hence, they have no device user.
+< 
+<    Personalization Data:  A set of configuration data that is specific
+<       to the device or user.  The Personalization Data may depend on the
+<       type of TEE, a particular TEE instance, the TA, and even the user
+<       of the device.  An example of Personalization Data might be a
+<       secret symmetric key used by a TA to communicate with some
+<       service.
+< 
+<    Raw Public Key:  A raw public key consists of only the algorithm
+<       identifier (type) of the key and the cryptographic public key
+<       material, such as the SubjectPublicKeyInfo structure of a PKIX
+<       certificate [RFC5280].  Other serialization formats that do not
+<       rely on ASN.1 may also be used.
+< 
+<    Rich Execution Environment (REE):  An environment that is provided
+<       and governed by a typical OS (e.g., Linux, Windows, Android, iOS),
+<       potentially in conjunction with other supporting operating systems
+<       and hypervisors; it is outside of the TEE(s) managed by the TEEP
+<       protocol.  This environment and applications running on it are
+<       considered untrusted (or more precisely, less trusted than a TEE).
+---
+>    Device User:
+>       A human being that uses a device.  Many devices have a single
+>       device user.  Some devices have a primary device user with other
+>       human beings as secondary device users (e.g., a parent allowing
+>       children to use their tablet or laptop).  Other devices are not
+>       used by a human being; hence, they have no device user.
+> 
+>    Personalization Data:
+>       A set of configuration data that is specific to the device or
+>       user.  The Personalization Data may depend on the type of TEE, a
+>       particular TEE instance, the TA, and even the user of the device.
+>       An example of Personalization Data might be a secret symmetric key
+>       used by a TA to communicate with some service.
+> 
+>    Raw Public Key:
+>       A raw public key consists of only the algorithm identifier (type)
+>       of the key and the cryptographic public key material, such as the
+>       SubjectPublicKeyInfo structure of a PKIX certificate [RFC5280].
+>       Other serialization formats that do not rely on ASN.1 may also be
+>       used.
+> 
+>    Rich Execution Environment (REE):
+>       An environment that is provided and governed by a typical OS
+>       (e.g., Linux, Windows, Android, iOS), potentially in conjunction
+>       with other supporting operating systems and hypervisors; it is
+>       outside of the TEE(s) managed by the TEEP protocol.  This
+>       environment and applications running on it are considered
+>       untrusted (or more precisely, less trusted than a TEE).
+300,312c307,320
+<    Trusted Application (TA):  An application (or, in some
+<       implementations, an application component) that runs in a TEE.
+< 
+<    Trusted Application Manager (TAM):  An entity that manages Trusted
+<       Applications and other Trusted Components running in TEEs of
+<       various devices.
+< 
+<    Trusted Component:  A set of code and/or data in a TEE managed as a
+<       unit by a Trusted Application Manager.  Trusted Applications and
+<       Personalization Data are thus managed by being included in Trusted
+<       Components.  Trusted OS code or trusted firmware can also be
+<       expressed as Trusted Components that a Trusted Component depends
+<       on.
+---
+>    Trusted Application (TA):
+>       An application (or, in some implementations, an application
+>       component) that runs in a TEE.
+> 
+>    Trusted Application Manager (TAM):
+>       An entity that manages Trusted Applications and other Trusted
+>       Components running in TEEs of various devices.
+> 
+>    Trusted Component:
+>       A set of code and/or data in a TEE managed as a unit by a Trusted
+>       Application Manager.  Trusted Applications and Personalization
+>       Data are thus managed by being included in Trusted Components.
+>       Trusted OS code or trusted firmware can also be expressed as
+>       Trusted Components that a Trusted Component depends on.
+317,338c325,348
+<    Trusted Component Signer:  An entity that signs a Trusted Component
+<       with a key that a TEE will trust.  The signer might or might not
+<       be the same entity as the Trusted Component Developer.  For
+<       example, a Trusted Component might be signed (or re-signed) by a
+<       Device Administrator if the TEE will only trust the Device
+<       Administrator.  A Trusted Component might also be encrypted if the
+<       code is considered confidential, for example, when a developer
+<       wants to provide a TA without revealing its code to others.
+< 
+<    Trusted Execution Environment (TEE):  An execution environment that
+<       enforces that only authorized code can execute within the TEE and
+<       data used by that code cannot be read or tampered with by code
+<       outside the TEE.  A TEE also generally has a unique device
+<       credential that cannot be cloned.  There are multiple technologies
+<       that can be used to implement a TEE, and the level of security
+<       achieved varies accordingly.  In addition, TEEs typically use an
+<       isolation mechanism between Trusted Applications to ensure that
+<       one TA cannot read, modify, or delete the data and code of another
+<       TA.
+< 
+<    Untrusted Application (UA):  An application running in an REE.  An
+<       Untrusted Application might depend on one or more TAs.
+---
+>    Trusted Component Signer:
+>       An entity that signs a Trusted Component with a key that a TEE
+>       will trust.  The signer might or might not be the same entity as
+>       the Trusted Component Developer.  For example, a Trusted Component
+>       might be signed (or re-signed) by a Device Administrator if the
+>       TEE will only trust the Device Administrator.  A Trusted Component
+>       might also be encrypted if the code is considered confidential,
+>       for example, when a developer wants to provide a TA without
+>       revealing its code to others.
+> 
+>    Trusted Execution Environment (TEE):
+>       An execution environment that enforces that only authorized code
+>       can execute within the TEE and data used by that code cannot be
+>       read or tampered with by code outside the TEE.  A TEE also
+>       generally has a unique device credential that cannot be cloned.
+>       There are multiple technologies that can be used to implement a
+>       TEE, and the level of security achieved varies accordingly.  In
+>       addition, TEEs typically use an isolation mechanism between
+>       Trusted Applications to ensure that one TA cannot read, modify, or
+>       delete the data and code of another TA.
+> 
+>    Untrusted Application (UA):
+>       An application running in an REE.  An Untrusted Application might
+>       depend on one or more TAs.
+424,429c434,439
+<    Trusted Component Signer and Device Administrator:  Trusted Component
+<       Signers and Device Administrators utilize the services of a TAM to
+<       manage TAs on devices.  Trusted Component Signers do not directly
+<       interact with devices.  Device Administrators may elect to use a
+<       TAM for remote administration of TAs instead of managing each
+<       device directly.
+---
+>    Trusted Component Signer and Device Administrator:
+>       Trusted Component Signers and Device Administrators utilize the
+>       services of a TAM to manage TAs on devices.  Trusted Component
+>       Signers do not directly interact with devices.  Device
+>       Administrators may elect to use a TAM for remote administration of
+>       TAs instead of managing each device directly.
+494,495c504,506
+<    TEEP Broker:  A TEEP Broker is an application component running in a
+<       Rich Execution Environment (REE) that enables the message protocol
+---
+>    TEEP Broker:
+>       A TEEP Broker is an application component running in a Rich
+>       Execution Environment (REE) that enables the message protocol
+505,520c516,532
+<    TEEP Agent:  The TEEP Agent is a processing module running inside a
+<       TEE that receives TAM requests (typically relayed via a TEEP
+<       Broker that runs in an REE).  A TEEP Agent in the TEE may parse or
+<       forward requests to other processing modules in a TEE, which is up
+<       to a TEE provider's implementation.  A response message
+<       corresponding to a TAM request is sent back to the TAM, again
+<       typically relayed via a TEEP Broker.
+< 
+<    Certification Authority (CA):  A CA is an entity that issues digital
+<       certificates (especially X.509 certificates) and vouches for the
+<       binding between the data items in a certificate [RFC4949].
+<       Certificates are then used for authenticating a device, a TAM, or
+<       a Trusted Component Signer, as discussed in Section 5.  The CAs do
+<       not need to be the same; different CAs can be chosen by each TAM,
+<       and different device CAs can be used by different device
+<       manufacturers.
+---
+>    TEEP Agent:
+>       The TEEP Agent is a processing module running inside a TEE that
+>       receives TAM requests (typically relayed via a TEEP Broker that
+>       runs in an REE).  A TEEP Agent in the TEE may parse or forward
+>       requests to other processing modules in a TEE, which is up to a
+>       TEE provider's implementation.  A response message corresponding
+>       to a TAM request is sent back to the TAM, again typically relayed
+>       via a TEEP Broker.
+> 
+>    Certification Authority (CA):
+>       A CA is an entity that issues digital certificates (especially
+>       X.509 certificates) and vouches for the binding between the data
+>       items in a certificate [RFC4949].  Certificates are then used for
+>       authenticating a device, a TAM, or a Trusted Component Signer, as
+>       discussed in Section 5.  The CAs do not need to be the same;
+>       different CAs can be chosen by each TAM, and different device CAs
+>       can be used by different device manufacturers.

@@ -1,0 +1,133 @@
+164,176c164,177
+<    Media encoder with rate control capabilities:  Encodes raw media
+<       (audio and video) frames into a compressed bitstream that is later
+<       packetized into RTP packets.  As discussed in [RFC8593], the
+<       actual output rate from the encoder r_vout may fluctuate around
+<       the target r_vin.  Furthermore, it is possible that the encoder
+<       can only react to bit rate changes at rather coarse time
+<       intervals, e.g., once every 0.5 seconds.
+< 
+<    RTP sender:  Responsible for calculating the NADA reference rate
+<       based on network congestion indicators (delay, loss, or ECN
+<       marking reports from the receiver), for updating the video encoder
+<       with a new target rate r_vin and for regulating the actual sending
+<       rate r_send accordingly.  The RTP sender also generates a sending
+---
+>    Media encoder with rate control capabilities:
+>       Encodes raw media (audio and video) frames into a compressed
+>       bitstream that is later packetized into RTP packets.  As discussed
+>       in [RFC8593], the actual output rate from the encoder r_vout may
+>       fluctuate around the target r_vin.  Furthermore, it is possible
+>       that the encoder can only react to bit rate changes at rather
+>       coarse time intervals, e.g., once every 0.5 seconds.
+> 
+>    RTP sender:
+>       Responsible for calculating the NADA reference rate based on
+>       network congestion indicators (delay, loss, or ECN marking reports
+>       from the receiver), for updating the video encoder with a new
+>       target rate r_vin and for regulating the actual sending rate
+>       r_send accordingly.  The RTP sender also generates a sending
+179,198c180,200
+<    RTP receiver:  Responsible for measuring and estimating end-to-end
+<       delay (based on sender timestamp), packet loss (based on RTP
+<       sequence number), ECN marking ratios (based on [RFC6679]), and
+<       receiving rate (r_recv) of the flow.  It calculates the aggregated
+<       congestion signal (x_curr) that accounts for queuing delay, ECN
+<       markings, and packet losses.  The receiver also determines the
+<       mode for sender rate adaptation (rmode) based on whether the flow
+<       has encountered any standing non-zero congestion.  The receiver
+<       sends periodic RTCP reports back to the sender, containing values
+<       of x_curr, rmode, and r_recv.
+< 
+<    Network node with several modes of operation:  The system can work
+<       with the default behavior of a simple drop-tail queue.  It can
+<       also benefit from advanced Active Queue Management (AQM) features
+<       such as Proportional Integral Controller Enhanced (PIE) [RFC8033],
+<       Flow Queue Controlling Queue Delay (FQ-CoDel) [RFC8290], ECN
+<       marking based on Random Early Detection (RED) [RFC7567], and Pre-
+<       Congestion Notification (PCN) marking using a token bucket
+<       algorithm [RFC6660].  Note that network node operation is out of
+<       scope for the design of NADA.
+---
+>    RTP receiver:
+>       Responsible for measuring and estimating end-to-end delay (based
+>       on sender timestamp), packet loss (based on RTP sequence number),
+>       ECN marking ratios (based on [RFC6679]), and receiving rate
+>       (r_recv) of the flow.  It calculates the aggregated congestion
+>       signal (x_curr) that accounts for queuing delay, ECN markings, and
+>       packet losses.  The receiver also determines the mode for sender
+>       rate adaptation (rmode) based on whether the flow has encountered
+>       any standing non-zero congestion.  The receiver sends periodic
+>       RTCP reports back to the sender, containing values of x_curr,
+>       rmode, and r_recv.
+> 
+>    Network node with several modes of operation:
+>       The system can work with the default behavior of a simple drop-
+>       tail queue.  It can also benefit from advanced Active Queue
+>       Management (AQM) features such as Proportional Integral Controller
+>       Enhanced (PIE) [RFC8033], Flow Queue Controlling Queue Delay
+>       (FQ-CoDel) [RFC8290], ECN marking based on Random Early Detection
+>       (RED) [RFC7567], and Pre-Congestion Notification (PCN) marking
+>       using a token bucket algorithm [RFC6660].  Note that network node
+>       operation is out of scope for the design of NADA.
+208,217c210,220
+<    Accelerated ramp up:  When the bottleneck is deemed to be
+<       underutilized, the rate increases multiplicatively with respect to
+<       the rate of previously successful transmissions.  The rate
+<       increase multiplier (gamma) is calculated based on the observed
+<       round-trip time and target feedback interval, so as to limit self-
+<       inflicted queuing delay.
+< 
+<    Gradual rate update:  In the presence of a non-zero aggregate
+<       congestion signal, the sending rate is adjusted in reaction to
+<       both its value (x_curr) and its change in value (x_diff).
+---
+>    Accelerated ramp up:
+>       When the bottleneck is deemed to be underutilized, the rate
+>       increases multiplicatively with respect to the rate of previously
+>       successful transmissions.  The rate increase multiplier (gamma) is
+>       calculated based on the observed round-trip time and target
+>       feedback interval, so as to limit self-inflicted queuing delay.
+> 
+>    Gradual rate update:
+>       In the presence of a non-zero aggregate congestion signal, the
+>       sending rate is adjusted in reaction to both its value (x_curr)
+>       and its change in value (x_diff).
+235c238
+<    +------------+------------------------------------------------+
+---
+>    +============+================================================+
+293c296
+<    +-----------+-------------------------------------------+---------+
+---
+>    +===========+===========================================+=========+
+782,790c785,795
+<    Recommended rate adaptation mode (rmode):  A 1-bit flag indicating
+<       whether the sender should operate in accelerated ramp-up mode
+<       (rmode=0) or gradual update mode (rmode=1).
+< 
+<    Aggregated congestion signal (x_curr):  The most recently updated
+<       value, calculated by the receiver according to Section 4.2.  This
+<       information can be expressed with a unit of 100 microseconds
+<       (i.e., 1/10 of a millisecond) in 15 bits.  This allows a maximum
+<       value of x_curr at approximately 3.27 seconds.
+---
+>    Recommended rate adaptation mode (rmode):
+>       A 1-bit flag indicating whether the sender should operate in
+>       accelerated ramp-up mode (rmode=0) or gradual update mode
+>       (rmode=1).
+> 
+>    Aggregated congestion signal (x_curr):
+>       The most recently updated value, calculated by the receiver
+>       according to Section 4.2.  This information can be expressed with
+>       a unit of 100 microseconds (i.e., 1/10 of a millisecond) in 15
+>       bits.  This allows a maximum value of x_curr at approximately 3.27
+>       seconds.
+1359d1363
+< 
+1368d1371
+< 
+1377d1379
+< 
+1388d1389
+< 
