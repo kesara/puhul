@@ -1,0 +1,215 @@
+186,201c186,204
+<    Transport Feature:  A specific end-to-end feature that the transport
+<       layer provides to an application.  Examples include
+<       confidentiality, reliable delivery, ordered delivery, message-
+<       versus-stream orientation, etc.
+< 
+<    Transport Service:  A set of Transport Features, without an
+<       association to any given framing protocol, that provides a
+<       complete service to an application.
+< 
+<    Transport Protocol:  An implementation that provides one or more
+<       different Transport Services using a specific framing and header
+<       format on the wire.
+< 
+<    Application:  An entity that uses a transport-layer interface for
+<       end-to-end delivery of data across the network (this may also be
+<       an upper-layer protocol or tunnel encapsulation).
+---
+>    Transport Feature:
+>       A specific end-to-end feature that the transport layer provides to
+>       an application.  Examples include confidentiality, reliable
+>       delivery, ordered delivery, message-versus-stream orientation,
+>       etc.
+> 
+>    Transport Service:
+>       A set of Transport Features, without an association to any given
+>       framing protocol, that provides a complete service to an
+>       application.
+> 
+>    Transport Protocol:
+>       An implementation that provides one or more different Transport
+>       Services using a specific framing and header format on the wire.
+> 
+>    Application:
+>       An entity that uses a transport-layer interface for end-to-end
+>       delivery of data across the network (this may also be an upper-
+>       layer protocol or tunnel encapsulation).
+206,221c209,227
+<    End system:  An entity that communicates with one or more other end
+<       systems using a transport protocol.  An end system provides a
+<       transport-layer interface to applications.
+< 
+<    Connection:  Shared state of two or more end systems that persists
+<       across messages that are transmitted between these end systems.
+< 
+<    Connection Group:  A set of connections that share the same
+<       configuration (configuring one of them causes all other
+<       connections in the same group to be configured in the same way).
+<       We call connections that belong to a connection group "grouped",
+<       while "ungrouped" connections are not a part of a connection
+<       group.
+< 
+<    Socket:  The combination of a destination IP address and a
+<       destination port number.
+---
+>    End system:
+>       An entity that communicates with one or more other end systems
+>       using a transport protocol.  An end system provides a transport-
+>       layer interface to applications.
+> 
+>    Connection:
+>       Shared state of two or more end systems that persists across
+>       messages that are transmitted between these end systems.
+> 
+>    Connection Group:
+>       A set of connections that share the same configuration
+>       (configuring one of them causes all other connections in the same
+>       group to be configured in the same way).  We call connections that
+>       belong to a connection group "grouped", while "ungrouped"
+>       connections are not a part of a connection group.
+> 
+>    Socket:
+>       The combination of a destination IP address and a destination port
+>       number.
+759,782c765,789
+<    Reliability:  a boolean that should be set to true when any of the
+<       following will be useful to the application: reliably transfer
+<       data; notify the peer of closing/aborting; or preserve data
+<       ordering.
+< 
+<    Checksum coverage:  a boolean to specify whether it will be useful to
+<       the application to specify checksum coverage when sending or
+<       receiving.
+< 
+<    Configure message priority:  a boolean that should be set to true
+<       when any of the following per-message configuration or
+<       prioritization mechanisms will be useful to the application:
+<       choosing a scheduler to operate between grouped connections, with
+<       the possibility to configure a priority or weight per connection;
+<       configurable message reliability; unordered message delivery; or
+<       requesting not to delay the acknowledgement (SACK) of a message.
+< 
+<    Early message timeout notifications:  a boolean that should be set to
+<       true when any of the following will be useful to the application:
+<       hand over a message to reliably transfer (possibly multiple times)
+<       before connection establishment; suggest timeout to the peer;
+<       notification of excessive retransmissions (early warning below
+<       abortion threshold); or notification of ICMP error message
+<       arrival.
+---
+>    Reliability:
+>       a boolean that should be set to true when any of the following
+>       will be useful to the application: reliably transfer data; notify
+>       the peer of closing/aborting; or preserve data ordering.
+> 
+>    Checksum coverage:
+>       a boolean to specify whether it will be useful to the application
+>       to specify checksum coverage when sending or receiving.
+> 
+>    Configure message priority:
+>       a boolean that should be set to true when any of the following
+>       per-message configuration or prioritization mechanisms will be
+>       useful to the application: choosing a scheduler to operate between
+>       grouped connections, with the possibility to configure a priority
+>       or weight per connection; configurable message reliability;
+>       unordered message delivery; or requesting not to delay the
+>       acknowledgement (SACK) of a message.
+> 
+>    Early message timeout notifications:
+>       a boolean that should be set to true when any of the following
+>       will be useful to the application: hand over a message to reliably
+>       transfer (possibly multiple times) before connection
+>       establishment; suggest timeout to the peer; notification of
+>       excessive retransmissions (early warning below abortion
+>       threshold); or notification of ICMP error message arrival.
+909,911c916,918
+<    Excessive Retransmissions:  The configured (or a default) number of
+<       retransmissions has been reached, yielding this early warning
+<       below an abortion threshold.
+---
+>    Excessive Retransmissions:
+>       The configured (or a default) number of retransmissions has been
+>       reached, yielding this early warning below an abortion threshold.
+916,918c923,926
+<    ECN Arrival (parameter: ECN value):  A packet carrying the conveyed
+<       Explicit Congestion Notification (ECN) value has arrived.  This
+<       can be useful for applications implementing congestion control.
+---
+>    ECN Arrival (parameter: ECN value):
+>       A packet carrying the conveyed Explicit Congestion Notification
+>       (ECN) value has arrived.  This can be useful for applications
+>       implementing congestion control.
+923,924c931,933
+<    Drain:  The send buffer has either drained below the configured
+<       buffer limit or it has become completely empty.  This is a generic
+---
+>    Drain:
+>       The send buffer has either drained below the configured buffer
+>       limit or it has become completely empty.  This is a generic
+963,966c972,976
+<    Reliability:  This parameter is used to convey a choice of: fully
+<       reliable with congestion control (not UDP), unreliable without
+<       congestion control, unreliable with congestion control (not UDP),
+<       and partially reliable with congestion control (see [RFC3758] and
+---
+>    Reliability:
+>       This parameter is used to convey a choice of: fully reliable with
+>       congestion control (not UDP), unreliable without congestion
+>       control, unreliable with congestion control (not UDP), and
+>       partially reliable with congestion control (see [RFC3758] and
+974,976c984,987
+<    Ordered (not UDP):  This boolean lets an application choose between
+<       ordered message delivery (true) and possibly unordered,
+<       potentially faster message delivery (false).
+---
+>    Ordered (not UDP):
+>       This boolean lets an application choose between ordered message
+>       delivery (true) and possibly unordered, potentially faster message
+>       delivery (false).
+978c989,990
+<    Bundle:  This boolean expresses a preference for allowing to bundle
+---
+>    Bundle:
+>       This boolean expresses a preference for allowing to bundle
+981,996c993,1011
+<    DelAck:  This boolean, if false, lets an application request that the
+<       peer not delay the acknowledgement for this message.
+< 
+<    Fragment:  This boolean expresses a preference for allowing to
+<       fragment messages (true) or not (false), at the IP level.  No
+<       guarantees are given.
+< 
+<    Idempotent (not UDP):  This boolean expresses whether a message is
+<       idempotent (true) or not (false).  Idempotent messages may arrive
+<       multiple times at the receiver (but they will arrive at least
+<       once).  When data is idempotent, it can be used by the receiver
+<       immediately on a connection establishment attempt.  Thus, if data
+<       is handed over before the transport system establishes a
+<       connection with a chosen transport protocol, stating that a
+<       message is idempotent facilitates transmitting it to the peer
+<       application particularly early.
+---
+>    DelAck:
+>       This boolean, if false, lets an application request that the peer
+>       not delay the acknowledgement for this message.
+> 
+>    Fragment:
+>       This boolean expresses a preference for allowing to fragment
+>       messages (true) or not (false), at the IP level.  No guarantees
+>       are given.
+> 
+>    Idempotent (not UDP):
+>       This boolean expresses whether a message is idempotent (true) or
+>       not (false).  Idempotent messages may arrive multiple times at the
+>       receiver (but they will arrive at least once).  When data is
+>       idempotent, it can be used by the receiver immediately on a
+>       connection establishment attempt.  Thus, if data is handed over
+>       before the transport system establishes a connection with a chosen
+>       transport protocol, stating that a message is idempotent
+>       facilitates transmitting it to the peer application particularly
+>       early.
+2449d2463
+< 
+2459d2472
+< 

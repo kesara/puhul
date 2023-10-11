@@ -1,0 +1,940 @@
+268c268,269
+<    BNG:         Broadband Network Gateway.  A BNG (or Broadband Remote
+---
+>    BNG:       
+>                 Broadband Network Gateway.  A BNG (or Broadband Remote
+275c276,277
+<    BRAS:        Broadband Remote Access Server, also known as a BAS,
+---
+>    BRAS:      
+>                 Broadband Remote Access Server, also known as a BAS,
+290c292,293
+<    CP:          Control Plane.  CP is a user control management
+---
+>    CP:        
+>                 Control Plane.  CP is a user control management
+305c308,309
+<    dial-up:     This refers to the initial connection messages when a
+---
+>    dial-up:   
+>                 This refers to the initial connection messages when a
+363c367,368
+<    UP:          User Plane.  UP is a network edge and user policy
+---
+>    UP:        
+>                 User Plane.  UP is a network edge and user policy
+382,398c387,404
+<    Low resource utilization:  The traditional BNG acts as both a gateway
+<       for user access authentication and accounting and also an IP
+<       network's Layer 3 edge.  The mutually affecting nature of the
+<       tightly coupled control plane and forwarding plane makes it
+<       difficult to achieve the maximum performance of either plane.
+< 
+<    Complex management and maintenance:  Due to the large numbers of
+<       traditional BNGs, configuring each device in a network is very
+<       tedious when deploying global service policies.  As the network
+<       expands and new services are introduced, this deployment mode will
+<       cease to be feasible as it is unable to manage services
+<       effectively and to rectify faults rapidly.
+< 
+<    Slow service provisioning:  The coupling of the CP and the forwarding
+<       plane, in addition to being a distributed network control
+<       mechanism, means that any new technology has to rely heavily on
+<       the existing network devices.
+---
+>    Low resource utilization:
+>       The traditional BNG acts as both a gateway for user access
+>       authentication and accounting and also an IP network's Layer 3
+>       edge.  The mutually affecting nature of the tightly coupled
+>       control plane and forwarding plane makes it difficult to achieve
+>       the maximum performance of either plane.
+> 
+>    Complex management and maintenance:
+>       Due to the large numbers of traditional BNGs, configuring each
+>       device in a network is very tedious when deploying global service
+>       policies.  As the network expands and new services are introduced,
+>       this deployment mode will cease to be feasible as it is unable to
+>       manage services effectively and to rectify faults rapidly.
+> 
+>    Slow service provisioning:
+>       The coupling of the CP and the forwarding plane, in addition to
+>       being a distributed network control mechanism, means that any new
+>       technology has to rely heavily on the existing network devices.
+638,664c644,669
+<          CUPS procedures.  Once the Ci parameters are configured on a
+<          UP, it will start to set up S-CUSP sessions with the specified
+<          CPs.  The detailed definition of S-CUSP session establishment
+<          can be found in Section 4.1.1.
+< 
+<    (2)   Board and interface report: Once the S-CUSP session is
+<          established between the UP and a CP, the UP will report status
+<          information on the boards and subscriber-facing interfaces of
+<          this UP to the CP.  A board can also be called a Line/Service
+<          Process Unit (LPU/SPU) card.  The subscriber-facing interfaces
+<          refer to the interfaces that connect the access network nodes
+<          (e.g., Optical Line Terminal (OLT), DSLAM, etc.).  The CP can
+<          use this information to enable the Broadband Access Server
+<          (BAS) function (e.g., IPoE, PPPoE, etc.) on the specified
+<          interfaces.  See Sections 4.2.1 and 7.10 for more details on
+<          resource reporting.
+< 
+<    (3)   BAS function enable: To enable the BAS function on the
+<          specified interfaces of a UP.
+< 
+<    (4)   Subscriber network route advertisement: The CP will allocate
+<          one or more IP address blocks to a UP.  Each address block
+<          contains a series of IP addresses.  Those IP addresses will be
+<          allocated to subscribers who are dialing up from the UP.  To
+<          enable other nodes in the network to learn how to reach the
+<          subscribers, the CP needs to notify the UP to advertise to the
+<          network the routes that can reach those IP addresses.
+---
+>       CUPS procedures.  Once the Ci parameters are configured on a UP,
+>       it will start to set up S-CUSP sessions with the specified CPs.
+>       The detailed definition of S-CUSP session establishment can be
+>       found in Section 4.1.1.
+> 
+>    (2)Board and interface report: Once the S-CUSP session is established
+>       between the UP and a CP, the UP will report status information on
+>       the boards and subscriber-facing interfaces of this UP to the CP.
+>       A board can also be called a Line/Service Process Unit (LPU/SPU)
+>       card.  The subscriber-facing interfaces refer to the interfaces
+>       that connect the access network nodes (e.g., Optical Line Terminal
+>       (OLT), DSLAM, etc.).  The CP can use this information to enable
+>       the Broadband Access Server (BAS) function (e.g., IPoE, PPPoE,
+>       etc.) on the specified interfaces.  See Sections 4.2.1 and 7.10
+>       for more details on resource reporting.
+> 
+>    (3)BAS function enable: To enable the BAS function on the specified
+>       interfaces of a UP.
+> 
+>    (4)Subscriber network route advertisement: The CP will allocate one
+>       or more IP address blocks to a UP.  Each address block contains a
+>       series of IP addresses.  Those IP addresses will be allocated to
+>       subscribers who are dialing up from the UP.  To enable other nodes
+>       in the network to learn how to reach the subscribers, the CP needs
+>       to notify the UP to advertise to the network the routes that can
+>       reach those IP addresses.
+667,679c672,684
+<          defined in Section 4.3.1) process.  When a UP receives a dial-
+<          up request, it will relay the request packet to a CP through
+<          the Si.  The CP will parse the request.  If everything is OK,
+<          it will send an authentication request to the AAA server to
+<          authenticate the subscriber.  Once the subscriber passes the
+<          authentication, the AAA server will return a positive response
+<          to the CP.  Then the CP will send the dial-up response packet
+<          to the UP, and the UP will forward the response packet to the
+<          subscriber (RG).  At the same time, the CP will create a
+<          subscriber session on the UP, enabling the subscriber to access
+<          the network.  For different access types, the process may be a
+<          bit different, but the high-level process is similar.  For each
+<          access type, the detailed process can be found in Section 5.
+---
+>       defined in Section 4.3.1) process.  When a UP receives a dial-up
+>       request, it will relay the request packet to a CP through the Si.
+>       The CP will parse the request.  If everything is OK, it will send
+>       an authentication request to the AAA server to authenticate the
+>       subscriber.  Once the subscriber passes the authentication, the
+>       AAA server will return a positive response to the CP.  Then the CP
+>       will send the dial-up response packet to the UP, and the UP will
+>       forward the response packet to the subscriber (RG).  At the same
+>       time, the CP will create a subscriber session on the UP, enabling
+>       the subscriber to access the network.  For different access types,
+>       the process may be a bit different, but the high-level process is
+>       similar.  For each access type, the detailed process can be found
+>       in Section 5.
+682,685c687,690
+<          session.  The AAA server initiates a Change of Authorization
+<          (CoA) and sends the CoA to the CP.  The CP will then update the
+<          session according to the CoA.  See Section 4.3.2 for more
+<          detail on CP messages updating UP tables.
+---
+>       session.  The AAA server initiates a Change of Authorization (CoA)
+>       and sends the CoA to the CP.  The CP will then update the session
+>       according to the CoA.  See Section 4.3.2 for more detail on CP
+>       messages updating UP tables.
+688,692c693,697
+<          session.  When a UP receives an Offline Request, it will relay
+<          the request to a CP through the Si.  The CP will send back a
+<          response to the UP through the Si.  The UP will then forward
+<          the Offline Response to the subscriber.  Then the CP will
+<          delete the session on the UP through the Ci.
+---
+>       session.  When a UP receives an Offline Request, it will relay the
+>       request to a CP through the Si.  The CP will send back a response
+>       to the UP through the Si.  The UP will then forward the Offline
+>       Response to the subscriber.  Then the CP will delete the session
+>       on the UP through the Ci.
+694,695c699,700
+<    (8)   Event reports include the following two parts (more detail can
+<          be found in Section 4.3.4).  Both are reported using the Event
+---
+>    (8)Event reports include the following two parts (more detail can be
+>       found in Section 4.3.4).  Both are reported using the Event
+702,703c707,708
+<    (9)   Data synchronization: See Section 4.2.5 for more detail on CP
+<          and UP synchronization.
+---
+>    (9)Data synchronization: See Section 4.2.5 for more detail on CP and
+>       UP synchronization.
+705,706c710,711
+<    (10)  CGN address allocation: See Section 4.2.4 for more detail on
+<          CGN address allocation.
+---
+>    (10)CGN address allocation: See Section 4.2.4 for more detail on CGN
+>       address allocation.
+738,739c743,744
+<         between the CP and the UP using a configured port from the
+<         dynamic port range (49152-65535).
+---
+>       between the CP and the UP using a configured port from the dynamic
+>       port range (49152-65535).
+774c779
+<         +---------------------+------------------+---------------+
+---
+>         +=====================+==================+===============+
+1612,1622c1617,1627
+<         the IP address, the access interface, and the VLAN of the RG.
+<         The UP will actively trigger the access flow by sending an ARP/
+<         ND packet to the RG.  If the RG is online, it will reply with an
+<         ARP/ND to the UP.  The UP will tunnel the ARP/ND to the CP
+<         through the Si.  The CP then triggers the authentication
+<         process.  If the authentication result is positive, the CP will
+<         create a corresponding subscriber session on the UP.
+< 
+<    (2)  Triggered by RG ARP/ND (steps 4.1-4.6): Most of the process is
+<         the same as option 1 (triggered by UP).  The difference is that
+<         the RG will actively send the ARP/ND to trigger the process.
+---
+>       the IP address, the access interface, and the VLAN of the RG.  The
+>       UP will actively trigger the access flow by sending an ARP/ND
+>       packet to the RG.  If the RG is online, it will reply with an ARP/
+>       ND to the UP.  The UP will tunnel the ARP/ND to the CP through the
+>       Si.  The CP then triggers the authentication process.  If the
+>       authentication result is positive, the CP will create a
+>       corresponding subscriber session on the UP.
+> 
+>    (2)Triggered by RG ARP/ND (steps 4.1-4.6): Most of the process is the
+>       same as option 1 (triggered by UP).  The difference is that the RG
+>       will actively send the ARP/ND to trigger the process.
+1627,1629c1632,1634
+<         UP restarting).  That means the RG may keep sending IP packets
+<         to the UP.  The packets will trigger the UP to start a new
+<         access process.
+---
+>       UP restarting).  That means the RG may keep sending IP packets to
+>       the UP.  The packets will trigger the UP to start a new access
+>       process.
+1887,1888c1892
+<    (3)  Update the IPv6 PPPoE subscriber session (steps 9-10 and 9'-
+<         10'):
+---
+>    (3)Update the IPv6 PPPoE subscriber session (steps 9-10 and 9'-10'):
+2597,2603c2601,2607
+<    Ver (4 bits):  The major version of the protocol.  This document
+<       specifies version 1.  Different major versions of the protocol may
+<       have significantly different message structures and formats except
+<       that the Ver field will always be in the same place at the
+<       beginning of each message.  A successful S-CUSP session depends on
+<       the CP and the UP both using the same major version of the
+<       protocol.
+---
+>    Ver (4 bits):
+>       The major version of the protocol.  This document specifies
+>       version 1.  Different major versions of the protocol may have
+>       significantly different message structures and formats except that
+>       the Ver field will always be in the same place at the beginning of
+>       each message.  A successful S-CUSP session depends on the CP and
+>       the UP both using the same major version of the protocol.
+2611,2621c2615,2626
+<    Message-Length (16 bits):  Total length of the S-CUSP message
+<       including the common header, expressed in number of bytes as an
+<       unsigned integer.
+< 
+<    Transaction-ID (16 bits):  This field is used to identify requests.
+<       It is echoed back in any corresponding ACK/Response/Error message.
+<       It is RECOMMENDED that a monotonically increasing value be used in
+<       successive messages and that the value wraps back to zero after
+<       0xFFFF.  The content of this field is an opaque value that the
+<       receiver MUST NOT use for any purpose except to echo back in a
+<       corresponding response and, optionally, for logging.
+---
+>    Message-Length (16 bits):
+>       Total length of the S-CUSP message including the common header,
+>       expressed in number of bytes as an unsigned integer.
+> 
+>    Transaction-ID (16 bits):
+>       This field is used to identify requests.  It is echoed back in any
+>       corresponding ACK/Response/Error message.  It is RECOMMENDED that
+>       a monotonically increasing value be used in successive messages
+>       and that the value wraps back to zero after 0xFFFF.  The content
+>       of this field is an opaque value that the receiver MUST NOT use
+>       for any purpose except to echo back in a corresponding response
+>       and, optionally, for logging.
+2627c2632
+<       +------+-----------------+------------------------------------+
+---
+>       +======+=================+====================================+
+2673c2678,2679
+<    1001:  Version-Mismatch.  The version negotiation fails.  The S-CUSP
+---
+>    1001:
+>       Version-Mismatch.  The version negotiation fails.  The S-CUSP
+2676c2682,2683
+<    1002:  Keepalive Error.  The keepalive negotiation fails.  The S-CUSP
+---
+>    1002:
+>       Keepalive Error.  The keepalive negotiation fails.  The S-CUSP
+2679c2686,2687
+<    1003:  Timer Expires.  The establishment timer expired.  Session
+---
+>    1003:
+>       Timer Expires.  The establishment timer expired.  Session
+2819,2820c2827,2828
+<    3001:  Pool-Mismatch.  The corresponding address pool cannot be
+<       found.
+---
+>    3001:
+>       Pool-Mismatch.  The corresponding address pool cannot be found.
+2822,2823c2830,2832
+<    3002:  Pool-Full.  The address pool is fully allocated, and no
+<       address segment is available.
+---
+>    3002:
+>       Pool-Full.  The address pool is fully allocated, and no address
+>       segment is available.
+2827,2828c2836,2838
+<    3004:  Subnet-Conflict.  Subnets in the address pool have been
+<       classified into other clients.
+---
+>    3004:
+>       Subnet-Conflict.  Subnets in the address pool have been classified
+>       into other clients.
+2830c2840,2841
+<    4001:  Update-Fail-No-Res. The forwarding table fails to be delivered
+---
+>    4001:
+>       Update-Fail-No-Res. The forwarding table fails to be delivered
+2835c2846,2847
+<    4003:  QoS-Update-Sq-Fail.  Failed to process the queue in the QoS
+---
+>    4003:
+>       QoS-Update-Sq-Fail.  Failed to process the queue in the QoS
+2838c2850,2851
+<    4004:  QoS-Update-CAR-Fail.  Processing of the CAR in the QoS policy
+---
+>    4004:
+>       QoS-Update-CAR-Fail.  Processing of the CAR in the QoS policy
+2841c2854,2855
+<    4005:  Statistic-Fail-No-Res. Statistics processing failed due to
+---
+>    4005:
+>       Statistic-Fail-No-Res. Statistics processing failed due to
+2867c2881
+<        +------+---------------------+-----------------------------+
+---
+>        +======+=====================+=============================+
+2989,3004c3003,3020
+<    Oper (4 bits):  For Message-Types that specify an operation on a data
+<       set, the Oper field is interpreted as Update, Delete, or Reserved
+<       as specified in Section 8.3.  For all other Message-Types, the
+<       Oper field MUST be sent as zero and ignored on receipt.
+< 
+<    TLV-Type (12 bits):  The type of a TLV.  TLV-Type specifies the
+<       interpretation and format of the Value field of the TLV.  See
+<       Section 8.2.
+< 
+<    TLV-Length (2 bytes):  The length of the Value portion of the TLV in
+<       bytes as an unsigned integer.
+< 
+<    Value (variable length):  This is the portion of the TLV whose size
+<       is given by TLV-Length.  It consists of fields, frequently using
+<       one of the basic data field types (see Section 7.2) and sub-TLVs
+<       (see Section 7.3).
+---
+>    Oper (4 bits):
+>       For Message-Types that specify an operation on a data set, the
+>       Oper field is interpreted as Update, Delete, or Reserved as
+>       specified in Section 8.3.  For all other Message-Types, the Oper
+>       field MUST be sent as zero and ignored on receipt.
+> 
+>    TLV-Type (12 bits):
+>       The type of a TLV.  TLV-Type specifies the interpretation and
+>       format of the Value field of the TLV.  See Section 8.2.
+> 
+>    TLV-Length (2 bytes):
+>       The length of the Value portion of the TLV in bytes as an unsigned
+>       integer.
+> 
+>    Value (variable length):
+>       This is the portion of the TLV whose size is given by TLV-Length.
+>       It consists of fields, frequently using one of the basic data
+>       field types (see Section 7.2) and sub-TLVs (see Section 7.3).
+3021,3026c3037,3044
+<    IPv4-Address:  8 octets. 4 octets of the IPv4 address value followed
+<       by a 4-octet address mask in the format XXX.XXX.XXX.XXX.
+< 
+<    IPv6-Address:  20 octets. 16 octets of the IPv6 address followed by a
+<       4-octet integer n in the range of 0 to 128, which gives the
+<       address mask as the one's complement of 2**(128-n) - 1.
+---
+>    IPv4-Address:
+>       8 octets. 4 octets of the IPv4 address value followed by a 4-octet
+>       address mask in the format XXX.XXX.XXX.XXX.
+> 
+>    IPv6-Address:
+>       20 octets. 16 octets of the IPv6 address followed by a 4-octet
+>       integer n in the range of 0 to 128, which gives the address mask
+>       as the one's complement of 2**(128-n) - 1.
+3040,3041c3058,3060
+<       VLAN-ID:  Unsigned integer in the range 1-4094. (0 and 4095 are
+<          not valid VLAN IDs [802.1Q].)
+---
+>       VLAN-ID:
+>          Unsigned integer in the range 1-4094. (0 and 4095 are not valid
+>          VLAN IDs [802.1Q].)
+3058c3077,3078
+<    Type (2 bytes):  The type of a sub-TLV.  The Type field specifies the
+---
+>    Type (2 bytes):
+>       The type of a sub-TLV.  The Type field specifies the
+3063,3064c3083,3085
+<    Length (2 bytes):  The length of the Value portion of the sub-TLV in
+<       bytes as an unsigned integer.
+---
+>    Length (2 bytes):
+>       The length of the Value portion of the sub-TLV in bytes as an
+>       unsigned integer.
+3066,3067c3087,3089
+<    Value (variable length):  This is the Value portion of the sub-TLV
+<       whose size is given by Length.
+---
+>    Value (variable length):
+>       This is the Value portion of the sub-TLV whose size is given by
+>       Length.
+3080c3102
+<     +------+---------------------+------------------------------------+
+---
+>     +======+=====================+====================================+
+3209,3211c3231,3234
+<       If-Type:  8 bits in length.  The value of this field indicates the
+<          type of an interface.  The If-Type values defined in this
+<          document are listed in Section 8.6.
+---
+>       If-Type:
+>          8 bits in length.  The value of this field indicates the type
+>          of an interface.  The If-Type values defined in this document
+>          are listed in Section 8.6.
+3222,3228c3245,3251
+<       Port Number (16 bits):  An identifier of a physical port/interface
+<          (e.g., If-Type: 1-5).  It is locally significant within the
+<          slot/sub-slot.
+< 
+<       Sub-Port Number (32 bits):  An identifier of the sub-port.
+<          Locally significant within its "parent" port (physical or
+<          virtual).
+---
+>       Port Number (16 bits):
+>          An identifier of a physical port/interface (e.g., If-Type:
+>          1-5).  It is locally significant within the slot/sub-slot.
+> 
+>       Sub-Port Number (32 bits):
+>          An identifier of the sub-port.  Locally significant within its
+>          "parent" port (physical or virtual).
+3258,3259c3281,3283
+<       IPv6 Address (IPv6-Address):  Each IP Address is of type IP-
+<          Address and carries an IPv6 address and length.
+---
+>       IPv6 Address (IPv6-Address):
+>          Each IP Address is of type IP-Address and carries an IPv6
+>          address and length.
+3293,3294c3317,3319
+<       Sub-Type-Version (2 bytes):  Used by the vendor to distinguish
+<          different versions of a vendor-defined sub-TLV Sub-Type.
+---
+>       Sub-Type-Version (2 bytes):
+>          Used by the vendor to distinguish different versions of a
+>          vendor-defined sub-TLV Sub-Type.
+3334,3346c3359,3373
+<       VerSupported:  32 bits in length.  It is a bit map of the Sub-
+<          Versions of S-CUSP that the sender supports.  This document
+<          specifies Sub-Version zero of Major Version 1, that is, Version
+<          1.0.  The VerSupported field MUST be nonzero.  The VerSupported
+<          bits are numbered from 0 as the most significant bit.  Bit 0
+<          indicates support of Sub-Version zero, bit 1 indicates support
+<          of Sub-Version one, etc.
+< 
+<       Vendor-ID:  4 bytes in length.  Vendor ID, as defined in RADIUS
+<          [RFC2865].
+< 
+<       Capabilities:  32 bits in length.  Flags that indicate the support
+<          of particular capabilities by the sender of the Hello.  No
+---
+>       VerSupported:
+>          32 bits in length.  It is a bit map of the Sub-Versions of
+>          S-CUSP that the sender supports.  This document specifies Sub-
+>          Version zero of Major Version 1, that is, Version 1.0.  The
+>          VerSupported field MUST be nonzero.  The VerSupported bits are
+>          numbered from 0 as the most significant bit.  Bit 0 indicates
+>          support of Sub-Version zero, bit 1 indicates support of Sub-
+>          Version one, etc.
+> 
+>       Vendor-ID:
+>          4 bytes in length.  Vendor ID, as defined in RADIUS [RFC2865].
+> 
+>       Capabilities:
+>          32 bits in length.  Flags that indicate the support of
+>          particular capabilities by the sender of the Hello.  No
+3397,3411c3424,3440
+<       Keepalive (8 bits):  Indicates the maximum interval (in seconds)
+<          between two consecutive S-CUSP messages sent by the sender of
+<          the message containing this TLV as an unsigned integer.  The
+<          minimum value for the Keepalive field is 1 second.  When set to
+<          0, once the session is established, no further Keepalive
+<          messages are sent to the remote peer.  A RECOMMENDED value for
+<          the Keepalive frequency is 30 seconds.
+< 
+<       DeadTimer (8 bits in length):  Specifies the amount of time as an
+<          unsigned integer number of seconds, after the expiration of
+<          which, the S-CUSP peer can declare the session with the sender
+<          of the Hello message to be down if no S-CUSP message has been
+<          received.  The DeadTimer SHOULD be set to 0 and MUST be ignored
+<          if the Keepalive is set to 0.  A RECOMMENDED value for the
+<          DeadTimer is 4 times the value of the Keepalive.
+---
+>       Keepalive (8 bits):
+>          Indicates the maximum interval (in seconds) between two
+>          consecutive S-CUSP messages sent by the sender of the message
+>          containing this TLV as an unsigned integer.  The minimum value
+>          for the Keepalive field is 1 second.  When set to 0, once the
+>          session is established, no further Keepalive messages are sent
+>          to the remote peer.  A RECOMMENDED value for the Keepalive
+>          frequency is 30 seconds.
+> 
+>       DeadTimer (8 bits in length):
+>          Specifies the amount of time as an unsigned integer number of
+>          seconds, after the expiration of which, the S-CUSP peer can
+>          declare the session with the sender of the Hello message to be
+>          down if no S-CUSP message has been received.  The DeadTimer
+>          SHOULD be set to 0 and MUST be ignored if the Keepalive is set
+>          to 0.  A RECOMMENDED value for the DeadTimer is 4 times the
+>          value of the Keepalive.
+3440,3441c3469,3471
+<       Message-Type (1 byte):  This parameter is the message type of the
+<          message containing an error.
+---
+>       Message-Type (1 byte):
+>          This parameter is the message type of the message containing an
+>          error.
+3478,3486c3508,3519
+<       If-Index:  4 bytes in length, a unique identifier of an interface
+<          of a BNG.
+< 
+<       Access-Mode:  1 byte in length.  It indicates the access mode of
+<          the interface.  The defined values are listed in Section 8.7.
+< 
+<       Auth-Method4:  1 byte in length.  It indicates the authentication
+<          on this interface for the IPv4 scenario.  This field is defined
+<          as a bitmap.  The bits defined in this document are listed in
+---
+>       If-Index:
+>          4 bytes in length, a unique identifier of an interface of a
+>          BNG.
+> 
+>       Access-Mode:
+>          1 byte in length.  It indicates the access mode of the
+>          interface.  The defined values are listed in Section 8.7.
+> 
+>       Auth-Method4:
+>          1 byte in length.  It indicates the authentication on this
+>          interface for the IPv4 scenario.  This field is defined as a
+>          bitmap.  The bits defined in this document are listed in
+3490,3492c3523,3526
+<       Auth-Method6:  1 byte in length.  It indicates the authentication
+<          on this interface for the IPv6 scenario.  This field is defined
+<          as a bitmap.  The bits defined in this document are listed in
+---
+>       Auth-Method6:
+>          1 byte in length.  It indicates the authentication on this
+>          interface for the IPv6 scenario.  This field is defined as a
+>          bitmap.  The bits defined in this document are listed in
+3555c3589,3590
+<          1:  The interface is enabled with ARP proxy and can process ARP
+---
+>          1:
+>             The interface is enabled with ARP proxy and can process ARP
+3558c3593,3594
+<          0:  The ARP proxy is not enabled on the interface and only the
+---
+>          0:
+>             The ARP proxy is not enabled on the interface and only the
+3565c3601,3602
+<          1:  The interface is enabled with ND proxy and can process ND
+---
+>          1:
+>             The interface is enabled with ND proxy and can process ND
+3568,3569c3605,3607
+<          0:  The ND proxy is not enabled on the interface and only the
+<             ND requests of the same network port and VLAN are processed.
+---
+>          0:
+>             The ND proxy is not enabled on the interface and only the ND
+>             requests of the same network port and VLAN are processed.
+3624,3626c3662,3665
+<       User-ID:  4 bytes in length.  This field carries the user
+<          identifier.  It is filled with all Fs when a non-user route is
+<          delivered to the UP.
+---
+>       User-ID:
+>          4 bytes in length.  This field carries the user identifier.  It
+>          is filled with all Fs when a non-user route is delivered to the
+>          UP.
+3639,3641c3678,3680
+<       Route-Type (2 bytes):  The value of this field indicates the route
+<          type.  The values defined in this document are listed in
+<          Section 8.9.
+---
+>       Route-Type (2 bytes):
+>          The value of this field indicates the route type.  The values
+>          defined in this document are listed in Section 8.9.
+3695,3697c3734,3737
+<       User-ID:  4 bytes in length.  This field carries the user
+<          identifier.  This field is filled with all Fs when a non-user
+<          route is delivered to the UP.
+---
+>       User-ID:
+>          4 bytes in length.  This field carries the user identifier.
+>          This field is filled with all Fs when a non-user route is
+>          delivered to the UP.
+3711,3713c3751,3753
+<       Route-Type (2 bytes):  The value of this field indicates the route
+<          type.  The values defined in this document are listed in
+<          Section 8.9.
+---
+>       Route-Type (2 bytes):
+>          The value of this field indicates the route type.  The values
+>          defined in this document are listed in Section 8.9.
+3778,3779c3818,3820
+<       Session-ID (4 bytes):  Session ID of a PPPoE subscriber.  The
+<          value zero identifies a non-PPPoE subscriber.
+---
+>       Session-ID (4 bytes):
+>          Session ID of a PPPoE subscriber.  The value zero identifies a
+>          non-PPPoE subscriber.
+3783,3784c3824,3826
+<       Oper-ID (1 byte):  Indicates the ID of an operation performed by a
+<          user.  This field is carried in the response from the UP.
+---
+>       Oper-ID (1 byte):
+>          Indicates the ID of an operation performed by a user.  This
+>          field is carried in the response from the UP.
+3788,3789c3830,3832
+<       Access-Type (1 byte):  Indicates the type of subscriber access.
+<          Values defined in this document are listed in Section 8.10.
+---
+>       Access-Type (1 byte):
+>          Indicates the type of subscriber access.  Values defined in
+>          this document are listed in Section 8.10.
+3803c3846,3847
+<          0:  Collects statistics on IPv4 and IPv6 traffic of terminals
+---
+>          0:
+>             Collects statistics on IPv4 and IPv6 traffic of terminals
+3806c3850,3851
+<          1:  Collects statistics on IPv4 and IPv6 traffic of terminals.
+---
+>          1:
+>             Collects statistics on IPv4 and IPv6 traffic of terminals.
+3816,3827c3861,3873
+<       C-VID (VLAN-ID):  Indicates the inner VLAN ID.  The value 0
+<          indicates that the VLAN ID is invalid.  The default value of
+<          PRI is 7, the value of DEI is 0, and the value of VID is
+<          1-4094.  The PRI value can also be obtained by parsing terminal
+<          packets.
+< 
+<       P-VID (VLAN-ID):  Indicates the outer VLAN ID.  The value 0
+<          indicates that the VLAN ID is invalid.  The format is the same
+<          as that for C-VID.
+< 
+<       Detect-Times (2 bytes):  Number of detection timeout times.  The
+<          value 0 indicates that no detection is performed.
+---
+>       C-VID (VLAN-ID):
+>          Indicates the inner VLAN ID.  The value 0 indicates that the
+>          VLAN ID is invalid.  The default value of PRI is 7, the value
+>          of DEI is 0, and the value of VID is 1-4094.  The PRI value can
+>          also be obtained by parsing terminal packets.
+> 
+>       P-VID (VLAN-ID):
+>          Indicates the outer VLAN ID.  The value 0 indicates that the
+>          VLAN ID is invalid.  The format is the same as that for C-VID.
+> 
+>       Detect-Times (2 bytes):
+>          Number of detection timeout times.  The value 0 indicates that
+>          no detection is performed.
+3836,3837c3882,3883
+<          VRF-Name sub-TLV:  Indicates the VRF to which the subscriber
+<             belongs.
+---
+>          VRF-Name sub-TLV:
+>             Indicates the VRF to which the subscriber belongs.
+4001,4002c4047,4049
+<       User PD-Addresses (IPv6 Address List):  Carries a list of Prefix
+<          Delegation (PD) addresses of the subscriber.
+---
+>       User PD-Addresses (IPv6 Address List):
+>          Carries a list of Prefix Delegation (PD) addresses of the
+>          subscriber.
+4004,4005c4051,4053
+<       User ND-Addresses (IPv6 Address List):  Carries a list of Neighbor
+<          Discovery (ND) addresses of the subscriber.
+---
+>       User ND-Addresses (IPv6 Address List):
+>          Carries a list of Neighbor Discovery (ND) addresses of the
+>          subscriber.
+4079,4088c4127,4138
+<       If-Index (4 bytes):  The interface index of the interface from
+<          which the subscriber will dial-up.
+< 
+<       C-VID (VLAN-ID):  Indicates the inner VLAN ID.  The value 0
+<          indicates that the VLAN ID is invalid.  A valid value is
+<          1-4094.
+< 
+<       P-VID (VLAN-ID):  Indicates the outer VLAN ID.  The value 0
+<          indicates that the VLAN ID is invalid.  The format is the same
+<          as that of the C-VID.  A valid value is 1-4094.
+---
+>       If-Index (4 bytes):
+>          The interface index of the interface from which the subscriber
+>          will dial-up.
+> 
+>       C-VID (VLAN-ID):
+>          Indicates the inner VLAN ID.  The value 0 indicates that the
+>          VLAN ID is invalid.  A valid value is 1-4094.
+> 
+>       P-VID (VLAN-ID):
+>          Indicates the outer VLAN ID.  The value 0 indicates that the
+>          VLAN ID is invalid.  The format is the same as that of the
+>          C-VID.  A valid value is 1-4094.
+4141,4150c4191,4202
+<       If-Index (4 bytes):  The interface index of the interface from
+<          which the subscriber will dial-up.
+< 
+<       C-VID (VLAN-ID):  Indicates the inner VLAN ID.  The value 0
+<          indicates that the VLAN ID is invalid.  A valid value is
+<          1-4094.
+< 
+<       P-VID (VLAN-ID):  Indicates the outer VLAN ID.  The value 0
+<          indicates that the VLAN ID is invalid.  The format is the same
+<          as that the of C-VID.  A valid value is 1-4094.
+---
+>       If-Index (4 bytes):
+>          The interface index of the interface from which the subscriber
+>          will dial-up.
+> 
+>       C-VID (VLAN-ID):
+>          Indicates the inner VLAN ID.  The value 0 indicates that the
+>          VLAN ID is invalid.  A valid value is 1-4094.
+> 
+>       P-VID (VLAN-ID):
+>          Indicates the outer VLAN ID.  The value 0 indicates that the
+>          VLAN ID is invalid.  The format is the same as that the of
+>          C-VID.  A valid value is 1-4094.
+4160,4161c4212,4213
+<          VRF-Name sub-TLV:  Indicates the VRF to which the subscriber
+<             belongs.
+---
+>          VRF-Name sub-TLV:
+>             Indicates the VRF to which the subscriber belongs.
+4369,4372c4421,4425
+<       User-Trans-ID (1 byte):  In the case of dual-stack access or when
+<          modifying a session, User-Trans-ID is used to identify a user
+<          operation transaction.  It is used by the CP to correlate a
+<          response to a specific request.
+---
+>       User-Trans-ID (1 byte):
+>          In the case of dual-stack access or when modifying a session,
+>          User-Trans-ID is used to identify a user operation transaction.
+>          It is used by the CP to correlate a response to a specific
+>          request.
+4432,4433c4485,4487
+<          Ingress-QoS-Profile sub-TLV:  Indicates the name of the QoS-
+<             Profile that is the profile in the upstream direction.
+---
+>          Ingress-QoS-Profile sub-TLV:
+>             Indicates the name of the QoS-Profile that is the profile in
+>             the upstream direction.
+4435,4436c4489,4491
+<          Egress-QoS-Profile sub-TLV:  Indicates the name of the QoS-
+<             Profile that is the profile in the downstream direction.
+---
+>          Egress-QoS-Profile sub-TLV:
+>             Indicates the name of the QoS-Profile that is the profile in
+>             the downstream direction.
+4438,4440c4493,4496
+<          User-ACL-Policy sub-TLV:  All ACL user policies, including
+<             v4ACLIN, v4ACLOUT, v6ACLIN, v6ACLOUT, v4WEBACL, v6WEBACL,
+<             v4SpecialACL, and v6SpecialACL.
+---
+>          User-ACL-Policy sub-TLV:
+>             All ACL user policies, including v4ACLIN, v4ACLOUT, v6ACLIN,
+>             v6ACLOUT, v4WEBACL, v6WEBACL, v4SpecialACL, and
+>             v6SpecialACL.
+4606,4607c4662,4663
+<       Pool-Name sub-TLV:  Indicates from which address pool to allocate
+<          address.
+---
+>       Pool-Name sub-TLV:
+>          Indicates from which address pool to allocate address.
+4650c4706,4707
+<          3001:  Pool-Mismatch.  The corresponding address pool cannot be
+---
+>          3001:
+>             Pool-Mismatch.  The corresponding address pool cannot be
+4653c4710,4711
+<          3002:  Pool-Full.  The address pool is fully allocated, and no
+---
+>          3002:
+>             Pool-Full.  The address pool is fully allocated, and no
+4725c4783,4784
+<          3001:  Pool-Mismatch.  The corresponding address pool cannot be
+---
+>          3001:
+>             Pool-Mismatch.  The corresponding address pool cannot be
+4728c4787,4788
+<          3002:  Pool-Full.  The address pool is fully allocated, and no
+---
+>          3002:
+>             Pool-Full.  The address pool is fully allocated, and no
+4731,4732c4791,4792
+<          3003:  Subnet-Mismatch.  The address pool subnet cannot be
+<             found.
+---
+>          3003:
+>             Subnet-Mismatch.  The address pool subnet cannot be found.
+4734c4794,4795
+<          3004:  Subnet-Conflict.  Subnets in the address pool have been
+---
+>          3004:
+>             Subnet-Conflict.  Subnets in the address pool have been
+4807c4868,4869
+<          3001:  Pool-Mismatch.  The corresponding address pool cannot be
+---
+>          3001:
+>             Pool-Mismatch.  The corresponding address pool cannot be
+4812,4813c4874,4876
+<          3004:  Subnet-Conflict.  The address has been allocated to
+<             another subscriber.
+---
+>          3004:
+>             Subnet-Conflict.  The address has been allocated to another
+>             subscriber.
+4890,4891c4953,4954
+<       Ingress Loss Packets (8 bytes):  The number of the lost packets in
+<          the upstream direction.
+---
+>       Ingress Loss Packets (8 bytes):
+>          The number of the lost packets in the upstream direction.
+4896,4897c4959,4960
+<       Egress Packets (8 bytes):  The number of the packets in the
+<          downstream direction.
+---
+>       Egress Packets (8 bytes):
+>          The number of the packets in the downstream direction.
+4901,4902c4964,4965
+<       Egress Loss Packets (8 bytes):  The number of the lost packets in
+<          the downstream direction.
+---
+>       Egress Loss Packets (8 bytes):
+>          The number of the lost packets in the downstream direction.
+4948c5011,5012
+<          1:  Detection failure.  The UP needs to report only when the
+---
+>          1:
+>             Detection failure.  The UP needs to report only when the
+4983,4984c5047,5049
+<       Sub-Type (2 bytes):  Used by the vendor to distinguish multiple
+<          different vendor messages.
+---
+>       Sub-Type (2 bytes):
+>          Used by the vendor to distinguish multiple different vendor
+>          messages.
+4986,4987c5051,5053
+<       Sub-Type-Version (2 bytes):  Used by the vendor to distinguish
+<          different versions of a vendor-defined message Sub-Type.
+---
+>       Sub-Type-Version (2 bytes):
+>          Used by the vendor to distinguish different versions of a
+>          vendor-defined message Sub-Type.
+5011c5077
+<        +---------+---------------------+--------------------------+
+---
+>        +=========+=====================+==========================+
+5063c5129
+<       +-----------+-------------+-----------------------------------+
+---
+>       +===========+=============+===================================+
+5193c5259
+<                            +------+------------+
+---
+>                            +======+============+
+5212c5278
+<        +----------+---------------------+--------------------------+
+---
+>        +==========+=====================+==========================+
+5252c5318
+<    +-----------------+-----------------------+-------------------------+
+---
+>    +=================+=======================+=========================+
+5369c5435
+<                       +-------+--------------------+
+---
+>                       +=======+====================+
+5400c5466
+<                       +-------+---------------------+
+---
+>                       +=======+=====================+
+5423c5489
+<                     +------+-------------------------+
+---
+>                     +======+=========================+
+5445c5511
+<                     +------+-------------------------+
+---
+>                     +======+=========================+
+5472c5538
+<                +---------+---------------------------------+
+---
+>                +=========+=================================+
+5499c5565
+<    +--------+---------------------------------------------------------+
+---
+>    +========+=========================================================+
+5698d5763
+< 
+5708d5772
+< 
+5714d5777
+< 
+5720d5782
+< 
+5726d5787
+< 
+5732d5792
+< 
+5744d5803
+< 
+5756d5814
+< 
+5763d5820
+< 
+5776d5832
+< 
+5785d5840
+< 
+5797d5851
+< 
+5806d5859
+< 
+5812d5864
+< 

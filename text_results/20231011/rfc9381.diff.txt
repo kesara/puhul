@@ -1,0 +1,185 @@
+167c167,168
+<    SK:  The secret key for the VRF.  (Note: The secret key is also
+---
+>    SK:
+>       The secret key for the VRF.  (Note: The secret key is also
+178c179,180
+<    Prover:  Holds the VRF secret key SK and public key PK.
+---
+>    Prover:
+>       Holds the VRF secret key SK and public key PK.
+182,183c184,185
+<    Adversary:  Potential attacker; often used to define a security
+<       property.
+---
+>    Adversary:
+>       Potential attacker; often used to define a security property.
+404c406,407
+<       k:  length, in octets, of the RSA modulus n (k must be less than
+---
+>       k:
+>          length, in octets, of the RSA modulus n (k must be less than
+413,414c416,418
+<       suite_string:  an octet string specifying the RSA-FDH-VRF
+<          ciphersuite, which determines the above options
+---
+>       suite_string:
+>          an octet string specifying the RSA-FDH-VRF ciphersuite, which
+>          determines the above options
+418c422,423
+<       I2OSP:  Conversion of a non-negative integer to an octet string as
+---
+>       I2OSP:
+>          Conversion of a non-negative integer to an octet string as
+423c428,429
+<       OS2IP:  Conversion of an octet string to a non-negative integer as
+---
+>       OS2IP:
+>          Conversion of an octet string to a non-negative integer as
+435c441,442
+<       MGF1:  Mask generation function based on the hash function Hash as
+---
+>       MGF1:
+>          Mask generation function based on the hash function Hash as
+453,455c460,463
+<       MGF_salt:  a public octet string used as a hash function salt;
+<          this input is not used when MGF_salt is specified as part of
+<          the ciphersuite
+---
+>       MGF_salt:
+>          a public octet string used as a hash function salt; this input
+>          is not used when MGF_salt is specified as part of the
+>          ciphersuite
+517,519c525,528
+<       MGF_salt:  a public octet string used as a hash function salt;
+<          this input is not used when MGF_salt is specified as part of
+<          the ciphersuite
+---
+>       MGF_salt:
+>          a public octet string used as a hash function salt; this input
+>          is not used when MGF_salt is specified as part of the
+>          ciphersuite
+597,599c606,609
+<       0xMN (where M and N are hexadecimal digits):  a single octet with
+<          value M*16+N; equivalently, int_to_string(M*16+N, 1), where
+<          int_to_string is as defined below
+---
+>       0xMN (where M and N are hexadecimal digits):
+>          a single octet with value M*16+N; equivalently,
+>          int_to_string(M*16+N, 1), where int_to_string is as defined
+>          below
+617,621c627,633
+<       qLen:  length of q, in octets, i.e., the smallest integer such
+<          that 2^(8qLen) > q
+< 
+<       cLen:  length, in octets, of a challenge value used by the VRF
+<          (note that in the typical case, cLen is qLen/2 or close to it)
+---
+>       qLen:
+>          length of q, in octets, i.e., the smallest integer such that
+>          2^(8qLen) > q
+> 
+>       cLen:
+>          length, in octets, of a challenge value used by the VRF (note
+>          that in the typical case, cLen is qLen/2 or close to it)
+629,630c641,643
+<       hLen:  output length, in octets, of Hash (hLen must be at least
+<          cLen; in the typical case, it is at least qLen)
+---
+>       hLen:
+>          output length, in octets, of Hash (hLen must be at least cLen;
+>          in the typical case, it is at least qLen)
+635,640c648,655
+<       ECVRF_nonce_generation:  a function that derives a pseudorandom
+<          nonce from SK and the input as part of ECVRF proving
+< 
+<       suite_string:  an octet string specifying the ECVRF ciphersuite,
+<          which determines the above options as well as type conversions
+<          and parameter generation
+---
+>       ECVRF_nonce_generation:
+>          a function that derives a pseudorandom nonce from SK and the
+>          input as part of ECVRF proving
+> 
+>       suite_string:
+>          an octet string specifying the ECVRF ciphersuite, which
+>          determines the above options as well as type conversions and
+>          parameter generation
+644,648c659,665
+<       int_to_string(a, len):  conversion of non-negative integer a to
+<          octet string of length len
+< 
+<       string_to_int(a_string):  conversion of an octet string a_string
+<          to a non-negative integer
+---
+>       int_to_string(a, len):
+>          conversion of non-negative integer a to octet string of length
+>          len
+> 
+>       string_to_int(a_string):
+>          conversion of an octet string a_string to a non-negative
+>          integer
+653,655c670,673
+<       string_to_point:  conversion of a ptLen-octet string to a point on
+<          E.  string_to_point returns "INVALID" if the octet string does
+<          not convert to a valid EC point on the curve E
+---
+>       string_to_point:
+>          conversion of a ptLen-octet string to a point on E.
+>          string_to_point returns "INVALID" if the octet string does not
+>          convert to a valid EC point on the curve E
+670c688,689
+<       x:  VRF secret scalar, an integer.  Note: Depending on the
+---
+>       x:
+>          VRF secret scalar, an integer.  Note: Depending on the
+693,695c712,715
+<       encode_to_curve_salt:  a public salt value, an octet string; this
+<          input is not used when encode_to_curve_salt is specified as
+<          part of the ciphersuite
+---
+>       encode_to_curve_salt:
+>          a public salt value, an octet string; this input is not used
+>          when encode_to_curve_salt is specified as part of the
+>          ciphersuite
+782,784c802,805
+<       encode_to_curve_salt:  a public salt value, an octet string; this
+<          input is not used when encode_to_curve_salt is specified as
+<          part of the ciphersuite
+---
+>       encode_to_curve_salt:
+>          a public salt value, an octet string; this input is not used
+>          when encode_to_curve_salt is specified as part of the
+>          ciphersuite
+875,877c896,898
+<       interpret_hash_value_as_a_point:  a function that attempts to
+<          convert a cryptographic hash value to a point on E; may output
+<          "INVALID"
+---
+>       interpret_hash_value_as_a_point:
+>          a function that attempts to convert a cryptographic hash value
+>          to a point on E; may output "INVALID"
+926,927c947,949
+<       h2c_suite_ID_string:  a hash-to-curve Suite ID, encoded in ASCII
+<          (see discussion below)
+---
+>       h2c_suite_ID_string:
+>          a hash-to-curve Suite ID, encoded in ASCII (see discussion
+>          below)
+1374,1376c1396,1398
+<    For selective pseudorandomness:  approximately as strong as the
+<       security, in bits, of the RSA problem for the key (n, e) (as shown
+<       in [GNPRVZ15]).
+---
+>    For selective pseudorandomness:
+>       approximately as strong as the security, in bits, of the RSA
+>       problem for the key (n, e) (as shown in [GNPRVZ15]).
+1389,1391c1411,1414
+<    For selective pseudorandomness:  approximately as strong as the
+<       security, in bits, of the decisional Diffie-Hellman problem in the
+<       group G (which is at most 8*qLen/2).
+---
+>    For selective pseudorandomness:
+>       approximately as strong as the security, in bits, of the
+>       decisional Diffie-Hellman problem in the group G (which is at most
+>       8*qLen/2).

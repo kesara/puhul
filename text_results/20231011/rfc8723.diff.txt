@@ -1,0 +1,198 @@
+132,138c132,139
+<    Media Distributor (MD):  A device that receives media from endpoints
+<       and distributes it to other endpoints, but does not need to
+<       interpret or change the media content (see also
+<       [PRIVATE-MEDIA-FRAMEWORK]).
+< 
+<    end-to-end:  The path from one endpoint through one or more MDs to
+<       the endpoint at the other end.
+---
+>    Media Distributor (MD):
+>       A device that receives media from endpoints and distributes it to
+>       other endpoints, but does not need to interpret or change the
+>       media content (see also [PRIVATE-MEDIA-FRAMEWORK]).
+> 
+>    end-to-end:
+>       The path from one endpoint through one or more MDs to the endpoint
+>       at the other end.
+142,144c143,145
+<    Original Header Block (OHB):  An octet string that contains the
+<       original values from the RTP header that might have been changed
+<       by an MD.
+---
+>    Original Header Block (OHB):
+>       An octet string that contains the original values from the RTP
+>       header that might have been changed by an MD.
+202,203c203,204
+<    integer "n" representing the desired output length, a master key
+<    "k_master", and an input "x":
+---
+>    integer n representing the desired output length, a master key
+>    k_master, and an input x:
+208c209
+<    Here "PRF_double_n(k_master, x)" represents the AES_CM PRF Key
+---
+>    Here PRF_double_n(k_master, x) represents the AES_CM PRF Key
+212,213c213,214
+<    The term "inner(k_master)" represents the first half of the key;
+<    "outer(k_master)" represents the second half of the key.
+---
+>    The term inner(k_master) represents the first half of the key;
+>    outer(k_master) represents the second half of the key.
+258c259
+<    In particular, an all-zero OHB Config octet ("0x00") indicates that
+---
+>    In particular, an all-zero OHB Config octet (0x00) indicates that
+261,263c262,264
+<    If the marker bit is not present (M=0), then "B" MUST be set to zero.
+<    That is, if "C" represents the value of the Config octet, then the
+<    masked value "C & 0x0C" MUST NOT have the value "0x80".
+---
+>    If the marker bit is not present (M=0), then B MUST be set to zero.
+>    That is, if C represents the value of the Config octet, then the
+>    masked value C & 0x0C MUST NOT have the value 0x80.
+294,295c295,296
+<    1.  Form an RTP packet.  If there are any header extensions, they
+<        MUST use [RFC8285].
+---
+>    1. Form an RTP packet.  If there are any header extensions, they MUST
+>       use [RFC8285].
+306,307c307,308
+<           -  The header is truncated to remove any extensions (i.e.,
+<              keep only the first 12 + 4 * CSRC count (CC) bytes of the
+---
+>          -  The header is truncated to remove any extensions (i.e., keep
+>             only the first 12 + 4 * CSRC count (CC) bytes of the
+318c319
+<        the X bit), and append an empty OHB ("0x00") to the encrypted
+---
+>       the X bit), and append an empty OHB (0x00) to the encrypted
+352,354c353,355
+<        changed, i.e., PT, SEQ, and M.  The MD MAY also make
+<        modifications to header extensions, without the need to reflect
+<        these changes in the OHB.
+---
+>       changed, i.e., PT, SEQ, and M.  The MD MAY also make modifications
+>       to header extensions, without the need to reflect these changes in
+>       the OHB.
+376,378c377,380
+<    steps 1 and 4 MUST use different, independent master keys.  Note that
+<    this means that the key used for decryption by the MD MUST be
+<    different from the key used for re-encryption to the end recipient.
+---
+>    steps 1 (1) and 4 (4) MUST use different, independent master keys.
+>    Note that this means that the key used for decryption by the MD MUST
+>    be different from the key used for re-encryption to the end
+>    recipient.
+405,408c407,410
+<    2.  If the packet is for repair mode data, skip the rest of the
+<        steps.  Note that the packet that results from the repair
+<        algorithm will still have encrypted data that needs to be
+<        decrypted as specified by the repair algorithm sections.
+---
+>    2. If the packet is for repair mode data, skip the rest of the steps.
+>       Note that the packet that results from the repair algorithm will
+>       still have encrypted data that needs to be decrypted as specified
+>       by the repair algorithm sections.
+421,422c423,424
+<           -  The header is truncated to remove any extensions (i.e.,
+<              keep only the first 12 + 4 * CC bytes of the header).
+---
+>          -  The header is truncated to remove any extensions (i.e., keep
+>             only the first 12 + 4 * CC bytes of the header).
+617c619
+<      +--------+------------------------------------------+-----------+
+---
+>      +========+==========================================+===========+
+632c634
+<         +---------------------------------------------------------+
+---
+>          +=======================================================+
+634c636
+<         +-----------------------+---------------------------------+
+---
+>          +=======================+===============================+
+636c638
+<         +-----------------------+---------------------------------+
+---
+>          +-----------------------+-------------------------------+
+638c640
+<         +-----------------------+---------------------------------+
+---
+>          +-----------------------+-------------------------------+
+640c642
+<         +-----------------------+---------------------------------+
+---
+>          +-----------------------+-------------------------------+
+642c644
+<         +-----------------------+---------------------------------+
+---
+>          +-----------------------+-------------------------------+
+644c646
+<         +-----------------------+---------------------------------+
+---
+>          +-----------------------+-------------------------------+
+646c648
+<         +-----------------------+---------------------------------+
+---
+>          +-----------------------+-------------------------------+
+648,651c650,653
+<         +-----------------------+---------------------------------+
+<         | maximum lifetime:     | at most 2^(31) SRTCP packets    |
+<         |                       | and at most 2^(48) SRTP packets |
+<         +-----------------------+---------------------------------+
+---
+>          +-----------------------+-------------------------------+
+>          | maximum lifetime:     | at most 2^31 SRTCP packets    |
+>          |                       | and at most 2^48 SRTP packets |
+>          +-----------------------+-------------------------------+
+656c658
+<         +---------------------------------------------------------+
+---
+>          +=======================================================+
+658c660
+<         +-----------------------+---------------------------------+
+---
+>          +=======================+===============================+
+660c662
+<         +-----------------------+---------------------------------+
+---
+>          +-----------------------+-------------------------------+
+662c664
+<         +-----------------------+---------------------------------+
+---
+>          +-----------------------+-------------------------------+
+664c666
+<         +-----------------------+---------------------------------+
+---
+>          +-----------------------+-------------------------------+
+666c668
+<         +-----------------------+---------------------------------+
+---
+>          +-----------------------+-------------------------------+
+668c670
+<         +-----------------------+---------------------------------+
+---
+>          +-----------------------+-------------------------------+
+670c672
+<         +-----------------------+---------------------------------+
+---
+>          +-----------------------+-------------------------------+
+672,675c674,677
+<         +-----------------------+---------------------------------+
+<         | maximum lifetime:     | at most 2^(31) SRTCP packets    |
+<         |                       | and at most 2^(48) SRTP packets |
+<         +-----------------------+---------------------------------+
+---
+>          +-----------------------+-------------------------------+
+>          | maximum lifetime:     | at most 2^31 SRTCP packets    |
+>          |                       | and at most 2^48 SRTP packets |
+>          +-----------------------+-------------------------------+
+860d861
+< 
+866d866
+< 
+872d871
+< 
+878d876
+< 

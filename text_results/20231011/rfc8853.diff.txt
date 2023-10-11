@@ -1,0 +1,249 @@
+150,151c150,156
+<    RTP mixer:  An RTP middlebox, in the wide sense of the term,
+<       encompassing Sections 3.6 to 3.9 of [RFC7667].
+---
+>    RTP mixer:
+>       An RTP middlebox, in the wide sense of the term, encompassing
+>       Sections 3.6 to 3.9 of [RFC7667].
+> 
+>    RTP session:
+>       An association among a group of participants communicating with
+>       RTP, as defined in [RFC3550] and amended by [RFC7656].
+153,154c158,159
+<    RTP session:  An association among a group of participants
+<       communicating with RTP, as defined in [RFC3550] and amended by
+---
+>    RTP stream:
+>       A stream of RTP packets containing media data, as defined in
+157,178c162,182
+<    RTP stream:  A stream of RTP packets containing media data, as
+<       defined in [RFC7656].
+< 
+<    RTP switch:  A common short term for the terms "switching RTP mixer",
+<       "source projecting middlebox", and "video switching Multipoint
+<       Control Unit (MCU)", as discussed in [RFC7667].
+< 
+<    Simulcast stream:  One encoded stream or dependent stream from a set
+<       of concurrently transmitted encoded streams and optional dependent
+<       streams, all sharing a common media source, as defined in
+<       [RFC7656].  For example, HD and thumbnail video simulcast versions
+<       of a single media source sent concurrently as separate RTP
+<       streams.
+< 
+<    Simulcast format:  Different formats of a simulcast stream serve the
+<       same purpose as alternative RTP payload types in nonsimulcast SDP:
+<       to allow multiple alternative media formats for a given RTP
+<       stream.  As for multiple RTP payload types on the "m=" line in
+<       offer/answer [RFC3264], any one of the negotiated alternative
+<       formats can be used in a single RTP stream at a given point in
+<       time, but not more than one (based on RTP timestamp).  What format
+<       is used can change dynamically from one RTP packet to another.
+---
+>    RTP switch:
+>       A common short term for the terms "switching RTP mixer", "source
+>       projecting middlebox", and "video switching Multipoint Control
+>       Unit (MCU)", as discussed in [RFC7667].
+> 
+>    Simulcast stream:
+>       One encoded stream or dependent stream from a set of concurrently
+>       transmitted encoded streams and optional dependent streams, all
+>       sharing a common media source, as defined in [RFC7656].  For
+>       example, HD and thumbnail video simulcast versions of a single
+>       media source sent concurrently as separate RTP streams.
+> 
+>    Simulcast format:
+>       Different formats of a simulcast stream serve the same purpose as
+>       alternative RTP payload types in nonsimulcast SDP: to allow
+>       multiple alternative media formats for a given RTP stream.  As for
+>       multiple RTP payload types on the "m=" line in offer/answer
+>       [RFC3264], any one of the negotiated alternative formats can be
+>       used in a single RTP stream at a given point in time, but not more
+>       than one (based on RTP timestamp).  What format is used can change
+>       dynamically from one RTP packet to another.
+236,253c240,259
+<    Codec:  This includes codec type (such as RTP payload format MIME
+<       type) and can include codec configuration.  A couple of codec
+<       resources that differ only in codec configuration will be
+<       "different" if they are somehow not "compatible", such as if they
+<       differ in video codec profile or the transport packetization
+<       configuration.
+< 
+<    Sampling:  This relates to how the media source is sampled, in
+<       spatial as well as temporal domain.  For video streams, spatial
+<       sampling affects image resolution, and temporal sampling affects
+<       video frame rate.  For audio, spatial sampling relates to the
+<       number of audio channels, and temporal sampling affects audio
+<       bandwidth.  This may be used to suit different rendering
+<       capabilities or needs at the receiving endpoints.
+< 
+<    Bitrate:  This relates to the number of bits sent per second to
+<       transmit the media source as an RTP stream, which typically also
+<       affects the QoE for the receiving user.
+---
+>    Codec:
+>       This includes codec type (such as RTP payload format MIME type)
+>       and can include codec configuration.  A couple of codec resources
+>       that differ only in codec configuration will be "different" if
+>       they are somehow not "compatible", such as if they differ in video
+>       codec profile or the transport packetization configuration.
+> 
+>    Sampling:
+>       This relates to how the media source is sampled, in spatial as
+>       well as temporal domain.  For video streams, spatial sampling
+>       affects image resolution, and temporal sampling affects video
+>       frame rate.  For audio, spatial sampling relates to the number of
+>       audio channels, and temporal sampling affects audio bandwidth.
+>       This may be used to suit different rendering capabilities or needs
+>       at the receiving endpoints.
+> 
+>    Bitrate:
+>       This relates to the number of bits sent per second to transmit the
+>       media source as an RTP stream, which typically also affects the
+>       QoE for the receiving user.
+580,582c586,589
+<    Note:  The inclusion of "a=simulcast" or the use of simulcast does
+<       not change any of the interpretation or Offer/Answer procedures
+<       for other SDP attributes, such as "a=fmtp" or "a=rid".
+---
+>    Note:
+>       The inclusion of "a=simulcast" or the use of simulcast does not
+>       change any of the interpretation or Offer/Answer procedures for
+>       other SDP attributes, such as "a=fmtp" or "a=rid".
+723,725c730,733
+<    NOTE:  For the case where it is clear from SDP that the RTP PT
+<       uniquely maps to a corresponding RtpStreamId, an RTP receiver can
+<       use RTP PT to relate simulcast streams.  This can sometimes enable
+---
+>    NOTE:
+>       For the case where it is clear from SDP that the RTP PT uniquely
+>       maps to a corresponding RtpStreamId, an RTP receiver can use RTP
+>       PT to relate simulcast streams.  This can sometimes enable
+1227,1233c1235,1241
+<    Quality of Service (QoS):  When using simulcast, it might be of
+<       interest to prioritize a particular simulcast stream, rather than
+<       applying equal treatment to all streams.  For example, lower-
+<       bitrate streams may be prioritized over higher-bitrate streams to
+<       minimize congestion or packet losses in the low-bitrate streams.
+<       Thus, there is a benefit to using a simulcast solution with good
+<       QoS support.
+---
+>    Quality of Service (QoS):
+>       When using simulcast, it might be of interest to prioritize a
+>       particular simulcast stream, rather than applying equal treatment
+>       to all streams.  For example, lower-bitrate streams may be
+>       prioritized over higher-bitrate streams to minimize congestion or
+>       packet losses in the low-bitrate streams.  Thus, there is a
+>       benefit to using a simulcast solution with good QoS support.
+1236,1238c1244,1247
+<    Traversal):  Using multiple RTP sessions incurs more cost for NAT/FW
+<       traversal unless they can reuse the same transport flow, which can
+<       be achieved by multiplexing negotiation using SDP port numbers
+---
+>    Traversal):
+>       Using multiple RTP sessions incurs more cost for NAT/FW traversal
+>       unless they can reuse the same transport flow, which can be
+>       achieved by multiplexing negotiation using SDP port numbers
+1498c1507,1508
+<       REQ-1.1:  It must be possible to identify a set of simulcasted RTP
+---
+>       REQ-1.1:
+>          It must be possible to identify a set of simulcasted RTP
+1502,1504c1512,1515
+<       REQ-1.2:  An RTP endpoint must be capable of identifying the
+<          simulcast stream that a received RTP stream is associated with,
+<          knowing the content of the SDP signaling.
+---
+>       REQ-1.2:
+>          An RTP endpoint must be capable of identifying the simulcast
+>          stream that a received RTP stream is associated with, knowing
+>          the content of the SDP signaling.
+1508c1519,1520
+<       REQ-2.1:  Legacy SDP with separate media transports per SDP media
+---
+>       REQ-2.1:
+>          Legacy SDP with separate media transports per SDP media
+1515c1527,1528
+<       REQ-3.1:  The sender can express capability of sending simulcast.
+---
+>       REQ-3.1:
+>          The sender can express capability of sending simulcast.
+1517,1518c1530,1531
+<       REQ-3.2:  The receiver can express capability of receiving
+<          simulcast.
+---
+>       REQ-3.2:
+>          The receiver can express capability of receiving simulcast.
+1520,1521c1533,1535
+<       REQ-3.3:  The sender can express the maximum number of simulcast
+<          streams that can be provided.
+---
+>       REQ-3.3:
+>          The sender can express the maximum number of simulcast streams
+>          that can be provided.
+1523c1537,1538
+<       REQ-3.4:  The receiver can express the maximum number of simulcast
+---
+>       REQ-3.4:
+>          The receiver can express the maximum number of simulcast
+1526,1530c1541,1543
+<       REQ-3.5:  The sender can detail the characteristics of the
+<          simulcast streams that can be provided.
+< 
+<       REQ-3.6:  The receiver can detail the characteristics of the
+<          simulcast streams that it prefers to receive.
+---
+>       REQ-3.5:
+>          The sender can detail the characteristics of the simulcast
+>          streams that can be provided.
+1532,1534c1545,1552
+<    REQ-4:  Distinguishing features.  It must be possible to have
+<       different simulcast streams use different codec parameters, as can
+<       be expressed by SDP format values and RTP payload types.
+---
+>       REQ-3.6:
+>          The receiver can detail the characteristics of the simulcast
+>          streams that it prefers to receive.
+> 
+>    REQ-4:
+>       Distinguishing features.  It must be possible to have different
+>       simulcast streams use different codec parameters, as can be
+>       expressed by SDP format values and RTP payload types.
+1544,1545c1562,1563
+<       REQ-5.3:  Related payload types such as audio Comfort Noise and/or
+<          DTMF.
+---
+>       REQ-5.3:
+>          Related payload types such as audio Comfort Noise and/or DTMF.
+1547,1550c1565,1569
+<       REQ-5.4:  A single simulcast stream can consist of multiple RTP
+<          streams, to support codecs where a dependent stream is
+<          dependent on a set of encoded and dependent streams, each
+<          potentially carried in their own RTP stream.
+---
+>       REQ-5.4:
+>          A single simulcast stream can consist of multiple RTP streams,
+>          to support codecs where a dependent stream is dependent on a
+>          set of encoded and dependent streams, each potentially carried
+>          in their own RTP stream.
+1554,1555c1573,1575
+<       REQ-6.1:  Interworking with nonsimulcast legacy clients using a
+<          single media source per media type.
+---
+>       REQ-6.1:
+>          Interworking with nonsimulcast legacy clients using a single
+>          media source per media type.
+1557,1558c1577,1579
+<       REQ-6.2:  WebRTC environment with a single media source per SDP
+<          media description.
+---
+>       REQ-6.2:
+>          WebRTC environment with a single media source per SDP media
+>          description.
+1582d1602
+< 
+1591d1610
+< 
+1600d1618
+< 
+1609d1626
+< 

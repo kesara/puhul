@@ -1,0 +1,383 @@
+19,20c19,20
+<    GF(2), a second one for RLC over the Galois Field GF(2^(8)), each
+<    time with the possibility of controlling the code density.  They can
+---
+>    GF(2), a second one for RLC over the Galois Field GF(2^8), each time
+>    with the possibility of controlling the code density.  They can
+78,79c78,79
+<    4.  Sliding Window RLC FEC Scheme over GF(2^(8)) for Arbitrary
+<            Packet Flows
+---
+>    4.  Sliding Window RLC FEC Scheme over GF(2^8) for Arbitrary Packet
+>            Flows
+106c106
+<            GF(2^(8))
+---
+>            GF(2^8)
+173c173
+<    (the "binary case") or GF(2^(8)), each time with the possibility of
+---
+>    (the "binary case") or GF(2^8), each time with the possibility of
+226,227c226,227
+<    over GF(2^(m)) (where m is 1 or 8, depending on the FEC scheme) used
+<    in the linear combination are not individually listed in the repair
+---
+>    over GF(2^m) (where m is 1 or 8, depending on the FEC scheme) used in
+>    the linear combination are not individually listed in the repair
+240c240
+<       coding coefficients over GF(2^(m)) as the sender;
+---
+>       coding coefficients over GF(2^m) as the sender;
+254,257c254,257
+<    3.  Procedures: This section describes procedures specific to this
+<        FEC scheme, namely: RLC parameters derivation, ADUI and source
+<        symbols mapping, pseudorandom number generator, and coding
+<        coefficients generation function;
+---
+>    3. Procedures: This section describes procedures specific to this FEC
+>       scheme, namely: RLC parameters derivation, ADUI and source symbols
+>       mapping, pseudorandom number generator, and coding coefficients
+>       generation function;
+278c278
+<    a^(b)  a to the power of b
+---
+>    a^b  a to the power of b
+280,281c280,282
+<    GF(q)  denotes a finite field (also known as the Galois Field) with q
+<       elements.  We assume that q = 2^(m) in this document
+---
+>    GF(q)
+>       denotes a finite field (also known as the Galois Field) with q
+>       elements.  We assume that q = 2^m in this document
+283c284,285
+<    m  defines the length of the elements in the finite field, in bits.
+---
+>    m
+>       defines the length of the elements in the finite field, in bits.
+288,289c290,292
+<    ADUI:  Application Data Unit Information (includes the F, L and
+<       padding fields in addition to the ADU)
+---
+>    ADUI:
+>       Application Data Unit Information (includes the F, L and padding
+>       fields in addition to the ADU)
+291c294,295
+<    E:  size of an encoding symbol (i.e., source or repair symbol),
+---
+>    E:
+>       size of an encoding symbol (i.e., source or repair symbol),
+294,304c298,312
+<    br_in:  transmission bitrate at the input of the FECFRAME sender,
+<       assumed fixed (in bits/s)
+< 
+<    br_out:  transmission bitrate at the output of the FECFRAME sender,
+<       assumed fixed (in bits/s)
+< 
+<    max_lat:  maximum FEC-related latency within FECFRAME (a decimal
+<       number expressed in seconds)
+< 
+<    cr:  RLC coding rate, ratio between the total number of source
+<       symbols and the total number of source plus repair symbols
+---
+>    br_in:
+>       transmission bitrate at the input of the FECFRAME sender, assumed
+>       fixed (in bits/s)
+> 
+>    br_out:
+>       transmission bitrate at the output of the FECFRAME sender, assumed
+>       fixed (in bits/s)
+> 
+>    max_lat:
+>       maximum FEC-related latency within FECFRAME (a decimal number
+>       expressed in seconds)
+> 
+>    cr:
+>       RLC coding rate, ratio between the total number of source symbols
+>       and the total number of source plus repair symbols
+315,316c323,325
+<    WSR:  window size ratio parameter used to derive ew_max_size
+<       (encoder) and ls_max_size (decoder).
+---
+>    WSR:
+>       window size ratio parameter used to derive ew_max_size (encoder)
+>       and ls_max_size (decoder).
+322,323c331,333
+<    DT:  coding coefficients density threshold, an integer between 0 and
+<       15 (inclusive) the controls the fraction of coefficients that are
+---
+>    DT:
+>       coding coefficients density threshold, an integer between 0 and 15
+>       (inclusive) the controls the fraction of coefficients that are
+430,439c440,449
+<    Flow ID (F) (8-bit field):  this unsigned byte contains the integer
+<       identifier associated to the source ADU flow to which this ADU
+<       belongs.  It is assumed that a single byte is sufficient, which
+<       implies that no more than 256 flows will be protected by a single
+<       FECFRAME session instance.
+< 
+<    Length (L) (16-bit field):  this unsigned integer contains the length
+<       of this ADU, in network byte order (i.e., big endian).  This
+<       length is for the ADU itself and does not include the F, L, or Pad
+<       fields.
+---
+>    Flow ID (F) (8-bit field):
+>       this unsigned byte contains the integer identifier associated to
+>       the source ADU flow to which this ADU belongs.  It is assumed that
+>       a single byte is sufficient, which implies that no more than 256
+>       flows will be protected by a single FECFRAME session instance.
+> 
+>    Length (L) (16-bit field):
+>       this unsigned integer contains the length of this ADU, in network
+>       byte order (i.e., big endian).  This length is for the ADU itself
+>       and does not include the F, L, or Pad fields.
+443,445c453,456
+<    Padding (Pad) (variable size field):  this field contains zero
+<       padding to align the F, L, ADU and padding up to a size that is
+<       multiple of E bytes (i.e., the source and repair symbol length).
+---
+>    Padding (Pad) (variable size field):
+>       this field contains zero padding to align the F, L, ADU and
+>       padding up to a size that is multiple of E bytes (i.e., the source
+>       and repair symbol length).
+505c516
+<    dependent, for instance, 2^(32)-1 with FEC schemes 9 and 10).
+---
+>    dependent, for instance, 2^32-1 with FEC schemes 9 and 10).
+606c617
+<    GF(2^(8)), the only difference being the value of the m parameter.
+---
+>    GF(2^8), the only difference being the value of the m parameter.
+608c619
+<    With RLC over GF(2^(8)) FEC scheme (Section 4), m is equal to 8.
+---
+>    With RLC over GF(2^8) FEC scheme (Section 4), m is equal to 8.
+708c719
+<    elements of the field GF(2^(m)) are represented by polynomials with
+---
+>    elements of the field GF(2^m) are represented by polynomials with
+714c725
+<    With GF(2^(8)), multiplication between two elements is the
+---
+>    With GF(2^8), multiplication between two elements is the
+716c727
+<    The following irreducible polynomial is used for GF(2^(8)):
+---
+>    The following irreducible polynomial is used for GF(2^8):
+718c729
+<       x^(8) + x^(4) + x^(3) + x^(2) + 1
+---
+>       x^8 + x^4 + x^3 + x^2 + 1
+729c740
+<    With the RLC over GF(2^(8)) FEC scheme, a linear combination of the
+---
+>    With the RLC over GF(2^8) FEC scheme, a linear combination of the
+738c749
+<    where * is the multiplication over GF(2^(8)).  In practice various
+---
+>    where * is the multiplication over GF(2^8).  In practice various
+757c768
+< 4.  Sliding Window RLC FEC Scheme over GF(2^(8)) for Arbitrary Packet
+---
+> 4.  Sliding Window RLC FEC Scheme over GF(2^8) for Arbitrary Packet
+761c772
+<    Linear Codes (RLC) over GF(2^(8)).
+---
+>    Linear Codes (RLC) over GF(2^8).
+787,795c798,807
+<    Encoding symbol size (E):  a non-negative integer that indicates the
+<       size of each encoding symbol in bytes;
+< 
+<    Window Size Ratio (WSR) parameter:  a non-negative integer between 0
+<       and 255 (both inclusive) used to initialize window sizes.  A value
+<       of 0 indicates this parameter is not considered (e.g., a fixed
+<       encoding window size may be chosen).  A value between 1 and 255
+<       inclusive is required by certain of the parameter derivation
+<       techniques described in Appendix C;
+---
+>    Encoding symbol size (E):
+>       a non-negative integer that indicates the size of each encoding
+>       symbol in bytes;
+> 
+>    Window Size Ratio (WSR) parameter:
+>       a non-negative integer between 0 and 255 (both inclusive) used to
+>       initialize window sizes.  A value of 0 indicates this parameter is
+>       not considered (e.g., a fixed encoding window size may be chosen).
+>       A value between 1 and 255 inclusive is required by certain of the
+>       parameter derivation techniques described in Appendix C;
+851,855c863,867
+<    Encoding Symbol ID (ESI) (32-bit field):  this unsigned integer
+<       identifies the first source symbol of the ADUI corresponding to
+<       this FEC Source Packet.  The ESI is incremented for each new
+<       source symbol, and after reaching the maximum value (2^(32)-1),
+<       wrapping to zero occurs.
+---
+>    Encoding Symbol ID (ESI) (32-bit field):
+>       this unsigned integer identifies the first source symbol of the
+>       ADUI corresponding to this FEC Source Packet.  The ESI is
+>       incremented for each new source symbol, and after reaching the
+>       maximum value (2^32-1), wrapping to zero occurs.
+897,905c909,918
+<    Repair_Key (16-bit field):  this unsigned integer is used as a seed
+<       by the coefficient generation function (Section 3.6) in order to
+<       generate the desired number of coding coefficients.  This repair
+<       key may be a monotonically increasing integer value that loops
+<       back to 0 after reaching 65535 (see Section 6.1).  When a FEC
+<       Repair Packet contains several repair symbols, this repair key
+<       value is that of the first repair symbol.  The remaining repair
+<       keys can be deduced by incrementing by 1 this value, up to a
+<       maximum value of 65535 after which it loops back to 0.
+---
+>    Repair_Key (16-bit field):
+>       this unsigned integer is used as a seed by the coefficient
+>       generation function (Section 3.6) in order to generate the desired
+>       number of coding coefficients.  This repair key may be a
+>       monotonically increasing integer value that loops back to 0 after
+>       reaching 65535 (see Section 6.1).  When a FEC Repair Packet
+>       contains several repair symbols, this repair key value is that of
+>       the first repair symbol.  The remaining repair keys can be deduced
+>       by incrementing by 1 this value, up to a maximum value of 65535
+>       after which it loops back to 0.
+1096,1118c1109,1133
+<    FEC Encoding ID:  changing this parameter leads a receiver to
+<       consider a different FEC scheme.  The consequences are severe, the
+<       format of the Explicit Source FEC Payload ID and Repair FEC
+<       Payload ID of received packets will probably differ, leading to
+<       various malfunctions.  Even if the original and modified FEC
+<       schemes share the same format, FEC decoding will either fail or
+<       lead to corrupted decoded symbols.  This will happen if an
+<       attacker turns value 9 (i.e., RLC over GF(2)) to value 10 (RLC
+<       over GF(2^(8))), an additional consequence being a higher
+<       processing overhead at the receiver.  In any case, the attack
+<       results in a form of Denial of Service (DoS) or corrupted content.
+< 
+<    Encoding symbol length (E):  setting this E parameter to a different
+<       value will confuse a receiver.  If the size of a received FEC
+<       Repair Packet is no longer multiple of the modified E value, a
+<       receiver quickly detects a problem and SHOULD reject the packet.
+<       If the new E value is a sub-multiple of the original E value
+<       (e.g., half the original value), then receivers may not detect the
+<       problem immediately.  For instance, a receiver may think that a
+<       received FEC Repair Packet contains more repair symbols (e.g.,
+<       twice as many if E is reduced by half), leading to malfunctions
+<       whose nature depends on implementation details.  Here also, the
+<       attack always results in a form of DoS or corrupted content.
+---
+>    FEC Encoding ID:
+>       changing this parameter leads a receiver to consider a different
+>       FEC scheme.  The consequences are severe, the format of the
+>       Explicit Source FEC Payload ID and Repair FEC Payload ID of
+>       received packets will probably differ, leading to various
+>       malfunctions.  Even if the original and modified FEC schemes share
+>       the same format, FEC decoding will either fail or lead to
+>       corrupted decoded symbols.  This will happen if an attacker turns
+>       value 9 (i.e., RLC over GF(2)) to value 10 (RLC over GF(2^8)), an
+>       additional consequence being a higher processing overhead at the
+>       receiver.  In any case, the attack results in a form of Denial of
+>       Service (DoS) or corrupted content.
+> 
+>    Encoding symbol length (E):
+>       setting this E parameter to a different value will confuse a
+>       receiver.  If the size of a received FEC Repair Packet is no
+>       longer multiple of the modified E value, a receiver quickly
+>       detects a problem and SHOULD reject the packet.  If the new E
+>       value is a sub-multiple of the original E value (e.g., half the
+>       original value), then receivers may not detect the problem
+>       immediately.  For instance, a receiver may think that a received
+>       FEC Repair Packet contains more repair symbols (e.g., twice as
+>       many if E is reduced by half), leading to malfunctions whose
+>       nature depends on implementation details.  Here also, the attack
+>       always results in a form of DoS or corrupted content.
+1130,1132c1145,1148
+<    Encoding Symbol ID (ESI):  changing the ESI leads a receiver to
+<       consider a wrong ADU, resulting in severe consequences, including
+<       corrupted content passed to the receiving application;
+---
+>    Encoding Symbol ID (ESI):
+>       changing the ESI leads a receiver to consider a wrong ADU,
+>       resulting in severe consequences, including corrupted content
+>       passed to the receiving application;
+1136,1138c1152,1155
+<    Repair Key:  changing this value leads a receiver to generate a wrong
+<       coding coefficient sequence, and therefore any source symbol
+<       decoded using the repair symbols contained in this packet will be
+---
+>    Repair Key:
+>       changing this value leads a receiver to generate a wrong coding
+>       coefficient sequence, and therefore any source symbol decoded
+>       using the repair symbols contained in this packet will be
+1141c1158,1159
+<    DT:  changing this value also leads a receiver to generate a wrong
+---
+>    DT:
+>       changing this value also leads a receiver to generate a wrong
+1149,1150c1167,1177
+<    NSS:  changing this value leads a receiver to consider a different
+<       set of source symbols, and therefore any source symbol decoded
+---
+>    NSS:
+>       changing this value leads a receiver to consider a different set
+>       of source symbols, and therefore any source symbol decoded using
+>       the repair symbols contained in this packet will be corrupted.  In
+>       addition, if the NSS value is significantly increased, it will
+>       generate a higher processing overhead at a receiver, which may
+>       impact the terminal performance;
+> 
+>    FSS_ESI:
+>       changing this value also leads a receiver to consider a different
+>       set of source symbols and therefore any source symbol decoded
+1152,1158d1178
+<       corrupted.  In addition, if the NSS value is significantly
+<       increased, it will generate a higher processing overhead at a
+<       receiver, which may impact the terminal performance;
+< 
+<    FSS_ESI:  changing this value also leads a receiver to consider a
+<       different set of source symbols and therefore any source symbol
+<       decoded using the repair symbols contained in this packet will be
+1205c1225
+< 8.1.  Operational Recommendations: Finite Field GF(2) Versus GF(2^(8))
+---
+> 8.1.  Operational Recommendations: Finite Field GF(2) Versus GF(2^8)
+1209,1217c1229,1237
+<    the RLC over GF(2^(8)) FEC scheme will be mostly used since it
+<    warrants a higher packet loss protection.  In case of small encoding
+<    windows, the associated processing overhead is not an issue (e.g., we
+<    measured decoding speeds between 745 Mbps and 2.8 Gbps on an ARM
+<    Cortex-A15 embedded board in [Roca17] depending on the code rate and
+<    the channel conditions, using an encoding window of size 18 or 23
+<    symbols; see the above article for the details).  Of course the CPU
+<    overhead will increase with the encoding window size, because more
+<    operations in the GF(2^(8)) finite field will be needed.
+---
+>    the RLC over GF(2^8) FEC scheme will be mostly used since it warrants
+>    a higher packet loss protection.  In case of small encoding windows,
+>    the associated processing overhead is not an issue (e.g., we measured
+>    decoding speeds between 745 Mbps and 2.8 Gbps on an ARM Cortex-A15
+>    embedded board in [Roca17] depending on the code rate and the channel
+>    conditions, using an encoding window of size 18 or 23 symbols; see
+>    the above article for the details).  Of course the CPU overhead will
+>    increase with the encoding window size, because more operations in
+>    the GF(2^8) finite field will be needed.
+1231c1251
+<    over GF(2^(8)), it is usually appropriate that small encoding windows
+---
+>    over GF(2^8), it is usually appropriate that small encoding windows
+1258c1278
+<       GF(2^(8)) FEC Scheme for Arbitrary Packet Flows, as defined in
+---
+>       GF(2^8) FEC Scheme for Arbitrary Packet Flows, as defined in
+1437c1457
+<                  +-------+-------------+----------------+
+---
+>                  +=======+=============+================+
+1490c1510
+<    seed values, we carried out the same test for the first 2^(16) seed
+---
+>    seed values, we carried out the same test for the first 2^16 seed
+1504c1524
+<     +-------+-----------------+-----------------+---------------------+
+---
+>     +=======+=================+=================+=====================+
+1822d1841
+< 
+1830d1848
+< 

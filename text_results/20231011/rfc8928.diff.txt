@@ -1,0 +1,215 @@
+330c330,331
+<    C:  This "C" flag is set to indicate that the ROVR field contains a
+---
+>    C:
+>       This "C" flag is set to indicate that the ROVR field contains a
+398,399c399,401
+<    Length:  8-bit unsigned integer.  The length of the option in units
+<       of 8 octets.
+---
+>    Length:
+>       8-bit unsigned integer.  The length of the option in units of 8
+>       octets.
+404,417c406,421
+<    Public Key Length:  11-bit unsigned integer.  The length of the
+<       Public Key field in bytes.  The actual length depends on the
+<       Crypto-Type value and how the public key is represented.  The
+<       valid values with this document are provided in Table 1.
+< 
+<    Crypto-Type:  8-bit unsigned integer.  The type of cryptographic
+<       algorithm used in calculation of the Crypto-ID indexed by IANA in
+<       the "Crypto-Types" subregistry in the "Internet Control Message
+<       Protocol version 6 (ICMPv6) Parameters" registry (see
+<       Section 8.2).
+< 
+<    Modifier:  8-bit unsigned integer.  Set to an arbitrary value by the
+<       creator of the Crypto-ID.  The role of the modifier is to enable
+<       the formation of multiple Crypto-IDs from the same key pair.  This
+---
+>    Public Key Length:
+>       11-bit unsigned integer.  The length of the Public Key field in
+>       bytes.  The actual length depends on the Crypto-Type value and how
+>       the public key is represented.  The valid values with this
+>       document are provided in Table 1.
+> 
+>    Crypto-Type:
+>       8-bit unsigned integer.  The type of cryptographic algorithm used
+>       in calculation of the Crypto-ID indexed by IANA in the "Crypto-
+>       Types" subregistry in the "Internet Control Message Protocol
+>       version 6 (ICMPv6) Parameters" registry (see Section 8.2).
+> 
+>    Modifier:
+>       8-bit unsigned integer.  Set to an arbitrary value by the creator
+>       of the Crypto-ID.  The role of the modifier is to enable the
+>       formation of multiple Crypto-IDs from the same key pair.  This
+421,429c425,436
+<    EARO Length:  8-bit unsigned integer.  The option length of the EARO
+<       that contains the Crypto-ID associated with the CIPO.
+< 
+<    Public Key:  A variable-length field; the size is indicated in the
+<       Public Key Length field.
+< 
+<    Padding:  A variable-length field that completes the Public Key field
+<       to align to the next 8-byte boundary.  It MUST be set to zero by
+<       the sender and MUST be ignored by the receiver.
+---
+>    EARO Length:
+>       8-bit unsigned integer.  The option length of the EARO that
+>       contains the Crypto-ID associated with the CIPO.
+> 
+>    Public Key:
+>       A variable-length field; the size is indicated in the Public Key
+>       Length field.
+> 
+>    Padding:
+>       A variable-length field that completes the Public Key field to
+>       align to the next 8-byte boundary.  It MUST be set to zero by the
+>       sender and MUST be ignored by the receiver.
+494,495c501,503
+<    Length:  8-bit unsigned integer.  The length of the option in units
+<       of 8 octets.
+---
+>    Length:
+>       8-bit unsigned integer.  The length of the option in units of 8
+>       octets.
+500,501c508,510
+<    Digital Signature Length:  11-bit unsigned integer.  The length of
+<       the Digital Signature field in bytes.
+---
+>    Digital Signature Length:
+>       11-bit unsigned integer.  The length of the Digital Signature
+>       field in bytes.
+506,516c515,527
+<    Digital Signature:  A variable-length field containing the digital
+<       signature.  The length and computation of the digital signature
+<       both depend on the Crypto-Type, which is found in the associated
+<       CIPO; see Appendix B.  For the values of the Crypto-Type defined
+<       in this specification, and for future values of the Crypto-Type
+<       unless specified otherwise, the signature is computed as detailed
+<       in Section 6.2.
+< 
+<    Padding:  A variable-length field completing the Digital Signature
+<       field to align to the next 8-byte boundary.  It MUST be set to
+<       zero by the sender and MUST be ignored by the receiver.
+---
+>    Digital Signature:
+>       A variable-length field containing the digital signature.  The
+>       length and computation of the digital signature both depend on the
+>       Crypto-Type, which is found in the associated CIPO; see
+>       Appendix B.  For the values of the Crypto-Type defined in this
+>       specification, and for future values of the Crypto-Type unless
+>       specified otherwise, the signature is computed as detailed in
+>       Section 6.2.
+> 
+>    Padding:
+>       A variable-length field completing the Digital Signature field to
+>       align to the next 8-byte boundary.  It MUST be set to zero by the
+>       sender and MUST be ignored by the receiver.
+536c547,548
+<    A:  1-bit flag.  Set to indicate that AP-ND is globally activated in
+---
+>    A:
+>       1-bit flag.  Set to indicate that AP-ND is globally activated in
+881,899c893,912
+<    Duplicate Address Detection DoS Attack:  Inside the LLN, duplicate
+<       addresses are sorted out using the ROVR.  A different ROVR for the
+<       same Registered Address entails a rejection of the second
+<       registration [RFC8505].  DADs coming from the backbone network are
+<       not forwarded over the LLN to provide some protection against DoS
+<       attacks inside the resource-constrained part of the network.
+<       However, the EARO is present in the NS/NA messages exchanged over
+<       the backbone network.  This protects against misinterpreting node
+<       movement as a duplication and enables the Backbone Routers to
+<       determine which subnet has the most recent registration [RFC8505]
+<       and is thus the best candidate to validate the registration
+<       [RFC8929].
+< 
+<    Router Solicitation and Advertisement Attacks:  This specification
+<       does not change the protection of RS and RA, which can still be
+<       protected by SEND.
+< 
+<    Replay Attacks:  Nonces should never repeat but they do not need to
+<       be unpredictable for secure operation.  Using nonces (NonceLR and
+---
+>    Duplicate Address Detection DoS Attack:
+>       Inside the LLN, duplicate addresses are sorted out using the ROVR.
+>       A different ROVR for the same Registered Address entails a
+>       rejection of the second registration [RFC8505].  DADs coming from
+>       the backbone network are not forwarded over the LLN to provide
+>       some protection against DoS attacks inside the resource-
+>       constrained part of the network.  However, the EARO is present in
+>       the NS/NA messages exchanged over the backbone network.  This
+>       protects against misinterpreting node movement as a duplication
+>       and enables the Backbone Routers to determine which subnet has the
+>       most recent registration [RFC8505] and is thus the best candidate
+>       to validate the registration [RFC8929].
+> 
+>    Router Solicitation and Advertisement Attacks:
+>       This specification does not change the protection of RS and RA,
+>       which can still be protected by SEND.
+> 
+>    Replay Attacks:
+>       Nonces should never repeat but they do not need to be
+>       unpredictable for secure operation.  Using nonces (NonceLR and
+906,913c919,927
+<    Neighbor Discovery DoS Attack:  A rogue node that can access the L2
+<       network may form many addresses and register them using AP-ND.
+<       The perimeter of the attack is all the 6LRs in range of the
+<       attacker.  The 6LR MUST protect itself against overflows and
+<       reject excessive registration with a status code of 2 "Neighbor
+<       Cache Full".  This effectively blocks another (honest) 6LN from
+<       registering to the same 6LR, but the 6LN may register to other
+<       6LRs that are in its range but not in that of the attacker.
+---
+>    Neighbor Discovery DoS Attack:
+>       A rogue node that can access the L2 network may form many
+>       addresses and register them using AP-ND.  The perimeter of the
+>       attack is all the 6LRs in range of the attacker.  The 6LR MUST
+>       protect itself against overflows and reject excessive registration
+>       with a status code of 2 "Neighbor Cache Full".  This effectively
+>       blocks another (honest) 6LN from registering to the same 6LR, but
+>       the 6LN may register to other 6LRs that are in its range but not
+>       in that of the attacker.
+966,967c980,981
+<    thus, random collisions are the only ones possible, if n = 2^(k) is
+<    the maximum number of hash values (i.e., a k-bit hash) and p is the
+---
+>    thus, random collisions are the only ones possible, if n = 2^k is the
+>    maximum number of hash values (i.e., a k-bit hash) and p is the
+969c983
+<    - e^(-p^(2)/(2n)) provides an approximation of the probability that
+---
+>    - e^(-p^2/(2n)) provides an approximation of the probability that
+1089,1090c1103,1104
+<    |Hash Function   |SHA-256 [RFC6234]|   SHA-512    |SHA-256 [RFC6234]|
+<    |                |                 |  [RFC6234]   |                 |
+---
+>    | Hash Function  |     SHA-256     |   SHA-512    |     SHA-256     |
+>    |                |    [RFC6234]    |  [RFC6234]   |    [RFC6234]    |
+1092,1093c1106,1107
+<    |Signature       |ECDSA [FIPS186-4]|   Ed25519    |ECDSA [FIPS186-4]|
+<    |Algorithm       |                 |  [RFC8032]   |                 |
+---
+>    | Signature      |      ECDSA      |   Ed25519    |      ECDSA      |
+>    | Algorithm      |   [FIPS186-4]   |  [RFC8032]   |   [FIPS186-4]   |
+1097,1098c1111,1113
+<    |                |  MSB/msb-order, |LSB/lsb-order,|  MSB/msb-order, |
+<    |                |      [SEC1]     |  [RFC8032]   |   [CURVE-REPR]  |
+---
+>    |                |  MSB/msb-order, |   LSB/lsb-   |  MSB/msb-order, |
+>    |                |      [SEC1]     |    order,    |   [CURVE-REPR]  |
+>    |                |                 |  [RFC8032]   |                 |
+1100,1101c1115,1116
+<    |Public Key Size |   33/65 bytes   |   32 bytes   |   33/65 bytes   |
+<    |                |   (compressed/  | (compressed) |   (compressed/  |
+---
+>    | Public Key     |   33/65 bytes   |   32 bytes   |   33/65 bytes   |
+>    | Size           |   (compressed/  | (compressed) |   (compressed/  |
+1496d1510
+< 
+1502d1515
+< 
+1510d1522
+< 
+1516d1527
+< 
