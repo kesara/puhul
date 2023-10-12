@@ -1,0 +1,213 @@
+143,144c143,145
+<    One-Time Key (OTK):  An ephemeral randomly generated key that must be
+<       used for a single Map-Request/Map-Reply exchange.
+---
+>    One-Time Key (OTK):
+>       An ephemeral randomly generated key that must be used for a single
+>       Map-Request/Map-Reply exchange.
+146,147c147,148
+<    ITR One-Time Key (ITR-OTK):  The One-Time Key generated at the
+<       Ingress Tunnel Router (ITR).
+---
+>    ITR One-Time Key (ITR-OTK):
+>       The One-Time Key generated at the Ingress Tunnel Router (ITR).
+152,166c153,169
+<    Authentication Data (AD):  Metadata that is included either in a LISP
+<       Encapsulated Control Message (ECM) header as defined in [RFC9301],
+<       or in a Map-Reply message to support confidentiality, integrity
+<       protection, and verification of EID-Prefix authorization.
+< 
+<    OTK Authentication Data (OTK-AD):  The portion of ECM Authentication
+<       Data that contains a One-Time Key.
+< 
+<    EID Authentication Data (EID-AD):  The portion of ECM and Map-Reply
+<       Authentication Data used for verification of EID-Prefix
+<       authorization.
+< 
+<    Packet Authentication Data (PKT-AD):  The portion of Map-Reply
+<       Authentication Data used to protect the integrity of the Map-Reply
+<       message.
+---
+>    Authentication Data (AD):
+>       Metadata that is included either in a LISP Encapsulated Control
+>       Message (ECM) header as defined in [RFC9301], or in a Map-Reply
+>       message to support confidentiality, integrity protection, and
+>       verification of EID-Prefix authorization.
+> 
+>    OTK Authentication Data (OTK-AD):
+>       The portion of ECM Authentication Data that contains a One-Time
+>       Key.
+> 
+>    EID Authentication Data (EID-AD):
+>       The portion of ECM and Map-Reply Authentication Data used for
+>       verification of EID-Prefix authorization.
+> 
+>    Packet Authentication Data (PKT-AD):
+>       The portion of Map-Reply Authentication Data used to protect the
+>       integrity of the Map-Reply message.
+343,368c346,375
+<    Requested HMAC ID:  The HMAC algorithm, which will be used to protect
+<       the mappings, requested by the ITR.  Permitted values are
+<       registered in the LISP-SEC Authentication Data HMAC ID (see
+<       Section 8.3).  Refer to Section 6.4 for more details.
+< 
+<    OTK Length:  The length (in bytes) of the OTK Authentication Data
+<       (OTK-AD), which contains the OTK Preamble and the OTK.
+< 
+<    Key ID:  The identifier of the pre-shared secret shared by an ITR and
+<       the Map-Resolver, and by the Map-Server and an ETR.  Per-message
+<       keys are derived from the pre-shared secret to encrypt,
+<       authenticate the origin, and protect the integrity of the OTK.
+<       The Key ID allows to rotate between multiple pre-shared secrets in
+<       a nondisruptive way.
+< 
+<    OTK Wrapping ID (OTK Wrap. ID):  The identifier of the Key Derivation
+<       Function and of the key wrapping algorithm used to encrypt the
+<       One-Time-Key. Permitted values are registered in the LISP-SEC
+<       Authentication Data Key Wrap ID (see Section 8.4).  Refer to
+<       Section 6.5 for more details.
+< 
+<    One-Time-Key Preamble:  Set to 0 if the OTK is not encrypted.  When
+<       the OTK is encrypted, this field MAY carry additional metadata
+<       resulting from the key wrapping operation.  When a 128-bit OTK is
+<       sent unencrypted by a Map-Resolver, the OTK Preamble is set to
+<       0x0000000000000000 (64 bits).  See Section 6.5.1 for details.
+---
+>    Requested HMAC ID:
+>       The HMAC algorithm, which will be used to protect the mappings,
+>       requested by the ITR.  Permitted values are registered in the
+>       LISP-SEC Authentication Data HMAC ID (see Section 8.3).  Refer to
+>       Section 6.4 for more details.
+> 
+>    OTK Length:
+>       The length (in bytes) of the OTK Authentication Data (OTK-AD),
+>       which contains the OTK Preamble and the OTK.
+> 
+>    Key ID:
+>       The identifier of the pre-shared secret shared by an ITR and the
+>       Map-Resolver, and by the Map-Server and an ETR.  Per-message keys
+>       are derived from the pre-shared secret to encrypt, authenticate
+>       the origin, and protect the integrity of the OTK.  The Key ID
+>       allows to rotate between multiple pre-shared secrets in a
+>       nondisruptive way.
+> 
+>    OTK Wrapping ID (OTK Wrap. ID):
+>       The identifier of the Key Derivation Function and of the key
+>       wrapping algorithm used to encrypt the One-Time-Key. Permitted
+>       values are registered in the LISP-SEC Authentication Data Key Wrap
+>       ID (see Section 8.4).  Refer to Section 6.5 for more details.
+> 
+>    One-Time-Key Preamble:
+>       Set to 0 if the OTK is not encrypted.  When the OTK is encrypted,
+>       this field MAY carry additional metadata resulting from the key
+>       wrapping operation.  When a 128-bit OTK is sent unencrypted by a
+>       Map-Resolver, the OTK Preamble is set to 0x0000000000000000 (64
+>       bits).  See Section 6.5.1 for details.
+373,381c380,390
+<    EID-AD Length:  Length (in bytes) of the EID Authentication Data
+<       (EID-AD).  The ITR MUST set the EID-AD Length to 4 bytes, as it
+<       only fills the 'KDF ID' field, and all the remaining fields part
+<       of the EID-AD are not present.  An EID-AD MAY contain multiple
+<       EID-Records.  Each EID-Record is 4 bytes long, plus the length of
+<       the AFI-encoded EID-Prefix.
+< 
+<    KDF ID:  Identifier of the Key Derivation Function used to derive the
+<       MS-OTK.  Permitted values are registered in the LISP-SEC
+---
+>    EID-AD Length:
+>       Length (in bytes) of the EID Authentication Data (EID-AD).  The
+>       ITR MUST set the EID-AD Length to 4 bytes, as it only fills the
+>       'KDF ID' field, and all the remaining fields part of the EID-AD
+>       are not present.  An EID-AD MAY contain multiple EID-Records.
+>       Each EID-Record is 4 bytes long, plus the length of the AFI-
+>       encoded EID-Prefix.
+> 
+>    KDF ID:
+>       Identifier of the Key Derivation Function used to derive the MS-
+>       OTK.  Permitted values are registered in the LISP-SEC
+387,390c396,400
+<    E:  ETR-Cant-Sign bit.  If this bit is set to 1, it signals to the
+<       ITR that at least one of the ETRs that is authoritative for the
+<       EID-Prefixes of this Map-Reply has not enabled LISP-SEC.  Only a
+<       Map-Server can set this bit.  See Section 6.7 for more details.
+---
+>    E:
+>       ETR-Cant-Sign bit.  If this bit is set to 1, it signals to the ITR
+>       that at least one of the ETRs that is authoritative for the EID-
+>       Prefixes of this Map-Reply has not enabled LISP-SEC.  Only a Map-
+>       Server can set this bit.  See Section 6.7 for more details.
+394,397c404,407
+<    EID HMAC ID:  Identifier of the HMAC algorithm used to protect the
+<       integrity of the EID-AD.  This field is filled by the Map-Server
+<       that computed the EID-Prefix HMAC.  See Section 6.7.1 for more
+<       details.
+---
+>    EID HMAC ID:
+>       Identifier of the HMAC algorithm used to protect the integrity of
+>       the EID-AD.  This field is filled by the Map-Server that computed
+>       the EID-Prefix HMAC.  See Section 6.7.1 for more details.
+405,406c415,417
+<    EID HMAC:  HMAC of the EID-AD computed and inserted by a Map-Server.
+<       See Section 6.7.1 for more details.
+---
+>    EID HMAC:
+>       HMAC of the EID-AD computed and inserted by a Map-Server.  See
+>       Section 6.7.1 for more details.
+442,443c453,455
+<    KDF ID:  Identifier of the Key Derivation Function used to derive MS-
+<       OTK (see Section 6.1).
+---
+>    KDF ID:
+>       Identifier of the Key Derivation Function used to derive MS-OTK
+>       (see Section 6.1).
+450,451c462,464
+<    EID HMAC ID:  Identifier of the HMAC algorithm used to protect the
+<       integrity of the EID-AD (see Section 6.1).
+---
+>    EID HMAC ID:
+>       Identifier of the HMAC algorithm used to protect the integrity of
+>       the EID-AD (see Section 6.1).
+461,465c474,475
+<    PKT-AD Length:  Length (in bytes) of the Packet Authentication Data
+<       (PKT-AD).
+< 
+<    PKT HMAC ID:  Identifier of the HMAC algorithm used to protect the
+<       integrity of the Map-Reply (see Section 6.5).
+---
+>    PKT-AD Length:
+>       Length (in bytes) of the Packet Authentication Data (PKT-AD).
+467,470c477,485
+<    PKT HMAC:  HMAC of the whole Map-Reply packet to protect its
+<       integrity, including the LISP-SEC Authentication Data (from the
+<       'Map-Reply Type' field to the 'PKT HMAC' field), which allow
+<       message authentication.
+---
+>    PKT HMAC ID:
+>       Identifier of the HMAC algorithm used to protect the integrity of
+>       the Map-Reply (see Section 6.5).
+> 
+>    PKT HMAC:
+>       HMAC of the whole Map-Reply packet to protect its integrity,
+>       including the LISP-SEC Authentication Data (from the 'Map-Reply
+>       Type' field to the 'PKT HMAC' field), which allow message
+>       authentication.
+1088c1103
+<    +==============================+======+=========+=========+=========+
+---
+>     +============================+======+=========+=========+=========+
+1090c1105
+<    +==============================+======+=========+=========+=========+
+---
+>     +============================+======+=========+=========+=========+
+1092c1107
+<    +------------------------------+------+---------+---------+---------+
+---
+>     +----------------------------+------+---------+---------+---------+
+1094c1109
+<    +------------------------------+------+---------+---------+---------+
+---
+>     +----------------------------+------+---------+---------+---------+
+1096c1111
+<    +------------------------------+------+---------+---------+---------+
+---
+>     +----------------------------+------+---------+---------+---------+

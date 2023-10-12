@@ -1,0 +1,330 @@
+252,263c252,266
+<    Bundle Destination:  the Bundle Protocol Agent (BPA) that receives a
+<       bundle and delivers the payload of the bundle to an Application
+<       Agent.  Also, an endpoint comprising the node(s) at which the
+<       bundle is to be delivered.  The bundle destination acts as the
+<       security acceptor for every security target in every security
+<       block in every bundle it receives.
+< 
+<    Bundle Source:  the BPA that originates a bundle.  Also, any node ID
+<       of the node of which the BPA is a component.
+< 
+<    Cipher Suite:  a set of one or more algorithms providing integrity
+<       and/or confidentiality services.  Cipher suites may define user
+---
+>    Bundle Destination:
+>       the Bundle Protocol Agent (BPA) that receives a bundle and
+>       delivers the payload of the bundle to an Application Agent.  Also,
+>       an endpoint comprising the node(s) at which the bundle is to be
+>       delivered.  The bundle destination acts as the security acceptor
+>       for every security target in every security block in every bundle
+>       it receives.
+> 
+>    Bundle Source:
+>       the BPA that originates a bundle.  Also, any node ID of the node
+>       of which the BPA is a component.
+> 
+>    Cipher Suite:
+>       a set of one or more algorithms providing integrity and/or
+>       confidentiality services.  Cipher suites may define user
+267,284c270,290
+<    Forwarder:  any BPA that transmits a bundle in DTN.  Also, any node
+<       ID of the node of which the BPA that sent the bundle on its most
+<       recent hop is a component.
+< 
+<    Intermediate Receiver, Waypoint, or Next Hop:  any BPA that receives
+<       a bundle from a forwarder that is not the bundle destination.
+<       Also, any node ID of the node of which the BPA is a component.
+< 
+<    Path:  the ordered sequence of nodes through which a bundle passes on
+<       its way from source to destination.  The path is not necessarily
+<       known in advance by the bundle or any BPAs in DTN.
+< 
+<    Security Acceptor:  a BPA that processes and dispositions one or more
+<       security blocks in a bundle.  Security acceptors act as the
+<       endpoint of a security service represented in a security block.
+<       They remove the security blocks they act upon as part of
+<       processing and disposition.  Also, any node ID of the node of
+<       which the BPA is a component.
+---
+>    Forwarder:
+>       any BPA that transmits a bundle in DTN.  Also, any node ID of the
+>       node of which the BPA that sent the bundle on its most recent hop
+>       is a component.
+> 
+>    Intermediate Receiver, Waypoint, or Next Hop:
+>       any BPA that receives a bundle from a forwarder that is not the
+>       bundle destination.  Also, any node ID of the node of which the
+>       BPA is a component.
+> 
+>    Path:
+>       the ordered sequence of nodes through which a bundle passes on its
+>       way from source to destination.  The path is not necessarily known
+>       in advance by the bundle or any BPAs in DTN.
+> 
+>    Security Acceptor:
+>       a BPA that processes and dispositions one or more security blocks
+>       in a bundle.  Security acceptors act as the endpoint of a security
+>       service represented in a security block.  They remove the security
+>       blocks they act upon as part of processing and disposition.  Also,
+>       any node ID of the node of which the BPA is a component.
+288,302c294,310
+<    Security Context:  the set of assumptions, algorithms,
+<       configurations, and policies used to implement security services.
+< 
+<    Security Operation:  the application of a given security service to a
+<       security target, notated as OP(security service, security target).
+<       For example, OP(bcb-confidentiality, payload).  Every security
+<       operation in a bundle MUST be unique, meaning that a given
+<       security service can only be applied to a security target once in
+<       a bundle.  A security operation is implemented by a security
+<       block.
+< 
+<    Security Service:  a process that gives some protection to a security
+<       target.  For example, this specification defines security services
+<       for plaintext integrity (bib-integrity) and authenticated
+<       plaintext confidentiality with additional authenticated data (bcb-
+---
+>    Security Context:
+>       the set of assumptions, algorithms, configurations, and policies
+>       used to implement security services.
+> 
+>    Security Operation:
+>       the application of a given security service to a security target,
+>       notated as OP(security service, security target).  For example,
+>       OP(bcb-confidentiality, payload).  Every security operation in a
+>       bundle MUST be unique, meaning that a given security service can
+>       only be applied to a security target once in a bundle.  A security
+>       operation is implemented by a security block.
+> 
+>    Security Service:
+>       a process that gives some protection to a security target.  For
+>       example, this specification defines security services for
+>       plaintext integrity (bib-integrity) and authenticated plaintext
+>       confidentiality with additional authenticated data (bcb-
+305,309c313,315
+<    Security Source:  a BPA that adds a security block to a bundle.
+<       Also, any node ID of the node of which the BPA is a component.
+< 
+<    Security Target:  the block within a bundle that receives a security
+<       service as part of a security operation.
+---
+>    Security Source:
+>       a BPA that adds a security block to a bundle.  Also, any node ID
+>       of the node of which the BPA is a component.
+311,315c317,326
+<    Security Verifier:  a BPA that verifies the data integrity of one or
+<       more security blocks in a bundle.  Unlike security acceptors,
+<       security verifiers do not act as the endpoint of a security
+<       service, and they do not remove verified security blocks.  Also,
+<       any node ID of the node of which the BPA is a component.
+---
+>    Security Target:
+>       the block within a bundle that receives a security service as part
+>       of a security operation.
+> 
+>    Security Verifier:
+>       a BPA that verifies the data integrity of one or more security
+>       blocks in a bundle.  Unlike security acceptors, security verifiers
+>       do not act as the endpoint of a security service, and they do not
+>       remove verified security blocks.  Also, any node ID of the node of
+>       which the BPA is a component.
+485,510c496,522
+<    Signing the payload twice:  The two operations OP(bib-integrity,
+<       payload) and OP(bib-integrity, payload) are redundant and MUST NOT
+<       both be present in the same bundle at the same time.
+< 
+<    Signing different blocks:  The two operations OP(bib-integrity,
+<       payload) and OP(bib-integrity, extension_block_1) are not
+<       redundant and both may be present in the same bundle at the same
+<       time.  Similarly, the two operations OP(bib-integrity,
+<       extension_block_1) and OP(bib-integrity, extension_block_2) are
+<       also not redundant and may both be present in the bundle at the
+<       same time.
+< 
+<    Different services on same block:  The two operations OP(bib-
+<       integrity, payload) and OP(bcb-confidentiality, payload) are not
+<       inherently redundant and may both be present in the bundle at the
+<       same time, pursuant to other processing rules in this
+<       specification.
+< 
+<    Different services from different block types:  The notation
+<       OP(service, target) refers specifically to a security block, as
+<       the security block is the embodiment of a security service applied
+<       to a security target in a bundle.  Were some Other Security Block
+<       (OSB) to be defined providing an integrity service, then the
+<       operations OP(bib-integrity, target) and OP(osb-integrity, target)
+<       MAY both be present in the same bundle if so allowed by the
+<       definition of the OSB, as discussed in Section 10.
+---
+>    Signing the payload twice:
+>       The two operations OP(bib-integrity, payload) and OP(bib-
+>       integrity, payload) are redundant and MUST NOT both be present in
+>       the same bundle at the same time.
+> 
+>    Signing different blocks:
+>       The two operations OP(bib-integrity, payload) and OP(bib-
+>       integrity, extension_block_1) are not redundant and both may be
+>       present in the same bundle at the same time.  Similarly, the two
+>       operations OP(bib-integrity, extension_block_1) and OP(bib-
+>       integrity, extension_block_2) are also not redundant and may both
+>       be present in the bundle at the same time.
+> 
+>    Different services on same block:
+>       The two operations OP(bib-integrity, payload) and OP(bcb-
+>       confidentiality, payload) are not inherently redundant and may
+>       both be present in the bundle at the same time, pursuant to other
+>       processing rules in this specification.
+> 
+>    Different services from different block types:
+>       The notation OP(service, target) refers specifically to a security
+>       block, as the security block is the embodiment of a security
+>       service applied to a security target in a bundle.  Were some Other
+>       Security Block (OSB) to be defined providing an integrity service,
+>       then the operations OP(bib-integrity, target) and OP(osb-
+>       integrity, target) MAY both be present in the same bundle if so
+>       allowed by the definition of the OSB, as discussed in Section 10.
+651c663,664
+<          Bit 0     (the least-significant bit, 0x01): "Security context
+---
+>          Bit 0   
+>                    (the least-significant bit, 0x01): "Security context
+679,685c692,699
+<          Parameter Id:  This field identifies which parameter is being
+<             specified.  This field SHALL be represented as a CBOR
+<             unsigned integer.  Parameter Ids are selected as described
+<             in Section 3.10.
+< 
+<          Parameter Value:  This field captures the value associated with
+<             this parameter.  This field SHALL be represented by the
+---
+>          Parameter Id:
+>             This field identifies which parameter is being specified.
+>             This field SHALL be represented as a CBOR unsigned integer.
+>             Parameter Ids are selected as described in Section 3.10.
+> 
+>          Parameter Value:
+>             This field captures the value associated with this
+>             parameter.  This field SHALL be represented by the
+718,720c732,735
+<          Result Id:  This field identifies which security result is
+<             being specified.  Some security results capture the primary
+<             output of a cipher suite.  Other security results contain
+---
+>          Result Id:
+>             This field identifies which security result is being
+>             specified.  Some security results capture the primary output
+>             of a cipher suite.  Other security results contain
+726,729c741,745
+<          Result Value:  This field captures the value associated with
+<             the result.  This field SHALL be represented by the
+<             applicable CBOR representation of the result value, in
+<             accordance with Section 3.10.
+---
+>          Result Value:
+>             This field captures the value associated with the result.
+>             This field SHALL be represented by the applicable CBOR
+>             representation of the result value, in accordance with
+>             Section 3.10.
+1419,1431c1435,1443
+<    Unprivileged Node:  Olive has not been provisioned within the secure
+<       environment and only has access to cryptographic material that has
+<       been publicly shared.
+< 
+<    Legitimate Node:  Olive is within the secure environment; therefore,
+<       Olive has access to cryptographic material that has been
+<       provisioned to Olive (i.e., K_M) as well as material that has been
+<       publicly shared.
+< 
+<    Privileged Node:  Olive is a privileged node within the secure
+<       environment; therefore, Olive has access to cryptographic material
+<       that has been provisioned to Olive, Alice, and/or Bob (i.e., K_M,
+<       K_A, and/or K_B) as well as material that has been publicly
+---
+>    Unprivileged Node:
+>       Olive has not been provisioned within the secure environment and
+>       only has access to cryptographic material that has been publicly
+>       shared.
+> 
+>    Legitimate Node:
+>       Olive is within the secure environment; therefore, Olive has
+>       access to cryptographic material that has been provisioned to
+>       Olive (i.e., K_M) as well as material that has been publicly
+1433a1446,1451
+>    Privileged Node:
+>       Olive is a privileged node within the secure environment;
+>       therefore, Olive has access to cryptographic material that has
+>       been provisioned to Olive, Alice, and/or Bob (i.e., K_M, K_A, and/
+>       or K_B) as well as material that has been publicly shared.
+> 
+1713,1730c1731,1751
+<    Data Lifetime:  Depending on the application environment, bundles may
+<       persist on the network for extended periods of time, perhaps even
+<       years.  Cryptographic algorithms should be selected to ensure
+<       protection of data against attacks for a length of time reasonable
+<       for the application.
+< 
+<    One-Way Traffic:  Depending on the application environment, it is
+<       possible that only a one-way connection may exist between two
+<       endpoints, or if a two-way connection does exist, the round-trip
+<       time may be extremely large.  This may limit the utility of
+<       session key generation mechanisms, such as Diffie-Hellman, as a
+<       two-way handshake may not be feasible or reliable.
+< 
+<    Opportunistic Access:  Depending on the application environment, a
+<       given endpoint may not be guaranteed to be accessible within a
+<       certain amount of time.  This may make asymmetric cryptographic
+<       architectures that rely on a key distribution center or other
+<       trust center impractical under certain conditions.
+---
+>    Data Lifetime:
+>       Depending on the application environment, bundles may persist on
+>       the network for extended periods of time, perhaps even years.
+>       Cryptographic algorithms should be selected to ensure protection
+>       of data against attacks for a length of time reasonable for the
+>       application.
+> 
+>    One-Way Traffic:
+>       Depending on the application environment, it is possible that only
+>       a one-way connection may exist between two endpoints, or if a two-
+>       way connection does exist, the round-trip time may be extremely
+>       large.  This may limit the utility of session key generation
+>       mechanisms, such as Diffie-Hellman, as a two-way handshake may not
+>       be feasible or reliable.
+> 
+>    Opportunistic Access:
+>       Depending on the application environment, a given endpoint may not
+>       be guaranteed to be accessible within a certain amount of time.
+>       This may make asymmetric cryptographic architectures that rely on
+>       a key distribution center or other trust center impractical under
+>       certain conditions.
+1744,1745c1765,1767
+<    New Canonicalizations:  Security contexts may define new
+<       canonicalization algorithms as necessary.
+---
+>    New Canonicalizations:
+>       Security contexts may define new canonicalization algorithms as
+>       necessary.
+1768,1775c1790,1798
+<    Handling CRC Fields:  Security contexts may include algorithms that
+<       alter the contexts of their security target block, such as the
+<       case when encrypting the block-type-specific data of a target
+<       block as part of a BCB confidentiality service.  Security context
+<       specifications SHOULD address how preexisting CRC type and CRC
+<       value fields be handled.  For example, a BCB security context
+<       could remove the plaintext CRC value from its target upon
+<       encryption and replace or recalculate the value upon decryption.
+---
+>    Handling CRC Fields:
+>       Security contexts may include algorithms that alter the contexts
+>       of their security target block, such as the case when encrypting
+>       the block-type-specific data of a target block as part of a BCB
+>       confidentiality service.  Security context specifications SHOULD
+>       address how preexisting CRC type and CRC value fields be handled.
+>       For example, a BCB security context could remove the plaintext CRC
+>       value from its target upon encryption and replace or recalculate
+>       the value upon decryption.
+1977d1999
+< 
+1987d2008
+< 

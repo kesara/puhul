@@ -1,0 +1,526 @@
+236,256c236,280
+<    Media Participant:  An entity that has access to the media resources
+<       of a conference (e.g., it can receive a media stream).  In floor-
+<       controlled conferences, a given media participant is typically co-
+<       located with a floor participant, but it does not need to be.
+<       Third-party floor requests consist of having a floor participant
+<       request a floor for a media participant when they are not co-
+<       located.  The protocol between a floor participant and a media
+<       participant (that are not co-located) is outside the scope of this
+<       document.
+< 
+<    Client:  A floor participant or a floor chair that communicates with
+<       a floor control server using BFCP.
+< 
+<    Floor:  A temporary permission to access or manipulate a specific
+<       shared resource or set of resources.
+< 
+<    Floor Chair:  A logical entity that manages one floor (grants,
+<       denies, or revokes a floor).  An entity that assumes the logical
+<       role of a floor chair for a given transaction may assume a
+<       different role (e.g., floor participant) for a different
+<       transaction.  The roles of floor chair and floor participant are
+---
+>    Media Participant:
+>       An entity that has access to the media resources of a conference
+>       (e.g., it can receive a media stream).  In floor-controlled
+>       conferences, a given media participant is typically co-located
+>       with a floor participant, but it does not need to be.  Third-party
+>       floor requests consist of having a floor participant request a
+>       floor for a media participant when they are not co-located.  The
+>       protocol between a floor participant and a media participant (that
+>       are not co-located) is outside the scope of this document.
+> 
+>    Client:
+>       A floor participant or a floor chair that communicates with a
+>       floor control server using BFCP.
+> 
+>    Floor:
+>       A temporary permission to access or manipulate a specific shared
+>       resource or set of resources.
+> 
+>    Floor Chair:
+>       A logical entity that manages one floor (grants, denies, or
+>       revokes a floor).  An entity that assumes the logical role of a
+>       floor chair for a given transaction may assume a different role
+>       (e.g., floor participant) for a different transaction.  The roles
+>       of floor chair and floor participant are defined on a transaction-
+>       by-transaction basis.  BFCP transactions are defined in Section 8.
+> 
+>    Floor Control:
+>       A mechanism that enables applications or users to gain safe and
+>       mutually exclusive or non-exclusive input access to the shared
+>       object or resource.
+> 
+>    Floor Control Server:
+>       A logical entity that maintains the state of the floor(s),
+>       including which floors exists, who the floor chairs are, who holds
+>       a floor, etc.  Requests to manipulate a floor are directed at the
+>       floor control server.  The floor control server of a conference
+>       may perform other logical roles (e.g., floor participant) in
+>       another conference.
+> 
+>    Floor Participant:
+>       A logical entity that requests floors, and possibly information
+>       about them, from a floor control server.  An entity that assumes
+>       the logical role of a floor participant for a given transaction
+>       may assume a different role (e.g., a floor chair) for a different
+>       transaction.  The roles of floor participant and floor chair are
+258c282,286
+<       are defined in Section 8.
+---
+>       are defined in Section 8.  In floor-controlled conferences, a
+>       given floor participant is typically co-located with a media
+>       participant, but it does not need to be.  Third-party floor
+>       requests consist of having a floor participant request a floor for
+>       a media participant when they are not co-located.
+260,284c288,289
+<    Floor Control:  A mechanism that enables applications or users to
+<       gain safe and mutually exclusive or non-exclusive input access to
+<       the shared object or resource.
+< 
+<    Floor Control Server:  A logical entity that maintains the state of
+<       the floor(s), including which floors exists, who the floor chairs
+<       are, who holds a floor, etc.  Requests to manipulate a floor are
+<       directed at the floor control server.  The floor control server of
+<       a conference may perform other logical roles (e.g., floor
+<       participant) in another conference.
+< 
+<    Floor Participant:  A logical entity that requests floors, and
+<       possibly information about them, from a floor control server.  An
+<       entity that assumes the logical role of a floor participant for a
+<       given transaction may assume a different role (e.g., a floor
+<       chair) for a different transaction.  The roles of floor
+<       participant and floor chair are defined on a transaction-by-
+<       transaction basis.  BFCP transactions are defined in Section 8.
+<       In floor-controlled conferences, a given floor participant is
+<       typically co-located with a media participant, but it does not
+<       need to be.  Third-party floor requests consist of having a floor
+<       participant request a floor for a media participant when they are
+<       not co-located.
+< 
+<    Participant:  An entity that acts as a floor participant, as a media
+---
+>    Participant:
+>       An entity that acts as a floor participant, as a media
+287,293c292,299
+<    BFCP Connection:  A transport association between BFCP entities, used
+<       to exchange BFCP messages.
+< 
+<    Transaction Failure Window:  When communicating over an unreliable
+<       transport, this is some period of time less than or equal to
+<       T1*2^(4) (see Section 8.3).  For reliable transports, this period
+<       of time is unbounded.
+---
+>    BFCP Connection:
+>       A transport association between BFCP entities, used to exchange
+>       BFCP messages.
+> 
+>    Transaction Failure Window:
+>       When communicating over an unreliable transport, this is some
+>       period of time less than or equal to T1*2^4 (see Section 8.3).
+>       For reliable transports, this period of time is unbounded.
+728,739c734,746
+<    Ver:  This 3-bit field defines the version of BFCP to which this
+<       message adheres.  This specification defines two versions: 1 and
+<       2.  The version field MUST be set to 1 when using BFCP over a
+<       reliable transport.  The version field MUST be set to 2 when using
+<       BFCP over an unreliable transport.  If a floor control server
+<       receives a message with an unsupported version field value or a
+<       message with a version number that is not permitted with the
+<       transport over which it was received, the server MUST indicate it
+<       does not support the protocol version by sending an Error message
+<       with parameter value 12 (Unsupported Version).  Note that BFCP
+<       entities supporting only the [3] subset will not support this
+<       parameter value.
+---
+>    Ver:
+>       This 3-bit field defines the version of BFCP to which this message
+>       adheres.  This specification defines two versions: 1 and 2.  The
+>       version field MUST be set to 1 when using BFCP over a reliable
+>       transport.  The version field MUST be set to 2 when using BFCP
+>       over an unreliable transport.  If a floor control server receives
+>       a message with an unsupported version field value or a message
+>       with a version number that is not permitted with the transport
+>       over which it was received, the server MUST indicate it does not
+>       support the protocol version by sending an Error message with
+>       parameter value 12 (Unsupported Version).  Note that BFCP entities
+>       supporting only the [3] subset will not support this parameter
+>       value.
+741c748,749
+<    R:  The Transaction Responder (R) flag bit has relevance only for use
+---
+>    R:
+>       The Transaction Responder (R) flag bit has relevance only for use
+751c759,760
+<    F:  The Fragmentation (F) flag bit has relevance only for use of BFCP
+---
+>    F:
+>       The Fragmentation (F) flag bit has relevance only for use of BFCP
+765,766c774,776
+<    Primitive:  This 8-bit field identifies the main purpose of the
+<       message.  The following primitive values are defined:
+---
+>    Primitive:
+>       This 8-bit field identifies the main purpose of the message.  The
+>       following primitive values are defined:
+815,821c825,832
+<    Payload Length:  This 16-bit field contains the length of the message
+<       in 4-octet units, excluding the COMMON-HEADER.  If a floor control
+<       server receives a message with an incorrect Payload Length field
+<       value, the receiving server MUST send an Error message with
+<       parameter value 13 (Incorrect Message Length) to indicate this and
+<       then discard the message.  Other entities that receive a message
+<       with an incorrect length MUST discard the message.
+---
+>    Payload Length:
+>       This 16-bit field contains the length of the message in 4-octet
+>       units, excluding the COMMON-HEADER.  If a floor control server
+>       receives a message with an incorrect Payload Length field value,
+>       the receiving server MUST send an Error message with parameter
+>       value 13 (Incorrect Message Length) to indicate this and then
+>       discard the message.  Other entities that receive a message with
+>       an incorrect length MUST discard the message.
+830,839c841,852
+<    Conference ID:  This 32-bit unsigned integer field identifies the
+<       conference to which the message belongs.  It is RECOMMENDED that
+<       the conference identifier be randomly chosen.  (Note that the use
+<       of predictable conference identifiers in conjunction with a
+<       nonsecure transport protocol makes BFCP susceptible to off-path
+<       data injection attacks, where an attacker can forge a request or
+<       response message.)
+< 
+<    Transaction ID:  This field contains a 16-bit value that allows users
+<       to match a given message with its response (see Section 8).
+---
+>    Conference ID:
+>       This 32-bit unsigned integer field identifies the conference to
+>       which the message belongs.  It is RECOMMENDED that the conference
+>       identifier be randomly chosen.  (Note that the use of predictable
+>       conference identifiers in conjunction with a nonsecure transport
+>       protocol makes BFCP susceptible to off-path data injection
+>       attacks, where an attacker can forge a request or response
+>       message.)
+> 
+>    Transaction ID:
+>       This field contains a 16-bit value that allows users to match a
+>       given message with its response (see Section 8).
+841c854,855
+<    User ID:  This field contains a 16-bit unsigned integer that uniquely
+---
+>    User ID:
+>       This field contains a 16-bit unsigned integer that uniquely
+850,862c864,877
+<    Fragment Offset:  This optional field is present only if the F flag
+<       is set and contains a 16-bit value that specifies the number of
+<       4-octet units contained in previous fragments, excluding the
+<       COMMON-HEADER.
+< 
+<    Fragment Length:  This optional field is present only if the F flag
+<       is set and contains a 16-bit value that specifies the number of
+<       4-octet units contained in this fragment, excluding the COMMON-
+<       HEADER.  BFCP entities that receive message fragments that,
+<       individually or collectively, exceed the Payload Length value MUST
+<       discard the message.  Additionally, if the receiver is a floor
+<       control server, it MUST also send an Error message with parameter
+<       value 13 (Incorrect Message Length)
+---
+>    Fragment Offset:
+>       This optional field is present only if the F flag is set and
+>       contains a 16-bit value that specifies the number of 4-octet units
+>       contained in previous fragments, excluding the COMMON-HEADER.
+> 
+>    Fragment Length:
+>       This optional field is present only if the F flag is set and
+>       contains a 16-bit value that specifies the number of 4-octet units
+>       contained in this fragment, excluding the COMMON-HEADER.  BFCP
+>       entities that receive message fragments that, individually or
+>       collectively, exceed the Payload Length value MUST discard the
+>       message.  Additionally, if the receiver is a floor control server,
+>       it MUST also send an Error message with parameter value 13
+>       (Incorrect Message Length)
+886,887c901,911
+<       Unsigned16:  The contents of the attribute consist of a 16-bit
+<          unsigned integer.
+---
+>       Unsigned16:
+>          The contents of the attribute consist of a 16-bit unsigned
+>          integer.
+> 
+>       OctetString16:
+>          The contents of the attribute consist of 16 bits of arbitrary
+>          data.
+> 
+>       OctetString:
+>          The contents of the attribute consist of arbitrary data of
+>          variable length.
+889,895c913,914
+<       OctetString16:  The contents of the attribute consist of 16 bits
+<          of arbitrary data.
+< 
+<       OctetString:  The contents of the attribute consist of arbitrary
+<          data of variable length.
+< 
+<       Grouped:  The contents of the attribute consist of a sequence of
+---
+>       Grouped:
+>          The contents of the attribute consist of a sequence of
+945,950c964,970
+<    M:  The 'M' bit, known as the Mandatory bit, indicates whether
+<       support of the attribute is REQUIRED.  If a floor control server
+<       receives an unrecognized attribute with the 'M' bit set, the
+<       server MUST send an Error message with parameter value 4 (Unknown
+<       Mandatory Attribute) to indicate this.  The 'M' bit is significant
+<       for extension attributes defined in other documents only.  All
+---
+>    M:
+>       The 'M' bit, known as the Mandatory bit, indicates whether support
+>       of the attribute is REQUIRED.  If a floor control server receives
+>       an unrecognized attribute with the 'M' bit set, the server MUST
+>       send an Error message with parameter value 4 (Unknown Mandatory
+>       Attribute) to indicate this.  The 'M' bit is significant for
+>       extension attributes defined in other documents only.  All
+957,966c977,988
+<    Length:  This 8-bit field contains the length of the attribute in
+<       octets, excluding any padding defined for specific attributes.
+<       The length of attributes that are not grouped includes the Type,
+<       'M' bit, and Length fields.  The Length in grouped attributes is
+<       the length of the grouped attribute itself (including Type, 'M'
+<       bit, and Length fields) plus the total length (including padding)
+<       of all the included attributes.
+< 
+<    Attribute Contents:  The contents of the different attributes are
+<       defined in the following sections.
+---
+>    Length:
+>       This 8-bit field contains the length of the attribute in octets,
+>       excluding any padding defined for specific attributes.  The length
+>       of attributes that are not grouped includes the Type, 'M' bit, and
+>       Length fields.  The Length in grouped attributes is the length of
+>       the grouped attribute itself (including Type, 'M' bit, and Length
+>       fields) plus the total length (including padding) of all the
+>       included attributes.
+> 
+>    Attribute Contents:
+>       The contents of the different attributes are defined in the
+>       following sections.
+980,981c1002,1004
+<    Beneficiary ID:  This field contains a 16-bit value that uniquely
+<       identifies a user within a conference.
+---
+>    Beneficiary ID:
+>       This field contains a 16-bit value that uniquely identifies a user
+>       within a conference.
+1001,1002c1024,1026
+<    Floor ID:  This field contains a 16-bit value that uniquely
+<       identifies a floor within a conference.
+---
+>    Floor ID:
+>       This field contains a 16-bit value that uniquely identifies a
+>       floor within a conference.
+1016,1017c1040,1042
+<    Floor Request ID:  This field contains a 16-bit value that identifies
+<       a floor request at the floor control server.
+---
+>    Floor Request ID:
+>       This field contains a 16-bit value that identifies a floor request
+>       at the floor control server.
+1068,1069c1093,1095
+<    Request Status:  This 8-bit field contains the status of the request,
+<       as described in the following table.
+---
+>    Request Status:
+>       This 8-bit field contains the status of the request, as described
+>       in the following table.
+1092,1098c1118,1124
+<    Queue Position:  This 8-bit field contains, when applicable, the
+<       position of the floor request in the floor request queue at the
+<       server.  If the Request Status value is different from Accepted,
+<       if the floor control server does not implement a floor request
+<       queue, or if the floor control server does not want to provide the
+<       client with this information, all the bits of this field SHOULD be
+<       set to zero.
+---
+>    Queue Position:
+>       This 8-bit field contains, when applicable, the position of the
+>       floor request in the floor request queue at the server.  If the
+>       Request Status value is different from Accepted, if the floor
+>       control server does not implement a floor request queue, or if the
+>       floor control server does not want to provide the client with this
+>       information, all the bits of this field SHOULD be set to zero.
+1123,1128c1149,1154
+<    Error Code:  This 8-bit field contains an error code from the
+<       following table.  If an error code is not recognized by the
+<       receiver, then the receiver MUST assume that an error exists, and
+<       therefore that the original message that triggered the Error
+<       message to be sent is processed, but the nature of the error is
+<       unclear.
+---
+>    Error Code:
+>       This 8-bit field contains an error code from the following table.
+>       If an error code is not recognized by the receiver, then the
+>       receiver MUST assume that an error exists, and therefore that the
+>       original message that triggered the Error message to be sent is
+>       processed, but the nature of the error is unclear.
+1169,1172c1195,1198
+<    Error Specific Details:  Present only for certain error codes.  In
+<       this document, this field is present only for Error Code 4
+<       (Unknown Mandatory Attribute).  See Section 5.2.6.1 for its
+<       definition.
+---
+>    Error Specific Details:
+>       Present only for certain error codes.  In this document, this
+>       field is present only for Error Code 4 (Unknown Mandatory
+>       Attribute).  See Section 5.2.6.1 for its definition.
+1200,1202c1226,1229
+<    Unknown Type:  These 7-bit fields contain the Types of the attributes
+<       (which were present in the message that triggered the Error
+<       message) that were unknown to the receiver.
+---
+>    Unknown Type:
+>       These 7-bit fields contain the Types of the attributes (which were
+>       present in the message that triggered the Error message) that were
+>       unknown to the receiver.
+1232,1236c1259,1263
+<    Padding:  One, two, or three octets of padding added so that the
+<       contents of the ERROR-INFO attribute is 32-bit aligned.  The
+<       Padding bits MUST be set to zero by the sender and MUST be ignored
+<       by the receiver.  If the attribute is already 32-bit aligned, no
+<       padding is needed.
+---
+>    Padding:
+>       One, two, or three octets of padding added so that the contents of
+>       the ERROR-INFO attribute is 32-bit aligned.  The Padding bits MUST
+>       be set to zero by the sender and MUST be ignored by the receiver.
+>       If the attribute is already 32-bit aligned, no padding is needed.
+1258,1262c1285,1290
+<    Padding:  One, two, or three octets of padding added so that the
+<       contents of the PARTICIPANT-PROVIDED-INFO attribute is 32-bit
+<       aligned.  The Padding bits MUST be set to zero by the sender and
+<       MUST be ignored by the receiver.  If the attribute is already
+<       32-bit aligned, no padding is needed.
+---
+>    Padding:
+>       One, two, or three octets of padding added so that the contents of
+>       the PARTICIPANT-PROVIDED-INFO attribute is 32-bit aligned.  The
+>       Padding bits MUST be set to zero by the sender and MUST be ignored
+>       by the receiver.  If the attribute is already 32-bit aligned, no
+>       padding is needed.
+1289,1293c1317,1322
+<    Padding:  One, two, or three octets of padding added so that the
+<       contents of the STATUS-INFO attribute is 32-bit aligned.  The
+<       Padding bits MUST be set to zero by the sender and MUST be ignored
+<       by the receiver.  If the attribute is already 32-bit aligned, no
+<       padding is needed.
+---
+>    Padding:
+>       One, two, or three octets of padding added so that the contents of
+>       the STATUS-INFO attribute is 32-bit aligned.  The Padding bits
+>       MUST be set to zero by the sender and MUST be ignored by the
+>       receiver.  If the attribute is already 32-bit aligned, no padding
+>       is needed.
+1314,1316c1343,1346
+<    Supp. Attr.:  These fields contain the BFCP attribute types that are
+<       supported by the floor control server.  See Table 2 for the list
+<       of BFCP attributes.
+---
+>    Supp. Attr.:
+>       These fields contain the BFCP attribute types that are supported
+>       by the floor control server.  See Table 2 for the list of BFCP
+>       attributes.
+1347,1349c1377,1380
+<    Primitive:  These fields contain the types of the BFCP messages that
+<       are supported by the floor control server.  See Table 1 for the
+<       list of BFCP primitives.
+---
+>    Primitive:
+>       These fields contain the types of the BFCP messages that are
+>       supported by the floor control server.  See Table 1 for the list
+>       of BFCP primitives.
+1377,1381c1408,1413
+<    Padding:  One, two, or three octets of padding added so that the
+<       contents of the USER-DISPLAY-NAME attribute is 32-bit aligned.
+<       The Padding bits MUST be set to zero by the sender and MUST be
+<       ignored by the receiver.  If the attribute is already 32-bit
+<       aligned, no padding is needed.
+---
+>    Padding:
+>       One, two, or three octets of padding added so that the contents of
+>       the USER-DISPLAY-NAME attribute is 32-bit aligned.  The Padding
+>       bits MUST be set to zero by the sender and MUST be ignored by the
+>       receiver.  If the attribute is already 32-bit aligned, no padding
+>       is needed.
+1400,1401c1432,1434
+<    Text:  This field contains the UTF-8 encoded user's contact URI, that
+<       is, the URI used by the user to set up the resources (e.g., media
+---
+>    Text:
+>       This field contains the UTF-8 encoded user's contact URI, that is,
+>       the URI used by the user to set up the resources (e.g., media
+1411,1415c1444,1448
+<    Padding:  One, two, or three octets of padding added so that the
+<       contents of the USER-URI attribute is 32-bit aligned.  The Padding
+<       bits MUST be set to zero by the sender and MUST be ignored by the
+<       receiver.  If the attribute is already 32-bit aligned, no padding
+<       is needed.
+---
+>    Padding:
+>       One, two, or three octets of padding added so that the contents of
+>       the USER-URI attribute is 32-bit aligned.  The Padding bits MUST
+>       be set to zero by the sender and MUST be ignored by the receiver.
+>       If the attribute is already 32-bit aligned, no padding is needed.
+1432,1433c1465,1467
+<    Beneficiary ID:  This field contains a 16-bit value that uniquely
+<       identifies a user within a conference.
+---
+>    Beneficiary ID:
+>       This field contains a 16-bit value that uniquely identifies a user
+>       within a conference.
+1461,1462c1495,1497
+<    Floor Request ID:  This field contains a 16-bit value that identifies
+<       a floor request at the floor control server.
+---
+>    Floor Request ID:
+>       This field contains a 16-bit value that identifies a floor request
+>       at the floor control server.
+1494,1495c1529,1531
+<    Requested-by ID:  This field contains a 16-bit value that uniquely
+<       identifies a user within a conference.
+---
+>    Requested-by ID:
+>       This field contains a 16-bit value that uniquely identifies a user
+>       within a conference.
+1523,1524c1559,1561
+<    Floor ID:  this field contains a 16-bit value that uniquely
+<       identifies a floor within a conference.
+---
+>    Floor ID:
+>       this field contains a 16-bit value that uniquely identifies a
+>       floor within a conference.
+1552,1553c1589,1591
+<    Floor Request ID:  This field contains a 16-bit value that identifies
+<       a floor request at the floor control server.
+---
+>    Floor Request ID:
+>       This field contains a 16-bit value that identifies a floor request
+>       at the floor control server.
+2195c2233
+<     |   T2  | Response retransmission timer        | (T1*2^(4))*1.25 |
+---
+>     |   T2  | Response retransmission timer        |  (T1*2^4)*1.25  |
+3672,3673c3710,3711
+<        "s/*1(FLOOR-ID)/[FLOOR-ID]/" in Figure 38 and "s/*[XXX]/*(XXX)/"
+<        in the other figures.
+---
+>        s/*1(FLOOR-ID)/[FLOOR-ID]/ in Figure 38 and s/*[XXX]/*(XXX)/ in
+>        the other figures.
+4299d4336
+< 
+4304d4340
+< 
+4313d4348
+< 
+4322d4356
+< 
+4331d4364
+< 
