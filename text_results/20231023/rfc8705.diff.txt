@@ -1,0 +1,279 @@
+143c143
+<    (A)  The client makes an HTTPS "POST" request to the authorization
+---
+>    (A)  The client makes an HTTPS POST request to the authorization
+248c248
+<    client authentication, the client MUST include the "client_id"
+---
+>    client authentication, the client MUST include the client_id
+250,252c250,252
+<    presence of the "client_id" parameter enables the authorization
+<    server to easily identify the client independently from the content
+<    of the certificate.  The authorization server can locate the client
+---
+>    presence of the client_id parameter enables the authorization server
+>    to easily identify the client independently from the content of the
+>    certificate.  The authorization server can locate the client
+259,261c259,261
+<    "client_id", the authorization server returns a normal OAuth 2.0
+<    error response per Section 5.2 of [RFC6749] with the "invalid_client"
+<    error code to indicate failed client authentication.
+---
+>    client_id, the authorization server returns a normal OAuth 2.0 error
+>    response per Section 5.2 of [RFC6749] with the invalid_client error
+>    code to indicate failed client authentication.
+305c305
+<    "tls_client_auth" authentication method MUST use exactly one of the
+---
+>    tls_client_auth authentication method MUST use exactly one of the
+343,345c343,345
+<    prerequisite, the client registers its X.509 certificates (using
+<    "jwks" defined in [RFC7591]) or a reference to a trusted source for
+<    its X.509 certificates (using "jwks_uri" from [RFC7591]) with the
+---
+>    prerequisite, the client registers its X.509 certificates (using jwks
+>    defined in [RFC7591]) or a reference to a trusted source for its
+>    X.509 certificates (using jwks_uri from [RFC7591]) with the
+355,358c355,358
+<    the need to maintain a PKI.  When used in conjunction with a
+<    "jwks_uri" for the client, it also allows the client to rotate its
+<    X.509 certificates without the need to change its respective
+<    authentication data directly with the authorization server.
+---
+>    the need to maintain a PKI.  When used in conjunction with a jwks_uri
+>    for the client, it also allows the client to rotate its X.509
+>    certificates without the need to change its respective authentication
+>    data directly with the authorization server.
+376c376
+<    "jwks_uri" or "jwks" metadata parameters from [RFC7591] are used to
+---
+>    jwks_uri or jwks metadata parameters from [RFC7591] are used to
+378,379c378,379
+<    [RFC7517].  The "jwks" metadata parameter is a JWK Set containing the
+<    client's public keys as an array of JWKs, while the "jwks_uri"
+---
+>    [RFC7517].  The jwks metadata parameter is a JWK Set containing the
+>    client's public keys as an array of JWKs, while the jwks_uri
+381,386c381,386
+<    is represented with the "x5c" parameter of an individual JWK within
+<    the set.  Note that the members of the JWK representing the public
+<    key (e.g., "n" and "e" for RSA, "x" and "y" for Elliptic Curve (EC))
+<    are required parameters per [RFC7518] so will be present even though
+<    they are not utilized in this context.  Also note that Section 4.7 of
+<    [RFC7517] requires that the key in the first certificate of the "x5c"
+---
+>    is represented with the x5c parameter of an individual JWK within the
+>    set.  Note that the members of the JWK representing the public key
+>    (e.g., "n" and "e" for RSA, "x" and "y" for Elliptic Curve (EC)) are
+>    required parameters per [RFC7518] so will be present even though they
+>    are not utilized in this context.  Also note that Section 4.7 of
+>    [RFC7517] requires that the key in the first certificate of the x5c
+438c438
+<    code and the "invalid_token" error code.
+---
+>    code and the invalid_token error code.
+448c448
+<    using the "x5t#S256" confirmation method member defined herein.
+---
+>    using the x5t#S256 confirmation method member defined herein.
+451,457c451,457
+<    defines the new JWT Confirmation Method [RFC7800] member "x5t#S256"
+<    for the X.509 Certificate SHA-256 Thumbprint.  The value of the
+<    "x5t#S256" member is a base64url-encoded [RFC4648] SHA-256 [SHS] hash
+<    (a.k.a., thumbprint, fingerprint, or digest) of the DER encoding
+<    [X690] of the X.509 certificate [RFC5280].  The base64url-encoded
+<    value MUST omit all trailing pad '=' characters and MUST NOT include
+<    any line breaks, whitespace, or other additional characters.
+---
+>    defines the new JWT Confirmation Method [RFC7800] member x5t#S256 for
+>    the X.509 Certificate SHA-256 Thumbprint.  The value of the x5t#S256
+>    member is a base64url-encoded [RFC4648] SHA-256 [SHS] hash (a.k.a.,
+>    thumbprint, fingerprint, or digest) of the DER encoding [X690] of the
+>    X.509 certificate [RFC5280].  The base64url-encoded value MUST omit
+>    all trailing pad '=' characters and MUST NOT include any line breaks,
+>    whitespace, or other additional characters.
+459c459
+<    The following is an example of a JWT payload containing an "x5t#S256"
+---
+>    The following is an example of a JWT payload containing an x5t#S256
+461,464c461,464
+<    introduced by this specification is the "cnf" confirmation method
+<    claim at the bottom of the example that has the "x5t#S256"
+<    confirmation method member containing the value that is the hash of
+<    the client certificate to which the access token is bound.
+---
+>    introduced by this specification is the cnf confirmation method claim
+>    at the bottom of the example that has the x5t#S256 confirmation
+>    method member containing the value that is the hash of the client
+>    certificate to which the access token is bound.
+489c489
+<    response.  The hash is conveyed using the same "cnf" with "x5t#S256"
+---
+>    response.  The hash is conveyed using the same cnf with x5t#S256
+497c497
+<    active token with an "x5t#S256" certificate thumbprint confirmation
+---
+>    active token with an x5t#S256 certificate thumbprint confirmation
+499,500c499,500
+<    specification is the "cnf" confirmation method at the bottom of the
+<    example that has the "x5t#S256" confirmation method member containing
+---
+>    specification is the cnf confirmation method at the bottom of the
+>    example that has the x5t#S256 confirmation method member containing
+530c530
+<       value is "false".
+---
+>       value is false.
+540c540
+<       omitted, the default value is "false".
+---
+>       omitted, the default value is false.
+555,557c555,557
+<    credentials associated with the "client_id").  The authorization
+<    server would configure the TLS stack in the same manner as for the
+<    Self-Signed Certificate method such that it does not verify that the
+---
+>    credentials associated with the client_id).  The authorization server
+>    would configure the TLS stack in the same manner as for the Self-
+>    Signed Certificate method such that it does not verify that the
+600,601c600,601
+<       parameters, such as "token_endpoint", "revocation_endpoint",
+<       "introspection_endpoint", etc., conventionally defined for the top
+---
+>       parameters, such as token_endpoint, revocation_endpoint,
+>       introspection_endpoint, etc., conventionally defined for the top
+606c606
+<       endpoint within the "mtls_endpoint_aliases", when present, in
+---
+>       endpoint within the mtls_endpoint_aliases, when present, in
+609c609
+<       "mtls_endpoint_aliases", then the client uses the conventional
+---
+>       mtls_endpoint_aliases, then the client uses the conventional
+611c611
+<       metadata.  Metadata parameters within "mtls_endpoint_aliases" that
+---
+>       metadata.  Metadata parameters within mtls_endpoint_aliases that
+616,618c616,618
+<    the "mtls_endpoint_aliases" parameter, which indicates aliases for
+<    the token, revocation, and introspection endpoints that an OAuth
+<    client intending to do mutual TLS would use in preference to the
+---
+>    the mtls_endpoint_aliases parameter, which indicates aliases for the
+>    token, revocation, and introspection endpoints that an OAuth client
+>    intending to do mutual TLS would use in preference to the
+620,622c620,622
+<    that the endpoints in "mtls_endpoint_aliases" use a different host
+<    than their conventional counterparts, which allows the authorization
+<    server (via TLS "server_name" extension [RFC6066] or actual distinct
+---
+>    that the endpoints in mtls_endpoint_aliases use a different host than
+>    their conventional counterparts, which allows the authorization
+>    server (via TLS server_name extension [RFC6066] or actual distinct
+746,747c746,747
+<    AS when issued to clients utilizing the "tls_client_auth" or
+<    "self_signed_tls_client_auth" methods of client authentication.
+---
+>    AS when issued to clients utilizing the tls_client_auth or
+>    self_signed_tls_client_auth methods of client authentication.
+750c750
+<    "client_id").
+---
+>    client_id).
+765c765
+<    [IANA.JWT.Claims] for JWT "cnf" member values.
+---
+>    [IANA.JWT.Claims] for JWT cnf member values.
+844c844
+<    JWT "cnf" member values established by [RFC7800].
+---
+>    JWT cnf member values established by [RFC7800].
+846c846
+<    Confirmation Method Value:  "x5t#S256"
+---
+>    Confirmation Method Value:  x5t#S256
+858c858
+<    Metadata Name:  "tls_client_certificate_bound_access_tokens"
+---
+>    Metadata Name:  tls_client_certificate_bound_access_tokens
+864c864
+<    Metadata Name:  "mtls_endpoint_aliases"
+---
+>    Metadata Name:  mtls_endpoint_aliases
+877c877
+<    Token Endpoint Authentication Method Name:  "tls_client_auth"
+---
+>    Token Endpoint Authentication Method Name:  tls_client_auth
+881,882c881,882
+<    Token Endpoint Authentication Method Name:  "self_signed_tls_client_
+<       auth"
+---
+>    Token Endpoint Authentication Method Name:  self_signed_tls_client_
+>       auth
+889c889
+<    [RFC7800] defined the "cnf" (confirmation) claim that enables
+---
+>    [RFC7800] defined the cnf (confirmation) claim that enables
+896c896
+<    semantics for OAuth 2.0 Token Introspection [RFC7662] using the "cnf"
+---
+>    semantics for OAuth 2.0 Token Introspection [RFC7662] using the cnf
+898,900c898,900
+<    introspection response, "cnf" has the same semantics and format as
+<    the claim of the same name defined in [RFC7800].  While this
+<    specification only explicitly uses the "x5t#S256" confirmation method
+---
+>    introspection response, cnf has the same semantics and format as the
+>    claim of the same name defined in [RFC7800].  While this
+>    specification only explicitly uses the x5t#S256 confirmation method
+902c902
+<    level "cnf" structure as an introspection response member in order to
+---
+>    level cnf structure as an introspection response member in order to
+910c910
+<    Claim Name:  "cnf"
+---
+>    Claim Name:  cnf
+921c921
+<    Client Metadata Name:  "tls_client_certificate_bound_access_tokens"
+---
+>    Client Metadata Name:  tls_client_certificate_bound_access_tokens
+927c927
+<    Client Metadata Name:  "tls_client_auth_subject_dn"
+---
+>    Client Metadata Name:  tls_client_auth_subject_dn
+933c933
+<    Client Metadata Name:  "tls_client_auth_san_dns"
+---
+>    Client Metadata Name:  tls_client_auth_san_dns
+939c939
+<    Client Metadata Name:  "tls_client_auth_san_uri"
+---
+>    Client Metadata Name:  tls_client_auth_san_uri
+945c945
+<    Client Metadata Name:  "tls_client_auth_san_ip"
+---
+>    Client Metadata Name:  tls_client_auth_san_ip
+951c951
+<    Client Metadata Name:  "tls_client_auth_san_email"
+---
+>    Client Metadata Name:  tls_client_auth_san_email
+1106,1110c1106,1109
+<    For reference, an "x5t#S256" value and the X.509 certificate from
+<    which it was calculated are provided in the following examples,
+<    Figures 5 and 6, respectively.  A JWK representation of the
+<    certificate's public key along with the "x5c" member is also provided
+<    in Figure 7.
+---
+>    For reference, an x5t#S256 value and the X.509 certificate from which
+>    it was calculated are provided in the following examples, Figures 5
+>    and 6, respectively.  A JWK representation of the certificate's
+>    public key along with the x5c member is also provided in Figure 7.
+1203d1201
+< 
+1209d1206
+< 
+1216d1212
+< 
+1223d1218
+< 
