@@ -1,0 +1,655 @@
+24c24
+< <meta content="xml2rfc 3.5.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+29,46c29,42
+<   xml2rfc 3.5.0
+<     Python 3.6.10
+<     appdirs 1.4.4
+<     ConfigArgParse 1.2.3
+<     google-i18n-address 2.3.5
+<     html5lib 1.0.1
+<     intervaltree 3.0.2
+<     Jinja2 2.11.2
+<     kitchen 1.2.6
+<     lxml 4.4.2
+<     pycairo 1.19.0
+<     pycountry 19.8.18
+<     pyflakes 2.1.1
+<     PyYAML 5.3.1
+<     requests 2.22.0
+<     setuptools 40.6.2
+<     six 1.14.0
+<     WeasyPrint 51
+---
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 3.11.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.8
+48c44
+< <link href="rfc8956.xml" rel="alternate" type="application/rfc+xml">
+---
+> <link href="rfc/rfc8956.xml" rel="alternate" type="application/rfc+xml">
+58c54
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+67a64,69
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+70d71
+<   width: extend-to-zoom;
+85c86
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+87a89
+>   overflow-wrap: break-word;
+173a176,184
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+188,191d198
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+192a200
+>   border: none;
+215a224,226
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+257c268,269
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+267c279
+< tt, code, pre, code {
+---
+> tt, code, pre {
+269c281
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+308a321,323
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+398a414,419
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+500c521
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+640d660
+< 
+662a683,685
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+730c753
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+830c853
+< tt, code, pre, code {
+---
+> tt, code, pre {
+835c858
+< pre.sourcecode,
+---
+> .sourcecode pre,
+871c894
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1052a1076
+>   .artwork > pre,
+1067c1091
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1073a1098,1100
+> tr {
+>   break-inside: avoid;
+> }
+1093c1120
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1124c1151
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1149c1176
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1167c1194
+< dd > div:first-child > pre.sourcecode,
+---
+> dd > div.sourcecode:first-child,
+1175a1203,1210
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1177a1213
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-idr-flow-spec-v6-22" rel="prev">
+1180c1216
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-idr-flow-spec-v6-22" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1182,1183c1218,1219
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1293,1298c1329,1334
+< <nav class="toc"><ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-definitions-of-terms-used-i" class="xref">Definitions of Terms Used in This Memo</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-definitions-of-terms-used-i" class="internal xref">Definitions of Terms Used in This Memo</a></p>
+1302,1303c1338,1339
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-ipv6-flow-specification-enc" class="xref">IPv6 Flow Specification Encoding in BGP</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-ipv6-flow-specification-enc" class="internal xref">IPv6 Flow Specification Encoding in BGP</a></p>
+1305,1309c1341,1345
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-ipv6-flow-specification-com" class="xref">IPv6 Flow Specification Components</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-type-1-destination-ipv6-pre" class="xref">Type 1 - Destination IPv6 Prefix</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-ipv6-flow-specification-com" class="internal xref">IPv6 Flow Specification Components</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-type-1-destination-ipv6-pre" class="internal xref">Type 1 - Destination IPv6 Prefix</a></p>
+1311,1312c1347,1348
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-type-2-source-ipv6-prefix" class="xref">Type 2 - Source IPv6 Prefix</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-type-2-source-ipv6-prefix" class="internal xref">Type 2 - Source IPv6 Prefix</a></p>
+1314,1315c1350,1351
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.3">
+<                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-type-3-upper-layer-protocol" class="xref">Type 3 - Upper-Layer Protocol</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+>                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-type-3-upper-layer-protocol" class="internal xref">Type 3 - Upper-Layer Protocol</a></p>
+1317,1318c1353,1354
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.4">
+<                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="xref">3.4</a>.  <a href="#name-type-7-icmpv6-type" class="xref">Type 7 - ICMPv6 Type</a><a href="#section-toc.1-1.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+>                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-type-7-icmpv6-type" class="internal xref">Type 7 - ICMPv6 Type</a></p>
+1320,1321c1356,1357
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.5">
+<                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="xref">3.5</a>.  <a href="#name-type-8-icmpv6-code" class="xref">Type 8 - ICMPv6 Code</a><a href="#section-toc.1-1.3.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
+>                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-type-8-icmpv6-code" class="internal xref">Type 8 - ICMPv6 Code</a></p>
+1323,1324c1359,1360
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.6">
+<                 <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="xref">3.6</a>.  <a href="#name-type-12-fragment" class="xref">Type 12 - Fragment</a><a href="#section-toc.1-1.3.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.6">
+>                 <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="auto internal xref">3.6</a>.  <a href="#name-type-12-fragment" class="internal xref">Type 12 - Fragment</a></p>
+1326,1327c1362,1363
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.7">
+<                 <p id="section-toc.1-1.3.2.7.1"><a href="#section-3.7" class="xref">3.7</a>.  <a href="#name-type-13-flow-label-new" class="xref">Type 13 - Flow Label (new)</a><a href="#section-toc.1-1.3.2.7.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.7">
+>                 <p id="section-toc.1-1.3.2.7.1"><a href="#section-3.7" class="auto internal xref">3.7</a>.  <a href="#name-type-13-flow-label-new" class="internal xref">Type 13 - Flow Label (new)</a></p>
+1329,1330c1365,1366
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.8">
+<                 <p id="section-toc.1-1.3.2.8.1"><a href="#section-3.8" class="xref">3.8</a>.  <a href="#name-encoding-examples" class="xref">Encoding Examples</a><a href="#section-toc.1-1.3.2.8.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.8">
+>                 <p id="section-toc.1-1.3.2.8.1"><a href="#section-3.8" class="auto internal xref">3.8</a>.  <a href="#name-encoding-examples" class="internal xref">Encoding Examples</a></p>
+1334,1335c1370,1371
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-ordering-of-flow-specificat" class="xref">Ordering of Flow Specifications</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-ordering-of-flow-specificat" class="internal xref">Ordering of Flow Specifications</a></p>
+1337,1338c1373,1374
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-validation-procedure" class="xref">Validation Procedure</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-validation-procedure" class="internal xref">Validation Procedure</a></p>
+1340,1344c1376,1380
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-ipv6-traffic-filtering-acti" class="xref">IPv6 Traffic Filtering Action Changes</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-redirect-ipv6-rt-redirect-i" class="xref">Redirect IPv6 (rt-redirect-ipv6) Type 0x000d</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-ipv6-traffic-filtering-acti" class="internal xref">IPv6 Traffic Filtering Action Changes</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-redirect-ipv6-rt-redirect-i" class="internal xref">Redirect IPv6 (rt-redirect-ipv6) Type 0x000d</a></p>
+1348,1349c1384,1385
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1351,1355c1387,1391
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.8.2.1">
+<                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-flow-spec-ipv6-component-ty" class="xref">Flow Spec IPv6 Component Types</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+>                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-flow-spec-ipv6-component-ty" class="internal xref">Flow Spec IPv6 Component Types</a></p>
+1357,1358c1393,1394
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.8.2.2">
+<                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-ipv6-address-specific-exten" class="xref">IPv6-Address-Specific Extended Community Flow Spec IPv6 Actions</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+>                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-ipv6-address-specific-exten" class="internal xref">IPv6-Address-Specific Extended Community Flow Spec IPv6 Actions</a></p>
+1362,1363c1398,1399
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1365,1366c1401,1402
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-example-python-code-flow_ru" class="xref">Example Python Code: flow_rule_cmp_v6</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-example-python-code-flow_ru" class="internal xref">Example Python Code: flow_rule_cmp_v6</a></p>
+1368,1369c1404,1405
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1371,1372c1407,1408
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+1374,1375c1410,1411
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-appendix.d" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1391,1393c1427,1429
+<    <span>[<a href="#RFC8200" class="xref">RFC8200</a>]</span> flows and those of IPv4 packets. It specifies
+<    new Border Gateway Protocol <span>[<a href="#RFC4271" class="xref">RFC4271</a>]</span> encoding formats to enable
+<    "Dissemination of Flow Specification Rules" <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span>
+---
+>    <span>[<a href="#RFC8200" class="cite xref">RFC8200</a>]</span> flows and those of IPv4 packets. It specifies
+>    new Border Gateway Protocol <span>[<a href="#RFC4271" class="cite xref">RFC4271</a>]</span> encoding formats to enable
+>    "Dissemination of Flow Specification Rules" <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>
+1396c1432
+<     This specification is an extension of the base established in <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span>. 
+---
+>     This specification is an extension of the base established in <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>. 
+1429c1465
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1439c1475
+<    <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span> defines SAFIs
+---
+>    <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span> defines SAFIs
+1446c1482
+<    Extension Capability Code (Code 1), as defined in <span>[<a href="#RFC4760" class="xref">RFC4760</a>]</span>.
+---
+>    Extension Capability Code (Code 1), as defined in <span>[<a href="#RFC4760" class="cite xref">RFC4760</a>]</span>.
+1461c1497
+<    as defined in <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span>,
+---
+>    as defined in <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>,
+1464c1500
+<    (<a href="#IANA" class="xref">Section 8</a>).<a href="#section-3-2" class="pilcrow">¶</a></p>
+---
+>    (<a href="#IANA" class="auto internal xref">Section 8</a>).<a href="#section-3-2" class="pilcrow">¶</a></p>
+1516c1552
+<         shifted to the right by the number of offset bits. See also <a href="#examples" class="xref">Section 3.8</a>.<a href="#section-3.1-5" class="pilcrow">¶</a></p>
+---
+>         shifted to the right by the number of offset bits. See also <a href="#examples" class="auto internal xref">Section 3.8</a>.<a href="#section-3.1-5" class="pilcrow">¶</a></p>
+1532c1568
+<           are the same as in <a href="#type_1" class="xref">Section 3.1</a>.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+---
+>           are the same as in <a href="#type_1" class="auto internal xref">Section 3.1</a>.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+1550c1586
+<       <span><a href="https://www.rfc-editor.org/rfc/rfc8200#section-4" class="relref">Section 4</a> of [<a href="#RFC8200" class="xref">RFC8200</a>]</span>).<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+---
+>       <span><a href="https://rfc-editor.org/rfc/rfc8200#section-4" class="relref">Section 4</a> of [<a href="#RFC8200" class="cite xref">RFC8200</a>]</span>).<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+1552c1588
+<       <span><a href="https://www.rfc-editor.org/rfc/rfc8955#section-4.2.1.1" class="relref">Section 4.2.1.1</a> of [<a href="#RFC8955" class="xref">RFC8955</a>]</span>.
+---
+>       <span><a href="https://rfc-editor.org/rfc/rfc8955#section-4.2.1.1" class="relref">Section 4.2.1.1</a> of [<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>.
+1574c1610
+<     Type field of an ICMPv6 packet (see also <span><a href="https://www.rfc-editor.org/rfc/rfc4443#section-2.1" class="relref">Section 2.1</a> of [<a href="#RFC4443" class="xref">RFC4443</a>]</span>).<a href="#section-3.4-2" class="pilcrow">¶</a></p>
+---
+>     Type field of an ICMPv6 packet (see also <span><a href="https://rfc-editor.org/rfc/rfc4443#section-2.1" class="relref">Section 2.1</a> of [<a href="#RFC4443" class="cite xref">RFC4443</a>]</span>).<a href="#section-3.4-2" class="pilcrow">¶</a></p>
+1577c1613
+<         in <span><a href="https://www.rfc-editor.org/rfc/rfc8955#section-4.2.1.1" class="relref">Section 4.2.1.1</a> of [<a href="#RFC8955" class="xref">RFC8955</a>]</span>.
+---
+>         in <span><a href="https://rfc-editor.org/rfc/rfc8955#section-4.2.1.1" class="relref">Section 4.2.1.1</a> of [<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>.
+1603c1639
+<     code field of an ICMPv6 packet (see also <span><a href="https://www.rfc-editor.org/rfc/rfc4443#section-2.1" class="relref">Section 2.1</a> of [<a href="#RFC4443" class="xref">RFC4443</a>]</span>).<a href="#section-3.5-2" class="pilcrow">¶</a></p>
+---
+>     code field of an ICMPv6 packet (see also <span><a href="https://rfc-editor.org/rfc/rfc4443#section-2.1" class="relref">Section 2.1</a> of [<a href="#RFC4443" class="cite xref">RFC4443</a>]</span>).<a href="#section-3.5-2" class="pilcrow">¶</a></p>
+1606c1642
+<         in <span><a href="https://www.rfc-editor.org/rfc/rfc8955#section-4.2.1.1" class="relref">Section 4.2.1.1</a> of [<a href="#RFC8955" class="xref">RFC8955</a>]</span>.
+---
+>         in <span><a href="https://rfc-editor.org/rfc/rfc8955#section-4.2.1.1" class="relref">Section 4.2.1.1</a> of [<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>.
+1632c1668
+<       in <span><a href="https://www.rfc-editor.org/rfc/rfc8955#section-4.2.1.2" class="relref">Section 4.2.1.2</a> of [<a href="#RFC8955" class="xref">RFC8955</a>]</span>. The
+---
+>       in <span><a href="https://rfc-editor.org/rfc/rfc8955#section-4.2.1.2" class="relref">Section 4.2.1.2</a> of [<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>. The
+1637c1673
+<           <div class="artwork art-text alignLeft" id="section-3.6-4.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-3.6-4.1">
+1653c1689
+<    (<span><a href="https://www.rfc-editor.org/rfc/rfc8200#section-4.5" class="relref">Section 4.5</a> of [<a href="#RFC8200" class="xref">RFC8200</a>]</span>) Fragment Offset is not 0<a href="#section-3.6-6.2" class="pilcrow">¶</a>
+---
+>    (<span><a href="https://rfc-editor.org/rfc/rfc8200#section-4.5" class="relref">Section 4.5</a> of [<a href="#RFC8200" class="cite xref">RFC8200</a>]</span>) Fragment Offset is not 0<a href="#section-3.6-6.2" class="pilcrow">¶</a>
+1657c1693
+<           <dd style="margin-left: 3.0em" id="section-3.6-6.4">First fragment -- match if IPv6 Fragment Header (<span><a href="https://www.rfc-editor.org/rfc/rfc8200#section-4.5" class="relref">Section 4.5</a> of [<a href="#RFC8200" class="xref">RFC8200</a>]</span>) Fragment Offset is 0 AND M flag is 1<a href="#section-3.6-6.4" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 3.0em" id="section-3.6-6.4">First fragment -- match if IPv6 Fragment Header (<span><a href="https://rfc-editor.org/rfc/rfc8200#section-4.5" class="relref">Section 4.5</a> of [<a href="#RFC8200" class="cite xref">RFC8200</a>]</span>) Fragment Offset is 0 AND M flag is 1<a href="#section-3.6-6.4" class="pilcrow">¶</a>
+1661c1697
+<           <dd style="margin-left: 3.0em" id="section-3.6-6.6">Last fragment -- match if IPv6 Fragment Header (<span><a href="https://www.rfc-editor.org/rfc/rfc8200#section-4.5" class="relref">Section 4.5</a> of [<a href="#RFC8200" class="xref">RFC8200</a>]</span>) Fragment Offset is not 0 AND M flag is 0<a href="#section-3.6-6.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 3.0em" id="section-3.6-6.6">Last fragment -- match if IPv6 Fragment Header (<span><a href="https://rfc-editor.org/rfc/rfc8200#section-4.5" class="relref">Section 4.5</a> of [<a href="#RFC8200" class="cite xref">RFC8200</a>]</span>) Fragment Offset is not 0 AND M flag is 0<a href="#section-3.6-6.6" class="pilcrow">¶</a>
+1685c1721
+<       the 20-bit Flow Label IPv6 header field (<span><a href="https://www.rfc-editor.org/rfc/rfc8200#section-3" class="relref">Section 3</a> of [<a href="#RFC8200" class="xref">RFC8200</a>]</span>).<a href="#section-3.7-2" class="pilcrow">¶</a></p>
+---
+>       the 20-bit Flow Label IPv6 header field (<span><a href="https://rfc-editor.org/rfc/rfc8200#section-3" class="relref">Section 3</a> of [<a href="#RFC8200" class="cite xref">RFC8200</a>]</span>).<a href="#section-3.7-2" class="pilcrow">¶</a></p>
+1687c1723
+<       <span><a href="https://www.rfc-editor.org/rfc/rfc8955#section-4.2.1.1" class="relref">Section 4.2.1.1</a> of [<a href="#RFC8955" class="xref">RFC8955</a>]</span>. Type 13
+---
+>       <span><a href="https://rfc-editor.org/rfc/rfc8955#section-4.2.1.1" class="relref">Section 4.2.1.1</a> of [<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>. Type 13
+1980c2016
+<     <span><a href="https://www.rfc-editor.org/rfc/rfc8955#section-5.1" class="relref">Section 5.1</a> of [<a href="#RFC8955" class="xref">RFC8955</a>]</span> is
+---
+>     <span><a href="https://rfc-editor.org/rfc/rfc8955#section-5.1" class="relref">Section 5.1</a> of [<a href="#RFC8955" class="cite xref">RFC8955</a>]</span> is
+1986c2022
+<       The code in <a href="#flow_rule_cmp_src" class="xref">Appendix A</a> shows a Python3 implementation
+---
+>       The code in <a href="#flow_rule_cmp_src" class="auto internal xref">Appendix A</a> shows a Python3 implementation
+1996c2032
+<     <span><a href="https://www.rfc-editor.org/rfc/rfc8955#section-6" class="relref">Section 6</a> of [<a href="#RFC8955" class="xref">RFC8955</a>]</span> with the exception
+---
+>     <span><a href="https://rfc-editor.org/rfc/rfc8955#section-6" class="relref">Section 6</a> of [<a href="#RFC8955" class="cite xref">RFC8955</a>]</span> with the exception
+2012c2048
+< <p id="section-6-1">Traffic Filtering Actions from <span><a href="https://www.rfc-editor.org/rfc/rfc8955#section-7" class="relref">Section 7</a> of [<a href="#RFC8955" class="xref">RFC8955</a>]</span>
+---
+> <p id="section-6-1">Traffic Filtering Actions from <span><a href="https://rfc-editor.org/rfc/rfc8955#section-7" class="relref">Section 7</a> of [<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>
+2016c2052
+<         <a href="#redirect_ipv6" class="xref">Section 6.1</a> below.<a href="#section-6-1" class="pilcrow">¶</a></p>
+---
+>         <a href="#redirect_ipv6" class="auto internal xref">Section 6.1</a> below.<a href="#section-6-1" class="pilcrow">¶</a></p>
+2030c2066
+<        (<span><a href="https://www.rfc-editor.org/rfc/rfc5701#section-2" class="relref">Section 2</a> of [<a href="#RFC5701" class="xref">RFC5701</a>]</span>) with the
+---
+>        (<span><a href="https://rfc-editor.org/rfc/rfc5701#section-2" class="relref">Section 2</a> of [<a href="#RFC5701" class="cite xref">RFC5701</a>]</span>) with the
+2038c2074
+<            <span><a href="https://www.rfc-editor.org/rfc/rfc8955#section-7.4" class="relref">Section 7.4</a> of [<a href="#RFC8955" class="xref">RFC8955</a>]</span>).<a href="#section-6.1-4" class="pilcrow">¶</a></p>
+---
+>            <span><a href="https://rfc-editor.org/rfc/rfc8955#section-7.4" class="relref">Section 7.4</a> of [<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>).<a href="#section-6.1-4" class="pilcrow">¶</a></p>
+2046,2051c2082,2087
+< <p id="section-7-1">This document extends the functionality in <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span> 
+<       to be applicable to IPv6 data packets. The same security considerations from <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span> now also apply to IPv6 networks.<a href="#section-7-1" class="pilcrow">¶</a></p>
+< <p id="section-7-2"><span>[<a href="#RFC7112" class="xref">RFC7112</a>]</span> describes the impact of oversized 
+<       IPv6 header chains when trying to match on the transport header; <span><a href="https://www.rfc-editor.org/rfc/rfc8200#section-4.5" class="relref">Section 4.5</a> of [<a href="#RFC8200" class="xref">RFC8200</a>]</span> also requires that the first fragment must include 
+<       the upper-layer header, but there could be wrongly formatted packets not respecting <span>[<a href="#RFC8200" class="xref">RFC8200</a>]</span>. IPv6 Flow Specification component Type 3 (<a href="#type_3" class="xref">Section 3.3</a>) will not be enforced for those illegal packets. 
+<       Moreover, there are hardware limitations in several routers (<span><a href="https://www.rfc-editor.org/rfc/rfc8883#section-1" class="relref">Section 1</a> of [<a href="#RFC8883" class="xref">RFC8883</a>]</span>) that may make it impossible to enforce a policy signaled 
+---
+> <p id="section-7-1">This document extends the functionality in <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span> 
+>       to be applicable to IPv6 data packets. The same security considerations from <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span> now also apply to IPv6 networks.<a href="#section-7-1" class="pilcrow">¶</a></p>
+> <p id="section-7-2"><span>[<a href="#RFC7112" class="cite xref">RFC7112</a>]</span> describes the impact of oversized 
+>       IPv6 header chains when trying to match on the transport header; <span><a href="https://rfc-editor.org/rfc/rfc8200#section-4.5" class="relref">Section 4.5</a> of [<a href="#RFC8200" class="cite xref">RFC8200</a>]</span> also requires that the first fragment must include 
+>       the upper-layer header, but there could be wrongly formatted packets not respecting <span>[<a href="#RFC8200" class="cite xref">RFC8200</a>]</span>. IPv6 Flow Specification component Type 3 (<a href="#type_3" class="auto internal xref">Section 3.3</a>) will not be enforced for those illegal packets. 
+>       Moreover, there are hardware limitations in several routers (<span><a href="https://rfc-editor.org/rfc/rfc8883#section-1" class="relref">Section 1</a> of [<a href="#RFC8883" class="cite xref">RFC8883</a>]</span>) that may make it impossible to enforce a policy signaled 
+2060c2096
+< <p id="section-8-1">This section complies with <span>[<a href="#RFC7153" class="xref">RFC7153</a>]</span>.<a href="#section-8-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-8-1">This section complies with <span>[<a href="#RFC7153" class="cite xref">RFC7153</a>]</span>.<a href="#section-8-1" class="pilcrow">¶</a></p>
+2081c2117
+<      <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span><a href="#section-8.1.1-1.4" class="pilcrow">¶</a>
+---
+>      <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span><a href="#section-8.1.1-1.4" class="pilcrow">¶</a>
+2099c2135
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-8.1.2-1">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-8.1.2-1">
+2114c2150
+<               <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-1.8" class="pilcrow">¶</a>
+---
+>               <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-1.8" class="pilcrow">¶</a>
+2118c2154
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-8.1.2-2">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-8.1.2-2">
+2133c2169
+<               <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-2.8" class="pilcrow">¶</a>
+---
+>               <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-2.8" class="pilcrow">¶</a>
+2137c2173
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-8.1.2-3">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-8.1.2-3">
+2152c2188
+<               <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-3.8" class="pilcrow">¶</a>
+---
+>               <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-3.8" class="pilcrow">¶</a>
+2156c2192
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-8.1.2-4">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-8.1.2-4">
+2171c2207
+<               <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-4.8" class="pilcrow">¶</a>
+---
+>               <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-4.8" class="pilcrow">¶</a>
+2175c2211
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-8.1.2-5">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-8.1.2-5">
+2190c2226
+<               <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-5.8" class="pilcrow">¶</a>
+---
+>               <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-5.8" class="pilcrow">¶</a>
+2194c2230
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-8.1.2-6">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-8.1.2-6">
+2209c2245
+<               <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-6.8" class="pilcrow">¶</a>
+---
+>               <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-6.8" class="pilcrow">¶</a>
+2213c2249
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-8.1.2-7">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-8.1.2-7">
+2228c2264
+<               <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-7.8" class="pilcrow">¶</a>
+---
+>               <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-7.8" class="pilcrow">¶</a>
+2232c2268
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-8.1.2-8">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-8.1.2-8">
+2247c2283
+<               <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-8.8" class="pilcrow">¶</a>
+---
+>               <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-8.8" class="pilcrow">¶</a>
+2251c2287
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-8.1.2-9">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-8.1.2-9">
+2266c2302
+<               <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-9.8" class="pilcrow">¶</a>
+---
+>               <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-9.8" class="pilcrow">¶</a>
+2270c2306
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-8.1.2-10">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-8.1.2-10">
+2285c2321
+<               <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-10.8" class="pilcrow">¶</a>
+---
+>               <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-10.8" class="pilcrow">¶</a>
+2289c2325
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-8.1.2-11">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-8.1.2-11">
+2304c2340
+<               <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-11.8" class="pilcrow">¶</a>
+---
+>               <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-11.8" class="pilcrow">¶</a>
+2308c2344
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-8.1.2-12">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-8.1.2-12">
+2323c2359
+<               <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-12.8" class="pilcrow">¶</a>
+---
+>               <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-12.8" class="pilcrow">¶</a>
+2327c2363
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-8.1.2-13">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-8.1.2-13">
+2342c2378
+<               <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-13.8" class="pilcrow">¶</a>
+---
+>               <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-13.8" class="pilcrow">¶</a>
+2346c2382
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-8.1.2-14">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-8.1.2-14">
+2364c2400
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-8.1.2-15">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-8.1.2-15">
+2378c2414
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-8.1.2-16">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-8.1.2-16">
+2393c2429
+<               <span>[<a href="#RFC8955" class="xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-16.8" class="pilcrow">¶</a>
+---
+>               <span>[<a href="#RFC8955" class="cite xref">RFC8955</a>]</span>, RFC 8956<a href="#section-8.1.2-16.8" class="pilcrow">¶</a>
+2443c2479
+< <span class="refAuthor">Rekhter, Y., Ed.</span><span class="refAuthor">, Li, T., Ed.</span><span class="refAuthor">, and S. Hares, Ed.</span>, <span class="refTitle">"A Border Gateway Protocol 4 (BGP-4)"</span>, <span class="seriesInfo">RFC 4271</span>, <span class="seriesInfo">DOI 10.17487/RFC4271</span>, <time datetime="2006-01" class="refDate">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4271">https://www.rfc-editor.org/info/rfc4271</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rekhter, Y., Ed.</span>, <span class="refAuthor">Li, T., Ed.</span>, and <span class="refAuthor">S. Hares, Ed.</span>, <span class="refTitle">"A Border Gateway Protocol 4 (BGP-4)"</span>, <span class="seriesInfo">RFC 4271</span>, <span class="seriesInfo">DOI 10.17487/RFC4271</span>, <time datetime="2006-01" class="refDate">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4271">https://www.rfc-editor.org/info/rfc4271</a>&gt;</span>. </dd>
+2447c2483
+< <span class="refAuthor">Conta, A.</span><span class="refAuthor">, Deering, S.</span><span class="refAuthor">, and M. Gupta, Ed.</span>, <span class="refTitle">"Internet Control Message Protocol (ICMPv6) for the Internet Protocol Version 6 (IPv6) Specification"</span>, <span class="seriesInfo">STD 89</span>, <span class="seriesInfo">RFC 4443</span>, <span class="seriesInfo">DOI 10.17487/RFC4443</span>, <time datetime="2006-03" class="refDate">March 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4443">https://www.rfc-editor.org/info/rfc4443</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Conta, A.</span>, <span class="refAuthor">Deering, S.</span>, and <span class="refAuthor">M. Gupta, Ed.</span>, <span class="refTitle">"Internet Control Message Protocol (ICMPv6) for the Internet Protocol Version 6 (IPv6) Specification"</span>, <span class="seriesInfo">STD 89</span>, <span class="seriesInfo">RFC 4443</span>, <span class="seriesInfo">DOI 10.17487/RFC4443</span>, <time datetime="2006-03" class="refDate">March 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4443">https://www.rfc-editor.org/info/rfc4443</a>&gt;</span>. </dd>
+2451c2487
+< <span class="refAuthor">Bates, T.</span><span class="refAuthor">, Chandra, R.</span><span class="refAuthor">, Katz, D.</span><span class="refAuthor">, and Y. Rekhter</span>, <span class="refTitle">"Multiprotocol Extensions for BGP-4"</span>, <span class="seriesInfo">RFC 4760</span>, <span class="seriesInfo">DOI 10.17487/RFC4760</span>, <time datetime="2007-01" class="refDate">January 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4760">https://www.rfc-editor.org/info/rfc4760</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bates, T.</span>, <span class="refAuthor">Chandra, R.</span>, <span class="refAuthor">Katz, D.</span>, and <span class="refAuthor">Y. Rekhter</span>, <span class="refTitle">"Multiprotocol Extensions for BGP-4"</span>, <span class="seriesInfo">RFC 4760</span>, <span class="seriesInfo">DOI 10.17487/RFC4760</span>, <time datetime="2007-01" class="refDate">January 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4760">https://www.rfc-editor.org/info/rfc4760</a>&gt;</span>. </dd>
+2459c2495
+< <span class="refAuthor">Gont, F.</span><span class="refAuthor">, Manral, V.</span><span class="refAuthor">, and R. Bonica</span>, <span class="refTitle">"Implications of Oversized IPv6 Header Chains"</span>, <span class="seriesInfo">RFC 7112</span>, <span class="seriesInfo">DOI 10.17487/RFC7112</span>, <time datetime="2014-01" class="refDate">January 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7112">https://www.rfc-editor.org/info/rfc7112</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Gont, F.</span>, <span class="refAuthor">Manral, V.</span>, and <span class="refAuthor">R. Bonica</span>, <span class="refTitle">"Implications of Oversized IPv6 Header Chains"</span>, <span class="seriesInfo">RFC 7112</span>, <span class="seriesInfo">DOI 10.17487/RFC7112</span>, <time datetime="2014-01" class="refDate">January 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7112">https://www.rfc-editor.org/info/rfc7112</a>&gt;</span>. </dd>
+2463c2499
+< <span class="refAuthor">Rosen, E.</span><span class="refAuthor"> and Y. Rekhter</span>, <span class="refTitle">"IANA Registries for BGP Extended Communities"</span>, <span class="seriesInfo">RFC 7153</span>, <span class="seriesInfo">DOI 10.17487/RFC7153</span>, <time datetime="2014-03" class="refDate">March 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7153">https://www.rfc-editor.org/info/rfc7153</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rosen, E.</span> and <span class="refAuthor">Y. Rekhter</span>, <span class="refTitle">"IANA Registries for BGP Extended Communities"</span>, <span class="seriesInfo">RFC 7153</span>, <span class="seriesInfo">DOI 10.17487/RFC7153</span>, <time datetime="2014-03" class="refDate">March 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7153">https://www.rfc-editor.org/info/rfc7153</a>&gt;</span>. </dd>
+2471c2507
+< <span class="refAuthor">Deering, S.</span><span class="refAuthor"> and R. Hinden</span>, <span class="refTitle">"Internet Protocol, Version 6 (IPv6) Specification"</span>, <span class="seriesInfo">STD 86</span>, <span class="seriesInfo">RFC 8200</span>, <span class="seriesInfo">DOI 10.17487/RFC8200</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8200">https://www.rfc-editor.org/info/rfc8200</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Deering, S.</span> and <span class="refAuthor">R. Hinden</span>, <span class="refTitle">"Internet Protocol, Version 6 (IPv6) Specification"</span>, <span class="seriesInfo">STD 86</span>, <span class="seriesInfo">RFC 8200</span>, <span class="seriesInfo">DOI 10.17487/RFC8200</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8200">https://www.rfc-editor.org/info/rfc8200</a>&gt;</span>. </dd>
+2479c2515
+< <span class="refAuthor">Loibl, C.</span><span class="refAuthor">, Hares, S.</span><span class="refAuthor">, Raszuk, R.</span><span class="refAuthor">, McPherson, D.</span><span class="refAuthor">, and M. Bacher</span>, <span class="refTitle">"Dissemination of Flow Specification Rules"</span>, <span class="seriesInfo">RFC 8955</span>, <span class="seriesInfo">DOI 10.17487/RFC8955</span>, <time datetime="2020-12" class="refDate">December 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8955">https://www.rfc-editor.org/info/rfc8955</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Loibl, C.</span>, <span class="refAuthor">Hares, S.</span>, <span class="refAuthor">Raszuk, R.</span>, <span class="refAuthor">McPherson, D.</span>, and <span class="refAuthor">M. Bacher</span>, <span class="refTitle">"Dissemination of Flow Specification Rules"</span>, <span class="seriesInfo">RFC 8955</span>, <span class="seriesInfo">DOI 10.17487/RFC8955</span>, <time datetime="2020-12" class="refDate">December 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8955">https://www.rfc-editor.org/info/rfc8955</a>&gt;</span>. </dd>
+2484c2520
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2486c2522
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-example-python-code-flow_ru" class="section-name selfRef">Example Python Code: flow_rule_cmp_v6</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-example-python-code-flow_ru" class="section-name selfRef">Example Python Code: flow_rule_cmp_v6</a>
+2488,2489c2524,2525
+< <div id="section-appendix.a-1">
+< <pre class="sourcecode lang-python">&lt;CODE BEGINS&gt;
+---
+> <div class="breakable lang-python sourcecode" id="appendix-A-1">
+> <pre>&lt;CODE BEGINS&gt;
+2637c2673
+< &lt;CODE ENDS&gt;</pre><a href="#section-appendix.a-1" class="pilcrow">¶</a>
+---
+> &lt;CODE ENDS&gt;</pre><a href="#appendix-A-1" class="pilcrow">¶</a>
+2641c2677
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+2645c2681
+< <p id="section-appendix.b-1">The authors would like to thank <span class="contact-name">Pedro Marques</span>, <span class="contact-name">Hannes Gredler</span>, <span class="contact-name">Bruno Rijsman</span>, <span class="contact-name">Brian Carpenter</span>, and <span class="contact-name">Thomas Mangin</span> for their valuable input.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-B-1">The authors would like to thank <span class="contact-name">Pedro Marques</span>, <span class="contact-name">Hannes Gredler</span>, <span class="contact-name">Bruno Rijsman</span>, <span class="contact-name">Brian Carpenter</span>, and <span class="contact-name">Thomas Mangin</span> for their valuable input.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+2647c2683
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
+2682c2718
+< <section id="section-appendix.d">
+---
+> <section id="appendix-D">

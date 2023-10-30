@@ -1,0 +1,627 @@
+15c15
+< <meta content="xml2rfc 3.5.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+18,35c18,31
+<   xml2rfc 3.5.0
+<     Python 3.6.10
+<     appdirs 1.4.4
+<     ConfigArgParse 1.2.3
+<     google-i18n-address 2.3.5
+<     html5lib 1.0.1
+<     intervaltree 3.0.2
+<     Jinja2 2.11.2
+<     kitchen 1.2.6
+<     lxml 4.4.2
+<     pycairo 1.19.0
+<     pycountry 19.8.18
+<     pyflakes 2.1.1
+<     PyYAML 5.3.1
+<     requests 2.22.0
+<     setuptools 40.6.2
+<     six 1.14.0
+<     WeasyPrint 51
+---
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 3.11.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.8
+37c33
+< <link href="rfc8835.xml" rel="alternate" type="application/rfc+xml">
+---
+> <link href="rfc/rfc8835.xml" rel="alternate" type="application/rfc+xml">
+47c43
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+56a53,58
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+59d60
+<   width: extend-to-zoom;
+74c75
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+76a78
+>   overflow-wrap: break-word;
+162a165,173
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+177,180d187
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+181a189
+>   border: none;
+204a213,215
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+246c257,258
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+256c268
+< tt, code, pre, code {
+---
+> tt, code, pre {
+258c270
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+297a310,312
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+387a403,408
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+489c510
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+629d649
+< 
+651a672,674
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+719c742
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+819c842
+< tt, code, pre, code {
+---
+> tt, code, pre {
+824c847
+< pre.sourcecode,
+---
+> .sourcecode pre,
+860c883
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1041a1065
+>   .artwork > pre,
+1056c1080
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1062a1087,1089
+> tr {
+>   break-inside: avoid;
+> }
+1082c1109
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1113c1140
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1138c1165
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1156c1183
+< dd > div:first-child > pre.sourcecode,
+---
+> dd > div.sourcecode:first-child,
+1164a1192,1199
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1166a1202
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-rtcweb-transports-17" rel="prev">
+1169c1205
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-rtcweb-transports-17" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1171,1172c1207,1208
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1263,1277c1299,1313
+< <nav class="toc"><ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-transport-and-middlebox-spe" class="xref">Transport and Middlebox Specification</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-system-provided-interfaces" class="xref">System-Provided Interfaces</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-ability-to-use-ipv4-and-ipv" class="xref">Ability to Use IPv4 and IPv6</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-transport-and-middlebox-spe" class="internal xref">Transport and Middlebox Specification</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-system-provided-interfaces" class="internal xref">System-Provided Interfaces</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-ability-to-use-ipv4-and-ipv" class="internal xref">Ability to Use IPv4 and IPv6</a></p>
+1279,1280c1315,1316
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.3.2.3">
+<                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-usage-of-temporary-ipv6-add" class="xref">Usage of Temporary IPv6 Addresses</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+>                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-usage-of-temporary-ipv6-add" class="internal xref">Usage of Temporary IPv6 Addresses</a></p>
+1282,1283c1318,1319
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.3.2.4">
+<                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="xref">3.4</a>.  <a href="#name-middlebox-related-functions" class="xref">Middlebox-Related Functions</a><a href="#section-toc.1-1.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+>                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-middlebox-related-functions" class="internal xref">Middlebox-Related Functions</a></p>
+1285,1286c1321,1322
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.3.2.5">
+<                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="xref">3.5</a>.  <a href="#name-transport-protocols-impleme" class="xref">Transport Protocols Implemented</a><a href="#section-toc.1-1.3.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
+>                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-transport-protocols-impleme" class="internal xref">Transport Protocols Implemented</a></p>
+1290,1294c1326,1330
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-media-prioritization" class="xref">Media Prioritization</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-local-prioritization" class="xref">Local Prioritization</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-media-prioritization" class="internal xref">Media Prioritization</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-local-prioritization" class="internal xref">Local Prioritization</a></p>
+1296,1297c1332,1333
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-usage-of-quality-of-service" class="xref">Usage of Quality of Service -- DSCP and Multiplexing</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-usage-of-quality-of-service" class="internal xref">Usage of Quality of Service -- DSCP and Multiplexing</a></p>
+1301,1302c1337,1338
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1304,1305c1340,1341
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1307,1311c1343,1347
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1313,1314c1349,1350
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1318,1319c1354,1355
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1321,1322c1357,1358
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+1334c1370
+< <p id="section-1-2">WebRTC is described in the WebRTC overview document <span>[<a href="#RFC8825" class="xref">RFC8825</a>]</span>, which also defines terminology used
+---
+> <p id="section-1-2">WebRTC is described in the WebRTC overview document <span>[<a href="#RFC8825" class="cite xref">RFC8825</a>]</span>, which also defines terminology used
+1337c1373
+< <p id="section-1-3">Terminology for RTP sources is taken from <span>[<a href="#RFC7656" class="xref">RFC7656</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
+---
+> <p id="section-1-3">Terminology for RTP sources is taken from <span>[<a href="#RFC7656" class="cite xref">RFC7656</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
+1343c1379
+<       described in the WebRTC security documents, <span>[<a href="#RFC8826" class="xref">RFC8826</a>]</span> and <span>[<a href="#RFC8827" class="xref">RFC8827</a>]</span>.<a href="#section-1-5" class="pilcrow">¶</a></p>
+---
+>       described in the WebRTC security documents, <span>[<a href="#RFC8826" class="cite xref">RFC8826</a>]</span> and <span>[<a href="#RFC8827" class="cite xref">RFC8827</a>]</span>.<a href="#section-1-5" class="pilcrow">¶</a></p>
+1355c1391
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1372c1408
+<           <dt id="section-3.1-2.1">UDP <span>[<a href="#RFC0768" class="xref">RFC0768</a>]</span>:</dt>
+---
+>           <dt id="section-3.1-2.1">UDP <span>[<a href="#RFC0768" class="cite xref">RFC0768</a>]</span>:</dt>
+1377c1413
+< <dt id="section-3.1-2.3">TCP <span>[<a href="#RFC0793" class="xref">RFC0793</a>]</span>:</dt>
+---
+> <dt id="section-3.1-2.3">TCP <span>[<a href="#RFC0793" class="cite xref">RFC0793</a>]</span>:</dt>
+1387c1423
+<         achieve the prioritizations described in <span>[<a href="#RFC8837" class="xref">RFC8837</a>]</span> (see <a href="#s-qos" class="xref">Section 4.2</a> of this document) when
+---
+>         achieve the prioritizations described in <span>[<a href="#RFC8837" class="cite xref">RFC8837</a>]</span> (see <a href="#s-qos" class="auto internal xref">Section 4.2</a> of this document) when
+1400c1436
+<           <dd style="margin-left: 1.5em" id="section-3.1-8.2">Traversal Using Relays Around NAT <span>[<a href="#RFC8656" class="xref">RFC8656</a>]</span><a href="#section-3.1-8.2" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-3.1-8.2">Traversal Using Relays Around NAT <span>[<a href="#RFC8656" class="cite xref">RFC8656</a>]</span><a href="#section-3.1-8.2" class="pilcrow">¶</a>
+1404c1440
+<           <dd style="margin-left: 1.5em" id="section-3.1-8.4">Session Traversal Utilities for NAT <span>[<a href="#RFC5389" class="xref">RFC5389</a>]</span><a href="#section-3.1-8.4" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-3.1-8.4">Session Traversal Utilities for NAT <span>[<a href="#RFC5389" class="cite xref">RFC5389</a>]</span><a href="#section-3.1-8.4" class="pilcrow">¶</a>
+1408c1444
+<           <dd style="margin-left: 1.5em" id="section-3.1-8.6">Interactive Connectivity Establishment <span>[<a href="#RFC8445" class="xref">RFC8445</a>]</span><a href="#section-3.1-8.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-3.1-8.6">Interactive Connectivity Establishment <span>[<a href="#RFC8445" class="cite xref">RFC8445</a>]</span><a href="#section-3.1-8.6" class="pilcrow">¶</a>
+1412c1448
+<           <dd style="margin-left: 1.5em" id="section-3.1-8.8">Transport Layer Security <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span><a href="#section-3.1-8.8" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-3.1-8.8">Transport Layer Security <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span><a href="#section-3.1-8.8" class="pilcrow">¶</a>
+1416c1452
+<           <dd style="margin-left: 1.5em" id="section-3.1-8.10">Datagram Transport Layer Security <span>[<a href="#RFC6347" class="xref">RFC6347</a>]</span><a href="#section-3.1-8.10" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-3.1-8.10">Datagram Transport Layer Security <span>[<a href="#RFC6347" class="cite xref">RFC6347</a>]</span><a href="#section-3.1-8.10" class="pilcrow">¶</a>
+1433c1469
+<         specification for ICE <span>[<a href="#RFC8421" class="xref">RFC8421</a>]</span> <span class="bcp14">SHOULD</span> be
+---
+>         specification for ICE <span>[<a href="#RFC8421" class="cite xref">RFC8421</a>]</span> <span class="bcp14">SHOULD</span> be
+1440,1441c1476,1477
+< <p id="section-3.3-1">The IPv6 default address selection specification <span>[<a href="#RFC6724" class="xref">RFC6724</a>]</span> specifies that temporary addresses
+<         <span>[<a href="#RFC4941" class="xref">RFC4941</a>]</span> are to be preferred over
+---
+> <p id="section-3.3-1">The IPv6 default address selection specification <span>[<a href="#RFC6724" class="cite xref">RFC6724</a>]</span> specifies that temporary addresses
+>         <span>[<a href="#RFC4941" class="cite xref">RFC4941</a>]</span> are to be preferred over
+1443c1479
+<         is a change from the rules specified by <span>[<a href="#RFC3484" class="xref">RFC3484</a>]</span>. For
+---
+>         is a change from the rules specified by <span>[<a href="#RFC3484" class="cite xref">RFC3484</a>]</span>. For
+1445c1481
+<         IPV6_PREFER_SRC_TMP preference flag specified in <span>[<a href="#RFC5014" class="xref">RFC5014</a>]</span>. However, this rule, which is intended to ensure
+---
+>         IPV6_PREFER_SRC_TMP preference flag specified in <span>[<a href="#RFC5014" class="cite xref">RFC5014</a>]</span>. However, this rule, which is intended to ensure
+1455c1491
+<         described in <span>[<a href="#RFC6724" class="xref">RFC6724</a>]</span>.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+---
+>         described in <span>[<a href="#RFC6724" class="cite xref">RFC6724</a>]</span>.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+1471c1507
+< <p id="section-3.4-2">ICE <span>[<a href="#RFC8445" class="xref">RFC8445</a>]</span> <span class="bcp14">MUST</span> be supported. The
+---
+> <p id="section-3.4-2">ICE <span>[<a href="#RFC8445" class="cite xref">RFC8445</a>]</span> <span class="bcp14">MUST</span> be supported. The
+1477c1513
+<         <span>[<a href="#RFC5128" class="xref">RFC5128</a>], <a href="https://www.rfc-editor.org/rfc/rfc5128#section-2.4" class="relref">Section 2.4</a></span>), TURN <span>[<a href="#RFC8656" class="xref">RFC8656</a>]</span>
+---
+>         <span>[<a href="#RFC5128" class="cite xref">RFC5128</a>], <a href="https://rfc-editor.org/rfc/rfc5128#section-2.4" class="relref">Section 2.4</a></span>), TURN <span>[<a href="#RFC8656" class="cite xref">RFC8656</a>]</span>
+1482,1483c1518,1519
+<         and management, including <span>[<a href="#RFC8155" class="xref">RFC8155</a>]</span> for server discovery,
+<         as well as <span>[<a href="#I-D.ietf-rtcweb-return" class="xref">RETURN</a>]</span>.<a href="#section-3.4-5" class="pilcrow">¶</a></p>
+---
+>         and management, including <span>[<a href="#RFC8155" class="cite xref">RFC8155</a>]</span> for server discovery,
+>         as well as <span>[<a href="#I-D.ietf-rtcweb-return" class="cite xref">RETURN</a>]</span>.<a href="#section-3.4-5" class="pilcrow">¶</a></p>
+1488c1524
+<         <span><a href="https://www.rfc-editor.org/rfc/rfc8656#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC8656" class="xref">RFC8656</a>]</span>, for details.<a href="#section-3.4-6" class="pilcrow">¶</a></p>
+---
+>         <span><a href="https://rfc-editor.org/rfc/rfc8656#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC8656" class="cite xref">RFC8656</a>]</span>, for details.<a href="#section-3.4-6" class="pilcrow">¶</a></p>
+1493c1529
+<         endpoint's TURN server to the peer is a TCP connection, <span>[<a href="#RFC6062" class="xref">RFC6062</a>]</span> <span class="bcp14">MAY</span> be supported.<a href="#section-3.4-8" class="pilcrow">¶</a></p>
+---
+>         endpoint's TURN server to the peer is a TCP connection, <span>[<a href="#RFC6062" class="cite xref">RFC6062</a>]</span> <span class="bcp14">MAY</span> be supported.<a href="#section-3.4-8" class="pilcrow">¶</a></p>
+1505c1541
+< <p id="section-3.4-13">ICE-TCP candidates <span>[<a href="#RFC6544" class="xref">RFC6544</a>]</span> <span class="bcp14">MUST</span> be supported; this
+---
+> <p id="section-3.4-13">ICE-TCP candidates <span>[<a href="#RFC6544" class="cite xref">RFC6544</a>]</span> <span class="bcp14">MUST</span> be supported; this
+1509c1545
+< <p id="section-3.4-14">If TCP connections are used, RTP framing according to <span>[<a href="#RFC4571" class="xref">RFC4571</a>]</span> <span class="bcp14">MUST</span> be used for all packets. This includes the RTP
+---
+> <p id="section-3.4-14">If TCP connections are used, RTP framing according to <span>[<a href="#RFC4571" class="cite xref">RFC4571</a>]</span> <span class="bcp14">MUST</span> be used for all packets. This includes the RTP
+1512c1548
+< <p id="section-3.4-15">The ALTERNATE-SERVER mechanism specified in <span><a href="https://www.rfc-editor.org/rfc/rfc5389#section-11" class="relref">Section 11</a> of [<a href="#RFC5389" class="xref">RFC5389</a>]</span> (300 Try Alternate) <span class="bcp14">MUST</span> be
+---
+> <p id="section-3.4-15">The ALTERNATE-SERVER mechanism specified in <span><a href="https://rfc-editor.org/rfc/rfc5389#section-11" class="relref">Section 11</a> of [<a href="#RFC5389" class="cite xref">RFC5389</a>]</span> (300 Try Alternate) <span class="bcp14">MUST</span> be
+1516,1517c1552,1553
+<         specified in <span>[<a href="#RFC7639" class="xref">RFC7639</a>]</span>, and proxy authentication as
+<         described in <span><a href="https://www.rfc-editor.org/rfc/rfc7231#section-4.3.6" class="relref">Section 4.3.6</a> of [<a href="#RFC7231" class="xref">RFC7231</a>]</span> and <span>[<a href="#RFC7235" class="xref">RFC7235</a>]</span> <span class="bcp14">MUST</span> also be supported.<a href="#section-3.4-16" class="pilcrow">¶</a></p>
+---
+>         specified in <span>[<a href="#RFC7639" class="cite xref">RFC7639</a>]</span>, and proxy authentication as
+>         described in <span><a href="https://rfc-editor.org/rfc/rfc7231#section-4.3.6" class="relref">Section 4.3.6</a> of [<a href="#RFC7231" class="cite xref">RFC7231</a>]</span> and <span>[<a href="#RFC7235" class="cite xref">RFC7235</a>]</span> <span class="bcp14">MUST</span> also be supported.<a href="#section-3.4-16" class="pilcrow">¶</a></p>
+1525,1533c1561,1569
+<         RTP profile used are described in "Media Transport and Use of RTP in WebRTC" <span>[<a href="#RFC8834" class="xref">RFC8834</a>]</span>, which mandates the use of a
+<         circuit breaker <span>[<a href="#RFC8083" class="xref">RFC8083</a>]</span>
+<         and congestion control (see <span>[<a href="#RFC8836" class="xref">RFC8836</a>]</span> for further guidance).<a href="#section-3.5-1" class="pilcrow">¶</a></p>
+< <p id="section-3.5-2">Key exchange <span class="bcp14">MUST</span> be done using DTLS-SRTP, as described in <span>[<a href="#RFC8827" class="xref">RFC8827</a>]</span>.<a href="#section-3.5-2" class="pilcrow">¶</a></p>
+< <p id="section-3.5-3">For data transport over the WebRTC data channel <span>[<a href="#RFC8831" class="xref">RFC8831</a>]</span>, WebRTC endpoints <span class="bcp14">MUST</span> support
+<         SCTP over DTLS over ICE. This encapsulation is specified in <span>[<a href="#RFC8261" class="xref">RFC8261</a>]</span>. Negotiation of this
+<         transport in the Session Description Protocol (SDP) is defined in <span>[<a href="#RFC8841" class="xref">RFC8841</a>]</span>. The SCTP extension for I-DATA
+<         <span>[<a href="#RFC8260" class="xref">RFC8260</a>]</span> <span class="bcp14">MUST</span> be supported.<a href="#section-3.5-3" class="pilcrow">¶</a></p>
+< <p id="section-3.5-4">The setup protocol for WebRTC data channels described in <span>[<a href="#RFC8832" class="xref">RFC8832</a>]</span> <span class="bcp14">MUST</span> be supported.<a href="#section-3.5-4" class="pilcrow">¶</a></p>
+---
+>         RTP profile used are described in "Media Transport and Use of RTP in WebRTC" <span>[<a href="#RFC8834" class="cite xref">RFC8834</a>]</span>, which mandates the use of a
+>         circuit breaker <span>[<a href="#RFC8083" class="cite xref">RFC8083</a>]</span>
+>         and congestion control (see <span>[<a href="#RFC8836" class="cite xref">RFC8836</a>]</span> for further guidance).<a href="#section-3.5-1" class="pilcrow">¶</a></p>
+> <p id="section-3.5-2">Key exchange <span class="bcp14">MUST</span> be done using DTLS-SRTP, as described in <span>[<a href="#RFC8827" class="cite xref">RFC8827</a>]</span>.<a href="#section-3.5-2" class="pilcrow">¶</a></p>
+> <p id="section-3.5-3">For data transport over the WebRTC data channel <span>[<a href="#RFC8831" class="cite xref">RFC8831</a>]</span>, WebRTC endpoints <span class="bcp14">MUST</span> support
+>         SCTP over DTLS over ICE. This encapsulation is specified in <span>[<a href="#RFC8261" class="cite xref">RFC8261</a>]</span>. Negotiation of this
+>         transport in the Session Description Protocol (SDP) is defined in <span>[<a href="#RFC8841" class="cite xref">RFC8841</a>]</span>. The SCTP extension for I-DATA
+>         <span>[<a href="#RFC8260" class="cite xref">RFC8260</a>]</span> <span class="bcp14">MUST</span> be supported.<a href="#section-3.5-3" class="pilcrow">¶</a></p>
+> <p id="section-3.5-4">The setup protocol for WebRTC data channels described in <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span> <span class="bcp14">MUST</span> be supported.<a href="#section-3.5-4" class="pilcrow">¶</a></p>
+1535c1571
+<           <p id="section-3.5-5.1">Note: The interaction between DTLS-SRTP as defined in <span>[<a href="#RFC5764" class="xref">RFC5764</a>]</span> and ICE as defined in <span>[<a href="#RFC8445" class="xref">RFC8445</a>]</span> is described in <span><a href="https://www.rfc-editor.org/rfc/rfc8842#section-6" class="relref">Section 6</a> of [<a href="#RFC8842" class="xref">RFC8842</a>]</span>. The effect of this specification
+---
+>           <p id="section-3.5-5.1">Note: The interaction between DTLS-SRTP as defined in <span>[<a href="#RFC5764" class="cite xref">RFC5764</a>]</span> and ICE as defined in <span>[<a href="#RFC8445" class="cite xref">RFC8445</a>]</span> is described in <span><a href="https://rfc-editor.org/rfc/rfc8842#section-6" class="relref">Section 6</a> of [<a href="#RFC8842" class="cite xref">RFC8842</a>]</span>. The effect of this specification
+1541c1577
+<         same port pair, as described in the DTLS-SRTP specification <span>[<a href="#RFC5764" class="xref">RFC5764</a>], <a href="https://www.rfc-editor.org/rfc/rfc5764#section-5.1.2" class="relref">Section 5.1.2</a></span>, with clarifications in <span>[<a href="#RFC7983" class="xref">RFC7983</a>]</span>. All application-layer
+---
+>         same port pair, as described in the DTLS-SRTP specification <span>[<a href="#RFC5764" class="cite xref">RFC5764</a>], <a href="https://rfc-editor.org/rfc/rfc5764#section-5.1.2" class="relref">Section 5.1.2</a></span>, with clarifications in <span>[<a href="#RFC7983" class="cite xref">RFC7983</a>]</span>. All application-layer
+1544c1580
+<         handshake, as specified in <span>[<a href="#RFC8833" class="xref">RFC8833</a>]</span>.<a href="#section-3.5-7" class="pilcrow">¶</a></p>
+---
+>         handshake, as specified in <span>[<a href="#RFC8833" class="cite xref">RFC8833</a>]</span>.<a href="#section-3.5-7" class="pilcrow">¶</a></p>
+1558c1594
+<       flow", is what <span>[<a href="#RFC7656" class="xref">RFC7656</a>]</span> calls a "media source", which
+---
+>       flow", is what <span>[<a href="#RFC7656" class="cite xref">RFC7656</a>]</span> calls a "media source", which
+1563c1599
+<       in <span>[<a href="#RFC4594" class="xref">RFC4594</a>]</span>; there is no browser API support for
+---
+>       in <span>[<a href="#RFC4594" class="cite xref">RFC4594</a>]</span>; there is no browser API support for
+1627c1663
+<         further in <span>[<a href="#RFC8699" class="xref">RFC8699</a>]</span>.<a href="#section-4.1-11" class="pilcrow">¶</a></p>
+---
+>         further in <span>[<a href="#RFC8699" class="cite xref">RFC8699</a>]</span>.<a href="#section-4.1-11" class="pilcrow">¶</a></p>
+1639c1675
+<         according to the guidelines in <span>[<a href="#RFC8837" class="xref">RFC8837</a>]</span>. It is appropriate to depart from
+---
+>         according to the guidelines in <span>[<a href="#RFC8837" class="cite xref">RFC8837</a>]</span>. It is appropriate to depart from
+1645c1681
+<         are described in <span>[<a href="#ANRW16" class="xref">ANRW16</a>]</span>. The detection of these
+---
+>         are described in <span>[<a href="#ANRW16" class="cite xref">ANRW16</a>]</span>. The detection of these
+1650c1686
+<         <span>[<a href="#RFC8837" class="xref">RFC8837</a>]</span>. Implementations need to
+---
+>         <span>[<a href="#RFC8837" class="cite xref">RFC8837</a>]</span>. Implementations need to
+1669c1705
+<         <span class="bcp14">SHOULD</span> be that recommended by <span>[<a href="#RFC8837" class="xref">RFC8837</a>]</span> for the highest-priority data
+---
+>         <span class="bcp14">SHOULD</span> be that recommended by <span>[<a href="#RFC8837" class="cite xref">RFC8837</a>]</span> for the highest-priority data
+1676c1712
+<         relationship between DSCP and congestion control, is given in <span>[<a href="#RFC7657" class="xref">RFC7657</a>]</span>.<a href="#section-4.2-9" class="pilcrow">¶</a></p>
+---
+>         relationship between DSCP and congestion control, is given in <span>[<a href="#RFC7657" class="cite xref">RFC7657</a>]</span>.<a href="#section-4.2-9" class="pilcrow">¶</a></p>
+1700c1736
+<         information on mapping media flows to 5-tuples can be found in <span>[<a href="#RFC8834" class="xref">RFC8834</a>]</span>.<a href="#section-4.2-13" class="pilcrow">¶</a></p>
+---
+>         information on mapping media flows to 5-tuples can be found in <span>[<a href="#RFC8834" class="cite xref">RFC8834</a>]</span>.<a href="#section-4.2-13" class="pilcrow">¶</a></p>
+1735c1771
+< <p id="section-6-1">WebRTC security considerations are enumerated in <span>[<a href="#RFC8826" class="xref">RFC8826</a>]</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-6-1">WebRTC security considerations are enumerated in <span>[<a href="#RFC8826" class="cite xref">RFC8826</a>]</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
+1737c1773
+<       in <span>[<a href="#RFC8837" class="xref">RFC8837</a>]</span>.<a href="#section-6-2" class="pilcrow">¶</a></p>
+---
+>       in <span>[<a href="#RFC8837" class="cite xref">RFC8837</a>]</span>.<a href="#section-6-2" class="pilcrow">¶</a></p>
+1767c1803
+< <span class="refAuthor">Babiarz, J.</span><span class="refAuthor">, Chan, K.</span><span class="refAuthor">, and F. Baker</span>, <span class="refTitle">"Configuration Guidelines for DiffServ Service Classes"</span>, <span class="seriesInfo">RFC 4594</span>, <span class="seriesInfo">DOI 10.17487/RFC4594</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4594">https://www.rfc-editor.org/info/rfc4594</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Babiarz, J.</span>, <span class="refAuthor">Chan, K.</span>, and <span class="refAuthor">F. Baker</span>, <span class="refTitle">"Configuration Guidelines for DiffServ Service Classes"</span>, <span class="seriesInfo">RFC 4594</span>, <span class="seriesInfo">DOI 10.17487/RFC4594</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4594">https://www.rfc-editor.org/info/rfc4594</a>&gt;</span>. </dd>
+1771c1807
+< <span class="refAuthor">Narten, T.</span><span class="refAuthor">, Draves, R.</span><span class="refAuthor">, and S. Krishnan</span>, <span class="refTitle">"Privacy Extensions for Stateless Address Autoconfiguration in IPv6"</span>, <span class="seriesInfo">RFC 4941</span>, <span class="seriesInfo">DOI 10.17487/RFC4941</span>, <time datetime="2007-09" class="refDate">September 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4941">https://www.rfc-editor.org/info/rfc4941</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Narten, T.</span>, <span class="refAuthor">Draves, R.</span>, and <span class="refAuthor">S. Krishnan</span>, <span class="refTitle">"Privacy Extensions for Stateless Address Autoconfiguration in IPv6"</span>, <span class="seriesInfo">RFC 4941</span>, <span class="seriesInfo">DOI 10.17487/RFC4941</span>, <time datetime="2007-09" class="refDate">September 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4941">https://www.rfc-editor.org/info/rfc4941</a>&gt;</span>. </dd>
+1775c1811
+< <span class="refAuthor">Rosenberg, J.</span><span class="refAuthor">, Mahy, R.</span><span class="refAuthor">, Matthews, P.</span><span class="refAuthor">, and D. Wing</span>, <span class="refTitle">"Session Traversal Utilities for NAT (STUN)"</span>, <span class="seriesInfo">RFC 5389</span>, <span class="seriesInfo">DOI 10.17487/RFC5389</span>, <time datetime="2008-10" class="refDate">October 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5389">https://www.rfc-editor.org/info/rfc5389</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rosenberg, J.</span>, <span class="refAuthor">Mahy, R.</span>, <span class="refAuthor">Matthews, P.</span>, and <span class="refAuthor">D. Wing</span>, <span class="refTitle">"Session Traversal Utilities for NAT (STUN)"</span>, <span class="seriesInfo">RFC 5389</span>, <span class="seriesInfo">DOI 10.17487/RFC5389</span>, <time datetime="2008-10" class="refDate">October 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5389">https://www.rfc-editor.org/info/rfc5389</a>&gt;</span>. </dd>
+1779c1815
+< <span class="refAuthor">McGrew, D.</span><span class="refAuthor"> and E. Rescorla</span>, <span class="refTitle">"Datagram Transport Layer Security (DTLS) Extension to Establish Keys for the Secure Real-time Transport Protocol (SRTP)"</span>, <span class="seriesInfo">RFC 5764</span>, <span class="seriesInfo">DOI 10.17487/RFC5764</span>, <time datetime="2010-05" class="refDate">May 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5764">https://www.rfc-editor.org/info/rfc5764</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">McGrew, D.</span> and <span class="refAuthor">E. Rescorla</span>, <span class="refTitle">"Datagram Transport Layer Security (DTLS) Extension to Establish Keys for the Secure Real-time Transport Protocol (SRTP)"</span>, <span class="seriesInfo">RFC 5764</span>, <span class="seriesInfo">DOI 10.17487/RFC5764</span>, <time datetime="2010-05" class="refDate">May 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5764">https://www.rfc-editor.org/info/rfc5764</a>&gt;</span>. </dd>
+1783c1819
+< <span class="refAuthor">Perreault, S., Ed.</span><span class="refAuthor"> and J. Rosenberg</span>, <span class="refTitle">"Traversal Using Relays around NAT (TURN) Extensions for TCP Allocations"</span>, <span class="seriesInfo">RFC 6062</span>, <span class="seriesInfo">DOI 10.17487/RFC6062</span>, <time datetime="2010-11" class="refDate">November 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6062">https://www.rfc-editor.org/info/rfc6062</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Perreault, S., Ed.</span> and <span class="refAuthor">J. Rosenberg</span>, <span class="refTitle">"Traversal Using Relays around NAT (TURN) Extensions for TCP Allocations"</span>, <span class="seriesInfo">RFC 6062</span>, <span class="seriesInfo">DOI 10.17487/RFC6062</span>, <time datetime="2010-11" class="refDate">November 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6062">https://www.rfc-editor.org/info/rfc6062</a>&gt;</span>. </dd>
+1787c1823
+< <span class="refAuthor">Rescorla, E.</span><span class="refAuthor"> and N. Modadugu</span>, <span class="refTitle">"Datagram Transport Layer Security Version 1.2"</span>, <span class="seriesInfo">RFC 6347</span>, <span class="seriesInfo">DOI 10.17487/RFC6347</span>, <time datetime="2012-01" class="refDate">January 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6347">https://www.rfc-editor.org/info/rfc6347</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rescorla, E.</span> and <span class="refAuthor">N. Modadugu</span>, <span class="refTitle">"Datagram Transport Layer Security Version 1.2"</span>, <span class="seriesInfo">RFC 6347</span>, <span class="seriesInfo">DOI 10.17487/RFC6347</span>, <time datetime="2012-01" class="refDate">January 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6347">https://www.rfc-editor.org/info/rfc6347</a>&gt;</span>. </dd>
+1791c1827
+< <span class="refAuthor">Rosenberg, J.</span><span class="refAuthor">, Keranen, A.</span><span class="refAuthor">, Lowekamp, B. B.</span><span class="refAuthor">, and A. B. Roach</span>, <span class="refTitle">"TCP Candidates with Interactive Connectivity Establishment (ICE)"</span>, <span class="seriesInfo">RFC 6544</span>, <span class="seriesInfo">DOI 10.17487/RFC6544</span>, <time datetime="2012-03" class="refDate">March 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6544">https://www.rfc-editor.org/info/rfc6544</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rosenberg, J.</span>, <span class="refAuthor">Keranen, A.</span>, <span class="refAuthor">Lowekamp, B. B.</span>, and <span class="refAuthor">A. B. Roach</span>, <span class="refTitle">"TCP Candidates with Interactive Connectivity Establishment (ICE)"</span>, <span class="seriesInfo">RFC 6544</span>, <span class="seriesInfo">DOI 10.17487/RFC6544</span>, <time datetime="2012-03" class="refDate">March 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6544">https://www.rfc-editor.org/info/rfc6544</a>&gt;</span>. </dd>
+1795c1831
+< <span class="refAuthor">Thaler, D., Ed.</span><span class="refAuthor">, Draves, R.</span><span class="refAuthor">, Matsumoto, A.</span><span class="refAuthor">, and T. Chown</span>, <span class="refTitle">"Default Address Selection for Internet Protocol Version 6 (IPv6)"</span>, <span class="seriesInfo">RFC 6724</span>, <span class="seriesInfo">DOI 10.17487/RFC6724</span>, <time datetime="2012-09" class="refDate">September 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6724">https://www.rfc-editor.org/info/rfc6724</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Thaler, D., Ed.</span>, <span class="refAuthor">Draves, R.</span>, <span class="refAuthor">Matsumoto, A.</span>, and <span class="refAuthor">T. Chown</span>, <span class="refTitle">"Default Address Selection for Internet Protocol Version 6 (IPv6)"</span>, <span class="seriesInfo">RFC 6724</span>, <span class="seriesInfo">DOI 10.17487/RFC6724</span>, <time datetime="2012-09" class="refDate">September 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6724">https://www.rfc-editor.org/info/rfc6724</a>&gt;</span>. </dd>
+1799c1835
+< <span class="refAuthor">Fielding, R., Ed.</span><span class="refAuthor"> and J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content"</span>, <span class="seriesInfo">RFC 7231</span>, <span class="seriesInfo">DOI 10.17487/RFC7231</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7231">https://www.rfc-editor.org/info/rfc7231</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fielding, R., Ed.</span> and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content"</span>, <span class="seriesInfo">RFC 7231</span>, <span class="seriesInfo">DOI 10.17487/RFC7231</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7231">https://www.rfc-editor.org/info/rfc7231</a>&gt;</span>. </dd>
+1803c1839
+< <span class="refAuthor">Fielding, R., Ed.</span><span class="refAuthor"> and J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Authentication"</span>, <span class="seriesInfo">RFC 7235</span>, <span class="seriesInfo">DOI 10.17487/RFC7235</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7235">https://www.rfc-editor.org/info/rfc7235</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fielding, R., Ed.</span> and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Authentication"</span>, <span class="seriesInfo">RFC 7235</span>, <span class="seriesInfo">DOI 10.17487/RFC7235</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7235">https://www.rfc-editor.org/info/rfc7235</a>&gt;</span>. </dd>
+1807c1843
+< <span class="refAuthor">Hutton, A.</span><span class="refAuthor">, Uberti, J.</span><span class="refAuthor">, and M. Thomson</span>, <span class="refTitle">"The ALPN HTTP Header Field"</span>, <span class="seriesInfo">RFC 7639</span>, <span class="seriesInfo">DOI 10.17487/RFC7639</span>, <time datetime="2015-08" class="refDate">August 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7639">https://www.rfc-editor.org/info/rfc7639</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hutton, A.</span>, <span class="refAuthor">Uberti, J.</span>, and <span class="refAuthor">M. Thomson</span>, <span class="refTitle">"The ALPN HTTP Header Field"</span>, <span class="seriesInfo">RFC 7639</span>, <span class="seriesInfo">DOI 10.17487/RFC7639</span>, <time datetime="2015-08" class="refDate">August 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7639">https://www.rfc-editor.org/info/rfc7639</a>&gt;</span>. </dd>
+1811c1847
+< <span class="refAuthor">Lennox, J.</span><span class="refAuthor">, Gross, K.</span><span class="refAuthor">, Nandakumar, S.</span><span class="refAuthor">, Salgueiro, G.</span><span class="refAuthor">, and B. Burman, Ed.</span>, <span class="refTitle">"A Taxonomy of Semantics and Mechanisms for Real-Time Transport Protocol (RTP) Sources"</span>, <span class="seriesInfo">RFC 7656</span>, <span class="seriesInfo">DOI 10.17487/RFC7656</span>, <time datetime="2015-11" class="refDate">November 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7656">https://www.rfc-editor.org/info/rfc7656</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Lennox, J.</span>, <span class="refAuthor">Gross, K.</span>, <span class="refAuthor">Nandakumar, S.</span>, <span class="refAuthor">Salgueiro, G.</span>, and <span class="refAuthor">B. Burman, Ed.</span>, <span class="refTitle">"A Taxonomy of Semantics and Mechanisms for Real-Time Transport Protocol (RTP) Sources"</span>, <span class="seriesInfo">RFC 7656</span>, <span class="seriesInfo">DOI 10.17487/RFC7656</span>, <time datetime="2015-11" class="refDate">November 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7656">https://www.rfc-editor.org/info/rfc7656</a>&gt;</span>. </dd>
+1815c1851
+< <span class="refAuthor">Petit-Huguenin, M.</span><span class="refAuthor"> and G. Salgueiro</span>, <span class="refTitle">"Multiplexing Scheme Updates for Secure Real-time Transport Protocol (SRTP) Extension for Datagram Transport Layer Security (DTLS)"</span>, <span class="seriesInfo">RFC 7983</span>, <span class="seriesInfo">DOI 10.17487/RFC7983</span>, <time datetime="2016-09" class="refDate">September 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7983">https://www.rfc-editor.org/info/rfc7983</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Petit-Huguenin, M.</span> and <span class="refAuthor">G. Salgueiro</span>, <span class="refTitle">"Multiplexing Scheme Updates for Secure Real-time Transport Protocol (SRTP) Extension for Datagram Transport Layer Security (DTLS)"</span>, <span class="seriesInfo">RFC 7983</span>, <span class="seriesInfo">DOI 10.17487/RFC7983</span>, <time datetime="2016-09" class="refDate">September 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7983">https://www.rfc-editor.org/info/rfc7983</a>&gt;</span>. </dd>
+1819c1855
+< <span class="refAuthor">Perkins, C.</span><span class="refAuthor"> and V. Singh</span>, <span class="refTitle">"Multimedia Congestion Control: Circuit Breakers for Unicast RTP Sessions"</span>, <span class="seriesInfo">RFC 8083</span>, <span class="seriesInfo">DOI 10.17487/RFC8083</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8083">https://www.rfc-editor.org/info/rfc8083</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Perkins, C.</span> and <span class="refAuthor">V. Singh</span>, <span class="refTitle">"Multimedia Congestion Control: Circuit Breakers for Unicast RTP Sessions"</span>, <span class="seriesInfo">RFC 8083</span>, <span class="seriesInfo">DOI 10.17487/RFC8083</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8083">https://www.rfc-editor.org/info/rfc8083</a>&gt;</span>. </dd>
+1827c1863
+< <span class="refAuthor">Stewart, R.</span><span class="refAuthor">, Tuexen, M.</span><span class="refAuthor">, Loreto, S.</span><span class="refAuthor">, and R. Seggelmann</span>, <span class="refTitle">"Stream Schedulers and User Message Interleaving for the Stream Control Transmission Protocol"</span>, <span class="seriesInfo">RFC 8260</span>, <span class="seriesInfo">DOI 10.17487/RFC8260</span>, <time datetime="2017-11" class="refDate">November 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8260">https://www.rfc-editor.org/info/rfc8260</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Stewart, R.</span>, <span class="refAuthor">Tuexen, M.</span>, <span class="refAuthor">Loreto, S.</span>, and <span class="refAuthor">R. Seggelmann</span>, <span class="refTitle">"Stream Schedulers and User Message Interleaving for the Stream Control Transmission Protocol"</span>, <span class="seriesInfo">RFC 8260</span>, <span class="seriesInfo">DOI 10.17487/RFC8260</span>, <time datetime="2017-11" class="refDate">November 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8260">https://www.rfc-editor.org/info/rfc8260</a>&gt;</span>. </dd>
+1831c1867
+< <span class="refAuthor">Tuexen, M.</span><span class="refAuthor">, Stewart, R.</span><span class="refAuthor">, Jesup, R.</span><span class="refAuthor">, and S. Loreto</span>, <span class="refTitle">"Datagram Transport Layer Security (DTLS) Encapsulation of SCTP Packets"</span>, <span class="seriesInfo">RFC 8261</span>, <span class="seriesInfo">DOI 10.17487/RFC8261</span>, <time datetime="2017-11" class="refDate">November 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8261">https://www.rfc-editor.org/info/rfc8261</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Tuexen, M.</span>, <span class="refAuthor">Stewart, R.</span>, <span class="refAuthor">Jesup, R.</span>, and <span class="refAuthor">S. Loreto</span>, <span class="refTitle">"Datagram Transport Layer Security (DTLS) Encapsulation of SCTP Packets"</span>, <span class="seriesInfo">RFC 8261</span>, <span class="seriesInfo">DOI 10.17487/RFC8261</span>, <time datetime="2017-11" class="refDate">November 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8261">https://www.rfc-editor.org/info/rfc8261</a>&gt;</span>. </dd>
+1835c1871
+< <span class="refAuthor">Martinsen, P.</span><span class="refAuthor">, Reddy, T.</span><span class="refAuthor">, and P. Patil</span>, <span class="refTitle">"Guidelines for Multihomed and IPv4/IPv6 Dual-Stack Interactive Connectivity Establishment (ICE)"</span>, <span class="seriesInfo">BCP 217</span>, <span class="seriesInfo">RFC 8421</span>, <span class="seriesInfo">DOI 10.17487/RFC8421</span>, <time datetime="2018-07" class="refDate">July 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8421">https://www.rfc-editor.org/info/rfc8421</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Martinsen, P.</span>, <span class="refAuthor">Reddy, T.</span>, and <span class="refAuthor">P. Patil</span>, <span class="refTitle">"Guidelines for Multihomed and IPv4/IPv6 Dual-Stack Interactive Connectivity Establishment (ICE)"</span>, <span class="seriesInfo">BCP 217</span>, <span class="seriesInfo">RFC 8421</span>, <span class="seriesInfo">DOI 10.17487/RFC8421</span>, <time datetime="2018-07" class="refDate">July 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8421">https://www.rfc-editor.org/info/rfc8421</a>&gt;</span>. </dd>
+1839c1875
+< <span class="refAuthor">Keranen, A.</span><span class="refAuthor">, Holmberg, C.</span><span class="refAuthor">, and J. Rosenberg</span>, <span class="refTitle">"Interactive Connectivity Establishment (ICE): A Protocol for Network Address Translator (NAT) Traversal"</span>, <span class="seriesInfo">RFC 8445</span>, <span class="seriesInfo">DOI 10.17487/RFC8445</span>, <time datetime="2018-07" class="refDate">July 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8445">https://www.rfc-editor.org/info/rfc8445</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Keranen, A.</span>, <span class="refAuthor">Holmberg, C.</span>, and <span class="refAuthor">J. Rosenberg</span>, <span class="refTitle">"Interactive Connectivity Establishment (ICE): A Protocol for Network Address Translator (NAT) Traversal"</span>, <span class="seriesInfo">RFC 8445</span>, <span class="seriesInfo">DOI 10.17487/RFC8445</span>, <time datetime="2018-07" class="refDate">July 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8445">https://www.rfc-editor.org/info/rfc8445</a>&gt;</span>. </dd>
+1847c1883
+< <span class="refAuthor">Reddy, T., Ed.</span><span class="refAuthor">, Johnston, A., Ed.</span><span class="refAuthor">, Matthews, P.</span><span class="refAuthor">, and J. Rosenberg</span>, <span class="refTitle">"Traversal Using Relays around NAT (TURN): Relay Extensions to Session Traversal Utilities for NAT (STUN)"</span>, <span class="seriesInfo">RFC 8656</span>, <span class="seriesInfo">DOI 10.17487/RFC8656</span>, <time datetime="2020-02" class="refDate">February 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8656">https://www.rfc-editor.org/info/rfc8656</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Reddy, T., Ed.</span>, <span class="refAuthor">Johnston, A., Ed.</span>, <span class="refAuthor">Matthews, P.</span>, and <span class="refAuthor">J. Rosenberg</span>, <span class="refTitle">"Traversal Using Relays around NAT (TURN): Relay Extensions to Session Traversal Utilities for NAT (STUN)"</span>, <span class="seriesInfo">RFC 8656</span>, <span class="seriesInfo">DOI 10.17487/RFC8656</span>, <time datetime="2020-02" class="refDate">February 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8656">https://www.rfc-editor.org/info/rfc8656</a>&gt;</span>. </dd>
+1863c1899
+< <span class="refAuthor">Jesup, R.</span><span class="refAuthor">, Loreto, S.</span><span class="refAuthor">, and M. Tüxen</span>, <span class="refTitle">"WebRTC Data Channels"</span>, <span class="seriesInfo">RFC 8831</span>, <span class="seriesInfo">DOI 10.17487/RFC8831</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8831">https://www.rfc-editor.org/info/rfc8831</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jesup, R.</span>, <span class="refAuthor">Loreto, S.</span>, and <span class="refAuthor">M. Tüxen</span>, <span class="refTitle">"WebRTC Data Channels"</span>, <span class="seriesInfo">RFC 8831</span>, <span class="seriesInfo">DOI 10.17487/RFC8831</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8831">https://www.rfc-editor.org/info/rfc8831</a>&gt;</span>. </dd>
+1867c1903
+< <span class="refAuthor">Jesup, R.</span><span class="refAuthor">, Loreto, S.</span><span class="refAuthor">, and M. Tüxen</span>, <span class="refTitle">"WebRTC Data Channel Establishment Protocol"</span>, <span class="seriesInfo">RFC 8832</span>, <span class="seriesInfo">DOI 10.17487/RFC8832</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8832">https://www.rfc-editor.org/info/rfc8832</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jesup, R.</span>, <span class="refAuthor">Loreto, S.</span>, and <span class="refAuthor">M. Tüxen</span>, <span class="refTitle">"WebRTC Data Channel Establishment Protocol"</span>, <span class="seriesInfo">RFC 8832</span>, <span class="seriesInfo">DOI 10.17487/RFC8832</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8832">https://www.rfc-editor.org/info/rfc8832</a>&gt;</span>. </dd>
+1875c1911
+< <span class="refAuthor">Perkins, C.</span><span class="refAuthor">, Westerlund, M.</span><span class="refAuthor">, and J. Ott</span>, <span class="refTitle">"Media Transport and Use of RTP in WebRTC"</span>, <span class="seriesInfo">RFC 8834</span>, <span class="seriesInfo">DOI 10.17487/RFC8834</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8834">https://www.rfc-editor.org/info/rfc8834</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Perkins, C.</span>, <span class="refAuthor">Westerlund, M.</span>, and <span class="refAuthor">J. Ott</span>, <span class="refTitle">"Media Transport and Use of RTP in WebRTC"</span>, <span class="seriesInfo">RFC 8834</span>, <span class="seriesInfo">DOI 10.17487/RFC8834</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8834">https://www.rfc-editor.org/info/rfc8834</a>&gt;</span>. </dd>
+1879c1915
+< <span class="refAuthor">Jesup, R.</span><span class="refAuthor"> and Z. Sarker, Ed.</span>, <span class="refTitle">"Congestion Control Requirements for Interactive Real-Time Media"</span>, <span class="seriesInfo">RFC 8836</span>, <span class="seriesInfo">DOI 10.17487/RFC8836</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8836">https://www.rfc-editor.org/info/rfc8836</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jesup, R.</span> and <span class="refAuthor">Z. Sarker, Ed.</span>, <span class="refTitle">"Congestion Control Requirements for Interactive Real-Time Media"</span>, <span class="seriesInfo">RFC 8836</span>, <span class="seriesInfo">DOI 10.17487/RFC8836</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8836">https://www.rfc-editor.org/info/rfc8836</a>&gt;</span>. </dd>
+1883c1919
+< <span class="refAuthor">Jones, P.</span><span class="refAuthor">, Dhesikan, S.</span><span class="refAuthor">, Jennings, C.</span><span class="refAuthor">, and D. Druta</span>, <span class="refTitle">"Differentiated Services Code Point (DSCP) Packet Markings for WebRTC QoS"</span>, <span class="seriesInfo">RFC 8837</span>, <span class="seriesInfo">DOI 10.17487/RFC8837</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8837">https://www.rfc-editor.org/info/rfc8837</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jones, P.</span>, <span class="refAuthor">Dhesikan, S.</span>, <span class="refAuthor">Jennings, C.</span>, and <span class="refAuthor">D. Druta</span>, <span class="refTitle">"Differentiated Services Code Point (DSCP) Packet Markings for WebRTC QoS"</span>, <span class="seriesInfo">RFC 8837</span>, <span class="seriesInfo">DOI 10.17487/RFC8837</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8837">https://www.rfc-editor.org/info/rfc8837</a>&gt;</span>. </dd>
+1887c1923
+< <span class="refAuthor">Holmberg, C.</span><span class="refAuthor">, Shpount, R.</span><span class="refAuthor">, Loreto, S.</span><span class="refAuthor">, and G. Camarillo</span>, <span class="refTitle">"Session Description Protocol (SDP) Offer/Answer Procedures for Stream Control Transmission Protocol (SCTP) over Datagram Transport Layer Security (DTLS) Transport"</span>, <span class="seriesInfo">RFC 8841</span>, <span class="seriesInfo">DOI 10.17487/RFC8841</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8841">https://www.rfc-editor.org/info/rfc8841</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Holmberg, C.</span>, <span class="refAuthor">Shpount, R.</span>, <span class="refAuthor">Loreto, S.</span>, and <span class="refAuthor">G. Camarillo</span>, <span class="refTitle">"Session Description Protocol (SDP) Offer/Answer Procedures for Stream Control Transmission Protocol (SCTP) over Datagram Transport Layer Security (DTLS) Transport"</span>, <span class="seriesInfo">RFC 8841</span>, <span class="seriesInfo">DOI 10.17487/RFC8841</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8841">https://www.rfc-editor.org/info/rfc8841</a>&gt;</span>. </dd>
+1891c1927
+< <span class="refAuthor">Holmberg, C.</span><span class="refAuthor"> and R. Shpount</span>, <span class="refTitle">"Session Description Protocol (SDP) Offer/Answer Considerations for Datagram Transport Layer Security (DTLS) and Transport Layer Security (TLS)"</span>, <span class="seriesInfo">RFC 8842</span>, <span class="seriesInfo">DOI 10.17487/RFC8842</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8842">https://www.rfc-editor.org/info/rfc8842</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Holmberg, C.</span> and <span class="refAuthor">R. Shpount</span>, <span class="refTitle">"Session Description Protocol (SDP) Offer/Answer Considerations for Datagram Transport Layer Security (DTLS) and Transport Layer Security (TLS)"</span>, <span class="seriesInfo">RFC 8842</span>, <span class="seriesInfo">DOI 10.17487/RFC8842</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8842">https://www.rfc-editor.org/info/rfc8842</a>&gt;</span>. </dd>
+1902c1938
+< <span class="refAuthor">Barik, R.</span><span class="refAuthor">, Welzl, M.</span><span class="refAuthor">, and A. Elmokashfi</span>, <span class="refTitle">"How to say that you're special: Can we use bits in the IPv4 header?"</span>, <span class="refContent">ANRW '16: Proceedings of the 2016 Applied Networking
+---
+> <span class="refAuthor">Barik, R.</span>, <span class="refAuthor">Welzl, M.</span>, and <span class="refAuthor">A. Elmokashfi</span>, <span class="refTitle">"How to say that you're special: Can we use bits in the IPv4 header?"</span>, <span class="refContent">ANRW '16: Proceedings of the 2016 Applied Networking
+1907c1943
+< <span class="refAuthor">Schwartz, B.</span><span class="refAuthor"> and J. Uberti</span>, <span class="refTitle">"Recursively Encapsulated TURN (RETURN) for Connectivity and Privacy in WebRTC"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rtcweb-return-02</span>, <time datetime="2017-03-27" class="refDate">27 March 2017</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-rtcweb-return-02">https://tools.ietf.org/html/draft-ietf-rtcweb-return-02</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schwartz, B.</span> and <span class="refAuthor">J. Uberti</span>, <span class="refTitle">"Recursively Encapsulated TURN (RETURN) for Connectivity and Privacy in WebRTC"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rtcweb-return-02</span>, <time datetime="2017-03-27" class="refDate">27 March 2017</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-rtcweb-return-02">https://tools.ietf.org/html/draft-ietf-rtcweb-return-02</a>&gt;</span>. </dd>
+1915c1951
+< <span class="refAuthor">Nordmark, E.</span><span class="refAuthor">, Chakrabarti, S.</span><span class="refAuthor">, and J. Laganier</span>, <span class="refTitle">"IPv6 Socket API for Source Address Selection"</span>, <span class="seriesInfo">RFC 5014</span>, <span class="seriesInfo">DOI 10.17487/RFC5014</span>, <time datetime="2007-09" class="refDate">September 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5014">https://www.rfc-editor.org/info/rfc5014</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Nordmark, E.</span>, <span class="refAuthor">Chakrabarti, S.</span>, and <span class="refAuthor">J. Laganier</span>, <span class="refTitle">"IPv6 Socket API for Source Address Selection"</span>, <span class="seriesInfo">RFC 5014</span>, <span class="seriesInfo">DOI 10.17487/RFC5014</span>, <time datetime="2007-09" class="refDate">September 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5014">https://www.rfc-editor.org/info/rfc5014</a>&gt;</span>. </dd>
+1919c1955
+< <span class="refAuthor">Srisuresh, P.</span><span class="refAuthor">, Ford, B.</span><span class="refAuthor">, and D. Kegel</span>, <span class="refTitle">"State of Peer-to-Peer (P2P) Communication across Network Address Translators (NATs)"</span>, <span class="seriesInfo">RFC 5128</span>, <span class="seriesInfo">DOI 10.17487/RFC5128</span>, <time datetime="2008-03" class="refDate">March 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5128">https://www.rfc-editor.org/info/rfc5128</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Srisuresh, P.</span>, <span class="refAuthor">Ford, B.</span>, and <span class="refAuthor">D. Kegel</span>, <span class="refTitle">"State of Peer-to-Peer (P2P) Communication across Network Address Translators (NATs)"</span>, <span class="seriesInfo">RFC 5128</span>, <span class="seriesInfo">DOI 10.17487/RFC5128</span>, <time datetime="2008-03" class="refDate">March 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5128">https://www.rfc-editor.org/info/rfc5128</a>&gt;</span>. </dd>
+1923c1959
+< <span class="refAuthor">Black, D., Ed.</span><span class="refAuthor"> and P. Jones</span>, <span class="refTitle">"Differentiated Services (Diffserv) and Real-Time Communication"</span>, <span class="seriesInfo">RFC 7657</span>, <span class="seriesInfo">DOI 10.17487/RFC7657</span>, <time datetime="2015-11" class="refDate">November 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7657">https://www.rfc-editor.org/info/rfc7657</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Black, D., Ed.</span> and <span class="refAuthor">P. Jones</span>, <span class="refTitle">"Differentiated Services (Diffserv) and Real-Time Communication"</span>, <span class="seriesInfo">RFC 7657</span>, <span class="seriesInfo">DOI 10.17487/RFC7657</span>, <time datetime="2015-11" class="refDate">November 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7657">https://www.rfc-editor.org/info/rfc7657</a>&gt;</span>. </dd>
+1927c1963
+< <span class="refAuthor">Patil, P.</span><span class="refAuthor">, Reddy, T.</span><span class="refAuthor">, and D. Wing</span>, <span class="refTitle">"Traversal Using Relays around NAT (TURN) Server Auto Discovery"</span>, <span class="seriesInfo">RFC 8155</span>, <span class="seriesInfo">DOI 10.17487/RFC8155</span>, <time datetime="2017-04" class="refDate">April 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8155">https://www.rfc-editor.org/info/rfc8155</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Patil, P.</span>, <span class="refAuthor">Reddy, T.</span>, and <span class="refAuthor">D. Wing</span>, <span class="refTitle">"Traversal Using Relays around NAT (TURN) Server Auto Discovery"</span>, <span class="seriesInfo">RFC 8155</span>, <span class="seriesInfo">DOI 10.17487/RFC8155</span>, <time datetime="2017-04" class="refDate">April 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8155">https://www.rfc-editor.org/info/rfc8155</a>&gt;</span>. </dd>
+1931c1967
+< <span class="refAuthor">Islam, S.</span><span class="refAuthor">, Welzl, M.</span><span class="refAuthor">, and S. Gjessing</span>, <span class="refTitle">"Coupled Congestion Control for RTP Media"</span>, <span class="seriesInfo">RFC 8699</span>, <span class="seriesInfo">DOI 10.17487/RFC8699</span>, <time datetime="2020-01" class="refDate">January 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8699">https://www.rfc-editor.org/info/rfc8699</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Islam, S.</span>, <span class="refAuthor">Welzl, M.</span>, and <span class="refAuthor">S. Gjessing</span>, <span class="refTitle">"Coupled Congestion Control for RTP Media"</span>, <span class="seriesInfo">RFC 8699</span>, <span class="seriesInfo">DOI 10.17487/RFC8699</span>, <time datetime="2020-01" class="refDate">January 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8699">https://www.rfc-editor.org/info/rfc8699</a>&gt;</span>. </dd>
+1937c1973
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+1941,1943c1977,1979
+< <p id="section-appendix.a-1">This document is based on earlier draft versions embedded in <span>[<a href="#RFC8825" class="xref">RFC8825</a>]</span>, which were the result of contributions from many RTCWEB Working Group
+<       members.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2">Special thanks for reviews of earlier draft versions of this document go to
+---
+> <p id="appendix-A-1">This document is based on earlier draft versions embedded in <span>[<a href="#RFC8825" class="cite xref">RFC8825</a>]</span>, which were the result of contributions from many RTCWEB Working Group
+>       members.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2">Special thanks for reviews of earlier draft versions of this document go to
+1945c1981
+<       contributions from <span class="contact-name">Andrew Hutton</span> also deserve special mention.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+---
+>       contributions from <span class="contact-name">Andrew Hutton</span> also deserve special mention.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+1949c1985
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
