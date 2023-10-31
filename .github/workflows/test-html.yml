@@ -23,7 +23,14 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install xml2rfc
+        pip install xml2rfc selenium
+
+    - name: Install Chrome WebDriver
+      run: |
+        CHROMEDRIVER_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+        wget -q "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
+        unzip chromedriver_linux64.zip -d ~/bin
+        export PATH=$PATH:~/bin
 
     - name: Test html output
       run: python html_check.py

@@ -1,6 +1,11 @@
 from datetime import datetime
+from difflib import Differ
 from os import listdir, makedirs, path
 from subprocess import run as proc_run, CalledProcessError
+
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
 
 RFC_DIRECTORY = "rfc"
 RESULTS_DIRECTORY = "html_results"
@@ -22,6 +27,7 @@ def compare(rfc_dir, results_dir):
         html_file = path.join(rfc_dir, filename.replace(".xml", ".html"))
         new_html_file = path.join(rfc_dir, filename.replace(".xml", ".new.html"))
         diff_file = path.join(results_dir, filename.replace(".xml", ".diff.txt"))
+        vdiff_file = path.join(results_dir, filename.replace(".xml", ".vdiff.html"))
         error_file = path.join(results_dir, filename.replace(".xml", ".error.txt"))
 
         output = proc_run(
@@ -35,6 +41,7 @@ def compare(rfc_dir, results_dir):
                 errors.write(output.stderr.decode("utf-8"))
                 continue
 
+        # compare text
         output = proc_run(
             args=["diff", "-w", html_file, new_html_file], capture_output=True
         )
@@ -43,6 +50,21 @@ def compare(rfc_dir, results_dir):
         if len(diff) > 0:
             with open(diff_file, "w", newline="") as diffs:
                 diffs.write(diff)
+
+        # compare visually
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        with webdriver.Chrome(options=chrome_options) as driver:
+            driver.get(f"file://{path.abspath(html_file)}")
+            published_html = driver.page_source
+            driver.get(f"file://{path.abspath(new_html_file)}")
+            new_html = driver.page_source
+
+        differ = Differ()
+        diff = list(differ.compare(published_html.splitlines(), new_html.splitlines()))
+        with open(vdiff_file, "w", newline="") as vdiffs:
+            for line in diff:
+                vdiffs.write(line)
 
 
 results_dir = f"{RESULTS_DIRECTORY}/{datetime.utcnow().strftime('%Y%m%d')}"
