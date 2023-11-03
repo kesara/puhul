@@ -1,0 +1,473 @@
+23c23
+< <meta content="xml2rfc 2.40.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+29c29,45
+< <link href="rfc8715.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 3.11.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.9
+> -->
+> <link href="rfc/rfc8715.xml" rel="alternate" type="application/rfc+xml">
+39c55
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+48a65,70
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+51d72
+<   width: extend-to-zoom;
+66c87
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+68a90
+>   overflow-wrap: break-word;
+154a177,185
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+169,172d199
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+173a201
+>   border: none;
+196a225,227
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+238c269,270
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+248c280
+< tt, code, pre, code {
+---
+> tt, code, pre {
+250c282
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+289a322,324
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+379a415,420
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+481c522
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+621d661
+< 
+643a684,686
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+711c754
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+811c854
+< tt, code, pre, code {
+---
+> tt, code, pre {
+816c859
+< pre.sourcecode,
+---
+> .sourcecode pre,
+852c895
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+930,935d972
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1006c1043
+<   margin: 0 0 0.25em 0;
+---
+>   margin-bottom: 0.25em;
+1039a1077
+>   .artwork > pre,
+1044,1051d1081
+< /*
+<   The margin-left: 0 on <dd> removes all distinction
+<   between levels from nested <dl>s.  Undo that.
+< */
+< dl.olPercent > dd,
+< dd {
+<   margin-left: revert;
+< }
+1060a1091,1211
+> /* Apply the print table and row borders in general, on request from the RPC,
+> and increase the contrast between border and odd row background slightly */
+> table {
+>   border: 1px solid #ddd;
+> }
+> td {
+>   border-top: 1px solid #ddd;
+> }
+> tr {
+>   break-inside: avoid;
+> }
+> tr:nth-child(2n+1) > td {
+>   background-color: #f8f8f8;
+> }
+> /* Use style rules to govern display of the TOC. */
+> @media screen and (max-width: 1023px) {
+>   #toc nav { display: none; }
+>   #toc.active nav { display: block; }
+> }
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1062a1214
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-iasa2-trust-rationale-03" rel="prev">
+1065c1217
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-iasa2-trust-rationale-03" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1067,1068c1219,1220
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1168,1170c1320,1322
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+1172,1173c1324,1325
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-background" class="xref">Background</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-background" class="internal xref">Background</a></p>
+1175,1176c1327,1328
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-general-approach" class="xref">General Approach</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-general-approach" class="internal xref">General Approach</a></p>
+1178,1179c1330,1331
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-changing-the-way-trustees-a" class="xref">Changing the Way Trustees Are Selected</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-changing-the-way-trustees-a" class="internal xref">Changing the Way Trustees Are Selected</a></p>
+1181,1182c1333,1334
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-transition" class="xref">Transition</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-transition" class="internal xref">Transition</a></p>
+1184,1185c1336,1337
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1187,1188c1339,1340
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1190,1194c1342,1346
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.8.2.1">
+<                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+>                 <p id="section-toc.1-1.8.2.1.1" class="keepWithNext"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1196,1197c1348,1349
+< <li class="toc ulEmpty" id="section-toc.1-1.8.2.2">
+<                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+>                 <p id="section-toc.1-1.8.2.2.1" class="keepWithNext"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1201,1202c1353,1354
+< <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1204,1205c1356,1357
+< <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+1216,1217c1368,1369
+<       changes introduced in <span>[<a href="#RFC8714" class="xref">RFC8714</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+< <p id="section-1-2">At the time <span>[<a href="#RFC8714" class="xref">RFC8714</a>]</span> was
+---
+>       changes introduced in <span>[<a href="#RFC8714" class="cite xref">RFC8714</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+> <p id="section-1-2">At the time <span>[<a href="#RFC8714" class="cite xref">RFC8714</a>]</span> was
+1219c1371
+<       Version 2.0 (IASA 2.0) had an impact on the IETF Trust <span>[<a href="#RFC4071" class="xref">RFC4071</a>]</span> <span>[<a href="#RFC4371" class="xref">RFC4371</a>]</span> <span>[<a href="#RFC8711" class="xref">RFC8711</a>]</span>. This 
+---
+>       Version 2.0 (IASA 2.0) had an impact on the IETF Trust <span>[<a href="#RFC4071" class="cite xref">RFC4071</a>]</span> <span>[<a href="#RFC4371" class="cite xref">RFC4371</a>]</span> <span>[<a href="#RFC8711" class="cite xref">RFC8711</a>]</span>. This 
+1223c1375
+<       regarding the selection of the Trustees is implemented by <span>[<a href="#RFC8714" class="xref">RFC8714</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+---
+>       regarding the selection of the Trustees is implemented by <span>[<a href="#RFC8714" class="cite xref">RFC8714</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+1237c1389
+<       the IETF <span>[<a href="#RFC8714" class="xref">RFC8714</a>]</span>. The intellectual property is,
+---
+>       the IETF <span>[<a href="#RFC8714" class="cite xref">RFC8714</a>]</span>. The intellectual property is,
+1242c1394
+<       community by holding domains and trademarks associated with the Internet Assigned Numbers Authority (IANA) <span>[<a href="#RFC7979" class="xref">RFC7979</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
+---
+>       community by holding domains and trademarks associated with the Internet Assigned Numbers Authority (IANA) <span>[<a href="#RFC7979" class="cite xref">RFC7979</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
+1244c1396
+<       Commonwealth of Virginia <span>[<a href="#Trust-FD" class="xref">Trust-FD</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+---
+>       Commonwealth of Virginia <span>[<a href="#Trust-FD" class="cite xref">Trust-FD</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+1248c1400
+<       members of the IAOC <span>[<a href="#Trust-FD" class="xref">Trust-FD</a>]</span>.  The documents
+---
+>       members of the IAOC <span>[<a href="#Trust-FD" class="cite xref">Trust-FD</a>]</span>.  The documents
+1332c1484
+<       at the same time. As discussed in <a href="#background" class="xref">Section 2</a>, the IESG holds the ability to continue
+---
+>       at the same time. As discussed in <a href="#background" class="auto internal xref">Section 2</a>, the IESG holds the ability to continue
+1361c1513,1514
+< <span class="refAuthor">Austein, R., Ed.</span><span class="refAuthor"> and B. Wijnen, Ed.</span>, <span class="refTitle">"Structure of the IETF Administrative Support Activity (IASA)"</span>, <span class="seriesInfo">BCP 101</span>, <span class="seriesInfo">RFC 4071</span>, <span class="seriesInfo">DOI 10.17487/RFC4071</span>, <time datetime="2005-04">April 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4071">https://www.rfc-editor.org/info/rfc4071</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Austein, R., Ed.</span> and <span class="refAuthor">B. Wijnen, Ed.</span>, <span class="refTitle">"Structure of the IETF Administrative Support Activity (IASA)"</span>, <span class="seriesInfo">BCP 101</span>, <span class="seriesInfo">RFC 4071</span>, <span class="seriesInfo">DOI 10.17487/RFC4071</span>, <time datetime="2005-04" class="refDate">April 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4071">https://www.rfc-editor.org/info/rfc4071</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1364c1517,1518
+< <span class="refAuthor">Carpenter, B., Ed.</span><span class="refAuthor"> and L. Lynch, Ed.</span>, <span class="refTitle">"BCP 101 Update for IPR Trust"</span>, <span class="seriesInfo">BCP 101</span>, <span class="seriesInfo">RFC 4371</span>, <span class="seriesInfo">DOI 10.17487/RFC4371</span>, <time datetime="2006-01">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4371">https://www.rfc-editor.org/info/rfc4371</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Carpenter, B., Ed.</span> and <span class="refAuthor">L. Lynch, Ed.</span>, <span class="refTitle">"BCP 101 Update for IPR Trust"</span>, <span class="seriesInfo">BCP 101</span>, <span class="seriesInfo">RFC 4371</span>, <span class="seriesInfo">DOI 10.17487/RFC4371</span>, <time datetime="2006-01" class="refDate">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4371">https://www.rfc-editor.org/info/rfc4371</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1374c1528,1529
+< <span class="refAuthor">Lear, E., Ed.</span><span class="refAuthor"> and R. Housley, Ed.</span>, <span class="refTitle">"Response to the IANA Stewardship Transition Coordination Group (ICG) Request for Proposals on the IANA Protocol Parameters Registries"</span>, <span class="seriesInfo">RFC 7979</span>, <span class="seriesInfo">DOI 10.17487/RFC7979</span>, <time datetime="2016-08">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7979">https://www.rfc-editor.org/info/rfc7979</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Lear, E., Ed.</span> and <span class="refAuthor">R. Housley, Ed.</span>, <span class="refTitle">"Response to the IANA Stewardship Transition Coordination Group (ICG) Request for Proposals on the IANA Protocol Parameters Registries"</span>, <span class="seriesInfo">RFC 7979</span>, <span class="seriesInfo">DOI 10.17487/RFC7979</span>, <time datetime="2016-08" class="refDate">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7979">https://www.rfc-editor.org/info/rfc7979</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1377c1532,1533
+< <span class="refAuthor">Haberman, B.</span><span class="refAuthor">, Hall, J.</span><span class="refAuthor">, and J. Livingood</span>, <span class="refTitle">"Structure of the IETF Administrative Support Activity, Version 2.0"</span>, <span class="seriesInfo">BCP 101</span>, <span class="seriesInfo">RFC 8711</span>, <span class="seriesInfo">DOI 10.17487/RFC8711</span>, <time datetime="2020-02">February 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8711">https://www.rfc-editor.org/info/rfc8711</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Haberman, B.</span>, <span class="refAuthor">Hall, J.</span>, and <span class="refAuthor">J. Livingood</span>, <span class="refTitle">"Structure of the IETF Administrative Support Activity, Version 2.0"</span>, <span class="seriesInfo">BCP 101</span>, <span class="seriesInfo">RFC 8711</span>, <span class="seriesInfo">DOI 10.17487/RFC8711</span>, <time datetime="2020-02" class="refDate">February 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8711">https://www.rfc-editor.org/info/rfc8711</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1380c1536,1537
+< <span class="refAuthor">Arkko, J.</span><span class="refAuthor"> and T. Hardie</span>, <span class="refTitle">"Update to the Process for Selection of Trustees for the IETF Trust"</span>, <span class="seriesInfo">BCP 101</span>, <span class="seriesInfo">RFC 8714</span>, <span class="seriesInfo">DOI 10.17487/RFC8714</span>, <time datetime="2020-02">February 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8714">https://www.rfc-editor.org/info/rfc8714</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Arkko, J.</span> and <span class="refAuthor">T. Hardie</span>, <span class="refTitle">"Update to the Process for Selection of Trustees for the IETF Trust"</span>, <span class="seriesInfo">BCP 101</span>, <span class="seriesInfo">RFC 8714</span>, <span class="seriesInfo">DOI 10.17487/RFC8714</span>, <time datetime="2020-02" class="refDate">February 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8714">https://www.rfc-editor.org/info/rfc8714</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1383a1541
+> <dd class="break"></dd>
+1388c1546
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+1392c1550
+< <p id="section-appendix.a-1">The author would like to thank other members of the earlier
+---
+> <p id="appendix-A-1">The author would like to thank other members of the earlier
+1402c1560
+<       and <span class="contact-name">Meral Shirazipour</span> for careful review.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+>       and <span class="contact-name">Meral Shirazipour</span> for careful review.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+1406c1564
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+1413,1414c1571
+< <div dir="auto" class="left">
+< <span class="postal-code">02700</span> <span class="locality">Kauniainen</span>
+---
+> <div dir="auto" class="left">FI-<span class="postal-code">02700</span> <span class="locality">Kauniainen</span>
+1424,1452c1581,1586
+< <script>var toc = document.getElementById("toc");
+< var tocToggle = toc.querySelector("h2");
+< var tocNav = toc.querySelector("nav");
+< 
+< // mobile menu toggle
+< tocToggle.onclick = function(event) {
+<     if (window.innerWidth < 1024) {
+<  var tocNavDisplay = tocNav.currentStyle ? tocNav.currentStyle.display : getComputedStyle(tocNav, null).display;
+<  if (tocNavDisplay == "none") {
+<      tocNav.style.display = "block";
+<  } else {
+<      tocNav.style.display = "none";
+<  }
+<     }
+< }
+< 
+< // toc anchor scroll to anchor
+< tocNav.addEventListener("click", function (event) {
+<     event.preventDefault();
+<     if (event.target.nodeName == 'A') {
+<  if (window.innerWidth < 1024) {
+<      tocNav.style.display = "none";
+<  }
+<  var href = event.target.getAttribute("href");
+<  var anchorId = href.substr(1);
+<  var anchor =  document.getElementById(anchorId);
+<  anchor.scrollIntoView(true);
+<  window.history.pushState("","",href);
+<     }
+---
+> <script>const toc = document.getElementById("toc");
+> toc.querySelector("h2").addEventListener("click", e => {
+>   toc.classList.toggle("active");
+> });
+> toc.querySelector("nav").addEventListener("click", e => {
+>   toc.classList.remove("active");
+1454,1462d1587
+< 
+< // switch toc mode when window resized
+< window.onresize = function () {
+<     if (window.innerWidth < 1024) {
+<  tocNav.style.display = "none";
+<     } else {
+<  tocNav.style.display = "block";
+<     }
+< }

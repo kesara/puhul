@@ -1,0 +1,722 @@
+23c23
+< <meta content="xml2rfc 2.34.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+25c25,41
+< <link href="rfc8653.xml" type="application/rfc+xml" rel="alternate">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 3.11.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.9
+> -->
+> <link href="rfc/rfc8653.xml" rel="alternate" type="application/rfc+xml">
+35c51
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+44a61,66
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+47d68
+<   width: extend-to-zoom;
+62c83
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+64a86
+>   overflow-wrap: break-word;
+150a173,181
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+165,168d195
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+169a197
+>   border: none;
+192a221,223
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+234c265,266
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+244c276
+< tt, code, pre, code {
+---
+> tt, code, pre {
+246c278
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+285a318,320
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+375a411,416
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+477c518
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+617d657
+< 
+639a680,682
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+707c750
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+807c850
+< tt, code, pre, code {
+---
+> tt, code, pre {
+812c855
+< pre.sourcecode,
+---
+> .sourcecode pre,
+848c891
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+926,931d968
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1002c1039
+<   margin: 0 0 0.25em 0;
+---
+>   margin-bottom: 0.25em;
+1016c1053
+<   margin-bottom: 0;
+---
+>   margin-bottom: 0.5em;
+1032a1070,1207
+> /* Sourcecode margin in print, when there's no pilcrow */
+> @media print {
+>   .artwork,
+>   .artwork > pre,
+>   .sourcecode {
+>     margin-bottom: 1em;
+>   }
+> }
+> /* Avoid narrow tables forcing too narrow table captions, which may render badly */
+> table {
+>   min-width: 20em;
+> }
+> /* ol type a */
+> ol.type-a { list-style-type: lower-alpha; }
+> ol.type-A { list-style-type: upper-alpha; }
+> ol.type-i { list-style-type: lower-roman; }
+> ol.type-I { list-style-type: lower-roman; }
+> /* Apply the print table and row borders in general, on request from the RPC,
+> and increase the contrast between border and odd row background slightly */
+> table {
+>   border: 1px solid #ddd;
+> }
+> td {
+>   border-top: 1px solid #ddd;
+> }
+> tr {
+>   break-inside: avoid;
+> }
+> tr:nth-child(2n+1) > td {
+>   background-color: #f8f8f8;
+> }
+> /* Use style rules to govern display of the TOC. */
+> @media screen and (max-width: 1023px) {
+>   #toc nav { display: none; }
+>   #toc.active nav { display: block; }
+> }
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1034c1209,1210
+< <link href="rfc-local.css" type="text/css" rel="stylesheet">
+---
+> <link href="rfc-local.css" rel="stylesheet" type="text/css">
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-dmm-ondemand-mobility-18" rel="prev">
+1037c1213
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-dmm-ondemand-mobility-18" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1039,1040c1215,1216
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1145,1156c1321,1332
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.1">
+<             <p id="section-boilerplate.3-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-boilerplate.3-1.1.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.2">
+<             <p id="section-boilerplate.3-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-notational-conventions" class="xref">Notational Conventions</a><a href="#section-boilerplate.3-1.2.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.3">
+<             <p id="section-boilerplate.3-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-solution" class="xref">Solution</a><a href="#section-boilerplate.3-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.3.2.1">
+<                 <p id="section-boilerplate.3-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-high-level-description" class="xref">High-Level Description</a><a href="#section-boilerplate.3-1.3.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.1">
+>             <p id="section-boilerplate.3-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <span><a href="#name-introduction" class="internal xref">Introduction</a> (<a href="#name-introduction" class="internal xref">Introduction</a>)</span></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.2">
+>             <p id="section-boilerplate.3-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <span><a href="#name-notational-conventions" class="internal xref">Notational Conventions</a> (<a href="#name-notational-conventions" class="internal xref">Notational Conventions</a>)</span></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.3">
+>             <p id="section-boilerplate.3-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <span><a href="#name-solution" class="internal xref">Solution</a> (<a href="#name-solution" class="internal xref">Solution</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.3.2.1">
+>                 <p id="section-boilerplate.3-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <span><a href="#name-high-level-description" class="internal xref">High-Level Description</a> (<a href="#name-high-level-description" class="internal xref">High-Level Description</a>)</span></p>
+1158,1159c1334,1335
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.3.2.2">
+<                 <p id="section-boilerplate.3-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-types-of-ip-addresses" class="xref">Types of IP Addresses</a><a href="#section-boilerplate.3-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.3.2.2">
+>                 <p id="section-boilerplate.3-1.3.2.2.1" class="keepWithNext"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <span><a href="#name-types-of-ip-addresses" class="internal xref">Types of IP Addresses</a> (<a href="#name-types-of-ip-addresses" class="internal xref">Types of IP Addresses</a>)</span></p>
+1161,1162c1337,1338
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.3.2.3">
+<                 <p id="section-boilerplate.3-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-granularity-of-selection" class="xref">Granularity of Selection</a><a href="#section-boilerplate.3-1.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.3.2.3">
+>                 <p id="section-boilerplate.3-1.3.2.3.1" class="keepWithNext"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <span><a href="#name-granularity-of-selection" class="internal xref">Granularity of Selection</a> (<a href="#name-granularity-of-selection" class="internal xref">Granularity of Selection</a>)</span></p>
+1164,1165c1340,1341
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.3.2.4">
+<                 <p id="section-boilerplate.3-1.3.2.4.1"><a href="#section-3.4" class="xref">3.4</a>.  <a href="#name-on-demand-nature" class="xref">On-Demand Nature</a><a href="#section-boilerplate.3-1.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.3.2.4">
+>                 <p id="section-boilerplate.3-1.3.2.4.1" class="keepWithNext"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <span><a href="#name-on-demand-nature" class="internal xref">On-Demand Nature</a> (<a href="#name-on-demand-nature" class="internal xref">On-Demand Nature</a>)</span></p>
+1169,1173c1345,1349
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.4">
+<             <p id="section-boilerplate.3-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-backwards-compatibility-con" class="xref">Backwards Compatibility Considerations</a><a href="#section-boilerplate.3-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.1">
+<                 <p id="section-boilerplate.3-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-applications" class="xref">Applications</a><a href="#section-boilerplate.3-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4">
+>             <p id="section-boilerplate.3-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <span><a href="#name-backwards-compatibility-con" class="internal xref">Backwards Compatibility Considerations</a> (<a href="#name-backwards-compatibility-con" class="internal xref">Backwards Compatibility Considerations</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.1">
+>                 <p id="section-boilerplate.3-1.4.2.1.1" class="keepWithNext"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <span><a href="#name-applications" class="internal xref">Applications</a> (<a href="#name-applications" class="internal xref">Applications</a>)</span></p>
+1175,1176c1351,1352
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.2">
+<                 <p id="section-boilerplate.3-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-ip-stack-in-the-mobile-host" class="xref">IP Stack in the Mobile Host</a><a href="#section-boilerplate.3-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.2">
+>                 <p id="section-boilerplate.3-1.4.2.2.1" class="keepWithNext"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <span><a href="#name-ip-stack-in-the-mobile-host" class="internal xref">IP Stack in the Mobile Host</a> (<a href="#name-ip-stack-in-the-mobile-host" class="internal xref">IP Stack in the Mobile Host</a>)</span></p>
+1178,1179c1354,1355
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.3">
+<                 <p id="section-boilerplate.3-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-network-infrastructure" class="xref">Network Infrastructure</a><a href="#section-boilerplate.3-1.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.3">
+>                 <p id="section-boilerplate.3-1.4.2.3.1" class="keepWithNext"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <span><a href="#name-network-infrastructure" class="internal xref">Network Infrastructure</a> (<a href="#name-network-infrastructure" class="internal xref">Network Infrastructure</a>)</span></p>
+1181,1182c1357,1358
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.4">
+<                 <p id="section-boilerplate.3-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-merging-this-work-with-rfc-" class="xref">Merging this work with RFC 5014</a><a href="#section-boilerplate.3-1.4.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.4">
+>                 <p id="section-boilerplate.3-1.4.2.4.1" class="keepWithNext"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <span><a href="#name-merging-this-work-with-rfc-" class="internal xref">Merging this work with RFC 5014</a> (<a href="#name-merging-this-work-with-rfc-" class="internal xref">Merging this work with RFC 5014</a>)</span></p>
+1186,1187c1362,1363
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.5">
+<             <p id="section-boilerplate.3-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-boilerplate.3-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.5">
+>             <p id="section-boilerplate.3-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <span><a href="#name-security-considerations" class="internal xref">Security Considerations</a> (<a href="#name-security-considerations" class="internal xref">Security Considerations</a>)</span></p>
+1189,1190c1365,1366
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.6">
+<             <p id="section-boilerplate.3-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-boilerplate.3-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.6">
+>             <p id="section-boilerplate.3-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <span><a href="#name-iana-considerations" class="internal xref">IANA Considerations</a> (<a href="#name-iana-considerations" class="internal xref">IANA Considerations</a>)</span></p>
+1192,1196c1368,1372
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.7">
+<             <p id="section-boilerplate.3-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-references" class="xref">References</a><a href="#section-boilerplate.3-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.7.2.1">
+<                 <p id="section-boilerplate.3-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-boilerplate.3-1.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.7">
+>             <p id="section-boilerplate.3-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <span><a href="#name-references" class="internal xref">References</a> (<a href="#name-references" class="internal xref">References</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.7.2.1">
+>                 <p id="section-boilerplate.3-1.7.2.1.1" class="keepWithNext"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <span><a href="#name-normative-references" class="internal xref">Normative References</a> (<a href="#name-normative-references" class="internal xref">Normative References</a>)</span></p>
+1198,1199c1374,1375
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.7.2.2">
+<                 <p id="section-boilerplate.3-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-boilerplate.3-1.7.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.7.2.2">
+>                 <p id="section-boilerplate.3-1.7.2.2.1" class="keepWithNext"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <span><a href="#name-informative-references" class="internal xref">Informative References</a> (<a href="#name-informative-references" class="internal xref">Informative References</a>)</span></p>
+1203,1204c1379,1380
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.8">
+<             <p id="section-boilerplate.3-1.8.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-conveying-the-desired-addre" class="xref">Conveying the Desired Address Type</a><a href="#section-boilerplate.3-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.8">
+>             <p id="section-boilerplate.3-1.8.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <span><a href="#name-conveying-the-desired-addre" class="internal xref">Conveying the Desired Address Type</a> (<a href="#name-conveying-the-desired-addre" class="internal xref">Conveying the Desired Address Type</a>)</span></p>
+1206,1207c1382,1383
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.9">
+<             <p id="section-boilerplate.3-1.9.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-boilerplate.3-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.9">
+>             <p id="section-boilerplate.3-1.9.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref"></a><span><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a> (<a href="#name-acknowledgements" class="internal xref">Acknowledgements</a>)</span></p>
+1209,1210c1385,1386
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.10">
+<             <p id="section-boilerplate.3-1.10.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a><a href="#section-boilerplate.3-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.10">
+>             <p id="section-boilerplate.3-1.10.1" class="keepWithNext"><a href="#appendix-C" class="auto internal xref"></a><span><a href="#name-contributors" class="internal xref">Contributors</a> (<a href="#name-contributors" class="internal xref">Contributors</a>)</span></p>
+1212,1213c1388,1389
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.11">
+<             <p id="section-boilerplate.3-1.11.1"><a href="#section-appendix.d" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-boilerplate.3-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.11">
+>             <p id="section-boilerplate.3-1.11.1" class="keepWithNext"><a href="#appendix-D" class="auto internal xref"></a><span><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a> (<a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a>)</span></p>
+1224,1225c1400,1401
+< <p id="section-1-1">In the context of Mobile IP <span>[<a href="#RFC5563" class="xref">RFC5563</a>]</span> <span>[<a href="#RFC6275" class="xref">RFC6275</a>]</span>
+<         <span>[<a href="#RFC5213" class="xref">RFC5213</a>]</span> <span>[<a href="#RFC5944" class="xref">RFC5944</a>]</span>, 
+---
+> <p id="section-1-1">In the context of Mobile IP <span>[<a href="#RFC5563" class="cite xref">RFC5563</a>]</span> <span>[<a href="#RFC6275" class="cite xref">RFC6275</a>]</span>
+>         <span>[<a href="#RFC5213" class="cite xref">RFC5213</a>]</span> <span>[<a href="#RFC5944" class="cite xref">RFC5944</a>]</span>, 
+1228c1404
+< <dl class="dlNewline" id="section-1-2">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-1-2">
+1230c1406
+<         <dd id="section-1-2.2">The ability to maintain an ongoing transport interaction 
+---
+>         <dd style="margin-left: 1.5em" id="section-1-2.2">The ability to maintain an ongoing transport interaction 
+1237a1414
+>         <dd class="break"></dd>
+1239c1416
+<         <dd id="section-1-2.4">The ability to maintain the same IP address 
+---
+>         <dd style="margin-left: 1.5em" id="section-1-2.4">The ability to maintain the same IP address 
+1246a1424
+>       <dd class="break"></dd>
+1261c1439
+<  failure <span>[<a href="#RFC7333" class="xref">RFC7333</a>]</span>. Therefore, session continuity 
+---
+>  failure <span>[<a href="#RFC7333" class="cite xref">RFC7333</a>]</span>. Therefore, session continuity 
+1273c1451
+<  as Multipath TCP <span>[<a href="#RFC6824" class="xref">RFC6824</a>]</span>, SIP mobility <span>[<a href="#RFC3261" class="xref">RFC3261</a>]</span>, or an application-layer mobility solution. These 
+---
+>  as Multipath TCP <span>[<a href="#RFC6824" class="cite xref">RFC6824</a>]</span>, SIP mobility <span>[<a href="#RFC3261" class="cite xref">RFC3261</a>]</span>, or an application-layer mobility solution. These 
+1305c1483
+<        interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when, and only when, they appear in all capitals, as
+---
+>        interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they appear in all capitals, as
+1322c1500
+< <ol start="1" type="1" class="normal" id="section-3.1-2">
+---
+> <ol start="1" type="1" class="normal type-1" id="section-3.1-2">
+1355c1533
+< <dl class="dlNewline" id="section-3.2-2">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-3.2-2">
+1357c1535
+<           <dd id="section-3.2-2.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-3.2-2.2">
+1366a1545
+>           <dd class="break"></dd>
+1368c1547
+<           <dd id="section-3.2-2.4">
+---
+>           <dd style="margin-left: 1.5em" id="section-3.2-2.4">
+1375a1555
+>           <dd class="break"></dd>
+1377c1557
+<           <dd id="section-3.2-2.6">
+---
+>           <dd style="margin-left: 1.5em" id="section-3.2-2.6">
+1386a1567
+>           <dd class="break"></dd>
+1388c1569
+<           <dd id="section-3.2-2.8">
+---
+>           <dd style="margin-left: 1.5em" id="section-3.2-2.8">
+1397a1579
+>         <dd class="break"></dd>
+1465,1466c1647,1648
+< <ul>
+< <li id="section-3.4-6.1">The initial set of IP addresses configured on the host at boot 
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.4-6.1">The initial set of IP addresses configured on the host at boot 
+1469c1651
+<           <li id="section-3.4-6.2">Permission to grant various types of IP addresses to a requesting 
+---
+>           <li class="normal" id="section-3.4-6.2">Permission to grant various types of IP addresses to a requesting 
+1472c1654
+<           <li id="section-3.4-6.3">Determination of a default address type when an application does 
+---
+>           <li class="normal" id="section-3.4-6.3">Determination of a default address type when an application does 
+1488,1489c1670,1671
+< <ul>
+< <li id="section-4-2.1">The applications on the mobile host<a href="#section-4-2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4-2.1">The applications on the mobile host<a href="#section-4-2.1" class="pilcrow">¶</a>
+1491c1673
+<         <li id="section-4-2.2">The IP stack in the mobile host<a href="#section-4-2.2" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="section-4-2.2">The IP stack in the mobile host<a href="#section-4-2.2" class="pilcrow">¶</a>
+1493c1675
+<         <li id="section-4-2.3">The network infrastructure<a href="#section-4-2.3" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="section-4-2.3">The network infrastructure<a href="#section-4-2.3" class="pilcrow">¶</a>
+1546c1728
+< <p id="section-4.4-1"><span>[<a href="#RFC5014" class="xref">RFC5014</a>]</span> defines new flags that may be used with 
+---
+> <p id="section-4.4-1"><span>[<a href="#RFC5014" class="cite xref">RFC5014</a>]</span> defines new flags that may be used with 
+1551c1733
+<  in <span>[<a href="#RFC5014" class="xref">RFC5014</a>]</span>.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
+---
+>  in <span>[<a href="#RFC5014" class="cite xref">RFC5014</a>]</span>.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
+1554c1736
+<  <span>[<a href="#RFC5014" class="xref">RFC5014</a>]</span>) and (2) selecting a source IP address type, the 
+---
+>  <span>[<a href="#RFC5014" class="cite xref">RFC5014</a>]</span>) and (2) selecting a source IP address type, the 
+1621c1803,1804
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1624c1807,1808
+< <span class="refAuthor">Nordmark, E.</span><span class="refAuthor">, Chakrabarti, S.</span><span class="refAuthor">, and J. Laganier</span>, <span class="refTitle">"IPv6 Socket API for Source Address Selection"</span>, <span class="seriesInfo">RFC 5014</span>, <span class="seriesInfo">DOI 10.17487/RFC5014</span>, <time datetime="2007-09">September 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5014">https://www.rfc-editor.org/info/rfc5014</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Nordmark, E.</span>, <span class="refAuthor">Chakrabarti, S.</span>, and <span class="refAuthor">J. Laganier</span>, <span class="refTitle">"IPv6 Socket API for Source Address Selection"</span>, <span class="seriesInfo">RFC 5014</span>, <span class="seriesInfo">DOI 10.17487/RFC5014</span>, <time datetime="2007-09" class="refDate">September 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5014">https://www.rfc-editor.org/info/rfc5014</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1627c1811,1812
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1637c1822,1823
+< <span class="refAuthor">Jeon, S.</span><span class="refAuthor">, Figueiredo, S.</span><span class="refAuthor">, Kim, Y.</span><span class="refAuthor">, and J. Kaippallimalil</span>, <span class="refTitle">"Use Cases and API Extension for Source IP Address Selection"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-sijeon-dmm-use-cases-api-source-07</span>, <time datetime="2017-09-10">10 September 2017</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-sijeon-dmm-use-cases-api-source-07">https://tools.ietf.org/html/draft-sijeon-dmm-use-cases-api-source-07</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jeon, S.</span>, <span class="refAuthor">Figueiredo, S.</span>, <span class="refAuthor">Kim, Y.</span>, and <span class="refAuthor">J. Kaippallimalil</span>, <span class="refTitle">"Use Cases and API Extension for Source IP Address Selection"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-sijeon-dmm-use-cases-api-source-07</span>, <time datetime="2017-09-10" class="refDate">10 September 2017</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-sijeon-dmm-use-cases-api-source-07">https://tools.ietf.org/html/draft-sijeon-dmm-use-cases-api-source-07</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1640c1826,1827
+< <span class="refAuthor">Rosenberg, J.</span><span class="refAuthor">, Schulzrinne, H.</span><span class="refAuthor">, Camarillo, G.</span><span class="refAuthor">, Johnston, A.</span><span class="refAuthor">, Peterson, J.</span><span class="refAuthor">, Sparks, R.</span><span class="refAuthor">, Handley, M.</span><span class="refAuthor">, and E. Schooler</span>, <span class="refTitle">"SIP: Session Initiation Protocol"</span>, <span class="seriesInfo">RFC 3261</span>, <span class="seriesInfo">DOI 10.17487/RFC3261</span>, <time datetime="2002-06">June 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3261">https://www.rfc-editor.org/info/rfc3261</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rosenberg, J.</span>, <span class="refAuthor">Schulzrinne, H.</span>, <span class="refAuthor">Camarillo, G.</span>, <span class="refAuthor">Johnston, A.</span>, <span class="refAuthor">Peterson, J.</span>, <span class="refAuthor">Sparks, R.</span>, <span class="refAuthor">Handley, M.</span>, and <span class="refAuthor">E. Schooler</span>, <span class="refTitle">"SIP: Session Initiation Protocol"</span>, <span class="seriesInfo">RFC 3261</span>, <span class="seriesInfo">DOI 10.17487/RFC3261</span>, <time datetime="2002-06" class="refDate">June 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3261">https://www.rfc-editor.org/info/rfc3261</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1643c1830,1831
+< <span class="refAuthor">Gundavelli, S., Ed.</span><span class="refAuthor">, Leung, K.</span><span class="refAuthor">, Devarapalli, V.</span><span class="refAuthor">, Chowdhury, K.</span><span class="refAuthor">, and B. Patil</span>, <span class="refTitle">"Proxy Mobile IPv6"</span>, <span class="seriesInfo">RFC 5213</span>, <span class="seriesInfo">DOI 10.17487/RFC5213</span>, <time datetime="2008-08">August 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5213">https://www.rfc-editor.org/info/rfc5213</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Gundavelli, S., Ed.</span>, <span class="refAuthor">Leung, K.</span>, <span class="refAuthor">Devarapalli, V.</span>, <span class="refAuthor">Chowdhury, K.</span>, and <span class="refAuthor">B. Patil</span>, <span class="refTitle">"Proxy Mobile IPv6"</span>, <span class="seriesInfo">RFC 5213</span>, <span class="seriesInfo">DOI 10.17487/RFC5213</span>, <time datetime="2008-08" class="refDate">August 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5213">https://www.rfc-editor.org/info/rfc5213</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1646c1834,1835
+< <span class="refAuthor">Leung, K.</span><span class="refAuthor">, Dommety, G.</span><span class="refAuthor">, Yegani, P.</span><span class="refAuthor">, and K. Chowdhury</span>, <span class="refTitle">"WiMAX Forum / 3GPP2 Proxy Mobile IPv4"</span>, <span class="seriesInfo">RFC 5563</span>, <span class="seriesInfo">DOI 10.17487/RFC5563</span>, <time datetime="2010-02">February 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5563">https://www.rfc-editor.org/info/rfc5563</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leung, K.</span>, <span class="refAuthor">Dommety, G.</span>, <span class="refAuthor">Yegani, P.</span>, and <span class="refAuthor">K. Chowdhury</span>, <span class="refTitle">"WiMAX Forum / 3GPP2 Proxy Mobile IPv4"</span>, <span class="seriesInfo">RFC 5563</span>, <span class="seriesInfo">DOI 10.17487/RFC5563</span>, <time datetime="2010-02" class="refDate">February 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5563">https://www.rfc-editor.org/info/rfc5563</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1649c1838,1839
+< <span class="refAuthor">Perkins, C., Ed.</span>, <span class="refTitle">"IP Mobility Support for IPv4, Revised"</span>, <span class="seriesInfo">RFC 5944</span>, <span class="seriesInfo">DOI 10.17487/RFC5944</span>, <time datetime="2010-11">November 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5944">https://www.rfc-editor.org/info/rfc5944</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Perkins, C., Ed.</span>, <span class="refTitle">"IP Mobility Support for IPv4, Revised"</span>, <span class="seriesInfo">RFC 5944</span>, <span class="seriesInfo">DOI 10.17487/RFC5944</span>, <time datetime="2010-11" class="refDate">November 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5944">https://www.rfc-editor.org/info/rfc5944</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1652c1842,1843
+< <span class="refAuthor">Perkins, C., Ed.</span><span class="refAuthor">, Johnson, D.</span><span class="refAuthor">, and J. Arkko</span>, <span class="refTitle">"Mobility Support in IPv6"</span>, <span class="seriesInfo">RFC 6275</span>, <span class="seriesInfo">DOI 10.17487/RFC6275</span>, <time datetime="2011-07">July 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6275">https://www.rfc-editor.org/info/rfc6275</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Perkins, C., Ed.</span>, <span class="refAuthor">Johnson, D.</span>, and <span class="refAuthor">J. Arkko</span>, <span class="refTitle">"Mobility Support in IPv6"</span>, <span class="seriesInfo">RFC 6275</span>, <span class="seriesInfo">DOI 10.17487/RFC6275</span>, <time datetime="2011-07" class="refDate">July 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6275">https://www.rfc-editor.org/info/rfc6275</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1655c1846,1847
+< <span class="refAuthor">Ford, A.</span><span class="refAuthor">, Raiciu, C.</span><span class="refAuthor">, Handley, M.</span><span class="refAuthor">, and O. Bonaventure</span>, <span class="refTitle">"TCP Extensions for Multipath Operation with Multiple Addresses"</span>, <span class="seriesInfo">RFC 6824</span>, <span class="seriesInfo">DOI 10.17487/RFC6824</span>, <time datetime="2013-01">January 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6824">https://www.rfc-editor.org/info/rfc6824</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Ford, A.</span>, <span class="refAuthor">Raiciu, C.</span>, <span class="refAuthor">Handley, M.</span>, and <span class="refAuthor">O. Bonaventure</span>, <span class="refTitle">"TCP Extensions for Multipath Operation with Multiple Addresses"</span>, <span class="seriesInfo">RFC 6824</span>, <span class="seriesInfo">DOI 10.17487/RFC6824</span>, <time datetime="2013-01" class="refDate">January 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6824">https://www.rfc-editor.org/info/rfc6824</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1658c1850,1851
+< <span class="refAuthor">Chan, H., Ed.</span><span class="refAuthor">, Liu, D.</span><span class="refAuthor">, Seite, P.</span><span class="refAuthor">, Yokota, H.</span><span class="refAuthor">, and J. Korhonen</span>, <span class="refTitle">"Requirements for Distributed Mobility Management"</span>, <span class="seriesInfo">RFC 7333</span>, <span class="seriesInfo">DOI 10.17487/RFC7333</span>, <time datetime="2014-08">August 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7333">https://www.rfc-editor.org/info/rfc7333</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Chan, H., Ed.</span>, <span class="refAuthor">Liu, D.</span>, <span class="refAuthor">Seite, P.</span>, <span class="refAuthor">Yokota, H.</span>, and <span class="refAuthor">J. Korhonen</span>, <span class="refTitle">"Requirements for Distributed Mobility Management"</span>, <span class="seriesInfo">RFC 7333</span>, <span class="seriesInfo">DOI 10.17487/RFC7333</span>, <time datetime="2014-08" class="refDate">August 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7333">https://www.rfc-editor.org/info/rfc7333</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1663c1856
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+1665c1858
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-conveying-the-desired-addre" class="section-name selfRef">Conveying the Desired Address Type</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-conveying-the-desired-addre" class="section-name selfRef">Conveying the Desired Address Type</a>
+1667c1860
+< <p id="section-appendix.a-1">The following are some suggestions of possible extensions to the socket API 
+---
+> <p id="appendix-A-1">The following are some suggestions of possible extensions to the socket API 
+1669,1670c1862,1863
+<  reachability requirements.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2"><span>[<a href="#RFC5014" class="xref">RFC5014</a>]</span> introduced the ability of applications 
+---
+>  reachability requirements.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2"><span>[<a href="#RFC5014" class="cite xref">RFC5014</a>]</span> introduced the ability of applications 
+1673,1674c1866,1867
+<  and getsockopt() calls to set/get address selection preferences.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-3">One alternative is to extend the definition of the IPV6_ADDR_REFERENCE 
+---
+>  and getsockopt() calls to set/get address selection preferences.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+> <p id="appendix-A-3">One alternative is to extend the definition of the IPV6_ADDR_REFERENCE 
+1677,1678c1870,1871
+<  NON_PERSISTENT_IP_ADDRESS, or GRACEFUL_REPLACEMENT_IP_ADDRESS.<a href="#section-appendix.a-3" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-4">Another alternative is to define a new socket function used by the invoker
+---
+>  NON_PERSISTENT_IP_ADDRESS, or GRACEFUL_REPLACEMENT_IP_ADDRESS.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+> <p id="appendix-A-4">Another alternative is to define a new socket function used by the invoker
+1683,1684c1876,1877
+<  with the allocated resources, before returning to the invoker.<a href="#section-appendix.a-4" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-5">After obtaining an IP address with the desired behavior, the application can 
+---
+>  with the allocated resources, before returning to the invoker.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+> <p id="appendix-A-5">After obtaining an IP address with the desired behavior, the application can 
+1686c1879
+<  socket.<a href="#section-appendix.a-5" class="pilcrow">¶</a></p>
+---
+>  socket.<a href="#appendix-A-5" class="pilcrow">¶</a></p>
+1690c1883
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+1694c1887
+< <p id="section-appendix.b-1">We would like to thank Wu-chi Feng, Alexandru Petrescu, Jouni Korhonen, 
+---
+> <p id="appendix-B-1">We would like to thank Wu-chi Feng, Alexandru Petrescu, Jouni Korhonen, 
+1696c1889
+<    comments and suggestions on this work.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+---
+>    comments and suggestions on this work.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+1700c1893
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
+1704,1705c1897,1898
+< <p id="section-appendix.c-1">This document was merged with "Use Cases and API Extension for Source IP Address 
+<          Selection" <span>[<a href="#I-D.sijeon-dmm-use-cases-api-source" class="xref">API-EXT</a>]</span>.
+---
+> <p id="appendix-C-1">This document was merged with "Use Cases and API Extension for Source IP Address 
+>          Selection" <span>[<a href="#I-D.sijeon-dmm-use-cases-api-source" class="cite xref">API-EXT</a>]</span>.
+1707,1708c1900,1901
+<    well:<a href="#section-appendix.c-1" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-appendix.c-2">
+---
+>    well:<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-C-2">
+1714c1907
+< </pre><a href="#section-appendix.c-2" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-C-2" class="pilcrow">¶</a>
+1716c1909
+< <div class="artwork art-text alignLeft" id="section-appendix.c-3">
+---
+> <div class="alignLeft art-text artwork" id="appendix-C-3">
+1722c1915
+< </pre><a href="#section-appendix.c-3" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-C-3" class="pilcrow">¶</a>
+1724c1917
+< <div class="artwork art-text alignLeft" id="section-appendix.c-4">
+---
+> <div class="alignLeft art-text artwork" id="appendix-C-4">
+1730c1923
+< </pre><a href="#section-appendix.c-4" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-C-4" class="pilcrow">¶</a>
+1735c1928
+< <section id="section-appendix.d">
+---
+> <section id="appendix-D">
+1742c1935,1936
+< <div dir="auto" class="left"> <span class="locality">Istanbul</span>/</div>
+---
+> <div dir="auto" class="left">
+> <span class="locality">Istanbul</span>/</div>
+1762,1763d1955
+< <div dir="auto" class="left"><span class="country-name">Republic of Korea</span></div>
+< <div dir="auto" class="left"> <span class="locality">Suwon</span> </div>
+1764a1957,1958
+> <div dir="auto" class="left"><span class="locality">Suwon</span></div>
+> <div dir="auto" class="left"><span class="country-name">Republic of Korea</span></div>
+1772,1800c1966,1971
+< <script>var toc = document.getElementById("toc");
+< var tocToggle = toc.querySelector("h2");
+< var tocNav = toc.querySelector("nav");
+< 
+< // mobile menu toggle
+< tocToggle.onclick = function(event) {
+<     if (window.innerWidth < 1024) {
+<  var tocNavDisplay = tocNav.currentStyle ? tocNav.currentStyle.display : getComputedStyle(tocNav, null).display;
+<  if (tocNavDisplay == "none") {
+<      tocNav.style.display = "block";
+<  } else {
+<      tocNav.style.display = "none";
+<  }
+<     }
+< }
+< 
+< // toc anchor scroll to anchor
+< tocNav.addEventListener("click", function (event) {
+<     event.preventDefault();
+<     if (event.target.nodeName == 'A') {
+<  if (window.innerWidth < 1024) {
+<      tocNav.style.display = "none";
+<  }
+<  var href = event.target.getAttribute("href");
+<  var anchorId = href.substr(1);
+<  var anchor =  document.getElementById(anchorId);
+<  anchor.scrollIntoView(true);
+<  window.history.pushState("","",href);
+<     }
+---
+> <script>const toc = document.getElementById("toc");
+> toc.querySelector("h2").addEventListener("click", e => {
+>   toc.classList.toggle("active");
+> });
+> toc.querySelector("nav").addEventListener("click", e => {
+>   toc.classList.remove("active");
+1802,1810d1972
+< 
+< // switch toc mode when window resized
+< window.onresize = function () {
+<     if (window.innerWidth < 1024) {
+<  tocNav.style.display = "none";
+<     } else {
+<  tocNav.style.display = "block";
+<     }
+< }
