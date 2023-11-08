@@ -1,0 +1,180 @@
+468,481c468,481
+<       (a)  Q4S-aware-network scenario: The network is Q4S aware and
+<            reacts by itself to these alerts.  In this scenario, Q4S-
+<            ALERT messages are sent by the server to the client, and
+<            network elements inspect and process these alert messages.
+<            The alerting mode in this scenario is called Q4S-aware-
+<            network alerting mode.
+< 
+<       (b)  Reactive scenario: As shown in Figure 1, the network is not
+<            Q4S aware.  In this scenario, alert notifications are sent to
+<            a specific node, called an Actuator, which is in charge of
+<            making decisions regarding what actions to trigger: either to
+<            change application behavior to adapt it to network conditions
+<            and/or invoke a network policy server in order to reconfigure
+<            the network and request better quality for application flows.
+---
+>       (a)Q4S-aware-network scenario: The network is Q4S aware and reacts
+>          by itself to these alerts.  In this scenario, Q4S-ALERT
+>          messages are sent by the server to the client, and network
+>          elements inspect and process these alert messages.  The
+>          alerting mode in this scenario is called Q4S-aware-network
+>          alerting mode.
+> 
+>       (b)Reactive scenario: As shown in Figure 1, the network is not Q4S
+>          aware.  In this scenario, alert notifications are sent to a
+>          specific node, called an Actuator, which is in charge of making
+>          decisions regarding what actions to trigger: either to change
+>          application behavior to adapt it to network conditions and/or
+>          invoke a network policy server in order to reconfigure the
+>          network and request better quality for application flows.
+501,506c501,505
+<            format will be implementation dependent.  In this way, we
+<            will call the messages sent from the server stack to the
+<            Actuator "notifications" (e.g., alert notifications) and the
+<            messages sent from the Actuator to the server stack in
+<            response to notifications "acknowledges" (e.g., alert
+<            acknowledges).
+---
+>          format will be implementation dependent.  In this way, we will
+>          call the messages sent from the server stack to the Actuator
+>          "notifications" (e.g., alert notifications) and the messages
+>          sent from the Actuator to the server stack in response to
+>          notifications "acknowledges" (e.g., alert acknowledges).
+570,578c569,577
+<    (a)  Measurements do not meet the requirements: in this case, the
+<         stage 0 is repeated after sending an alert from the server to
+<         the client or from the server stack to the Actuator, depending
+<         on the alerting mode defined in the Handshake phase.  Notice
+<         that measurements continue to be taken but no alerts are sent
+<         during the "alert-pause" time.  In the Reactive scenario, the
+<         Actuator will decide either to forward the alert notification to
+<         the network policy server or to the application, depending on
+<         where reconfiguration actions have to be taken.
+---
+>    (a)Measurements do not meet the requirements: in this case, the stage
+>       0 is repeated after sending an alert from the server to the client
+>       or from the server stack to the Actuator, depending on the
+>       alerting mode defined in the Handshake phase.  Notice that
+>       measurements continue to be taken but no alerts are sent during
+>       the "alert-pause" time.  In the Reactive scenario, the Actuator
+>       will decide either to forward the alert notification to the
+>       network policy server or to the application, depending on where
+>       reconfiguration actions have to be taken.
+580,581c579,580
+<    (b)  Measurements do meet the requirements: in this case, client
+<         moves to stage 1 by sending a new READY message.
+---
+>    (b)Measurements do meet the requirements: in this case, client moves
+>       to stage 1 by sending a new READY message.
+590,591c589,590
+<         case, the client moves to the beginning of Stage 0 for
+<         initiating the negotiation measurements again.
+---
+>       case, the client moves to the beginning of Stage 0 for initiating
+>       the negotiation measurements again.
+2457,2463c2456,2461
+<    (a)  Q4S-aware-network alerting mode: the server MUST send a Q4S-
+<         ALERT message to the client including the digital Signature
+<         header field, and the client MUST answer with the same Q4S-ALERT
+<         message.  The Signature header field contains the signed hash
+<         value of the SDP body in order to protect all the SDP data, and
+<         therefore it MUST contain the "measurement" parameters in the
+<         body.
+---
+>    (a)Q4S-aware-network alerting mode: the server MUST send a Q4S-ALERT
+>       message to the client including the digital Signature header
+>       field, and the client MUST answer with the same Q4S-ALERT message.
+>       The Signature header field contains the signed hash value of the
+>       SDP body in order to protect all the SDP data, and therefore it
+>       MUST contain the "measurement" parameters in the body.
+2506,2511c2504,2509
+<         notification to the Actuator, and the Actuator MUST answer with
+<         an acknowledgement to the received alert notification.  The
+<         alert notification sent to the Actuator by the server stack
+<         doesn't follow Q4S message style but should have all the
+<         information the Actuator will need for the actions to be taken,
+<         which will be implementation dependent.
+---
+>       notification to the Actuator, and the Actuator MUST answer with an
+>       acknowledgement to the received alert notification.  The alert
+>       notification sent to the Actuator by the server stack doesn't
+>       follow Q4S message style but should have all the information the
+>       Actuator will need for the actions to be taken, which will be
+>       implementation dependent.
+2845,2848c2843,2845
+<    2.  During the Continuity phase, violation of constraints is
+<        detected; the "qos-level" is increased to 1, a Q4S-ALERT is sent
+<        by the server to the client, and an "alert-pause" timer is
+<        started.
+---
+>    2. During the Continuity phase, violation of constraints is detected;
+>       the "qos-level" is increased to 1, a Q4S-ALERT is sent by the
+>       server to the client, and an "alert-pause" timer is started.
+2851,2853c2848,2850
+<        constraints is detected; the "qos-level" is increased to 2, a
+<        Q4S-ALERT is sent by the server to the client, and an "alert-
+<        pause" timer is started.
+---
+>       constraints is detected; the "qos-level" is increased to 2, a Q4S-
+>       ALERT is sent by the server to the client, and an "alert-pause"
+>       timer is started.
+3138,3139c3135,3136
+<    (1)  Compute target bandwidth / 8000 bits.  In the example above, it
+<         is 11 Mbps / 8000 = 1375 messages per second.
+---
+>    (1)Compute target bandwidth / 8000 bits.  In the example above, it is
+>       11 Mbps / 8000 = 1375 messages per second.
+3141,3145c3138,3141
+<    (2)  Divide the number of messages per second by 1000 to determine
+<         the number of messages per millisecond: 1375 / 1000 = 1.375.
+<         The integer value is the number of messages per millisecond (in
+<         this case, one).  The pending bandwidth is now 375 messages per
+<         second.
+---
+>    (2)Divide the number of messages per second by 1000 to determine the
+>       number of messages per millisecond: 1375 / 1000 = 1.375.  The
+>       integer value is the number of messages per millisecond (in this
+>       case, one).  The pending bandwidth is now 375 messages per second.
+3147,3148c3143,3144
+<    (3)  To achieve the 375 messages per second, use a submultiple of
+<         1000, which must be less than 375:
+---
+>    (3)To achieve the 375 messages per second, use a submultiple of 1000,
+>       which must be less than 375:
+3561d3556
+< 
+3567d3561
+< 
+3573d3566
+< 
+3579d3571
+< 
+3585d3576
+< 
+3595d3585
+< 
+3601d3590
+< 
+3607d3595
+< 
+3613d3600
+< 
+3619d3605
+< 
+3625d3610
+< 
+3631d3615
+< 
+3637d3620
+< 
+3648d3630
+< 
+3658d3639
+< 
+3667d3647
+< 
+3678d3657
+< 
+3689d3667
+< 
