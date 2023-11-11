@@ -1,0 +1,887 @@
+25c25
+< <meta content="xml2rfc 3.4.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+28,45c28,41
+<   xml2rfc 3.4.0
+<     Python 3.6.10
+<     appdirs 1.4.4
+<     ConfigArgParse 1.2.3
+<     google-i18n-address 2.3.5
+<     html5lib 1.0.1
+<     intervaltree 3.0.2
+<     Jinja2 2.11.2
+<     kitchen 1.2.6
+<     lxml 4.4.2
+<     pycairo 1.19.0
+<     pycountry 19.8.18
+<     pyflakes 2.1.1
+<     PyYAML 5.3.1
+<     requests 2.22.0
+<     setuptools 40.6.2
+<     six 1.14.0
+<     WeasyPrint 51
+---
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.0.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.9
+47c43
+< <link href="rfc8896.xml" rel="alternate" type="application/rfc+xml">
+---
+> <link href="rfc/rfc8896.xml" rel="alternate" type="application/rfc+xml">
+57c53
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+66a63,68
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+69d70
+<   width: extend-to-zoom;
+84c85
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+86a88
+>   overflow-wrap: break-word;
+172a175,183
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+187,190d197
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+191a199
+>   border: none;
+214a223,225
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+256c267,268
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+266c278
+< tt, code, pre, code {
+---
+> tt, code, pre {
+268c280
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+307a320,322
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+397a413,418
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+499c520
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+639d659
+< 
+661a682,684
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+729c752
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+829c852
+< tt, code, pre, code {
+---
+> tt, code, pre {
+834c857
+< pre.sourcecode,
+---
+> .sourcecode pre,
+870c893
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1051a1075
+>   .artwork > pre,
+1066c1090
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1072a1097,1099
+> tr {
+>   break-inside: avoid;
+> }
+1092c1119
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1123c1150
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1148c1175
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1166c1193
+< dd > div:first-child > pre.sourcecode,
+---
+> dd > div.sourcecode:first-child,
+1174a1202,1209
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1176a1212
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-alto-cost-calendar-21" rel="prev">
+1179c1215
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-alto-cost-calendar-21" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1181,1182c1217,1218
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1295,1300c1331,1336
+< <nav class="toc"><ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-some-recent-known-uses" class="xref">Some Recent Known Uses</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-some-recent-known-uses" class="internal xref">Some Recent Known Uses</a></p>
+1302,1303c1338,1339
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.1.2.2">
+<                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="xref">1.2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+>                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+1307,1308c1343,1344
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+1310,1314c1346,1350
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-overview-of-alto-cost-calen" class="xref">Overview of ALTO Cost Calendars and Terminology</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-alto-cost-calendar-overview" class="xref">ALTO Cost Calendar Overview</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-overview-of-alto-cost-calen" class="internal xref">Overview of ALTO Cost Calendars and Terminology</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-alto-cost-calendar-overview" class="internal xref">ALTO Cost Calendar Overview</a></p>
+1316,1317c1352,1353
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-alto-cost-calendar-informat" class="xref">ALTO Cost Calendar Information Features</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-alto-cost-calendar-informat" class="internal xref">ALTO Cost Calendar Information Features</a></p>
+1319,1323c1355,1359
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.3.2.3">
+<                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-alto-calendar-design-charac" class="xref">ALTO Calendar Design Characteristics</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.3.2.3.2.1">
+<                     <p id="section-toc.1-1.3.2.3.2.1.1"><a href="#section-3.3.1" class="xref">3.3.1</a>.  <a href="#name-alto-cost-calendar-for-all-" class="xref">ALTO Cost Calendar for All Cost Modes</a><a href="#section-toc.1-1.3.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+>                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-alto-calendar-design-charac" class="internal xref">ALTO Calendar Design Characteristics</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3.2.1">
+>                     <p id="section-toc.1-1.3.2.3.2.1.1"><a href="#section-3.3.1" class="auto internal xref">3.3.1</a>.  <a href="#name-alto-cost-calendar-for-all-" class="internal xref">ALTO Cost Calendar for All Cost Modes</a></p>
+1325,1326c1361,1362
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.3.2.3.2.2">
+<                     <p id="section-toc.1-1.3.2.3.2.2.1"><a href="#section-3.3.2" class="xref">3.3.2</a>.  <a href="#name-compatibility-with-legacy-a" class="xref">Compatibility with Legacy ALTO Clients</a><a href="#section-toc.1-1.3.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3.2.2">
+>                     <p id="section-toc.1-1.3.2.3.2.2.1"><a href="#section-3.3.2" class="auto internal xref">3.3.2</a>.  <a href="#name-compatibility-with-legacy-a" class="internal xref">Compatibility with Legacy ALTO Clients</a></p>
+1332,1336c1368,1372
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-alto-calendar-specification" class="xref">ALTO Calendar Specification: IRD Extensions</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-calendar-attributes-in-the-" class="xref">Calendar Attributes in the IRD Resource Capabilities</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-alto-calendar-specification" class="internal xref">ALTO Calendar Specification: IRD Extensions</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-calendar-attributes-in-the-" class="internal xref">Calendar Attributes in the IRD Resource Capabilities</a></p>
+1338,1339c1374,1375
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-calendars-in-a-delegate-ird" class="xref">Calendars in a Delegate IRD</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-calendars-in-a-delegate-ird" class="internal xref">Calendars in a Delegate IRD</a></p>
+1341,1342c1377,1378
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-example-ird-with-alto-cost-" class="xref">Example IRD with ALTO Cost Calendars</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-example-ird-with-alto-cost-" class="internal xref">Example IRD with ALTO Cost Calendars</a></p>
+1346,1353c1382,1389
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-alto-calendar-specification-" class="xref">ALTO Calendar Specification: Service Information Resources</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-calendar-extensions-for-fil" class="xref">Calendar Extensions for Filtered Cost Maps (FCM)</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.1.2.1">
+<                     <p id="section-toc.1-1.5.2.1.2.1.1"><a href="#section-5.1.1" class="xref">5.1.1</a>.  <a href="#name-calendar-extensions-in-filt" class="xref">Calendar Extensions in Filtered Cost Map Requests</a><a href="#section-toc.1-1.5.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-alto-calendar-specification-" class="internal xref">ALTO Calendar Specification: Service Information Resources</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-calendar-extensions-for-fil" class="internal xref">Calendar Extensions for Filtered Cost Maps (FCM)</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.1">
+>                     <p id="section-toc.1-1.5.2.1.2.1.1"><a href="#section-5.1.1" class="auto internal xref">5.1.1</a>.  <a href="#name-calendar-extensions-in-filt" class="internal xref">Calendar Extensions in Filtered Cost Map Requests</a></p>
+1355,1356c1391,1392
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.1.2.2">
+<                     <p id="section-toc.1-1.5.2.1.2.2.1"><a href="#section-5.1.2" class="xref">5.1.2</a>.  <a href="#name-calendar-extensions-in-filte" class="xref">Calendar Extensions in Filtered Cost Map Responses</a><a href="#section-toc.1-1.5.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.2">
+>                     <p id="section-toc.1-1.5.2.1.2.2.1"><a href="#section-5.1.2" class="auto internal xref">5.1.2</a>.  <a href="#name-calendar-extensions-in-filte" class="internal xref">Calendar Extensions in Filtered Cost Map Responses</a></p>
+1358,1359c1394,1395
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.1.2.3">
+<                     <p id="section-toc.1-1.5.2.1.2.3.1"><a href="#section-5.1.3" class="xref">5.1.3</a>.  <a href="#name-use-case-and-example-fcm-wi" class="xref">Use Case and Example: FCM with a Bandwidth Calendar</a><a href="#section-toc.1-1.5.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.3">
+>                     <p id="section-toc.1-1.5.2.1.2.3.1"><a href="#section-5.1.3" class="auto internal xref">5.1.3</a>.  <a href="#name-use-case-and-example-fcm-wi" class="internal xref">Use Case and Example: FCM with a Bandwidth Calendar</a></p>
+1363,1367c1399,1403
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-calendar-extensions-in-the-" class="xref">Calendar Extensions in the Endpoint Cost Service</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.2.2.1">
+<                     <p id="section-toc.1-1.5.2.2.2.1.1"><a href="#section-5.2.1" class="xref">5.2.1</a>.  <a href="#name-calendar-specific-input-in-" class="xref">Calendar-Specific Input in Endpoint Cost Requests</a><a href="#section-toc.1-1.5.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-calendar-extensions-in-the-" class="internal xref">Calendar Extensions in the Endpoint Cost Service</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.1">
+>                     <p id="section-toc.1-1.5.2.2.2.1.1"><a href="#section-5.2.1" class="auto internal xref">5.2.1</a>.  <a href="#name-calendar-specific-input-in-" class="internal xref">Calendar-Specific Input in Endpoint Cost Requests</a></p>
+1369,1370c1405,1406
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.2.2.2">
+<                     <p id="section-toc.1-1.5.2.2.2.2.1"><a href="#section-5.2.2" class="xref">5.2.2</a>.  <a href="#name-calendar-attributes-in-the-e" class="xref">Calendar Attributes in the Endpoint Cost Response</a><a href="#section-toc.1-1.5.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.2">
+>                     <p id="section-toc.1-1.5.2.2.2.2.1"><a href="#section-5.2.2" class="auto internal xref">5.2.2</a>.  <a href="#name-calendar-attributes-in-the-e" class="internal xref">Calendar Attributes in the Endpoint Cost Response</a></p>
+1372,1373c1408,1409
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.2.2.3">
+<                     <p id="section-toc.1-1.5.2.2.2.3.1"><a href="#section-5.2.3" class="xref">5.2.3</a>.  <a href="#name-use-case-and-example-ecs-wi" class="xref">Use Case and Example: ECS with a routingcost Calendar</a><a href="#section-toc.1-1.5.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.3">
+>                     <p id="section-toc.1-1.5.2.2.2.3.1"><a href="#section-5.2.3" class="auto internal xref">5.2.3</a>.  <a href="#name-use-case-and-example-ecs-wi" class="internal xref">Use Case and Example: ECS with a routingcost Calendar</a></p>
+1375,1377c1411,1413
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.2.2.4">
+<                     <p id="section-toc.1-1.5.2.2.2.4.1"><a href="#section-5.2.4" class="xref">5.2.4</a>.  <a href="#name-use-case-and-example-ecs-wit" class="xref">Use Case and Example: ECS with a Multi-cost Calendar for
+<    routingcost and owdelay</a><a href="#section-toc.1-1.5.2.2.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.4">
+>                     <p id="section-toc.1-1.5.2.2.2.4.1"><a href="#section-5.2.4" class="auto internal xref">5.2.4</a>.  <a href="#name-use-case-and-example-ecs-wit" class="internal xref">Use Case and Example: ECS with a Multi-cost Calendar for
+>    routingcost and owdelay</a></p>
+1383,1384c1419,1420
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1386,1387c1422,1423
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1389,1390c1425,1426
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-operational-considerations" class="xref">Operational Considerations</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-operational-considerations" class="internal xref">Operational Considerations</a></p>
+1392,1396c1428,1432
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.9.2.1">
+<                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="xref">9.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.9.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
+>                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="auto internal xref">9.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1398,1399c1434,1435
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.9.2.2">
+<                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="xref">9.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.9.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
+>                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1403,1404c1439,1440
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1406,1407c1442,1443
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1419c1455
+<       specified in <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> provides guidance
+---
+>       specified in <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span> provides guidance
+1427c1463
+< <p id="section-1-2">The ALTO protocol in <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>
+---
+> <p id="section-1-2">The ALTO protocol in <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>
+1435c1471
+<       outlined in the ALTO problem statement <span>[<a href="#RFC5693" class="xref">RFC5693</a>]</span> and requirement AR-14 of <span>[<a href="#RFC6708" class="xref">RFC6708</a>]</span>, ALTO does not disseminate network metrics that
+---
+>       outlined in the ALTO problem statement <span>[<a href="#RFC5693" class="cite xref">RFC5693</a>]</span> and requirement AR-14 of <span>[<a href="#RFC6708" class="cite xref">RFC6708</a>]</span>, ALTO does not disseminate network metrics that
+1455c1491
+< <p id="section-1-4">This document extends <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> to
+---
+> <p id="section-1-4">This document extends <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span> to
+1466c1502
+<       arrays, see <span>[<a href="#RFC8259" class="xref">RFC8259</a>]</span>, where each value
+---
+>       arrays, see <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span>, where each value
+1472,1473c1508,1509
+<       compatibility with legacy ALTO Clients -- those that only support <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>.<a href="#section-1-5" class="pilcrow">¶</a></p>
+< <p id="section-1-6">In the rest of this document, <a href="#sect-3" class="xref">Section 3</a> provides the design characteristics.  Sections <a href="#sect-4" class="xref">4</a> and <a href="#sect-5" class="xref">5</a> define the formal specifications for the IRD and the
+---
+>       compatibility with legacy ALTO Clients -- those that only support <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>.<a href="#section-1-5" class="pilcrow">¶</a></p>
+> <p id="section-1-6">In the rest of this document, <a href="#sect-3" class="auto internal xref">Section 3</a> provides the design characteristics.  Sections <a href="#sect-4" class="auto internal xref">4</a> and <a href="#sect-5" class="auto internal xref">5</a> define the formal specifications for the IRD and the
+1475c1511
+<       considerations are addressed respectively in Sections <a href="#sect-6" class="xref">6</a>, <a href="#sect-7" class="xref">7</a>, and <a href="#sect-8" class="xref">8</a>.<a href="#section-1-6" class="pilcrow">¶</a></p>
+---
+>       considerations are addressed respectively in Sections <a href="#sect-6" class="auto internal xref">6</a>, <a href="#sect-7" class="auto internal xref">7</a>, and <a href="#sect-8" class="auto internal xref">8</a>.<a href="#section-1-6" class="pilcrow">¶</a></p>
+1486c1522
+<  to transfer their data sets. The SENSE project  <span>[<a href="#SENSE" class="xref">SENSE</a>]</span> supports such
+---
+>  to transfer their data sets. The SENSE project  <span>[<a href="#SENSE" class="cite xref">SENSE</a>]</span> supports such
+1495c1531
+<  data analytics, see <span>[<a href="#UNICORN-FGCS" class="xref">UNICORN-FGCS</a>]</span>.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
+---
+>  data analytics, see <span>[<a href="#UNICORN-FGCS" class="cite xref">UNICORN-FGCS</a>]</span>.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
+1526c1562
+<           <dd style="margin-left: 1.5em" id="section-1.2-1.10">An endpoint is defined as in <span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-2.1" class="relref">Section 2.1</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>.  It can be, for example, a peer,
+---
+>           <dd style="margin-left: 1.5em" id="section-1.2-1.10">An endpoint is defined as in <span><a href="https://rfc-editor.org/rfc/rfc7285#section-2.1" class="relref">Section 2.1</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>.  It can be, for example, a peer,
+1560c1596
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1573,1574c1609,1610
+<       It assumes the reader is familiar with the ALTO protocol <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> and its Multi-Cost ALTO extension
+<       <span>[<a href="#RFC8189" class="xref">RFC8189</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+---
+>       It assumes the reader is familiar with the ALTO protocol <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span> and its Multi-Cost ALTO extension
+>       <span>[<a href="#RFC8189" class="cite xref">RFC8189</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+1604c1640
+<  Server-Sent Events (SSE)" Service <span>[<a href="#RFC8895" class="xref">RFC8895</a>]</span> can be used to  directly update the Calendar upon
+---
+>  Server-Sent Events (SSE)" Service <span>[<a href="#RFC8895" class="cite xref">RFC8895</a>]</span> can be used to  directly update the Calendar upon
+1656c1692
+<  on the network. See <a href="#sect-8" class="xref">Section 8</a> for more
+---
+>  on the network. See <a href="#sect-8" class="auto internal xref">Section 8</a> for more
+1666c1702
+<  (<span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-8.2" class="relref">Section 8.2</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>).<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+---
+>  (<span><a href="https://rfc-editor.org/rfc/rfc7285#section-8.2" class="relref">Section 8.2</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>).<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+1668,1670c1704,1706
+<  JSON <span>[<a href="#RFC8259" class="xref">RFC8259</a>]</span>.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+< <p id="section-3.3-3">In the base protocol <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>, an ALTO cost is
+<         specified as a generic JSONValue <span>[<a href="#RFC8259" class="xref">RFC8259</a>]</span> to allow extensions. However, that section (<span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-11.2.3.6" class="relref">Section 11.2.3.6</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>) states:<a href="#section-3.3-3" class="pilcrow">¶</a></p>
+---
+>  JSON <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span>.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+> <p id="section-3.3-3">In the base protocol <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>, an ALTO cost is
+>         specified as a generic JSONValue <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> to allow extensions. However, that section (<span><a href="https://rfc-editor.org/rfc/rfc7285#section-11.2.3.6" class="relref">Section 11.2.3.6</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>) states:<a href="#section-3.3-3" class="pilcrow">¶</a></p>
+1679c1715
+<  given in <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> to allow a cost
+---
+>  given in <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span> to allow a cost
+1709c1745
+<  extensions.  It relies on "Parsing of Unknown Fields" (<span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-8.3.7" class="relref">Section 8.3.7</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>), which states:
+---
+>  extensions.  It relies on "Parsing of Unknown Fields" (<span><a href="https://rfc-editor.org/rfc/rfc7285#section-8.3.7" class="relref">Section 8.3.7</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>), which states:
+1772,1773c1808,1809
+<  defined in <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> and extended in
+<  <span>[<a href="#RFC8189" class="xref">RFC8189</a>]</span>, which support optional
+---
+>  defined in <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span> and extended in
+>  <span>[<a href="#RFC8189" class="cite xref">RFC8189</a>]</span>, which support optional
+1802c1838
+<    as specified in <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>.<a href="#section-3.3.2-1" class="pilcrow">¶</a></p>
+---
+>    as specified in <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>.<a href="#section-3.3.2-1" class="pilcrow">¶</a></p>
+1804c1840
+<    base protocol specified in <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>.<a href="#section-3.3.2-2" class="pilcrow">¶</a></p>
+---
+>    base protocol specified in <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>.<a href="#section-3.3.2-2" class="pilcrow">¶</a></p>
+1806c1842
+<    base protocol specified in <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>.<a href="#section-3.3.2-3" class="pilcrow">¶</a></p>
+---
+>    base protocol specified in <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>.<a href="#section-3.3.2-3" class="pilcrow">¶</a></p>
+1809c1845
+<    required by <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>. The Server,
+---
+>    required by <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>. The Server,
+1812c1848
+<    or Clients implementing <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>
+---
+>    or Clients implementing <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>
+1814c1850
+< <p id="section-3.3.2-5">For compatibility with legacy ALTO Clients specified in <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>, calendared information
+---
+> <p id="section-3.3.2-5">For compatibility with legacy ALTO Clients specified in <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>, calendared information
+1817c1853
+<    an HTTP 'GET' command.  As specified in <span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-8.3.7" class="relref">Section 8.3.7</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>, it will ignore the Calendar
+---
+>    an HTTP 'GET' command.  As specified in <span><a href="https://rfc-editor.org/rfc/rfc7285#section-8.3.7" class="relref">Section 8.3.7</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>, it will ignore the Calendar
+1843c1879
+<       in <a href="#sect-4.3" class="xref">Section 4.3</a>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+---
+>       in <a href="#sect-4.3" class="auto internal xref">Section 4.3</a>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+1867,1868c1903,1904
+<  the cost type name and query the cost type using <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+< <p id="section-4.1-2">The encoding format for object CalendarAttributes using JSON <span>[<a href="#RFC8259" class="xref">RFC8259</a>]</span> is as follows:<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+---
+>  the cost type name and query the cost type using <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+> <p id="section-4.1-2">The encoding format for object CalendarAttributes using JSON <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> is as follows:<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+1870,1871c1906,1907
+< <div id="section-4.1-4">
+< <pre class="sourcecode">
+---
+> <div class="sourcecode" id="section-4.1-4">
+> <pre>
+1897c1933
+<      improve interoperability and be consistent with <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> on the
+---
+>      improve interoperability and be consistent with <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span> on the
+1900c1936
+<      <span>[<a href="#IEEE.754.2019" class="xref">IEEE.754.2019</a>]</span> to store this
+---
+>      <span>[<a href="#IEEE.754.2019" class="cite xref">IEEE.754.2019</a>]</span> to store this
+1921c1957
+<  attribute. In the example IRD provided in <a href="#sect-4.3" class="xref">Section 4.3</a>, the information resource
+---
+>  attribute. In the example IRD provided in <a href="#sect-4.3" class="auto internal xref">Section 4.3</a>, the information resource
+1946c1982
+<  this, one option is that a "root" ALTO Server implementing <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> resources and running at a given
+---
+>  this, one option is that a "root" ALTO Server implementing <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span> resources and running at a given
+1953c1989
+<  resources. This option is described in "Delegation Using IRD" (<span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-9.2.4" class="relref">Section 9.2.4</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>).<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+---
+>  resources. This option is described in "Delegation Using IRD" (<span><a href="https://rfc-editor.org/rfc/rfc7285#section-9.2.4" class="relref">Section 9.2.4</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>).<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+1975c2011
+<  various cost metrics and cost modes.  In particular, since <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> makes it mandatory, the Server
+---
+>  various cost metrics and cost modes.  In particular, since <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span> makes it mandatory, the Server
+1984c2020
+<    numerical mode, as defined in <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> and registered with IANA.<a href="#section-4.3-4.2" class="pilcrow">¶</a>
+---
+>    numerical mode, as defined in <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span> and registered with IANA.<a href="#section-4.3-4.2" class="pilcrow">¶</a>
+1991c2027
+<    definition in <span>[<a href="#I-D.ietf-alto-performance-metrics" class="xref">ALTO_METRICS</a>]</span>.<a href="#section-4.3-4.4" class="pilcrow">¶</a>
+---
+>    definition in <span>[<a href="#I-D.ietf-alto-performance-metrics" class="cite xref">ALTO_METRICS</a>]</span>.<a href="#section-4.3-4.4" class="pilcrow">¶</a>
+2029,2030c2065,2066
+< <div id="section-4.3-8">
+< <pre class="sourcecode">
+---
+> <div class="breakable sourcecode" id="section-4.3-8">
+> <pre>
+2158c2194
+<  <a href="#sect-3.3" class="xref">Section 3.3</a>, it <span class="bcp14">MUST</span>
+---
+>  <a href="#sect-3.3" class="auto internal xref">Section 3.3</a>, it <span class="bcp14">MUST</span>
+2160c2196
+<  but are requested as specified in <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> and <span>[<a href="#RFC8189" class="xref">RFC8189</a>]</span>.<a href="#section-4.3-13" class="pilcrow">¶</a></p>
+---
+>  but are requested as specified in <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span> and <span>[<a href="#RFC8189" class="cite xref">RFC8189</a>]</span>.<a href="#section-4.3-13" class="pilcrow">¶</a></p>
+2176c2212
+<  <span><a href="https://www.rfc-editor.org/rfc/rfc7231#section-7.1.1.1" class="relref">Section 7.1.1.1</a> of [<a href="#RFC7231" class="xref">RFC7231</a>]</span>. Note that the
+---
+>  <span><a href="https://rfc-editor.org/rfc/rfc7231#section-7.1.1.1" class="relref">Section 7.1.1.1</a> of [<a href="#RFC7231" class="cite xref">RFC7231</a>]</span>. Note that the
+2179,2180c2215,2216
+< <div id="section-5-3">
+< <pre class="sourcecode">
+---
+> <div class="sourcecode" id="section-5-3">
+> <pre>
+2190c2226
+<  as specified in <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+---
+>  as specified in <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+2197c2233
+<    Map, defined by object ReqFilteredCostMap in <span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-11.3.2" class="relref">Section 11.3.2</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>, are augmented with one
+---
+>    Map, defined by object ReqFilteredCostMap in <span><a href="https://rfc-editor.org/rfc/rfc7285#section-11.3.2" class="relref">Section 11.3.2</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>, are augmented with one
+2199c2235
+<    ReqFilteredCostMap defined in <span><a href="https://www.rfc-editor.org/rfc/rfc8189#section-4.1.2" class="relref">Section 4.1.2</a> of [<a href="#RFC8189" class="xref">RFC8189</a>]</span>.<a href="#section-5.1.1-1" class="pilcrow">¶</a></p>
+---
+>    ReqFilteredCostMap defined in <span><a href="https://rfc-editor.org/rfc/rfc8189#section-4.1.2" class="relref">Section 4.1.2</a> of [<a href="#RFC8189" class="cite xref">RFC8189</a>]</span>.<a href="#section-5.1.1-1" class="pilcrow">¶</a></p>
+2204,2205c2240,2241
+< <div id="section-5.1.1-3">
+< <pre class="sourcecode">
+---
+> <div class="sourcecode" id="section-5.1.1-3">
+> <pre>
+2211c2247
+<    the Server also implement <span>[<a href="#RFC8189" class="xref">RFC8189</a>]</span>.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p>
+---
+>    the Server also implement <span>[<a href="#RFC8189" class="cite xref">RFC8189</a>]</span>.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p>
+2222c2258
+<    only implements <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>,
+---
+>    only implements <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>,
+2224c2260
+<    cost value, as specified in <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>.<a href="#section-5.1.1-7" class="pilcrow">¶</a></p>
+---
+>    cost value, as specified in <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>.<a href="#section-5.1.1-7" class="pilcrow">¶</a></p>
+2230,2231c2266,2267
+< <div id="section-5.1.1-10">
+< <pre class="sourcecode">
+---
+> <div class="sourcecode" id="section-5.1.1-10">
+> <pre>
+2236c2272
+<    one cost type at a time, as specified in <span>[<a href="#RFC8189" class="xref">RFC8189</a>]</span>, <span class="bcp14">MUST</span> provide an array of N values
+---
+>    one cost type at a time, as specified in <span>[<a href="#RFC8189" class="cite xref">RFC8189</a>]</span>, <span class="bcp14">MUST</span> provide an array of N values
+2258c2294
+<      with <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> and <span>[<a href="#RFC8189" class="xref">RFC8189</a>]</span> and<a href="#section-5.1.2-3.1" class="pilcrow">¶</a>
+---
+>      with <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span> and <span>[<a href="#RFC8189" class="cite xref">RFC8189</a>]</span> and<a href="#section-5.1.2-3.1" class="pilcrow">¶</a>
+2268c2304
+<        a time, only the "meta" fields specified in <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> for these information
+---
+>        a time, only the "meta" fields specified in <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span> for these information
+2279c2315
+<        specified in <span>[<a href="#RFC8189" class="xref">RFC8189</a>]</span> and
+---
+>        specified in <span>[<a href="#RFC8189" class="cite xref">RFC8189</a>]</span> and
+2281c2317
+<        "meta" fields specified in <span>[<a href="#RFC8189" class="xref">RFC8189</a>]</span> for these information service responses:<a href="#section-5.1.2-5.2.1" class="pilcrow">¶</a></p>
+---
+>        "meta" fields specified in <span>[<a href="#RFC8189" class="cite xref">RFC8189</a>]</span> for these information service responses:<a href="#section-5.1.2-5.2.1" class="pilcrow">¶</a></p>
+2286c2322
+<  compatibility with <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>,
+---
+>  compatibility with <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>,
+2297c2333
+<    <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> and <span>[<a href="#RFC8189" class="xref">RFC8189</a>]</span>.<a href="#section-5.1.2-6" class="pilcrow">¶</a></p>
+---
+>    <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span> and <span>[<a href="#RFC8189" class="cite xref">RFC8189</a>]</span>.<a href="#section-5.1.2-6" class="pilcrow">¶</a></p>
+2301c2337
+<    a single cost value as specified in <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>.<a href="#section-5.1.2-7" class="pilcrow">¶</a></p>
+---
+>    a single cost value as specified in <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>.<a href="#section-5.1.2-7" class="pilcrow">¶</a></p>
+2339,2340c2375,2376
+< <div id="section-5.1.2-13">
+< <pre class="sourcecode">
+---
+> <div class="sourcecode" id="section-5.1.2-13">
+> <pre>
+2366,2367c2402,2403
+<      applies. The value is a string that, as specified in <a href="#sect-5" class="xref">Section 5</a>, contains an HTTP "Date" header
+<      field using the IMF-fixdate format specified in <span><a href="https://www.rfc-editor.org/rfc/rfc7231#section-7.1.1.1" class="relref">Section 7.1.1.1</a> of [<a href="#RFC7231" class="xref">RFC7231</a>]</span>.  The
+---
+>      applies. The value is a string that, as specified in <a href="#sect-5" class="auto internal xref">Section 5</a>, contains an HTTP "Date" header
+>      field using the IMF-fixdate format specified in <span><a href="https://rfc-editor.org/rfc/rfc7231#section-7.1.1.1" class="relref">Section 7.1.1.1</a> of [<a href="#RFC7231" class="cite xref">RFC7231</a>]</span>.  The
+2372c2408
+<             <dd style="margin-left: 1.5em" id="section-5.1.2-14.6">As specified in <a href="#sect-4.1" class="xref">Section 4.1</a> and
+---
+>             <dd style="margin-left: 1.5em" id="section-5.1.2-14.6">As specified in <a href="#sect-4.1" class="auto internal xref">Section 4.1</a> and
+2378c2414
+<             <dd style="margin-left: 1.5em" id="section-5.1.2-14.8">As specified in <a href="#sect-4.1" class="xref">Section 4.1</a> and
+---
+>             <dd style="margin-left: 1.5em" id="section-5.1.2-14.8">As specified in <a href="#sect-4.1" class="auto internal xref">Section 4.1</a> and
+2407c2443
+<    specified in <span>[<a href="#RFC8895" class="xref">RFC8895</a>]</span>.  To this
+---
+>    specified in <span>[<a href="#RFC8895" class="cite xref">RFC8895</a>]</span>.  To this
+2410c2446
+<    Server-Sent Events (SSE)" Service, which is specified in <span>[<a href="#RFC8895" class="xref">RFC8895</a>]</span>.  Likewise, ALTO Clients capable
+---
+>    Server-Sent Events (SSE)" Service, which is specified in <span>[<a href="#RFC8895" class="cite xref">RFC8895</a>]</span>.  Likewise, ALTO Clients capable
+2412c2448
+<    Service.  See also discussion in <a href="#sect-8" class="xref">Section 8</a> "Operational Considerations".<a href="#section-5.1.2-16" class="pilcrow">¶</a></p>
+---
+>    Service.  See also discussion in <a href="#sect-8" class="auto internal xref">Section 8</a> "Operational Considerations".<a href="#section-5.1.2-16" class="pilcrow">¶</a></p>
+2440,2441c2476,2477
+< <div id="section-5.1.3-4">
+< <pre class="sourcecode">
+---
+> <div class="breakable sourcecode" id="section-5.1.3-4">
+> <pre>
+2504c2540
+<  <span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-11.5.1" class="relref">Section 11.5.1</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>, by adding new
+---
+>  <span><a href="https://rfc-editor.org/rfc/rfc7285#section-11.5.1" class="relref">Section 11.5.1</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>, by adding new
+2506,2507c2542,2543
+<  of JSONNumbers as the cost values. The media type (<span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-11.5.1.1" class="relref">Section 11.5.1.1</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>) and HTTP
+<  method (<span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-11.5.1.2" class="relref">Section 11.5.1.2</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>) are unchanged.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+---
+>  of JSONNumbers as the cost values. The media type (<span><a href="https://rfc-editor.org/rfc/rfc7285#section-11.5.1.1" class="relref">Section 11.5.1.1</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>) and HTTP
+>  method (<span><a href="https://rfc-editor.org/rfc/rfc7285#section-11.5.1.2" class="relref">Section 11.5.1.2</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>) are unchanged.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+2515c2551
+<    <a href="#sect-5.1.1" class="xref">Section 5.1.1</a> of this
+---
+>    <a href="#sect-5.1.1" class="auto internal xref">Section 5.1.1</a> of this
+2517c2553
+<    requests are the same as those defined in <a href="#sect-5.1.1" class="xref">Section 5.1.1</a> for FCM requests.<a href="#section-5.2.1-1" class="pilcrow">¶</a></p>
+---
+>    requests are the same as those defined in <a href="#sect-5.1.1" class="auto internal xref">Section 5.1.1</a> for FCM requests.<a href="#section-5.2.1-1" class="pilcrow">¶</a></p>
+2521,2522c2557,2558
+< <div id="section-5.2.1-3">
+< <pre class="sourcecode">
+---
+> <div class="sourcecode" id="section-5.2.1-3">
+> <pre>
+2538,2539c2574,2575
+<    member "multi-cost-types" to ensure compatibility with <span>[<a href="#RFC8189" class="xref">RFC8189</a>]</span>. In <span>[<a href="#RFC8189" class="xref">RFC8189</a>]</span>, members "cost-type" and "multi-cost-types" are
+<    both optional and have to obey the rule specified in <span><a href="https://www.rfc-editor.org/rfc/rfc8189#section-4.1.2" class="relref">Section 4.1.2</a> of [<a href="#RFC8189" class="xref">RFC8189</a>]</span> stating that
+---
+>    member "multi-cost-types" to ensure compatibility with <span>[<a href="#RFC8189" class="cite xref">RFC8189</a>]</span>. In <span>[<a href="#RFC8189" class="cite xref">RFC8189</a>]</span>, members "cost-type" and "multi-cost-types" are
+>    both optional and have to obey the rule specified in <span><a href="https://rfc-editor.org/rfc/rfc8189#section-4.1.2" class="relref">Section 4.1.2</a> of [<a href="#RFC8189" class="cite xref">RFC8189</a>]</span> stating that
+2543c2579
+<    ReqFilteredCostMap object defined in <a href="#sect-5.1.1" class="xref">Section 5.1.1</a> of this document. The interpretation of the other
+---
+>    ReqFilteredCostMap object defined in <a href="#sect-5.1.1" class="auto internal xref">Section 5.1.1</a> of this document. The interpretation of the other
+2545,2546c2581,2582
+<    <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> and <span>[<a href="#RFC8189" class="xref">RFC8189</a>]</span>. The type TypedEndpointAddr is defined in <span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-10.4.1" class="relref">Section 10.4.1</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>.<a href="#section-5.2.1-5" class="pilcrow">¶</a></p>
+< <p id="section-5.2.1-6">For the reasons explained in <a href="#sect-3.3" class="xref">Section 3.3</a>, a Calendar-aware ALTO Server does not support
+---
+>    <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span> and <span>[<a href="#RFC8189" class="cite xref">RFC8189</a>]</span>. The type TypedEndpointAddr is defined in <span><a href="https://rfc-editor.org/rfc/rfc7285#section-10.4.1" class="relref">Section 10.4.1</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>.<a href="#section-5.2.1-5" class="pilcrow">¶</a></p>
+> <p id="section-5.2.1-6">For the reasons explained in <a href="#sect-3.3" class="auto internal xref">Section 3.3</a>, a Calendar-aware ALTO Server does not support
+2563c2599
+<        a time only, the "meta" fields specified in <span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-11.5.1.6" class="relref">Section 11.5.1.6</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span> for the
+---
+>        a time only, the "meta" fields specified in <span><a href="https://rfc-editor.org/rfc/rfc7285#section-11.5.1.6" class="relref">Section 11.5.1.6</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span> for the
+2572c2608
+<        types at a time, as specified in <span>[<a href="#RFC8189" class="xref">RFC8189</a>]</span>, the "meta" fields specified in <span>[<a href="#RFC8189" class="xref">RFC8189</a>]</span> for the Endpoint Cost
+---
+>        types at a time, as specified in <span>[<a href="#RFC8189" class="cite xref">RFC8189</a>]</span>, the "meta" fields specified in <span>[<a href="#RFC8189" class="cite xref">RFC8189</a>]</span> for the Endpoint Cost
+2576c2612
+<  compatibility with <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>.<a href="#section-5.2.2-2.2.2.1" class="pilcrow">¶</a>
+---
+>  compatibility with <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>.<a href="#section-5.2.2-2.2.2.1" class="pilcrow">¶</a>
+2586c2622
+<    <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> and <span>[<a href="#RFC8189" class="xref">RFC8189</a>]</span>.<a href="#section-5.2.2-3" class="pilcrow">¶</a></p>
+---
+>    <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span> and <span>[<a href="#RFC8189" class="cite xref">RFC8189</a>]</span>.<a href="#section-5.2.2-3" class="pilcrow">¶</a></p>
+2593,2594c2629,2630
+<    <a href="#sect-5.1.2" class="xref">Section 5.1.2</a>.  The Server response
+<    is thus changed as follows, with respect to <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span> and <span>[<a href="#RFC8189" class="xref">RFC8189</a>]</span>:<a href="#section-5.2.2-4" class="pilcrow">¶</a></p>
+---
+>    <a href="#sect-5.1.2" class="auto internal xref">Section 5.1.2</a>.  The Server response
+>    is thus changed as follows, with respect to <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span> and <span>[<a href="#RFC8189" class="cite xref">RFC8189</a>]</span>:<a href="#section-5.2.2-4" class="pilcrow">¶</a></p>
+2609c2645
+<    <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>.<a href="#section-5.2.2-6" class="pilcrow">¶</a></p>
+---
+>    <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>.<a href="#section-5.2.2-6" class="pilcrow">¶</a></p>
+2650,2651c2686,2687
+< <div id="section-5.2.3-8">
+< <pre class="sourcecode">
+---
+> <div class="breakable sourcecode" id="section-5.2.3-8">
+> <pre>
+2728c2764
+<    multi-cost capabilities, as specified in <span>[<a href="#RFC8189" class="xref">RFC8189</a>]</span> . That is, an ALTO Client can request and receive
+---
+>    multi-cost capabilities, as specified in <span>[<a href="#RFC8189" class="cite xref">RFC8189</a>]</span> . That is, an ALTO Client can request and receive
+2743,2744c2779,2780
+< <div id="section-5.2.4-6">
+< <pre class="sourcecode">
+---
+> <div class="breakable sourcecode" id="section-5.2.4-6">
+> <pre>
+2854,2855c2890,2891
+< <p id="section-7-1">As an extension of the base ALTO protocol <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>, this document fits into the architecture of the base
+<       protocol and hence the security considerations (<span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-15" class="relref">Section 15</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>) fully apply when this extension is
+---
+> <p id="section-7-1">As an extension of the base ALTO protocol <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>, this document fits into the architecture of the base
+>       protocol and hence the security considerations (<span><a href="https://rfc-editor.org/rfc/rfc7285#section-15" class="relref">Section 15</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>) fully apply when this extension is
+2857,2858c2893,2894
+<       integrity considerations (<span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-15.1" class="relref">Section 15.1</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>) still fully apply; the same considerations for the
+<       privacy of ALTO users (<span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-15.4" class="relref">Section 15.4</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>) also still fully apply.<a href="#section-7-1" class="pilcrow">¶</a></p>
+---
+>       integrity considerations (<span><a href="https://rfc-editor.org/rfc/rfc7285#section-15.1" class="relref">Section 15.1</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>) still fully apply; the same considerations for the
+>       privacy of ALTO users (<span><a href="https://rfc-editor.org/rfc/rfc7285#section-15.4" class="relref">Section 15.4</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>) also still fully apply.<a href="#section-7-1" class="pilcrow">¶</a></p>
+2862,2865c2898,2901
+<    in <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>: potential undesirable guidance to Clients
+<    (<span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-15.2" class="relref">Section 15.2</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>), confidentiality of ALTO information
+<    (<span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-15.3" class="relref">Section 15.3</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>), and
+<    availability of ALTO (<span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-15.5" class="relref">Section 15.5</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>).  For example, by providing network information in the
+---
+>    in <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>: potential undesirable guidance to Clients
+>    (<span><a href="https://rfc-editor.org/rfc/rfc7285#section-15.2" class="relref">Section 15.2</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>), confidentiality of ALTO information
+>    (<span><a href="https://rfc-editor.org/rfc/rfc7285#section-15.3" class="relref">Section 15.3</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>), and
+>    availability of ALTO (<span><a href="https://rfc-editor.org/rfc/rfc7285#section-15.5" class="relref">Section 15.5</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>).  For example, by providing network information in the
+2878c2914
+<       specified in "Protection Strategies" (<span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-15.3.2" class="relref">Section 15.3.2</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>), the ALTO Server should 
+---
+>       specified in "Protection Strategies" (<span><a href="https://rfc-editor.org/rfc/rfc7285#section-15.3.2" class="relref">Section 15.3.2</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>), the ALTO Server should 
+2881c2917
+<       Calendar are not possible. "Authentication and Encryption" (<span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-8.3.5" class="relref">Section 8.3.5</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>) ensures the availability of such a
+---
+>       Calendar are not possible. "Authentication and Encryption" (<span><a href="https://rfc-editor.org/rfc/rfc7285#section-8.3.5" class="relref">Section 8.3.5</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>) ensures the availability of such a
+2884,2887c2920,2923
+<       <span class="bcp14">MUST</span> support the "https" URI scheme of <span>[<a href="#RFC2818" class="xref">RFC2818</a>]</span> and Transport Layer Security (TLS)
+<       of <span>[<a href="#RFC5246" class="xref">RFC5246</a>]</span>".<a href="#section-7-4" class="pilcrow">¶</a></p>
+< <p id="section-7-5">Section <a href="https://www.rfc-editor.org/rfc/rfc8446#section-1" class="relref">1</a> of
+<       TLS 1.3 <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span> states: "While TLS 1.3 is not directly compatible with previous
+---
+>       <span class="bcp14">MUST</span> support the "https" URI scheme of <span>[<a href="#RFC2818" class="cite xref">RFC2818</a>]</span> and Transport Layer Security (TLS)
+>       of <span>[<a href="#RFC5246" class="cite xref">RFC5246</a>]</span>".<a href="#section-7-4" class="pilcrow">¶</a></p>
+> <p id="section-7-5">Section <a href="https://rfc-editor.org/rfc/rfc8446#section-1" class="relref">1</a> of
+>       TLS 1.3 <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span> states: "While TLS 1.3 is not directly compatible with previous
+2891c2927
+<       <span class="bcp14">SHOULD</span> support both TLS 1.3 <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span> and TLS 1.2 <span>[<a href="#RFC5246" class="xref">RFC5246</a>]</span>
+---
+>       <span class="bcp14">SHOULD</span> support both TLS 1.3 <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span> and TLS 1.2 <span>[<a href="#RFC5246" class="cite xref">RFC5246</a>]</span>
+2907c2943
+<       specified in <span><a href="https://www.rfc-editor.org/rfc/rfc7285#section-15.2" class="relref">Section 15.2</a> of [<a href="#RFC7285" class="xref">RFC7285</a>]</span>.
+---
+>       specified in <span><a href="https://rfc-editor.org/rfc/rfc7285#section-15.2" class="relref">Section 15.2</a> of [<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>.
+2913c2949
+<               Events (SSE)" <span>[<a href="#RFC8895" class="xref">RFC8895</a>]</span>.<a href="#section-7-7" class="pilcrow">¶</a></p>
+---
+>               Events (SSE)" <span>[<a href="#RFC8895" class="cite xref">RFC8895</a>]</span>.<a href="#section-7-7" class="pilcrow">¶</a></p>
+2925c2961
+<       containing the cost type name and query this cost type using <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>.<a href="#section-7-8" class="pilcrow">¶</a></p>
+---
+>       containing the cost type name and query this cost type using <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>.<a href="#section-7-8" class="pilcrow">¶</a></p>
+2942c2978
+<       the Braess' Paradox <span>[<a href="#BRAESS_PARADOX" class="xref">BRAESS_PARADOX</a>]</span>).<a href="#section-8-2" class="pilcrow">¶</a></p>
+---
+>       the Braess' Paradox <span>[<a href="#BRAESS_PARADOX" class="cite xref">BRAESS_PARADOX</a>]</span>).<a href="#section-8-2" class="pilcrow">¶</a></p>
+2957c2993
+<       timely update of information. The SSE Service, as discussed in <a href="#sect-7" class="xref">Section 7</a>, can handle updates if supported by
+---
+>       timely update of information. The SSE Service, as discussed in <a href="#sect-7" class="auto internal xref">Section 7</a>, can handle updates if supported by
+2961,2962c2997,2998
+<       though there is theoretical analysis <span>[<a href="#SELFISH_RTG_2002" class="xref">SELFISH_RTG_2002</a>]</span> and
+<       Internet-based evaluation <span>[<a href="#SELFISH_RTG_2003" class="xref">SELFISH_RTG_2003</a>]</span> showing that uncoordinated behaviors do not always
+---
+>       though there is theoretical analysis <span>[<a href="#SELFISH_RTG_2002" class="cite xref">SELFISH_RTG_2002</a>]</span> and
+>       Internet-based evaluation <span>[<a href="#SELFISH_RTG_2003" class="cite xref">SELFISH_RTG_2003</a>]</span> showing that uncoordinated behaviors do not always
+2972,2974c3008,3010
+< <p id="section-8-6">The newer JSON Data Interchange Format specification <span>[<a href="#RFC8259" class="xref">RFC8259</a>]</span> used in ALTO Calendars replaces the
+<       older one <span>[<a href="#RFC7159" class="xref">RFC7159</a>]</span> used in the base
+<       ALTO protocol <span>[<a href="#RFC7285" class="xref">RFC7285</a>]</span>. The newer JSON
+---
+> <p id="section-8-6">The newer JSON Data Interchange Format specification <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> used in ALTO Calendars replaces the
+>       older one <span>[<a href="#RFC7159" class="cite xref">RFC7159</a>]</span> used in the base
+>       ALTO protocol <span>[<a href="#RFC7285" class="cite xref">RFC7285</a>]</span>. The newer JSON
+3001c3037
+< <span class="refAuthor">Dierks, T.</span><span class="refAuthor"> and E. Rescorla</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.2"</span>, <span class="seriesInfo">RFC 5246</span>, <span class="seriesInfo">DOI 10.17487/RFC5246</span>, <time datetime="2008-08" class="refDate">August 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5246">https://www.rfc-editor.org/info/rfc5246</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Dierks, T.</span> and <span class="refAuthor">E. Rescorla</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.2"</span>, <span class="seriesInfo">RFC 5246</span>, <span class="seriesInfo">DOI 10.17487/RFC5246</span>, <time datetime="2008-08" class="refDate">August 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5246">https://www.rfc-editor.org/info/rfc5246</a>&gt;</span>. </dd>
+3005c3041
+< <span class="refAuthor">Fielding, R., Ed.</span><span class="refAuthor"> and J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content"</span>, <span class="seriesInfo">RFC 7231</span>, <span class="seriesInfo">DOI 10.17487/RFC7231</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7231">https://www.rfc-editor.org/info/rfc7231</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fielding, R., Ed.</span> and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content"</span>, <span class="seriesInfo">RFC 7231</span>, <span class="seriesInfo">DOI 10.17487/RFC7231</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7231">https://www.rfc-editor.org/info/rfc7231</a>&gt;</span>. </dd>
+3009c3045
+< <span class="refAuthor">Alimi, R., Ed.</span><span class="refAuthor">, Penno, R., Ed.</span><span class="refAuthor">, Yang, Y., Ed.</span><span class="refAuthor">, Kiesel, S.</span><span class="refAuthor">, Previdi, S.</span><span class="refAuthor">, Roome, W.</span><span class="refAuthor">, Shalunov, S.</span><span class="refAuthor">, and R. Woundy</span>, <span class="refTitle">"Application-Layer Traffic Optimization (ALTO) Protocol"</span>, <span class="seriesInfo">RFC 7285</span>, <span class="seriesInfo">DOI 10.17487/RFC7285</span>, <time datetime="2014-09" class="refDate">September 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7285">https://www.rfc-editor.org/info/rfc7285</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Alimi, R., Ed.</span>, <span class="refAuthor">Penno, R., Ed.</span>, <span class="refAuthor">Yang, Y., Ed.</span>, <span class="refAuthor">Kiesel, S.</span>, <span class="refAuthor">Previdi, S.</span>, <span class="refAuthor">Roome, W.</span>, <span class="refAuthor">Shalunov, S.</span>, and <span class="refAuthor">R. Woundy</span>, <span class="refTitle">"Application-Layer Traffic Optimization (ALTO) Protocol"</span>, <span class="seriesInfo">RFC 7285</span>, <span class="seriesInfo">DOI 10.17487/RFC7285</span>, <time datetime="2014-09" class="refDate">September 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7285">https://www.rfc-editor.org/info/rfc7285</a>&gt;</span>. </dd>
+3017c3053
+< <span class="refAuthor">Randriamasy, S.</span><span class="refAuthor">, Roome, W.</span><span class="refAuthor">, and N. Schwan</span>, <span class="refTitle">"Multi-Cost Application-Layer Traffic Optimization (ALTO)"</span>, <span class="seriesInfo">RFC 8189</span>, <span class="seriesInfo">DOI 10.17487/RFC8189</span>, <time datetime="2017-10" class="refDate">October 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8189">https://www.rfc-editor.org/info/rfc8189</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Randriamasy, S.</span>, <span class="refAuthor">Roome, W.</span>, and <span class="refAuthor">N. Schwan</span>, <span class="refTitle">"Multi-Cost Application-Layer Traffic Optimization (ALTO)"</span>, <span class="seriesInfo">RFC 8189</span>, <span class="seriesInfo">DOI 10.17487/RFC8189</span>, <time datetime="2017-10" class="refDate">October 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8189">https://www.rfc-editor.org/info/rfc8189</a>&gt;</span>. </dd>
+3029c3065
+< <span class="refAuthor">Roome, W.</span><span class="refAuthor"> and Y. Yang</span>, <span class="refTitle">"Application-Layer Traffic Optimization (ALTO) Incremental Updates Using Server-Sent Events (SSE)"</span>, <span class="seriesInfo">RFC 8895</span>, <span class="seriesInfo">DOI 10.17487/RFC8895</span>, <time datetime="2020-11" class="refDate">November 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8895">https://www.rfc-editor.org/info/rfc8895</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Roome, W.</span> and <span class="refAuthor">Y. Yang</span>, <span class="refTitle">"Application-Layer Traffic Optimization (ALTO) Incremental Updates Using Server-Sent Events (SSE)"</span>, <span class="seriesInfo">RFC 8895</span>, <span class="seriesInfo">DOI 10.17487/RFC8895</span>, <time datetime="2020-11" class="refDate">November 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8895">https://www.rfc-editor.org/info/rfc8895</a>&gt;</span>. </dd>
+3040c3076
+< <span class="refAuthor">Wu, Q.</span><span class="refAuthor">, Yang, Y. R.</span><span class="refAuthor">, Dhody, D.</span><span class="refAuthor">, Randriamasy, S.</span><span class="refAuthor">, and L. M. Contreras</span>, <span class="refTitle">"ALTO Performance Cost Metrics"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-alto-performance-metrics-09</span>, <time datetime="2020-03-09" class="refDate">9 March 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-alto-performance-metrics-09">https://tools.ietf.org/html/draft-ietf-alto-performance-metrics-09</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Wu, Q.</span>, <span class="refAuthor">Yang, Y. R.</span>, <span class="refAuthor">Dhody, D.</span>, <span class="refAuthor">Randriamasy, S.</span>, and <span class="refAuthor">L. M. Contreras</span>, <span class="refTitle">"ALTO Performance Cost Metrics"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-alto-performance-metrics-09</span>, <time datetime="2020-03-09" class="refDate">9 March 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-alto-performance-metrics-09">https://tools.ietf.org/html/draft-ietf-alto-performance-metrics-09</a>&gt;</span>. </dd>
+3044c3080
+< <span class="refAuthor">Steinberg, R.</span><span class="refAuthor"> and W. Zangwill</span>, <span class="refTitle">"The Prevalence of Braess' Paradox"</span>, <span class="refContent">Transportation Science Vol. 17, No. 3</span>, <span class="seriesInfo">DOI 10.1287/trsc.17.3.301</span>, <time datetime="1983-08-01" class="refDate">1 August 1983</time>, <span>&lt;<a href="https://doi.org/10.1287/trsc.17.3.301">https://doi.org/10.1287/trsc.17.3.301</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Steinberg, R.</span> and <span class="refAuthor">W. Zangwill</span>, <span class="refTitle">"The Prevalence of Braess' Paradox"</span>, <span class="refContent">Transportation Science Vol. 17, No. 3</span>, <span class="seriesInfo">DOI 10.1287/trsc.17.3.301</span>, <time datetime="1983-08-01" class="refDate">1 August 1983</time>, <span>&lt;<a href="https://doi.org/10.1287/trsc.17.3.301">https://doi.org/10.1287/trsc.17.3.301</a>&gt;</span>. </dd>
+3052c3088
+< <span class="refAuthor">Seedorf, J.</span><span class="refAuthor"> and E. Burger</span>, <span class="refTitle">"Application-Layer Traffic Optimization (ALTO) Problem Statement"</span>, <span class="seriesInfo">RFC 5693</span>, <span class="seriesInfo">DOI 10.17487/RFC5693</span>, <time datetime="2009-10" class="refDate">October 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5693">https://www.rfc-editor.org/info/rfc5693</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Seedorf, J.</span> and <span class="refAuthor">E. Burger</span>, <span class="refTitle">"Application-Layer Traffic Optimization (ALTO) Problem Statement"</span>, <span class="seriesInfo">RFC 5693</span>, <span class="seriesInfo">DOI 10.17487/RFC5693</span>, <time datetime="2009-10" class="refDate">October 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5693">https://www.rfc-editor.org/info/rfc5693</a>&gt;</span>. </dd>
+3056c3092
+< <span class="refAuthor">Kiesel, S., Ed.</span><span class="refAuthor">, Previdi, S.</span><span class="refAuthor">, Stiemerling, M.</span><span class="refAuthor">, Woundy, R.</span><span class="refAuthor">, and Y. Yang</span>, <span class="refTitle">"Application-Layer Traffic Optimization (ALTO) Requirements"</span>, <span class="seriesInfo">RFC 6708</span>, <span class="seriesInfo">DOI 10.17487/RFC6708</span>, <time datetime="2012-09" class="refDate">September 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6708">https://www.rfc-editor.org/info/rfc6708</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Kiesel, S., Ed.</span>, <span class="refAuthor">Previdi, S.</span>, <span class="refAuthor">Stiemerling, M.</span>, <span class="refAuthor">Woundy, R.</span>, and <span class="refAuthor">Y. Yang</span>, <span class="refTitle">"Application-Layer Traffic Optimization (ALTO) Requirements"</span>, <span class="seriesInfo">RFC 6708</span>, <span class="seriesInfo">DOI 10.17487/RFC6708</span>, <time datetime="2012-09" class="refDate">September 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6708">https://www.rfc-editor.org/info/rfc6708</a>&gt;</span>. </dd>
+3068c3104
+< <span class="refAuthor">Qiu, L.</span><span class="refAuthor">, Yang, Y.</span><span class="refAuthor">, Zhang, Y.</span><span class="refAuthor">, and S. Shenker</span>, <span class="refTitle">"Selfish Routing in Internet-Like Environments"</span>, <span class="refContent">Proceedings of SIGCOMM '03</span>, <span class="seriesInfo">DOI 10.1145/863955.863974</span>, <time datetime="2003-08" class="refDate">August 2003</time>, <span>&lt;<a href="https://doi.org/10.1145/863955.863974">https://doi.org/10.1145/863955.863974</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Qiu, L.</span>, <span class="refAuthor">Yang, Y.</span>, <span class="refAuthor">Zhang, Y.</span>, and <span class="refAuthor">S. Shenker</span>, <span class="refTitle">"Selfish Routing in Internet-Like Environments"</span>, <span class="refContent">Proceedings of SIGCOMM '03</span>, <span class="seriesInfo">DOI 10.1145/863955.863974</span>, <time datetime="2003-08" class="refDate">August 2003</time>, <span>&lt;<a href="https://doi.org/10.1145/863955.863974">https://doi.org/10.1145/863955.863974</a>&gt;</span>. </dd>
+3076c3112
+< <span class="refAuthor">Xiang, Q.</span><span class="refAuthor">, Wang, T.</span><span class="refAuthor">, Zhang, J.</span><span class="refAuthor">, Newman, H.</span><span class="refAuthor">, Yang, Y.</span><span class="refAuthor">, and Y. Liu</span>, <span class="refTitle">"Unicorn: Unified resource orchestration for multi-domain, geo-distributed data analytics"</span>, <span class="refContent">Future Generation Computer Systems (FGCS), Vol. 93,
+---
+> <span class="refAuthor">Xiang, Q.</span>, <span class="refAuthor">Wang, T.</span>, <span class="refAuthor">Zhang, J.</span>, <span class="refAuthor">Newman, H.</span>, <span class="refAuthor">Yang, Y.</span>, and <span class="refAuthor">Y. Liu</span>, <span class="refTitle">"Unicorn: Unified resource orchestration for multi-domain, geo-distributed data analytics"</span>, <span class="refContent">Future Generation Computer Systems (FGCS), Vol. 93,
+3083c3119
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+3087c3123
+< <p id="section-appendix.a-1">
+---
+> <p id="appendix-A-1">
+3091c3127
+<    suggestions to the protocol design.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+>    suggestions to the protocol design.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+3095c3131
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
