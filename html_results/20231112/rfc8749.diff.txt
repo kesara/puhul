@@ -1,0 +1,452 @@
+16c16
+< <meta content="xml2rfc 2.41.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+21c21,37
+< <link href="rfc8749.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.0.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.9
+> -->
+> <link href="rfc/rfc8749.xml" rel="alternate" type="application/rfc+xml">
+31c47
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+40a57,62
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+43d64
+<   width: extend-to-zoom;
+58c79
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+60a82
+>   overflow-wrap: break-word;
+146a169,177
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+161,164d191
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+165a193
+>   border: none;
+188a217,219
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+230c261,262
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+240c272
+< tt, code, pre, code {
+---
+> tt, code, pre {
+242c274
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+281a314,316
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+371a407,412
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+473c514
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+613d653
+< 
+635a676,678
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+703c746
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+803c846
+< tt, code, pre, code {
+---
+> tt, code, pre {
+808c851
+< pre.sourcecode,
+---
+> .sourcecode pre,
+844c887
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+922,927d964
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1031a1069
+>   .artwork > pre,
+1046c1084
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1052a1091,1093
+> tr {
+>   break-inside: avoid;
+> }
+1060a1102,1203
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1062a1206
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-dnsop-obsolete-dlv-02" rel="prev">
+1065c1209
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-dnsop-obsolete-dlv-02" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1067,1068c1211,1212
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1166,1168c1310,1312
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+1170,1171c1314,1315
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+1173,1174c1317,1318
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-discussion" class="xref">Discussion</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-discussion" class="internal xref">Discussion</a></p>
+1176,1183c1320,1327
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-moving-dlv-to-historic-stat" class="xref">Moving DLV to Historic Status</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-documents-that-reference-th" class="xref">Documents That Reference the DLV RFCs</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1.2.1">
+<                     <p id="section-toc.1-1.4.2.1.2.1.1"><a href="#section-4.1.1" class="xref">4.1.1</a>.  <a href="#name-documents-that-reference-rf" class="xref">Documents That Reference RFC 4431</a><a href="#section-toc.1-1.4.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-moving-dlv-to-historic-stat" class="internal xref">Moving DLV to Historic Status</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1" class="keepWithNext"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-documents-that-reference-th" class="internal xref">Documents That Reference the DLV RFCs</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.1">
+>                     <p id="section-toc.1-1.4.2.1.2.1.1" class="keepWithNext"><a href="#section-4.1.1" class="auto internal xref">4.1.1</a>.  <a href="#name-documents-that-reference-rf" class="internal xref">Documents That Reference RFC 4431</a></p>
+1185,1186c1329,1330
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1.2.2">
+<                     <p id="section-toc.1-1.4.2.1.2.2.1"><a href="#section-4.1.2" class="xref">4.1.2</a>.  <a href="#name-documents-that-reference-rfc" class="xref">Documents That Reference RFC 5074</a><a href="#section-toc.1-1.4.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.2">
+>                     <p id="section-toc.1-1.4.2.1.2.2.1" class="keepWithNext"><a href="#section-4.1.2" class="auto internal xref">4.1.2</a>.  <a href="#name-documents-that-reference-rfc" class="internal xref">Documents That Reference RFC 5074</a></p>
+1192,1193c1336,1337
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1195,1196c1339,1340
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1198,1199c1342,1343
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1201,1202c1345,1346
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1204,1205c1348,1349
+< <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1217c1361
+<       adoption of DNSSEC <span>[<a href="#RFC4033" class="xref">RFC4033</a>]</span> <span>[<a href="#RFC4034" class="xref">RFC4034</a>]</span> <span>[<a href="#RFC4035" class="xref">RFC4035</a>]</span> in a time when the root zone and many top-level
+---
+>       adoption of DNSSEC <span>[<a href="#RFC4033" class="cite xref">RFC4033</a>]</span> <span>[<a href="#RFC4034" class="cite xref">RFC4034</a>]</span> <span>[<a href="#RFC4035" class="cite xref">RFC4035</a>]</span> in a time when the root zone and many top-level
+1238c1382
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span>
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span>
+1250,1251c1394,1395
+< <ul>
+< <li id="section-3-2.1">It reduces the pressure to get the parent zone signed.<a href="#section-3-2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-3-2.1">It reduces the pressure to get the parent zone signed.<a href="#section-3-2.1" class="pilcrow">¶</a>
+1253c1397
+< <li id="section-3-2.2">It reduces the pressure on registrars to accept DS records.<a href="#section-3-2.2" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="section-3-2.2">It reduces the pressure on registrars to accept DS records.<a href="#section-3-2.2" class="pilcrow">¶</a>
+1255c1399
+< <li id="section-3-2.3">It complicates validation code.<a href="#section-3-2.3" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="section-3-2.3">It complicates validation code.<a href="#section-3-2.3" class="pilcrow">¶</a>
+1278c1422
+<         <li id="section-4-2.1">RFC 4431 <span>[<a href="#RFC4431" class="xref">RFC4431</a>]</span> specifies the
+---
+>         <li id="section-4-2.1">RFC 4431 <span>[<a href="#RFC4431" class="cite xref">RFC4431</a>]</span> specifies the
+1281c1425
+< <li id="section-4-2.2">RFC 5074 <span>[<a href="#RFC5074" class="xref">RFC5074</a>]</span> specifies the
+---
+>         <li id="section-4-2.2">RFC 5074 <span>[<a href="#RFC5074" class="cite xref">RFC5074</a>]</span> specifies the
+1287c1431
+< <p id="section-4-3">This document moves both RFC 4431 <span>[<a href="#RFC4431" class="xref">RFC4431</a>]</span> and RFC 5074 <span>[<a href="#RFC5074" class="xref">RFC5074</a>]</span> to 
+---
+> <p id="section-4-3">This document moves both RFC 4431 <span>[<a href="#RFC4431" class="cite xref">RFC4431</a>]</span> and RFC 5074 <span>[<a href="#RFC5074" class="cite xref">RFC5074</a>]</span> to 
+1304c1448
+< <p id="section-4.1.1-1">One RFC makes reference to RFC 4431 <span>[<a href="#RFC4431" class="xref">RFC4431</a>]</span>.<a href="#section-4.1.1-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-4.1.1-1">One RFC makes reference to RFC 4431 <span>[<a href="#RFC4431" class="cite xref">RFC4431</a>]</span>.<a href="#section-4.1.1-1" class="pilcrow">¶</a></p>
+1310,1311c1454,1455
+< <p id="section-4.1.1.1-1">RFC 5074 ("DNSSEC Lookaside Validation (DLV)") <span>[<a href="#RFC5074" class="xref">RFC5074</a>]</span> describes the DLV mechanism itself. This
+<             document moves RFC 5074 <span>[<a href="#RFC5074" class="xref">RFC5074</a>]</span>
+---
+> <p id="section-4.1.1.1-1">RFC 5074 ("DNSSEC Lookaside Validation (DLV)") <span>[<a href="#RFC5074" class="cite xref">RFC5074</a>]</span> describes the DLV mechanism itself. This
+>             document moves RFC 5074 <span>[<a href="#RFC5074" class="cite xref">RFC5074</a>]</span>
+1322c1466
+< <p id="section-4.1.2-1">Three RFCs make reference to RFC 5074 <span>[<a href="#RFC5074" class="xref">RFC5074</a>]</span>.<a href="#section-4.1.2-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-4.1.2-1">Three RFCs make reference to RFC 5074 <span>[<a href="#RFC5074" class="cite xref">RFC5074</a>]</span>.<a href="#section-4.1.2-1" class="pilcrow">¶</a></p>
+1329c1473
+<             Transport Layer Security (TLS) Protocol: TLSA") <span>[<a href="#RFC6698" class="xref">RFC6698</a>]</span> specifies:<a href="#section-4.1.2.1-1" class="pilcrow">¶</a></p>
+---
+>             Transport Layer Security (TLS) Protocol: TLSA") <span>[<a href="#RFC6698" class="cite xref">RFC6698</a>]</span> specifies:<a href="#section-4.1.2.1-1" class="pilcrow">¶</a></p>
+1336c1480
+< <p id="section-4.1.2.1-3">This document updates RFC 6698 <span>[<a href="#RFC6698" class="xref">RFC6698</a>]</span> to exclude the DLV resource record from
+---
+> <p id="section-4.1.2.1-3">This document updates RFC 6698 <span>[<a href="#RFC6698" class="cite xref">RFC6698</a>]</span> to exclude the DLV resource record from
+1346c1490
+<             (DNSSEC)") <span>[<a href="#RFC6840" class="xref">RFC6840</a>]</span> states
+---
+>             (DNSSEC)") <span>[<a href="#RFC6840" class="cite xref">RFC6840</a>]</span> states
+1352c1496
+< <p id="section-4.1.2.2-2">This document updates RFC 6840 <span>[<a href="#RFC6840" class="xref">RFC6840</a>]</span> to exclude the DLV registries
+---
+> <p id="section-4.1.2.2-2">This document updates RFC 6840 <span>[<a href="#RFC6840" class="cite xref">RFC6840</a>]</span> to exclude the DLV registries
+1362,1363c1506,1507
+<      DNSSEC-Validated Cache") <span>[<a href="#RFC8198" class="xref">RFC8198</a>]</span> only
+< references RFC 5074 <span>[<a href="#RFC5074" class="xref">RFC5074</a>]</span> because
+---
+>      DNSSEC-Validated Cache") <span>[<a href="#RFC8198" class="cite xref">RFC8198</a>]</span> only
+> references RFC 5074 <span>[<a href="#RFC5074" class="cite xref">RFC5074</a>]</span> because
+1401c1545,1546
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1404c1549,1550
+< <span class="refAuthor">Arends, R.</span><span class="refAuthor">, Austein, R.</span><span class="refAuthor">, Larson, M.</span><span class="refAuthor">, Massey, D.</span><span class="refAuthor">, and S. Rose</span>, <span class="refTitle">"DNS Security Introduction and Requirements"</span>, <span class="seriesInfo">RFC 4033</span>, <span class="seriesInfo">DOI 10.17487/RFC4033</span>, <time datetime="2005-03">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4033">https://www.rfc-editor.org/info/rfc4033</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Arends, R.</span>, <span class="refAuthor">Austein, R.</span>, <span class="refAuthor">Larson, M.</span>, <span class="refAuthor">Massey, D.</span>, and <span class="refAuthor">S. Rose</span>, <span class="refTitle">"DNS Security Introduction and Requirements"</span>, <span class="seriesInfo">RFC 4033</span>, <span class="seriesInfo">DOI 10.17487/RFC4033</span>, <time datetime="2005-03" class="refDate">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4033">https://www.rfc-editor.org/info/rfc4033</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1407c1553,1554
+< <span class="refAuthor">Arends, R.</span><span class="refAuthor">, Austein, R.</span><span class="refAuthor">, Larson, M.</span><span class="refAuthor">, Massey, D.</span><span class="refAuthor">, and S. Rose</span>, <span class="refTitle">"Resource Records for the DNS Security Extensions"</span>, <span class="seriesInfo">RFC 4034</span>, <span class="seriesInfo">DOI 10.17487/RFC4034</span>, <time datetime="2005-03">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4034">https://www.rfc-editor.org/info/rfc4034</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Arends, R.</span>, <span class="refAuthor">Austein, R.</span>, <span class="refAuthor">Larson, M.</span>, <span class="refAuthor">Massey, D.</span>, and <span class="refAuthor">S. Rose</span>, <span class="refTitle">"Resource Records for the DNS Security Extensions"</span>, <span class="seriesInfo">RFC 4034</span>, <span class="seriesInfo">DOI 10.17487/RFC4034</span>, <time datetime="2005-03" class="refDate">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4034">https://www.rfc-editor.org/info/rfc4034</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1410c1557,1558
+< <span class="refAuthor">Arends, R.</span><span class="refAuthor">, Austein, R.</span><span class="refAuthor">, Larson, M.</span><span class="refAuthor">, Massey, D.</span><span class="refAuthor">, and S. Rose</span>, <span class="refTitle">"Protocol Modifications for the DNS Security Extensions"</span>, <span class="seriesInfo">RFC 4035</span>, <span class="seriesInfo">DOI 10.17487/RFC4035</span>, <time datetime="2005-03">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4035">https://www.rfc-editor.org/info/rfc4035</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Arends, R.</span>, <span class="refAuthor">Austein, R.</span>, <span class="refAuthor">Larson, M.</span>, <span class="refAuthor">Massey, D.</span>, and <span class="refAuthor">S. Rose</span>, <span class="refTitle">"Protocol Modifications for the DNS Security Extensions"</span>, <span class="seriesInfo">RFC 4035</span>, <span class="seriesInfo">DOI 10.17487/RFC4035</span>, <time datetime="2005-03" class="refDate">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4035">https://www.rfc-editor.org/info/rfc4035</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1413c1561,1562
+< <span class="refAuthor">Andrews, M.</span><span class="refAuthor"> and S. Weiler</span>, <span class="refTitle">"The DNSSEC Lookaside Validation (DLV) DNS Resource Record"</span>, <span class="seriesInfo">RFC 4431</span>, <span class="seriesInfo">DOI 10.17487/RFC4431</span>, <time datetime="2006-02">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4431">https://www.rfc-editor.org/info/rfc4431</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Andrews, M.</span> and <span class="refAuthor">S. Weiler</span>, <span class="refTitle">"The DNSSEC Lookaside Validation (DLV) DNS Resource Record"</span>, <span class="seriesInfo">RFC 4431</span>, <span class="seriesInfo">DOI 10.17487/RFC4431</span>, <time datetime="2006-02" class="refDate">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4431">https://www.rfc-editor.org/info/rfc4431</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1416c1565,1566
+< <span class="refAuthor">Weiler, S.</span>, <span class="refTitle">"DNSSEC Lookaside Validation (DLV)"</span>, <span class="seriesInfo">RFC 5074</span>, <span class="seriesInfo">DOI 10.17487/RFC5074</span>, <time datetime="2007-11">November 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5074">https://www.rfc-editor.org/info/rfc5074</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Weiler, S.</span>, <span class="refTitle">"DNSSEC Lookaside Validation (DLV)"</span>, <span class="seriesInfo">RFC 5074</span>, <span class="seriesInfo">DOI 10.17487/RFC5074</span>, <time datetime="2007-11" class="refDate">November 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5074">https://www.rfc-editor.org/info/rfc5074</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1419c1569,1570
+< <span class="refAuthor">Hoffman, P.</span><span class="refAuthor"> and J. Schlyter</span>, <span class="refTitle">"The DNS-Based Authentication of Named Entities (DANE) Transport Layer Security (TLS) Protocol: TLSA"</span>, <span class="seriesInfo">RFC 6698</span>, <span class="seriesInfo">DOI 10.17487/RFC6698</span>, <time datetime="2012-08">August 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6698">https://www.rfc-editor.org/info/rfc6698</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hoffman, P.</span> and <span class="refAuthor">J. Schlyter</span>, <span class="refTitle">"The DNS-Based Authentication of Named Entities (DANE) Transport Layer Security (TLS) Protocol: TLSA"</span>, <span class="seriesInfo">RFC 6698</span>, <span class="seriesInfo">DOI 10.17487/RFC6698</span>, <time datetime="2012-08" class="refDate">August 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6698">https://www.rfc-editor.org/info/rfc6698</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1422c1573,1574
+< <span class="refAuthor">Weiler, S., Ed.</span><span class="refAuthor"> and D. Blacka, Ed.</span>, <span class="refTitle">"Clarifications and Implementation Notes for DNS Security (DNSSEC)"</span>, <span class="seriesInfo">RFC 6840</span>, <span class="seriesInfo">DOI 10.17487/RFC6840</span>, <time datetime="2013-02">February 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6840">https://www.rfc-editor.org/info/rfc6840</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Weiler, S., Ed.</span> and <span class="refAuthor">D. Blacka, Ed.</span>, <span class="refTitle">"Clarifications and Implementation Notes for DNS Security (DNSSEC)"</span>, <span class="seriesInfo">RFC 6840</span>, <span class="seriesInfo">DOI 10.17487/RFC6840</span>, <time datetime="2013-02" class="refDate">February 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6840">https://www.rfc-editor.org/info/rfc6840</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1425c1577,1578
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1428c1581,1582
+< <span class="refAuthor">Fujiwara, K.</span><span class="refAuthor">, Kato, A.</span><span class="refAuthor">, and W. Kumari</span>, <span class="refTitle">"Aggressive Use of DNSSEC-Validated Cache"</span>, <span class="seriesInfo">RFC 8198</span>, <span class="seriesInfo">DOI 10.17487/RFC8198</span>, <time datetime="2017-07">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8198">https://www.rfc-editor.org/info/rfc8198</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fujiwara, K.</span>, <span class="refAuthor">Kato, A.</span>, and <span class="refAuthor">W. Kumari</span>, <span class="refTitle">"Aggressive Use of DNSSEC-Validated Cache"</span>, <span class="seriesInfo">RFC 8198</span>, <span class="seriesInfo">DOI 10.17487/RFC8198</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8198">https://www.rfc-editor.org/info/rfc8198</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1432c1586
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+1436c1590
+< <p id="section-appendix.a-1">The authors thank <span class="contact-name">Ondřej Surý</span> for the initial review.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A-1">The authors thank <span class="contact-name">Ondřej Surý</span> for the initial review.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+1440c1594
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">

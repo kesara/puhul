@@ -1,0 +1,1527 @@
+35c35
+< <meta content="xml2rfc 2.47.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+43c43,59
+< <link href="rfc8802.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.0.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.9
+> -->
+> <link href="rfc/rfc8802.xml" rel="alternate" type="application/rfc+xml">
+53c69
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+62a79,84
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+65d86
+<   width: extend-to-zoom;
+80c101
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+82a104
+>   overflow-wrap: break-word;
+168a191,199
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+183,186d213
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+187a215
+>   border: none;
+210a239,241
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+252c283,284
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+262c294
+< tt, code, pre, code {
+---
+> tt, code, pre {
+264c296
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+303a336,338
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+393a429,434
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+495c536
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+635d675
+< 
+657a698,700
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+725c768
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+825c868
+< tt, code, pre, code {
+---
+> tt, code, pre {
+830c873
+< pre.sourcecode,
+---
+> .sourcecode pre,
+866c909
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1047a1091
+>   .artwork > pre,
+1062c1106
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1068a1113,1115
+> tr {
+>   break-inside: avoid;
+> }
+1088c1135
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1119c1166
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1144c1191
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1146c1193,1194
+< ol.compact, .olCompact {
+---
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+1154c1202,1226
+< }</style>
+---
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+1155a1228
+> <link href="https://datatracker.ietf.org/doc/draft-aranda-dispatch-q4s-10" rel="prev">
+1158c1231
+<   <link href="https://datatracker.ietf.org/doc/draft-aranda-dispatch-q4s-10" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1160,1161c1233,1234
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1282,1287c1355,1360
+< <nav class="toc"><ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-scope" class="xref">Scope</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-scope" class="internal xref">Scope</a></p>
+1289,1290c1362,1363
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.1.2.2">
+<                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="xref">1.2</a>.  <a href="#name-motivation" class="xref">Motivation</a><a href="#section-toc.1-1.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+>                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-motivation" class="internal xref">Motivation</a></p>
+1292,1293c1365,1366
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.1.2.3">
+<                 <p id="section-toc.1-1.1.2.3.1" class="keepWithNext"><a href="#section-1.3" class="xref">1.3</a>.  <a href="#name-summary-of-features" class="xref">Summary of Features</a><a href="#section-toc.1-1.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.3">
+>                 <p id="section-toc.1-1.1.2.3.1" class="keepWithNext"><a href="#section-1.3" class="auto internal xref">1.3</a>.  <a href="#name-summary-of-features" class="internal xref">Summary of Features</a></p>
+1295,1296c1368,1369
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.1.2.4">
+<                 <p id="section-toc.1-1.1.2.4.1"><a href="#section-1.4" class="xref">1.4</a>.  <a href="#name-differences-from-owamp-twam" class="xref">Differences from OWAMP/TWAMP</a><a href="#section-toc.1-1.1.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.4">
+>                 <p id="section-toc.1-1.1.2.4.1"><a href="#section-1.4" class="auto internal xref">1.4</a>.  <a href="#name-differences-from-owamp-twam" class="internal xref">Differences from OWAMP/TWAMP</a></p>
+1300,1301c1373,1374
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+1303,1304c1376,1377
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-overview-of-operation" class="xref">Overview of Operation</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-overview-of-operation" class="internal xref">Overview of Operation</a></p>
+1306,1310c1379,1383
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-q4s-messages" class="xref">Q4S Messages</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-requests" class="xref">Requests</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-q4s-messages" class="internal xref">Q4S Messages</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-requests" class="internal xref">Requests</a></p>
+1312,1313c1385,1386
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-responses" class="xref">Responses</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-responses" class="internal xref">Responses</a></p>
+1315,1319c1388,1392
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-header-fields" class="xref">Header Fields</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.4.2.3.2.1">
+<                     <p id="section-toc.1-1.4.2.3.2.1.1"><a href="#section-4.3.1" class="xref">4.3.1</a>.  <a href="#name-common-q4s-header-fields" class="xref">Common Q4S Header Fields</a><a href="#section-toc.1-1.4.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-header-fields" class="internal xref">Header Fields</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.1">
+>                     <p id="section-toc.1-1.4.2.3.2.1.1"><a href="#section-4.3.1" class="auto internal xref">4.3.1</a>.  <a href="#name-common-q4s-header-fields" class="internal xref">Common Q4S Header Fields</a></p>
+1321,1322c1394,1395
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.4.2.3.2.2">
+<                     <p id="section-toc.1-1.4.2.3.2.2.1"><a href="#section-4.3.2" class="xref">4.3.2</a>.  <a href="#name-specific-q4s-request-header" class="xref">Specific Q4S Request Header Fields</a><a href="#section-toc.1-1.4.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.2">
+>                     <p id="section-toc.1-1.4.2.3.2.2.1"><a href="#section-4.3.2" class="auto internal xref">4.3.2</a>.  <a href="#name-specific-q4s-request-header" class="internal xref">Specific Q4S Request Header Fields</a></p>
+1324,1325c1397,1398
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.4.2.3.2.3">
+<                     <p id="section-toc.1-1.4.2.3.2.3.1"><a href="#section-4.3.3" class="xref">4.3.3</a>.  <a href="#name-specific-q4s-response-heade" class="xref">Specific Q4S Response Header Fields</a><a href="#section-toc.1-1.4.2.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.3">
+>                     <p id="section-toc.1-1.4.2.3.2.3.1"><a href="#section-4.3.3" class="auto internal xref">4.3.3</a>.  <a href="#name-specific-q4s-response-heade" class="internal xref">Specific Q4S Response Header Fields</a></p>
+1329,1333c1402,1406
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.4.2.4">
+<                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-bodies" class="xref">Bodies</a><a href="#section-toc.1-1.4.2.4.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.4.2.4.2.1">
+<                     <p id="section-toc.1-1.4.2.4.2.1.1"><a href="#section-4.4.1" class="xref">4.4.1</a>.  <a href="#name-encoding" class="xref">Encoding</a><a href="#section-toc.1-1.4.2.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
+>                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-bodies" class="internal xref">Bodies</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4.2.1">
+>                     <p id="section-toc.1-1.4.2.4.2.1.1"><a href="#section-4.4.1" class="auto internal xref">4.4.1</a>.  <a href="#name-encoding" class="internal xref">Encoding</a></p>
+1339,1343c1412,1416
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-q4s-method-definitions" class="xref">Q4S Method Definitions</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-begin" class="xref">BEGIN</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-q4s-method-definitions" class="internal xref">Q4S Method Definitions</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-begin" class="internal xref">BEGIN</a></p>
+1345,1346c1418,1419
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-ready" class="xref">READY</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-ready" class="internal xref">READY</a></p>
+1348,1349c1421,1422
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.3">
+<                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-ping" class="xref">PING</a><a href="#section-toc.1-1.5.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
+>                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-ping" class="internal xref">PING</a></p>
+1351,1352c1424,1425
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.4">
+<                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="xref">5.4</a>.  <a href="#name-bwidth" class="xref">BWIDTH</a><a href="#section-toc.1-1.5.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
+>                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-bwidth" class="internal xref">BWIDTH</a></p>
+1354,1355c1427,1428
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.5">
+<                 <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="xref">5.5</a>.  <a href="#name-q4s-alert" class="xref">Q4S-ALERT</a><a href="#section-toc.1-1.5.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5">
+>                 <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="auto internal xref">5.5</a>.  <a href="#name-q4s-alert" class="internal xref">Q4S-ALERT</a></p>
+1357,1358c1430,1431
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.6">
+<                 <p id="section-toc.1-1.5.2.6.1"><a href="#section-5.6" class="xref">5.6</a>.  <a href="#name-q4s-recovery" class="xref">Q4S-RECOVERY</a><a href="#section-toc.1-1.5.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.6">
+>                 <p id="section-toc.1-1.5.2.6.1"><a href="#section-5.6" class="auto internal xref">5.6</a>.  <a href="#name-q4s-recovery" class="internal xref">Q4S-RECOVERY</a></p>
+1360,1361c1433,1434
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.5.2.7">
+<                 <p id="section-toc.1-1.5.2.7.1"><a href="#section-5.7" class="xref">5.7</a>.  <a href="#name-cancel" class="xref">CANCEL</a><a href="#section-toc.1-1.5.2.7.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.7">
+>                 <p id="section-toc.1-1.5.2.7.1"><a href="#section-5.7" class="auto internal xref">5.7</a>.  <a href="#name-cancel" class="internal xref">CANCEL</a></p>
+1365,1369c1438,1442
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-response-codes" class="xref">Response Codes</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-100-trying" class="xref">100 Trying</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-response-codes" class="internal xref">Response Codes</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-100-trying" class="internal xref">100 Trying</a></p>
+1371,1375c1444,1448
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.2">
+<                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-success-2xx" class="xref">Success 2xx</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.2.2.1">
+<                     <p id="section-toc.1-1.6.2.2.2.1.1"><a href="#section-6.2.1" class="xref">6.2.1</a>.  <a href="#name-200-ok" class="xref">200 OK</a><a href="#section-toc.1-1.6.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+>                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-success-2xx" class="internal xref">Success 2xx</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.1">
+>                     <p id="section-toc.1-1.6.2.2.2.1.1"><a href="#section-6.2.1" class="auto internal xref">6.2.1</a>.  <a href="#name-200-ok" class="internal xref">200 OK</a></p>
+1379,1380c1452,1453
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.3">
+<                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="xref">6.3</a>.  <a href="#name-redirection-3xx" class="xref">Redirection 3xx</a><a href="#section-toc.1-1.6.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
+>                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-redirection-3xx" class="internal xref">Redirection 3xx</a></p>
+1382,1386c1455,1459
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.4">
+<                 <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="xref">6.4</a>.  <a href="#name-request-failure-4xx" class="xref">Request Failure 4xx</a><a href="#section-toc.1-1.6.2.4.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.4.2.1">
+<                     <p id="section-toc.1-1.6.2.4.2.1.1"><a href="#section-6.4.1" class="xref">6.4.1</a>.  <a href="#name-400-bad-request" class="xref">400 Bad Request</a><a href="#section-toc.1-1.6.2.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
+>                 <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="auto internal xref">6.4</a>.  <a href="#name-request-failure-4xx" class="internal xref">Request Failure 4xx</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4.2.1">
+>                     <p id="section-toc.1-1.6.2.4.2.1.1"><a href="#section-6.4.1" class="auto internal xref">6.4.1</a>.  <a href="#name-400-bad-request" class="internal xref">400 Bad Request</a></p>
+1388,1389c1461,1462
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.4.2.2">
+<                     <p id="section-toc.1-1.6.2.4.2.2.1"><a href="#section-6.4.2" class="xref">6.4.2</a>.  <a href="#name-404-not-found" class="xref">404 Not Found</a><a href="#section-toc.1-1.6.2.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4.2.2">
+>                     <p id="section-toc.1-1.6.2.4.2.2.1"><a href="#section-6.4.2" class="auto internal xref">6.4.2</a>.  <a href="#name-404-not-found" class="internal xref">404 Not Found</a></p>
+1391,1392c1464,1465
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.4.2.3">
+<                     <p id="section-toc.1-1.6.2.4.2.3.1"><a href="#section-6.4.3" class="xref">6.4.3</a>.  <a href="#name-405-method-not-allowed" class="xref">405 Method Not Allowed</a><a href="#section-toc.1-1.6.2.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4.2.3">
+>                     <p id="section-toc.1-1.6.2.4.2.3.1"><a href="#section-6.4.3" class="auto internal xref">6.4.3</a>.  <a href="#name-405-method-not-allowed" class="internal xref">405 Method Not Allowed</a></p>
+1394,1395c1467,1468
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.4.2.4">
+<                     <p id="section-toc.1-1.6.2.4.2.4.1"><a href="#section-6.4.4" class="xref">6.4.4</a>.  <a href="#name-406-not-acceptable" class="xref">406 Not Acceptable</a><a href="#section-toc.1-1.6.2.4.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4.2.4">
+>                     <p id="section-toc.1-1.6.2.4.2.4.1"><a href="#section-6.4.4" class="auto internal xref">6.4.4</a>.  <a href="#name-406-not-acceptable" class="internal xref">406 Not Acceptable</a></p>
+1397,1398c1470,1471
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.4.2.5">
+<                     <p id="section-toc.1-1.6.2.4.2.5.1"><a href="#section-6.4.5" class="xref">6.4.5</a>.  <a href="#name-408-request-timeout" class="xref">408 Request Timeout</a><a href="#section-toc.1-1.6.2.4.2.5.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4.2.5">
+>                     <p id="section-toc.1-1.6.2.4.2.5.1"><a href="#section-6.4.5" class="auto internal xref">6.4.5</a>.  <a href="#name-408-request-timeout" class="internal xref">408 Request Timeout</a></p>
+1400,1401c1473,1474
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.4.2.6">
+<                     <p id="section-toc.1-1.6.2.4.2.6.1"><a href="#section-6.4.6" class="xref">6.4.6</a>.  <a href="#name-413-request-entity-too-larg" class="xref">413 Request Entity Too Large</a><a href="#section-toc.1-1.6.2.4.2.6.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4.2.6">
+>                     <p id="section-toc.1-1.6.2.4.2.6.1"><a href="#section-6.4.6" class="auto internal xref">6.4.6</a>.  <a href="#name-413-request-entity-too-larg" class="internal xref">413 Request Entity Too Large</a></p>
+1403,1404c1476,1477
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.4.2.7">
+<                     <p id="section-toc.1-1.6.2.4.2.7.1"><a href="#section-6.4.7" class="xref">6.4.7</a>.  <a href="#name-414-request-uri-too-long" class="xref">414 Request-URI Too Long</a><a href="#section-toc.1-1.6.2.4.2.7.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4.2.7">
+>                     <p id="section-toc.1-1.6.2.4.2.7.1"><a href="#section-6.4.7" class="auto internal xref">6.4.7</a>.  <a href="#name-414-request-uri-too-long" class="internal xref">414 Request-URI Too Long</a></p>
+1406,1407c1479,1480
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.4.2.8">
+<                     <p id="section-toc.1-1.6.2.4.2.8.1"><a href="#section-6.4.8" class="xref">6.4.8</a>.  <a href="#name-415-unsupported-media-type" class="xref">415 Unsupported Media Type</a><a href="#section-toc.1-1.6.2.4.2.8.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4.2.8">
+>                     <p id="section-toc.1-1.6.2.4.2.8.1"><a href="#section-6.4.8" class="auto internal xref">6.4.8</a>.  <a href="#name-415-unsupported-media-type" class="internal xref">415 Unsupported Media Type</a></p>
+1409,1410c1482,1483
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.4.2.9">
+<                     <p id="section-toc.1-1.6.2.4.2.9.1"><a href="#section-6.4.9" class="xref">6.4.9</a>.  <a href="#name-416-unsupported-uri-scheme" class="xref">416 Unsupported URI Scheme</a><a href="#section-toc.1-1.6.2.4.2.9.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4.2.9">
+>                     <p id="section-toc.1-1.6.2.4.2.9.1"><a href="#section-6.4.9" class="auto internal xref">6.4.9</a>.  <a href="#name-416-unsupported-uri-scheme" class="internal xref">416 Unsupported URI Scheme</a></p>
+1414,1418c1487,1491
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.5">
+<                 <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="xref">6.5</a>.  <a href="#name-server-failure-5xx" class="xref">Server Failure 5xx</a><a href="#section-toc.1-1.6.2.5.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.5.2.1">
+<                     <p id="section-toc.1-1.6.2.5.2.1.1"><a href="#section-6.5.1" class="xref">6.5.1</a>.  <a href="#name-500-server-internal-error" class="xref">500 Server Internal Error</a><a href="#section-toc.1-1.6.2.5.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5">
+>                 <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="auto internal xref">6.5</a>.  <a href="#name-server-failure-5xx" class="internal xref">Server Failure 5xx</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5.2.1">
+>                     <p id="section-toc.1-1.6.2.5.2.1.1"><a href="#section-6.5.1" class="auto internal xref">6.5.1</a>.  <a href="#name-500-server-internal-error" class="internal xref">500 Server Internal Error</a></p>
+1420,1421c1493,1494
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.5.2.2">
+<                     <p id="section-toc.1-1.6.2.5.2.2.1"><a href="#section-6.5.2" class="xref">6.5.2</a>.  <a href="#name-501-not-implemented" class="xref">501 Not Implemented</a><a href="#section-toc.1-1.6.2.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5.2.2">
+>                     <p id="section-toc.1-1.6.2.5.2.2.1"><a href="#section-6.5.2" class="auto internal xref">6.5.2</a>.  <a href="#name-501-not-implemented" class="internal xref">501 Not Implemented</a></p>
+1423,1424c1496,1497
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.5.2.3">
+<                     <p id="section-toc.1-1.6.2.5.2.3.1"><a href="#section-6.5.3" class="xref">6.5.3</a>.  <a href="#name-503-service-unavailable" class="xref">503 Service Unavailable</a><a href="#section-toc.1-1.6.2.5.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5.2.3">
+>                     <p id="section-toc.1-1.6.2.5.2.3.1"><a href="#section-6.5.3" class="auto internal xref">6.5.3</a>.  <a href="#name-503-service-unavailable" class="internal xref">503 Service Unavailable</a></p>
+1426,1427c1499,1500
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.5.2.4">
+<                     <p id="section-toc.1-1.6.2.5.2.4.1"><a href="#section-6.5.4" class="xref">6.5.4</a>.  <a href="#name-504-server-time-out" class="xref">504 Server Time-Out</a><a href="#section-toc.1-1.6.2.5.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5.2.4">
+>                     <p id="section-toc.1-1.6.2.5.2.4.1"><a href="#section-6.5.4" class="auto internal xref">6.5.4</a>.  <a href="#name-504-server-time-out" class="internal xref">504 Server Time-Out</a></p>
+1429,1430c1502,1503
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.5.2.5">
+<                     <p id="section-toc.1-1.6.2.5.2.5.1"><a href="#section-6.5.5" class="xref">6.5.5</a>.  <a href="#name-505-version-not-supported" class="xref">505 Version Not Supported</a><a href="#section-toc.1-1.6.2.5.2.5.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5.2.5">
+>                     <p id="section-toc.1-1.6.2.5.2.5.1"><a href="#section-6.5.5" class="auto internal xref">6.5.5</a>.  <a href="#name-505-version-not-supported" class="internal xref">505 Version Not Supported</a></p>
+1432,1433c1505,1506
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.5.2.6">
+<                     <p id="section-toc.1-1.6.2.5.2.6.1"><a href="#section-6.5.6" class="xref">6.5.6</a>.  <a href="#name-513-message-too-large" class="xref">513 Message Too Large</a><a href="#section-toc.1-1.6.2.5.2.6.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5.2.6">
+>                     <p id="section-toc.1-1.6.2.5.2.6.1"><a href="#section-6.5.6" class="auto internal xref">6.5.6</a>.  <a href="#name-513-message-too-large" class="internal xref">513 Message Too Large</a></p>
+1437,1441c1510,1514
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.6">
+<                 <p id="section-toc.1-1.6.2.6.1"><a href="#section-6.6" class="xref">6.6</a>.  <a href="#name-global-failures-6xx" class="xref">Global Failures 6xx</a><a href="#section-toc.1-1.6.2.6.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.6.2.1">
+<                     <p id="section-toc.1-1.6.2.6.2.1.1"><a href="#section-6.6.1" class="xref">6.6.1</a>.  <a href="#name-600-session-does-not-exist" class="xref">600 Session Does Not Exist</a><a href="#section-toc.1-1.6.2.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6">
+>                 <p id="section-toc.1-1.6.2.6.1"><a href="#section-6.6" class="auto internal xref">6.6</a>.  <a href="#name-global-failures-6xx" class="internal xref">Global Failures 6xx</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6.2.1">
+>                     <p id="section-toc.1-1.6.2.6.2.1.1"><a href="#section-6.6.1" class="auto internal xref">6.6.1</a>.  <a href="#name-600-session-does-not-exist" class="internal xref">600 Session Does Not Exist</a></p>
+1443,1444c1516,1517
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.6.2.2">
+<                     <p id="section-toc.1-1.6.2.6.2.2.1"><a href="#section-6.6.2" class="xref">6.6.2</a>.  <a href="#name-601-quality-level-not-allow" class="xref">601 Quality Level Not Allowed</a><a href="#section-toc.1-1.6.2.6.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6.2.2">
+>                     <p id="section-toc.1-1.6.2.6.2.2.1"><a href="#section-6.6.2" class="auto internal xref">6.6.2</a>.  <a href="#name-601-quality-level-not-allow" class="internal xref">601 Quality Level Not Allowed</a></p>
+1446,1447c1519,1520
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.6.2.3">
+<                     <p id="section-toc.1-1.6.2.6.2.3.1"><a href="#section-6.6.3" class="xref">6.6.3</a>.  <a href="#name-603-session-not-allowed" class="xref">603 Session Not Allowed</a><a href="#section-toc.1-1.6.2.6.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6.2.3">
+>                     <p id="section-toc.1-1.6.2.6.2.3.1"><a href="#section-6.6.3" class="auto internal xref">6.6.3</a>.  <a href="#name-603-session-not-allowed" class="internal xref">603 Session Not Allowed</a></p>
+1449,1450c1522,1523
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.6.2.6.2.4">
+<                     <p id="section-toc.1-1.6.2.6.2.4.1"><a href="#section-6.6.4" class="xref">6.6.4</a>.  <a href="#name-604-authorization-not-allow" class="xref">604 Authorization Not Allowed</a><a href="#section-toc.1-1.6.2.6.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6.2.4">
+>                     <p id="section-toc.1-1.6.2.6.2.4.1"><a href="#section-6.6.4" class="auto internal xref">6.6.4</a>.  <a href="#name-604-authorization-not-allow" class="internal xref">604 Authorization Not Allowed</a></p>
+1456,1460c1529,1533
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-protocol" class="xref">Protocol</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-protocol-phases" class="xref">Protocol Phases</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-protocol" class="internal xref">Protocol</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-protocol-phases" class="internal xref">Protocol Phases</a></p>
+1462,1466c1535,1539
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-sdp-structure" class="xref">SDP Structure</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.2.2.1">
+<                     <p id="section-toc.1-1.7.2.2.2.1.1"><a href="#section-7.2.1" class="xref">7.2.1</a>.  <a href="#name-qos-level-attribute" class="xref">"qos-level" Attribute</a><a href="#section-toc.1-1.7.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-sdp-structure" class="internal xref">SDP Structure</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.1">
+>                     <p id="section-toc.1-1.7.2.2.2.1.1"><a href="#section-7.2.1" class="auto internal xref">7.2.1</a>.  <a href="#name-qos-level-attribute" class="internal xref">"qos-level" Attribute</a></p>
+1468,1469c1541,1542
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.2.2.2">
+<                     <p id="section-toc.1-1.7.2.2.2.2.1"><a href="#section-7.2.2" class="xref">7.2.2</a>.  <a href="#name-alerting-mode-attribute" class="xref">"alerting-mode" Attribute</a><a href="#section-toc.1-1.7.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.2">
+>                     <p id="section-toc.1-1.7.2.2.2.2.1"><a href="#section-7.2.2" class="auto internal xref">7.2.2</a>.  <a href="#name-alerting-mode-attribute" class="internal xref">"alerting-mode" Attribute</a></p>
+1471,1472c1544,1545
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.2.2.3">
+<                     <p id="section-toc.1-1.7.2.2.2.3.1"><a href="#section-7.2.3" class="xref">7.2.3</a>.  <a href="#name-alert-pause-attribute" class="xref">"alert-pause" Attribute</a><a href="#section-toc.1-1.7.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.3">
+>                     <p id="section-toc.1-1.7.2.2.2.3.1"><a href="#section-7.2.3" class="auto internal xref">7.2.3</a>.  <a href="#name-alert-pause-attribute" class="internal xref">"alert-pause" Attribute</a></p>
+1474,1475c1547,1548
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.2.2.4">
+<                     <p id="section-toc.1-1.7.2.2.2.4.1"><a href="#section-7.2.4" class="xref">7.2.4</a>.  <a href="#name-recovery-pause-attribute" class="xref">"recovery-pause" Attribute</a><a href="#section-toc.1-1.7.2.2.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.4">
+>                     <p id="section-toc.1-1.7.2.2.2.4.1"><a href="#section-7.2.4" class="auto internal xref">7.2.4</a>.  <a href="#name-recovery-pause-attribute" class="internal xref">"recovery-pause" Attribute</a></p>
+1477,1478c1550,1551
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.2.2.5">
+<                     <p id="section-toc.1-1.7.2.2.2.5.1"><a href="#section-7.2.5" class="xref">7.2.5</a>.  <a href="#name-public-address-attributes" class="xref">"public-address" Attributes</a><a href="#section-toc.1-1.7.2.2.2.5.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.5">
+>                     <p id="section-toc.1-1.7.2.2.2.5.1"><a href="#section-7.2.5" class="auto internal xref">7.2.5</a>.  <a href="#name-public-address-attributes" class="internal xref">"public-address" Attributes</a></p>
+1480,1481c1553,1554
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.2.2.6">
+<                     <p id="section-toc.1-1.7.2.2.2.6.1"><a href="#section-7.2.6" class="xref">7.2.6</a>.  <a href="#name-latency-attribute" class="xref">"latency" Attribute</a><a href="#section-toc.1-1.7.2.2.2.6.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.6">
+>                     <p id="section-toc.1-1.7.2.2.2.6.1"><a href="#section-7.2.6" class="auto internal xref">7.2.6</a>.  <a href="#name-latency-attribute" class="internal xref">"latency" Attribute</a></p>
+1483,1484c1556,1557
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.2.2.7">
+<                     <p id="section-toc.1-1.7.2.2.2.7.1"><a href="#section-7.2.7" class="xref">7.2.7</a>.  <a href="#name-jitter-attribute" class="xref">"jitter" Attribute</a><a href="#section-toc.1-1.7.2.2.2.7.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.7">
+>                     <p id="section-toc.1-1.7.2.2.2.7.1"><a href="#section-7.2.7" class="auto internal xref">7.2.7</a>.  <a href="#name-jitter-attribute" class="internal xref">"jitter" Attribute</a></p>
+1486,1487c1559,1560
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.2.2.8">
+<                     <p id="section-toc.1-1.7.2.2.2.8.1"><a href="#section-7.2.8" class="xref">7.2.8</a>.  <a href="#name-bandwidth-attribute" class="xref">"bandwidth" Attribute</a><a href="#section-toc.1-1.7.2.2.2.8.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.8">
+>                     <p id="section-toc.1-1.7.2.2.2.8.1"><a href="#section-7.2.8" class="auto internal xref">7.2.8</a>.  <a href="#name-bandwidth-attribute" class="internal xref">"bandwidth" Attribute</a></p>
+1489,1490c1562,1563
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.2.2.9">
+<                     <p id="section-toc.1-1.7.2.2.2.9.1"><a href="#section-7.2.9" class="xref">7.2.9</a>.  <a href="#name-packetloss-attribute" class="xref">"packetloss" Attribute</a><a href="#section-toc.1-1.7.2.2.2.9.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.9">
+>                     <p id="section-toc.1-1.7.2.2.2.9.1"><a href="#section-7.2.9" class="auto internal xref">7.2.9</a>.  <a href="#name-packetloss-attribute" class="internal xref">"packetloss" Attribute</a></p>
+1492,1493c1565,1566
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.2.2.10">
+<                     <p id="section-toc.1-1.7.2.2.2.10.1"><a href="#section-7.2.10" class="xref">7.2.10</a>. <a href="#name-flow-attributes" class="xref">"flow" Attributes</a><a href="#section-toc.1-1.7.2.2.2.10.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.10">
+>                     <p id="section-toc.1-1.7.2.2.2.10.1"><a href="#section-7.2.10" class="auto internal xref">7.2.10</a>. <a href="#name-flow-attributes" class="internal xref">"flow" Attributes</a></p>
+1495,1496c1568,1569
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.2.2.11">
+<                     <p id="section-toc.1-1.7.2.2.2.11.1"><a href="#section-7.2.11" class="xref">7.2.11</a>. <a href="#name-measurement-attributes" class="xref">"measurement" Attributes</a><a href="#section-toc.1-1.7.2.2.2.11.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.11">
+>                     <p id="section-toc.1-1.7.2.2.2.11.1"><a href="#section-7.2.11" class="auto internal xref">7.2.11</a>. <a href="#name-measurement-attributes" class="internal xref">"measurement" Attributes</a></p>
+1498,1499c1571,1572
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.2.2.12">
+<                     <p id="section-toc.1-1.7.2.2.2.12.1"><a href="#section-7.2.12" class="xref">7.2.12</a>. <a href="#name-max-content-length-attribut" class="xref">"max-content-length" Attribute</a><a href="#section-toc.1-1.7.2.2.2.12.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.12">
+>                     <p id="section-toc.1-1.7.2.2.2.12.1"><a href="#section-7.2.12" class="auto internal xref">7.2.12</a>. <a href="#name-max-content-length-attribut" class="internal xref">"max-content-length" Attribute</a></p>
+1503,1507c1576,1580
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.3">
+<                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="xref">7.3</a>.  <a href="#name-measurements" class="xref">Measurements</a><a href="#section-toc.1-1.7.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.3.2.1">
+<                     <p id="section-toc.1-1.7.2.3.2.1.1"><a href="#section-7.3.1" class="xref">7.3.1</a>.  <a href="#name-latency" class="xref">Latency</a><a href="#section-toc.1-1.7.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3">
+>                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="auto internal xref">7.3</a>.  <a href="#name-measurements" class="internal xref">Measurements</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3.2.1">
+>                     <p id="section-toc.1-1.7.2.3.2.1.1"><a href="#section-7.3.1" class="auto internal xref">7.3.1</a>.  <a href="#name-latency" class="internal xref">Latency</a></p>
+1509,1510c1582,1583
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.3.2.2">
+<                     <p id="section-toc.1-1.7.2.3.2.2.1"><a href="#section-7.3.2" class="xref">7.3.2</a>.  <a href="#name-jitter" class="xref">Jitter</a><a href="#section-toc.1-1.7.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3.2.2">
+>                     <p id="section-toc.1-1.7.2.3.2.2.1"><a href="#section-7.3.2" class="auto internal xref">7.3.2</a>.  <a href="#name-jitter" class="internal xref">Jitter</a></p>
+1512,1513c1585,1586
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.3.2.3">
+<                     <p id="section-toc.1-1.7.2.3.2.3.1"><a href="#section-7.3.3" class="xref">7.3.3</a>.  <a href="#name-bandwidth" class="xref">Bandwidth</a><a href="#section-toc.1-1.7.2.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3.2.3">
+>                     <p id="section-toc.1-1.7.2.3.2.3.1"><a href="#section-7.3.3" class="auto internal xref">7.3.3</a>.  <a href="#name-bandwidth" class="internal xref">Bandwidth</a></p>
+1515,1516c1588,1589
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.3.2.4">
+<                     <p id="section-toc.1-1.7.2.3.2.4.1"><a href="#section-7.3.4" class="xref">7.3.4</a>.  <a href="#name-packet-loss" class="xref">Packet Loss</a><a href="#section-toc.1-1.7.2.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3.2.4">
+>                     <p id="section-toc.1-1.7.2.3.2.4.1"><a href="#section-7.3.4" class="auto internal xref">7.3.4</a>.  <a href="#name-packet-loss" class="internal xref">Packet Loss</a></p>
+1520,1521c1593,1594
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.4">
+<                 <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="xref">7.4</a>.  <a href="#name-handshake-phase" class="xref">Handshake Phase</a><a href="#section-toc.1-1.7.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.4">
+>                 <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="auto internal xref">7.4</a>.  <a href="#name-handshake-phase" class="internal xref">Handshake Phase</a></p>
+1523,1527c1596,1600
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.5">
+<                 <p id="section-toc.1-1.7.2.5.1"><a href="#section-7.5" class="xref">7.5</a>.  <a href="#name-negotiation-phase" class="xref">Negotiation Phase</a><a href="#section-toc.1-1.7.2.5.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.5.2.1">
+<                     <p id="section-toc.1-1.7.2.5.2.1.1"><a href="#section-7.5.1" class="xref">7.5.1</a>.  <a href="#name-stage-0-measurement-of-late" class="xref">Stage 0: Measurement of Latencies and Jitter</a><a href="#section-toc.1-1.7.2.5.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.5">
+>                 <p id="section-toc.1-1.7.2.5.1"><a href="#section-7.5" class="auto internal xref">7.5</a>.  <a href="#name-negotiation-phase" class="internal xref">Negotiation Phase</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.5.2.1">
+>                     <p id="section-toc.1-1.7.2.5.2.1.1"><a href="#section-7.5.1" class="auto internal xref">7.5.1</a>.  <a href="#name-stage-0-measurement-of-late" class="internal xref">Stage 0: Measurement of Latencies and Jitter</a></p>
+1529,1530c1602,1603
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.5.2.2">
+<                     <p id="section-toc.1-1.7.2.5.2.2.1"><a href="#section-7.5.2" class="xref">7.5.2</a>.  <a href="#name-stage-1-measurement-of-band" class="xref">Stage 1: Measurement of Bandwidth and Packet Loss</a><a href="#section-toc.1-1.7.2.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.5.2.2">
+>                     <p id="section-toc.1-1.7.2.5.2.2.1"><a href="#section-7.5.2" class="auto internal xref">7.5.2</a>.  <a href="#name-stage-1-measurement-of-band" class="internal xref">Stage 1: Measurement of Bandwidth and Packet Loss</a></p>
+1532,1536c1605,1609
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.5.2.3">
+<                     <p id="section-toc.1-1.7.2.5.2.3.1"><a href="#section-7.5.3" class="xref">7.5.3</a>.  <a href="#name-quality-constraints-not-rea" class="xref">Quality Constraints Not Reached</a><a href="#section-toc.1-1.7.2.5.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.5.2.3.2.1">
+<                         <p id="section-toc.1-1.7.2.5.2.3.2.1.1"><a href="#section-7.5.3.1" class="xref">7.5.3.1</a>.  <a href="#name-actuator-role" class="xref">Actuator Role</a><a href="#section-toc.1-1.7.2.5.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.5.2.3">
+>                     <p id="section-toc.1-1.7.2.5.2.3.1"><a href="#section-7.5.3" class="auto internal xref">7.5.3</a>.  <a href="#name-quality-constraints-not-rea" class="internal xref">Quality Constraints Not Reached</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.5.2.3.2.1">
+>                         <p id="section-toc.1-1.7.2.5.2.3.2.1.1"><a href="#section-7.5.3.1" class="auto internal xref">7.5.3.1</a>.  <a href="#name-actuator-role" class="internal xref">Actuator Role</a></p>
+1538,1539c1611,1612
+<                       <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.5.2.3.2.2">
+<                         <p id="section-toc.1-1.7.2.5.2.3.2.2.1"><a href="#section-7.5.3.2" class="xref">7.5.3.2</a>.  <a href="#name-policy-server-role" class="xref">Policy Server Role</a><a href="#section-toc.1-1.7.2.5.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                       <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.5.2.3.2.2">
+>                         <p id="section-toc.1-1.7.2.5.2.3.2.2.1"><a href="#section-7.5.3.2" class="auto internal xref">7.5.3.2</a>.  <a href="#name-policy-server-role" class="internal xref">Policy Server Role</a></p>
+1543,1544c1616,1617
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.5.2.4">
+<                     <p id="section-toc.1-1.7.2.5.2.4.1"><a href="#section-7.5.4" class="xref">7.5.4</a>.  <a href="#name-qos-level-changes" class="xref">"qos-level" Changes</a><a href="#section-toc.1-1.7.2.5.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.5.2.4">
+>                     <p id="section-toc.1-1.7.2.5.2.4.1"><a href="#section-7.5.4" class="auto internal xref">7.5.4</a>.  <a href="#name-qos-level-changes" class="internal xref">"qos-level" Changes</a></p>
+1548,1549c1621,1622
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.6">
+<                 <p id="section-toc.1-1.7.2.6.1"><a href="#section-7.6" class="xref">7.6</a>.  <a href="#name-continuity-phase" class="xref">Continuity Phase</a><a href="#section-toc.1-1.7.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.6">
+>                 <p id="section-toc.1-1.7.2.6.1"><a href="#section-7.6" class="auto internal xref">7.6</a>.  <a href="#name-continuity-phase" class="internal xref">Continuity Phase</a></p>
+1551,1555c1624,1628
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.7">
+<                 <p id="section-toc.1-1.7.2.7.1"><a href="#section-7.7" class="xref">7.7</a>.  <a href="#name-termination-phase" class="xref">Termination Phase</a><a href="#section-toc.1-1.7.2.7.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.7.2.1">
+<                     <p id="section-toc.1-1.7.2.7.2.1.1"><a href="#section-7.7.1" class="xref">7.7.1</a>.  <a href="#name-sanity-check-of-quality-ses" class="xref">Sanity Check of Quality Sessions</a><a href="#section-toc.1-1.7.2.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.7">
+>                 <p id="section-toc.1-1.7.2.7.1"><a href="#section-7.7" class="auto internal xref">7.7</a>.  <a href="#name-termination-phase" class="internal xref">Termination Phase</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.7.2.1">
+>                     <p id="section-toc.1-1.7.2.7.2.1.1"><a href="#section-7.7.1" class="auto internal xref">7.7.1</a>.  <a href="#name-sanity-check-of-quality-ses" class="internal xref">Sanity Check of Quality Sessions</a></p>
+1559,1560c1632,1633
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.8">
+<                 <p id="section-toc.1-1.7.2.8.1"><a href="#section-7.8" class="xref">7.8</a>.  <a href="#name-dynamic-constraints-and-flo" class="xref">Dynamic Constraints and Flows</a><a href="#section-toc.1-1.7.2.8.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.8">
+>                 <p id="section-toc.1-1.7.2.8.1"><a href="#section-7.8" class="auto internal xref">7.8</a>.  <a href="#name-dynamic-constraints-and-flo" class="internal xref">Dynamic Constraints and Flows</a></p>
+1562,1563c1635,1636
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.7.2.9">
+<                 <p id="section-toc.1-1.7.2.9.1"><a href="#section-7.9" class="xref">7.9</a>.  <a href="#name-qos-level-upgrade-and-downg" class="xref">"qos-level" Upgrade and Downgrade Operation</a><a href="#section-toc.1-1.7.2.9.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.9">
+>                 <p id="section-toc.1-1.7.2.9.1"><a href="#section-7.9" class="auto internal xref">7.9</a>.  <a href="#name-qos-level-upgrade-and-downg" class="internal xref">"qos-level" Upgrade and Downgrade Operation</a></p>
+1567,1571c1640,1644
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-general-user-agent-behavior" class="xref">General User Agent Behavior</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.8.2.1">
+<                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-roles-in-peer-to-peer-scena" class="xref">Roles in Peer-to-Peer Scenarios</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-general-user-agent-behavior" class="internal xref">General User Agent Behavior</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+>                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-roles-in-peer-to-peer-scena" class="internal xref">Roles in Peer-to-Peer Scenarios</a></p>
+1573,1574c1646,1647
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.8.2.2">
+<                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-multiple-quality-sessions-i" class="xref">Multiple Quality Sessions in Parallel</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+>                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-multiple-quality-sessions-i" class="internal xref">Multiple Quality Sessions in Parallel</a></p>
+1576,1580c1649,1653
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.8.2.3">
+<                 <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="xref">8.3</a>.  <a href="#name-general-client-behavior" class="xref">General Client Behavior</a><a href="#section-toc.1-1.8.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.8.2.3.2.1">
+<                     <p id="section-toc.1-1.8.2.3.2.1.1"><a href="#section-8.3.1" class="xref">8.3.1</a>.  <a href="#name-generating-requests" class="xref">Generating Requests</a><a href="#section-toc.1-1.8.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3">
+>                 <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="auto internal xref">8.3</a>.  <a href="#name-general-client-behavior" class="internal xref">General Client Behavior</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3.2.1">
+>                     <p id="section-toc.1-1.8.2.3.2.1.1"><a href="#section-8.3.1" class="auto internal xref">8.3.1</a>.  <a href="#name-generating-requests" class="internal xref">Generating Requests</a></p>
+1584,1585c1657,1658
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.8.2.4">
+<                 <p id="section-toc.1-1.8.2.4.1"><a href="#section-8.4" class="xref">8.4</a>.  <a href="#name-general-server-behavior" class="xref">General Server Behavior</a><a href="#section-toc.1-1.8.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.4">
+>                 <p id="section-toc.1-1.8.2.4.1"><a href="#section-8.4" class="auto internal xref">8.4</a>.  <a href="#name-general-server-behavior" class="internal xref">General Server Behavior</a></p>
+1589,1593c1662,1666
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-implementation-recommendati" class="xref">Implementation Recommendations</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.9.2.1">
+<                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="xref">9.1</a>.  <a href="#name-default-client-constraints" class="xref">Default Client Constraints</a><a href="#section-toc.1-1.9.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-implementation-recommendati" class="internal xref">Implementation Recommendations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
+>                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="auto internal xref">9.1</a>.  <a href="#name-default-client-constraints" class="internal xref">Default Client Constraints</a></p>
+1595,1596c1668,1669
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.9.2.2">
+<                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="xref">9.2</a>.  <a href="#name-latency-and-jitter-measurem" class="xref">Latency and Jitter Measurements</a><a href="#section-toc.1-1.9.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
+>                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-latency-and-jitter-measurem" class="internal xref">Latency and Jitter Measurements</a></p>
+1598,1599c1671,1672
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.9.2.3">
+<                 <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="xref">9.3</a>.  <a href="#name-bandwidth-measurements" class="xref">Bandwidth Measurements</a><a href="#section-toc.1-1.9.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.3">
+>                 <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="auto internal xref">9.3</a>.  <a href="#name-bandwidth-measurements" class="internal xref">Bandwidth Measurements</a></p>
+1601,1602c1674,1675
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.9.2.4">
+<                 <p id="section-toc.1-1.9.2.4.1"><a href="#section-9.4" class="xref">9.4</a>.  <a href="#name-packet-loss-measurement-res" class="xref">Packet Loss Measurement Resolution</a><a href="#section-toc.1-1.9.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.4">
+>                 <p id="section-toc.1-1.9.2.4.1"><a href="#section-9.4" class="auto internal xref">9.4</a>.  <a href="#name-packet-loss-measurement-res" class="internal xref">Packet Loss Measurement Resolution</a></p>
+1604,1605c1677,1678
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.9.2.5">
+<                 <p id="section-toc.1-1.9.2.5.1"><a href="#section-9.5" class="xref">9.5</a>.  <a href="#name-measurements-and-reactions" class="xref">Measurements and Reactions</a><a href="#section-toc.1-1.9.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.5">
+>                 <p id="section-toc.1-1.9.2.5.1"><a href="#section-9.5" class="auto internal xref">9.5</a>.  <a href="#name-measurements-and-reactions" class="internal xref">Measurements and Reactions</a></p>
+1607,1611c1680,1684
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.9.2.6">
+<                 <p id="section-toc.1-1.9.2.6.1"><a href="#section-9.6" class="xref">9.6</a>.  <a href="#name-instability-treatments" class="xref">Instability Treatments</a><a href="#section-toc.1-1.9.2.6.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.9.2.6.2.1">
+<                     <p id="section-toc.1-1.9.2.6.2.1.1"><a href="#section-9.6.1" class="xref">9.6.1</a>.  <a href="#name-loss-of-control-packets" class="xref">Loss of Control Packets</a><a href="#section-toc.1-1.9.2.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.6">
+>                 <p id="section-toc.1-1.9.2.6.1"><a href="#section-9.6" class="auto internal xref">9.6</a>.  <a href="#name-instability-treatments" class="internal xref">Instability Treatments</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.6.2.1">
+>                     <p id="section-toc.1-1.9.2.6.2.1.1"><a href="#section-9.6.1" class="auto internal xref">9.6.1</a>.  <a href="#name-loss-of-control-packets" class="internal xref">Loss of Control Packets</a></p>
+1613,1614c1686,1687
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.9.2.6.2.2">
+<                     <p id="section-toc.1-1.9.2.6.2.2.1"><a href="#section-9.6.2" class="xref">9.6.2</a>.  <a href="#name-outlier-samples" class="xref">Outlier Samples</a><a href="#section-toc.1-1.9.2.6.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.6.2.2">
+>                     <p id="section-toc.1-1.9.2.6.2.2.1"><a href="#section-9.6.2" class="auto internal xref">9.6.2</a>.  <a href="#name-outlier-samples" class="internal xref">Outlier Samples</a></p>
+1618,1622c1691,1695
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.9.2.7">
+<                 <p id="section-toc.1-1.9.2.7.1"><a href="#section-9.7" class="xref">9.7</a>.  <a href="#name-scenarios" class="xref">Scenarios</a><a href="#section-toc.1-1.9.2.7.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.9.2.7.2.1">
+<                     <p id="section-toc.1-1.9.2.7.2.1.1"><a href="#section-9.7.1" class="xref">9.7.1</a>.  <a href="#name-client-to-acp" class="xref">Client to ACP</a><a href="#section-toc.1-1.9.2.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.7">
+>                 <p id="section-toc.1-1.9.2.7.1"><a href="#section-9.7" class="auto internal xref">9.7</a>.  <a href="#name-scenarios" class="internal xref">Scenarios</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.7.2.1">
+>                     <p id="section-toc.1-1.9.2.7.2.1.1"><a href="#section-9.7.1" class="auto internal xref">9.7.1</a>.  <a href="#name-client-to-acp" class="internal xref">Client to ACP</a></p>
+1624,1625c1697,1698
+<                   <li class="compact toc ulEmpty" id="section-toc.1-1.9.2.7.2.2">
+<                     <p id="section-toc.1-1.9.2.7.2.2.1"><a href="#section-9.7.2" class="xref">9.7.2</a>.  <a href="#name-client-to-client" class="xref">Client to Client</a><a href="#section-toc.1-1.9.2.7.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.7.2.2">
+>                     <p id="section-toc.1-1.9.2.7.2.2.1"><a href="#section-9.7.2" class="auto internal xref">9.7.2</a>.  <a href="#name-client-to-client" class="internal xref">Client to Client</a></p>
+1631,1635c1704,1708
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.10.2.1">
+<                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="xref">10.1</a>.  <a href="#name-confidentiality-issues" class="xref">Confidentiality Issues</a><a href="#section-toc.1-1.10.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
+>                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="auto internal xref">10.1</a>.  <a href="#name-confidentiality-issues" class="internal xref">Confidentiality Issues</a></p>
+1637,1638c1710,1711
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.10.2.2">
+<                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="xref">10.2</a>.  <a href="#name-integrity-of-measurements-a" class="xref">Integrity of Measurements and Authentication</a><a href="#section-toc.1-1.10.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
+>                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="auto internal xref">10.2</a>.  <a href="#name-integrity-of-measurements-a" class="internal xref">Integrity of Measurements and Authentication</a></p>
+1640,1641c1713,1714
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.10.2.3">
+<                 <p id="section-toc.1-1.10.2.3.1"><a href="#section-10.3" class="xref">10.3</a>.  <a href="#name-privacy-of-measurements" class="xref">Privacy of Measurements</a><a href="#section-toc.1-1.10.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.3">
+>                 <p id="section-toc.1-1.10.2.3.1"><a href="#section-10.3" class="auto internal xref">10.3</a>.  <a href="#name-privacy-of-measurements" class="internal xref">Privacy of Measurements</a></p>
+1643,1644c1716,1717
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.10.2.4">
+<                 <p id="section-toc.1-1.10.2.4.1"><a href="#section-10.4" class="xref">10.4</a>.  <a href="#name-availability-issues" class="xref">Availability Issues</a><a href="#section-toc.1-1.10.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.4">
+>                 <p id="section-toc.1-1.10.2.4.1"><a href="#section-10.4" class="auto internal xref">10.4</a>.  <a href="#name-availability-issues" class="internal xref">Availability Issues</a></p>
+1646,1647c1719,1720
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.10.2.5">
+<                 <p id="section-toc.1-1.10.2.5.1"><a href="#section-10.5" class="xref">10.5</a>.  <a href="#name-bandwidth-occupancy-issues" class="xref">Bandwidth Occupancy Issues</a><a href="#section-toc.1-1.10.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.5">
+>                 <p id="section-toc.1-1.10.2.5.1"><a href="#section-10.5" class="auto internal xref">10.5</a>.  <a href="#name-bandwidth-occupancy-issues" class="internal xref">Bandwidth Occupancy Issues</a></p>
+1651,1655c1724,1728
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-future-code-point-requireme" class="xref">Future Code Point Requirements</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.11.2.1">
+<                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="xref">11.1</a>.  <a href="#name-service-port" class="xref">Service Port</a><a href="#section-toc.1-1.11.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-future-code-point-requireme" class="internal xref">Future Code Point Requirements</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
+>                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-service-port" class="internal xref">Service Port</a></p>
+1659,1660c1732,1733
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-12" class="xref">12</a>. <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1662,1666c1735,1739
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-13" class="xref">13</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+< <ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.13.2.1">
+<                 <p id="section-toc.1-1.13.2.1.1"><a href="#section-13.1" class="xref">13.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.13.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1"><a href="#section-13" class="auto internal xref">13</a>. <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.1">
+>                 <p id="section-toc.1-1.13.2.1.1"><a href="#section-13.1" class="auto internal xref">13.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1668,1669c1741,1742
+<               <li class="compact toc ulEmpty" id="section-toc.1-1.13.2.2">
+<                 <p id="section-toc.1-1.13.2.2.1"><a href="#section-13.2" class="xref">13.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.13.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.2">
+>                 <p id="section-toc.1-1.13.2.2.1"><a href="#section-13.2" class="auto internal xref">13.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1673,1674c1746,1747
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.14">
+<             <p id="section-toc.1-1.14.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.14.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+>             <p id="section-toc.1-1.14.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1676,1677c1749,1750
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.15">
+<             <p id="section-toc.1-1.15.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a><a href="#section-toc.1-1.15.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
+>             <p id="section-toc.1-1.15.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+1679,1680c1752,1753
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.16">
+<             <p id="section-toc.1-1.16.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.16.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
+>             <p id="section-toc.1-1.16.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1697,1699c1770,1772
+<    (<span>[<a href="#RFC7230" class="xref">RFC7230</a>]</span>, <span>[<a href="#RFC7231" class="xref">RFC7231</a>]</span>, 
+<     <span>[<a href="#RFC7232" class="xref">RFC7232</a>]</span>, <span>[<a href="#RFC7233" class="xref">RFC7233</a>]</span>, 
+<     <span>[<a href="#RFC7234" class="xref">RFC7234</a>]</span>, and <span>[<a href="#RFC7235" class="xref">RFC7235</a>]</span>).  
+---
+>    (<span>[<a href="#RFC7230" class="cite xref">RFC7230</a>]</span>, <span>[<a href="#RFC7231" class="cite xref">RFC7231</a>]</span>, 
+>     <span>[<a href="#RFC7232" class="cite xref">RFC7232</a>]</span>, <span>[<a href="#RFC7233" class="cite xref">RFC7233</a>]</span>, 
+>     <span>[<a href="#RFC7234" class="cite xref">RFC7234</a>]</span>, and <span>[<a href="#RFC7235" class="cite xref">RFC7235</a>]</span>).  
+1701c1774
+<    and described in <span>[<a href="#RFC2818" class="xref">RFC2818</a>]</span>) has become an imperative for
+---
+>    and described in <span>[<a href="#RFC2818" class="cite xref">RFC2818</a>]</span>) has become an imperative for
+1790,1793c1863,1866
+<    protocols such as Real-time Transport Protocol (RTP) <span>[<a href="#RFC3550" class="xref">RFC3550</a>]</span>,
+<    Transmission Control Protocol (TCP) <span>[<a href="#RFC0793" class="xref">RFC0793</a>]</span>, 
+<    QUIC <span>[<a href="#I-D.ietf-quic-transport" class="xref">QUIC</a>]</span>, 
+<    HTTP <span>[<a href="#RFC7230" class="xref">RFC7230</a>]</span>, etc.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+---
+>    protocols such as Real-time Transport Protocol (RTP) <span>[<a href="#RFC3550" class="cite xref">RFC3550</a>]</span>,
+>    Transmission Control Protocol (TCP) <span>[<a href="#RFC0793" class="cite xref">RFC0793</a>]</span>, 
+>    QUIC <span>[<a href="#I-D.ietf-quic-transport" class="cite xref">QUIC</a>]</span>, 
+>    HTTP <span>[<a href="#RFC7230" class="cite xref">RFC7230</a>]</span>, etc.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+1797c1870
+<    the case of RTP and RTP Control Protocol (RTCP) <span>[<a href="#RFC3550" class="xref">RFC3550</a>]</span>. Other
+---
+>    the case of RTP and RTP Control Protocol (RTCP) <span>[<a href="#RFC3550" class="cite xref">RFC3550</a>]</span>. Other
+1802c1875
+<    level of function as Q4S.  See <a href="#sec-1.4" class="xref">Section 1.4</a> for a discussion of the
+---
+>    level of function as Q4S.  See <a href="#sec-1.4" class="auto internal xref">Section 1.4</a> for a discussion of the
+1941,1942c2014,2015
+<    OWAMP <span>[<a href="#RFC4656" class="xref">RFC4656</a>]</span> and 
+<    TWAMP <span>[<a href="#RFC5357" class="xref">RFC5357</a>]</span> are two protocols
+---
+>    OWAMP <span>[<a href="#RFC4656" class="cite xref">RFC4656</a>]</span> and 
+>    TWAMP <span>[<a href="#RFC5357" class="cite xref">RFC5357</a>]</span> are two protocols
+1986c2059
+<     interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when, and only when, they appear in all capitals, as
+---
+>     interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they appear in all capitals, as
+2008c2081
+<    first message must have a special URI <span>[<a href="#RFC3986" class="xref">RFC3986</a>]</span>, which may
+---
+>    first message must have a special URI <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span>, which may
+2035c2108
+< <dd id="section-3-5.4.2.1">
+---
+> <dd style="margin-left: 1.5em" id="section-3-5.4.2.1">
+2045c2118
+< <dd id="section-3-5.4.2.2">
+---
+> <dd style="margin-left: 1.5em" id="section-3-5.4.2.2">
+2047c2120
+<            <a href="#ref-reactive-scenario" class="xref">Figure 1</a>, the network
+---
+>            <a href="#ref-reactive-scenario" class="auto internal xref">Figure 1</a>, the network
+2057c2130
+<                 <div class="artwork art-text alignLeft" id="section-3-5.4.2.2.2.1">
+---
+>                 <div class="alignLeft art-text artwork" id="section-3-5.4.2.2.2.1">
+2104c2177
+<       before trying to recover the initial "qos-level" (<a href="#sec-7.2.1" class="xref">Section 7.2.1</a>). 
+---
+>       before trying to recover the initial "qos-level" (<a href="#sec-7.2.1" class="auto internal xref">Section 7.2.1</a>). 
+2112c2185
+<       Actuator in the Reactive scenario (<a href="#sec-7.9" class="xref">Section 7.9</a>).<a href="#section-3-6.2" class="pilcrow">¶</a>
+---
+>       Actuator in the Reactive scenario (<a href="#sec-7.9" class="auto internal xref">Section 7.9</a>).<a href="#section-3-6.2" class="pilcrow">¶</a>
+2164c2237
+< <dd id="section-3-14.1"> Measurements do not meet the 
+---
+> <dd style="margin-left: 1.5em" id="section-3-14.1"> Measurements do not meet the 
+2177c2250
+< <dd id="section-3-14.2"> Measurements do meet the requirements: in this case, client
+---
+> <dd style="margin-left: 1.5em" id="section-3-14.2"> Measurements do meet the requirements: in this case, client
+2182c2255
+< <dd id="section-3-14.3"> At any time during the measurement procedure, the Q4S 200 OK
+---
+> <dd style="margin-left: 1.5em" id="section-3-14.3"> At any time during the measurement procedure, the Q4S 200 OK
+2214c2287
+< <p id="section-3-18"><a href="#ref-successful-q4s-message-exchange" class="xref">Figure 2</a> 
+---
+> <p id="section-3-18"><a href="#ref-successful-q4s-message-exchange" class="auto internal xref">Figure 2</a> 
+2218c2291
+<         <div class="artwork art-text alignLeft" id="section-3-19.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-3-19.1">
+2276c2349
+<    (<a href="#ref-q4s-aware-network-alerting-mode" class="xref">Figure 3</a>)
+---
+>    (<a href="#ref-q4s-aware-network-alerting-mode" class="auto internal xref">Figure 3</a>)
+2280c2353
+<         <div class="artwork art-text alignLeft" id="section-3-22.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-3-22.1">
+2386c2459
+<    The second example depicted in <a href="#ref-reactive-alerting-mode" class="xref">Figure 4</a> represents the
+---
+>    The second example depicted in <a href="#ref-reactive-alerting-mode" class="auto internal xref">Figure 4</a> represents the
+2400c2473
+<         <div class="artwork art-text alignLeft" id="section-3-25.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-3-25.1">
+2520c2593
+<    <span>[<a href="#RFC3629" class="xref">RFC3629</a>]</span>. A Q4S message is either a request or a response.<a href="#section-4-1" class="pilcrow">¶</a></p>
+---
+>    <span>[<a href="#RFC3629" class="cite xref">RFC3629</a>]</span>. A Q4S message is either a request or a response.<a href="#section-4-1" class="pilcrow">¶</a></p>
+2523c2596
+<    Internet Message Format <span>[<a href="#RFC5322" class="xref">RFC5322</a>]</span>. Both types of messages
+---
+>    Internet Message Format <span>[<a href="#RFC5322" class="cite xref">RFC5322</a>]</span>. Both types of messages
+2526c2599
+<    This document uses ABNF notation <span>[<a href="#RFC5234" class="xref">RFC5234</a>]</span>
+---
+>    This document uses ABNF notation <span>[<a href="#RFC5234" class="cite xref">RFC5234</a>]</span>
+2533,2534c2606,2607
+< <div id="section-4-4">
+< <pre class="sourcecode lang-abnf">
+---
+> <div class="lang-abnf sourcecode" id="section-4-4">
+> <pre>
+2559,2560c2632,2633
+< <div id="section-4.1-3">
+< <pre class="sourcecode lang-abnf">
+---
+> <div class="lang-abnf sourcecode" id="section-4.1-3">
+> <pre>
+2577,2578c2650,2651
+<  The Request-URI is a Q4S URI <span>[<a href="#RFC3986" class="xref">RFC3986</a>]</span> as described
+<  in <a href="#sec-7.4" class="xref">Section 7.4</a>. The Request-URI <span class="bcp14">MUST NOT</span> contain unescaped spaces
+---
+>  The Request-URI is a Q4S URI <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span> as described
+>  in <a href="#sec-7.4" class="auto internal xref">Section 7.4</a>. The Request-URI <span class="bcp14">MUST NOT</span> contain unescaped spaces
+2607,2608c2680,2681
+< <div id="section-4.2-2">
+< <pre class="sourcecode lang-abnf">
+---
+> <div class="lang-abnf sourcecode" id="section-4.2-2">
+> <pre>
+2664c2737
+<    The status codes are the same as described in HTTP <span>[<a href="#RFC7231" class="xref">RFC7231</a>]</span>. In
+---
+>    The status codes are the same as described in HTTP <span>[<a href="#RFC7231" class="cite xref">RFC7231</a>]</span>. In
+2764,2765c2837,2838
+<       encryption method such as SHA256 <span>[<a href="#RFC6234" class="xref">RFC6234</a>]</span> 
+<       and RSA <span>[<a href="#RFC8017" class="xref">RFC8017</a>]</span> based on the server certificate could be used.
+---
+>       encryption method such as SHA256 <span>[<a href="#RFC6234" class="cite xref">RFC6234</a>]</span> 
+>       and RSA <span>[<a href="#RFC8017" class="cite xref">RFC8017</a>]</span> based on the server certificate could be used.
+2769,2770c2842,2843
+< <div id="section-4.3.2-2.4.2">
+< <pre class="sourcecode lang-abnf">
+---
+> <div class="lang-abnf sourcecode" id="section-4.3.2-2.4.2">
+> <pre>
+2784,2785c2857,2858
+< <div id="section-4.3.2-2.6.2">
+< <pre class="sourcecode lang-abnf">
+---
+> <div class="lang-abnf sourcecode" id="section-4.3.2-2.6.2">
+> <pre>
+2853c2926
+<    other protocols such as HTTP and SIP <span>[<a href="#RFC3261" class="xref">RFC3261</a>]</span>, 
+---
+>    other protocols such as HTTP and SIP <span>[<a href="#RFC3261" class="cite xref">RFC3261</a>]</span>, 
+2886,2887c2959,2960
+< <div id="section-5-2">
+< <pre class="sourcecode lang-abnf">
+---
+> <div class="lang-abnf sourcecode" id="section-5-2">
+> <pre>
+2896c2969
+<    Allow header field <span>[<a href="#RFC7231" class="xref">RFC7231</a>]</span>. The return code of the
+---
+>    Allow header field <span>[<a href="#RFC7231" class="cite xref">RFC7231</a>]</span>. The return code of the
+3010,3011c3083,3084
+<    Actuator (see <a href="#ref-reactive-scenario" class="xref">Figure 1</a>, "Reactive Scenario").<a href="#section-5.5-4" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-5.5-5">
+---
+>    Actuator (see <a href="#ref-reactive-scenario" class="auto internal xref">Figure 1</a>, "Reactive Scenario").<a href="#section-5.5-4" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="section-5.5-5">
+3038c3111
+<    decreased during violation of constraints. See <a href="#sec-7.9" class="xref">Section 7.9</a>). 
+---
+>    decreased during violation of constraints. See <a href="#sec-7.9" class="auto internal xref">Section 7.9</a>). 
+3053c3126
+<    triggered by the server stack and sent to the Actuator (see <a href="#ref-reactive-scenario" class="xref">Figure 1</a>, 
+---
+>    triggered by the server stack and sent to the Actuator (see <a href="#ref-reactive-scenario" class="auto internal xref">Figure 1</a>, 
+3426c3499
+<    defined and can be seen in <a href="#ref-session-lifetime-phases" class="xref">Figure 5</a>:<a href="#section-7.1-2" class="pilcrow">¶</a></p>
+---
+>    defined and can be seen in <a href="#ref-session-lifetime-phases" class="auto internal xref">Figure 5</a>:<a href="#section-7.1-2" class="pilcrow">¶</a></p>
+3429c3502
+<           <div class="artwork art-text alignLeft" id="section-7.1-3.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-7.1-3.1">
+3453c3526
+<           <dd id="section-7.1-4.2">in which the server is contacted by the
+---
+>           <dd style="margin-left: 1.5em" id="section-7.1-4.2">in which the server is contacted by the
+3459c3532
+<           <dd id="section-7.1-4.4">in which the quality of the connection is
+---
+>           <dd style="margin-left: 1.5em" id="section-7.1-4.4">in which the quality of the connection is
+3474c3547
+<           <dd id="section-7.1-4.6">in which quality is continuously measured.
+---
+>           <dd style="margin-left: 1.5em" id="section-7.1-4.6">in which quality is continuously measured.
+3486c3559
+<           <dd id="section-7.1-4.8">in which the Q4S session is terminated.
+---
+>           <dd style="margin-left: 1.5em" id="section-7.1-4.8">in which the Q4S session is terminated.
+3516c3589
+<    (see <a href="#sec-7.5.3" class="xref">Section 7.5.3</a> for an example).
+---
+>    (see <a href="#sec-7.5.3" class="auto internal xref">Section 7.5.3</a> for an example).
+3529,3530c3602,3603
+< <div id="section-7.2-6">
+< <pre class="sourcecode lang-sdp">
+---
+> <div class="lang-sdp sourcecode" id="section-7.2-6">
+> <pre>
+3752,3753c3825,3826
+<    listening port (client or server), the protocol (TCP <span>[<a href="#RFC0793" class="xref">RFC0793</a>]</span> 
+<    or UDP <span>[<a href="#RFC0768" class="xref">RFC0768</a>]</span>) 
+---
+>    listening port (client or server), the protocol (TCP <span>[<a href="#RFC0793" class="cite xref">RFC0793</a>]</span> 
+>    or UDP <span>[<a href="#RFC0768" class="cite xref">RFC0768</a>]</span>) 
+3787,3788c3860,3861
+< <div id="section-7.2.10-7">
+< <pre class="sourcecode lang-abnf">
+---
+> <div class="lang-abnf sourcecode" id="section-7.2.10-7">
+> <pre>
+3822,3823c3895,3896
+< <div id="section-7.2.11-6">
+< <pre class="sourcecode lang-sdp">
+---
+> <div class="lang-sdp sourcecode" id="section-7.2.11-6">
+> <pre>
+3858,3859c3931,3932
+< <div id="section-7.2.11-10">
+< <pre class="sourcecode lang-sdp">
+---
+> <div class="lang-sdp sourcecode" id="section-7.2.11-10">
+> <pre>
+3879,3880c3952,3953
+< <div id="section-7.2.11-13">
+< <pre class="sourcecode lang-abnf">
+---
+> <div class="lang-abnf sourcecode" id="section-7.2.11-13">
+> <pre>
+4013c4086
+<             <div class="artwork art-text alignLeft" id="section-7.3.3-3.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-7.3.3-3.1">
+4057c4130
+<    attribute. This is illustrated in <a href="#ref-bandwidth-and-packet-loss-measurements" class="xref">Figure 6</a>.<a href="#section-7.3.3-4" class="pilcrow">¶</a></p>
+---
+>    attribute. This is illustrated in <a href="#ref-bandwidth-and-packet-loss-measurements" class="auto internal xref">Figure 6</a>.<a href="#section-7.3.3-4" class="pilcrow">¶</a></p>
+4071c4144
+< <div class="artwork art-text alignLeft" id="section-7.3.3-7">
+---
+> <div class="alignLeft art-text artwork" id="section-7.3.3-7">
+4093c4166
+< <div class="artwork art-text alignLeft" id="section-7.3.3-9">
+---
+> <div class="alignLeft art-text artwork" id="section-7.3.3-9">
+4134c4207
+<    client to the server as shown in <a href="#ref-handshake-phase" class="xref">Figure 7</a>.<a href="#section-7.4-1" class="pilcrow">¶</a></p>
+---
+>    client to the server as shown in <a href="#ref-handshake-phase" class="auto internal xref">Figure 7</a>.<a href="#section-7.4-1" class="pilcrow">¶</a></p>
+4136c4209
+<    The first Q4S message <span class="bcp14">MUST</span> have a special URI <span>[<a href="#RFC3986" class="xref">RFC3986</a>]</span>,
+---
+>    The first Q4S message <span class="bcp14">MUST</span> have a special URI <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span>,
+4142,4143c4215,4216
+< <div id="section-7.4-4">
+< <pre class="sourcecode lang-abnf">
+---
+> <div class="lang-abnf sourcecode" id="section-7.4-4">
+> <pre>
+4152c4225
+<    schema <span>[<a href="#RFC3264" class="xref">RFC3264</a>]</span>.<a href="#section-7.4-5" class="pilcrow">¶</a></p>
+---
+>    schema <span>[<a href="#RFC3264" class="cite xref">RFC3264</a>]</span>.<a href="#section-7.4-5" class="pilcrow">¶</a></p>
+4155c4228
+<    200 OK message, which <span class="bcp14">MUST</span> contain an SDP body <span>[<a href="#RFC4566" class="xref">RFC4566</a>]</span>
+---
+>    200 OK message, which <span class="bcp14">MUST</span> contain an SDP body <span>[<a href="#RFC4566" class="cite xref">RFC4566</a>]</span>
+4170c4243
+<           <div class="artwork art-text alignLeft" id="section-7.4-8.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-7.4-8.1">
+4190c4263
+< <div class="artwork art-text alignLeft" id="section-7.4-10">
+---
+> <div class="alignLeft art-text artwork" id="section-7.4-10">
+4215c4288
+< <p id="section-7.4-11">The header fields used are explained in <a href="#sec-4.3" class="xref">Section 4.3</a>.<a href="#section-7.4-11" class="pilcrow">¶</a></p>
+---
+> <p id="section-7.4-11">The header fields used are explained in <a href="#sec-4.3" class="auto internal xref">Section 4.3</a>.<a href="#section-7.4-11" class="pilcrow">¶</a></p>
+4238c4311
+<           <dd id="section-7.5-4.2">a Q4S-ALERT method will be triggered
+---
+>           <dd style="margin-left: 1.5em" id="section-7.5-4.2">a Q4S-ALERT method will be triggered
+4249c4322
+<           <dd id="section-7.5-4.4">an alert notification will be sent
+---
+>           <dd style="margin-left: 1.5em" id="section-7.5-4.4">an alert notification will be sent
+4272c4345
+<    RTP/RTCP <span>[<a href="#RFC3550" class="xref">RFC3550</a>]</span>.<a href="#section-7.5-6" class="pilcrow">¶</a></p>
+---
+>    RTP/RTCP <span>[<a href="#RFC3550" class="cite xref">RFC3550</a>]</span>.<a href="#section-7.5-6" class="pilcrow">¶</a></p>
+4319c4392
+< <div class="artwork art-text alignLeft" id="section-7.5.1-2">
+---
+> <div class="alignLeft art-text artwork" id="section-7.5.1-2">
+4353c4426
+<             <div class="artwork art-text alignLeft" id="section-7.5.1-6.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-7.5.1-6.1">
+4383c4456
+< <div class="artwork art-text alignLeft" id="section-7.5.1-8">
+---
+> <div class="alignLeft art-text artwork" id="section-7.5.1-8">
+4406c4479
+<    request message <span>[<a href="#RFC0792" class="xref">RFC0792</a>]</span>. 
+---
+>    request message <span>[<a href="#RFC0792" class="cite xref">RFC0792</a>]</span>. 
+4418,4419c4491,4492
+< <div id="section-7.5.1-12">
+< <pre class="sourcecode lang-sdp">
+---
+> <div class="lang-sdp sourcecode" id="section-7.5.1-12">
+> <pre>
+4433c4506
+< <div class="artwork art-text alignLeft" id="section-7.5.1-15">
+---
+> <div class="alignLeft art-text artwork" id="section-7.5.1-15">
+4453c4526
+<    calculate the different parameters are described in <a href="#sec-7.3" class="xref">Section 7.3</a>.<a href="#section-7.5.1-18" class="pilcrow">¶</a></p>
+---
+>    calculate the different parameters are described in <a href="#sec-7.3" class="auto internal xref">Section 7.3</a>.<a href="#section-7.5.1-18" class="pilcrow">¶</a></p>
+4477c4550
+<    been met, is detailed in <a href="#sec-7.5.4" class="xref">Section 7.5.4</a>.<a href="#section-7.5.1-23" class="pilcrow">¶</a></p>
+---
+>    been met, is detailed in <a href="#sec-7.5.4" class="auto internal xref">Section 7.5.4</a>.<a href="#section-7.5.1-23" class="pilcrow">¶</a></p>
+4490c4563
+<    <a href="#ref-starting-bandwidth-and-packet-loss-measurement" class="xref">Figure 9</a>.<a href="#section-7.5.2-1" class="pilcrow">¶</a></p>
+---
+>    <a href="#ref-starting-bandwidth-and-packet-loss-measurement" class="auto internal xref">Figure 9</a>.<a href="#section-7.5.2-1" class="pilcrow">¶</a></p>
+4493c4566
+<             <div class="artwork art-text alignLeft" id="section-7.5.2-2.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-7.5.2-2.1">
+4515c4588
+< <div class="artwork art-text alignLeft" id="section-7.5.2-3">
+---
+> <div class="alignLeft art-text artwork" id="section-7.5.2-3">
+4540c4613
+<    "q4s" ports. <a href="#sec-7.3.3" class="xref">Section 7.3.3</a> describes the bandwidth measurement in
+---
+>    "q4s" ports. <a href="#sec-7.3.3" class="auto internal xref">Section 7.3.3</a> describes the bandwidth measurement in
+4557c4630
+<    <a href="#ref-trigger-the-application-using-http-uri" class="xref">Figure 10</a>.<a href="#section-7.5.2-7" class="pilcrow">¶</a></p>
+---
+>    <a href="#ref-trigger-the-application-using-http-uri" class="auto internal xref">Figure 10</a>.<a href="#section-7.5.2-7" class="pilcrow">¶</a></p>
+4560c4633
+<             <div class="artwork art-text alignLeft" id="section-7.5.2-8.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-7.5.2-8.1">
+4580c4653
+< <div class="artwork art-text alignLeft" id="section-7.5.2-9">
+---
+> <div class="alignLeft art-text artwork" id="section-7.5.2-9">
+4612c4685
+<    <a href="#sec-7.5.4" class="xref">Section 7.5.4</a>.<a href="#section-7.5.2-11" class="pilcrow">¶</a></p>
+---
+>    <a href="#sec-7.5.4" class="auto internal xref">Section 7.5.4</a>.<a href="#section-7.5.2-11" class="pilcrow">¶</a></p>
+4634c4707
+< <dd id="section-7.5.3-3.1">
+---
+> <dd style="margin-left: 1.5em" id="section-7.5.3-3.1">
+4642c4715
+< <div class="artwork art-text alignLeft" id="section-7.5.3-3.1.2">
+---
+> <div class="alignLeft art-text artwork" id="section-7.5.3-3.1.2">
+4688c4761
+< <dd id="section-7.5.3-3.2">  Reactive alerting mode: the server stack <span class="bcp14">MUST</span> send an alert
+---
+> <dd style="margin-left: 1.5em" id="section-7.5.3-3.2">  Reactive alerting mode: the server stack <span class="bcp14">MUST</span> send an alert
+4799c4872
+< <div class="artwork art-text alignLeft" id="section-7.5.4-3">
+---
+> <div class="alignLeft art-text artwork" id="section-7.5.4-3">
+4849c4922
+<    <a href="#ref-sliding-samples-window" class="xref">Figure 11</a>, 
+---
+>    <a href="#ref-sliding-samples-window" class="auto internal xref">Figure 11</a>, 
+4852,4853c4925,4926
+< <div id="section-7.6-4">
+< <pre class="sourcecode lang-sdp">
+---
+> <div class="lang-sdp sourcecode" id="section-7.6-4">
+> <pre>
+4873c4946
+<           <div class="artwork art-text alignLeft" id="section-7.6-8.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-7.6-8.1">
+4897c4970
+<    <a href="#ref-continuity-in-q4s-aware-network-alerting-mode" class="xref">Figure 12</a>, 
+---
+>    <a href="#ref-continuity-in-q4s-aware-network-alerting-mode" class="auto internal xref">Figure 12</a>, 
+4910c4983
+<           <div class="artwork art-text alignLeft" id="section-7.6-12.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-7.6-12.1">
+4937c5010
+<    In the Reactive scenario shown in <a href="#ref-continuity-in-reactive-alerting-mode" class="xref">Figure 13</a>, 
+---
+>    In the Reactive scenario shown in <a href="#ref-continuity-in-reactive-alerting-mode" class="auto internal xref">Figure 13</a>, 
+4948c5021
+<           <div class="artwork art-text alignLeft" id="section-7.6-15.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-7.6-15.1">
+5059,5062c5132,5135
+<    Different TCP congestion control implementations like Reno <span>[<a href="#RENO" class="xref">RENO</a>]</span>,
+<    High Speed TCP <span>[<a href="#RFC3649" class="xref">RFC3649</a>]</span>, 
+<    CUBIC <span>[<a href="#I-D.rhee-tcpm-cubic" class="xref">CUBIC</a>]</span>, 
+<    Compound TCP (CTCP) <span>[<a href="#I-D.sridharan-tcpm-ctcp" class="xref">CTCP</a>]</span>, 
+---
+>    Different TCP congestion control implementations like Reno <span>[<a href="#RENO" class="cite xref">RENO</a>]</span>,
+>    High Speed TCP <span>[<a href="#RFC3649" class="cite xref">RFC3649</a>]</span>, 
+>    CUBIC <span>[<a href="#I-D.rhee-tcpm-cubic" class="cite xref">CUBIC</a>]</span>, 
+>    Compound TCP (CTCP) <span>[<a href="#I-D.sridharan-tcpm-ctcp" class="cite xref">CTCP</a>]</span>, 
+5075,5076c5148,5149
+< <div id="section-7.8-8">
+< <pre class="sourcecode lang-pseudocode">
+---
+> <div class="lang-pseudocode sourcecode" id="section-7.8-8">
+> <pre>
+5090c5163
+<    For the Reno algorithm, the Mathis formula may be used <span>[<a href="#RENO" class="xref">RENO</a>]</span> for
+---
+>    For the Reno algorithm, the Mathis formula may be used <span>[<a href="#RENO" class="cite xref">RENO</a>]</span> for
+5092,5093c5165,5166
+< <div id="section-7.8-12">
+< <pre class="sourcecode lang-pseudocode">
+---
+> <div class="lang-pseudocode sourcecode" id="section-7.8-12">
+> <pre>
+5177c5250
+<           <div class="artwork art-text alignLeft" id="section-7.9-8.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-7.9-8.1">
+5202c5275
+<    This mechanism, illustrated in <a href="#ref-possible-evolution-of-qos-level" class="xref">Figure 14</a>, avoids the risk of
+---
+>    This mechanism, illustrated in <a href="#ref-possible-evolution-of-qos-level" class="auto internal xref">Figure 14</a>, avoids the risk of
+5234c5307
+<    wait for a random time to restart again as shown in <a href="#ref-p2p-roles" class="xref">Figure 15</a>.<a href="#section-8.1-3" class="pilcrow">¶</a></p>
+---
+>    wait for a random time to restart again as shown in <a href="#ref-p2p-roles" class="auto internal xref">Figure 15</a>.<a href="#section-8.1-3" class="pilcrow">¶</a></p>
+5240c5313
+<           <div class="artwork art-text alignLeft" id="section-8.1-5.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-8.1-5.1">
+5299c5372
+<    <a href="#ref-phases-client-behaviors" class="xref">Figure 16</a> and their descriptions below).<a href="#section-8.3-1" class="pilcrow">¶</a></p>
+---
+>    <a href="#ref-phases-client-behaviors" class="auto internal xref">Figure 16</a> and their descriptions below).<a href="#section-8.3-1" class="pilcrow">¶</a></p>
+5339c5412
+<           <div class="artwork art-text alignLeft" id="section-8.3-7.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-8.3-7.1">
+5367c5440
+<             <dd id="section-8.3.1-2.2">the header fields Session-Id and Sequence-Number are mandatory.<a href="#section-8.3.1-2.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-8.3.1-2.2">the header fields Session-Id and Sequence-Number are mandatory.<a href="#section-8.3.1-2.2" class="pilcrow">¶</a>
+5371c5444
+<             <dd id="section-8.3.1-2.4">the Session-Id is embedded into the SDP,
+---
+>             <dd style="margin-left: 1.5em" id="section-8.3.1-2.4">the Session-Id is embedded into the SDP,
+5400c5473
+<    the server are (follow the letters in <a href="#ref-phases-server-behaviours" class="xref">Figure 17</a> 
+---
+>    the server are (follow the letters in <a href="#ref-phases-server-behaviours" class="auto internal xref">Figure 17</a> 
+5444c5517
+<           <div class="artwork art-text alignLeft" id="section-8.4-8.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-8.4-8.1">
+5523c5596
+< <div class="artwork art-text alignLeft" id="section-9.3-3">
+---
+> <div class="alignLeft art-text artwork" id="section-9.3-3">
+5540c5613
+< <dd id="section-9.3-6.1"> Compute target bandwidth / 8000 bits. In the example above, it is
+---
+> <dd style="margin-left: 1.5em" id="section-9.3-6.1"> Compute target bandwidth / 8000 bits. In the example above, it is
+5545c5618
+< <dd id="section-9.3-6.2"> Divide the number of messages per second by 1000 to determine
+---
+> <dd style="margin-left: 1.5em" id="section-9.3-6.2"> Divide the number of messages per second by 1000 to determine
+5552c5625
+< <dd id="section-9.3-6.3">
+---
+> <dd style="margin-left: 1.5em" id="section-9.3-6.3">
+5555c5628
+< <div class="artwork art-text alignLeft" id="section-9.3-6.3.2">
+---
+> <div class="alignLeft art-text artwork" id="section-9.3-6.3.2">
+5569c5642
+< <dd id="section-9.3-6.4">
+---
+> <dd style="margin-left: 1.5em" id="section-9.3-6.4">
+5572c5645
+< <div class="artwork art-text alignLeft" id="section-9.3-6.4.2">
+---
+> <div class="alignLeft art-text artwork" id="section-9.3-6.4.2">
+5727c5800
+<             <dd id="section-9.7.1-5.2">the end user may run Q4S against several delivery
+---
+>             <dd style="margin-left: 1.5em" id="section-9.7.1-5.2">the end user may run Q4S against several delivery
+5733c5806
+<             <dd id="section-9.7.1-5.4">during a streaming session, the user keeps several
+---
+>             <dd style="margin-left: 1.5em" id="section-9.7.1-5.4">during a streaming session, the user keeps several
+5940c6013
+< <span class="refAuthor">Fielding, R., Ed.</span><span class="refAuthor"> and J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing"</span>, <span class="seriesInfo">RFC 7230</span>, <span class="seriesInfo">DOI 10.17487/RFC7230</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7230">https://www.rfc-editor.org/info/rfc7230</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fielding, R., Ed.</span> and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing"</span>, <span class="seriesInfo">RFC 7230</span>, <span class="seriesInfo">DOI 10.17487/RFC7230</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7230">https://www.rfc-editor.org/info/rfc7230</a>&gt;</span>. </dd>
+5944c6017
+< <span class="refAuthor">Fielding, R., Ed.</span><span class="refAuthor"> and J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content"</span>, <span class="seriesInfo">RFC 7231</span>, <span class="seriesInfo">DOI 10.17487/RFC7231</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7231">https://www.rfc-editor.org/info/rfc7231</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fielding, R., Ed.</span> and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content"</span>, <span class="seriesInfo">RFC 7231</span>, <span class="seriesInfo">DOI 10.17487/RFC7231</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7231">https://www.rfc-editor.org/info/rfc7231</a>&gt;</span>. </dd>
+5948c6021
+< <span class="refAuthor">Fielding, R., Ed.</span><span class="refAuthor"> and J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests"</span>, <span class="seriesInfo">RFC 7232</span>, <span class="seriesInfo">DOI 10.17487/RFC7232</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7232">https://www.rfc-editor.org/info/rfc7232</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fielding, R., Ed.</span> and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests"</span>, <span class="seriesInfo">RFC 7232</span>, <span class="seriesInfo">DOI 10.17487/RFC7232</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7232">https://www.rfc-editor.org/info/rfc7232</a>&gt;</span>. </dd>
+5952c6025
+< <span class="refAuthor">Fielding, R., Ed.</span><span class="refAuthor">, Lafon, Y., Ed.</span><span class="refAuthor">, and J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Range Requests"</span>, <span class="seriesInfo">RFC 7233</span>, <span class="seriesInfo">DOI 10.17487/RFC7233</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7233">https://www.rfc-editor.org/info/rfc7233</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fielding, R., Ed.</span>, <span class="refAuthor">Lafon, Y., Ed.</span>, and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Range Requests"</span>, <span class="seriesInfo">RFC 7233</span>, <span class="seriesInfo">DOI 10.17487/RFC7233</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7233">https://www.rfc-editor.org/info/rfc7233</a>&gt;</span>. </dd>
+5956c6029
+< <span class="refAuthor">Fielding, R., Ed.</span><span class="refAuthor">, Nottingham, M., Ed.</span><span class="refAuthor">, and J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Caching"</span>, <span class="seriesInfo">RFC 7234</span>, <span class="seriesInfo">DOI 10.17487/RFC7234</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7234">https://www.rfc-editor.org/info/rfc7234</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fielding, R., Ed.</span>, <span class="refAuthor">Nottingham, M., Ed.</span>, and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Caching"</span>, <span class="seriesInfo">RFC 7234</span>, <span class="seriesInfo">DOI 10.17487/RFC7234</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7234">https://www.rfc-editor.org/info/rfc7234</a>&gt;</span>. </dd>
+5960c6033
+< <span class="refAuthor">Fielding, R., Ed.</span><span class="refAuthor"> and J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Authentication"</span>, <span class="seriesInfo">RFC 7235</span>, <span class="seriesInfo">DOI 10.17487/RFC7235</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7235">https://www.rfc-editor.org/info/rfc7235</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fielding, R., Ed.</span> and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Authentication"</span>, <span class="seriesInfo">RFC 7235</span>, <span class="seriesInfo">DOI 10.17487/RFC7235</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7235">https://www.rfc-editor.org/info/rfc7235</a>&gt;</span>. </dd>
+5976c6049
+< <span class="refAuthor">Berners-Lee, T.</span><span class="refAuthor">, Fielding, R.</span><span class="refAuthor">, and L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3986">https://www.rfc-editor.org/info/rfc3986</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Berners-Lee, T.</span>, <span class="refAuthor">Fielding, R.</span>, and <span class="refAuthor">L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3986">https://www.rfc-editor.org/info/rfc3986</a>&gt;</span>. </dd>
+5988c6061
+< <span class="refAuthor">Crocker, D., Ed.</span><span class="refAuthor"> and P. Overell</span>, <span class="refTitle">"Augmented BNF for Syntax Specifications: ABNF"</span>, <span class="seriesInfo">STD 68</span>, <span class="seriesInfo">RFC 5234</span>, <span class="seriesInfo">DOI 10.17487/RFC5234</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5234">https://www.rfc-editor.org/info/rfc5234</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Crocker, D., Ed.</span> and <span class="refAuthor">P. Overell</span>, <span class="refTitle">"Augmented BNF for Syntax Specifications: ABNF"</span>, <span class="seriesInfo">STD 68</span>, <span class="seriesInfo">RFC 5234</span>, <span class="seriesInfo">DOI 10.17487/RFC5234</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5234">https://www.rfc-editor.org/info/rfc5234</a>&gt;</span>. </dd>
+5992c6065
+< <span class="refAuthor">Eastlake 3rd, D.</span><span class="refAuthor"> and T. Hansen</span>, <span class="refTitle">"US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)"</span>, <span class="seriesInfo">RFC 6234</span>, <span class="seriesInfo">DOI 10.17487/RFC6234</span>, <time datetime="2011-05" class="refDate">May 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6234">https://www.rfc-editor.org/info/rfc6234</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Eastlake 3rd, D.</span> and <span class="refAuthor">T. Hansen</span>, <span class="refTitle">"US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)"</span>, <span class="seriesInfo">RFC 6234</span>, <span class="seriesInfo">DOI 10.17487/RFC6234</span>, <time datetime="2011-05" class="refDate">May 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6234">https://www.rfc-editor.org/info/rfc6234</a>&gt;</span>. </dd>
+5996c6069
+< <span class="refAuthor">Moriarty, K., Ed.</span><span class="refAuthor">, Kaliski, B.</span><span class="refAuthor">, Jonsson, J.</span><span class="refAuthor">, and A. Rusch</span>, <span class="refTitle">"PKCS #1: RSA Cryptography Specifications Version 2.2"</span>, <span class="seriesInfo">RFC 8017</span>, <span class="seriesInfo">DOI 10.17487/RFC8017</span>, <time datetime="2016-11" class="refDate">November 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8017">https://www.rfc-editor.org/info/rfc8017</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Moriarty, K., Ed.</span>, <span class="refAuthor">Kaliski, B.</span>, <span class="refAuthor">Jonsson, J.</span>, and <span class="refAuthor">A. Rusch</span>, <span class="refTitle">"PKCS #1: RSA Cryptography Specifications Version 2.2"</span>, <span class="seriesInfo">RFC 8017</span>, <span class="seriesInfo">DOI 10.17487/RFC8017</span>, <time datetime="2016-11" class="refDate">November 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8017">https://www.rfc-editor.org/info/rfc8017</a>&gt;</span>. </dd>
+6000c6073
+< <span class="refAuthor">Rosenberg, J.</span><span class="refAuthor"> and H. Schulzrinne</span>, <span class="refTitle">"An Offer/Answer Model with Session Description Protocol (SDP)"</span>, <span class="seriesInfo">RFC 3264</span>, <span class="seriesInfo">DOI 10.17487/RFC3264</span>, <time datetime="2002-06" class="refDate">June 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3264">https://www.rfc-editor.org/info/rfc3264</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rosenberg, J.</span> and <span class="refAuthor">H. Schulzrinne</span>, <span class="refTitle">"An Offer/Answer Model with Session Description Protocol (SDP)"</span>, <span class="seriesInfo">RFC 3264</span>, <span class="seriesInfo">DOI 10.17487/RFC3264</span>, <time datetime="2002-06" class="refDate">June 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3264">https://www.rfc-editor.org/info/rfc3264</a>&gt;</span>. </dd>
+6004c6077
+< <span class="refAuthor">Handley, M.</span><span class="refAuthor">, Jacobson, V.</span><span class="refAuthor">, and C. Perkins</span>, <span class="refTitle">"SDP: Session Description Protocol"</span>, <span class="seriesInfo">RFC 4566</span>, <span class="seriesInfo">DOI 10.17487/RFC4566</span>, <time datetime="2006-07" class="refDate">July 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4566">https://www.rfc-editor.org/info/rfc4566</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Handley, M.</span>, <span class="refAuthor">Jacobson, V.</span>, and <span class="refAuthor">C. Perkins</span>, <span class="refTitle">"SDP: Session Description Protocol"</span>, <span class="seriesInfo">RFC 4566</span>, <span class="seriesInfo">DOI 10.17487/RFC4566</span>, <time datetime="2006-07" class="refDate">July 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4566">https://www.rfc-editor.org/info/rfc4566</a>&gt;</span>. </dd>
+6015c6088
+< <span class="refAuthor">Schulzrinne, H.</span><span class="refAuthor">, Casner, S.</span><span class="refAuthor">, Frederick, R.</span><span class="refAuthor">, and V. Jacobson</span>, <span class="refTitle">"RTP: A Transport Protocol for Real-Time Applications"</span>, <span class="seriesInfo">STD 64</span>, <span class="seriesInfo">RFC 3550</span>, <span class="seriesInfo">DOI 10.17487/RFC3550</span>, <time datetime="2003-07" class="refDate">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3550">https://www.rfc-editor.org/info/rfc3550</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schulzrinne, H.</span>, <span class="refAuthor">Casner, S.</span>, <span class="refAuthor">Frederick, R.</span>, and <span class="refAuthor">V. Jacobson</span>, <span class="refTitle">"RTP: A Transport Protocol for Real-Time Applications"</span>, <span class="seriesInfo">STD 64</span>, <span class="seriesInfo">RFC 3550</span>, <span class="seriesInfo">DOI 10.17487/RFC3550</span>, <time datetime="2003-07" class="refDate">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3550">https://www.rfc-editor.org/info/rfc3550</a>&gt;</span>. </dd>
+6027c6100
+< <span class="refAuthor">Iyengar, J.</span><span class="refAuthor"> and M. Thomson</span>, <span class="refTitle">"QUIC: A UDP-Based Multiplexed and Secure Transport"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-quic-transport-29</span>, <time datetime="2020-06-09" class="refDate">9 June 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-quic-transport-29">https://tools.ietf.org/html/draft-ietf-quic-transport-29</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Iyengar, J.</span> and <span class="refAuthor">M. Thomson</span>, <span class="refTitle">"QUIC: A UDP-Based Multiplexed and Secure Transport"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-quic-transport-29</span>, <time datetime="2020-06-09" class="refDate">9 June 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-quic-transport-29">https://tools.ietf.org/html/draft-ietf-quic-transport-29</a>&gt;</span>. </dd>
+6031c6104
+< <span class="refAuthor">Shalunov, S.</span><span class="refAuthor">, Teitelbaum, B.</span><span class="refAuthor">, Karp, A.</span><span class="refAuthor">, Boote, J.</span><span class="refAuthor">, and M. Zekauskas</span>, <span class="refTitle">"A One-way Active Measurement Protocol (OWAMP)"</span>, <span class="seriesInfo">RFC 4656</span>, <span class="seriesInfo">DOI 10.17487/RFC4656</span>, <time datetime="2006-09" class="refDate">September 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4656">https://www.rfc-editor.org/info/rfc4656</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Shalunov, S.</span>, <span class="refAuthor">Teitelbaum, B.</span>, <span class="refAuthor">Karp, A.</span>, <span class="refAuthor">Boote, J.</span>, and <span class="refAuthor">M. Zekauskas</span>, <span class="refTitle">"A One-way Active Measurement Protocol (OWAMP)"</span>, <span class="seriesInfo">RFC 4656</span>, <span class="seriesInfo">DOI 10.17487/RFC4656</span>, <time datetime="2006-09" class="refDate">September 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4656">https://www.rfc-editor.org/info/rfc4656</a>&gt;</span>. </dd>
+6035c6108
+< <span class="refAuthor">Hedayat, K.</span><span class="refAuthor">, Krzanowski, R.</span><span class="refAuthor">, Morton, A.</span><span class="refAuthor">, Yum, K.</span><span class="refAuthor">, and J. Babiarz</span>, <span class="refTitle">"A Two-Way Active Measurement Protocol (TWAMP)"</span>, <span class="seriesInfo">RFC 5357</span>, <span class="seriesInfo">DOI 10.17487/RFC5357</span>, <time datetime="2008-10" class="refDate">October 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5357">https://www.rfc-editor.org/info/rfc5357</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hedayat, K.</span>, <span class="refAuthor">Krzanowski, R.</span>, <span class="refAuthor">Morton, A.</span>, <span class="refAuthor">Yum, K.</span>, and <span class="refAuthor">J. Babiarz</span>, <span class="refTitle">"A Two-Way Active Measurement Protocol (TWAMP)"</span>, <span class="seriesInfo">RFC 5357</span>, <span class="seriesInfo">DOI 10.17487/RFC5357</span>, <time datetime="2008-10" class="refDate">October 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5357">https://www.rfc-editor.org/info/rfc5357</a>&gt;</span>. </dd>
+6039c6112
+< <span class="refAuthor">Rosenberg, J.</span><span class="refAuthor">, Schulzrinne, H.</span><span class="refAuthor">, Camarillo, G.</span><span class="refAuthor">, Johnston, A.</span><span class="refAuthor">, Peterson, J.</span><span class="refAuthor">, Sparks, R.</span><span class="refAuthor">, Handley, M.</span><span class="refAuthor">, and E. Schooler</span>, <span class="refTitle">"SIP: Session Initiation Protocol"</span>, <span class="seriesInfo">RFC 3261</span>, <span class="seriesInfo">DOI 10.17487/RFC3261</span>, <time datetime="2002-06" class="refDate">June 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3261">https://www.rfc-editor.org/info/rfc3261</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rosenberg, J.</span>, <span class="refAuthor">Schulzrinne, H.</span>, <span class="refAuthor">Camarillo, G.</span>, <span class="refAuthor">Johnston, A.</span>, <span class="refAuthor">Peterson, J.</span>, <span class="refAuthor">Sparks, R.</span>, <span class="refAuthor">Handley, M.</span>, and <span class="refAuthor">E. Schooler</span>, <span class="refTitle">"SIP: Session Initiation Protocol"</span>, <span class="seriesInfo">RFC 3261</span>, <span class="seriesInfo">DOI 10.17487/RFC3261</span>, <time datetime="2002-06" class="refDate">June 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3261">https://www.rfc-editor.org/info/rfc3261</a>&gt;</span>. </dd>
+6047c6120
+< <span class="refAuthor">Mathis, M.</span><span class="refAuthor">, Semke, J.</span><span class="refAuthor">, Mahdavi, J.</span><span class="refAuthor">, and T. Ott</span>, <span class="refTitle">"The Macroscopic Behavior of the TCP Congestion Avoidance Algorithm"</span>, <span class="refContent">ACM SIGCOMM Computer Communication Review, pp. 67-82</span>, <span class="seriesInfo">DOI 10.1145/263932.264023</span>, <time datetime="1997-07" class="refDate">July 1997</time>, <span>&lt;<a href="https://doi.org/10.1145/263932.264023">https://doi.org/10.1145/263932.264023</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mathis, M.</span>, <span class="refAuthor">Semke, J.</span>, <span class="refAuthor">Mahdavi, J.</span>, and <span class="refAuthor">T. Ott</span>, <span class="refTitle">"The Macroscopic Behavior of the TCP Congestion Avoidance Algorithm"</span>, <span class="refContent">ACM SIGCOMM Computer Communication Review, pp. 67-82</span>, <span class="seriesInfo">DOI 10.1145/263932.264023</span>, <time datetime="1997-07" class="refDate">July 1997</time>, <span>&lt;<a href="https://doi.org/10.1145/263932.264023">https://doi.org/10.1145/263932.264023</a>&gt;</span>. </dd>
+6055c6128
+< <span class="refAuthor">Rhee, I.</span><span class="refAuthor">, Xu, L.</span><span class="refAuthor">, and S. Ha</span>, <span class="refTitle">"CUBIC for Fast Long-Distance Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-rhee-tcpm-cubic-02</span>, <time datetime="2008-08-26" class="refDate">26 August 2008</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-rhee-tcpm-cubic-02">https://tools.ietf.org/html/draft-rhee-tcpm-cubic-02</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rhee, I.</span>, <span class="refAuthor">Xu, L.</span>, and <span class="refAuthor">S. Ha</span>, <span class="refTitle">"CUBIC for Fast Long-Distance Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-rhee-tcpm-cubic-02</span>, <time datetime="2008-08-26" class="refDate">26 August 2008</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-rhee-tcpm-cubic-02">https://tools.ietf.org/html/draft-rhee-tcpm-cubic-02</a>&gt;</span>. </dd>
+6059c6132
+< <span class="refAuthor">Sridharan, M.</span><span class="refAuthor">, Tan, K.</span><span class="refAuthor">, Bansal, D.</span><span class="refAuthor">, and D. Thaler</span>, <span class="refTitle">"Compound TCP: A New TCP Congestion Control for High-Speed and Long Distance Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-sridharan-tcpm-ctcp-02</span>, <time datetime="2008-11-11" class="refDate">11 November 2008</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-sridharan-tcpm-ctcp-02">https://tools.ietf.org/html/draft-sridharan-tcpm-ctcp-02</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Sridharan, M.</span>, <span class="refAuthor">Tan, K.</span>, <span class="refAuthor">Bansal, D.</span>, and <span class="refAuthor">D. Thaler</span>, <span class="refTitle">"Compound TCP: A New TCP Congestion Control for High-Speed and Long Distance Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-sridharan-tcpm-ctcp-02</span>, <time datetime="2008-11-11" class="refDate">11 November 2008</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-sridharan-tcpm-ctcp-02">https://tools.ietf.org/html/draft-sridharan-tcpm-ctcp-02</a>&gt;</span>. </dd>
+6065c6138
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+6069c6142
+< <p id="section-appendix.a-1">
+---
+> <p id="appendix-A-1">
+6071,6072c6144,6145
+<    this document. In particular, we would like to thank:<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2">
+---
+>    this document. In particular, we would like to thank:<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2">
+6076,6077c6149,6150
+<    <span class="contact-name">Federico Guillen</span>.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-3">
+---
+>    <span class="contact-name">Federico Guillen</span>.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+> <p id="appendix-A-3">
+6081c6154
+<    their innovation programs.<a href="#section-appendix.a-3" class="pilcrow">¶</a></p>
+---
+>    their innovation programs.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+6085c6158
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+6200c6273
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">

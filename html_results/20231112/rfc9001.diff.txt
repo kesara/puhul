@@ -1,0 +1,2060 @@
+14c14
+< <meta content="xml2rfc 3.8.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+20,37c20,33
+<   xml2rfc 3.8.0
+<     Python 3.6.10
+<     appdirs 1.4.4
+<     ConfigArgParse 1.2.3
+<     google-i18n-address 2.3.5
+<     html5lib 1.0.1
+<     intervaltree 3.0.2
+<     Jinja2 2.11.2
+<     kitchen 1.2.6
+<     lxml 4.4.2
+<     pycairo 1.19.0
+<     pycountry 19.8.18
+<     pyflakes 2.1.1
+<     PyYAML 5.3.1
+<     requests 2.22.0
+<     setuptools 40.6.2
+<     six 1.14.0
+<     WeasyPrint 51
+---
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.0.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.9
+39c35
+< <link href="rfc9001.xml" rel="alternate" type="application/rfc+xml">
+---
+> <link href="rfc/rfc9001.xml" rel="alternate" type="application/rfc+xml">
+49c45
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+58a55,60
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+61d62
+<   width: extend-to-zoom;
+76c77
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+78a80
+>   overflow-wrap: break-word;
+164a167,175
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+179,182d189
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+183a191
+>   border: none;
+206a215,217
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+248c259,260
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+258c270
+< tt, code, pre, code {
+---
+> tt, code, pre {
+260c272
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+299a312,314
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+389a405,410
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+491c512
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+631d651
+< 
+653a674,676
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+721c744
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+821c844
+< tt, code, pre, code {
+---
+> tt, code, pre {
+826c849
+< pre.sourcecode,
+---
+> .sourcecode pre,
+862c885
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1043a1067
+>   .artwork > pre,
+1058c1082
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1064a1089,1091
+> tr {
+>   break-inside: avoid;
+> }
+1084c1111
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1115c1142
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1140c1167
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1158c1185
+< dd > div:first-child > pre.sourcecode,
+---
+> dd > div.sourcecode:first-child,
+1172c1199
+< li > p:last-of-type {
+---
+> li > p:last-of-type:only-child {
+1179a1207
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1181,1182c1209,1210
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1277,1285c1305,1313
+< <nav class="toc"><ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a></p>
+< </li>
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-notational-conventions" class="xref">Notational Conventions</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.1">
+<                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-tls-overview" class="xref">TLS Overview</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-notational-conventions" class="internal xref">Notational Conventions</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+>                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-tls-overview" class="internal xref">TLS Overview</a></p>
+1289,1290c1317,1318
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-protocol-overview" class="xref">Protocol Overview</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-protocol-overview" class="internal xref">Protocol Overview</a></p>
+1292,1302c1320,1330
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-carrying-tls-messages" class="xref">Carrying TLS Messages</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-interface-to-tls" class="xref">Interface to TLS</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.1.2.1">
+<                     <p id="section-toc.1-1.4.2.1.2.1.1"><a href="#section-4.1.1" class="xref">4.1.1</a>.  <a href="#name-handshake-complete" class="xref">Handshake Complete</a></p>
+< </li>
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.1.2.2">
+<                     <p id="section-toc.1-1.4.2.1.2.2.1"><a href="#section-4.1.2" class="xref">4.1.2</a>.  <a href="#name-handshake-confirmed" class="xref">Handshake Confirmed</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-carrying-tls-messages" class="internal xref">Carrying TLS Messages</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-interface-to-tls" class="internal xref">Interface to TLS</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.1">
+>                     <p id="section-toc.1-1.4.2.1.2.1.1"><a href="#section-4.1.1" class="auto internal xref">4.1.1</a>.  <a href="#name-handshake-complete" class="internal xref">Handshake Complete</a></p>
+> </li>
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.2">
+>                     <p id="section-toc.1-1.4.2.1.2.2.1"><a href="#section-4.1.2" class="auto internal xref">4.1.2</a>.  <a href="#name-handshake-confirmed" class="internal xref">Handshake Confirmed</a></p>
+1304,1305c1332,1333
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.1.2.3">
+<                     <p id="section-toc.1-1.4.2.1.2.3.1"><a href="#section-4.1.3" class="xref">4.1.3</a>.  <a href="#name-sending-and-receiving-hands" class="xref">Sending and Receiving Handshake Messages</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.3">
+>                     <p id="section-toc.1-1.4.2.1.2.3.1"><a href="#section-4.1.3" class="auto internal xref">4.1.3</a>.  <a href="#name-sending-and-receiving-hands" class="internal xref">Sending and Receiving Handshake Messages</a></p>
+1307,1308c1335,1336
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.1.2.4">
+<                     <p id="section-toc.1-1.4.2.1.2.4.1"><a href="#section-4.1.4" class="xref">4.1.4</a>.  <a href="#name-encryption-level-changes" class="xref">Encryption Level Changes</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.4">
+>                     <p id="section-toc.1-1.4.2.1.2.4.1"><a href="#section-4.1.4" class="auto internal xref">4.1.4</a>.  <a href="#name-encryption-level-changes" class="internal xref">Encryption Level Changes</a></p>
+1310,1311c1338,1339
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.1.2.5">
+<                     <p id="section-toc.1-1.4.2.1.2.5.1"><a href="#section-4.1.5" class="xref">4.1.5</a>.  <a href="#name-tls-interface-summary" class="xref">TLS Interface Summary</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.5">
+>                     <p id="section-toc.1-1.4.2.1.2.5.1"><a href="#section-4.1.5" class="auto internal xref">4.1.5</a>.  <a href="#name-tls-interface-summary" class="internal xref">TLS Interface Summary</a></p>
+1315,1316c1343,1344
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-tls-version" class="xref">TLS Version</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-tls-version" class="internal xref">TLS Version</a></p>
+1318,1319c1346,1347
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-clienthello-size" class="xref">ClientHello Size</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-clienthello-size" class="internal xref">ClientHello Size</a></p>
+1321,1322c1349,1350
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.4">
+<                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-peer-authentication" class="xref">Peer Authentication</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
+>                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-peer-authentication" class="internal xref">Peer Authentication</a></p>
+1324,1325c1352,1353
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.5">
+<                 <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="xref">4.5</a>.  <a href="#name-session-resumption" class="xref">Session Resumption</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5">
+>                 <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="auto internal xref">4.5</a>.  <a href="#name-session-resumption" class="internal xref">Session Resumption</a></p>
+1327,1331c1355,1359
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.6">
+<                 <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="xref">4.6</a>.  <a href="#name-0-rtt" class="xref">0-RTT</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.6.2.1">
+<                     <p id="section-toc.1-1.4.2.6.2.1.1"><a href="#section-4.6.1" class="xref">4.6.1</a>.  <a href="#name-enabling-0-rtt" class="xref">Enabling 0-RTT</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.6">
+>                 <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="auto internal xref">4.6</a>.  <a href="#name-0-rtt" class="internal xref">0-RTT</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.6.2.1">
+>                     <p id="section-toc.1-1.4.2.6.2.1.1"><a href="#section-4.6.1" class="auto internal xref">4.6.1</a>.  <a href="#name-enabling-0-rtt" class="internal xref">Enabling 0-RTT</a></p>
+1333,1334c1361,1362
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.6.2.2">
+<                     <p id="section-toc.1-1.4.2.6.2.2.1"><a href="#section-4.6.2" class="xref">4.6.2</a>.  <a href="#name-accepting-and-rejecting-0-r" class="xref">Accepting and Rejecting 0-RTT</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.6.2.2">
+>                     <p id="section-toc.1-1.4.2.6.2.2.1"><a href="#section-4.6.2" class="auto internal xref">4.6.2</a>.  <a href="#name-accepting-and-rejecting-0-r" class="internal xref">Accepting and Rejecting 0-RTT</a></p>
+1336,1337c1364,1365
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.6.2.3">
+<                     <p id="section-toc.1-1.4.2.6.2.3.1"><a href="#section-4.6.3" class="xref">4.6.3</a>.  <a href="#name-validating-0-rtt-configurat" class="xref">Validating 0-RTT Configuration</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.6.2.3">
+>                     <p id="section-toc.1-1.4.2.6.2.3.1"><a href="#section-4.6.3" class="auto internal xref">4.6.3</a>.  <a href="#name-validating-0-rtt-configurat" class="internal xref">Validating 0-RTT Configuration</a></p>
+1341,1342c1369,1370
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.7">
+<                 <p id="section-toc.1-1.4.2.7.1"><a href="#section-4.7" class="xref">4.7</a>.  <a href="#name-helloretryrequest" class="xref">HelloRetryRequest</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.7">
+>                 <p id="section-toc.1-1.4.2.7.1"><a href="#section-4.7" class="auto internal xref">4.7</a>.  <a href="#name-helloretryrequest" class="internal xref">HelloRetryRequest</a></p>
+1344,1345c1372,1373
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.8">
+<                 <p id="section-toc.1-1.4.2.8.1"><a href="#section-4.8" class="xref">4.8</a>.  <a href="#name-tls-errors" class="xref">TLS Errors</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.8">
+>                 <p id="section-toc.1-1.4.2.8.1"><a href="#section-4.8" class="auto internal xref">4.8</a>.  <a href="#name-tls-errors" class="internal xref">TLS Errors</a></p>
+1347,1351c1375,1379
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.9">
+<                 <p id="section-toc.1-1.4.2.9.1"><a href="#section-4.9" class="xref">4.9</a>.  <a href="#name-discarding-unused-keys" class="xref">Discarding Unused Keys</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.9.2.1">
+<                     <p id="section-toc.1-1.4.2.9.2.1.1"><a href="#section-4.9.1" class="xref">4.9.1</a>.  <a href="#name-discarding-initial-keys" class="xref">Discarding Initial Keys</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.9">
+>                 <p id="section-toc.1-1.4.2.9.1"><a href="#section-4.9" class="auto internal xref">4.9</a>.  <a href="#name-discarding-unused-keys" class="internal xref">Discarding Unused Keys</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.9.2.1">
+>                     <p id="section-toc.1-1.4.2.9.2.1.1"><a href="#section-4.9.1" class="auto internal xref">4.9.1</a>.  <a href="#name-discarding-initial-keys" class="internal xref">Discarding Initial Keys</a></p>
+1353,1354c1381,1382
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.9.2.2">
+<                     <p id="section-toc.1-1.4.2.9.2.2.1"><a href="#section-4.9.2" class="xref">4.9.2</a>.  <a href="#name-discarding-handshake-keys" class="xref">Discarding Handshake Keys</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.9.2.2">
+>                     <p id="section-toc.1-1.4.2.9.2.2.1"><a href="#section-4.9.2" class="auto internal xref">4.9.2</a>.  <a href="#name-discarding-handshake-keys" class="internal xref">Discarding Handshake Keys</a></p>
+1356,1357c1384,1385
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.9.2.3">
+<                     <p id="section-toc.1-1.4.2.9.2.3.1"><a href="#section-4.9.3" class="xref">4.9.3</a>.  <a href="#name-discarding-0-rtt-keys" class="xref">Discarding 0-RTT Keys</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.9.2.3">
+>                     <p id="section-toc.1-1.4.2.9.2.3.1"><a href="#section-4.9.3" class="auto internal xref">4.9.3</a>.  <a href="#name-discarding-0-rtt-keys" class="internal xref">Discarding 0-RTT Keys</a></p>
+1363,1379c1391,1407
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-packet-protection" class="xref">Packet Protection</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-packet-protection-keys" class="xref">Packet Protection Keys</a></p>
+< </li>
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-initial-secrets" class="xref">Initial Secrets</a></p>
+< </li>
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.3">
+<                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-aead-usage" class="xref">AEAD Usage</a></p>
+< </li>
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.4">
+<                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="xref">5.4</a>.  <a href="#name-header-protection" class="xref">Header Protection</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.4.2.1">
+<                     <p id="section-toc.1-1.5.2.4.2.1.1"><a href="#section-5.4.1" class="xref">5.4.1</a>.  <a href="#name-header-protection-applicati" class="xref">Header Protection Application</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-packet-protection" class="internal xref">Packet Protection</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-packet-protection-keys" class="internal xref">Packet Protection Keys</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-initial-secrets" class="internal xref">Initial Secrets</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
+>                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-aead-usage" class="internal xref">AEAD Usage</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
+>                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-header-protection" class="internal xref">Header Protection</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4.2.1">
+>                     <p id="section-toc.1-1.5.2.4.2.1.1"><a href="#section-5.4.1" class="auto internal xref">5.4.1</a>.  <a href="#name-header-protection-applicati" class="internal xref">Header Protection Application</a></p>
+1381,1382c1409,1410
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.4.2.2">
+<                     <p id="section-toc.1-1.5.2.4.2.2.1"><a href="#section-5.4.2" class="xref">5.4.2</a>.  <a href="#name-header-protection-sample" class="xref">Header Protection Sample</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4.2.2">
+>                     <p id="section-toc.1-1.5.2.4.2.2.1"><a href="#section-5.4.2" class="auto internal xref">5.4.2</a>.  <a href="#name-header-protection-sample" class="internal xref">Header Protection Sample</a></p>
+1384,1385c1412,1413
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.4.2.3">
+<                     <p id="section-toc.1-1.5.2.4.2.3.1"><a href="#section-5.4.3" class="xref">5.4.3</a>.  <a href="#name-aes-based-header-protection" class="xref">AES-Based Header Protection</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4.2.3">
+>                     <p id="section-toc.1-1.5.2.4.2.3.1"><a href="#section-5.4.3" class="auto internal xref">5.4.3</a>.  <a href="#name-aes-based-header-protection" class="internal xref">AES-Based Header Protection</a></p>
+1387,1388c1415,1416
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.4.2.4">
+<                     <p id="section-toc.1-1.5.2.4.2.4.1"><a href="#section-5.4.4" class="xref">5.4.4</a>.  <a href="#name-chacha20-based-header-prote" class="xref">ChaCha20-Based Header Protection</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4.2.4">
+>                     <p id="section-toc.1-1.5.2.4.2.4.1"><a href="#section-5.4.4" class="auto internal xref">5.4.4</a>.  <a href="#name-chacha20-based-header-prote" class="internal xref">ChaCha20-Based Header Protection</a></p>
+1392,1393c1420,1421
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.5">
+<                 <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="xref">5.5</a>.  <a href="#name-receiving-protected-packets" class="xref">Receiving Protected Packets</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5">
+>                 <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="auto internal xref">5.5</a>.  <a href="#name-receiving-protected-packets" class="internal xref">Receiving Protected Packets</a></p>
+1395,1396c1423,1424
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.6">
+<                 <p id="section-toc.1-1.5.2.6.1"><a href="#section-5.6" class="xref">5.6</a>.  <a href="#name-use-of-0-rtt-keys" class="xref">Use of 0-RTT Keys</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.6">
+>                 <p id="section-toc.1-1.5.2.6.1"><a href="#section-5.6" class="auto internal xref">5.6</a>.  <a href="#name-use-of-0-rtt-keys" class="internal xref">Use of 0-RTT Keys</a></p>
+1398,1399c1426,1427
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.7">
+<                 <p id="section-toc.1-1.5.2.7.1"><a href="#section-5.7" class="xref">5.7</a>.  <a href="#name-receiving-out-of-order-prot" class="xref">Receiving Out-of-Order Protected Packets</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.7">
+>                 <p id="section-toc.1-1.5.2.7.1"><a href="#section-5.7" class="auto internal xref">5.7</a>.  <a href="#name-receiving-out-of-order-prot" class="internal xref">Receiving Out-of-Order Protected Packets</a></p>
+1401,1402c1429,1430
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.8">
+<                 <p id="section-toc.1-1.5.2.8.1"><a href="#section-5.8" class="xref">5.8</a>.  <a href="#name-retry-packet-integrity" class="xref">Retry Packet Integrity</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.8">
+>                 <p id="section-toc.1-1.5.2.8.1"><a href="#section-5.8" class="auto internal xref">5.8</a>.  <a href="#name-retry-packet-integrity" class="internal xref">Retry Packet Integrity</a></p>
+1406,1410c1434,1438
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-key-update" class="xref">Key Update</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-initiating-a-key-update" class="xref">Initiating a Key Update</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-key-update" class="internal xref">Key Update</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-initiating-a-key-update" class="internal xref">Initiating a Key Update</a></p>
+1412,1413c1440,1441
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2">
+<                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-responding-to-a-key-update" class="xref">Responding to a Key Update</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+>                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-responding-to-a-key-update" class="internal xref">Responding to a Key Update</a></p>
+1415,1416c1443,1444
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.3">
+<                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="xref">6.3</a>.  <a href="#name-timing-of-receive-key-gener" class="xref">Timing of Receive Key Generation</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
+>                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-timing-of-receive-key-gener" class="internal xref">Timing of Receive Key Generation</a></p>
+1418,1419c1446,1447
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.4">
+<                 <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="xref">6.4</a>.  <a href="#name-sending-with-updated-keys" class="xref">Sending with Updated Keys</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
+>                 <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="auto internal xref">6.4</a>.  <a href="#name-sending-with-updated-keys" class="internal xref">Sending with Updated Keys</a></p>
+1421,1422c1449,1450
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.5">
+<                 <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="xref">6.5</a>.  <a href="#name-receiving-with-different-ke" class="xref">Receiving with Different Keys</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5">
+>                 <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="auto internal xref">6.5</a>.  <a href="#name-receiving-with-different-ke" class="internal xref">Receiving with Different Keys</a></p>
+1424,1425c1452,1453
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.6">
+<                 <p id="section-toc.1-1.6.2.6.1"><a href="#section-6.6" class="xref">6.6</a>.  <a href="#name-limits-on-aead-usage" class="xref">Limits on AEAD Usage</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6">
+>                 <p id="section-toc.1-1.6.2.6.1"><a href="#section-6.6" class="auto internal xref">6.6</a>.  <a href="#name-limits-on-aead-usage" class="internal xref">Limits on AEAD Usage</a></p>
+1427,1428c1455,1456
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.7">
+<                 <p id="section-toc.1-1.6.2.7.1"><a href="#section-6.7" class="xref">6.7</a>.  <a href="#name-key-update-error-code" class="xref">Key Update Error Code</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.7">
+>                 <p id="section-toc.1-1.6.2.7.1"><a href="#section-6.7" class="auto internal xref">6.7</a>.  <a href="#name-key-update-error-code" class="internal xref">Key Update Error Code</a></p>
+1432,1433c1460,1461
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-security-of-initial-message" class="xref">Security of Initial Messages</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-security-of-initial-message" class="internal xref">Security of Initial Messages</a></p>
+1435,1439c1463,1467
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-quic-specific-adjustments-t" class="xref">QUIC-Specific Adjustments to the TLS Handshake</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.8.2.1">
+<                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-protocol-negotiation" class="xref">Protocol Negotiation</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-quic-specific-adjustments-t" class="internal xref">QUIC-Specific Adjustments to the TLS Handshake</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+>                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-protocol-negotiation" class="internal xref">Protocol Negotiation</a></p>
+1441,1442c1469,1470
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.8.2.2">
+<                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-quic-transport-parameters-e" class="xref">QUIC Transport Parameters Extension</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+>                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-quic-transport-parameters-e" class="internal xref">QUIC Transport Parameters Extension</a></p>
+1444,1445c1472,1473
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.8.2.3">
+<                 <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="xref">8.3</a>.  <a href="#name-removing-the-endofearlydata" class="xref">Removing the EndOfEarlyData Message</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3">
+>                 <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="auto internal xref">8.3</a>.  <a href="#name-removing-the-endofearlydata" class="internal xref">Removing the EndOfEarlyData Message</a></p>
+1447,1448c1475,1476
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.8.2.4">
+<                 <p id="section-toc.1-1.8.2.4.1"><a href="#section-8.4" class="xref">8.4</a>.  <a href="#name-prohibit-tls-middlebox-comp" class="xref">Prohibit TLS Middlebox Compatibility Mode</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.4">
+>                 <p id="section-toc.1-1.8.2.4.1"><a href="#section-8.4" class="auto internal xref">8.4</a>.  <a href="#name-prohibit-tls-middlebox-comp" class="internal xref">Prohibit TLS Middlebox Compatibility Mode</a></p>
+1452,1456c1480,1484
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.9.2.1">
+<                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="xref">9.1</a>.  <a href="#name-session-linkability" class="xref">Session Linkability</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
+>                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="auto internal xref">9.1</a>.  <a href="#name-session-linkability" class="internal xref">Session Linkability</a></p>
+1458,1459c1486,1487
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.9.2.2">
+<                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="xref">9.2</a>.  <a href="#name-replay-attacks-with-0-rtt" class="xref">Replay Attacks with 0-RTT</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
+>                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-replay-attacks-with-0-rtt" class="internal xref">Replay Attacks with 0-RTT</a></p>
+1461,1462c1489,1490
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.9.2.3">
+<                 <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="xref">9.3</a>.  <a href="#name-packet-reflection-attack-mi" class="xref">Packet Reflection Attack Mitigation</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.3">
+>                 <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="auto internal xref">9.3</a>.  <a href="#name-packet-reflection-attack-mi" class="internal xref">Packet Reflection Attack Mitigation</a></p>
+1464,1465c1492,1493
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.9.2.4">
+<                 <p id="section-toc.1-1.9.2.4.1"><a href="#section-9.4" class="xref">9.4</a>.  <a href="#name-header-protection-analysis" class="xref">Header Protection Analysis</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.4">
+>                 <p id="section-toc.1-1.9.2.4.1"><a href="#section-9.4" class="auto internal xref">9.4</a>.  <a href="#name-header-protection-analysis" class="internal xref">Header Protection Analysis</a></p>
+1467,1468c1495,1496
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.9.2.5">
+<                 <p id="section-toc.1-1.9.2.5.1"><a href="#section-9.5" class="xref">9.5</a>.  <a href="#name-header-protection-timing-si" class="xref">Header Protection Timing Side Channels</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.5">
+>                 <p id="section-toc.1-1.9.2.5.1"><a href="#section-9.5" class="auto internal xref">9.5</a>.  <a href="#name-header-protection-timing-si" class="internal xref">Header Protection Timing Side Channels</a></p>
+1470,1471c1498,1499
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.9.2.6">
+<                 <p id="section-toc.1-1.9.2.6.1"><a href="#section-9.6" class="xref">9.6</a>.  <a href="#name-key-diversity" class="xref">Key Diversity</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.6">
+>                 <p id="section-toc.1-1.9.2.6.1"><a href="#section-9.6" class="auto internal xref">9.6</a>.  <a href="#name-key-diversity" class="internal xref">Key Diversity</a></p>
+1473,1474c1501,1502
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.9.2.7">
+<                 <p id="section-toc.1-1.9.2.7.1"><a href="#section-9.7" class="xref">9.7</a>.  <a href="#name-randomness" class="xref">Randomness</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.7">
+>                 <p id="section-toc.1-1.9.2.7.1"><a href="#section-9.7" class="auto internal xref">9.7</a>.  <a href="#name-randomness" class="internal xref">Randomness</a></p>
+1478,1479c1506,1507
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1481,1485c1509,1513
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-references" class="xref">References</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.11.2.1">
+<                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="xref">11.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
+>                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1487,1488c1515,1516
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.11.2.2">
+<                 <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="xref">11.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
+>                 <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="auto internal xref">11.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1492,1499c1520,1527
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-sample-packet-protection" class="xref">Sample Packet Protection</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.1">
+<                 <p id="section-toc.1-1.12.2.1.1"><a href="#section-a.1" class="xref">A.1</a>.  <a href="#name-keys" class="xref">Keys</a></p>
+< </li>
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.2">
+<                 <p id="section-toc.1-1.12.2.2.1"><a href="#section-a.2" class="xref">A.2</a>.  <a href="#name-client-initial" class="xref">Client Initial</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-sample-packet-protection" class="internal xref">Sample Packet Protection</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1">
+>                 <p id="section-toc.1-1.12.2.1.1"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <a href="#name-keys" class="internal xref">Keys</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.2">
+>                 <p id="section-toc.1-1.12.2.2.1"><a href="#appendix-A.2" class="auto internal xref">A.2</a>.  <a href="#name-client-initial" class="internal xref">Client Initial</a></p>
+1501,1502c1529,1530
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.3">
+<                 <p id="section-toc.1-1.12.2.3.1"><a href="#section-a.3" class="xref">A.3</a>.  <a href="#name-server-initial" class="xref">Server Initial</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.3">
+>                 <p id="section-toc.1-1.12.2.3.1"><a href="#appendix-A.3" class="auto internal xref">A.3</a>.  <a href="#name-server-initial" class="internal xref">Server Initial</a></p>
+1504,1505c1532,1533
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.4">
+<                 <p id="section-toc.1-1.12.2.4.1"><a href="#section-a.4" class="xref">A.4</a>.  <a href="#name-retry" class="xref">Retry</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.4">
+>                 <p id="section-toc.1-1.12.2.4.1"><a href="#appendix-A.4" class="auto internal xref">A.4</a>.  <a href="#name-retry" class="internal xref">Retry</a></p>
+1507,1508c1535,1536
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.5">
+<                 <p id="section-toc.1-1.12.2.5.1"><a href="#section-a.5" class="xref">A.5</a>.  <a href="#name-chacha20-poly1305-short-hea" class="xref">ChaCha20-Poly1305 Short Header Packet</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.5">
+>                 <p id="section-toc.1-1.12.2.5.1"><a href="#appendix-A.5" class="auto internal xref">A.5</a>.  <a href="#name-chacha20-poly1305-short-hea" class="internal xref">ChaCha20-Poly1305 Short Header Packet</a></p>
+1512,1519c1540,1547
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-appendix.b" class="xref">Appendix B</a>.  <a href="#name-aead-algorithm-analysis" class="xref">AEAD Algorithm Analysis</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.13.2.1">
+<                 <p id="section-toc.1-1.13.2.1.1"><a href="#section-b.1" class="xref">B.1</a>.  <a href="#name-analysis-of-aead_aes_128_gc" class="xref">Analysis of AEAD_AES_128_GCM and AEAD_AES_256_GCM Usage Limits</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.13.2.1.2.1">
+<                     <p id="section-toc.1-1.13.2.1.2.1.1"><a href="#section-b.1.1" class="xref">B.1.1</a>.  <a href="#name-confidentiality-limit" class="xref">Confidentiality Limit</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-aead-algorithm-analysis" class="internal xref">AEAD Algorithm Analysis</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.1">
+>                 <p id="section-toc.1-1.13.2.1.1"><a href="#appendix-B.1" class="auto internal xref">B.1</a>.  <a href="#name-analysis-of-aead_aes_128_gc" class="internal xref">Analysis of AEAD_AES_128_GCM and AEAD_AES_256_GCM Usage Limits</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.1.2.1">
+>                     <p id="section-toc.1-1.13.2.1.2.1.1"><a href="#appendix-B.1.1" class="auto internal xref">B.1.1</a>.  <a href="#name-confidentiality-limit" class="internal xref">Confidentiality Limit</a></p>
+1521,1522c1549,1550
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.13.2.1.2.2">
+<                     <p id="section-toc.1-1.13.2.1.2.2.1"><a href="#section-b.1.2" class="xref">B.1.2</a>.  <a href="#name-integrity-limit" class="xref">Integrity Limit</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.1.2.2">
+>                     <p id="section-toc.1-1.13.2.1.2.2.1"><a href="#appendix-B.1.2" class="auto internal xref">B.1.2</a>.  <a href="#name-integrity-limit" class="internal xref">Integrity Limit</a></p>
+1526,1527c1554,1555
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.13.2.2">
+<                 <p id="section-toc.1-1.13.2.2.1"><a href="#section-b.2" class="xref">B.2</a>.  <a href="#name-analysis-of-aead_aes_128_cc" class="xref">Analysis of AEAD_AES_128_CCM Usage Limits</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.2">
+>                 <p id="section-toc.1-1.13.2.2.1"><a href="#appendix-B.2" class="auto internal xref">B.2</a>.  <a href="#name-analysis-of-aead_aes_128_cc" class="internal xref">Analysis of AEAD_AES_128_CCM Usage Limits</a></p>
+1531,1532c1559,1560
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.14">
+<             <p id="section-toc.1-1.14.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+>             <p id="section-toc.1-1.14.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+1534,1535c1562,1563
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.15">
+<             <p id="section-toc.1-1.15.1"><a href="#section-appendix.d" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
+>             <p id="section-toc.1-1.15.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1546,1547c1574,1575
+< <p id="section-1-1">This document describes how QUIC <span>[<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span> is secured using TLS
+< <span>[<a href="#TLS13" class="xref">TLS13</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-1-1">This document describes how QUIC <span>[<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span> is secured using TLS
+> <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+1563c1591
+< document are to be interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span>
+---
+> document are to be interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span>
+1565c1593
+< <p id="section-2-2">This document uses the terminology established in <span>[<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+---
+> <p id="section-2-2">This document uses the terminology established in <span>[<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+1567c1595
+< could be used; see <a href="#tls-version" class="xref">Section 4.2</a>.<a href="#section-2-3" class="pilcrow">¶</a></p>
+---
+> could be used; see <a href="#tls-version" class="auto internal xref">Section 4.2</a>.<a href="#section-2-3" class="pilcrow">¶</a></p>
+1578c1606
+< <a href="#tls-layers" class="xref">Figure 1</a>.<a href="#section-2.1-2" class="pilcrow">¶</a></p>
+---
+> <a href="#tls-layers" class="auto internal xref">Figure 1</a>.<a href="#section-2.1-2" class="pilcrow">¶</a></p>
+1581c1609
+<           <div class="artwork art-text alignLeft" id="section-2.1-3.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-2.1-3.1">
+1613c1641
+< <span>[<a href="#RFC5280" class="xref">RFC5280</a>]</span> certificate-based authentication for both server and client.
+---
+> <span>[<a href="#RFC5280" class="cite xref">RFC5280</a>]</span> certificate-based authentication for both server and client.
+1631c1659
+< <p id="section-2.1-10">A simplified TLS handshake with 0-RTT application data is shown in <a href="#tls-full" class="xref">Figure 2</a>.<a href="#section-2.1-10" class="pilcrow">¶</a></p>
+---
+> <p id="section-2.1-10">A simplified TLS handshake with 0-RTT application data is shown in <a href="#tls-full" class="auto internal xref">Figure 2</a>.<a href="#section-2.1-10" class="pilcrow">¶</a></p>
+1634c1662
+<           <div class="artwork art-text alignLeft" id="section-2.1-11.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-2.1-11.1">
+1658,1661c1686,1689
+< <p id="section-2.1-12"><a href="#tls-full" class="xref">Figure 2</a> omits the EndOfEarlyData message, which is not used in QUIC; see
+< <a href="#remove-eoed" class="xref">Section 8.3</a>. Likewise, neither ChangeCipherSpec nor KeyUpdate messages are
+< used by QUIC. ChangeCipherSpec is redundant in TLS 1.3; see <a href="#compat-mode" class="xref">Section 8.4</a>.
+< QUIC has its own key update mechanism; see <a href="#key-update" class="xref">Section 6</a>.<a href="#section-2.1-12" class="pilcrow">¶</a></p>
+---
+> <p id="section-2.1-12"><a href="#tls-full" class="auto internal xref">Figure 2</a> omits the EndOfEarlyData message, which is not used in QUIC; see
+> <a href="#remove-eoed" class="auto internal xref">Section 8.3</a>. Likewise, neither ChangeCipherSpec nor KeyUpdate messages are
+> used by QUIC. ChangeCipherSpec is redundant in TLS 1.3; see <a href="#compat-mode" class="auto internal xref">Section 8.4</a>.
+> QUIC has its own key update mechanism; see <a href="#key-update" class="auto internal xref">Section 6</a>.<a href="#section-2.1-12" class="pilcrow">¶</a></p>
+1688c1716
+< <p id="section-3-1">QUIC <span>[<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span> assumes responsibility for the confidentiality and
+---
+> <p id="section-3-1">QUIC <span>[<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span> assumes responsibility for the confidentiality and
+1690c1718
+< handshake <span>[<a href="#TLS13" class="xref">TLS13</a>]</span>, but instead of carrying TLS records over QUIC (as with
+---
+> handshake <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span>, but instead of carrying TLS records over QUIC (as with
+1693c1721
+< shown in <a href="#quic-layers" class="xref">Figure 3</a>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+---
+> shown in <a href="#quic-layers" class="auto internal xref">Figure 3</a>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+1696c1724
+<         <div class="artwork art-text alignLeft" id="section-3-2.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-3-2.1">
+1734c1762
+< <p id="section-3-7"><a href="#schematic" class="xref">Figure 4</a> shows these interactions in more detail, with the QUIC packet
+---
+> <p id="section-3-7"><a href="#schematic" class="auto internal xref">Figure 4</a> shows these interactions in more detail, with the QUIC packet
+1738c1766
+<         <div class="artwork art-text alignLeft" id="section-3-8.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-3-8.1">
+1782c1810
+< prohibited in different packet number spaces; see <span><a href="https://www.rfc-editor.org/rfc/rfc9000#section-12.5" class="relref">Section 12.5</a> of [<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-4-2" class="pilcrow">¶</a></p>
+---
+> prohibited in different packet number spaces; see <span><a href="https://rfc-editor.org/rfc/rfc9000#section-12.5" class="relref">Section 12.5</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-4-2" class="pilcrow">¶</a></p>
+1785c1813
+< <a href="#packet-types-keys" class="xref">Table 1</a>. When packets of different types need to be sent,
+---
+> <a href="#packet-types-keys" class="auto internal xref">Table 1</a>. When packets of different types need to be sent,
+1834c1862
+< <p id="section-4-5"><span><a href="https://www.rfc-editor.org/rfc/rfc9000#section-17" class="relref">Section 17</a> of [<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span> shows how packets at the various encryption
+---
+> <p id="section-4-5"><span><a href="https://rfc-editor.org/rfc/rfc9000#section-17" class="relref">Section 17</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span> shows how packets at the various encryption
+1841c1869
+< <p id="section-4.1-1">As shown in <a href="#schematic" class="xref">Figure 4</a>, the interface from QUIC to TLS consists of four
+---
+> <p id="section-4.1-1">As shown in <a href="#schematic" class="auto internal xref">Figure 4</a>, the interface from QUIC to TLS consists of four
+1856c1884
+< such as certificate validation <span>[<a href="#RFC5280" class="xref">RFC5280</a>]</span>.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
+---
+> such as certificate validation <span>[<a href="#RFC5280" class="cite xref">RFC5280</a>]</span>.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
+1898c1926
+< (see <a href="#quic_parameters" class="xref">Section 8.2</a>) that it wishes to carry.<a href="#section-4.1.3-2" class="pilcrow">¶</a></p>
+---
+> (see <a href="#quic_parameters" class="auto internal xref">Section 8.2</a>) that it wishes to carry.<a href="#section-4.1.3-2" class="pilcrow">¶</a></p>
+1909c1937
+< the resulting CRYPTO frame is carried in; see <a href="#packet-types-keys" class="xref">Table 1</a>.<a href="#section-4.1.3-5" class="pilcrow">¶</a></p>
+---
+> the resulting CRYPTO frame is carried in; see <a href="#packet-types-keys" class="auto internal xref">Table 1</a>.<a href="#section-4.1.3-5" class="pilcrow">¶</a></p>
+1920c1948
+< alerts are turned into QUIC CONNECTION_CLOSE error codes; see <a href="#tls-errors" class="xref">Section 4.8</a>.
+---
+> alerts are turned into QUIC CONNECTION_CLOSE error codes; see <a href="#tls-errors" class="auto internal xref">Section 4.8</a>.
+1951c1979
+< CRYPTO frames; see <span><a href="https://www.rfc-editor.org/rfc/rfc9000#section-7.5" class="relref">Section 7.5</a> of [<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-4.1.3-12" class="pilcrow">¶</a></p>
+---
+> CRYPTO frames; see <span><a href="https://rfc-editor.org/rfc/rfc9000#section-7.5" class="relref">Section 7.5</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-4.1.3-12" class="pilcrow">¶</a></p>
+1955c1983
+< see <a href="#quic_parameters" class="xref">Section 8.2</a>.<a href="#section-4.1.3-13" class="pilcrow">¶</a></p>
+---
+> see <a href="#quic_parameters" class="auto internal xref">Section 8.2</a>.<a href="#section-4.1.3-13" class="pilcrow">¶</a></p>
+1995,1996c2023,2024
+< generate packet and header protection keys; see <a href="#packet-protection" class="xref">Section 5</a> and
+< <a href="#header-protect" class="xref">Section 5.4</a>.<a href="#section-4.1.4-7" class="pilcrow">¶</a></p>
+---
+> generate packet and header protection keys; see <a href="#packet-protection" class="auto internal xref">Section 5</a> and
+> <a href="#header-protect" class="auto internal xref">Section 5.4</a>.<a href="#section-4.1.4-7" class="pilcrow">¶</a></p>
+2027c2055
+< <p id="section-4.1.5-1"><a href="#exchange-summary" class="xref">Figure 5</a> summarizes the exchange between QUIC and TLS for both
+---
+> <p id="section-4.1.5-1"><a href="#exchange-summary" class="auto internal xref">Figure 5</a> summarizes the exchange between QUIC and TLS for both
+2033c2061
+<             <div class="artwork art-text alignLeft" id="section-4.1.5-2.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-4.1.5-2.1">
+2075c2103
+< <p id="section-4.1.5-3"><a href="#exchange-summary" class="xref">Figure 5</a> shows the multiple packets that form a single "flight" of
+---
+> <p id="section-4.1.5-3"><a href="#exchange-summary" class="auto internal xref">Figure 5</a> shows the multiple packets that form a single "flight" of
+2080c2108
+< <p id="section-4.1.5-4"><a href="#exchange-summary" class="xref">Figure 5</a> shows one possible structure for a simple handshake
+---
+> <p id="section-4.1.5-4"><a href="#exchange-summary" class="auto internal xref">Figure 5</a> shows one possible structure for a simple handshake
+2093c2121
+< <p id="section-4.2-1">This document describes how TLS 1.3 <span>[<a href="#TLS13" class="xref">TLS13</a>]</span> is used with QUIC.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-4.2-1">This document describes how TLS 1.3 <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span> is used with QUIC.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+2117c2145
+< use the Retry feature (see <span><a href="https://www.rfc-editor.org/rfc/rfc9000#section-8.1" class="relref">Section 8.1</a> of [<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>) to only buffer
+---
+> use the Retry feature (see <span><a href="https://rfc-editor.org/rfc/rfc9000#section-8.1" class="relref">Section 8.1</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>) to only buffer
+2137c2165
+< <span><a href="https://www.rfc-editor.org/rfc/rfc9000#section-14.1" class="relref">Section 14.1</a> of [<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>. QUIC implementations use PADDING frames or
+---
+> <span><a href="https://rfc-editor.org/rfc/rfc9000#section-14.1" class="relref">Section 14.1</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>. QUIC implementations use PADDING frames or
+2152c2180
+< <span>[<a href="#RFC2818" class="xref">RFC2818</a>]</span>).<a href="#section-4.4-2" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#RFC2818" class="cite xref">RFC2818</a>]</span>).<a href="#section-4.4-2" class="pilcrow">¶</a></p>
+2158c2186
+<   client address; see <span><a href="https://www.rfc-editor.org/rfc/rfc9000#section-8.1" class="relref">Section 8.1</a> of [<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>.  The size of a
+---
+>   client address; see <span><a href="https://rfc-editor.org/rfc/rfc9000#section-8.1" class="relref">Section 8.1</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>.  The size of a
+2161c2189
+<   by using certificate compression <span>[<a href="#COMPRESS" class="xref">COMPRESS</a>]</span>.<a href="#section-4.4-3.1" class="pilcrow">¶</a></p>
+---
+>   by using certificate compression <span>[<a href="#COMPRESS" class="cite xref">COMPRESS</a>]</span>.<a href="#section-4.4-3.1" class="pilcrow">¶</a></p>
+2168c2196
+< <span><a href="https://www.rfc-editor.org/rfc/rfc8446#section-4.6.2" class="relref">Section 4.6.2</a> of [<a href="#TLS13" class="xref">TLS13</a>]</span>) because the multiplexing offered by QUIC prevents
+---
+> <span><a href="https://rfc-editor.org/rfc/rfc8446#section-4.6.2" class="relref">Section 4.6.2</a> of [<a href="#TLS13" class="cite xref">TLS13</a>]</span>) because the multiplexing offered by QUIC prevents
+2170c2198
+< event that triggered it (see <span>[<a href="#HTTP2-TLS13" class="xref">HTTP2-TLS13</a>]</span>).  More specifically,
+---
+> event that triggered it (see <span>[<a href="#HTTP2-TLS13" class="cite xref">HTTP2-TLS13</a>]</span>).  More specifically,
+2187c2215
+< that some information be retained; see <span><a href="https://www.rfc-editor.org/rfc/rfc8446#section-4.6.1" class="relref">Section 4.6.1</a> of [<a href="#TLS13" class="xref">TLS13</a>]</span>. QUIC itself
+---
+> that some information be retained; see <span><a href="https://rfc-editor.org/rfc/rfc8446#section-4.6.1" class="relref">Section 4.6.1</a> of [<a href="#TLS13" class="cite xref">TLS13</a>]</span>. QUIC itself
+2189,2190c2217,2218
+< 0-RTT is also used; see <span><a href="https://www.rfc-editor.org/rfc/rfc9000#section-7.4.1" class="relref">Section 7.4.1</a> of [<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span> and
+< <a href="#enable-0rtt" class="xref">Section 4.6.1</a>. Application protocols could depend on state that is retained
+---
+> 0-RTT is also used; see <span><a href="https://rfc-editor.org/rfc/rfc9000#section-7.4.1" class="relref">Section 7.4.1</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span> and
+> <a href="#enable-0rtt" class="auto internal xref">Section 4.6.1</a>. Application protocols could depend on state that is retained
+2198c2226
+< to correlate connections; see <span><a href="https://www.rfc-editor.org/rfc/rfc8446#appendix-C.4" class="relref">Appendix C.4</a> of [<a href="#TLS13" class="xref">TLS13</a>]</span>.<a href="#section-4.5-4" class="pilcrow">¶</a></p>
+---
+> to correlate connections; see <span><a href="https://rfc-editor.org/rfc/rfc8446#appendix-C.4" class="relref">Appendix C.4</a> of [<a href="#TLS13" class="cite xref">TLS13</a>]</span>.<a href="#section-4.5-4" class="pilcrow">¶</a></p>
+2212,2213c2240,2241
+< <span>[<a href="#TLS13" class="xref">TLS13</a>]</span>, QUIC transport parameters, the chosen application protocol, and any
+< information the application protocol might need; see <a href="#app-0rtt" class="xref">Section 4.6.3</a>.  This
+---
+> <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span>, QUIC transport parameters, the chosen application protocol, and any
+> information the application protocol might need; see <a href="#app-0rtt" class="auto internal xref">Section 4.6.3</a>.  This
+2219c2247
+< <p id="section-4.6-4"><span>[<a href="#TLS13" class="xref">TLS13</a>]</span> sets a limit of seven days on the time between the original
+---
+> <p id="section-4.6-4"><span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span> sets a limit of seven days on the time between the original
+2222c2250
+< <a href="#replay" class="xref">Section 9.2</a>.<a href="#section-4.6-4" class="pilcrow">¶</a></p>
+---
+> <a href="#replay" class="auto internal xref">Section 9.2</a>.<a href="#section-4.6-4" class="pilcrow">¶</a></p>
+2242c2270
+< ClientHello message of a subsequent handshake; see <span><a href="https://www.rfc-editor.org/rfc/rfc8446#section-4.2.10" class="relref">Section 4.2.10</a> of [<a href="#TLS13" class="xref">TLS13</a>]</span>.
+---
+> ClientHello message of a subsequent handshake; see <span><a href="https://rfc-editor.org/rfc/rfc8446#section-4.2.10" class="relref">Section 4.2.10</a> of [<a href="#TLS13" class="cite xref">TLS13</a>]</span>.
+2245c2273
+< the server has sent a NEW_TOKEN frame; see <span><a href="https://www.rfc-editor.org/rfc/rfc9000#section-8.1" class="relref">Section 8.1</a> of [<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-4.6.1-4" class="pilcrow">¶</a></p>
+---
+> the server has sent a NEW_TOKEN frame; see <span><a href="https://rfc-editor.org/rfc/rfc9000#section-8.1" class="relref">Section 8.1</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-4.6.1-4" class="pilcrow">¶</a></p>
+2254c2282
+< EncryptedExtensions; see <span><a href="https://www.rfc-editor.org/rfc/rfc8446#section-4.2.10" class="relref">Section 4.2.10</a> of [<a href="#TLS13" class="xref">TLS13</a>]</span>.  The server then
+---
+> EncryptedExtensions; see <span><a href="https://rfc-editor.org/rfc/rfc8446#section-4.2.10" class="relref">Section 4.2.10</a> of [<a href="#TLS13" class="cite xref">TLS13</a>]</span>.  The server then
+2278c2306
+< resumed was included in the ClientHello; see <span><a href="https://www.rfc-editor.org/rfc/rfc8446#section-4.2.10" class="relref">Section 4.2.10</a> of [<a href="#TLS13" class="xref">TLS13</a>]</span>). Even
+---
+> resumed was included in the ClientHello; see <span><a href="https://rfc-editor.org/rfc/rfc8446#section-4.2.10" class="relref">Section 4.2.10</a> of [<a href="#TLS13" class="cite xref">TLS13</a>]</span>). Even
+2288c2316
+< example, HTTP/3 settings <span>[<a href="#QUIC-HTTP" class="xref">QUIC-HTTP</a>]</span> determine how 0-RTT data from the
+---
+> example, HTTP/3 settings <span>[<a href="#QUIC-HTTP" class="cite xref">QUIC-HTTP</a>]</span> determine how 0-RTT data from the
+2300c2328
+< <p id="section-4.7-1">The HelloRetryRequest message (see <span><a href="https://www.rfc-editor.org/rfc/rfc8446#section-4.1.4" class="relref">Section 4.1.4</a> of [<a href="#TLS13" class="xref">TLS13</a>]</span>) can be used to
+---
+> <p id="section-4.7-1">The HelloRetryRequest message (see <span><a href="https://rfc-editor.org/rfc/rfc8446#section-4.1.4" class="relref">Section 4.1.4</a> of [<a href="#TLS13" class="cite xref">TLS13</a>]</span>) can be used to
+2306c2334
+< <span class="bcp14">SHOULD</span> instead use the Retry feature; see <span><a href="https://www.rfc-editor.org/rfc/rfc9000#section-8.1" class="relref">Section 8.1</a> of [<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-4.7-1" class="pilcrow">¶</a></p>
+---
+> <span class="bcp14">SHOULD</span> instead use the Retry feature; see <span><a href="https://rfc-editor.org/rfc/rfc9000#section-8.1" class="relref">Section 8.1</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-4.7-1" class="pilcrow">¶</a></p>
+2315c2343
+< <span><a href="https://www.rfc-editor.org/rfc/rfc8446#section-6" class="relref">Section 6</a> of [<a href="#TLS13" class="xref">TLS13</a>]</span>.<a href="#section-4.8-1" class="pilcrow">¶</a></p>
+---
+> <span><a href="https://rfc-editor.org/rfc/rfc8446#section-6" class="relref">Section 6</a> of [<a href="#TLS13" class="cite xref">TLS13</a>]</span>.<a href="#section-4.8-1" class="pilcrow">¶</a></p>
+2319c2347
+< CRYPTO_ERROR; see <span><a href="https://www.rfc-editor.org/rfc/rfc9000#section-20.1" class="relref">Section 20.1</a> of [<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>. The resulting value is
+---
+> CRYPTO_ERROR; see <span><a href="https://rfc-editor.org/rfc/rfc9000#section-20.1" class="relref">Section 20.1</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>. The resulting value is
+2323c2351
+< <span><a href="https://www.rfc-editor.org/rfc/rfc8446#section-6.1" class="relref">Section 6.1</a> of [<a href="#TLS13" class="xref">TLS13</a>]</span>. As QUIC provides alternative mechanisms for
+---
+> <span><a href="https://rfc-editor.org/rfc/rfc8446#section-6.1" class="relref">Section 6.1</a> of [<a href="#TLS13" class="cite xref">TLS13</a>]</span>. As QUIC provides alternative mechanisms for
+2328c2356
+< <span><a href="https://www.rfc-editor.org/rfc/rfc9000#section-11" class="relref">Section 11</a> of [<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>. For TLS alerts, this includes replacing any
+---
+> <span><a href="https://rfc-editor.org/rfc/rfc9000#section-11" class="relref">Section 11</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>. For TLS alerts, this includes replacing any
+2341c2369
+< during the handshake, as well as when keys are updated; see <a href="#key-update" class="xref">Section 6</a>.<a href="#section-4.9-1" class="pilcrow">¶</a></p>
+---
+> during the handshake, as well as when keys are updated; see <a href="#key-update" class="auto internal xref">Section 6</a>.<a href="#section-4.9-1" class="pilcrow">¶</a></p>
+2352,2353c2380,2381
+< determining this are provided for Initial keys (<a href="#discard-initial" class="xref">Section 4.9.1</a>) and
+< Handshake keys (<a href="#discard-handshake" class="xref">Section 4.9.2</a>).  These methods do not prevent packets
+---
+> determining this are provided for Initial keys (<a href="#discard-initial" class="auto internal xref">Section 4.9.1</a>) and
+> Handshake keys (<a href="#discard-handshake" class="auto internal xref">Section 4.9.2</a>).  These methods do not prevent packets
+2365c2393
+< <p id="section-4.9.1-1">Packets protected with Initial secrets (<a href="#initial-secrets" class="xref">Section 5.2</a>) are not
+---
+> <p id="section-4.9.1-1">Packets protected with Initial secrets (<a href="#initial-secrets" class="auto internal xref">Section 5.2</a>) are not
+2385c2413
+< (<a href="#handshake-confirmed" class="xref">Section 4.1.2</a>).<a href="#section-4.9.2-1" class="pilcrow">¶</a></p>
+---
+> (<a href="#handshake-confirmed" class="auto internal xref">Section 4.1.2</a>).<a href="#section-4.9.2-1" class="pilcrow">¶</a></p>
+2394c2422
+< send 0-RTT packets after sending a 1-RTT packet (<a href="#using-early-data" class="xref">Section 5.6</a>).<a href="#section-4.9.3-1" class="pilcrow">¶</a></p>
+---
+> send 0-RTT packets after sending a 1-RTT packet (<a href="#using-early-data" class="auto internal xref">Section 5.6</a>).<a href="#section-4.9.3-1" class="pilcrow">¶</a></p>
+2403c2431
+< Timeout (PTO, see <span>[<a href="#QUIC-RECOVERY" class="xref">QUIC-RECOVERY</a>]</span>).  A server <span class="bcp14">MAY</span> discard 0-RTT keys earlier
+---
+> Timeout (PTO, see <span>[<a href="#QUIC-RECOVERY" class="cite xref">QUIC-RECOVERY</a>]</span>).  A server <span class="bcp14">MAY</span> discard 0-RTT keys earlier
+2418c2446
+< handshake, using the AEAD algorithm <span>[<a href="#AEAD" class="xref">AEAD</a>]</span> negotiated by TLS.<a href="#section-5-1" class="pilcrow">¶</a></p>
+---
+> handshake, using the AEAD algorithm <span>[<a href="#AEAD" class="cite xref">AEAD</a>]</span> negotiated by TLS.<a href="#section-5-1" class="pilcrow">¶</a></p>
+2425c2453
+< see <a href="#retry-integrity" class="xref">Section 5.8</a>.<a href="#section-5-3.2" class="pilcrow">¶</a>
+---
+> see <a href="#retry-integrity" class="auto internal xref">Section 5.8</a>.<a href="#section-5-3.2" class="pilcrow">¶</a>
+2429c2457
+< <a href="#initial-secrets" class="xref">Section 5.2</a>.<a href="#section-5-3.3" class="pilcrow">¶</a>
+---
+> <a href="#initial-secrets" class="auto internal xref">Section 5.2</a>.<a href="#section-5-3.3" class="pilcrow">¶</a>
+2449c2477
+< in each direction. These traffic secrets are derived by TLS (see <span><a href="https://www.rfc-editor.org/rfc/rfc8446#section-7.1" class="relref">Section 7.1</a> of [<a href="#TLS13" class="xref">TLS13</a>]</span>) and are used by QUIC for all encryption levels except the Initial
+---
+> in each direction. These traffic secrets are derived by TLS (see <span><a href="https://rfc-editor.org/rfc/rfc8446#section-7.1" class="relref">Section 7.1</a> of [<a href="#TLS13" class="cite xref">TLS13</a>]</span>) and are used by QUIC for all encryption levels except the Initial
+2452c2480
+< <a href="#initial-secrets" class="xref">Section 5.2</a>.<a href="#section-5.1-2" class="pilcrow">¶</a></p>
+---
+> <a href="#initial-secrets" class="auto internal xref">Section 5.2</a>.<a href="#section-5.1-2" class="pilcrow">¶</a></p>
+2455c2483
+< <span><a href="https://www.rfc-editor.org/rfc/rfc8446#section-7.1" class="relref">Section 7.1</a> of [<a href="#TLS13" class="xref">TLS13</a>]</span> is used with the hash function from the negotiated
+---
+> <span><a href="https://rfc-editor.org/rfc/rfc8446#section-7.1" class="relref">Section 7.1</a> of [<a href="#TLS13" class="cite xref">TLS13</a>]</span> is used with the hash function from the negotiated
+2458c2486
+< as bytes using ASCII <span>[<a href="#ASCII" class="xref">ASCII</a>]</span> without quotes or any trailing NUL
+---
+> as bytes using ASCII <span>[<a href="#ASCII" class="cite xref">ASCII</a>]</span> without quotes or any trailing NUL
+2464,2466c2492,2494
+< Initialization Vector (IV); see <a href="#aead" class="xref">Section 5.3</a>.  The header protection key uses the
+< "quic hp" label; see <a href="#header-protect" class="xref">Section 5.4</a>.  Using these labels provides key
+< separation between QUIC and TLS; see <a href="#key-diversity" class="xref">Section 9.6</a>.<a href="#section-5.1-6" class="pilcrow">¶</a></p>
+---
+> Initialization Vector (IV); see <a href="#aead" class="auto internal xref">Section 5.3</a>.  The header protection key uses the
+> "quic hp" label; see <a href="#header-protect" class="auto internal xref">Section 5.4</a>.  Using these labels provides key
+> separation between QUIC and TLS; see <a href="#key-diversity" class="auto internal xref">Section 9.6</a>.<a href="#section-5.1-6" class="pilcrow">¶</a></p>
+2471c2499
+< <span>[<a href="#AEAD" class="xref">AEAD</a>]</span>.<a href="#section-5.1-7" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#AEAD" class="cite xref">AEAD</a>]</span>.<a href="#section-5.1-7" class="pilcrow">¶</a></p>
+2473c2501
+< TLS 1.3; see <a href="#initial-secrets" class="xref">Section 5.2</a>.<a href="#section-5.1-8" class="pilcrow">¶</a></p>
+---
+> TLS 1.3; see <a href="#initial-secrets" class="auto internal xref">Section 5.2</a>.<a href="#section-5.1-8" class="pilcrow">¶</a></p>
+2484c2512
+< <p id="section-5.2-2">This secret is determined by using HKDF-Extract (see <span><a href="https://www.rfc-editor.org/rfc/rfc5869#section-2.2" class="relref">Section 2.2</a> of [<a href="#HKDF" class="xref">HKDF</a>]</span>)
+---
+> <p id="section-5.2-2">This secret is determined by using HKDF-Extract (see <span><a href="https://rfc-editor.org/rfc/rfc5869#section-2.2" class="relref">Section 2.2</a> of [<a href="#HKDF" class="cite xref">HKDF</a>]</span>)
+2491c2519
+< <span>[<a href="#TLS13" class="xref">TLS13</a>]</span> to produce a 32-byte secret.  Packets constructed by the server use
+---
+> <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span> to produce a 32-byte secret.  Packets constructed by the server use
+2494c2522
+< <span>[<a href="#SHA" class="xref">SHA</a>]</span>.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#SHA" class="cite xref">SHA</a>]</span>.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
+2496c2524
+< <div class="artwork art-text alignLeft" id="section-5.2-5">
+---
+> <div class="alignLeft art-text artwork" id="section-5.2-5">
+2530c2558
+<   see <span><a href="https://www.rfc-editor.org/rfc/rfc9000#section-8.1" class="relref">Section 8.1</a> of [<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-5.2-10.1" class="pilcrow">¶</a></p>
+---
+>   see <span><a href="https://rfc-editor.org/rfc/rfc9000#section-8.1" class="relref">Section 8.1</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-5.2-10.1" class="pilcrow">¶</a></p>
+2532c2560
+< <p id="section-5.2-11"><a href="#test-vectors" class="xref">Appendix A</a> contains sample Initial packets.<a href="#section-5.2-11" class="pilcrow">¶</a></p>
+---
+> <p id="section-5.2-11"><a href="#test-vectors" class="auto internal xref">Appendix A</a> contains sample Initial packets.<a href="#section-5.2-11" class="pilcrow">¶</a></p>
+2541c2569
+< <span>[<a href="#AEAD" class="xref">AEAD</a>]</span>) used for QUIC packet protection is the AEAD that is negotiated for
+---
+> <span>[<a href="#AEAD" class="cite xref">AEAD</a>]</span>) used for QUIC packet protection is the AEAD that is negotiated for
+2544c2572
+< <p id="section-5.3-2">QUIC can use any of the cipher suites defined in <span>[<a href="#TLS13" class="xref">TLS13</a>]</span> with the exception
+---
+> <p id="section-5.3-2">QUIC can use any of the cipher suites defined in <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span> with the exception
+2547c2575
+< a header protection scheme for all cipher suites defined in <span>[<a href="#TLS13" class="xref">TLS13</a>]</span> aside
+---
+> a header protection scheme for all cipher suites defined in <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span> aside
+2554c2582
+< header protection; see <a href="#header-protect" class="xref">Section 5.4</a>. The unprotected packet header is part
+---
+> header protection; see <a href="#header-protect" class="auto internal xref">Section 5.4</a>. The unprotected packet header is part
+2557c2585
+< <p id="section-5.3-5">The key and IV for the packet are computed as described in <a href="#protection-keys" class="xref">Section 5.1</a>.
+---
+> <p id="section-5.3-5">The key and IV for the packet are computed as described in <a href="#protection-keys" class="auto internal xref">Section 5.1</a>.
+2566c2594
+< described in <span>[<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-5.3-7" class="pilcrow">¶</a></p>
+---
+> described in <span>[<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-5.3-7" class="pilcrow">¶</a></p>
+2569,2570c2597,2598
+< same key and IV; see <a href="#aead-limits" class="xref">Section 6.6</a>.  This might be lower than the packet
+< number limit.  An endpoint <span class="bcp14">MUST</span> initiate a key update (<a href="#key-update" class="xref">Section 6</a>) prior to
+---
+> same key and IV; see <a href="#aead-limits" class="auto internal xref">Section 6.6</a>.  This might be lower than the packet
+> number limit.  An endpoint <span class="bcp14">MUST</span> initiate a key update (<a href="#key-update" class="auto internal xref">Section 6</a>) prior to
+2591c2619
+< the value not changing after a key update (see <a href="#key-update" class="xref">Section 6</a>).  This allows
+---
+> the value not changing after a key update (see <a href="#key-update" class="auto internal xref">Section 6</a>).  This allows
+2601c2629
+< <p id="section-5.4.1-1">Header protection is applied after packet protection is applied (see <a href="#aead" class="xref">Section 5.3</a>).
+---
+> <p id="section-5.4.1-1">Header protection is applied after packet protection is applied (see <a href="#aead" class="auto internal xref">Section 5.3</a>).
+2609c2637
+< <p id="section-5.4.1-3"><a href="#pseudo-hp" class="xref">Figure 6</a> shows a sample algorithm for applying header protection. Removing
+---
+> <p id="section-5.4.1-3"><a href="#pseudo-hp" class="auto internal xref">Figure 6</a> shows a sample algorithm for applying header protection. Removing
+2614,2615c2642,2643
+<             <div id="section-5.4.1-4.1">
+< <pre class="sourcecode lang-pseudocode">
+---
+>             <div class="lang-pseudocode sourcecode" id="section-5.4.1-4.1">
+> <pre>
+2635,2637c2663,2665
+< suite; see <a href="#hp-aes" class="xref">Section 5.4.3</a> and <a href="#hp-chacha" class="xref">Section 5.4.4</a>.<a href="#section-5.4.1-5" class="pilcrow">¶</a></p>
+< <p id="section-5.4.1-6"><a href="#fig-sample" class="xref">Figure 7</a> shows an example long header packet (Initial) and a short header
+< packet (1-RTT). <a href="#fig-sample" class="xref">Figure 7</a> shows the fields in each header that are covered
+---
+> suite; see <a href="#hp-aes" class="auto internal xref">Section 5.4.3</a> and <a href="#hp-chacha" class="auto internal xref">Section 5.4.4</a>.<a href="#section-5.4.1-5" class="pilcrow">¶</a></p>
+> <p id="section-5.4.1-6"><a href="#fig-sample" class="auto internal xref">Figure 7</a> shows an example long header packet (Initial) and a short header
+> packet (1-RTT). <a href="#fig-sample" class="auto internal xref">Figure 7</a> shows the fields in each header that are covered
+2642c2670
+<             <div class="artwork art-text alignLeft" id="section-5.4.1-7.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-5.4.1-7.1">
+2686,2688c2714,2716
+< these AES AEADs are defined in <span>[<a href="#AEAD" class="xref">AEAD</a>]</span>), and AEAD_CHACHA20_POLY1305
+< (defined in <span>[<a href="#CHACHA" class="xref">CHACHA</a>]</span>).  Prior to TLS selecting a cipher suite, AES
+< header protection is used (<a href="#hp-aes" class="xref">Section 5.4.3</a>), matching the AEAD_AES_128_GCM packet
+---
+> these AES AEADs are defined in <span>[<a href="#AEAD" class="cite xref">AEAD</a>]</span>), and AEAD_CHACHA20_POLY1305
+> (defined in <span>[<a href="#CHACHA" class="cite xref">CHACHA</a>]</span>).  Prior to TLS selecting a cipher suite, AES
+> header protection is used (<a href="#hp-aes" class="auto internal xref">Section 5.4.3</a>), matching the AEAD_AES_128_GCM packet
+2710c2738
+< cipher suites defined in <span>[<a href="#TLS13" class="xref">TLS13</a>]</span> -- other than TLS_AES_128_CCM_8_SHA256, for
+---
+> cipher suites defined in <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span> -- other than TLS_AES_128_CCM_8_SHA256, for
+2717,2718c2745,2746
+< <div id="section-5.4.2-6">
+< <pre class="sourcecode lang-pseudocode">
+---
+> <div class="lang-pseudocode sourcecode" id="section-5.4.2-6">
+> <pre>
+2726,2727c2754,2755
+< <div id="section-5.4.2-8">
+< <pre class="sourcecode lang-pseudocode">
+---
+> <div class="lang-pseudocode sourcecode" id="section-5.4.2-8">
+> <pre>
+2732,2733c2760,2761
+< <div id="section-5.4.2-10">
+< <pre class="sourcecode lang-pseudocode">
+---
+> <div class="lang-pseudocode sourcecode" id="section-5.4.2-10">
+> <pre>
+2757c2785
+< 256-bit AES in ECB mode.  AES is defined in <span>[<a href="#AES" class="xref">AES</a>]</span>.<a href="#section-5.4.3-1" class="pilcrow">¶</a></p>
+---
+> 256-bit AES in ECB mode.  AES is defined in <span>[<a href="#AES" class="cite xref">AES</a>]</span>.<a href="#section-5.4.3-1" class="pilcrow">¶</a></p>
+2761,2762c2789,2790
+< <div id="section-5.4.3-3">
+< <pre class="sourcecode lang-pseudocode">
+---
+> <div class="lang-pseudocode sourcecode" id="section-5.4.3-3">
+> <pre>
+2775c2803
+< function as defined in <span><a href="https://www.rfc-editor.org/rfc/rfc8439#section-2.4" class="relref">Section 2.4</a> of [<a href="#CHACHA" class="xref">CHACHA</a>]</span>.  This uses a 256-bit key and
+---
+> function as defined in <span><a href="https://rfc-editor.org/rfc/rfc8439#section-2.4" class="relref">Section 2.4</a> of [<a href="#CHACHA" class="cite xref">CHACHA</a>]</span>.  This uses a 256-bit key and
+2786,2787c2814,2815
+< <div id="section-5.4.4-5">
+< <pre class="sourcecode lang-pseudocode">
+---
+> <div class="lang-pseudocode sourcecode" id="section-5.4.4-5">
+> <pre>
+2807c2835
+< <a href="#key-update" class="xref">Section 6</a>.  Similarly, a packet that appears to trigger a key update but
+---
+> <a href="#key-update" class="auto internal xref">Section 6</a>.  Similarly, a packet that appears to trigger a key update but
+2820c2848
+< <p id="section-5.6-1">If 0-RTT keys are available (see <a href="#enable-0rtt" class="xref">Section 4.6.1</a>), the lack of replay protection
+---
+> <p id="section-5.6-1">If 0-RTT keys are available (see <a href="#enable-0rtt" class="auto internal xref">Section 4.6.1</a>), the lack of replay protection
+2823c2851
+< <p id="section-5.6-2">Of the frames defined in <span>[<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>, the STREAM, RESET_STREAM,
+---
+> <p id="section-5.6-2">Of the frames defined in <span>[<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>, the STREAM, RESET_STREAM,
+2834,2835c2862,2863
+< described in <span>[<a href="#HTTP-REPLAY" class="xref">HTTP-REPLAY</a>]</span> and used for HTTP/3; see
+< <span><a href="https://tools.ietf.org/html/draft-ietf-quic-http-34#section-10.9" class="relref">Section 10.9</a> of [<a href="#QUIC-HTTP" class="xref">QUIC-HTTP</a>]</span>.<a href="#section-5.6-3" class="pilcrow">¶</a></p>
+---
+> described in <span>[<a href="#HTTP-REPLAY" class="cite xref">HTTP-REPLAY</a>]</span> and used for HTTP/3; see
+> <span><a href="https://tools.ietf.org/html/draft-ietf-quic-http-34#section-10.9" class="relref">Section 10.9</a> of [<a href="#QUIC-HTTP" class="cite xref">QUIC-HTTP</a>]</span>.<a href="#section-5.6-3" class="pilcrow">¶</a></p>
+2844c2872
+< <span><a href="https://www.rfc-editor.org/rfc/rfc9000#section-12.5" class="relref">Section 12.5</a> of [<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-5.6-6" class="pilcrow">¶</a></p>
+---
+> <span><a href="https://rfc-editor.org/rfc/rfc9000#section-12.5" class="relref">Section 12.5</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-5.6-6" class="pilcrow">¶</a></p>
+2877c2905
+< pre-shared key and validated the client's pre-shared key binder; see <span><a href="https://www.rfc-editor.org/rfc/rfc8446#section-4.2.11" class="relref">Section 4.2.11</a> of [<a href="#TLS13" class="xref">TLS13</a>]</span>.<a href="#section-5.7-3.1" class="pilcrow">¶</a>
+---
+> pre-shared key and validated the client's pre-shared key binder; see <span><a href="https://rfc-editor.org/rfc/rfc8446#section-4.2.11" class="relref">Section 4.2.11</a> of [<a href="#TLS13" class="cite xref">TLS13</a>]</span>.<a href="#section-5.7-3.1" class="pilcrow">¶</a>
+2881c2909
+< <span><a href="https://www.rfc-editor.org/rfc/rfc9000#section-8.1" class="relref">Section 8.1</a> of [<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-5.7-3.2" class="pilcrow">¶</a>
+---
+> <span><a href="https://rfc-editor.org/rfc/rfc9000#section-8.1" class="relref">Section 8.1</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>.<a href="#section-5.7-3.2" class="pilcrow">¶</a>
+2918c2946
+< <p id="section-5.8-1">Retry packets (see <span><a href="https://www.rfc-editor.org/rfc/rfc9000#section-17.2.5" class="relref">Section 17.2.5</a> of [<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>) carry a Retry Integrity
+---
+> <p id="section-5.8-1">Retry packets (see <span><a href="https://rfc-editor.org/rfc/rfc9000#section-17.2.5" class="relref">Section 17.2.5</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>) carry a Retry Integrity
+2923c2951
+< AEAD_AES_128_GCM <span>[<a href="#AEAD" class="xref">AEAD</a>]</span> used with the following inputs:<a href="#section-5.8-2" class="pilcrow">¶</a></p>
+---
+> AEAD_AES_128_GCM <span>[<a href="#AEAD" class="cite xref">AEAD</a>]</span> used with the following inputs:<a href="#section-5.8-2" class="pilcrow">¶</a></p>
+2932c2960
+< illustrated in <a href="#retry-pseudo" class="xref">Figure 8</a>:<a href="#section-5.8-3.4" class="pilcrow">¶</a>
+---
+> illustrated in <a href="#retry-pseudo" class="auto internal xref">Figure 8</a>:<a href="#section-5.8-3.4" class="pilcrow">¶</a>
+2937c2965
+< secret, with labels being "quic key" and "quic iv" (<a href="#protection-keys" class="xref">Section 5.1</a>).<a href="#section-5.8-4" class="pilcrow">¶</a></p>
+---
+> secret, with labels being "quic key" and "quic iv" (<a href="#protection-keys" class="auto internal xref">Section 5.1</a>).<a href="#section-5.8-4" class="pilcrow">¶</a></p>
+2940c2968
+<           <div class="artwork art-text alignLeft" id="section-5.8-5.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-5.8-5.1">
+2992c3020
+< <p id="section-6-1">Once the handshake is confirmed (see <a href="#handshake-confirmed" class="xref">Section 4.1.2</a>), an endpoint <span class="bcp14">MAY</span>
+---
+> <p id="section-6-1">Once the handshake is confirmed (see <a href="#handshake-confirmed" class="auto internal xref">Section 4.1.2</a>), an endpoint <span class="bcp14">MAY</span>
+3007,3008c3035,3036
+< fatal TLS alert of unexpected_message; see <a href="#tls-errors" class="xref">Section 4.8</a>.<a href="#section-6-5" class="pilcrow">¶</a></p>
+< <p id="section-6-6"><a href="#ex-key-update" class="xref">Figure 9</a> shows a key update process, where the initial set of keys used
+---
+> fatal TLS alert of unexpected_message; see <a href="#tls-errors" class="auto internal xref">Section 4.8</a>.<a href="#section-6-5" class="pilcrow">¶</a></p>
+> <p id="section-6-6"><a href="#ex-key-update" class="auto internal xref">Figure 9</a> shows a key update process, where the initial set of keys used
+3013c3041
+<         <div class="artwork art-text alignLeft" id="section-6-7.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-6-7.1">
+3048c3076
+< from the existing write secret as performed in <span><a href="https://www.rfc-editor.org/rfc/rfc8446#section-7.2" class="relref">Section 7.2</a> of [<a href="#TLS13" class="xref">TLS13</a>]</span>.  This
+---
+> from the existing write secret as performed in <span><a href="https://rfc-editor.org/rfc/rfc8446#section-7.2" class="relref">Section 7.2</a> of [<a href="#TLS13" class="cite xref">TLS13</a>]</span>.  This
+3051c3079
+< <a href="#protection-keys" class="xref">Section 5.1</a>.  The header protection key is not updated.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+---
+> <a href="#protection-keys" class="auto internal xref">Section 5.1</a>.  The header protection key is not updated.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+3053,3054c3081,3082
+< <div id="section-6.1-3">
+< <pre class="sourcecode lang-pseudocode">
+---
+> <div class="lang-pseudocode sourcecode" id="section-6.1-3">
+> <pre>
+3062c3090
+< handshake (<a href="#handshake-confirmed" class="xref">Section 4.1.2</a>).  An endpoint <span class="bcp14">MUST NOT</span> initiate a subsequent
+---
+> handshake (<a href="#handshake-confirmed" class="auto internal xref">Section 4.1.2</a>).  An endpoint <span class="bcp14">MUST NOT</span> initiate a subsequent
+3092c3120
+< packet protection key and IV.  See <a href="#receive-key-generation" class="xref">Section 6.3</a> for considerations
+---
+> packet protection key and IV.  See <a href="#receive-key-generation" class="auto internal xref">Section 6.3</a> for considerations
+3096c3124
+< corresponding key phase in response, as described in <a href="#key-update-initiate" class="xref">Section 6.1</a>.
+---
+> corresponding key phase in response, as described in <a href="#key-update-initiate" class="auto internal xref">Section 6.1</a>.
+3125c3153
+< <a href="#hp-side-channel" class="xref">Section 9.5</a>).  Endpoints can use randomized packet protection keys in
+---
+> <a href="#hp-side-channel" class="auto internal xref">Section 9.5</a>).  Endpoints can use randomized packet protection keys in
+3139c3167
+< to retain only two sets of receive keys; see <a href="#old-keys-recv" class="xref">Section 6.5</a>.<a href="#section-6.3-3" class="pilcrow">¶</a></p>
+---
+> to retain only two sets of receive keys; see <a href="#old-keys-recv" class="auto internal xref">Section 6.5</a>.<a href="#section-6.3-3" class="pilcrow">¶</a></p>
+3184c3212
+< <a href="#hp-side-channel" class="xref">Section 9.5</a> for more information.<a href="#section-6.5-3" class="pilcrow">¶</a></p>
+---
+> <a href="#hp-side-channel" class="auto internal xref">Section 9.5</a> for more information.<a href="#section-6.5-3" class="pilcrow">¶</a></p>
+3190c3218
+< <span>[<a href="#QUIC-RECOVERY" class="xref">QUIC-RECOVERY</a>]</span>) after promoting the next set of receive keys to be current
+---
+> <span>[<a href="#QUIC-RECOVERY" class="cite xref">QUIC-RECOVERY</a>]</span>) after promoting the next set of receive keys to be current
+3238c3266
+< 2<sup>23</sup> encrypted packets; see <a href="#gcm-bounds" class="xref">Appendix B.1</a>. For
+---
+> 2<sup>23</sup> encrypted packets; see <a href="#gcm-bounds" class="auto internal xref">Appendix B.1</a>. For
+3242c3270
+< packets; see <a href="#ccm-bounds" class="xref">Appendix B.2</a>. Applying a limit reduces the probability that an
+---
+> packets; see <a href="#ccm-bounds" class="auto internal xref">Appendix B.2</a>. Applying a limit reduces the probability that an
+3244c3272
+< <span>[<a href="#AEBounds" class="xref">AEBounds</a>]</span>, <span>[<a href="#ROBUST" class="xref">ROBUST</a>]</span>, and <span>[<a href="#GCM-MU" class="xref">GCM-MU</a>]</span>.<a href="#section-6.6-5" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#AEBounds" class="cite xref">AEBounds</a>]</span>, <span>[<a href="#ROBUST" class="cite xref">ROBUST</a>]</span>, and <span>[<a href="#GCM-MU" class="cite xref">GCM-MU</a>]</span>.<a href="#section-6.6-5" class="pilcrow">¶</a></p>
+3252,3253c3280,3281
+< invalid packets; see <a href="#gcm-bounds" class="xref">Appendix B.1</a>. For AEAD_CHACHA20_POLY1305, the integrity
+< limit is 2<sup>36</sup> invalid packets; see <span>[<a href="#AEBounds" class="xref">AEBounds</a>]</span>. For AEAD_AES_128_CCM,
+---
+> invalid packets; see <a href="#gcm-bounds" class="auto internal xref">Appendix B.1</a>. For AEAD_CHACHA20_POLY1305, the integrity
+> limit is 2<sup>36</sup> invalid packets; see <span>[<a href="#AEBounds" class="cite xref">AEBounds</a>]</span>. For AEAD_AES_128_CCM,
+3255,3256c3283,3284
+< <a href="#ccm-bounds" class="xref">Appendix B.2</a>. Applying this limit reduces the probability that an attacker can
+< successfully forge a packet; see <span>[<a href="#AEBounds" class="xref">AEBounds</a>]</span>, <span>[<a href="#ROBUST" class="xref">ROBUST</a>]</span>, and <span>[<a href="#GCM-MU" class="xref">GCM-MU</a>]</span>.<a href="#section-6.6-7" class="pilcrow">¶</a></p>
+---
+> <a href="#ccm-bounds" class="auto internal xref">Appendix B.2</a>. Applying this limit reduces the probability that an attacker can
+> successfully forge a packet; see <span>[<a href="#AEBounds" class="cite xref">AEBounds</a>]</span>, <span>[<a href="#ROBUST" class="cite xref">ROBUST</a>]</span>, and <span>[<a href="#GCM-MU" class="cite xref">GCM-MU</a>]</span>.<a href="#section-6.6-7" class="pilcrow">¶</a></p>
+3258c3286
+< integrity limits; see <a href="#aead-analysis" class="xref">Appendix B</a> for details.<a href="#section-6.6-8" class="pilcrow">¶</a></p>
+---
+> integrity limits; see <a href="#aead-analysis" class="auto internal xref">Appendix B</a> for details.<a href="#section-6.6-8" class="pilcrow">¶</a></p>
+3319c3347
+< <span>[<a href="#ALPN" class="xref">ALPN</a>]</span> to select an application protocol.  Unless another mechanism
+---
+> <span>[<a href="#ALPN" class="cite xref">ALPN</a>]</span> to select an application protocol.  Unless another mechanism
+3322,3324c3350,3352
+< <p id="section-8.1-2">When using ALPN, endpoints <span class="bcp14">MUST</span> immediately close a connection (see <span><a href="https://www.rfc-editor.org/rfc/rfc9000#section-10.2" class="relref">Section 10.2</a> of [<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>) with a no_application_protocol TLS alert (QUIC error
+< code 0x0178; see <a href="#tls-errors" class="xref">Section 4.8</a>) if an application protocol is not negotiated.
+< While <span>[<a href="#ALPN" class="xref">ALPN</a>]</span> only specifies that servers use this alert, QUIC clients <span class="bcp14">MUST</span>
+---
+> <p id="section-8.1-2">When using ALPN, endpoints <span class="bcp14">MUST</span> immediately close a connection (see <span><a href="https://rfc-editor.org/rfc/rfc9000#section-10.2" class="relref">Section 10.2</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>) with a no_application_protocol TLS alert (QUIC error
+> code 0x0178; see <a href="#tls-errors" class="auto internal xref">Section 4.8</a>) if an application protocol is not negotiated.
+> While <span>[<a href="#ALPN" class="cite xref">ALPN</a>]</span> only specifies that servers use this alert, QUIC clients <span class="bcp14">MUST</span>
+3344,3345c3372,3373
+< <div id="section-8.2-3">
+< <pre class="sourcecode lang-tls-presentation">
+---
+> <div class="lang-tls-presentation sourcecode" id="section-8.2-3">
+> <pre>
+3358c3386
+< TLS missing_extension alert, see <a href="#tls-errors" class="xref">Section 4.8</a>).<a href="#section-8.2-5" class="pilcrow">¶</a></p>
+---
+> TLS missing_extension alert, see <a href="#tls-errors" class="auto internal xref">Section 4.8</a>).<a href="#section-8.2-5" class="pilcrow">¶</a></p>
+3365c3393
+< QUIC (such as the use of TLS with TCP defined in <span>[<a href="#TLS13" class="xref">TLS13</a>]</span>).  A fatal
+---
+> QUIC (such as the use of TLS with TCP defined in <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span>).  A fatal
+3369c3397
+< be removed; see <a href="#remove-eoed" class="xref">Section 8.3</a>.<a href="#section-8.2-8" class="pilcrow">¶</a></p>
+---
+> be removed; see <a href="#remove-eoed" class="auto internal xref">Section 8.3</a>.<a href="#section-8.2-8" class="pilcrow">¶</a></p>
+3391c3419
+< <p id="section-8.4-1">Appendix D.4 of <span>[<a href="#TLS13" class="xref">TLS13</a>]</span> describes an alteration to the TLS 1.3 handshake as
+---
+> <p id="section-8.4-1">Appendix D.4 of <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span> describes an alteration to the TLS 1.3 handshake as
+3411c3439
+< TLS in QUIC. Reading all of <span>[<a href="#TLS13" class="xref">TLS13</a>]</span> and its appendices is the best way to
+---
+> TLS in QUIC. Reading all of <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span> and its appendices is the best way to
+3422c3450
+< correlate connections made by the same client; see <a href="#resumption" class="xref">Section 4.5</a> for details.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
+---
+> correlate connections made by the same client; see <a href="#resumption" class="auto internal xref">Section 4.5</a> for details.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
+3430c3458
+< <p id="section-9.2-1">As described in <span><a href="https://www.rfc-editor.org/rfc/rfc8446#section-8" class="relref">Section 8</a> of [<a href="#TLS13" class="xref">TLS13</a>]</span>, use of TLS early data comes with an
+---
+> <p id="section-9.2-1">As described in <span><a href="https://rfc-editor.org/rfc/rfc8446#section-8" class="relref">Section 8</a> of [<a href="#TLS13" class="cite xref">TLS13</a>]</span>, use of TLS early data comes with an
+3433c3461
+< <p id="section-9.2-2">Endpoints <span class="bcp14">MUST</span> implement and use the replay protections described in <span>[<a href="#TLS13" class="xref">TLS13</a>]</span>,
+---
+> <p id="section-9.2-2">Endpoints <span class="bcp14">MUST</span> implement and use the replay protections described in <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span>,
+3438c3466
+< frame types defined in <span>[<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span> is not vulnerable to replay.
+---
+> frame types defined in <span>[<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span> is not vulnerable to replay.
+3477c3505
+< times as many bytes as the number of bytes it has received (see <span><a href="https://www.rfc-editor.org/rfc/rfc9000#section-8.1" class="relref">Section 8.1</a> of [<a href="#QUIC-TRANSPORT" class="xref">QUIC-TRANSPORT</a>]</span>). Finally, because acknowledgments of Handshake packets are
+---
+> times as many bytes as the number of bytes it has received (see <span><a href="https://rfc-editor.org/rfc/rfc9000#section-8.1" class="relref">Section 8.1</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>). Finally, because acknowledgments of Handshake packets are
+3487c3515
+< <p id="section-9.4-1"><span>[<a href="#NAN" class="xref">NAN</a>]</span> analyzes authenticated encryption
+---
+> <p id="section-9.4-1"><span>[<a href="#NAN" class="cite xref">NAN</a>]</span> analyzes authenticated encryption
+3493,3494c3521,3522
+< <div id="section-9.4-2">
+< <pre class="sourcecode lang-pseudocode">
+---
+> <div class="lang-pseudocode sourcecode" id="section-9.4-2">
+> <pre>
+3499c3527
+< (PRP) in place of a generic PRF. However, since all PRPs are also PRFs <span>[<a href="#IMC" class="xref">IMC</a>]</span>,
+---
+> (PRP) in place of a generic PRF. However, since all PRPs are also PRFs <span>[<a href="#IMC" class="cite xref">IMC</a>]</span>,
+3502c3530
+< protection achieves AE2 security as defined in <span>[<a href="#NAN" class="xref">NAN</a>]</span> and therefore guarantees
+---
+> protection achieves AE2 security as defined in <span>[<a href="#NAN" class="cite xref">NAN</a>]</span> and therefore guarantees
+3541c3569
+< in <a href="#receive-key-generation" class="xref">Section 6.3</a>.  By generating new keys before a key update is
+---
+> in <a href="#receive-key-generation" class="auto internal xref">Section 6.3</a>.  By generating new keys before a key update is
+3581c3609
+< TLS. See <span>[<a href="#RFC4086" class="xref">RFC4086</a>]</span> for guidance on secure random number generation.<a href="#section-9.7-1" class="pilcrow">¶</a></p>
+---
+> TLS. See <span>[<a href="#RFC4086" class="cite xref">RFC4086</a>]</span> for guidance on secure random number generation.<a href="#section-9.7-1" class="pilcrow">¶</a></p>
+3592,3593c3620,3621
+< quic_transport_parameters extension (defined in <a href="#quic_parameters" class="xref">Section 8.2</a>) in the "TLS
+< ExtensionType Values" registry <span>[<a href="#TLS-REGISTRIES" class="xref">TLS-REGISTRIES</a>]</span>.<a href="#section-10-1" class="pilcrow">¶</a></p>
+---
+> quic_transport_parameters extension (defined in <a href="#quic_parameters" class="auto internal xref">Section 8.2</a>) in the "TLS
+> ExtensionType Values" registry <span>[<a href="#TLS-REGISTRIES" class="cite xref">TLS-REGISTRIES</a>]</span>.<a href="#section-10-1" class="pilcrow">¶</a></p>
+3748c3776
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+3750c3778
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-sample-packet-protection" class="section-name selfRef">Sample Packet Protection</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-sample-packet-protection" class="section-name selfRef">Sample Packet Protection</a>
+3752c3780
+< <p id="section-appendix.a-1">This section shows examples of packet protection so that implementations can be
+---
+> <p id="appendix-A-1">This section shows examples of packet protection so that implementations can be
+3756c3784
+< included. All values are shown in hexadecimal.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+> included. All values are shown in hexadecimal.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+3758,3762c3786,3790
+< <section id="section-a.1">
+<         <h2 id="name-keys">
+< <a href="#section-a.1" class="section-number selfRef">A.1. </a><a href="#name-keys" class="section-name selfRef">Keys</a>
+<         </h2>
+< <p id="section-a.1-1">The labels generated during the execution of the HKDF-Expand-Label function
+---
+> <section id="appendix-A.1">
+>         <h3 id="name-keys">
+> <a href="#appendix-A.1" class="section-number selfRef">A.1. </a><a href="#name-keys" class="section-name selfRef">Keys</a>
+>         </h3>
+> <p id="appendix-A.1-1">The labels generated during the execution of the HKDF-Expand-Label function
+3764,3768c3792,3796
+< function in order to produce its output are:<a href="#section-a.1-1" class="pilcrow">¶</a></p>
+< <span class="break"></span><dl class="dlParallel" id="section-a.1-2">
+<           <dt id="section-a.1-2.1">client in:</dt>
+<           <dd style="margin-left: 1.5em" id="section-a.1-2.2">
+<             <p id="section-a.1-2.2.1">00200f746c73313320636c69656e7420696e00<a href="#section-a.1-2.2.1" class="pilcrow">¶</a></p>
+---
+> function in order to produce its output are:<a href="#appendix-A.1-1" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlParallel" id="appendix-A.1-2">
+>           <dt id="appendix-A.1-2.1">client in:</dt>
+>           <dd style="margin-left: 1.5em" id="appendix-A.1-2.2">
+>             <p id="appendix-A.1-2.2.1">00200f746c73313320636c69656e7420696e00<a href="#appendix-A.1-2.2.1" class="pilcrow">¶</a></p>
+3771,3773c3799,3801
+< <dt id="section-a.1-2.3">server in:</dt>
+<           <dd style="margin-left: 1.5em" id="section-a.1-2.4">
+<             <p id="section-a.1-2.4.1">00200f746c7331332073657276657220696e00<a href="#section-a.1-2.4.1" class="pilcrow">¶</a></p>
+---
+> <dt id="appendix-A.1-2.3">server in:</dt>
+>           <dd style="margin-left: 1.5em" id="appendix-A.1-2.4">
+>             <p id="appendix-A.1-2.4.1">00200f746c7331332073657276657220696e00<a href="#appendix-A.1-2.4.1" class="pilcrow">¶</a></p>
+3776,3778c3804,3806
+< <dt id="section-a.1-2.5">quic key:</dt>
+<           <dd style="margin-left: 1.5em" id="section-a.1-2.6">
+<             <p id="section-a.1-2.6.1">00100e746c7331332071756963206b657900<a href="#section-a.1-2.6.1" class="pilcrow">¶</a></p>
+---
+> <dt id="appendix-A.1-2.5">quic key:</dt>
+>           <dd style="margin-left: 1.5em" id="appendix-A.1-2.6">
+>             <p id="appendix-A.1-2.6.1">00100e746c7331332071756963206b657900<a href="#appendix-A.1-2.6.1" class="pilcrow">¶</a></p>
+3781,3783c3809,3811
+< <dt id="section-a.1-2.7">quic iv:</dt>
+<           <dd style="margin-left: 1.5em" id="section-a.1-2.8">
+<             <p id="section-a.1-2.8.1">000c0d746c733133207175696320697600<a href="#section-a.1-2.8.1" class="pilcrow">¶</a></p>
+---
+> <dt id="appendix-A.1-2.7">quic iv:</dt>
+>           <dd style="margin-left: 1.5em" id="appendix-A.1-2.8">
+>             <p id="appendix-A.1-2.8.1">000c0d746c733133207175696320697600<a href="#appendix-A.1-2.8.1" class="pilcrow">¶</a></p>
+3786,3788c3814,3816
+< <dt id="section-a.1-2.9">quic hp:</dt>
+<           <dd style="margin-left: 1.5em" id="section-a.1-2.10">
+<             <p id="section-a.1-2.10.1">00100d746c733133207175696320687000<a href="#section-a.1-2.10.1" class="pilcrow">¶</a></p>
+---
+> <dt id="appendix-A.1-2.9">quic hp:</dt>
+>           <dd style="margin-left: 1.5em" id="appendix-A.1-2.10">
+>             <p id="appendix-A.1-2.10.1">00100d746c733133207175696320687000<a href="#appendix-A.1-2.10.1" class="pilcrow">¶</a></p>
+3792,3793c3820,3821
+< <p id="section-a.1-3">The initial secret is common:<a href="#section-a.1-3" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-a.1-4">
+---
+> <p id="appendix-A.1-3">The initial secret is common:<a href="#appendix-A.1-3" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A.1-4">
+3798c3826
+< </pre><a href="#section-a.1-4" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.1-4" class="pilcrow">¶</a>
+3800,3801c3828,3829
+< <p id="section-a.1-5">The secrets for protecting client packets are:<a href="#section-a.1-5" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-a.1-6">
+---
+> <p id="appendix-A.1-5">The secrets for protecting client packets are:<a href="#appendix-A.1-5" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A.1-6">
+3816c3844
+< </pre><a href="#section-a.1-6" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.1-6" class="pilcrow">¶</a>
+3818,3819c3846,3847
+< <p id="section-a.1-7">The secrets for protecting server packets are:<a href="#section-a.1-7" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-a.1-8">
+---
+> <p id="appendix-A.1-7">The secrets for protecting server packets are:<a href="#appendix-A.1-7" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A.1-8">
+3834c3862
+< </pre><a href="#section-a.1-8" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.1-8" class="pilcrow">¶</a>
+3839,3843c3867,3871
+< <section id="section-a.2">
+<         <h2 id="name-client-initial">
+< <a href="#section-a.2" class="section-number selfRef">A.2. </a><a href="#name-client-initial" class="section-name selfRef">Client Initial</a>
+<         </h2>
+< <p id="section-a.2-1">The client sends an Initial packet.  The unprotected payload of this packet
+---
+> <section id="appendix-A.2">
+>         <h3 id="name-client-initial">
+> <a href="#appendix-A.2" class="section-number selfRef">A.2. </a><a href="#name-client-initial" class="section-name selfRef">Client Initial</a>
+>         </h3>
+> <p id="appendix-A.2-1">The client sends an Initial packet.  The unprotected payload of this packet
+3845,3846c3873,3874
+< 1162-byte payload:<a href="#section-a.2-1" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-a.2-2">
+---
+> 1162-byte payload:<a href="#appendix-A.2-1" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A.2-2">
+3856c3884
+< </pre><a href="#section-a.2-2" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.2-2" class="pilcrow">¶</a>
+3858c3886
+< <p id="section-a.2-3">The unprotected header indicates a length of 1182 bytes: the 4-byte packet
+---
+> <p id="appendix-A.2-3">The unprotected header indicates a length of 1182 bytes: the 4-byte packet
+3860,3861c3888,3889
+< includes the connection ID and a packet number of 2:<a href="#section-a.2-3" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-a.2-4">
+---
+> includes the connection ID and a packet number of 2:<a href="#appendix-A.2-3" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A.2-4">
+3864c3892
+< </pre><a href="#section-a.2-4" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.2-4" class="pilcrow">¶</a>
+3866c3894
+< <p id="section-a.2-5">Protecting the payload produces output that is sampled for header protection.
+---
+> <p id="appendix-A.2-5">Protecting the payload produces output that is sampled for header protection.
+3868,3869c3896,3897
+< the protected payload is sampled and then applied to the header as follows:<a href="#section-a.2-5" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-a.2-6">
+---
+> the protected payload is sampled and then applied to the header as follows:<a href="#appendix-A.2-5" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A.2-6">
+3881c3909
+< </pre><a href="#section-a.2-6" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.2-6" class="pilcrow">¶</a>
+3883,3884c3911,3912
+< <p id="section-a.2-7">The resulting protected packet is:<a href="#section-a.2-7" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-a.2-8">
+---
+> <p id="appendix-A.2-7">The resulting protected packet is:<a href="#appendix-A.2-7" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A.2-8">
+3924c3952
+< </pre><a href="#section-a.2-8" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.2-8" class="pilcrow">¶</a>
+3929,3935c3957,3963
+< <section id="section-a.3">
+<         <h2 id="name-server-initial">
+< <a href="#section-a.3" class="section-number selfRef">A.3. </a><a href="#name-server-initial" class="section-name selfRef">Server Initial</a>
+<         </h2>
+< <p id="section-a.3-1">The server sends the following payload in response, including an ACK frame, a
+< CRYPTO frame, and no PADDING frames:<a href="#section-a.3-1" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-a.3-2">
+---
+> <section id="appendix-A.3">
+>         <h3 id="name-server-initial">
+> <a href="#appendix-A.3" class="section-number selfRef">A.3. </a><a href="#name-server-initial" class="section-name selfRef">Server Initial</a>
+>         </h3>
+> <p id="appendix-A.3-1">The server sends the following payload in response, including an ACK frame, a
+> CRYPTO frame, and no PADDING frames:<a href="#appendix-A.3-1" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A.3-2">
+3941c3969
+< </pre><a href="#section-a.3-2" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.3-2" class="pilcrow">¶</a>
+3943,3945c3971,3973
+< <p id="section-a.3-3">The header from the server includes a new connection ID and a 2-byte packet
+< number encoding for a packet number of 1:<a href="#section-a.3-3" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-a.3-4">
+---
+> <p id="appendix-A.3-3">The header from the server includes a new connection ID and a 2-byte packet
+> number encoding for a packet number of 1:<a href="#appendix-A.3-3" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A.3-4">
+3948c3976
+< </pre><a href="#section-a.3-4" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.3-4" class="pilcrow">¶</a>
+3950,3952c3978,3980
+< <p id="section-a.3-5">As a result, after protection, the header protection sample is taken starting
+< from the third protected byte:<a href="#section-a.3-5" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-a.3-6">
+---
+> <p id="appendix-A.3-5">As a result, after protection, the header protection sample is taken starting
+> from the third protected byte:<a href="#appendix-A.3-5" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A.3-6">
+3957c3985
+< </pre><a href="#section-a.3-6" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.3-6" class="pilcrow">¶</a>
+3959,3960c3987,3988
+< <p id="section-a.3-7">The final protected packet is then:<a href="#section-a.3-7" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-a.3-8">
+---
+> <p id="appendix-A.3-7">The final protected packet is then:<a href="#appendix-A.3-7" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A.3-8">
+3967c3995
+< </pre><a href="#section-a.3-8" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.3-8" class="pilcrow">¶</a>
+3972,3977c4000,4005
+< <section id="section-a.4">
+<         <h2 id="name-retry">
+< <a href="#section-a.4" class="section-number selfRef">A.4. </a><a href="#name-retry" class="section-name selfRef">Retry</a>
+<         </h2>
+< <p id="section-a.4-1">This shows a Retry packet that might be sent in response to the Initial packet
+< in <a href="#sample-client-initial" class="xref">Appendix A.2</a>. The integrity check includes the client-chosen
+---
+> <section id="appendix-A.4">
+>         <h3 id="name-retry">
+> <a href="#appendix-A.4" class="section-number selfRef">A.4. </a><a href="#name-retry" class="section-name selfRef">Retry</a>
+>         </h3>
+> <p id="appendix-A.4-1">This shows a Retry packet that might be sent in response to the Initial packet
+> in <a href="#sample-client-initial" class="auto internal xref">Appendix A.2</a>. The integrity check includes the client-chosen
+3979,3980c4007,4008
+< included in the final Retry packet:<a href="#section-a.4-1" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-a.4-2">
+---
+> included in the final Retry packet:<a href="#appendix-A.4-1" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A.4-2">
+3984c4012
+< </pre><a href="#section-a.4-2" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.4-2" class="pilcrow">¶</a>
+3989,3995c4017,4023
+< <section id="section-a.5">
+<         <h2 id="name-chacha20-poly1305-short-hea">
+< <a href="#section-a.5" class="section-number selfRef">A.5. </a><a href="#name-chacha20-poly1305-short-hea" class="section-name selfRef">ChaCha20-Poly1305 Short Header Packet</a>
+<         </h2>
+< <p id="section-a.5-1">This example shows some of the steps required to protect a packet with
+< a short header.  This example uses AEAD_CHACHA20_POLY1305.<a href="#section-a.5-1" class="pilcrow">¶</a></p>
+< <p id="section-a.5-2">In this example, TLS produces an application write secret from which a server
+---
+> <section id="appendix-A.5">
+>         <h3 id="name-chacha20-poly1305-short-hea">
+> <a href="#appendix-A.5" class="section-number selfRef">A.5. </a><a href="#name-chacha20-poly1305-short-hea" class="section-name selfRef">ChaCha20-Poly1305 Short Header Packet</a>
+>         </h3>
+> <p id="appendix-A.5-1">This example shows some of the steps required to protect a packet with
+> a short header.  This example uses AEAD_CHACHA20_POLY1305.<a href="#appendix-A.5-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A.5-2">In this example, TLS produces an application write secret from which a server
+3998,3999c4026,4027
+< last value is not used further in this example).<a href="#section-a.5-2" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-a.5-3">
+---
+> last value is not used further in this example).<a href="#appendix-A.5-2" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A.5-3">
+4019c4047
+< </pre><a href="#section-a.5-3" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.5-3" class="pilcrow">¶</a>
+4021c4049
+< <p id="section-a.5-4">The following shows the steps involved in protecting a minimal packet with an
+---
+> <p id="appendix-A.5-4">The following shows the steps involved in protecting a minimal packet with an
+4026,4027c4054,4055
+< packet number is encoded on fewer bytes.<a href="#section-a.5-4" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-a.5-5">
+---
+> packet number is encoded on fewer bytes.<a href="#appendix-A.5-4" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A.5-5">
+4034c4062
+< </pre><a href="#section-a.5-5" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.5-5" class="pilcrow">¶</a>
+4036,4038c4064,4066
+< <p id="section-a.5-6">The resulting ciphertext is the minimum size possible. One byte is skipped to
+< produce the sample for header protection.<a href="#section-a.5-6" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-a.5-7">
+---
+> <p id="appendix-A.5-6">The resulting ciphertext is the minimum size possible. One byte is skipped to
+> produce the sample for header protection.<a href="#appendix-A.5-6" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A.5-7">
+4043c4071
+< </pre><a href="#section-a.5-7" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.5-7" class="pilcrow">¶</a>
+4045,4046c4073,4074
+< <p id="section-a.5-8">The protected packet is the smallest possible packet size of 21 bytes.<a href="#section-a.5-8" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-a.5-9">
+---
+> <p id="appendix-A.5-8">The protected packet is the smallest possible packet size of 21 bytes.<a href="#appendix-A.5-8" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A.5-9">
+4049c4077
+< </pre><a href="#section-a.5-9" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.5-9" class="pilcrow">¶</a>
+4056c4084
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+4058c4086
+< <a href="#section-appendix.b" class="section-number selfRef">Appendix B. </a><a href="#name-aead-algorithm-analysis" class="section-name selfRef">AEAD Algorithm Analysis</a>
+---
+> <a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-aead-algorithm-analysis" class="section-name selfRef">AEAD Algorithm Analysis</a>
+4060c4088
+< <p id="section-appendix.b-1">This section documents analyses used in deriving AEAD algorithm limits for
+---
+> <p id="appendix-B-1">This section documents analyses used in deriving AEAD algorithm limits for
+4064,4068c4092,4096
+< used:<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+< <span class="break"></span><dl class="dlParallel" id="section-appendix.b-2">
+<         <dt id="section-appendix.b-2.1">t:</dt>
+<         <dd style="margin-left: 1.5em" id="section-appendix.b-2.2">
+<           <p id="section-appendix.b-2.2.1">The size of the authentication tag in bits. For these ciphers, t is 128.<a href="#section-appendix.b-2.2.1" class="pilcrow">¶</a></p>
+---
+> used:<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlParallel" id="appendix-B-2">
+>         <dt id="appendix-B-2.1">t:</dt>
+>         <dd style="margin-left: 1.5em" id="appendix-B-2.2">
+>           <p id="appendix-B-2.2.1">The size of the authentication tag in bits. For these ciphers, t is 128.<a href="#appendix-B-2.2.1" class="pilcrow">¶</a></p>
+4071,4073c4099,4101
+< <dt id="section-appendix.b-2.3">n:</dt>
+<         <dd style="margin-left: 1.5em" id="section-appendix.b-2.4">
+<           <p id="section-appendix.b-2.4.1">The size of the block function in bits. For these ciphers, n is 128.<a href="#section-appendix.b-2.4.1" class="pilcrow">¶</a></p>
+---
+> <dt id="appendix-B-2.3">n:</dt>
+>         <dd style="margin-left: 1.5em" id="appendix-B-2.4">
+>           <p id="appendix-B-2.4.1">The size of the block function in bits. For these ciphers, n is 128.<a href="#appendix-B-2.4.1" class="pilcrow">¶</a></p>
+4076,4079c4104,4107
+< <dt id="section-appendix.b-2.5">k:</dt>
+<         <dd style="margin-left: 1.5em" id="section-appendix.b-2.6">
+<           <p id="section-appendix.b-2.6.1">The size of the key in bits. This is 128 for AEAD_AES_128_GCM and
+< AEAD_AES_128_CCM; 256 for AEAD_AES_256_GCM.<a href="#section-appendix.b-2.6.1" class="pilcrow">¶</a></p>
+---
+> <dt id="appendix-B-2.5">k:</dt>
+>         <dd style="margin-left: 1.5em" id="appendix-B-2.6">
+>           <p id="appendix-B-2.6.1">The size of the key in bits. This is 128 for AEAD_AES_128_GCM and
+> AEAD_AES_128_CCM; 256 for AEAD_AES_256_GCM.<a href="#appendix-B-2.6.1" class="pilcrow">¶</a></p>
+4082,4084c4110,4112
+< <dt id="section-appendix.b-2.7">l:</dt>
+<         <dd style="margin-left: 1.5em" id="section-appendix.b-2.8">
+<           <p id="section-appendix.b-2.8.1">The number of blocks in each packet (see below).<a href="#section-appendix.b-2.8.1" class="pilcrow">¶</a></p>
+---
+> <dt id="appendix-B-2.7">l:</dt>
+>         <dd style="margin-left: 1.5em" id="appendix-B-2.8">
+>           <p id="appendix-B-2.8.1">The number of blocks in each packet (see below).<a href="#appendix-B-2.8.1" class="pilcrow">¶</a></p>
+4087,4089c4115,4117
+< <dt id="section-appendix.b-2.9">q:</dt>
+<         <dd style="margin-left: 1.5em" id="section-appendix.b-2.10">
+<           <p id="section-appendix.b-2.10.1">The number of genuine packets created and protected by endpoints. This value
+---
+> <dt id="appendix-B-2.9">q:</dt>
+>         <dd style="margin-left: 1.5em" id="appendix-B-2.10">
+>           <p id="appendix-B-2.10.1">The number of genuine packets created and protected by endpoints. This value
+4091c4119
+< keys.<a href="#section-appendix.b-2.10.1" class="pilcrow">¶</a></p>
+---
+> keys.<a href="#appendix-B-2.10.1" class="pilcrow">¶</a></p>
+4094,4096c4122,4124
+< <dt id="section-appendix.b-2.11">v:</dt>
+<         <dd style="margin-left: 1.5em" id="section-appendix.b-2.12">
+<           <p id="section-appendix.b-2.12.1">The number of forged packets that endpoints will accept. This value is the
+---
+> <dt id="appendix-B-2.11">v:</dt>
+>         <dd style="margin-left: 1.5em" id="appendix-B-2.12">
+>           <p id="appendix-B-2.12.1">The number of forged packets that endpoints will accept. This value is the
+4098c4126
+< updating keys.<a href="#section-appendix.b-2.12.1" class="pilcrow">¶</a></p>
+---
+> updating keys.<a href="#appendix-B-2.12.1" class="pilcrow">¶</a></p>
+4101,4103c4129,4131
+< <dt id="section-appendix.b-2.13">o:</dt>
+<         <dd style="margin-left: 1.5em" id="section-appendix.b-2.14">
+<           <p id="section-appendix.b-2.14.1">The amount of offline ideal cipher queries made by an adversary.<a href="#section-appendix.b-2.14.1" class="pilcrow">¶</a></p>
+---
+> <dt id="appendix-B-2.13">o:</dt>
+>         <dd style="margin-left: 1.5em" id="appendix-B-2.14">
+>           <p id="appendix-B-2.14.1">The amount of offline ideal cipher queries made by an adversary.<a href="#appendix-B-2.14.1" class="pilcrow">¶</a></p>
+4107c4135
+< <p id="section-appendix.b-3">The analyses that follow rely on a count of the number of block operations
+---
+> <p id="appendix-B-3">The analyses that follow rely on a count of the number of block operations
+4114,4117c4142,4145
+< smaller packet size.<a href="#section-appendix.b-3" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-4">For AEAD_AES_128_GCM and AEAD_AES_256_GCM, the message length (l) is the length
+< of the associated data in blocks plus the length of the plaintext in blocks.<a href="#section-appendix.b-4" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-5">For AEAD_AES_128_CCM, the total number of block cipher operations is the sum of
+---
+> smaller packet size.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
+> <p id="appendix-B-4">For AEAD_AES_128_GCM and AEAD_AES_256_GCM, the message length (l) is the length
+> of the associated data in blocks plus the length of the plaintext in blocks.<a href="#appendix-B-4" class="pilcrow">¶</a></p>
+> <p id="appendix-B-5">For AEAD_AES_128_CCM, the total number of block cipher operations is the sum of
+4125c4153
+< operations per packet.<a href="#section-appendix.b-5" class="pilcrow">¶</a></p>
+---
+> operations per packet.<a href="#appendix-B-5" class="pilcrow">¶</a></p>
+4127,4131c4155,4159
+< <section id="section-b.1">
+<         <h2 id="name-analysis-of-aead_aes_128_gc">
+< <a href="#section-b.1" class="section-number selfRef">B.1. </a><a href="#name-analysis-of-aead_aes_128_gc" class="section-name selfRef">Analysis of AEAD_AES_128_GCM and AEAD_AES_256_GCM Usage Limits</a>
+<         </h2>
+< <p id="section-b.1-1"><span>[<a href="#GCM-MU" class="xref">GCM-MU</a>]</span> specifies concrete bounds for AEAD_AES_128_GCM and AEAD_AES_256_GCM
+---
+> <section id="appendix-B.1">
+>         <h3 id="name-analysis-of-aead_aes_128_gc">
+> <a href="#appendix-B.1" class="section-number selfRef">B.1. </a><a href="#name-analysis-of-aead_aes_128_gc" class="section-name selfRef">Analysis of AEAD_AES_128_GCM and AEAD_AES_256_GCM Usage Limits</a>
+>         </h3>
+> <p id="appendix-B.1-1"><span>[<a href="#GCM-MU" class="cite xref">GCM-MU</a>]</span> specifies concrete bounds for AEAD_AES_128_GCM and AEAD_AES_256_GCM
+4133c4161
+< simplifying assumptions:<a href="#section-b.1-1" class="pilcrow">¶</a></p>
+---
+> simplifying assumptions:<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
+4135c4163
+< <li class="normal" id="section-b.1-2.1">The number of ciphertext blocks an attacker uses in forgery attempts is
+---
+> <li class="normal" id="appendix-B.1-2.1">The number of ciphertext blocks an attacker uses in forgery attempts is
+4137c4165
+< size of each packet (in blocks).<a href="#section-b.1-2.1" class="pilcrow">¶</a>
+---
+> size of each packet (in blocks).<a href="#appendix-B.1-2.1" class="pilcrow">¶</a>
+4139,4140c4167,4168
+<           <li class="normal" id="section-b.1-2.2">The amount of offline work done by an attacker does not dominate other factors
+< in the analysis.<a href="#section-b.1-2.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="appendix-B.1-2.2">The amount of offline work done by an attacker does not dominate other factors
+> in the analysis.<a href="#appendix-B.1-2.2" class="pilcrow">¶</a>
+4143,4145c4171,4173
+< <p id="section-b.1-3">The bounds in <span>[<a href="#GCM-MU" class="xref">GCM-MU</a>]</span> are tighter and more complete than those used in
+< <span>[<a href="#AEBounds" class="xref">AEBounds</a>]</span>, which allows for larger limits than those described in
+< <span>[<a href="#TLS13" class="xref">TLS13</a>]</span>.<a href="#section-b.1-3" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-B.1-3">The bounds in <span>[<a href="#GCM-MU" class="cite xref">GCM-MU</a>]</span> are tighter and more complete than those used in
+> <span>[<a href="#AEBounds" class="cite xref">AEBounds</a>]</span>, which allows for larger limits than those described in
+> <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span>.<a href="#appendix-B.1-3" class="pilcrow">¶</a></p>
+4147,4151c4175,4179
+< <section id="section-b.1.1">
+<           <h3 id="name-confidentiality-limit">
+< <a href="#section-b.1.1" class="section-number selfRef">B.1.1. </a><a href="#name-confidentiality-limit" class="section-name selfRef">Confidentiality Limit</a>
+<           </h3>
+< <p id="section-b.1.1-1">For confidentiality, Theorem (4.3) in <span>[<a href="#GCM-MU" class="xref">GCM-MU</a>]</span> establishes that, for a single
+---
+> <section id="appendix-B.1.1">
+>           <h4 id="name-confidentiality-limit">
+> <a href="#appendix-B.1.1" class="section-number selfRef">B.1.1. </a><a href="#name-confidentiality-limit" class="section-name selfRef">Confidentiality Limit</a>
+>           </h4>
+> <p id="appendix-B.1.1-1">For confidentiality, Theorem (4.3) in <span>[<a href="#GCM-MU" class="cite xref">GCM-MU</a>]</span> establishes that, for a single
+4154,4155c4182,4183
+< attacker is:<a href="#section-b.1.1-1" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-b.1.1-2">
+---
+> attacker is:<a href="#appendix-B.1.1-1" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-B.1.1-2">
+4158c4186
+< </pre><a href="#section-b.1.1-2" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-B.1.1-2" class="pilcrow">¶</a>
+4160,4161c4188,4189
+< <p id="section-b.1.1-3">For a target advantage of 2<sup>-57</sup>, this results in the relation:<a href="#section-b.1.1-3" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-b.1.1-4">
+---
+> <p id="appendix-B.1.1-3">For a target advantage of 2<sup>-57</sup>, this results in the relation:<a href="#appendix-B.1.1-3" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-B.1.1-4">
+4164c4192
+< </pre><a href="#section-b.1.1-4" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-B.1.1-4" class="pilcrow">¶</a>
+4166c4194
+< <p id="section-b.1.1-5">Thus, endpoints that do not send packets larger than 2<sup>11</sup> bytes cannot
+---
+> <p id="appendix-B.1.1-5">Thus, endpoints that do not send packets larger than 2<sup>11</sup> bytes cannot
+4170c4198
+< large as 2<sup>16</sup> is instead 2<sup>23</sup>.<a href="#section-b.1.1-5" class="pilcrow">¶</a></p>
+---
+> large as 2<sup>16</sup> is instead 2<sup>23</sup>.<a href="#appendix-B.1.1-5" class="pilcrow">¶</a></p>
+4174,4180c4202,4208
+< <section id="section-b.1.2">
+<           <h3 id="name-integrity-limit">
+< <a href="#section-b.1.2" class="section-number selfRef">B.1.2. </a><a href="#name-integrity-limit" class="section-name selfRef">Integrity Limit</a>
+<           </h3>
+< <p id="section-b.1.2-1">For integrity, Theorem (4.3) in <span>[<a href="#GCM-MU" class="xref">GCM-MU</a>]</span> establishes that an attacker gains
+< an advantage in successfully forging a packet of no more than the following:<a href="#section-b.1.2-1" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-b.1.2-2">
+---
+> <section id="appendix-B.1.2">
+>           <h4 id="name-integrity-limit">
+> <a href="#appendix-B.1.2" class="section-number selfRef">B.1.2. </a><a href="#name-integrity-limit" class="section-name selfRef">Integrity Limit</a>
+>           </h4>
+> <p id="appendix-B.1.2-1">For integrity, Theorem (4.3) in <span>[<a href="#GCM-MU" class="cite xref">GCM-MU</a>]</span> establishes that an attacker gains
+> an advantage in successfully forging a packet of no more than the following:<a href="#appendix-B.1.2-1" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-B.1.2-2">
+4184c4212
+< </pre><a href="#section-b.1.2-2" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-B.1.2-2" class="pilcrow">¶</a>
+4186c4214
+< <p id="section-b.1.2-3">The goal is to limit this advantage to 2<sup>-57</sup>.  For AEAD_AES_128_GCM,
+---
+> <p id="appendix-B.1.2-3">The goal is to limit this advantage to 2<sup>-57</sup>.  For AEAD_AES_128_GCM,
+4189,4190c4217,4218
+< approximation:<a href="#section-b.1.2-3" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-b.1.2-4">
+---
+> approximation:<a href="#appendix-B.1.2-3" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-B.1.2-4">
+4193c4221
+< </pre><a href="#section-b.1.2-4" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-B.1.2-4" class="pilcrow">¶</a>
+4195c4223
+< <p id="section-b.1.2-5">Endpoints that do not attempt to remove protection from packets larger than
+---
+> <p id="appendix-B.1.2-5">Endpoints that do not attempt to remove protection from packets larger than
+4198,4201c4226,4229
+< packets can attempt to remove protection from at most 2<sup>52</sup> packets.<a href="#section-b.1.2-5" class="pilcrow">¶</a></p>
+< <p id="section-b.1.2-6">For AEAD_AES_256_GCM, the same term dominates, but the larger value of k
+< produces the following approximation:<a href="#section-b.1.2-6" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-b.1.2-7">
+---
+> packets can attempt to remove protection from at most 2<sup>52</sup> packets.<a href="#appendix-B.1.2-5" class="pilcrow">¶</a></p>
+> <p id="appendix-B.1.2-6">For AEAD_AES_256_GCM, the same term dominates, but the larger value of k
+> produces the following approximation:<a href="#appendix-B.1.2-6" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-B.1.2-7">
+4204c4232
+< </pre><a href="#section-b.1.2-7" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-B.1.2-7" class="pilcrow">¶</a>
+4206c4234
+< <p id="section-b.1.2-8">This is substantially larger than the limit for AEAD_AES_128_GCM.  However, this
+---
+> <p id="appendix-B.1.2-8">This is substantially larger than the limit for AEAD_AES_128_GCM.  However, this
+4208c4236
+< limit is acceptably large.<a href="#section-b.1.2-8" class="pilcrow">¶</a></p>
+---
+> limit is acceptably large.<a href="#appendix-B.1.2-8" class="pilcrow">¶</a></p>
+4214,4218c4242,4246
+< <section id="section-b.2">
+<         <h2 id="name-analysis-of-aead_aes_128_cc">
+< <a href="#section-b.2" class="section-number selfRef">B.2. </a><a href="#name-analysis-of-aead_aes_128_cc" class="section-name selfRef">Analysis of AEAD_AES_128_CCM Usage Limits</a>
+<         </h2>
+< <p id="section-b.2-1">TLS <span>[<a href="#TLS13" class="xref">TLS13</a>]</span> and <span>[<a href="#AEBounds" class="xref">AEBounds</a>]</span> do not specify limits on usage
+---
+> <section id="appendix-B.2">
+>         <h3 id="name-analysis-of-aead_aes_128_cc">
+> <a href="#appendix-B.2" class="section-number selfRef">B.2. </a><a href="#name-analysis-of-aead_aes_128_cc" class="section-name selfRef">Analysis of AEAD_AES_128_CCM Usage Limits</a>
+>         </h3>
+> <p id="appendix-B.2-1">TLS <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span> and <span>[<a href="#AEBounds" class="cite xref">AEBounds</a>]</span> do not specify limits on usage
+4221,4222c4249,4250
+< section documents that analysis.<a href="#section-b.2-1" class="pilcrow">¶</a></p>
+< <p id="section-b.2-2"><span>[<a href="#CCM-ANALYSIS" class="xref">CCM-ANALYSIS</a>]</span> is used as the basis of this
+---
+> section documents that analysis.<a href="#appendix-B.2-1" class="pilcrow">¶</a></p>
+> <p id="appendix-B.2-2"><span>[<a href="#CCM-ANALYSIS" class="cite xref">CCM-ANALYSIS</a>]</span> is used as the basis of this
+4224,4225c4252,4253
+< based on those chosen in <span>[<a href="#TLS13" class="xref">TLS13</a>]</span>.<a href="#section-b.2-2" class="pilcrow">¶</a></p>
+< <p id="section-b.2-3">For confidentiality, Theorem 2 in <span>[<a href="#CCM-ANALYSIS" class="xref">CCM-ANALYSIS</a>]</span> establishes that an attacker
+---
+> based on those chosen in <span>[<a href="#TLS13" class="cite xref">TLS13</a>]</span>.<a href="#appendix-B.2-2" class="pilcrow">¶</a></p>
+> <p id="appendix-B.2-3">For confidentiality, Theorem 2 in <span>[<a href="#CCM-ANALYSIS" class="cite xref">CCM-ANALYSIS</a>]</span> establishes that an attacker
+4227,4228c4255,4256
+< no more than the following:<a href="#section-b.2-3" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-b.2-4">
+---
+> no more than the following:<a href="#appendix-B.2-3" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-B.2-4">
+4231c4259
+< </pre><a href="#section-b.2-4" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-B.2-4" class="pilcrow">¶</a>
+4233c4261
+< <p id="section-b.2-5">The integrity limit in Theorem 1 in <span>[<a href="#CCM-ANALYSIS" class="xref">CCM-ANALYSIS</a>]</span> provides an attacker a
+---
+> <p id="appendix-B.2-5">The integrity limit in Theorem 1 in <span>[<a href="#CCM-ANALYSIS" class="cite xref">CCM-ANALYSIS</a>]</span> provides an attacker a
+4236,4239c4264,4267
+< Theorem 1 needs to be considered.<a href="#section-b.2-5" class="pilcrow">¶</a></p>
+< <p id="section-b.2-6">Theorem 1 establishes that an attacker gains an advantage over an
+< ideal PRP of no more than the following:<a href="#section-b.2-6" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-b.2-7">
+---
+> Theorem 1 needs to be considered.<a href="#appendix-B.2-5" class="pilcrow">¶</a></p>
+> <p id="appendix-B.2-6">Theorem 1 establishes that an attacker gains an advantage over an
+> ideal PRP of no more than the following:<a href="#appendix-B.2-6" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-B.2-7">
+4242c4270
+< </pre><a href="#section-b.2-7" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-B.2-7" class="pilcrow">¶</a>
+4244,4246c4272,4274
+< <p id="section-b.2-8">As <code>t</code> and <code>n</code> are both 128, the first term is negligible relative to the
+< second, so that term can be removed without a significant effect on the result.<a href="#section-b.2-8" class="pilcrow">¶</a></p>
+< <p id="section-b.2-9">This produces a relation that combines both encryption and decryption attempts
+---
+> <p id="appendix-B.2-8">As <code>t</code> and <code>n</code> are both 128, the first term is negligible relative to the
+> second, so that term can be removed without a significant effect on the result.<a href="#appendix-B.2-8" class="pilcrow">¶</a></p>
+> <p id="appendix-B.2-9">This produces a relation that combines both encryption and decryption attempts
+4248,4249c4276,4277
+< For a target advantage of 2<sup>-57</sup>, this results in the following:<a href="#section-b.2-9" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-b.2-10">
+---
+> For a target advantage of 2<sup>-57</sup>, this results in the following:<a href="#appendix-B.2-9" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-B.2-10">
+4252c4280
+< </pre><a href="#section-b.2-10" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-B.2-10" class="pilcrow">¶</a>
+4254c4282
+< <p id="section-b.2-11">By setting <code>q = v</code>, values for both confidentiality and integrity limits can be
+---
+> <p id="appendix-B.2-11">By setting <code>q = v</code>, values for both confidentiality and integrity limits can be
+4257c4285
+< that do not restrict packet size have a limit of 2<sup>21.5</sup>.<a href="#section-b.2-11" class="pilcrow">¶</a></p>
+---
+> that do not restrict packet size have a limit of 2<sup>21.5</sup>.<a href="#appendix-B.2-11" class="pilcrow">¶</a></p>
+4263c4291
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
+4267c4295
+< <p id="section-appendix.c-1">The IETF QUIC Working Group received an enormous amount of support from many
+---
+> <p id="appendix-C-1">The IETF QUIC Working Group received an enormous amount of support from many
+4269c4297
+< document:<a href="#section-appendix.c-1" class="pilcrow">¶</a></p>
+---
+> document:<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+4271,4272c4299,4300
+< <li class="compact" id="section-appendix.c-2.1">
+<           <p id="section-appendix.c-2.1.1"><span class="contact-name">Adam Langley</span><a href="#section-appendix.c-2.1.1" class="pilcrow">¶</a></p>
+---
+> <li class="compact" id="appendix-C-2.1">
+>           <p id="appendix-C-2.1.1"><span class="contact-name">Adam Langley</span><a href="#appendix-C-2.1.1" class="pilcrow">¶</a></p>
+4274,4275c4302,4303
+<         <li class="compact" id="section-appendix.c-2.2">
+<           <p id="section-appendix.c-2.2.1"><span class="contact-name">Alessandro Ghedini</span><a href="#section-appendix.c-2.2.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.2">
+>           <p id="appendix-C-2.2.1"><span class="contact-name">Alessandro Ghedini</span><a href="#appendix-C-2.2.1" class="pilcrow">¶</a></p>
+4277,4278c4305,4306
+<         <li class="compact" id="section-appendix.c-2.3">
+<           <p id="section-appendix.c-2.3.1"><span class="contact-name">Christian Huitema</span><a href="#section-appendix.c-2.3.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.3">
+>           <p id="appendix-C-2.3.1"><span class="contact-name">Christian Huitema</span><a href="#appendix-C-2.3.1" class="pilcrow">¶</a></p>
+4280,4281c4308,4309
+<         <li class="compact" id="section-appendix.c-2.4">
+<           <p id="section-appendix.c-2.4.1"><span class="contact-name">Christopher Wood</span><a href="#section-appendix.c-2.4.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.4">
+>           <p id="appendix-C-2.4.1"><span class="contact-name">Christopher Wood</span><a href="#appendix-C-2.4.1" class="pilcrow">¶</a></p>
+4283,4284c4311,4312
+<         <li class="compact" id="section-appendix.c-2.5">
+<           <p id="section-appendix.c-2.5.1"><span class="contact-name">David Schinazi</span><a href="#section-appendix.c-2.5.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.5">
+>           <p id="appendix-C-2.5.1"><span class="contact-name">David Schinazi</span><a href="#appendix-C-2.5.1" class="pilcrow">¶</a></p>
+4286,4287c4314,4315
+<         <li class="compact" id="section-appendix.c-2.6">
+<           <p id="section-appendix.c-2.6.1"><span class="contact-name">Dragana Damjanovic</span><a href="#section-appendix.c-2.6.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.6">
+>           <p id="appendix-C-2.6.1"><span class="contact-name">Dragana Damjanovic</span><a href="#appendix-C-2.6.1" class="pilcrow">¶</a></p>
+4289,4290c4317,4318
+<         <li class="compact" id="section-appendix.c-2.7">
+<           <p id="section-appendix.c-2.7.1"><span class="contact-name">Eric Rescorla</span><a href="#section-appendix.c-2.7.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.7">
+>           <p id="appendix-C-2.7.1"><span class="contact-name">Eric Rescorla</span><a href="#appendix-C-2.7.1" class="pilcrow">¶</a></p>
+4292,4293c4320,4321
+<         <li class="compact" id="section-appendix.c-2.8">
+<           <p id="section-appendix.c-2.8.1"><span class="contact-name">Felix Günther</span><a href="#section-appendix.c-2.8.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.8">
+>           <p id="appendix-C-2.8.1"><span class="contact-name">Felix Günther</span><a href="#appendix-C-2.8.1" class="pilcrow">¶</a></p>
+4295,4296c4323,4324
+<         <li class="compact" id="section-appendix.c-2.9">
+<           <p id="section-appendix.c-2.9.1"><span class="contact-name">Ian Swett</span><a href="#section-appendix.c-2.9.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.9">
+>           <p id="appendix-C-2.9.1"><span class="contact-name">Ian Swett</span><a href="#appendix-C-2.9.1" class="pilcrow">¶</a></p>
+4298,4299c4326,4327
+<         <li class="compact" id="section-appendix.c-2.10">
+<           <p id="section-appendix.c-2.10.1"><span class="contact-name">Jana Iyengar</span><a href="#section-appendix.c-2.10.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.10">
+>           <p id="appendix-C-2.10.1"><span class="contact-name">Jana Iyengar</span><a href="#appendix-C-2.10.1" class="pilcrow">¶</a></p>
+4301,4302c4329,4330
+<         <li class="compact" id="section-appendix.c-2.11">
+<           <p id="section-appendix.c-2.11.1"><span class="contact-name"><span class="non-ascii">奥 一穂</span> (<span class="ascii">Kazuho Oku</span>)</span><a href="#section-appendix.c-2.11.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.11">
+>           <p id="appendix-C-2.11.1"><span class="contact-name"><span class="non-ascii">奥 一穂</span> (<span class="ascii">Kazuho Oku</span>)</span><a href="#appendix-C-2.11.1" class="pilcrow">¶</a></p>
+4304,4305c4332,4333
+<         <li class="compact" id="section-appendix.c-2.12">
+<           <p id="section-appendix.c-2.12.1"><span class="contact-name">Marten Seemann</span><a href="#section-appendix.c-2.12.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.12">
+>           <p id="appendix-C-2.12.1"><span class="contact-name">Marten Seemann</span><a href="#appendix-C-2.12.1" class="pilcrow">¶</a></p>
+4307,4308c4335,4336
+<         <li class="compact" id="section-appendix.c-2.13">
+<           <p id="section-appendix.c-2.13.1"><span class="contact-name">Martin Duke</span><a href="#section-appendix.c-2.13.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.13">
+>           <p id="appendix-C-2.13.1"><span class="contact-name">Martin Duke</span><a href="#appendix-C-2.13.1" class="pilcrow">¶</a></p>
+4310,4311c4338,4339
+<         <li class="compact" id="section-appendix.c-2.14">
+<           <p id="section-appendix.c-2.14.1"><span class="contact-name">Mike Bishop</span><a href="#section-appendix.c-2.14.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.14">
+>           <p id="appendix-C-2.14.1"><span class="contact-name">Mike Bishop</span><a href="#appendix-C-2.14.1" class="pilcrow">¶</a></p>
+4313,4314c4341,4342
+<         <li class="compact" id="section-appendix.c-2.15">
+<           <p id="section-appendix.c-2.15.1"><span class="contact-name">Mikkel Fahnøe Jørgensen</span><a href="#section-appendix.c-2.15.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.15">
+>           <p id="appendix-C-2.15.1"><span class="contact-name">Mikkel Fahnøe Jørgensen</span><a href="#appendix-C-2.15.1" class="pilcrow">¶</a></p>
+4316,4317c4344,4345
+<         <li class="compact" id="section-appendix.c-2.16">
+<           <p id="section-appendix.c-2.16.1"><span class="contact-name">Nick Banks</span><a href="#section-appendix.c-2.16.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.16">
+>           <p id="appendix-C-2.16.1"><span class="contact-name">Nick Banks</span><a href="#appendix-C-2.16.1" class="pilcrow">¶</a></p>
+4319,4320c4347,4348
+<         <li class="compact" id="section-appendix.c-2.17">
+<           <p id="section-appendix.c-2.17.1"><span class="contact-name">Nick Harper</span><a href="#section-appendix.c-2.17.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.17">
+>           <p id="appendix-C-2.17.1"><span class="contact-name">Nick Harper</span><a href="#appendix-C-2.17.1" class="pilcrow">¶</a></p>
+4322,4323c4350,4351
+<         <li class="compact" id="section-appendix.c-2.18">
+<           <p id="section-appendix.c-2.18.1"><span class="contact-name">Roberto Peon</span><a href="#section-appendix.c-2.18.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.18">
+>           <p id="appendix-C-2.18.1"><span class="contact-name">Roberto Peon</span><a href="#appendix-C-2.18.1" class="pilcrow">¶</a></p>
+4325,4326c4353,4354
+<         <li class="compact" id="section-appendix.c-2.19">
+<           <p id="section-appendix.c-2.19.1"><span class="contact-name">Rui Paulo</span><a href="#section-appendix.c-2.19.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.19">
+>           <p id="appendix-C-2.19.1"><span class="contact-name">Rui Paulo</span><a href="#appendix-C-2.19.1" class="pilcrow">¶</a></p>
+4328,4329c4356,4357
+<         <li class="compact" id="section-appendix.c-2.20">
+<           <p id="section-appendix.c-2.20.1"><span class="contact-name">Ryan Hamilton</span><a href="#section-appendix.c-2.20.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.20">
+>           <p id="appendix-C-2.20.1"><span class="contact-name">Ryan Hamilton</span><a href="#appendix-C-2.20.1" class="pilcrow">¶</a></p>
+4331,4332c4359,4360
+<         <li class="compact" id="section-appendix.c-2.21">
+<           <p id="section-appendix.c-2.21.1"><span class="contact-name">Victor Vasiliev</span><a href="#section-appendix.c-2.21.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-C-2.21">
+>           <p id="appendix-C-2.21.1"><span class="contact-name">Victor Vasiliev</span><a href="#appendix-C-2.21.1" class="pilcrow">¶</a></p>
+4338c4366
+< <section id="section-appendix.d">
+---
+> <section id="appendix-D">
