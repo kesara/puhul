@@ -1,0 +1,160 @@
+146c146
+<    "Content-Type" of "application/json", as described in Section 2.2.
+---
+>    Content-Type of application/json, as described in Section 2.2.
+200,201c200,201
+<    When making a request, the HTTP "Content-Type" header field is set to
+<    "application/json".
+---
+>    When making a request, the HTTP Content-Type header field is set to
+>    application/json.
+214,215c214,215
+<          the use case.  A value of "0" MAY be used by SET Recipients
+<          that would like to perform an acknowledge-only request.  This
+---
+>          the use case.  A value of 0 MAY be used by SET Recipients that
+>          would like to perform an acknowledge-only request.  This
+225,228c225,228
+<          "false", which indicates the request is to be treated as an
+<          HTTP long poll, per Section 2 of [RFC6202].  The timeout for
+<          the request is part of the configuration between the
+<          participants, which is out of scope of this specification.
+---
+>          false, which indicates the request is to be treated as an HTTP
+>          long poll, per Section 2 of [RFC6202].  The timeout for the
+>          request is part of the configuration between the participants,
+>          which is out of scope of this specification.
+232c232
+<          A JSON array of strings whose values are the "jti" [RFC7519]
+---
+>          A JSON array of strings whose values are the jti [RFC7519]
+240c240
+<          A JSON object with one or more members whose keys are the "jti"
+---
+>          A JSON object with one or more members whose keys are the jti
+243,246c243,245
+<          using the "err" and "description" values specified in
+<          Section 2.6.  If there are no outstanding SETs with errors to
+<          report, this member is omitted or contains an empty JSON
+<          object.
+---
+>          using the err and description values specified in Section 2.6.
+>          If there are no outstanding SETs with errors to report, this
+>          member is omitted or contains an empty JSON object.
+256,258c255,257
+<       member name is the "jti" of a SET to be delivered, and its value
+<       is a JSON string representing the corresponding SET.  If there are
+<       no outstanding SETs to be transmitted, the JSON object SHALL be
+---
+>       member name is the jti of a SET to be delivered, and its value is
+>       a JSON string representing the corresponding SET.  If there are no
+>       outstanding SETs to be transmitted, the JSON object SHALL be
+267c266
+<       "false".
+---
+>       false.
+269,270c268,269
+<    When making a response, the HTTP "Content-Type" header field is set
+<    to "application/json".
+---
+>    When making a response, the HTTP Content-Type header field is set to
+>    application/json.
+277c276
+<    acknowledge, the "ack" and "setErrs" request parameters are omitted.
+---
+>    acknowledge, the ack and setErrs request parameters are omitted.
+302,305c301,304
+<          In this scenario, a SET Recipient sets the "maxEvents" value to
+<          "0" along with "ack" and "setErrs" members indicating the SET
+<          Recipient is acknowledging previously received SETs and does
+<          not want to receive any new SETs in response to the request.
+---
+>          In this scenario, a SET Recipient sets the maxEvents value to 0
+>          along with ack and setErrs members indicating the SET Recipient
+>          is acknowledging previously received SETs and does not want to
+>          receive any new SETs in response to the request.
+309,311c308,310
+<          previously received SETs using the "ack" and "setErrs" members
+<          and will wait for the next group of SETs in the SET
+<          Transmitters response.
+---
+>          previously received SETs using the ack and setErrs members and
+>          will wait for the next group of SETs in the SET Transmitters
+>          response.
+317c316
+<    parameters ("ack" and "setErrs").
+---
+>    parameters (ack and setErrs).
+321,322c320,321
+<    for available SETs at the endpoint "https://notify.idp.example.com/
+<    Events":
+---
+>    for available SETs at the endpoint https://notify.idp.example.com/
+>    Events:
+338c337
+<    endpoint "https://notify.idp.example.com/Events":
+---
+>    endpoint https://notify.idp.example.com/Events:
+352,353c351,352
+<    setting the "maxEvents" value to "0".  This variation might be used,
+<    for instance, when a SET Recipient needs to acknowledge received SETs
+---
+>    setting the maxEvents value to 0.  This variation might be used, for
+>    instance, when a SET Recipient needs to acknowledge received SETs
+357,360c356,359
+<    If the poll needs to return immediately, then "returnImmediately"
+<    MUST also be present with the value "true".  If it is "false", then a
+<    long poll will still occur until an event is ready to be returned,
+<    even though no events will be returned.
+---
+>    If the poll needs to return immediately, then returnImmediately MUST
+>    also be present with the value true.  If it is false, then a long
+>    poll will still occur until an event is ready to be returned, even
+>    though no events will be returned.
+410c409
+<    the SET Recipient MAY use the "setErrs" member to communicate the
+---
+>    the SET Recipient MAY use the setErrs member to communicate the
+441,442c440,441
+<    elapsed unless the poll request parameter "returnImmediately" is
+<    present with the value "true".
+---
+>    elapsed unless the poll request parameter returnImmediately is
+>    present with the value true.
+445c444
+<    members including "sets", which SHALL contain zero or more SETs.
+---
+>    members including sets, which SHALL contain zero or more SETs.
+484,486c483,485
+<    In the above example, two SETs whose "jti" values are
+<    "4d3559ec67504aaba65d40b0363faad8" and
+<    "3d0c3cf797584bd193bd0fb1bd4e7d30" are delivered.
+---
+>    In the above example, two SETs whose jti values are
+>    4d3559ec67504aaba65d40b0363faad8 and 3d0c3cf797584bd193bd0fb1bd4e7d30
+>    are delivered.
+547,548c546
+<    as part of the "setErrs" member, as defined in Sections 2.2 and
+<    2.4.4.
+---
+>    as part of the setErrs member, as defined in Sections 2.2 and 2.4.4.
+552c550
+<    "Content-Language" header field whose value indicates the language of
+---
+>    Content-Language header field whose value indicates the language of
+566,567c564,565
+<    supported HTTP authentication schemes via the "WWW-Authenticate"
+<    header field when using HTTP authentication.
+---
+>    supported HTTP authentication schemes via the WWW-Authenticate header
+>    field when using HTTP authentication.
+810d807
+< 
+816d812
+< 
+823d818
+< 
+829d823
+< 
+835d828
+< 
