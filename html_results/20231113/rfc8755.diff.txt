@@ -1,0 +1,874 @@
+13c13
+< <meta content="xml2rfc 2.40.1" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+19c19,35
+< <link href="rfc8755.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.0.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.9
+> -->
+> <link href="rfc/rfc8755.xml" rel="alternate" type="application/rfc+xml">
+29c45
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+38a55,60
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+41d62
+<   width: extend-to-zoom;
+56c77
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+58a80
+>   overflow-wrap: break-word;
+144a167,175
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+159,162d189
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+163a191
+>   border: none;
+186a215,217
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+228c259,260
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+238c270
+< tt, code, pre, code {
+---
+> tt, code, pre {
+240c272
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+279a312,314
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+369a405,410
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+471c512
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+611d651
+< 
+633a674,676
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+701c744
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+801c844
+< tt, code, pre, code {
+---
+> tt, code, pre {
+806c849
+< pre.sourcecode,
+---
+> .sourcecode pre,
+842c885
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+920,925d962
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+996c1033
+<   margin: 0 0 0.25em 0;
+---
+>   margin-bottom: 0.25em;
+1029a1067
+>   .artwork > pre,
+1034,1041d1071
+< /*
+<   The margin-left: 0 on <dd> removes all distinction
+<   between levels from nested <dl>s.  Undo that.
+< */
+< dl.olPercent > dd,
+< dd {
+<   margin-left: revert;
+< }
+1052c1082
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1058a1089,1091
+> tr {
+>   break-inside: avoid;
+> }
+1066a1100,1201
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1068a1204
+> <link href="https://datatracker.ietf.org/doc/draft-jenkins-cnsa-smime-profile-03" rel="prev">
+1071c1207
+<   <link href="https://datatracker.ietf.org/doc/draft-jenkins-cnsa-smime-profile-03" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1073,1074c1209,1210
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1161,1166c1297,1302
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+1170,1171c1306,1307
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-the-commercial-national-sec" class="xref">The Commercial National Security Algorithm Suite</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-the-commercial-national-sec" class="internal xref">The Commercial National Security Algorithm Suite</a></p>
+1173,1174c1309,1310
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-requirements-and-assumption" class="xref">Requirements and Assumptions</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-requirements-and-assumption" class="internal xref">Requirements and Assumptions</a></p>
+1176,1177c1312,1313
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-sha-384-message-digest-algo" class="xref">SHA-384 Message Digest Algorithm</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-sha-384-message-digest-algo" class="internal xref">SHA-384 Message Digest Algorithm</a></p>
+1179,1183c1315,1319
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-digital-signature" class="xref">Digital Signature</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-ecdsa-signature" class="xref">ECDSA Signature</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-digital-signature" class="internal xref">Digital Signature</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1" class="keepWithNext"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-ecdsa-signature" class="internal xref">ECDSA Signature</a></p>
+1185,1186c1321,1322
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-rsa-signature" class="xref">RSA Signature</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1" class="keepWithNext"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-rsa-signature" class="internal xref">RSA Signature</a></p>
+1190,1194c1326,1330
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-key-establishment" class="xref">Key Establishment</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-elliptic-curve-key-agreemen" class="xref">Elliptic Curve Key Agreement</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-key-establishment" class="internal xref">Key Establishment</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1" class="keepWithNext"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-elliptic-curve-key-agreemen" class="internal xref">Elliptic Curve Key Agreement</a></p>
+1196,1197c1332,1333
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.2">
+<                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-rsa-key-transport" class="xref">RSA Key Transport</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+>                 <p id="section-toc.1-1.6.2.2.1" class="keepWithNext"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-rsa-key-transport" class="internal xref">RSA Key Transport</a></p>
+1201,1205c1337,1341
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-content-encryption" class="xref">Content Encryption</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-aes-gcm-content-encryption" class="xref">AES-GCM Content Encryption</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-content-encryption" class="internal xref">Content Encryption</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1" class="keepWithNext"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-aes-gcm-content-encryption" class="internal xref">AES-GCM Content Encryption</a></p>
+1207,1208c1343,1344
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-aes-cbc-content-encryption" class="xref">AES-CBC Content Encryption</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1" class="keepWithNext"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-aes-cbc-content-encryption" class="internal xref">AES-CBC Content Encryption</a></p>
+1212,1213c1348,1349
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1215,1216c1351,1352
+< <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1" class="keepWithNext"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1218,1222c1354,1358
+< <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.10.2.1">
+<                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="xref">10.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.10.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1" class="keepWithNext"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
+>                 <p id="section-toc.1-1.10.2.1.1" class="keepWithNext"><a href="#section-10.1" class="auto internal xref">10.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1224,1225c1360,1361
+< <li class="toc ulEmpty" id="section-toc.1-1.10.2.2">
+<                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="xref">10.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.10.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
+>                 <p id="section-toc.1-1.10.2.2.1" class="keepWithNext"><a href="#section-10.2" class="auto internal xref">10.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1229,1230c1365,1366
+< <li class="toc ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+1241,1242c1377,1378
+< <p id="section-1-1">This document specifies the conventions for using the United States National Security Agency's Commercial National Security Algorithm (CNSA) Suite algorithms <span>[<a href="#CNSA" class="xref">CNSA</a>]</span> in Secure/Multipurpose Internet Mail Extensions (S/MIME) <span>[<a href="#RFC8551" class="xref">RFC8551</a>]</span>. It applies to the capabilities, configuration, and operation of all components of US National Security Systems that employ S/MIME messaging. US National Security Systems are described in NIST Special Publication 800-59 <span>[<a href="#SP80059" class="xref">SP80059</a>]</span>. It is also appropriate for all other US Government systems that process high-value information. It is made publicly available for use by developers and operators of these and any other system deployments.<a href="#section-1-1" class="pilcrow">¶</a></p>
+< <p id="section-1-2">S/MIME makes use of the Cryptographic Message Syntax (CMS) <span>[<a href="#RFC5652" class="xref">RFC5652</a>]</span> <span>[<a href="#RFC5083" class="xref">RFC5083</a>]</span>. In particular, the signed-data, enveloped-data, and authenticated-enveloped-data content types are used. This document only addresses CNSA Suite compliance for S/MIME. Other applications of CMS are outside the scope of this document.<a href="#section-1-2" class="pilcrow">¶</a></p>
+---
+> <p id="section-1-1">This document specifies the conventions for using the United States National Security Agency's Commercial National Security Algorithm (CNSA) Suite algorithms <span>[<a href="#CNSA" class="cite xref">CNSA</a>]</span> in Secure/Multipurpose Internet Mail Extensions (S/MIME) <span>[<a href="#RFC8551" class="cite xref">RFC8551</a>]</span>. It applies to the capabilities, configuration, and operation of all components of US National Security Systems that employ S/MIME messaging. US National Security Systems are described in NIST Special Publication 800-59 <span>[<a href="#SP80059" class="cite xref">SP80059</a>]</span>. It is also appropriate for all other US Government systems that process high-value information. It is made publicly available for use by developers and operators of these and any other system deployments.<a href="#section-1-1" class="pilcrow">¶</a></p>
+> <p id="section-1-2">S/MIME makes use of the Cryptographic Message Syntax (CMS) <span>[<a href="#RFC5652" class="cite xref">RFC5652</a>]</span> <span>[<a href="#RFC5083" class="cite xref">RFC5083</a>]</span>. In particular, the signed-data, enveloped-data, and authenticated-enveloped-data content types are used. This document only addresses CNSA Suite compliance for S/MIME. Other applications of CMS are outside the scope of this document.<a href="#section-1-2" class="pilcrow">¶</a></p>
+1252c1388
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1278,1279c1414,1415
+< <p id="section-3-1">CMS values are generated using ASN.1 <span>[<a href="#X208" class="xref">X208</a>]</span>, the Basic Encoding Rules (BER) <span>[<a href="#X209" class="xref">X209</a>]</span>, and the Distinguished Encoding Rules (DER) <span>[<a href="#X509" class="xref">X509</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+< <p id="section-3-2">The elliptic curve used in the CNSA Suite is specified in <span>[<a href="#FIPS186" class="xref">FIPS186</a>]</span> and appears in the literature under two different names. For the sake of clarity, we list both names below:<a href="#section-3-2" class="pilcrow">¶</a></p>
+---
+> <p id="section-3-1">CMS values are generated using ASN.1 <span>[<a href="#X208" class="cite xref">X208</a>]</span>, the Basic Encoding Rules (BER) <span>[<a href="#X209" class="cite xref">X209</a>]</span>, and the Distinguished Encoding Rules (DER) <span>[<a href="#X509" class="cite xref">X509</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+> <p id="section-3-2">The elliptic curve used in the CNSA Suite is specified in <span>[<a href="#FIPS186" class="cite xref">FIPS186</a>]</span> and appears in the literature under two different names. For the sake of clarity, we list both names below:<a href="#section-3-2" class="pilcrow">¶</a></p>
+1301,1303c1437,1439
+< <p id="section-3-4">For CNSA Suite applications, public key certificates used to verify S/MIME signatures <span class="bcp14">MUST</span> be compliant with the CNSA Suite Certificate and Certificate Revocation List (CRL) profile specified in <span>[<a href="#RFC8603" class="xref">RFC8603</a>]</span>.<a href="#section-3-4" class="pilcrow">¶</a></p>
+< <p id="section-3-5">Within the CMS signed-data content type, signature algorithm identifiers are located in the signatureAlgorithm field of SignerInfo structures contained within the SignedData. In addition, signature algorithm identifiers are located in the SignerInfo signatureAlgorithm field of countersignature attributes. Specific requirements for digital signatures are given in <a href="#digital-signature" class="xref">Section 5</a>; compliant implementations <span class="bcp14">MUST</span> consider signatures not meeting these requirements as invalid.<a href="#section-3-5" class="pilcrow">¶</a></p>
+< <p id="section-3-6">Implementations based on Elliptic Curve Cryptography (ECC) also require specification of schemes for key derivation and key wrap. Requirements for these schemes are in Sections <a href="#kdf" class="xref">6.1.1</a> and <a href="#keywrap" class="xref">6.1.2</a>, respectively.<a href="#section-3-6" class="pilcrow">¶</a></p>
+---
+> <p id="section-3-4">For CNSA Suite applications, public key certificates used to verify S/MIME signatures <span class="bcp14">MUST</span> be compliant with the CNSA Suite Certificate and Certificate Revocation List (CRL) profile specified in <span>[<a href="#RFC8603" class="cite xref">RFC8603</a>]</span>.<a href="#section-3-4" class="pilcrow">¶</a></p>
+> <p id="section-3-5">Within the CMS signed-data content type, signature algorithm identifiers are located in the signatureAlgorithm field of SignerInfo structures contained within the SignedData. In addition, signature algorithm identifiers are located in the SignerInfo signatureAlgorithm field of countersignature attributes. Specific requirements for digital signatures are given in <a href="#digital-signature" class="auto internal xref">Section 5</a>; compliant implementations <span class="bcp14">MUST</span> consider signatures not meeting these requirements as invalid.<a href="#section-3-5" class="pilcrow">¶</a></p>
+> <p id="section-3-6">Implementations based on Elliptic Curve Cryptography (ECC) also require specification of schemes for key derivation and key wrap. Requirements for these schemes are in Sections <a href="#kdf" class="auto internal xref">6.1.1</a> and <a href="#keywrap" class="auto internal xref">6.1.2</a>, respectively.<a href="#section-3-6" class="pilcrow">¶</a></p>
+1307,1308c1443,1444
+<       satisfy 2<sup>16</sup> &lt; e &lt; 2<sup>256</sup> and be odd per <span>[<a href="#FIPS186" class="xref">FIPS186</a>]</span>.<a href="#section-3-8" class="pilcrow">¶</a></p>
+< <p id="section-3-9">It is recognized that, while the vast majority of RSA signatures are currently made using the RSASSA-PKCS1-v1_5 algorithm, the preferred RSA signature scheme for new applications is RSASSA-PSS.  CNSA Suite-compliant X.509 certificates will be issued in accordance with <span>[<a href="#RFC8603" class="xref">RFC8603</a>]</span>, and while those certificates must be signed and validated using RSASSA-PKCS1-v1_5, the subject's RSA key pair can be used to generate and validate signatures appropriate for either signing scheme.  Where use of RSASSA-PSS is indicated in this document, the parameters in <a href="#rsa-pss" class="xref">Section 5.2.2</a> apply.<a href="#section-3-9" class="pilcrow">¶</a></p>
+---
+>       satisfy 2<sup>16</sup> &lt; e &lt; 2<sup>256</sup> and be odd per <span>[<a href="#FIPS186" class="cite xref">FIPS186</a>]</span>.<a href="#section-3-8" class="pilcrow">¶</a></p>
+> <p id="section-3-9">It is recognized that, while the vast majority of RSA signatures are currently made using the RSASSA-PKCS1-v1_5 algorithm, the preferred RSA signature scheme for new applications is RSASSA-PSS.  CNSA Suite-compliant X.509 certificates will be issued in accordance with <span>[<a href="#RFC8603" class="cite xref">RFC8603</a>]</span>, and while those certificates must be signed and validated using RSASSA-PKCS1-v1_5, the subject's RSA key pair can be used to generate and validate signatures appropriate for either signing scheme.  Where use of RSASSA-PSS is indicated in this document, the parameters in <a href="#rsa-pss" class="auto internal xref">Section 5.2.2</a> apply.<a href="#section-3-9" class="pilcrow">¶</a></p>
+1310c1446
+< <p id="section-3-11">All implementations use SHA-384 for hashing and either AES-CBC or AES-GCM for encryption, the requirements for which are given in <a href="#message-digest" class="xref">Section 4</a> and <a href="#content-enc" class="xref">Section 7</a>, respectively.<a href="#section-3-11" class="pilcrow">¶</a></p>
+---
+> <p id="section-3-11">All implementations use SHA-384 for hashing and either AES-CBC or AES-GCM for encryption, the requirements for which are given in <a href="#message-digest" class="auto internal xref">Section 4</a> and <a href="#content-enc" class="auto internal xref">Section 7</a>, respectively.<a href="#section-3-11" class="pilcrow">¶</a></p>
+1318c1454
+< <p id="section-4-1">SHA-384 is the sole CNSA Suite message digest algorithm. <span>[<a href="#RFC5754" class="xref">RFC5754</a>]</span> specifies the conventions for using SHA-384 with the Cryptographic Message Syntax (CMS). CNSA Suite-compliant S/MIME implementations <span class="bcp14">MUST</span> follow the conventions in <span>[<a href="#RFC5754" class="xref">RFC5754</a>]</span>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-4-1">SHA-384 is the sole CNSA Suite message digest algorithm. <span>[<a href="#RFC5754" class="cite xref">RFC5754</a>]</span> specifies the conventions for using SHA-384 with the Cryptographic Message Syntax (CMS). CNSA Suite-compliant S/MIME implementations <span class="bcp14">MUST</span> follow the conventions in <span>[<a href="#RFC5754" class="cite xref">RFC5754</a>]</span>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+1320,1322c1456,1458
+< <p id="section-4-3">The SHA-384 message digest algorithm is defined in FIPS Pub 180 <span>[<a href="#FIPS180" class="xref">FIPS180</a>]</span>. The algorithm identifier for SHA-384 is defined in <span>[<a href="#RFC5754" class="xref">RFC5754</a>]</span> as follows:<a href="#section-4-3" class="pilcrow">¶</a></p>
+< <div id="section-4-4">
+< <pre class="sourcecode lang-asn.1">
+---
+> <p id="section-4-3">The SHA-384 message digest algorithm is defined in FIPS Pub 180 <span>[<a href="#FIPS180" class="cite xref">FIPS180</a>]</span>. The algorithm identifier for SHA-384 is defined in <span>[<a href="#RFC5754" class="cite xref">RFC5754</a>]</span> as follows:<a href="#section-4-3" class="pilcrow">¶</a></p>
+> <div class="lang-asn.1 sourcecode" id="section-4-4">
+> <pre>
+1328c1464
+< <p id="section-4-5">For SHA-384, the AlgorithmIdentifier parameters field is <span class="bcp14">OPTIONAL</span>, and if present, the parameters field <span class="bcp14">MUST</span> contain a NULL. As specified in <span>[<a href="#RFC5754" class="xref">RFC5754</a>]</span>, implementations <span class="bcp14">MUST</span> generate SHA-384 AlgorithmIdentifiers with absent parameters. Implementations <span class="bcp14">MUST</span> accept SHA-384 AlgorithmIdentifiers with absent parameters or with NULL parameters.<a href="#section-4-5" class="pilcrow">¶</a></p>
+---
+> <p id="section-4-5">For SHA-384, the AlgorithmIdentifier parameters field is <span class="bcp14">OPTIONAL</span>, and if present, the parameters field <span class="bcp14">MUST</span> contain a NULL. As specified in <span>[<a href="#RFC5754" class="cite xref">RFC5754</a>]</span>, implementations <span class="bcp14">MUST</span> generate SHA-384 AlgorithmIdentifiers with absent parameters. Implementations <span class="bcp14">MUST</span> accept SHA-384 AlgorithmIdentifiers with absent parameters or with NULL parameters.<a href="#section-4-5" class="pilcrow">¶</a></p>
+1341,1344c1477,1480
+< <p id="section-5.1-1">The Elliptic Curve Digital Signature Algorithm (ECDSA) is the CNSA Suite digital signature algorithm based on ECC. <span>[<a href="#RFC5753" class="xref">RFC5753</a>]</span> specifies the conventions for using ECDSA with the Cryptographic Message Syntax (CMS). CNSA Suite-compliant S/MIME implementations <span class="bcp14">MUST</span> follow the conventions in <span>[<a href="#RFC5753" class="xref">RFC5753</a>]</span>.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+< <p id="section-5.1-2"><span>[<a href="#RFC5480" class="xref">RFC5480</a>]</span> defines the signature algorithm identifier used in CMS for ECDSA with SHA-384 as follows:<a href="#section-5.1-2" class="pilcrow">¶</a></p>
+< <div id="section-5.1-3">
+< <pre class="sourcecode lang-asn.1">
+---
+> <p id="section-5.1-1">The Elliptic Curve Digital Signature Algorithm (ECDSA) is the CNSA Suite digital signature algorithm based on ECC. <span>[<a href="#RFC5753" class="cite xref">RFC5753</a>]</span> specifies the conventions for using ECDSA with the Cryptographic Message Syntax (CMS). CNSA Suite-compliant S/MIME implementations <span class="bcp14">MUST</span> follow the conventions in <span>[<a href="#RFC5753" class="cite xref">RFC5753</a>]</span>.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+> <p id="section-5.1-2"><span>[<a href="#RFC5480" class="cite xref">RFC5480</a>]</span> defines the signature algorithm identifier used in CMS for ECDSA with SHA-384 as follows:<a href="#section-5.1-2" class="pilcrow">¶</a></p>
+> <div class="lang-asn.1 sourcecode" id="section-5.1-3">
+> <pre>
+1351,1353c1487,1489
+< <p id="section-5.1-5">When signing, the ECDSA algorithm generates two values, commonly called r and s.  These two values <span class="bcp14">MUST</span> be encoded using the ECDSA-Sig-Value type specified in <span>[<a href="#RFC5480" class="xref">RFC5480</a>]</span>:<a href="#section-5.1-5" class="pilcrow">¶</a></p>
+< <div id="section-5.1-6">
+< <pre class="sourcecode lang-asn.1">
+---
+> <p id="section-5.1-5">When signing, the ECDSA algorithm generates two values, commonly called r and s.  These two values <span class="bcp14">MUST</span> be encoded using the ECDSA-Sig-Value type specified in <span>[<a href="#RFC5480" class="cite xref">RFC5480</a>]</span>:<a href="#section-5.1-5" class="pilcrow">¶</a></p>
+> <div class="lang-asn.1 sourcecode" id="section-5.1-6">
+> <pre>
+1366c1502
+< <p id="section-5.2-1">The RSA signature generation process and the encoding of the result is either RSASSA-PKCS1-v1_5 or RSA-PSS, as described in detail in PKCS #1 version 2.2 <span>[<a href="#RFC8017" class="xref">RFC8017</a>]</span>.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-5.2-1">The RSA signature generation process and the encoding of the result is either RSASSA-PKCS1-v1_5 or RSA-PSS, as described in detail in PKCS #1 version 2.2 <span>[<a href="#RFC8017" class="cite xref">RFC8017</a>]</span>.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+1372c1508
+< <p id="section-5.2.1-1"><span>[<a href="#RFC5754" class="xref">RFC5754</a>]</span> defines the signature
+---
+> <p id="section-5.2.1-1"><span>[<a href="#RFC5754" class="cite xref">RFC5754</a>]</span> defines the signature
+1374,1375c1510,1511
+< <div id="section-5.2.1-2">
+< <pre class="sourcecode lang-asn.1">
+---
+> <div class="lang-asn.1 sourcecode" id="section-5.2.1-2">
+> <pre>
+1388c1524
+< <p id="section-5.2.2-1"><span>[<a href="#RFC4056" class="xref">RFC4056</a>]</span> defines the signature
+---
+> <p id="section-5.2.2-1"><span>[<a href="#RFC4056" class="cite xref">RFC4056</a>]</span> defines the signature
+1390,1391c1526,1527
+< <div id="section-5.2.2-2">
+< <pre class="sourcecode lang-asn.1">
+---
+> <div class="lang-asn.1 sourcecode" id="section-5.2.2-2">
+> <pre>
+1396,1398c1532,1534
+< <p id="section-5.2.2-3">The parameters field of an AlgorithmIdentifier that identifies RSASSA-PSS is defined in <span>[<a href="#RFC4055" class="xref">RFC4055</a>]</span> as follows:<a href="#section-5.2.2-3" class="pilcrow">¶</a></p>
+< <div id="section-5.2.2-4">
+< <pre class="sourcecode lang-asn.1">
+---
+> <p id="section-5.2.2-3">The parameters field of an AlgorithmIdentifier that identifies RSASSA-PSS is defined in <span>[<a href="#RFC4055" class="cite xref">RFC4055</a>]</span> as follows:<a href="#section-5.2.2-3" class="pilcrow">¶</a></p>
+> <div class="lang-asn.1 sourcecode" id="section-5.2.2-4">
+> <pre>
+1409,1410c1545,1546
+< <ul>
+< <li id="section-5.2.2-6.1">The hash algorithm <span class="bcp14">MUST</span> be id-sha384 as defined in <span>[<a href="#RFC8017" class="xref">RFC8017</a>]</span>;<a href="#section-5.2.2-6.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-5.2.2-6.1">The hash algorithm <span class="bcp14">MUST</span> be id-sha384 as defined in <span>[<a href="#RFC8017" class="cite xref">RFC8017</a>]</span>;<a href="#section-5.2.2-6.1" class="pilcrow">¶</a>
+1412c1548
+< <li id="section-5.2.2-6.2">The mask generation function <span class="bcp14">MUST</span> use the algorithm identifier mfg1SHA384Identifier as defined in <span>[<a href="#RFC4055" class="xref">RFC4055</a>]</span>;<a href="#section-5.2.2-6.2" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-5.2.2-6.2">The mask generation function <span class="bcp14">MUST</span> use the algorithm identifier mfg1SHA384Identifier as defined in <span>[<a href="#RFC4055" class="cite xref">RFC4055</a>]</span>;<a href="#section-5.2.2-6.2" class="pilcrow">¶</a>
+1414c1550
+< <li id="section-5.2.2-6.3">The salt length <span class="bcp14">MUST</span> be 48 octets (the same length as the SHA-384 output); and<a href="#section-5.2.2-6.3" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-5.2.2-6.3">The salt length <span class="bcp14">MUST</span> be 48 octets (the same length as the SHA-384 output); and<a href="#section-5.2.2-6.3" class="pilcrow">¶</a>
+1416c1552
+< <li id="section-5.2.2-6.4">The trailerField <span class="bcp14">MUST</span> have value 1.<a href="#section-5.2.2-6.4" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-5.2.2-6.4">The trailerField <span class="bcp14">MUST</span> have value 1.<a href="#section-5.2.2-6.4" class="pilcrow">¶</a>
+1435c1571
+< <p id="section-6.1-1">Elliptic Curve Diffie-Hellman (ECDH) is the CNSA Suite key agreement algorithm. Since S/MIME is used in store-and-forward communications, ephemeral-static ECDH is always employed. This means that the message originator possesses an ephemeral ECDH key pair and that the message recipient possesses a static ECDH key pair whose public key is provided in an X.509 certificate. The certificate used to obtain the recipient's public key <span class="bcp14">MUST</span> be compliant with <span>[<a href="#RFC8603" class="xref">RFC8603</a>]</span>.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-6.1-1">Elliptic Curve Diffie-Hellman (ECDH) is the CNSA Suite key agreement algorithm. Since S/MIME is used in store-and-forward communications, ephemeral-static ECDH is always employed. This means that the message originator possesses an ephemeral ECDH key pair and that the message recipient possesses a static ECDH key pair whose public key is provided in an X.509 certificate. The certificate used to obtain the recipient's public key <span class="bcp14">MUST</span> be compliant with <span>[<a href="#RFC8603" class="cite xref">RFC8603</a>]</span>.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+1449,1450c1585,1586
+< Key derivation is discussed in <a href="#kdf" class="xref">Section 6.1.1</a>. Key wrapping is discussed in <a href="#keywrap" class="xref">Section 6.1.2</a>.<a href="#section-6.1-4" class="pilcrow">¶</a></p>
+< <p id="section-6.1-5"><span><a href="https://www.rfc-editor.org/rfc/rfc5753#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC5753" class="xref">RFC5753</a>]</span> specifies the conventions for using ECDH with the CMS. CNSA Suite-compliant S/MIME implementations <span class="bcp14">MUST</span> follow these conventions.<a href="#section-6.1-5" class="pilcrow">¶</a></p>
+---
+> Key derivation is discussed in <a href="#kdf" class="auto internal xref">Section 6.1.1</a>. Key wrapping is discussed in <a href="#keywrap" class="auto internal xref">Section 6.1.2</a>.<a href="#section-6.1-4" class="pilcrow">¶</a></p>
+> <p id="section-6.1-5"><span><a href="https://rfc-editor.org/rfc/rfc5753#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC5753" class="cite xref">RFC5753</a>]</span> specifies the conventions for using ECDH with the CMS. CNSA Suite-compliant S/MIME implementations <span class="bcp14">MUST</span> follow these conventions.<a href="#section-6.1-5" class="pilcrow">¶</a></p>
+1455,1457c1591,1593
+<  for the dhSinglePass-stdDH-sha384kdf-scheme, repeated from <span><a href="https://www.rfc-editor.org/rfc/rfc5753#section-7.1.4" class="relref">Section 7.1.4</a> of [<a href="#RFC5753" class="xref">RFC5753</a>]</span>, is (presented here in expanded form):<a href="#section-6.1-7" class="pilcrow">¶</a></p>
+< <div id="section-6.1-8">
+< <pre class="sourcecode lang-asn.1">
+---
+>  for the dhSinglePass-stdDH-sha384kdf-scheme, repeated from <span><a href="https://rfc-editor.org/rfc/rfc5753#section-7.1.4" class="relref">Section 7.1.4</a> of [<a href="#RFC5753" class="cite xref">RFC5753</a>]</span>, is (presented here in expanded form):<a href="#section-6.1-7" class="pilcrow">¶</a></p>
+> <div class="lang-asn.1 sourcecode" id="section-6.1-8">
+> <pre>
+1463c1599
+< <p id="section-6.1-9">The keyEncryptionAlgorithm parameter field <span class="bcp14">MUST</span> be constructed as described in <a href="#keywrap" class="xref">Section 6.1.2</a>.<a href="#section-6.1-9" class="pilcrow">¶</a></p>
+---
+> <p id="section-6.1-9">The keyEncryptionAlgorithm parameter field <span class="bcp14">MUST</span> be constructed as described in <a href="#keywrap" class="auto internal xref">Section 6.1.2</a>.<a href="#section-6.1-9" class="pilcrow">¶</a></p>
+1471,1475c1607,1611
+<    ephemeral-static ECDH. Sections <a href="https://www.rfc-editor.org/rfc/rfc5753#section-7.1.8" class="relref">7.1.8</a> and <a href="https://www.rfc-editor.org/rfc/rfc5753#section-7.2" class="relref">7.2</a> in <span>[<a href="#RFC5753" class="xref">RFC5753</a>]</span> specify the CMS conventions for using a KDF with the shared secret generated during ephemeral-static ECDH. CNSA Suite-compliant S/MIME implementations <span class="bcp14">MUST</span> follow these conventions.<a href="#section-6.1.1-1" class="pilcrow">¶</a></p>
+< <p id="section-6.1.1-2">As specified in <span><a href="https://www.rfc-editor.org/rfc/rfc5753#section-7.1.8" class="relref">Section 7.1.8</a> of [<a href="#RFC5753" class="xref">RFC5753</a>]</span>, the ANSI-X9.63-KDF described in Section 3.6.1 of <span>[<a href="#SEC1" class="xref">SEC1</a>]</span> and based on SHA-384 <span class="bcp14">MUST</span> be used.<a href="#section-6.1.1-2" class="pilcrow">¶</a></p>
+< <p id="section-6.1.1-3">As specified in <span><a href="https://www.rfc-editor.org/rfc/rfc5753#section-7.2" class="relref">Section 7.2</a> of [<a href="#RFC5753" class="xref">RFC5753</a>]</span>, when using ECDH with the CMS enveloped-data or authenticated-enveloped-data content type, the derivation of key-encryption keys makes use of the ECC-CMS-SharedInfo type:<a href="#section-6.1.1-3" class="pilcrow">¶</a></p>
+< <div id="section-6.1.1-4">
+< <pre class="sourcecode lang-asn.1">
+---
+>    ephemeral-static ECDH. Sections <a href="https://rfc-editor.org/rfc/rfc5753#section-7.1.8" class="relref">7.1.8</a> and <a href="https://rfc-editor.org/rfc/rfc5753#section-7.2" class="relref">7.2</a> in <span>[<a href="#RFC5753" class="cite xref">RFC5753</a>]</span> specify the CMS conventions for using a KDF with the shared secret generated during ephemeral-static ECDH. CNSA Suite-compliant S/MIME implementations <span class="bcp14">MUST</span> follow these conventions.<a href="#section-6.1.1-1" class="pilcrow">¶</a></p>
+> <p id="section-6.1.1-2">As specified in <span><a href="https://rfc-editor.org/rfc/rfc5753#section-7.1.8" class="relref">Section 7.1.8</a> of [<a href="#RFC5753" class="cite xref">RFC5753</a>]</span>, the ANSI-X9.63-KDF described in Section 3.6.1 of <span>[<a href="#SEC1" class="cite xref">SEC1</a>]</span> and based on SHA-384 <span class="bcp14">MUST</span> be used.<a href="#section-6.1.1-2" class="pilcrow">¶</a></p>
+> <p id="section-6.1.1-3">As specified in <span><a href="https://rfc-editor.org/rfc/rfc5753#section-7.2" class="relref">Section 7.2</a> of [<a href="#RFC5753" class="cite xref">RFC5753</a>]</span>, when using ECDH with the CMS enveloped-data or authenticated-enveloped-data content type, the derivation of key-encryption keys makes use of the ECC-CMS-SharedInfo type:<a href="#section-6.1.1-3" class="pilcrow">¶</a></p>
+> <div class="lang-asn.1 sourcecode" id="section-6.1.1-4">
+> <pre>
+1483,1484c1619,1620
+< <ul>
+< <li id="section-6.1.1-6.1">keyInfo contains the object identifier of the key-encryption algorithm used to wrap the content-encryption key. If AES-256 Key Wrap is used, then the keyInfo will contain id-aes256-wrap-pad, and the parameters will be absent.<a href="#section-6.1.1-6.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-6.1.1-6.1">keyInfo contains the object identifier of the key-encryption algorithm used to wrap the content-encryption key. If AES-256 Key Wrap is used, then the keyInfo will contain id-aes256-wrap-pad, and the parameters will be absent.<a href="#section-6.1.1-6.1" class="pilcrow">¶</a>
+1486c1622
+< <li id="section-6.1.1-6.2">entityUInfo optionally contains a random value provided by the message originator. If user keying material (ukm) is included in the KeyAgreeRecipientInfo, then the entityUInfo <span class="bcp14">MUST</span> be present, and it <span class="bcp14">MUST</span> contain the ukm value. If the ukm is not present, then the entityUInfo <span class="bcp14">MUST</span> be absent.<a href="#section-6.1.1-6.2" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-6.1.1-6.2">entityUInfo optionally contains a random value provided by the message originator. If user keying material (ukm) is included in the KeyAgreeRecipientInfo, then the entityUInfo <span class="bcp14">MUST</span> be present, and it <span class="bcp14">MUST</span> contain the ukm value. If the ukm is not present, then the entityUInfo <span class="bcp14">MUST</span> be absent.<a href="#section-6.1.1-6.2" class="pilcrow">¶</a>
+1488c1624
+< <li id="section-6.1.1-6.3">suppPubInfo contains the length of the generated key-encryption key in bits, represented as a 32-bit unsigned number, as described in <span>[<a href="#RFC2631" class="xref">RFC2631</a>]</span>. When a 256-bit AES key is used, the length <span class="bcp14">MUST</span> be 0x00000100.<a href="#section-6.1.1-6.3" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-6.1.1-6.3">suppPubInfo contains the length of the generated key-encryption key in bits, represented as a 32-bit unsigned number, as described in <span>[<a href="#RFC2631" class="cite xref">RFC2631</a>]</span>. When a 256-bit AES key is used, the length <span class="bcp14">MUST</span> be 0x00000100.<a href="#section-6.1.1-6.3" class="pilcrow">¶</a>
+1492,1495c1628,1631
+<    derivation function, as specified in Section 3.6.1 of <span>[<a href="#SEC1" class="xref">SEC1</a>]</span>.  Note that ECC-CMS-SharedInfo differs from the OtherInfo specified in <span>[<a href="#RFC2631" class="xref">RFC2631</a>]</span>. Here, a counter value is not included in the keyInfo field because the KDF specified in <span>[<a href="#SEC1" class="xref">SEC1</a>]</span> ensures that sufficient keying data is provided.<a href="#section-6.1.1-7" class="pilcrow">¶</a></p>
+< <p id="section-6.1.1-8">The KDF specified in Section 3.6.1 of <span>[<a href="#SEC1" class="xref">SEC1</a>]</span> describes how to generate an essentially arbitrary amount of keying material from a shared secret, Z, produced by ephemeral-static ECDH. To generate an L-bit key-encryption key (KEK), blocks of key material (KM) are computed by incrementing Counter appropriately until enough material has been generated:<a href="#section-6.1.1-8" class="pilcrow">¶</a></p>
+< <div id="section-6.1.1-9">
+< <pre class="sourcecode lang-pseudocode">
+---
+>    derivation function, as specified in Section 3.6.1 of <span>[<a href="#SEC1" class="cite xref">SEC1</a>]</span>.  Note that ECC-CMS-SharedInfo differs from the OtherInfo specified in <span>[<a href="#RFC2631" class="cite xref">RFC2631</a>]</span>. Here, a counter value is not included in the keyInfo field because the KDF specified in <span>[<a href="#SEC1" class="cite xref">SEC1</a>]</span> ensures that sufficient keying data is provided.<a href="#section-6.1.1-7" class="pilcrow">¶</a></p>
+> <p id="section-6.1.1-8">The KDF specified in Section 3.6.1 of <span>[<a href="#SEC1" class="cite xref">SEC1</a>]</span> describes how to generate an essentially arbitrary amount of keying material from a shared secret, Z, produced by ephemeral-static ECDH. To generate an L-bit key-encryption key (KEK), blocks of key material (KM) are computed by incrementing Counter appropriately until enough material has been generated:<a href="#section-6.1.1-8" class="pilcrow">¶</a></p>
+> <div class="lang-pseudocode sourcecode" id="section-6.1.1-9">
+> <pre>
+1502,1503c1638,1639
+< <div id="section-6.1.1-11">
+< <pre class="sourcecode lang-pseudocode">
+---
+> <div class="lang-pseudocode sourcecode" id="section-6.1.1-11">
+> <pre>
+1509,1510c1645,1646
+< <ul>
+< <li id="section-6.1.1-13.1">Hash is a one-way hash function. The SHA-384 hash <span class="bcp14">MUST</span> be used.<a href="#section-6.1.1-13.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-6.1.1-13.1">Hash is a one-way hash function. The SHA-384 hash <span class="bcp14">MUST</span> be used.<a href="#section-6.1.1-13.1" class="pilcrow">¶</a>
+1512c1648
+< <li id="section-6.1.1-13.2">Z is the shared secret value generated during ephemeral-static ECDH.
+---
+>             <li class="normal" id="section-6.1.1-13.2">Z is the shared secret value generated during ephemeral-static ECDH.
+1515c1651
+< <li id="section-6.1.1-13.3">Counter is a 32-bit unsigned number represented in network byte
+---
+>             <li class="normal" id="section-6.1.1-13.3">Counter is a 32-bit unsigned number represented in network byte
+1519c1655
+< <li id="section-6.1.1-13.4">ECC-CMS-SharedInfo is composed as described above. It <span class="bcp14">MUST</span> be DER
+---
+>             <li class="normal" id="section-6.1.1-13.4">ECC-CMS-SharedInfo is composed as described above. It <span class="bcp14">MUST</span> be DER
+1524,1525c1660,1661
+< <div id="section-6.1.1-15">
+< <pre class="sourcecode lang-pseudocode">
+---
+> <div class="lang-pseudocode sourcecode" id="section-6.1.1-15">
+> <pre>
+1538c1674
+< <p id="section-6.1.2-1">The AES Key Wrap with Padding key-encryption algorithm, as specified in <span>[<a href="#RFC5649" class="xref">RFC5649</a>]</span> and <span>[<a href="#SP80038F" class="xref">SP80038F</a>]</span>, is used to encrypt the content-encryption key with a pairwise key-encryption key that is generated using ephemeral-static ECDH. <span><a href="https://www.rfc-editor.org/rfc/rfc5753#section-8" class="relref">Section 8</a> of [<a href="#RFC5753" class="xref">RFC5753</a>]</span> specifies the CMS conventions for using AES Key Wrap with a pairwise key generated through ephemeral-static ECDH. CNSA Suite-compliant S/MIME implementations <span class="bcp14">MUST</span> follow these conventions.<a href="#section-6.1.2-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-6.1.2-1">The AES Key Wrap with Padding key-encryption algorithm, as specified in <span>[<a href="#RFC5649" class="cite xref">RFC5649</a>]</span> and <span>[<a href="#SP80038F" class="cite xref">SP80038F</a>]</span>, is used to encrypt the content-encryption key with a pairwise key-encryption key that is generated using ephemeral-static ECDH. <span><a href="https://rfc-editor.org/rfc/rfc5753#section-8" class="relref">Section 8</a> of [<a href="#RFC5753" class="cite xref">RFC5753</a>]</span> specifies the CMS conventions for using AES Key Wrap with a pairwise key generated through ephemeral-static ECDH. CNSA Suite-compliant S/MIME implementations <span class="bcp14">MUST</span> follow these conventions.<a href="#section-6.1.2-1" class="pilcrow">¶</a></p>
+1540,1542c1676,1678
+< <p id="section-6.1.2-3">The KeyWrapAlgorithm <span class="bcp14">MUST</span> be id-aes256-wrap-pad. The required algorithm identifier, specified in <span>[<a href="#RFC5649" class="xref">RFC5649</a>]</span>, is:<a href="#section-6.1.2-3" class="pilcrow">¶</a></p>
+< <div id="section-6.1.2-4">
+< <pre class="sourcecode lang-asn.1">
+---
+> <p id="section-6.1.2-3">The KeyWrapAlgorithm <span class="bcp14">MUST</span> be id-aes256-wrap-pad. The required algorithm identifier, specified in <span>[<a href="#RFC5649" class="cite xref">RFC5649</a>]</span>, is:<a href="#section-6.1.2-3" class="pilcrow">¶</a></p>
+> <div class="lang-asn.1 sourcecode" id="section-6.1.2-4">
+> <pre>
+1557,1558c1693,1694
+< <p id="section-6.2-1">RSA encryption (RSA) is the CNSA Suite key transport algorithm. The RSA key transport algorithm is the RSA encryption scheme defined in <span>[<a href="#RFC8017" class="xref">RFC8017</a>]</span>, where the message to be encrypted is the content-encryption key.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+< <p id="section-6.2-2">The recipient of an S/MIME message possesses an RSA key pair whose public key is represented by an X.509 certificate. The certificate used to obtain the recipient's public key <span class="bcp14">MUST</span> be compliant with <span>[<a href="#RFC8603" class="xref">RFC8603</a>]</span>. These certificates are suitable for use with either RSAES-OAEP or RSAES-PKCS1-v1_5.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
+---
+> <p id="section-6.2-1">RSA encryption (RSA) is the CNSA Suite key transport algorithm. The RSA key transport algorithm is the RSA encryption scheme defined in <span>[<a href="#RFC8017" class="cite xref">RFC8017</a>]</span>, where the message to be encrypted is the content-encryption key.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+> <p id="section-6.2-2">The recipient of an S/MIME message possesses an RSA key pair whose public key is represented by an X.509 certificate. The certificate used to obtain the recipient's public key <span class="bcp14">MUST</span> be compliant with <span>[<a href="#RFC8603" class="cite xref">RFC8603</a>]</span>. These certificates are suitable for use with either RSAES-OAEP or RSAES-PKCS1-v1_5.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
+1564c1700
+< <p id="section-6.2.1-1"><span><a href="https://www.rfc-editor.org/rfc/rfc3370#section-4.2" class="relref">Section 4.2</a> of [<a href="#RFC3370" class="xref">RFC3370</a>]</span> specifies the conventions for using RSAES-PKCS1-v1_5 with the CMS. S/MIME implementations employing this form of key transport <span class="bcp14">MUST</span> follow these conventions.<a href="#section-6.2.1-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-6.2.1-1"><span><a href="https://rfc-editor.org/rfc/rfc3370#section-4.2" class="relref">Section 4.2</a> of [<a href="#RFC3370" class="cite xref">RFC3370</a>]</span> specifies the conventions for using RSAES-PKCS1-v1_5 with the CMS. S/MIME implementations employing this form of key transport <span class="bcp14">MUST</span> follow these conventions.<a href="#section-6.2.1-1" class="pilcrow">¶</a></p>
+1567,1568c1703,1704
+< <div id="section-6.2.1-4">
+< <pre class="sourcecode lang-asn.1">
+---
+> <div class="lang-asn.1 sourcecode" id="section-6.2.1-4">
+> <pre>
+1581c1717
+< <p id="section-6.2.2-1"><span>[<a href="#RFC3560" class="xref">RFC3560</a>]</span> specifies the conventions for using RSAES-OAEP with the CMS. CNSA Suite-compliant S/MIME implementations employing this form of key transport <span class="bcp14">MUST</span> follow these conventions.<a href="#section-6.2.2-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-6.2.2-1"><span>[<a href="#RFC3560" class="cite xref">RFC3560</a>]</span> specifies the conventions for using RSAES-OAEP with the CMS. CNSA Suite-compliant S/MIME implementations employing this form of key transport <span class="bcp14">MUST</span> follow these conventions.<a href="#section-6.2.2-1" class="pilcrow">¶</a></p>
+1584,1585c1720,1721
+< <div id="section-6.2.2-4">
+< <pre class="sourcecode lang-asn.1">
+---
+> <div class="lang-asn.1 sourcecode" id="section-6.2.2-4">
+> <pre>
+1590,1592c1726,1728
+< <p id="section-6.2.2-5">The parameters field of an AlgorithmIdentifier that identifies RSAES-OAEP is defined in <span>[<a href="#RFC4055" class="xref">RFC4055</a>]</span> as follows:<a href="#section-6.2.2-5" class="pilcrow">¶</a></p>
+< <div id="section-6.2.2-6">
+< <pre class="sourcecode lang-asn.1">
+---
+> <p id="section-6.2.2-5">The parameters field of an AlgorithmIdentifier that identifies RSAES-OAEP is defined in <span>[<a href="#RFC4055" class="cite xref">RFC4055</a>]</span> as follows:<a href="#section-6.2.2-5" class="pilcrow">¶</a></p>
+> <div class="lang-asn.1 sourcecode" id="section-6.2.2-6">
+> <pre>
+1609,1610c1745,1746
+< <ul>
+< <li id="section-6.2.2-8.1">The hashFunc algorithm must be id-sha384 as defined in <span>[<a href="#RFC8017" class="xref">RFC8017</a>]</span>;<a href="#section-6.2.2-8.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-6.2.2-8.1">The hashFunc algorithm must be id-sha384 as defined in <span>[<a href="#RFC8017" class="cite xref">RFC8017</a>]</span>;<a href="#section-6.2.2-8.1" class="pilcrow">¶</a>
+1612c1748
+< <li id="section-6.2.2-8.2">The mask generation function must use the algorithm identifier mfg1SHA384Identifier as defined in <span>[<a href="#RFC4055" class="xref">RFC4055</a>]</span>;<a href="#section-6.2.2-8.2" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-6.2.2-8.2">The mask generation function must use the algorithm identifier mfg1SHA384Identifier as defined in <span>[<a href="#RFC4055" class="cite xref">RFC4055</a>]</span>;<a href="#section-6.2.2-8.2" class="pilcrow">¶</a>
+1614c1750
+< <li id="section-6.2.2-8.3">The pSourceFunc field must be absent.<a href="#section-6.2.2-8.3" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-6.2.2-8.3">The pSourceFunc field must be absent.<a href="#section-6.2.2-8.3" class="pilcrow">¶</a>
+1621c1757
+<    algorithm, it <span class="bcp14">MUST</span> be constructed as defined in <span><a href="https://www.rfc-editor.org/rfc/rfc3560#section-5" class="relref">Section 5</a> of [<a href="#RFC3560" class="xref">RFC3560</a>]</span>, with the sequence representing the rSAES-OAEP-SHA384-Identifier.<a href="#section-6.2.2-9" class="pilcrow">¶</a></p>
+---
+>    algorithm, it <span class="bcp14">MUST</span> be constructed as defined in <span><a href="https://rfc-editor.org/rfc/rfc3560#section-5" class="relref">Section 5</a> of [<a href="#RFC3560" class="cite xref">RFC3560</a>]</span>, with the sequence representing the rSAES-OAEP-SHA384-Identifier.<a href="#section-6.2.2-9" class="pilcrow">¶</a></p>
+1633c1769
+< <p id="section-7-1">AES-GCM is the preferred mode for CNSA Suite applications, as described in the <span><a href="#sec-considerations" class="xref">Security Considerations</a> (<a href="#sec-considerations" class="xref">Section 8</a>)</span>. AES-CBC is acceptable where AES-GCM is not yet available.<a href="#section-7-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-7-1">AES-GCM is the preferred mode for CNSA Suite applications, as described in the <span><a href="#sec-considerations" class="internal xref">Security Considerations</a> (<a href="#sec-considerations" class="auto internal xref">Section 8</a>)</span>. AES-CBC is acceptable where AES-GCM is not yet available.<a href="#section-7-1" class="pilcrow">¶</a></p>
+1640c1776
+<  authenticated-enveloped-data content type <span>[<a href="#RFC5083" class="xref">RFC5083</a>]</span> <span class="bcp14">MUST</span> use AES <span>[<a href="#FIPS197" class="xref">FIPS197</a>]</span> in Galois Counter Mode (GCM) <span>[<a href="#SP80038D" class="xref">SP80038D</a>]</span> as the content-authenticated encryption algorithm and <span class="bcp14">MUST</span> follow the conventions for using AES-GCM with the CMS defined in <span>[<a href="#RFC5084" class="xref">RFC5084</a>]</span>.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+---
+>  authenticated-enveloped-data content type <span>[<a href="#RFC5083" class="cite xref">RFC5083</a>]</span> <span class="bcp14">MUST</span> use AES <span>[<a href="#FIPS197" class="cite xref">FIPS197</a>]</span> in Galois Counter Mode (GCM) <span>[<a href="#SP80038D" class="cite xref">SP80038D</a>]</span> as the content-authenticated encryption algorithm and <span class="bcp14">MUST</span> follow the conventions for using AES-GCM with the CMS defined in <span>[<a href="#RFC5084" class="cite xref">RFC5084</a>]</span>.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+1642,1644c1778,1780
+< <p id="section-7.1-3">The AES-GCM content-authenticated encryption algorithm is described in <span>[<a href="#FIPS197" class="xref">FIPS197</a>]</span> and <span>[<a href="#SP80038D" class="xref">SP80038D</a>]</span>.  The algorithm identifier for AES-256 in GCM mode is:<a href="#section-7.1-3" class="pilcrow">¶</a></p>
+< <div id="section-7.1-4">
+< <pre class="sourcecode lang-asn.1">
+---
+> <p id="section-7.1-3">The AES-GCM content-authenticated encryption algorithm is described in <span>[<a href="#FIPS197" class="cite xref">FIPS197</a>]</span> and <span>[<a href="#SP80038D" class="cite xref">SP80038D</a>]</span>.  The algorithm identifier for AES-256 in GCM mode is:<a href="#section-7.1-3" class="pilcrow">¶</a></p>
+> <div class="lang-asn.1 sourcecode" id="section-7.1-4">
+> <pre>
+1651,1652c1787,1788
+< <div id="section-7.1-6">
+< <pre class="sourcecode lang-asn.1">
+---
+> <div class="lang-asn.1 sourcecode" id="section-7.1-6">
+> <pre>
+1660c1796
+<  generated in accordance with Section 8.2 of <span>[<a href="#SP80038D" class="xref">SP80038D</a>]</span>. AES-GCM loses security catastrophically if a nonce is reused with a given key on more than one distinct set of input data. Therefore, a fresh content-authenticated encryption key <span class="bcp14">MUST</span> be generated for each message.<a href="#section-7.1-8" class="pilcrow">¶</a></p>
+---
+>  generated in accordance with Section 8.2 of <span>[<a href="#SP80038D" class="cite xref">SP80038D</a>]</span>. AES-GCM loses security catastrophically if a nonce is reused with a given key on more than one distinct set of input data. Therefore, a fresh content-authenticated encryption key <span class="bcp14">MUST</span> be generated for each message.<a href="#section-7.1-8" class="pilcrow">¶</a></p>
+1669,1670c1805,1806
+<  enveloped-data content type <span class="bcp14">MUST</span> use AES-256 <span>[<a href="#FIPS197" class="xref">FIPS197</a>]</span> in Cipher Block Chaining (CBC)
+<  mode <span>[<a href="#SP80038A" class="xref">SP80038A</a>]</span> as the content-encryption algorithm and <span class="bcp14">MUST</span> follow the conventions for using AES with the CMS defined in <span>[<a href="#RFC3565" class="xref">RFC3565</a>]</span>.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+---
+>  enveloped-data content type <span class="bcp14">MUST</span> use AES-256 <span>[<a href="#FIPS197" class="cite xref">FIPS197</a>]</span> in Cipher Block Chaining (CBC)
+>  mode <span>[<a href="#SP80038A" class="cite xref">SP80038A</a>]</span> as the content-encryption algorithm and <span class="bcp14">MUST</span> follow the conventions for using AES with the CMS defined in <span>[<a href="#RFC3565" class="cite xref">RFC3565</a>]</span>.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+1672,1674c1808,1810
+< <p id="section-7.2-3">The AES-CBC content-encryption algorithm is described in <span>[<a href="#FIPS197" class="xref">FIPS197</a>]</span> and <span>[<a href="#SP80038A" class="xref">SP80038A</a>]</span>. The algorithm identifier for AES-256 in CBC mode is:<a href="#section-7.2-3" class="pilcrow">¶</a></p>
+< <div id="section-7.2-4">
+< <pre class="sourcecode lang-asn.1">
+---
+> <p id="section-7.2-3">The AES-CBC content-encryption algorithm is described in <span>[<a href="#FIPS197" class="cite xref">FIPS197</a>]</span> and <span>[<a href="#SP80038A" class="cite xref">SP80038A</a>]</span>. The algorithm identifier for AES-256 in CBC mode is:<a href="#section-7.2-3" class="pilcrow">¶</a></p>
+> <div class="lang-asn.1 sourcecode" id="section-7.2-4">
+> <pre>
+1681,1682c1817,1818
+< <div id="section-7.2-6">
+< <pre class="sourcecode lang-asn.1">
+---
+> <div class="lang-asn.1 sourcecode" id="section-7.2-6">
+> <pre>
+1686c1822
+< <p id="section-7.2-7">The 16-octet initialization vector is generated at random by the originator. See <span>[<a href="#RFC4086" class="xref">RFC4086</a>]</span> for guidance on generation of random values.<a href="#section-7.2-7" class="pilcrow">¶</a></p>
+---
+> <p id="section-7.2-7">The 16-octet initialization vector is generated at random by the originator. See <span>[<a href="#RFC4086" class="cite xref">RFC4086</a>]</span> for guidance on generation of random values.<a href="#section-7.2-7" class="pilcrow">¶</a></p>
+1697,1702c1833,1838
+< <p id="section-8-2">See <span>[<a href="#RFC4086" class="xref">RFC4086</a>]</span> for guidance on generation of random values.<a href="#section-8-2" class="pilcrow">¶</a></p>
+< <p id="section-8-3">The security considerations in <span>[<a href="#RFC5652" class="xref">RFC5652</a>]</span> discuss the CMS as a method for digitally signing data and encrypting data.<a href="#section-8-3" class="pilcrow">¶</a></p>
+< <p id="section-8-4">The security considerations in <span>[<a href="#RFC3370" class="xref">RFC3370</a>]</span> discuss cryptographic algorithm implementation concerns in the context of the CMS.<a href="#section-8-4" class="pilcrow">¶</a></p>
+< <p id="section-8-5">The security considerations in <span>[<a href="#RFC5753" class="xref">RFC5753</a>]</span> discuss the use of elliptic curve cryptography (ECC) in the CMS.<a href="#section-8-5" class="pilcrow">¶</a></p>
+< <p id="section-8-6">The security considerations in <span>[<a href="#RFC3565" class="xref">RFC3565</a>]</span> discuss the use of AES in the CMS.<a href="#section-8-6" class="pilcrow">¶</a></p>
+< <p id="section-8-7">The security considerations in <span>[<a href="#RFC8551" class="xref">RFC8551</a>]</span> apply to this profile, particularly the recommendation to use authenticated encryption modes (i.e., use authenticated-enveloped-data with AES-GCM rather than enveloped-data with AES-CBC).<a href="#section-8-7" class="pilcrow">¶</a></p>
+---
+> <p id="section-8-2">See <span>[<a href="#RFC4086" class="cite xref">RFC4086</a>]</span> for guidance on generation of random values.<a href="#section-8-2" class="pilcrow">¶</a></p>
+> <p id="section-8-3">The security considerations in <span>[<a href="#RFC5652" class="cite xref">RFC5652</a>]</span> discuss the CMS as a method for digitally signing data and encrypting data.<a href="#section-8-3" class="pilcrow">¶</a></p>
+> <p id="section-8-4">The security considerations in <span>[<a href="#RFC3370" class="cite xref">RFC3370</a>]</span> discuss cryptographic algorithm implementation concerns in the context of the CMS.<a href="#section-8-4" class="pilcrow">¶</a></p>
+> <p id="section-8-5">The security considerations in <span>[<a href="#RFC5753" class="cite xref">RFC5753</a>]</span> discuss the use of elliptic curve cryptography (ECC) in the CMS.<a href="#section-8-5" class="pilcrow">¶</a></p>
+> <p id="section-8-6">The security considerations in <span>[<a href="#RFC3565" class="cite xref">RFC3565</a>]</span> discuss the use of AES in the CMS.<a href="#section-8-6" class="pilcrow">¶</a></p>
+> <p id="section-8-7">The security considerations in <span>[<a href="#RFC8551" class="cite xref">RFC8551</a>]</span> apply to this profile, particularly the recommendation to use authenticated encryption modes (i.e., use authenticated-enveloped-data with AES-GCM rather than enveloped-data with AES-CBC).<a href="#section-8-7" class="pilcrow">¶</a></p>
+1724c1860,1861
+< <span class="refAuthor">Committee for National Security Systems</span>, <span class="refTitle">"Use of Public Standards for Secure Information Sharing"</span>, <span class="seriesInfo">CNSS Policy 15</span>, <time datetime="2016-10">October 2016</time>, <span>&lt;<a href="https://www.cnss.gov/CNSS/Issuances/Policies.cfm">https://www.cnss.gov/CNSS/Issuances/Policies.cfm</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Committee for National Security Systems</span>, <span class="refTitle">"Use of Public Standards for Secure Information Sharing"</span>, <span class="seriesInfo">CNSS Policy 15</span>, <time datetime="2016-10" class="refDate">October 2016</time>, <span>&lt;<a href="https://www.cnss.gov/CNSS/Issuances/Policies.cfm">https://www.cnss.gov/CNSS/Issuances/Policies.cfm</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1727c1864,1865
+< <span class="refAuthor">National Institute of Standards and Technology</span>, <span class="refTitle">"Secure Hash Standard (SHS)"</span>, <span class="seriesInfo">Federal Information Processing Standard 180-4</span>, <time datetime="2015-08">August 2015</time>, <span>&lt;<a href="https://csrc.nist.gov/publications/detail/fips/180/4/final">https://csrc.nist.gov/publications/detail/fips/180/4/final</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">National Institute of Standards and Technology</span>, <span class="refTitle">"Secure Hash Standard (SHS)"</span>, <span class="seriesInfo">Federal Information Processing Standard 180-4</span>, <time datetime="2015-08" class="refDate">August 2015</time>, <span>&lt;<a href="https://csrc.nist.gov/publications/detail/fips/180/4/final">https://csrc.nist.gov/publications/detail/fips/180/4/final</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1730c1868,1869
+< <span class="refAuthor">National Institute of Standards and Technology</span>, <span class="refTitle">"Digital Signature Standard (DSS)"</span>, <span class="seriesInfo">DOI 10.6028/NIST.FIPS.186-4</span>, <span class="seriesInfo">FIPS PUB 186-4</span>, <time datetime="2013-07">July 2013</time>, <span>&lt;<a href="https://csrc.nist.gov/publications/detail/fips/186/4/final">https://csrc.nist.gov/publications/detail/fips/186/4/final</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">National Institute of Standards and Technology</span>, <span class="refTitle">"Digital Signature Standard (DSS)"</span>, <span class="seriesInfo">DOI 10.6028/NIST.FIPS.186-4</span>, <span class="seriesInfo">FIPS PUB 186-4</span>, <time datetime="2013-07" class="refDate">July 2013</time>, <span>&lt;<a href="https://csrc.nist.gov/publications/detail/fips/186/4/final">https://csrc.nist.gov/publications/detail/fips/186/4/final</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1733c1872,1873
+< <span class="refAuthor">National Institute of Standards and Technology</span>, <span class="refTitle">"Advanced Encryption Standard (AES)"</span>, <span class="seriesInfo">DOI 10.6028/NIST.FIPS.197</span>, <span class="seriesInfo">FIPS PUB 197</span>, <time datetime="2001-11">November 2001</time>, <span>&lt;<a href="https://csrc.nist.gov/publications/detail/fips/197/final">https://csrc.nist.gov/publications/detail/fips/197/final</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">National Institute of Standards and Technology</span>, <span class="refTitle">"Advanced Encryption Standard (AES)"</span>, <span class="seriesInfo">DOI 10.6028/NIST.FIPS.197</span>, <span class="seriesInfo">FIPS PUB 197</span>, <time datetime="2001-11" class="refDate">November 2001</time>, <span>&lt;<a href="https://csrc.nist.gov/publications/detail/fips/197/final">https://csrc.nist.gov/publications/detail/fips/197/final</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1736c1876,1877
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1739c1880,1881
+< <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"Diffie-Hellman Key Agreement Method"</span>, <span class="seriesInfo">RFC 2631</span>, <span class="seriesInfo">DOI 10.17487/RFC2631</span>, <time datetime="1999-06">June 1999</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2631">https://www.rfc-editor.org/info/rfc2631</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"Diffie-Hellman Key Agreement Method"</span>, <span class="seriesInfo">RFC 2631</span>, <span class="seriesInfo">DOI 10.17487/RFC2631</span>, <time datetime="1999-06" class="refDate">June 1999</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2631">https://www.rfc-editor.org/info/rfc2631</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1742c1884,1885
+< <span class="refAuthor">Housley, R.</span>, <span class="refTitle">"Cryptographic Message Syntax (CMS) Algorithms"</span>, <span class="seriesInfo">RFC 3370</span>, <span class="seriesInfo">DOI 10.17487/RFC3370</span>, <time datetime="2002-08">August 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3370">https://www.rfc-editor.org/info/rfc3370</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Housley, R.</span>, <span class="refTitle">"Cryptographic Message Syntax (CMS) Algorithms"</span>, <span class="seriesInfo">RFC 3370</span>, <span class="seriesInfo">DOI 10.17487/RFC3370</span>, <time datetime="2002-08" class="refDate">August 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3370">https://www.rfc-editor.org/info/rfc3370</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1745c1888,1889
+< <span class="refAuthor">Housley, R.</span>, <span class="refTitle">"Use of the RSAES-OAEP Key Transport Algorithm in Cryptographic Message Syntax (CMS)"</span>, <span class="seriesInfo">RFC 3560</span>, <span class="seriesInfo">DOI 10.17487/RFC3560</span>, <time datetime="2003-07">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3560">https://www.rfc-editor.org/info/rfc3560</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Housley, R.</span>, <span class="refTitle">"Use of the RSAES-OAEP Key Transport Algorithm in Cryptographic Message Syntax (CMS)"</span>, <span class="seriesInfo">RFC 3560</span>, <span class="seriesInfo">DOI 10.17487/RFC3560</span>, <time datetime="2003-07" class="refDate">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3560">https://www.rfc-editor.org/info/rfc3560</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1748c1892,1893
+< <span class="refAuthor">Schaad, J.</span>, <span class="refTitle">"Use of the Advanced Encryption Standard (AES) Encryption Algorithm in Cryptographic Message Syntax (CMS)"</span>, <span class="seriesInfo">RFC 3565</span>, <span class="seriesInfo">DOI 10.17487/RFC3565</span>, <time datetime="2003-07">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3565">https://www.rfc-editor.org/info/rfc3565</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schaad, J.</span>, <span class="refTitle">"Use of the Advanced Encryption Standard (AES) Encryption Algorithm in Cryptographic Message Syntax (CMS)"</span>, <span class="seriesInfo">RFC 3565</span>, <span class="seriesInfo">DOI 10.17487/RFC3565</span>, <time datetime="2003-07" class="refDate">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3565">https://www.rfc-editor.org/info/rfc3565</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1751c1896,1897
+< <span class="refAuthor">Schaad, J.</span><span class="refAuthor">, Kaliski, B.</span><span class="refAuthor">, and R. Housley</span>, <span class="refTitle">"Additional Algorithms and Identifiers for RSA Cryptography for use in the Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile"</span>, <span class="seriesInfo">RFC 4055</span>, <span class="seriesInfo">DOI 10.17487/RFC4055</span>, <time datetime="2005-06">June 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4055">https://www.rfc-editor.org/info/rfc4055</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schaad, J.</span>, <span class="refAuthor">Kaliski, B.</span>, and <span class="refAuthor">R. Housley</span>, <span class="refTitle">"Additional Algorithms and Identifiers for RSA Cryptography for use in the Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile"</span>, <span class="seriesInfo">RFC 4055</span>, <span class="seriesInfo">DOI 10.17487/RFC4055</span>, <time datetime="2005-06" class="refDate">June 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4055">https://www.rfc-editor.org/info/rfc4055</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1754c1900,1901
+< <span class="refAuthor">Schaad, J.</span>, <span class="refTitle">"Use of the RSASSA-PSS Signature Algorithm in Cryptographic Message Syntax (CMS)"</span>, <span class="seriesInfo">RFC 4056</span>, <span class="seriesInfo">DOI 10.17487/RFC4056</span>, <time datetime="2005-06">June 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4056">https://www.rfc-editor.org/info/rfc4056</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schaad, J.</span>, <span class="refTitle">"Use of the RSASSA-PSS Signature Algorithm in Cryptographic Message Syntax (CMS)"</span>, <span class="seriesInfo">RFC 4056</span>, <span class="seriesInfo">DOI 10.17487/RFC4056</span>, <time datetime="2005-06" class="refDate">June 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4056">https://www.rfc-editor.org/info/rfc4056</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1757c1904,1905
+< <span class="refAuthor">Housley, R.</span>, <span class="refTitle">"Cryptographic Message Syntax (CMS) Authenticated-Enveloped-Data Content Type"</span>, <span class="seriesInfo">RFC 5083</span>, <span class="seriesInfo">DOI 10.17487/RFC5083</span>, <time datetime="2007-11">November 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5083">https://www.rfc-editor.org/info/rfc5083</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Housley, R.</span>, <span class="refTitle">"Cryptographic Message Syntax (CMS) Authenticated-Enveloped-Data Content Type"</span>, <span class="seriesInfo">RFC 5083</span>, <span class="seriesInfo">DOI 10.17487/RFC5083</span>, <time datetime="2007-11" class="refDate">November 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5083">https://www.rfc-editor.org/info/rfc5083</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1760c1908,1909
+< <span class="refAuthor">Housley, R.</span>, <span class="refTitle">"Using AES-CCM and AES-GCM Authenticated Encryption in the Cryptographic Message Syntax (CMS)"</span>, <span class="seriesInfo">RFC 5084</span>, <span class="seriesInfo">DOI 10.17487/RFC5084</span>, <time datetime="2007-11">November 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5084">https://www.rfc-editor.org/info/rfc5084</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Housley, R.</span>, <span class="refTitle">"Using AES-CCM and AES-GCM Authenticated Encryption in the Cryptographic Message Syntax (CMS)"</span>, <span class="seriesInfo">RFC 5084</span>, <span class="seriesInfo">DOI 10.17487/RFC5084</span>, <time datetime="2007-11" class="refDate">November 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5084">https://www.rfc-editor.org/info/rfc5084</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1763c1912,1913
+< <span class="refAuthor">Turner, S.</span><span class="refAuthor">, Brown, D.</span><span class="refAuthor">, Yiu, K.</span><span class="refAuthor">, Housley, R.</span><span class="refAuthor">, and T. Polk</span>, <span class="refTitle">"Elliptic Curve Cryptography Subject Public Key Information"</span>, <span class="seriesInfo">RFC 5480</span>, <span class="seriesInfo">DOI 10.17487/RFC5480</span>, <time datetime="2009-03">March 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5480">https://www.rfc-editor.org/info/rfc5480</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Turner, S.</span>, <span class="refAuthor">Brown, D.</span>, <span class="refAuthor">Yiu, K.</span>, <span class="refAuthor">Housley, R.</span>, and <span class="refAuthor">T. Polk</span>, <span class="refTitle">"Elliptic Curve Cryptography Subject Public Key Information"</span>, <span class="seriesInfo">RFC 5480</span>, <span class="seriesInfo">DOI 10.17487/RFC5480</span>, <time datetime="2009-03" class="refDate">March 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5480">https://www.rfc-editor.org/info/rfc5480</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1766c1916,1917
+< <span class="refAuthor">Housley, R.</span><span class="refAuthor"> and M. Dworkin</span>, <span class="refTitle">"Advanced Encryption Standard (AES) Key Wrap with Padding Algorithm"</span>, <span class="seriesInfo">RFC 5649</span>, <span class="seriesInfo">DOI 10.17487/RFC5649</span>, <time datetime="2009-09">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5649">https://www.rfc-editor.org/info/rfc5649</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Housley, R.</span> and <span class="refAuthor">M. Dworkin</span>, <span class="refTitle">"Advanced Encryption Standard (AES) Key Wrap with Padding Algorithm"</span>, <span class="seriesInfo">RFC 5649</span>, <span class="seriesInfo">DOI 10.17487/RFC5649</span>, <time datetime="2009-09" class="refDate">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5649">https://www.rfc-editor.org/info/rfc5649</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1769c1920,1921
+< <span class="refAuthor">Housley, R.</span>, <span class="refTitle">"Cryptographic Message Syntax (CMS)"</span>, <span class="seriesInfo">STD 70</span>, <span class="seriesInfo">RFC 5652</span>, <span class="seriesInfo">DOI 10.17487/RFC5652</span>, <time datetime="2009-09">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5652">https://www.rfc-editor.org/info/rfc5652</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Housley, R.</span>, <span class="refTitle">"Cryptographic Message Syntax (CMS)"</span>, <span class="seriesInfo">STD 70</span>, <span class="seriesInfo">RFC 5652</span>, <span class="seriesInfo">DOI 10.17487/RFC5652</span>, <time datetime="2009-09" class="refDate">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5652">https://www.rfc-editor.org/info/rfc5652</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1772c1924,1925
+< <span class="refAuthor">Turner, S.</span><span class="refAuthor"> and D. Brown</span>, <span class="refTitle">"Use of Elliptic Curve Cryptography (ECC) Algorithms in Cryptographic Message Syntax (CMS)"</span>, <span class="seriesInfo">RFC 5753</span>, <span class="seriesInfo">DOI 10.17487/RFC5753</span>, <time datetime="2010-01">January 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5753">https://www.rfc-editor.org/info/rfc5753</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Turner, S.</span> and <span class="refAuthor">D. Brown</span>, <span class="refTitle">"Use of Elliptic Curve Cryptography (ECC) Algorithms in Cryptographic Message Syntax (CMS)"</span>, <span class="seriesInfo">RFC 5753</span>, <span class="seriesInfo">DOI 10.17487/RFC5753</span>, <time datetime="2010-01" class="refDate">January 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5753">https://www.rfc-editor.org/info/rfc5753</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1775c1928,1929
+< <span class="refAuthor">Turner, S.</span>, <span class="refTitle">"Using SHA2 Algorithms with Cryptographic Message Syntax"</span>, <span class="seriesInfo">RFC 5754</span>, <span class="seriesInfo">DOI 10.17487/RFC5754</span>, <time datetime="2010-01">January 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5754">https://www.rfc-editor.org/info/rfc5754</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Turner, S.</span>, <span class="refTitle">"Using SHA2 Algorithms with Cryptographic Message Syntax"</span>, <span class="seriesInfo">RFC 5754</span>, <span class="seriesInfo">DOI 10.17487/RFC5754</span>, <time datetime="2010-01" class="refDate">January 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5754">https://www.rfc-editor.org/info/rfc5754</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1778c1932,1933
+< <span class="refAuthor">Moriarty, K., Ed.</span><span class="refAuthor">, Kaliski, B.</span><span class="refAuthor">, Jonsson, J.</span><span class="refAuthor">, and A. Rusch</span>, <span class="refTitle">"PKCS #1: RSA Cryptography Specifications Version 2.2"</span>, <span class="seriesInfo">RFC 8017</span>, <span class="seriesInfo">DOI 10.17487/RFC8017</span>, <time datetime="2016-11">November 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8017">https://www.rfc-editor.org/info/rfc8017</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Moriarty, K., Ed.</span>, <span class="refAuthor">Kaliski, B.</span>, <span class="refAuthor">Jonsson, J.</span>, and <span class="refAuthor">A. Rusch</span>, <span class="refTitle">"PKCS #1: RSA Cryptography Specifications Version 2.2"</span>, <span class="seriesInfo">RFC 8017</span>, <span class="seriesInfo">DOI 10.17487/RFC8017</span>, <time datetime="2016-11" class="refDate">November 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8017">https://www.rfc-editor.org/info/rfc8017</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1781c1936,1937
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1784c1940,1941
+< <span class="refAuthor">Schaad, J.</span><span class="refAuthor">, Ramsdell, B.</span><span class="refAuthor">, and S. Turner</span>, <span class="refTitle">"Secure/Multipurpose Internet Mail Extensions (S/MIME) Version 4.0 Message Specification"</span>, <span class="seriesInfo">RFC 8551</span>, <span class="seriesInfo">DOI 10.17487/RFC8551</span>, <time datetime="2019-04">April 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8551">https://www.rfc-editor.org/info/rfc8551</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schaad, J.</span>, <span class="refAuthor">Ramsdell, B.</span>, and <span class="refAuthor">S. Turner</span>, <span class="refTitle">"Secure/Multipurpose Internet Mail Extensions (S/MIME) Version 4.0 Message Specification"</span>, <span class="seriesInfo">RFC 8551</span>, <span class="seriesInfo">DOI 10.17487/RFC8551</span>, <time datetime="2019-04" class="refDate">April 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8551">https://www.rfc-editor.org/info/rfc8551</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1787c1944,1945
+< <span class="refAuthor">Jenkins, M.</span><span class="refAuthor"> and L. Zieglar</span>, <span class="refTitle">"Commercial National Security Algorithm (CNSA) Suite Certificate and Certificate Revocation List (CRL) Profile"</span>, <span class="seriesInfo">RFC 8603</span>, <span class="seriesInfo">DOI 10.17487/RFC8603</span>, <time datetime="2019-05">May 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8603">https://www.rfc-editor.org/info/rfc8603</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jenkins, M.</span> and <span class="refAuthor">L. Zieglar</span>, <span class="refTitle">"Commercial National Security Algorithm (CNSA) Suite Certificate and Certificate Revocation List (CRL) Profile"</span>, <span class="seriesInfo">RFC 8603</span>, <span class="seriesInfo">DOI 10.17487/RFC8603</span>, <time datetime="2019-05" class="refDate">May 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8603">https://www.rfc-editor.org/info/rfc8603</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1790c1948,1949
+< <span class="refAuthor">Standards for Efficient Cryptography Group</span>, <span class="refTitle">"SEC1: Elliptic Curve Cryptography"</span>, <time datetime="2009-05">May 2009</time>, <span>&lt;<a href="https://www.secg.org/sec1-v2.pdf">https://www.secg.org/sec1-v2.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Standards for Efficient Cryptography Group</span>, <span class="refTitle">"SEC1: Elliptic Curve Cryptography"</span>, <time datetime="2009-05" class="refDate">May 2009</time>, <span>&lt;<a href="https://www.secg.org/sec1-v2.pdf">https://www.secg.org/sec1-v2.pdf</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1793c1952,1953
+< <span class="refAuthor">Dworkin, M.</span>, <span class="refTitle">"Recommendation for Block Cipher Modes of Operation: Methods and Techniques"</span>, <span class="seriesInfo">DOI 10.6028/NIST.SP.800-38A</span>, <span class="seriesInfo">Special Publication 800-38A</span>, <time datetime="2001-12">December 2001</time>, <span>&lt;<a href="https://csrc.nist.gov/publications/detail/sp/800-38a/final">https://csrc.nist.gov/publications/detail/sp/800-38a/final</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Dworkin, M.</span>, <span class="refTitle">"Recommendation for Block Cipher Modes of Operation: Methods and Techniques"</span>, <span class="seriesInfo">DOI 10.6028/NIST.SP.800-38A</span>, <span class="seriesInfo">Special Publication 800-38A</span>, <time datetime="2001-12" class="refDate">December 2001</time>, <span>&lt;<a href="https://csrc.nist.gov/publications/detail/sp/800-38a/final">https://csrc.nist.gov/publications/detail/sp/800-38a/final</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1796c1956,1957
+< <span class="refAuthor">Dworkin, M.</span>, <span class="refTitle">"Recommendation for Block Cipher Modes of Operation: Galois/Counter Mode (GCM) and GMAC"</span>, <span class="seriesInfo">DOI 10.6028/NIST.SP.800-38D</span>, <span class="seriesInfo">Special Publication 800-38D</span>, <time datetime="2007-11">November 2007</time>, <span>&lt;<a href="https://csrc.nist.gov/publications/detail/sp/800-38d/final">https://csrc.nist.gov/publications/detail/sp/800-38d/final</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Dworkin, M.</span>, <span class="refTitle">"Recommendation for Block Cipher Modes of Operation: Galois/Counter Mode (GCM) and GMAC"</span>, <span class="seriesInfo">DOI 10.6028/NIST.SP.800-38D</span>, <span class="seriesInfo">Special Publication 800-38D</span>, <time datetime="2007-11" class="refDate">November 2007</time>, <span>&lt;<a href="https://csrc.nist.gov/publications/detail/sp/800-38d/final">https://csrc.nist.gov/publications/detail/sp/800-38d/final</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1799c1960,1961
+< <span class="refAuthor">Dworkin, M.</span>, <span class="refTitle">"Recommendation for Block Cipher Modes of Operation: Methods for Key Wrapping"</span>, <span class="seriesInfo">DOI 10.6028/NIST.SP.800-38F</span>, <span class="seriesInfo">Special Publication 800-38F</span>, <time datetime="2012-12">December 2012</time>, <span>&lt;<a href="https://csrc.nist.gov/publications/detail/sp/800-38f/final">https://csrc.nist.gov/publications/detail/sp/800-38f/final</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Dworkin, M.</span>, <span class="refTitle">"Recommendation for Block Cipher Modes of Operation: Methods for Key Wrapping"</span>, <span class="seriesInfo">DOI 10.6028/NIST.SP.800-38F</span>, <span class="seriesInfo">Special Publication 800-38F</span>, <time datetime="2012-12" class="refDate">December 2012</time>, <span>&lt;<a href="https://csrc.nist.gov/publications/detail/sp/800-38f/final">https://csrc.nist.gov/publications/detail/sp/800-38f/final</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1802c1964,1965
+< <span class="refAuthor">CCITT</span>, <span class="refTitle">"Specification of Abstract Syntax Notation One (ASN.1)"</span>, <span class="seriesInfo">CCITT Recommendation X.208</span>, <time datetime="1988">1988</time>, <span>&lt;<a href="https://www.itu.int/rec/T-REC-X.208-198811-W/en">https://www.itu.int/rec/T-REC-X.208-198811-W/en</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">CCITT</span>, <span class="refTitle">"Specification of Abstract Syntax Notation One (ASN.1)"</span>, <span class="seriesInfo">CCITT Recommendation X.208</span>, <time datetime="1988" class="refDate">1988</time>, <span>&lt;<a href="https://www.itu.int/rec/T-REC-X.208-198811-W/en">https://www.itu.int/rec/T-REC-X.208-198811-W/en</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1805c1968,1969
+< <span class="refAuthor">CCITT</span>, <span class="refTitle">"Specification of Basic Encoding Rules for Abstract Syntax Notation One (ASN.1)"</span>, <span class="seriesInfo">CCITT Recommendation X.209</span>, <time datetime="1988">1988</time>, <span>&lt;<a href="https://www.itu.int/rec/T-REC-X.209-198811-W/en">https://www.itu.int/rec/T-REC-X.209-198811-W/en</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">CCITT</span>, <span class="refTitle">"Specification of Basic Encoding Rules for Abstract Syntax Notation One (ASN.1)"</span>, <span class="seriesInfo">CCITT Recommendation X.209</span>, <time datetime="1988" class="refDate">1988</time>, <span>&lt;<a href="https://www.itu.int/rec/T-REC-X.209-198811-W/en">https://www.itu.int/rec/T-REC-X.209-198811-W/en</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1808c1972,1973
+< <span class="refAuthor">CCITT</span>, <span class="refTitle">"The Directory - Authentication Framework"</span>, <span class="seriesInfo">CCITT Recommendation X.509</span>, <time datetime="1988">1988</time>, <span>&lt;<a href="https://www.itu.int/rec/T-REC-X.509-198811-S">https://www.itu.int/rec/T-REC-X.509-198811-S</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">CCITT</span>, <span class="refTitle">"The Directory - Authentication Framework"</span>, <span class="seriesInfo">CCITT Recommendation X.509</span>, <time datetime="1988" class="refDate">1988</time>, <span>&lt;<a href="https://www.itu.int/rec/T-REC-X.509-198811-S">https://www.itu.int/rec/T-REC-X.509-198811-S</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1818c1983,1984
+< <span class="refAuthor">Eastlake 3rd, D.</span><span class="refAuthor">, Schiller, J.</span><span class="refAuthor">, and S. Crocker</span>, <span class="refTitle">"Randomness Requirements for Security"</span>, <span class="seriesInfo">BCP 106</span>, <span class="seriesInfo">RFC 4086</span>, <span class="seriesInfo">DOI 10.17487/RFC4086</span>, <time datetime="2005-06">June 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4086">https://www.rfc-editor.org/info/rfc4086</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Eastlake 3rd, D.</span>, <span class="refAuthor">Schiller, J.</span>, and <span class="refAuthor">S. Crocker</span>, <span class="refTitle">"Randomness Requirements for Security"</span>, <span class="seriesInfo">BCP 106</span>, <span class="seriesInfo">RFC 4086</span>, <span class="seriesInfo">DOI 10.17487/RFC4086</span>, <time datetime="2005-06" class="refDate">June 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4086">https://www.rfc-editor.org/info/rfc4086</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1821c1987,1988
+< <span class="refAuthor">Barker, W.</span>, <span class="refTitle">"Guideline for Identifying an Information System as a National Security System"</span>, <span class="seriesInfo">DOI 10.6028/NIST.SP.800-59</span>, <span class="seriesInfo">Special Publication 800-59</span>, <time datetime="2003-08">August 2003</time>, <span>&lt;<a href="https://csrc.nist.gov/publications/detail/sp/800-59/final">https://csrc.nist.gov/publications/detail/sp/800-59/final</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Barker, W.</span>, <span class="refTitle">"Guideline for Identifying an Information System as a National Security System"</span>, <span class="seriesInfo">DOI 10.6028/NIST.SP.800-59</span>, <span class="seriesInfo">Special Publication 800-59</span>, <time datetime="2003-08" class="refDate">August 2003</time>, <span>&lt;<a href="https://csrc.nist.gov/publications/detail/sp/800-59/final">https://csrc.nist.gov/publications/detail/sp/800-59/final</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1826c1993
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
