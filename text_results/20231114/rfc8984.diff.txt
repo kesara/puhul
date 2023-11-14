@@ -1,0 +1,1790 @@
+280c280
+<    "*":  The type is undefined (the value could be any type, although
+---
+>    *:  The type is undefined (the value could be any type, although
+283c283
+<    "String":  This is the JSON string type.
+---
+>    String:  This is the JSON string type.
+285c285
+<    "Number":  This is the JSON number type.
+---
+>    Number:  This is the JSON number type.
+287c287
+<    "Boolean":  This is the JSON boolean type.
+---
+>    Boolean:  This is the JSON boolean type.
+289,290c289,290
+<    "A[B]":  The keys are all of type "A" and the values are all of type
+<       "B" for a JSON object.
+---
+>    A[B]:  The keys are all of type A and the values are all of type B
+>       for a JSON object.
+292c292
+<    "A[]":  There is an array of values of type "A"
+---
+>    A[]:  There is an array of values of type A
+294c294
+<    "A|B":  The value is either of type "A" or of type "B".
+---
+>    A|B:  The value is either of type A or of type B.
+306,311c306,311
+<    Where "Id" is given as a data type, it means a "String" of at least 1
+<    and a maximum of 255 octets in size, and it MUST only contain
+<    characters from the "URL and Filename Safe" base64url alphabet, as
+<    defined in Section 5 of [RFC4648], excluding the pad character ("=").
+<    This means the allowed characters are the ASCII alphanumeric
+<    characters ("A-Za-z0-9"), hyphen ("-"), and underscore ("_").
+---
+>    Where Id is given as a data type, it means a String of at least 1 and
+>    a maximum of 255 octets in size, and it MUST only contain characters
+>    from the "URL and Filename Safe" base64url alphabet, as defined in
+>    Section 5 of [RFC4648], excluding the pad character (=).  This means
+>    the allowed characters are the ASCII alphanumeric characters (A-Za-
+>    z0-9), hyphen (-), and underscore (_).
+325,328c325,328
+<    same Ids in their respective "links" properties or, within the same
+<    Event object, the same Id could appear in the "participants" and
+<    "alerts" properties.  These situations do not imply any semantic
+<    connections among the objects.
+---
+>    same Ids in their respective links properties or, within the same
+>    Event object, the same Id could appear in the participants and alerts
+>    properties.  These situations do not imply any semantic connections
+>    among the objects.
+332c332
+<    Where "Int" is given as a data type, it means an integer in the range
+---
+>    Where Int is given as a data type, it means an integer in the range
+334c334
+<    floating-point double, represented as a JSON "Number".
+---
+>    floating-point double, represented as a JSON Number.
+338,339c338,339
+<    Where "UnsignedInt" is given as a data type, it means an integer in
+<    the range 0 <= value <= 2^53-1, represented as a JSON "Number".
+---
+>    Where UnsignedInt is given as a data type, it means an integer in the
+>    range 0 <= value <= 2^53-1, represented as a JSON Number.
+343,351c343,351
+<    This is a string in the "date-time" [RFC3339] format, with the
+<    further restrictions that any letters MUST be in uppercase, and the
+<    time offset MUST be the character "Z".  Fractional second values MUST
+<    NOT be included unless non-zero and MUST NOT have trailing zeros, to
+<    ensure there is only a single representation for each date-time.
+< 
+<    For example, "2010-10-10T10:10:10.003Z" is conformant, but
+<    "2010-10-10T10:10:10.000Z" is invalid and is correctly encoded as
+<    "2010-10-10T10:10:10Z".
+---
+>    This is a string in the date-time [RFC3339] format, with the further
+>    restrictions that any letters MUST be in uppercase, and the time
+>    offset MUST be the character Z.  Fractional second values MUST NOT be
+>    included unless non-zero and MUST NOT have trailing zeros, to ensure
+>    there is only a single representation for each date-time.
+> 
+>    For example, 2010-10-10T10:10:10.003Z is conformant, but
+>    2010-10-10T10:10:10.000Z is invalid and is correctly encoded as
+>    2010-10-10T10:10:10Z.
+357,359c357,359
+<    seconds.  For example, "2006-01-02T15:04:05" and
+<    "2006-01-02T15:04:05.003" are both valid.  The time zone to associate
+<    with the LocalDateTime comes from the "timeZone" property of the
+---
+>    seconds.  For example, 2006-01-02T15:04:05 and
+>    2006-01-02T15:04:05.003 are both valid.  The time zone to associate
+>    with the LocalDateTime comes from the timeZone property of the
+361c361
+<    the LocalDateTime is "floating".  Floating date-times are not tied to
+---
+>    the LocalDateTime is floating.  Floating date-times are not tied to
+470,472c470,472
+<    Where "TimeZoneId" is given as a data type, it means a "String" that
+<    is either a time zone name in the IANA Time Zone Database [TZDB] or a
+<    custom time zone identifier defined in the "timeZones" property (see
+---
+>    Where TimeZoneId is given as a data type, it means a String that is
+>    either a time zone name in the IANA Time Zone Database [TZDB] or a
+>    custom time zone identifier defined in the timeZones property (see
+481,485c481,485
+<    A PatchObject is of type "String[*]" and represents an unordered set
+<    of patches on a JSON object.  Each key is a path represented in a
+<    subset of the JSON Pointer format [RFC6901].  The paths have an
+<    implicit leading "/", so each key is prefixed with "/" before
+<    applying the JSON Pointer evaluation algorithm.
+---
+>    A PatchObject is of type String[*] and represents an unordered set of
+>    patches on a JSON object.  Each key is a path represented in a subset
+>    of the JSON Pointer format [RFC6901].  The paths have an implicit
+>    leading /, so each key is prefixed with / before applying the JSON
+>    Pointer evaluation algorithm.
+499c499
+<        "alerts/1/offset" and "alerts".
+---
+>        alerts/1/offset and alerts.
+515,517c515,517
+<    A PatchObject does not define its own "@type" property (see
+<    Section 4.1.1).  An "@type" property in a patch MUST be handled as
+<    any other patched property value.
+---
+>    A PatchObject does not define its own @type property (see
+>    Section 4.1.1).  An @type property in a patch MUST be handled as any
+>    other patched property value.
+542,543c542,543
+<    @type: "String" (mandatory)
+<       This specifies the type of this object.  This MUST be "Relation".
+---
+>    @type: String (mandatory)
+>       This specifies the type of this object.  This MUST be Relation.
+545c545
+<    relation: "String[Boolean]" (optional, default: empty Object)
+---
+>    relation: String[Boolean] (optional, default: empty Object)
+555c555
+<       "first":  The linked object is the first in a series the linking
+---
+>       first:  The linked object is the first in a series the linking
+558,559c558,559
+<       "next":  The linked object is next in a series the linking object
+<          is part of.
+---
+>       next:  The linked object is next in a series the linking object is
+>          part of.
+561c561
+<       "child":  The linked object is a subpart of the linking object.
+---
+>       child:  The linked object is a subpart of the linking object.
+563c563
+<       "parent":  The linking object is a subpart of the linked object.
+---
+>       parent:  The linking object is a subpart of the linked object.
+572,573c572,573
+<    @type: "String" (mandatory)
+<       This specifies the type of this object.  This MUST be "Link".
+---
+>    @type: String (mandatory)
+>       This specifies the type of this object.  This MUST be Link.
+575c575
+<    href: "String" (mandatory)
+---
+>    href: String (mandatory)
+578,586c578,586
+<       This MAY be a "data:" URL [RFC2397], but it is recommended that
+<       the file be hosted on a server to avoid embedding arbitrarily
+<       large data in JSCalendar object instances.
+< 
+<    cid: "String" (optional)
+<       This MUST be a valid "content-id" value according to the
+<       definition of Section 2 of [RFC2392].  The value MUST be unique
+<       within this Link object but has no meaning beyond that.  It MAY be
+<       different from the link id for this Link object.
+---
+>       This MAY be a data: URL [RFC2397], but it is recommended that the
+>       file be hosted on a server to avoid embedding arbitrarily large
+>       data in JSCalendar object instances.
+> 
+>    cid: String (optional)
+>       This MUST be a valid content-id value according to the definition
+>       of Section 2 of [RFC2392].  The value MUST be unique within this
+>       Link object but has no meaning beyond that.  It MAY be different
+>       from the link id for this Link object.
+588c588
+<    contentType: "String" (optional)
+---
+>    contentType: String (optional)
+591c591
+<    size: "UnsignedInt" (optional)
+---
+>    size: UnsignedInt (optional)
+598c598
+<    rel: "String" (optional)
+---
+>    rel: String (optional)
+603c603
+<    display: "String" (optional)
+---
+>    display: String (optional)
+605,606c605,606
+<       set, the "rel" property MUST be set to "icon".  The value MUST be
+<       one of the following values, another value registered in the IANA
+---
+>       set, the rel property MUST be set to icon.  The value MUST be one
+>       of the following values, another value registered in the IANA
+610,611c610,611
+<       "badge":  an image meant to be displayed alongside the title of
+<          the object
+---
+>       badge:  an image meant to be displayed alongside the title of the
+>          object
+613c613
+<       "graphic":  a full image replacement for the object itself
+---
+>       graphic:  a full image replacement for the object itself
+615c615
+<       "fullsize":  an image that is used to enhance the object
+---
+>       fullsize:  an image that is used to enhance the object
+617,618c617,618
+<       "thumbnail":  a smaller variant of "fullsize" to be used when
+<          space for the image is constrained
+---
+>       thumbnail:  a smaller variant of fullsize to be used when space
+>          for the image is constrained
+620c620
+<    title: "String" (optional)
+---
+>    title: String (optional)
+630c630
+<    Media type: "application/jscalendar+json;type=event"
+---
+>    Media type: application/jscalendar+json;type=event
+638c638
+<    The @type (Section 4.1.1) property value MUST be "Event".
+---
+>    The @type (Section 4.1.1) property value MUST be Event.
+642c642
+<    Media type: "application/jscalendar+json;type=task"
+---
+>    Media type: application/jscalendar+json;type=task
+648c648
+<    The @type (Section 4.1.1) property value MUST be "Task".
+---
+>    The @type (Section 4.1.1) property value MUST be Task.
+652c652
+<    Media type: "application/jscalendar+json;type=group"
+---
+>    Media type: application/jscalendar+json;type=group
+658c658
+<    The @type (Section 4.1.1) property value MUST be "Group".
+---
+>    The @type (Section 4.1.1) property value MUST be Group.
+673,674c673,674
+<    JSCalendar objects MUST name their type in the "@type" property if
+<    not explicitly specified otherwise for the respective object type.  A
+---
+>    JSCalendar objects MUST name their type in the @type property if not
+>    explicitly specified otherwise for the respective object type.  A
+706,708c706,708
+<    followed by a colon, e.g., "example.com:customprop".  If the value is
+<    a new JSCalendar object, it either MUST include an "@type" property,
+<    or it MUST explicitly be specified to not require a type designator.
+---
+>    followed by a colon, e.g., example.com:customprop.  If the value is a
+>    new JSCalendar object, it either MUST include an @type property, or
+>    it MUST explicitly be specified to not require a type designator.
+715c715
+<    "example.com:customrel".
+---
+>    example.com:customrel.
+732c732
+<    Type: "String" (mandatory)
+---
+>    Type: String (mandatory)
+740c740
+<    Type: "String" (mandatory)
+---
+>    Type: String (mandatory)
+747c747
+<    "recurrenceId" identifies a particular instance.
+---
+>    recurrenceId identifies a particular instance.
+761c761
+<    Type: "String[Relation]" (optional)
+---
+>    Type: String[Relation] (optional)
+770,775c770,775
+<    represent all the occurrences after the split.  A "next" relation
+<    MUST be set on the original object's "relatedTo" property for the UID
+<    of the new object.  A "first" relation for the UID of the first
+<    object in the series MUST be set on the new object.  Clients can then
+<    follow these UIDs to get the complete set of objects if the user
+<    wishes to modify them all at once.
+---
+>    represent all the occurrences after the split.  A next relation MUST
+>    be set on the original object's relatedTo property for the UID of the
+>    new object.  A first relation for the UID of the first object in the
+>    series MUST be set on the new object.  Clients can then follow these
+>    UIDs to get the complete set of objects if the user wishes to modify
+>    them all at once.
+779c779
+<    Type: "String" (optional)
+---
+>    Type: String (optional)
+783c783
+<    object is modified (i.e., whenever the "updated" property is set).
+---
+>    object is modified (i.e., whenever the updated property is set).
+797c797
+<    Type: "UTCDateTime" (optional)
+---
+>    Type: UTCDateTime (optional)
+803c803
+<    Type: "UTCDateTime" (mandatory)
+---
+>    Type: UTCDateTime (mandatory)
+810c810
+<    Type: "UnsignedInt" (optional, default: 0)
+---
+>    Type: UnsignedInt (optional, default: 0)
+814c814
+<    "participants" property (see Section 4.4.6).
+---
+>    participants property (see Section 4.4.6).
+822c822
+<    Type: "String" (optional)
+---
+>    Type: String (optional)
+832c832
+<    Type: "String" (optional, default: empty String)
+---
+>    Type: String (optional, default: empty String)
+838c838
+<    Type: "String" (optional, default: empty String)
+---
+>    Type: String (optional, default: empty String)
+841c841
+<    formatted according to the "descriptionContentType" property.
+---
+>    formatted according to the descriptionContentType property.
+845c845
+<    Type: "String" (optional, default: "text/plain")
+---
+>    Type: String (optional, default: text/plain)
+848,853c848,853
+<    "description" property.  Media types MUST be subtypes of type "text"
+<    and SHOULD be "text/plain" or "text/html" [MEDIATYPES].  They MAY
+<    include parameters, and the "charset" parameter value MUST be "utf-
+<    8", if specified.  Descriptions of type "text/html" MAY contain "cid"
+<    URLs [RFC2392] to reference links in the calendar object by use of
+<    the "cid" property of the Link object.
+---
+>    description property.  Media types MUST be subtypes of type text and
+>    SHOULD be text/plain or text/html [MEDIATYPES].  They MAY include
+>    parameters, and the charset parameter value MUST be utf-8, if
+>    specified.  Descriptions of type text/html MAY contain cid URLs
+>    [RFC2392] to reference links in the calendar object by use of the cid
+>    property of the Link object.
+857c857
+<    Type: "Boolean" (optional, default: false)
+---
+>    Type: Boolean (optional, default: false)
+872c872
+<    Type: "Id[Location]" (optional)
+---
+>    Type: Id[Location] (optional)
+878c878
+<    least one property other than the "relativeTo" property.
+---
+>    least one property other than the relativeTo property.
+880,881c880,881
+<    @type: "String" (mandatory)
+<       This specifies the type of this object.  This MUST be "Location".
+---
+>    @type: String (mandatory)
+>       This specifies the type of this object.  This MUST be Location.
+883c883
+<    name: "String" (optional)
+---
+>    name: String (optional)
+886c886
+<    description: "String" (optional)
+---
+>    description: String (optional)
+891c891
+<    locationTypes: "String[Boolean]" (optional)
+---
+>    locationTypes: String[Boolean] (optional)
+898c898
+<    relativeTo: "String" (optional)
+---
+>    relativeTo: String (optional)
+913,914c913,914
+<       "start":  The event/task described by this JSCalendar object
+<          occurs at this location at the time the event/task starts.
+---
+>       start:  The event/task described by this JSCalendar object occurs
+>          at this location at the time the event/task starts.
+916,917c916,917
+<       "end":  The event/task described by this JSCalendar object occurs
+<          at this location at the time the event/task ends.
+---
+>       end:  The event/task described by this JSCalendar object occurs at
+>          this location at the time the event/task ends.
+919c919
+<    timeZone: "TimeZoneId" (optional)
+---
+>    timeZone: TimeZoneId (optional)
+922,923c922,923
+<    coordinates: "String" (optional)
+<       This is a "geo:" URI [RFC5870] for the location.
+---
+>    coordinates: String (optional)
+>       This is a geo: URI [RFC5870] for the location.
+925c925
+<    links: "Id[Link]" (optional)
+---
+>    links: Id[Link] (optional)
+933c933
+<    Type: "Id[VirtualLocation]" (optional)
+---
+>    Type: Id[VirtualLocation] (optional)
+941c941
+<    @type: "String" (mandatory)
+---
+>    @type: String (mandatory)
+943c943
+<       "VirtualLocation".
+---
+>       VirtualLocation.
+945c945
+<    name: "String" (optional, default: empty String)
+---
+>    name: String (optional, default: empty String)
+948c948
+<    description: "String" (optional)
+---
+>    description: String (optional)
+952c952
+<    uri: "String" (mandatory)
+---
+>    uri: String (mandatory)
+956,958c956,958
+<       This may be a telephone number (represented using the "tel:"
+<       scheme, e.g., "tel:+1-555-555-5555") for a teleconference, a web
+<       address for online chat, or any custom URI.
+---
+>       This may be a telephone number (represented using the tel: scheme,
+>       e.g., tel:+1-555-555-5555) for a teleconference, a web address for
+>       online chat, or any custom URI.
+960c960
+<    features: "String[Boolean]" (optional)
+---
+>    features: String[Boolean] (optional)
+987c987
+<    Type: "Id[Link]" (optional)
+---
+>    Type: Id[Link] (optional)
+992,993c992,993
+<    Links with a rel of "enclosure" MUST be considered by the client to
+<    be attachments for download.
+---
+>    Links with a rel of enclosure MUST be considered by the client to be
+>    attachments for download.
+995c995
+<    Links with a rel of "describedby" MUST be considered by the client to
+---
+>    Links with a rel of describedby MUST be considered by the client to
+998c998
+<    Links with a rel of "icon" MUST be considered by the client to be
+---
+>    Links with a rel of icon MUST be considered by the client to be
+1000c1000
+<    The "display" property may be set to indicate the purpose of this
+---
+>    The display property may be set to indicate the purpose of this
+1005c1005
+<    Type: "String" (optional)
+---
+>    Type: String (optional)
+1013c1013
+<    Type: "String[Boolean]" (optional)
+---
+>    Type: String[Boolean] (optional)
+1021c1021
+<    Type: "String[Boolean]" (optional)
+---
+>    Type: String[Boolean] (optional)
+1028,1030c1028,1030
+<    example, a vendor owning the domain "example.com" might define the
+<    categories "http://example.com/categories/sports/american-football"
+<    and "http://example.com/categories/music/r-b".
+---
+>    example, a vendor owning the domain example.com might define the
+>    categories http://example.com/categories/sports/american-football and
+>    http://example.com/categories/music/r-b.
+1034c1034
+<    Type: "String" (optional)
+---
+>    Type: String (optional)
+1053c1053
+<    1.  The "recurrenceRules" property (Section 4.3.3) generates a set of
+---
+>    1.  The recurrenceRules property (Section 4.3.3) generates a set of
+1056,1057c1056,1057
+<    2.  The "excludedRecurrenceRules" property (Section 4.3.4) generates
+<        a set of date-times that are to be removed from the previously
+---
+>    2.  The excludedRecurrenceRules property (Section 4.3.4) generates a
+>        set of date-times that are to be removed from the previously
+1060c1060
+<    3.  The "recurrenceOverrides" property (Section 4.3.5) defines date-
+---
+>    3.  The recurrenceOverrides property (Section 4.3.5) defines date-
+1067c1067
+<    Type: "LocalDateTime" (optional)
+---
+>    Type: LocalDateTime (optional)
+1070,1071c1070,1071
+<    recurring JSCalendar object.  If present, the "recurrenceRules" and
+<    "recurrenceOverrides" properties MUST NOT be present.
+---
+>    recurring JSCalendar object.  If present, the recurrenceRules and
+>    recurrenceOverrides properties MUST NOT be present.
+1073,1075c1073,1075
+<    The value is a date-time either produced by the "recurrenceRules" of
+<    the base event or added as a key to the "recurrenceOverrides"
+<    property of the base event.
+---
+>    The value is a date-time either produced by the recurrenceRules of
+>    the base event or added as a key to the recurrenceOverrides property
+>    of the base event.
+1079c1079
+<    Type: "TimeZoneId|null" (optional, default: null)
+---
+>    Type: TimeZoneId|null (optional, default: null)
+1083,1084c1083,1084
+<    set if the "recurrenceId" property is set.  It MUST NOT be set if the
+<    "recurrenceId" property is not set.
+---
+>    set if the recurrenceId property is set.  It MUST NOT be set if the
+>    recurrenceId property is not set.
+1088c1088
+<    Type: "RecurrenceRule[]" (optional)
+---
+>    Type: RecurrenceRule[] (optional)
+1093c1093
+<    An Event recurs by applying the recurrence rules to the "start" date-
+---
+>    An Event recurs by applying the recurrence rules to the start date-
+1096,1099c1096,1099
+<    A Task recurs by applying the recurrence rules to the "start" date-
+<    time, if defined; otherwise, it recurs by the "due" date-time, if
+<    defined.  If the task defines neither a "start" nor "due" date-time,
+<    it MUST NOT define a "recurrenceRules" property.
+---
+>    A Task recurs by applying the recurrence rules to the start date-
+>    time, if defined; otherwise, it recurs by the due date-time, if
+>    defined.  If the task defines neither a start nor due date-time, it
+>    MUST NOT define a recurrenceRules property.
+1108c1108
+<    @type: "String" (mandatory)
+---
+>    @type: String (mandatory)
+1110c1110
+<       "RecurrenceRule".
+---
+>       RecurrenceRule.
+1112c1112
+<    frequency: "String" (mandatory)
+---
+>    frequency: String (mandatory)
+1117c1117
+<       *  "yearly"
+---
+>       *  yearly
+1119c1119
+<       *  "monthly"
+---
+>       *  monthly
+1121c1121
+<       *  "weekly"
+---
+>       *  weekly
+1123c1123
+<       *  "daily"
+---
+>       *  daily
+1125c1125
+<       *  "hourly"
+---
+>       *  hourly
+1127c1127
+<       *  "minutely"
+---
+>       *  minutely
+1129c1129
+<       *  "secondly"
+---
+>       *  secondly
+1133c1133
+<    interval: "UnsignedInt" (optional, default: 1)
+---
+>    interval: UnsignedInt (optional, default: 1)
+1139c1139
+<    rscale: "String" (optional, default: "gregorian")
+---
+>    rscale: String (optional, default: "gregorian")
+1148c1148
+<    skip: "String" (optional, default: "omit")
+---
+>    skip: String (optional, default: "omit")
+1154c1154
+<       *  "omit"
+---
+>       *  omit
+1156c1156
+<       *  "backward"
+---
+>       *  backward
+1158c1158
+<       *  "forward"
+---
+>       *  forward
+1163c1163
+<    firstDayOfWeek: "String" (optional, default: "mo")
+---
+>    firstDayOfWeek: String (optional, default: "mo")
+1169c1169
+<       *  "mo"
+---
+>       *  mo
+1171c1171
+<       *  "tu"
+---
+>       *  tu
+1173c1173
+<       *  "we"
+---
+>       *  we
+1175c1175
+<       *  "th"
+---
+>       *  th
+1177c1177
+<       *  "fr"
+---
+>       *  fr
+1179c1179
+<       *  "sa"
+---
+>       *  sa
+1181c1181
+<       *  "su"
+---
+>       *  su
+1185,1187c1185,1187
+<    byDay: "NDay[]" (optional)
+<       These are days of the week on which to repeat.  An "NDay" object
+<       has the following properties:
+---
+>    byDay: NDay[] (optional)
+>       These are days of the week on which to repeat.  An NDay object has
+>       the following properties:
+1189,1190c1189,1190
+<       @type: "String" (mandatory)
+<          This specifies the type of this object.  This MUST be "NDay".
+---
+>       @type: String (mandatory)
+>          This specifies the type of this object.  This MUST be NDay.
+1192c1192
+<       day: "String" (mandatory)
+---
+>       day: String (mandatory)
+1194c1194
+<          values are the same as for the "firstDayOfWeek" recurrenceRule
+---
+>          values are the same as for the firstDayOfWeek recurrenceRule
+1200c1200
+<       nthOfPeriod: "Int" (optional)
+---
+>       nthOfPeriod: Int (optional)
+1202c1202
+<          weekday defined in the "day" property, it represents only a
+---
+>          weekday defined in the day property, it represents only a
+1211c1211
+<    byMonthDay: "Int[]" (optional)
+---
+>    byMonthDay: Int[] (optional)
+1214,1218c1214,1218
+<       the calendar given by the "rscale" property and the negative
+<       values of these numbers.  For example, in the Gregorian calendar,
+<       valid values are 1 to 31 and -31 to -1.  Negative values offset
+<       from the end of the month.  The array MUST have at least one entry
+<       if included.
+---
+>       the calendar given by the rscale property and the negative values
+>       of these numbers.  For example, in the Gregorian calendar, valid
+>       values are 1 to 31 and -31 to -1.  Negative values offset from the
+>       end of the month.  The array MUST have at least one entry if
+>       included.
+1222c1222
+<    byMonth: "String[]" (optional)
+---
+>    byMonth: String[] (optional)
+1232c1232
+<    byYearDay: "Int[]" (optional)
+---
+>    byYearDay: Int[] (optional)
+1235,1239c1235,1239
+<       the calendar given by the "rscale" property and the negative
+<       values of these numbers.  For example, in the Gregorian calendar,
+<       valid values are 1 to 366 and -366 to -1.  Negative values offset
+<       from the end of the year.  The array MUST have at least one entry
+<       if included.
+---
+>       the calendar given by the rscale property and the negative values
+>       of these numbers.  For example, in the Gregorian calendar, valid
+>       values are 1 to 366 and -366 to -1.  Negative values offset from
+>       the end of the year.  The array MUST have at least one entry if
+>       included.
+1243c1243
+<    byWeekNo: "Int[]" (optional)
+---
+>    byWeekNo: Int[] (optional)
+1246,1249c1246,1249
+<       the calendar given by the "rscale" property and the negative
+<       values of these numbers.  For example, in the Gregorian calendar,
+<       valid values are 1 to 53 and -53 to -1.  The array MUST have at
+<       least one entry if included.
+---
+>       the calendar given by the rscale property and the negative values
+>       of these numbers.  For example, in the Gregorian calendar, valid
+>       values are 1 to 53 and -53 to -1.  The array MUST have at least
+>       one entry if included.
+1253c1253
+<    byHour: "UnsignedInt[]" (optional)
+---
+>    byHour: UnsignedInt[] (optional)
+1258c1258
+<    byMinute: "UnsignedInt[]" (optional)
+---
+>    byMinute: UnsignedInt[] (optional)
+1265c1265
+<    bySecond: "UnsignedInt[]" (optional)
+---
+>    bySecond: UnsignedInt[] (optional)
+1272c1272
+<    bySetPosition: "Int[]" (optional)
+---
+>    bySetPosition: Int[] (optional)
+1278c1278
+<    count: "UnsignedInt" (optional)
+---
+>    count: UnsignedInt (optional)
+1280c1280
+<       recurrence.  This MUST NOT be included if an "until" property is
+---
+>       recurrence.  This MUST NOT be included if an until property is
+1285c1285
+<    until: "LocalDateTime" (optional)
+---
+>    until: LocalDateTime (optional)
+1288c1288
+<       included if a "count" property is specified.  Note that if not
+---
+>       included if a count property is specified.  Note that if not
+1291c1291
+<       object's "timeZone" property.
+---
+>       object's timeZone property.
+1300c1300
+<    is within the calendar system given by the "rscale" property, which
+---
+>    is within the calendar system given by the rscale property, which
+1304c1304
+<        period defined by the "frequency" property value:
+---
+>        period defined by the frequency property value:
+1306c1306
+<        "yearly":  every second from midnight on the first day of a year
+---
+>        yearly:  every second from midnight on the first day of a year
+1311c1311
+<           and there is a "byMonth" property, generate candidates for the
+---
+>           and there is a byMonth property, generate candidates for the
+1314c1314
+<           If skip is not "omit" and there is a "byMonthDay" property,
+---
+>           If skip is not "omit" and there is a byMonthDay property,
+1319,1321c1319,1321
+<        "monthly":  every second from midnight on the first day of a
+<           month (inclusive) to midnight on the first of the following
+<           month (exclusive).
+---
+>        monthly:  every second from midnight on the first day of a month
+>           (inclusive) to midnight on the first of the following month
+>           (exclusive).
+1323c1323
+<           If skip is not "omit" and there is a "byMonthDay" property,
+---
+>           If skip is not "omit" and there is a byMonthDay property,
+1328,1331c1328,1330
+<        "weekly":  every second from midnight (inclusive) on the first
+<           day of the week (as defined by the "firstDayOfWeek" property
+<           or Monday if omitted) to midnight seven days later
+<           (exclusive).
+---
+>        weekly:  every second from midnight (inclusive) on the first day
+>           of the week (as defined by the firstDayOfWeek property or
+>           Monday if omitted) to midnight seven days later (exclusive).
+1333c1332
+<        "daily":  every second from midnight at the start of the day
+---
+>        daily:  every second from midnight at the start of the day
+1336,1337c1335,1336
+<        "hourly":  every second from the beginning of the hour
+<           (inclusive) to the beginning of the next hour (exclusive).
+---
+>        hourly:  every second from the beginning of the hour (inclusive)
+>           to the beginning of the next hour (exclusive).
+1339c1338
+<        "minutely":  every second from the beginning of the minute
+---
+>        minutely:  every second from the beginning of the minute
+1342c1341
+<        "secondly":  only the second itself.
+---
+>        secondly:  only the second itself.
+1357c1356
+<           starting on the "firstDayOfWeek" property value or Monday if
+---
+>           starting on the firstDayOfWeek property value or Monday if
+1362c1361
+<           candidates with a "skip" property in effect), it is always
+---
+>           candidates with a skip property in effect), it is always
+1369c1368
+<           candidates with a "skip" property in effect), it is always
+---
+>           candidates with a skip property in effect), it is always
+1387c1386
+<        If a "skip" property is defined and is not "omit", there may be
+---
+>        If a skip property is defined and is not "omit", there may be
+1409c1408
+<    3.  If a "bySetPosition" property is included, this is now applied to
+---
+>    3.  If a bySetPosition property is included, this is now applied to
+1418c1417
+<    5.  If a "skip" property is included and is not "omit", eliminate any
+---
+>    5.  If a skip property is included and is not "omit", eliminate any
+1429,1433c1428,1432
+<    1.  The initial date-time to which the rule is applied (the "start"
+<        date-time for events or the "start" or "due" date-time for tasks)
+<        is always the first occurrence in the expansion (and is counted
+<        if the recurrence is limited by a "count" property), even if it
+<        would normally not match the rule.
+---
+>    1.  The initial date-time to which the rule is applied (the start
+>        date-time for events or the start or due date-time for tasks) is
+>        always the first occurrence in the expansion (and is counted if
+>        the recurrence is limited by a count property), even if it would
+>        normally not match the rule.
+1443,1444c1442,1443
+<        *  If frequency is not "secondly" and there is no "bySecond"
+<           property, add a "bySecond" property with the sole value being
+---
+>        *  If frequency is not secondly and there is no bySecond
+>           property, add a bySecond property with the sole value being
+1447,1477c1446,1475
+<        *  If frequency is not "secondly" or "minutely" and there is no
+<           "byMinute" property, add a "byMinute" property with the sole
+<           value being the minutes value of the initial date-time.
+< 
+<        *  If frequency is not "secondly", "minutely", or "hourly" and
+<           there is no "byHour" property, add a "byHour" property with
+<           the sole value being the hours value of the initial date-time.
+< 
+<        *  If frequency is "weekly" and there is no "byDay" property, add
+<           a "byDay" property with the sole value being the day of the
+<           week of the initial date-time.
+< 
+<        *  If frequency is "monthly" and there is no "byDay" property and
+<           no "byMonthDay" property, add a "byMonthDay" property with the
+<           sole value being the day of the month of the initial date-
+<           time.
+< 
+<        *  If frequency is "yearly" and there is no "byYearDay" property:
+< 
+<           -  If there are no "byMonth" or "byWeekNo" properties, and
+<              either there is a "byMonthDay" property or there is no
+<              "byDay" property, add a "byMonth" property with the sole
+<              value being the month of the initial date-time.
+< 
+<           -  If there are no "byMonthDay", "byWeekNo", or "byDay"
+<              properties, add a "byMonthDay" property with the sole value
+<              being the day of the month of the initial date-time.
+< 
+<           -  If there is a "byWeekNo" property and no "byMonthDay" or
+<              "byDay" properties, add a "byDay" property with the sole
+<              value being the day of the week of the initial date-time.
+---
+>        *  If frequency is not secondly or minutely and there is no
+>           byMinute property, add a byMinute property with the sole value
+>           being the minutes value of the initial date-time.
+> 
+>        *  If frequency is not secondly, minutely, or hourly and there is
+>           no byHour property, add a byHour property with the sole value
+>           being the hours value of the initial date-time.
+> 
+>        *  If frequency is weekly and there is no byDay property, add a
+>           byDay property with the sole value being the day of the week
+>           of the initial date-time.
+> 
+>        *  If frequency is monthly and there is no byDay property and no
+>           byMonthDay property, add a byMonthDay property with the sole
+>           value being the day of the month of the initial date-time.
+> 
+>        *  If frequency is yearly and there is no byYearDay property:
+> 
+>           -  If there are no byMonth or byWeekNo properties, and either
+>              there is a byMonthDay property or there is no byDay
+>              property, add a byMonth property with the sole value being
+>              the month of the initial date-time.
+> 
+>           -  If there are no byMonthDay, byWeekNo, or byDay properties,
+>              add a byMonthDay property with the sole value being the day
+>              of the month of the initial date-time.
+> 
+>           -  If there is a byWeekNo property and no byMonthDay or byDay
+>              properties, add a byDay property with the sole value being
+>              the day of the week of the initial date-time.
+1481c1479
+<    Type: "RecurrenceRule[]" (optional)
+---
+>    Type: RecurrenceRule[] (optional)
+1485c1483
+<    the same as for the "recurrenceRules" property (see Section 4.3.3),
+---
+>    the same as for the recurrenceRules property (see Section 4.3.3),
+1490,1491c1488,1489
+<    from those generated by the "recurrenceRules" property, as described
+<    in Section 4.3.
+---
+>    from those generated by the recurrenceRules property, as described in
+>    Section 4.3.
+1495c1493
+<    Type: "LocalDateTime[PatchObject]" (optional)
+---
+>    Type: LocalDateTime[PatchObject] (optional)
+1505,1508c1503,1506
+<    If the patch object defines the "excluded" property of an occurrence
+<    to be true, this occurrence is omitted from the final set of
+<    recurrences for the calendar object (like an EXDATE from iCalendar).
+<    Such a patch object MUST NOT patch any other property.
+---
+>    If the patch object defines the excluded property of an occurrence to
+>    be true, this occurrence is omitted from the final set of recurrences
+>    for the calendar object (like an EXDATE from iCalendar).  Such a
+>    patch object MUST NOT patch any other property.
+1514c1512
+<    valid to patch the "start" property value, and this patch takes
+---
+>    valid to patch the start property value, and this patch takes
+1516,1517c1514,1515
+<    recurrence id as well as the patched "start" date-time may occur
+<    before the original JSCalendar object's "start" or "due" date.
+---
+>    recurrence id as well as the patched start date-time may occur before
+>    the original JSCalendar object's start or due date.
+1552c1550
+<    Type: "Boolean" (optional, default: false)
+---
+>    Type: Boolean (optional, default: false)
+1565c1563
+<    Type: "Int" (optional, default: 0)
+---
+>    Type: Int (optional, default: 0)
+1580c1578
+<    Type: "String" (optional, default: "busy")
+---
+>    Type: String (optional, default: busy)
+1587,1588c1585,1586
+<    "free":  The object should be ignored when calculating whether the
+<       user is busy.
+---
+>    free:  The object should be ignored when calculating whether the user
+>       is busy.
+1590c1588
+<    "busy":  The object should be included when calculating whether the
+---
+>    busy:  The object should be included when calculating whether the
+1595c1593
+<    Type: "String" (optional, default: "public")
+---
+>    Type: String (optional, default: public)
+1612c1610
+<    equivalent to "private".
+---
+>    equivalent to private.
+1614,1615c1612,1613
+<    "public":  The full details of the object are visible to those whom
+<       the object's calendar is shared with.
+---
+>    public:  The full details of the object are visible to those whom the
+>       object's calendar is shared with.
+1617c1615
+<    "private":  The details of the object are hidden; only the basic time
+---
+>    private:  The details of the object are hidden; only the basic time
+1652,1653c1650,1651
+<    "secret":  The object is hidden completely (as though it did not
+<       exist) when the calendar this object is in is shared.
+---
+>    secret:  The object is hidden completely (as though it did not exist)
+>       when the calendar this object is in is shared.
+1657c1655
+<    Type: "String[String]" (optional)
+---
+>    Type: String[String] (optional)
+1671c1669
+<    "imip":  The organizer accepts an iCalendar Message-Based
+---
+>    imip:  The organizer accepts an iCalendar Message-Based
+1673c1671
+<       address.  The value MUST be a "mailto:" URI.
+---
+>       address.  The value MUST be a mailto: URI.
+1675,1677c1673,1675
+<    "web":  Opening this URI in a web browser will provide the user with
+<       a page where they can submit a reply to the organizer.  The value
+<       MUST be a URL using the "https:" scheme.
+---
+>    web:  Opening this URI in a web browser will provide the user with a
+>       page where they can submit a reply to the organizer.  The value
+>       MUST be a URL using the https: scheme.
+1679c1677
+<    "other":  The organizer is identified by this URI, but the method for
+---
+>    other:  The organizer is identified by this URI, but the method for
+1684c1682
+<    Type: "String" (optional)
+---
+>    Type: String (optional)
+1689c1687
+<    message.  If set, the value MUST be a valid "addr-spec" value as
+---
+>    message.  If set, the value MUST be a valid addr-spec value as
+1694c1692
+<    Type: "Id[Participant]" (optional)
+---
+>    Type: Id[Participant] (optional)
+1699,1700c1697,1698
+<    If this property is set and any participant has a "sendTo" property,
+<    then the "replyTo" property of this calendar object MUST define at
+---
+>    If this property is set and any participant has a sendTo property,
+>    then the replyTo property of this calendar object MUST define at
+1705,1707c1703,1704
+<    @type: "String" (mandatory)
+<       This specifies the type of this object.  This MUST be
+<       "Participant".
+---
+>    @type: String (mandatory)
+>       This specifies the type of this object.  This MUST be Participant.
+1709c1706
+<    name: "String" (optional)
+---
+>    name: String (optional)
+1712c1709
+<    email: "String" (optional)
+---
+>    email: String (optional)
+1715c1712
+<       MUST be a valid "addr-spec" value as defined in Section 3.4.1 of
+---
+>       MUST be a valid addr-spec value as defined in Section 3.4.1 of
+1718c1715
+<    description: "String" (optional)
+---
+>    description: String (optional)
+1723c1720
+<    sendTo: "String[String]" (optional)
+---
+>    sendTo: String[String] (optional)
+1738,1740c1735,1737
+<       "imip":  The participant accepts an iMIP [RFC6047] request at this
+<          email address.  The value MUST be a "mailto:" URI.  It MAY be
+<          different from the value of the participant's "email" property.
+---
+>       imip:  The participant accepts an iMIP [RFC6047] request at this
+>          email address.  The value MUST be a mailto: URI.  It MAY be
+>          different from the value of the participant's email property.
+1742,1743c1739,1740
+<       "other":  The participant is identified by this URI, but the
+<          method for submitting the invitation is undefined.
+---
+>       other:  The participant is identified by this URI, but the method
+>          for submitting the invitation is undefined.
+1745c1742
+<    kind: "String" (optional)
+---
+>    kind: String (optional)
+1754c1751
+<       "individual":  a single person
+---
+>       individual:  a single person
+1756c1753
+<       "group":  a collection of people invited as a whole
+---
+>       group:  a collection of people invited as a whole
+1758,1759c1755,1756
+<       "location":  a physical location that needs to be scheduled, e.g.,
+<          a conference room
+---
+>       location:  a physical location that needs to be scheduled, e.g., a
+>          conference room
+1761c1758
+<       "resource":  a non-human resource other than a location, such as a
+---
+>       resource:  a non-human resource other than a location, such as a
+1764c1761
+<    roles: "String[Boolean]" (mandatory)
+---
+>    roles: String[Boolean] (mandatory)
+1772,1776c1769,1773
+<       "owner":  The participant is an owner of the object.  This
+<          signifies they have permission to make changes to it that
+<          affect the other participants.  Nonowner participants may only
+<          change properties that affect only themselves (for example,
+<          setting their own alerts or changing their RSVP status).
+---
+>       owner:  The participant is an owner of the object.  This signifies
+>          they have permission to make changes to it that affect the
+>          other participants.  Nonowner participants may only change
+>          properties that affect only themselves (for example, setting
+>          their own alerts or changing their RSVP status).
+1778,1779c1775
+<       "attendee":  The participant is expected to be present at the
+<          event.
+---
+>       attendee:  The participant is expected to be present at the event.
+1781c1777
+<       "optional":  The participant's involvement with the event is
+---
+>       optional:  The participant's involvement with the event is
+1785c1781
+<       "informational":  The participant is copied for informational
+---
+>       informational:  The participant is copied for informational
+1788c1784
+<       "chair":  The participant is in charge of the event/task when it
+---
+>       chair:  The participant is in charge of the event/task when it
+1791c1787
+<       "contact":  The participant is someone that may be contacted for
+---
+>       contact:  The participant is someone that may be contacted for
+1800c1796
+<    locationId: "Id" (optional)
+---
+>    locationId: Id (optional)
+1805,1806c1801,1802
+<       "locations" property of the JSCalendar object, this MUST be
+<       treated the same as if the participant's locationId were omitted.
+---
+>       locations property of the JSCalendar object, this MUST be treated
+>       the same as if the participant's locationId were omitted.
+1808c1804
+<    language: "String" (optional)
+---
+>    language: String (optional)
+1812c1808
+<    participationStatus: "String" (optional, default: "needs-action")
+---
+>    participationStatus: String (optional, default: needs-action)
+1819c1815
+<       "needs-action":  No status has yet been set by the participant.
+---
+>       needs-action:  No status has yet been set by the participant.
+1821c1817
+<       "accepted":  The invited participant will participate.
+---
+>       accepted:  The invited participant will participate.
+1823c1819
+<       "declined":  The invited participant will not participate.
+---
+>       declined:  The invited participant will not participate.
+1825c1821
+<       "tentative":  The invited participant may participate.
+---
+>       tentative:  The invited participant may participate.
+1827,1829c1823,1825
+<       "delegated":  The invited participant has delegated their
+<          attendance to another participant, as specified in the
+<          "delegatedTo" property.
+---
+>       delegated:  The invited participant has delegated their attendance
+>          to another participant, as specified in the delegatedTo
+>          property.
+1831c1827
+<    participationComment: "String" (optional)
+---
+>    participationComment: String (optional)
+1835c1831
+<    expectReply: "Boolean" (optional, default: false)
+---
+>    expectReply: Boolean (optional, default: false)
+1839c1835
+<    scheduleAgent: "String" (optional, default: "server")
+---
+>    scheduleAgent: String (optional, default: server)
+1847c1843
+<       "server":  The calendar server will send the scheduling messages.
+---
+>       server:  The calendar server will send the scheduling messages.
+1849c1845
+<       "client":  The calendar client will send the scheduling messages.
+---
+>       client:  The calendar client will send the scheduling messages.
+1851,1852c1847
+<       "none":  No scheduling messages are to be sent to this
+<          participant.
+---
+>       none:  No scheduling messages are to be sent to this participant.
+1854c1849
+<    scheduleForceSend: "Boolean" (optional, default: false)
+---
+>    scheduleForceSend: Boolean (optional, default: false)
+1862c1857
+<    scheduleSequence: "UnsignedInt" (optional, default: 0)
+---
+>    scheduleSequence: UnsignedInt (optional, default: 0)
+1871c1866
+<    scheduleStatus: "String[]" (optional)
+---
+>    scheduleStatus: String[] (optional)
+1874,1875c1869,1870
+<       status codes MUST be valid "statcode" values as defined in the
+<       ABNF in Section 3.8.8.3 of [RFC5545].
+---
+>       status codes MUST be valid statcode values as defined in the ABNF
+>       in Section 3.8.8.3 of [RFC5545].
+1885c1880
+<    scheduleUpdated: "UTCDateTime" (optional)
+---
+>    scheduleUpdated: UTCDateTime (optional)
+1889,1892c1884,1886
+<       This is the "updated" property of the last response when using
+<       iTIP.  It can be compared to the "updated" property in future
+<       responses to detect and discard older responses delivered out of
+<       order.
+---
+>       This is the updated property of the last response when using iTIP.
+>       It can be compared to the updated property in future responses to
+>       detect and discard older responses delivered out of order.
+1894c1888
+<    sentBy: "String" (optional)
+---
+>    sentBy: String (optional)
+1898,1901c1892,1895
+<       this participant's "imip" method in the "sendTo" property (i.e.,
+<       the response was received from a different address to that which
+<       the invitation was sent to).  If set, the value MUST be a valid
+<       "addr-spec" value as defined in Section 3.4.1 of [RFC5322].
+---
+>       this participant's imip method in the sendTo property (i.e., the
+>       response was received from a different address to that which the
+>       invitation was sent to).  If set, the value MUST be a valid addr-
+>       spec value as defined in Section 3.4.1 of [RFC5322].
+1903c1897
+<    invitedBy: "Id" (optional)
+---
+>    invitedBy: Id (optional)
+1907c1901
+<    delegatedTo: "Id[Boolean]" (optional)
+---
+>    delegatedTo: Id[Boolean] (optional)
+1914c1908
+<    delegatedFrom: "Id[Boolean]" (optional)
+---
+>    delegatedFrom: Id[Boolean] (optional)
+1921c1915
+<    memberOf: "Id[Boolean]" (optional)
+---
+>    memberOf: Id[Boolean] (optional)
+1929c1923
+<    links: "Id[Link]" (optional)
+---
+>    links: Id[Link] (optional)
+1935c1929
+<    progress: "String" (optional; only allowed for participants of a
+---
+>    progress: String (optional; only allowed for participants of a
+1938,1939c1932,1933
+<       MUST NOT be set if the "participationStatus" of this participant
+<       is any value other than "accepted".  See Section 5.2.5 for allowed
+---
+>       MUST NOT be set if the participationStatus of this participant is
+>       any value other than accepted.  See Section 5.2.5 for allowed
+1942c1936
+<    progressUpdated: "UTCDateTime" (optional; only allowed for
+---
+>    progressUpdated: UTCDateTime (optional; only allowed for
+1944,1945c1938,1939
+<       This specifies the date-time the "progress" property was last set
+<       on this participant.  See Section 5.2.6 for allowed values and
+---
+>       This specifies the date-time the progress property was last set on
+>       this participant.  See Section 5.2.6 for allowed values and
+1948c1942
+<    percentComplete: "UnsignedInt" (optional; only allowed for
+---
+>    percentComplete: UnsignedInt (optional; only allowed for
+1956c1950
+<    Type: "String" (optional)
+---
+>    Type: String (optional)
+1960,1962c1954,1955
+<    are defined by the ABNF definitions of "statcode", "statdesc" and
+<    "extdata" in Section 3.8.8.3 of [RFC5545] and the following ABNF
+<    [RFC5234]:
+---
+>    are defined by the ABNF definitions of statcode, statdesc and extdata
+>    in Section 3.8.8.3 of [RFC5545] and the following ABNF [RFC5234]:
+1979c1972
+<    Type: "Boolean" (optional, default: false)
+---
+>    Type: Boolean (optional, default: false)
+1982,1986c1975,1979
+<    "alerts" property.  Fetching user defaults is dependent on the API
+<    from which this JSCalendar object is being fetched and is not defined
+<    in this specification.  If an implementation cannot determine the
+<    user's default alerts, or none are set, it MUST process the "alerts"
+<    property as if "useDefaultAlerts" is set to false.
+---
+>    alerts property.  Fetching user defaults is dependent on the API from
+>    which this JSCalendar object is being fetched and is not defined in
+>    this specification.  If an implementation cannot determine the user's
+>    default alerts, or none are set, it MUST process the alerts property
+>    as if useDefaultAlerts is set to false.
+1990c1983
+<    Type: "Id[Alert]" (optional)
+---
+>    Type: Id[Alert] (optional)
+1997,1998c1990,1991
+<    @type: "String" (mandatory)
+<       This specifies the type of this object.  This MUST be "Alert".
+---
+>    @type: String (mandatory)
+>       This specifies the type of this object.  This MUST be Alert.
+2000,2001c1993
+<    trigger: "OffsetTrigger|AbsoluteTrigger|UnknownTrigger"
+<    (mandatory)
+---
+>    trigger: OffsetTrigger|AbsoluteTrigger|UnknownTrigger (mandatory)
+2005c1997
+<       An "OffsetTrigger" object has the following properties:
+---
+>       An OffsetTrigger object has the following properties:
+2007c1999
+<       @type: "String" (mandatory)
+---
+>       @type: String (mandatory)
+2009c2001
+<          "OffsetTrigger".
+---
+>          OffsetTrigger.
+2011c2003
+<       offset: "SignedDuration" (mandatory)
+---
+>       offset: SignedDuration (mandatory)
+2013,2014c2005,2006
+<          to the time property defined in the "relativeTo" property of
+<          the alert.  Negative durations signify alerts before the time
+---
+>          to the time property defined in the relativeTo property of the
+>          alert.  Negative durations signify alerts before the time
+2018c2010
+<       relativeTo: "String" (optional, default: "start")
+---
+>       relativeTo: String (optional, default: start)
+2022c2014
+<          "start":  triggers the alert relative to the start of the
+---
+>          start:  triggers the alert relative to the start of the
+2025c2017
+<          "end":  triggers the alert relative to the end/due time of the
+---
+>          end:  triggers the alert relative to the end/due time of the
+2028c2020
+<       An "AbsoluteTrigger" object has the following properties:
+---
+>       An AbsoluteTrigger object has the following properties:
+2030c2022
+<       @type: "String" (mandatory)
+---
+>       @type: String (mandatory)
+2032c2024
+<          "AbsoluteTrigger".
+---
+>          AbsoluteTrigger.
+2034c2026
+<       when: "UTCDateTime" (mandatory)
+---
+>       when: UTCDateTime (mandatory)
+2038,2043c2030,2035
+<       An "UnknownTrigger" object is an object that contains an "@type"
+<       property whose value is not recognized (i.e., not "OffsetTrigger"
+<       or "AbsoluteTrigger") plus zero or more other properties.  This is
+<       for compatibility with client extensions and future
+<       specifications.  Implementations SHOULD NOT trigger for trigger
+<       types they do not understand but MUST preserve them.
+---
+>       An UnknownTrigger object is an object that contains an @type
+>       property whose value is not recognized (i.e., not OffsetTrigger or
+>       AbsoluteTrigger) plus zero or more other properties.  This is for
+>       compatibility with client extensions and future specifications.
+>       Implementations SHOULD NOT trigger for trigger types they do not
+>       understand but MUST preserve them.
+2045c2037
+<    acknowledged: "UTCDateTime" (optional)
+---
+>    acknowledged: UTCDateTime (optional)
+2052,2056c2044,2047
+<       For a recurring calendar object, setting the "acknowledged"
+<       property MUST NOT add a new override to the "recurrenceOverrides"
+<       property.  If the alert is not already overridden, the
+<       "acknowledged" property MUST be set on the alert in the base
+<       event/task.
+---
+>       For a recurring calendar object, setting the acknowledged property
+>       MUST NOT add a new override to the recurrenceOverrides property.
+>       If the alert is not already overridden, the acknowledged property
+>       MUST be set on the alert in the base event/task.
+2063c2054
+<    relatedTo: "String[Relation]" (optional)
+---
+>    relatedTo: String[Relation] (optional)
+2070c2061
+<    action: "String" (optional, default: "display")
+---
+>    action: String (optional, default: display)
+2077c2068
+<       "display":  The alert should be displayed as appropriate for the
+---
+>       display:  The alert should be displayed as appropriate for the
+2080c2071
+<       "email":  The alert should trigger an email sent out to the user,
+---
+>       email:  The alert should trigger an email sent out to the user,
+2088c2079
+<    Type: "String[PatchObject]" (optional)
+---
+>    Type: String[PatchObject] (optional)
+2096c2087
+<    calendar object.  In addition, the "locale" property of the patched
+---
+>    calendar object.  In addition, the locale property of the patched
+2107,2108c2098,2099
+<    A patch MUST NOT have the prefix "recurrenceOverrides"; any
+<    localization of the override MUST be a patch to the "localizations"
+---
+>    A patch MUST NOT have the prefix recurrenceOverrides; any
+>    localization of the override MUST be a patch to the localizations
+2110,2111c2101,2102
+<    "locations/abcd1234/title" is permissible, but a patch to "uid" or
+<    "recurrenceOverrides/2020-01-05T14:00:00/title" is not.
+---
+>    locations/abcd1234/title is permissible, but a patch to uid or
+>    recurrenceOverrides/2020-01-05T14:00:00/title is not.
+2115c2106
+<    JSCalendar object's "title" property might also need to update any
+---
+>    JSCalendar object's title property might also need to update any
+2124c2115
+<    Type: "TimeZoneId|null" (optional, default: null)
+---
+>    Type: TimeZoneId|null (optional, default: null)
+2129c2120
+<    "timeZones" property (Section 4.7.2).  If omitted, this MUST be
+---
+>    timeZones property (Section 4.7.2).  If omitted, this MUST be
+2134c2125
+<    Type: "TimeZoneId[TimeZone]" (optional)
+---
+>    Type: TimeZoneId[TimeZone] (optional)
+2141c2132
+<       [TZDB], it MUST start with the "/" character.
+---
+>       [TZDB], it MUST start with the / character.
+2143,2144c2134,2135
+<    *  It MUST be a valid "paramtext" value, as specified in Section 3.1
+<       of [RFC5545].
+---
+>    *  It MUST be a valid paramtext value, as specified in Section 3.1 of
+>       [RFC5545].
+2151c2142
+<    differ from the "tzId" property value of the TimeZone object it maps
+---
+>    differ from the tzId property value of the TimeZone object it maps
+2160,2161c2151,2152
+<    time zone definition in its "timeZones" property has precedence over
+<    a definition of the same id in the Group).  Time zone definitions in
+---
+>    time zone definition in its timeZones property has precedence over a
+>    definition of the same id in the Group).  Time zone definitions in
+2166,2167c2157,2158
+<    at least one transition rule in the "standard" or "daylight"
+<    property.  Its properties are:
+---
+>    at least one transition rule in the standard or daylight property.
+>    Its properties are:
+2169,2170c2160,2161
+<    @type: "String" (mandatory)
+<       This specifies the type of this object.  This MUST be "TimeZone".
+---
+>    @type: String (mandatory)
+>       This specifies the type of this object.  This MUST be TimeZone.
+2172c2163
+<    tzId: "String" (mandatory)
+---
+>    tzId: String (mandatory)
+2174c2165
+<       that the value MUST be a valid "paramtext" value as specified in
+---
+>       that the value MUST be a valid paramtext value as specified in
+2177c2168
+<    updated: "UTCDateTime" (optional)
+---
+>    updated: UTCDateTime (optional)
+2180c2171
+<    url: "String" (optional)
+---
+>    url: String (optional)
+2183c2174
+<    validUntil: "UTCDateTime" (optional)
+---
+>    validUntil: UTCDateTime (optional)
+2187c2178
+<    aliases: "String[Boolean]" (optional)
+---
+>    aliases: String[Boolean] (optional)
+2193c2184
+<    standard: "TimeZoneRule[]" (optional)
+---
+>    standard: TimeZoneRule[] (optional)
+2197c2188
+<    daylight: "TimeZoneRule[]" (optional)
+---
+>    daylight: TimeZoneRule[] (optional)
+2205c2196
+<    @type: "String" (mandatory)
+---
+>    @type: String (mandatory)
+2207c2198
+<       "TimeZoneRule".
+---
+>       TimeZoneRule.
+2209c2200
+<    start: "LocalDateTime" (mandatory)
+---
+>    start: LocalDateTime (mandatory)
+2212c2203
+<    offsetFrom: "String" (mandatory)
+---
+>    offsetFrom: String (mandatory)
+2215c2206
+<    offsetTo: "String" (mandatory)
+---
+>    offsetTo: String (mandatory)
+2218c2209
+<    recurrenceRules: "RecurrenceRule[]" (optional)
+---
+>    recurrenceRules: RecurrenceRule[] (optional)
+2220c2211
+<       During recurrence rule evaluation, the "until" property value MUST
+---
+>       During recurrence rule evaluation, the until property value MUST
+2223c2214
+<    recurrenceOverrides: "LocalDateTime[PatchObject]" (optional)
+---
+>    recurrenceOverrides: LocalDateTime[PatchObject] (optional)
+2228c2219
+<    names: "String[Boolean]" optional)
+---
+>    names: String[Boolean] optional)
+2231c2222
+<       excluding any "tznparam" component from iCalendar.  The value for
+---
+>       excluding any tznparam component from iCalendar.  The value for
+2234c2225
+<    comments: "String[]" (optional)
+---
+>    comments: String[] (optional)
+2247c2238
+<    Type: "LocalDateTime" (mandatory)
+---
+>    Type: LocalDateTime (mandatory)
+2250c2241
+<    specified in the "timeZone" property, see Section 4.7.1).
+---
+>    specified in the timeZone property, see Section 4.7.1).
+2254c2245
+<    Type: "Duration" (optional, default: "PT0S")
+---
+>    Type: Duration (optional, default: PT0S)
+2262,2263c2253,2254
+<    using the "relativeTo" and "timeZone" properties of the Event's
+<    Location objects (see Section 4.2.5).
+---
+>    using the relativeTo and timeZone properties of the Event's Location
+>    objects (see Section 4.2.5).
+2267c2258
+<    Type: "String" (optional, default: "confirmed")
+---
+>    Type: String (optional, default: confirmed)
+2274c2265
+<    "confirmed":  indicates the event is definitely happening
+---
+>    confirmed:  indicates the event is definitely happening
+2276c2267
+<    "cancelled":  indicates the event has been cancelled
+---
+>    cancelled:  indicates the event has been cancelled
+2278c2269
+<    "tentative":  indicates the event may happen
+---
+>    tentative:  indicates the event may happen
+2287c2278
+<    Type: "LocalDateTime" (optional)
+---
+>    Type: LocalDateTime (optional)
+2293c2284
+<    Type: "LocalDateTime" (optional)
+---
+>    Type: LocalDateTime (optional)
+2299c2290
+<    Type: "Duration" (optional)
+---
+>    Type: Duration (optional)
+2306c2297
+<    Type: "UnsignedInt" (optional)
+---
+>    Type: UnsignedInt (optional)
+2313c2304
+<    Type: "String" (optional)
+---
+>    Type: String (optional)
+2319,2320c2310,2311
+<    "completed":  if the "progress" property value of all participants is
+<       "completed"
+---
+>    completed:  if the progress property value of all participants is
+>       completed
+2322,2323c2313,2314
+<    "failed":  if at least one "progress" property value of a participant
+<       is "failed"
+---
+>    failed:  if at least one progress property value of a participant is
+>       failed
+2325,2326c2316,2317
+<    "in-process":  if at least one "progress" property value of a
+<       participant is "in-process"
+---
+>    in-process:  if at least one progress property value of a participant
+>       is in-process
+2328c2319
+<    "needs-action":  if none of the other criteria match
+---
+>    needs-action:  if none of the other criteria match
+2334c2325
+<    "needs-action":  indicates the task needs action
+---
+>    needs-action:  indicates the task needs action
+2336c2327
+<    "in-process":  indicates the task is in process
+---
+>    in-process:  indicates the task is in process
+2338c2329
+<    "completed":  indicates the task is completed
+---
+>    completed:  indicates the task is completed
+2340c2331
+<    "failed":  indicates the task failed
+---
+>    failed:  indicates the task failed
+2342c2333
+<    "cancelled":  indicates the task was cancelled
+---
+>    cancelled:  indicates the task was cancelled
+2346c2337
+<    Type: "UTCDateTime" (optional)
+---
+>    Type: UTCDateTime (optional)
+2348,2350c2339,2341
+<    This specifies the date/time the "progress" property of either the
+<    task overall (Section 5.2.5) or a specific participant
+<    (Section 4.4.6) was last updated.
+---
+>    This specifies the date/time the progress property of either the task
+>    overall (Section 5.2.5) or a specific participant (Section 4.4.6) was
+>    last updated.
+2355,2356c2346,2347
+<    achieve this is by overriding the "progressUpdated" property in the
+<    task "recurrenceOverrides" property.  However, this could produce a
+---
+>    achieve this is by overriding the progressUpdated property in the
+>    task recurrenceOverrides property.  However, this could produce a
+2399c2390
+<    Type: "(Task|Event)[]" (mandatory)
+---
+>    Type: (Task|Event)[] (mandatory)
+2406c2397
+<    Type: "String" (optional)
+---
+>    Type: String (optional)
+2416,2417c2407,2408
+<    "...".  While most of the examples use calendar event objects, they
+<    are also illustrative for tasks.
+---
+>    .... While most of the examples use calendar event objects, they are
+>    also illustrative for tasks.
+2858,2861c2849,2851
+<       The "type" parameter conveys the type of the JSCalendar data in
+<       the body part.  The allowed parameter values correspond to the
+<       "@type" property of the JSON-formatted JSCalendar object in the
+<       body:
+---
+>       The type parameter conveys the type of the JSCalendar data in the
+>       body part.  The allowed parameter values correspond to the @type
+>       property of the JSON-formatted JSCalendar object in the body:
+2863c2853
+<       "event":  The "@type" property value MUST be "Event".
+---
+>       event:  The @type property value MUST be Event.
+2865c2855
+<       "task":  The "@type" property value MUST be "Task".
+---
+>       task:  The @type property value MUST be Task.
+2867c2857
+<       "group":  The "@type" property value MUST be "Group".
+---
+>       group:  The @type property value MUST be Group.
+2923c2913
+<    Section 4.5).  If the "Intended Usage" field is "common", sufficient
+---
+>    Section 4.5).  If the "Intended Usage" field is common, sufficient
+2928,2929c2918,2919
+<    A registration can have an intended usage of "common", "reserved", or
+<    "obsolete".  IANA will list registrations with a common usage
+---
+>    A registration can have an intended usage of common, reserved, or
+>    obsolete.  IANA will list registrations with a common usage
+2933c2923
+<    A "reserved" registration reserves a property name without assigning
+---
+>    A reserved registration reserves a property name without assigning
+2937c2927
+<    An "obsolete" registration denotes a property that is no longer
+---
+>    An obsolete registration denotes a property that is no longer
+3035c3025
+<       definition ("IETF" for RFCs from the IETF stream).
+---
+>       definition (IETF for RFCs from the IETF stream).
+3452c3442
+<       definition ("IETF" for RFCs from the IETF stream)
+---
+>       definition (IETF for RFCs from the IETF stream)
+3535c3525
+<    Change Controller:  ("IETF" for properties defined in RFCs from the
+---
+>    Change Controller:  (IETF for properties defined in RFCs from the
+3974d3963
+< 
+3985d3973
+< 
