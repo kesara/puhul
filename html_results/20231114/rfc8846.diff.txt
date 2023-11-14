@@ -1,0 +1,1329 @@
+21c21
+< <meta content="xml2rfc 3.5.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+28,45c28,41
+<   xml2rfc 3.5.0
+<     Python 3.6.10
+<     appdirs 1.4.4
+<     ConfigArgParse 1.2.3
+<     google-i18n-address 2.3.5
+<     html5lib 1.0.1
+<     intervaltree 3.0.2
+<     Jinja2 2.11.2
+<     kitchen 1.2.6
+<     lxml 4.4.2
+<     pycairo 1.19.0
+<     pycountry 19.8.18
+<     pyflakes 2.1.1
+<     PyYAML 5.3.1
+<     requests 2.22.0
+<     setuptools 40.6.2
+<     six 1.14.0
+<     WeasyPrint 51
+---
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.0.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.10
+47c43
+< <link href="rfc8846.xml" rel="alternate" type="application/rfc+xml">
+---
+> <link href="rfc/rfc8846.xml" rel="alternate" type="application/rfc+xml">
+57c53
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+66a63,68
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+69d70
+<   width: extend-to-zoom;
+84c85
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+86a88
+>   overflow-wrap: break-word;
+172a175,183
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+187,190d197
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+191a199
+>   border: none;
+214a223,225
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+256c267,268
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+266c278
+< tt, code, pre, code {
+---
+> tt, code, pre {
+268c280
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+307a320,322
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+397a413,418
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+499c520
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+639d659
+< 
+661a682,684
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+729c752
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+829c852
+< tt, code, pre, code {
+---
+> tt, code, pre {
+834c857
+< pre.sourcecode,
+---
+> .sourcecode pre,
+870c893
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1051a1075
+>   .artwork > pre,
+1066c1090
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1072a1097,1099
+> tr {
+>   break-inside: avoid;
+> }
+1092c1119
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1123c1150
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1148c1175
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1166c1193
+< dd > div:first-child > pre.sourcecode,
+---
+> dd > div.sourcecode:first-child,
+1174a1202,1209
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1176a1212
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-clue-data-model-schema-17" rel="prev">
+1179c1215
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-clue-data-model-schema-17" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1181,1182c1217,1218
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1281,1283c1317,1319
+< <nav class="toc"><ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+1285,1286c1321,1322
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+1288,1289c1324,1325
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="xref">3</a>.  <a href="#name-definitions" class="xref">Definitions</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-definitions" class="internal xref">Definitions</a></p>
+1291,1292c1327,1328
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-xml-schema" class="xref">XML Schema</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-xml-schema" class="internal xref">XML Schema</a></p>
+1294,1295c1330,1331
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-mediacaptures" class="xref">&lt;mediaCaptures&gt;</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-mediacaptures" class="internal xref">&lt;mediaCaptures&gt;</a></p>
+1297,1298c1333,1334
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-encodinggroups" class="xref">&lt;encodingGroups&gt;</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-encodinggroups" class="internal xref">&lt;encodingGroups&gt;</a></p>
+1300,1301c1336,1337
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-capturescenes" class="xref">&lt;captureScenes&gt;</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-capturescenes" class="internal xref">&lt;captureScenes&gt;</a></p>
+1303,1304c1339,1340
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-simultaneoussets" class="xref">&lt;simultaneousSets&gt;</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-simultaneoussets" class="internal xref">&lt;simultaneousSets&gt;</a></p>
+1306,1307c1342,1343
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-globalviews" class="xref">&lt;globalViews&gt;</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-globalviews" class="internal xref">&lt;globalViews&gt;</a></p>
+1309,1310c1345,1346
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-captureencodings" class="xref">&lt;captureEncodings&gt;</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-captureencodings" class="internal xref">&lt;captureEncodings&gt;</a></p>
+1312,1316c1348,1352
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-mediacapture" class="xref">&lt;mediaCapture&gt;</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.1">
+<                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="xref">11.1</a>.  <a href="#name-captureid-attribute" class="xref">captureID Attribute</a><a href="#section-toc.1-1.11.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-mediacapture" class="internal xref">&lt;mediaCapture&gt;</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
+>                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-captureid-attribute" class="internal xref">captureID Attribute</a></p>
+1318,1319c1354,1355
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.2">
+<                 <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="xref">11.2</a>.  <a href="#name-mediatype-attribute" class="xref">mediaType Attribute</a><a href="#section-toc.1-1.11.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
+>                 <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="auto internal xref">11.2</a>.  <a href="#name-mediatype-attribute" class="internal xref">mediaType Attribute</a></p>
+1321,1322c1357,1358
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.3">
+<                 <p id="section-toc.1-1.11.2.3.1"><a href="#section-11.3" class="xref">11.3</a>.  <a href="#name-capturesceneidref" class="xref">&lt;captureSceneIDREF&gt;</a><a href="#section-toc.1-1.11.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.3">
+>                 <p id="section-toc.1-1.11.2.3.1"><a href="#section-11.3" class="auto internal xref">11.3</a>.  <a href="#name-capturesceneidref" class="internal xref">&lt;captureSceneIDREF&gt;</a></p>
+1324,1325c1360,1361
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.4">
+<                 <p id="section-toc.1-1.11.2.4.1"><a href="#section-11.4" class="xref">11.4</a>.  <a href="#name-encgroupidref" class="xref">&lt;encGroupIDREF&gt;</a><a href="#section-toc.1-1.11.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.4">
+>                 <p id="section-toc.1-1.11.2.4.1"><a href="#section-11.4" class="auto internal xref">11.4</a>.  <a href="#name-encgroupidref" class="internal xref">&lt;encGroupIDREF&gt;</a></p>
+1327,1331c1363,1367
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.5">
+<                 <p id="section-toc.1-1.11.2.5.1"><a href="#section-11.5" class="xref">11.5</a>.  <a href="#name-spatialinformation" class="xref">&lt;spatialInformation&gt;</a><a href="#section-toc.1-1.11.2.5.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.5.2.1">
+<                     <p id="section-toc.1-1.11.2.5.2.1.1"><a href="#section-11.5.1" class="xref">11.5.1</a>.  <a href="#name-captureorigin" class="xref">&lt;captureOrigin&gt;</a><a href="#section-toc.1-1.11.2.5.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.5">
+>                 <p id="section-toc.1-1.11.2.5.1"><a href="#section-11.5" class="auto internal xref">11.5</a>.  <a href="#name-spatialinformation" class="internal xref">&lt;spatialInformation&gt;</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.5.2.1">
+>                     <p id="section-toc.1-1.11.2.5.2.1.1"><a href="#section-11.5.1" class="auto internal xref">11.5.1</a>.  <a href="#name-captureorigin" class="internal xref">&lt;captureOrigin&gt;</a></p>
+1333,1334c1369,1370
+<                   <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.5.2.2">
+<                     <p id="section-toc.1-1.11.2.5.2.2.1"><a href="#section-11.5.2" class="xref">11.5.2</a>.  <a href="#name-capturearea" class="xref">&lt;captureArea&gt;</a><a href="#section-toc.1-1.11.2.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.5.2.2">
+>                     <p id="section-toc.1-1.11.2.5.2.2.1"><a href="#section-11.5.2" class="auto internal xref">11.5.2</a>.  <a href="#name-capturearea" class="internal xref">&lt;captureArea&gt;</a></p>
+1338,1339c1374,1375
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.6">
+<                 <p id="section-toc.1-1.11.2.6.1"><a href="#section-11.6" class="xref">11.6</a>.  <a href="#name-nonspatiallydefinable" class="xref">&lt;nonSpatiallyDefinable&gt;</a><a href="#section-toc.1-1.11.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.6">
+>                 <p id="section-toc.1-1.11.2.6.1"><a href="#section-11.6" class="auto internal xref">11.6</a>.  <a href="#name-nonspatiallydefinable" class="internal xref">&lt;nonSpatiallyDefinable&gt;</a></p>
+1341,1342c1377,1378
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.7">
+<                 <p id="section-toc.1-1.11.2.7.1"><a href="#section-11.7" class="xref">11.7</a>.  <a href="#name-content" class="xref">&lt;content&gt;</a><a href="#section-toc.1-1.11.2.7.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.7">
+>                 <p id="section-toc.1-1.11.2.7.1"><a href="#section-11.7" class="auto internal xref">11.7</a>.  <a href="#name-content" class="internal xref">&lt;content&gt;</a></p>
+1344,1345c1380,1381
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.8">
+<                 <p id="section-toc.1-1.11.2.8.1"><a href="#section-11.8" class="xref">11.8</a>.  <a href="#name-synchronizationid" class="xref">&lt;synchronizationID&gt;</a><a href="#section-toc.1-1.11.2.8.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.8">
+>                 <p id="section-toc.1-1.11.2.8.1"><a href="#section-11.8" class="auto internal xref">11.8</a>.  <a href="#name-synchronizationid" class="internal xref">&lt;synchronizationID&gt;</a></p>
+1347,1348c1383,1384
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.9">
+<                 <p id="section-toc.1-1.11.2.9.1"><a href="#section-11.9" class="xref">11.9</a>.  <a href="#name-allowsubsetchoice" class="xref">&lt;allowSubsetChoice&gt;</a><a href="#section-toc.1-1.11.2.9.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.9">
+>                 <p id="section-toc.1-1.11.2.9.1"><a href="#section-11.9" class="auto internal xref">11.9</a>.  <a href="#name-allowsubsetchoice" class="internal xref">&lt;allowSubsetChoice&gt;</a></p>
+1350,1351c1386,1387
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.10">
+<                 <p id="section-toc.1-1.11.2.10.1"><a href="#section-11.10" class="xref">11.10</a>. <a href="#name-policy" class="xref">&lt;policy&gt;</a><a href="#section-toc.1-1.11.2.10.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.10">
+>                 <p id="section-toc.1-1.11.2.10.1"><a href="#section-11.10" class="auto internal xref">11.10</a>. <a href="#name-policy" class="internal xref">&lt;policy&gt;</a></p>
+1353,1354c1389,1390
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.11">
+<                 <p id="section-toc.1-1.11.2.11.1"><a href="#section-11.11" class="xref">11.11</a>. <a href="#name-maxcaptures" class="xref">&lt;maxCaptures&gt;</a><a href="#section-toc.1-1.11.2.11.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.11">
+>                 <p id="section-toc.1-1.11.2.11.1"><a href="#section-11.11" class="auto internal xref">11.11</a>. <a href="#name-maxcaptures" class="internal xref">&lt;maxCaptures&gt;</a></p>
+1356,1357c1392,1393
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.12">
+<                 <p id="section-toc.1-1.11.2.12.1"><a href="#section-11.12" class="xref">11.12</a>. <a href="#name-individual" class="xref">&lt;individual&gt;</a><a href="#section-toc.1-1.11.2.12.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.12">
+>                 <p id="section-toc.1-1.11.2.12.1"><a href="#section-11.12" class="auto internal xref">11.12</a>. <a href="#name-individual" class="internal xref">&lt;individual&gt;</a></p>
+1359,1360c1395,1396
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.13">
+<                 <p id="section-toc.1-1.11.2.13.1"><a href="#section-11.13" class="xref">11.13</a>. <a href="#name-description" class="xref">&lt;description&gt;</a><a href="#section-toc.1-1.11.2.13.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.13">
+>                 <p id="section-toc.1-1.11.2.13.1"><a href="#section-11.13" class="auto internal xref">11.13</a>. <a href="#name-description" class="internal xref">&lt;description&gt;</a></p>
+1362,1363c1398,1399
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.14">
+<                 <p id="section-toc.1-1.11.2.14.1"><a href="#section-11.14" class="xref">11.14</a>. <a href="#name-priority" class="xref">&lt;priority&gt;</a><a href="#section-toc.1-1.11.2.14.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.14">
+>                 <p id="section-toc.1-1.11.2.14.1"><a href="#section-11.14" class="auto internal xref">11.14</a>. <a href="#name-priority" class="internal xref">&lt;priority&gt;</a></p>
+1365,1366c1401,1402
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.15">
+<                 <p id="section-toc.1-1.11.2.15.1"><a href="#section-11.15" class="xref">11.15</a>. <a href="#name-lang" class="xref">&lt;lang&gt;</a><a href="#section-toc.1-1.11.2.15.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.15">
+>                 <p id="section-toc.1-1.11.2.15.1"><a href="#section-11.15" class="auto internal xref">11.15</a>. <a href="#name-lang" class="internal xref">&lt;lang&gt;</a></p>
+1368,1369c1404,1405
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.16">
+<                 <p id="section-toc.1-1.11.2.16.1"><a href="#section-11.16" class="xref">11.16</a>. <a href="#name-mobility" class="xref">&lt;mobility&gt;</a><a href="#section-toc.1-1.11.2.16.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.16">
+>                 <p id="section-toc.1-1.11.2.16.1"><a href="#section-11.16" class="auto internal xref">11.16</a>. <a href="#name-mobility" class="internal xref">&lt;mobility&gt;</a></p>
+1371,1372c1407,1408
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.17">
+<                 <p id="section-toc.1-1.11.2.17.1"><a href="#section-11.17" class="xref">11.17</a>. <a href="#name-relatedto" class="xref">&lt;relatedTo&gt;</a><a href="#section-toc.1-1.11.2.17.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.17">
+>                 <p id="section-toc.1-1.11.2.17.1"><a href="#section-11.17" class="auto internal xref">11.17</a>. <a href="#name-relatedto" class="internal xref">&lt;relatedTo&gt;</a></p>
+1374,1375c1410,1411
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.18">
+<                 <p id="section-toc.1-1.11.2.18.1"><a href="#section-11.18" class="xref">11.18</a>. <a href="#name-view" class="xref">&lt;view&gt;</a><a href="#section-toc.1-1.11.2.18.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.18">
+>                 <p id="section-toc.1-1.11.2.18.1"><a href="#section-11.18" class="auto internal xref">11.18</a>. <a href="#name-view" class="internal xref">&lt;view&gt;</a></p>
+1377,1378c1413,1414
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.19">
+<                 <p id="section-toc.1-1.11.2.19.1"><a href="#section-11.19" class="xref">11.19</a>. <a href="#name-presentation" class="xref">&lt;presentation&gt;</a><a href="#section-toc.1-1.11.2.19.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.19">
+>                 <p id="section-toc.1-1.11.2.19.1"><a href="#section-11.19" class="auto internal xref">11.19</a>. <a href="#name-presentation" class="internal xref">&lt;presentation&gt;</a></p>
+1380,1381c1416,1417
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.20">
+<                 <p id="section-toc.1-1.11.2.20.1"><a href="#section-11.20" class="xref">11.20</a>. <a href="#name-embeddedtext" class="xref">&lt;embeddedText&gt;</a><a href="#section-toc.1-1.11.2.20.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.20">
+>                 <p id="section-toc.1-1.11.2.20.1"><a href="#section-11.20" class="auto internal xref">11.20</a>. <a href="#name-embeddedtext" class="internal xref">&lt;embeddedText&gt;</a></p>
+1383,1387c1419,1423
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.21">
+<                 <p id="section-toc.1-1.11.2.21.1"><a href="#section-11.21" class="xref">11.21</a>. <a href="#name-capturedpeople" class="xref">&lt;capturedPeople&gt;</a><a href="#section-toc.1-1.11.2.21.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.11.2.21.2.1">
+<                     <p id="section-toc.1-1.11.2.21.2.1.1"><a href="#section-11.21.1" class="xref">11.21.1</a>.  <a href="#name-personidref" class="xref">&lt;personIDREF&gt;</a><a href="#section-toc.1-1.11.2.21.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.21">
+>                 <p id="section-toc.1-1.11.2.21.1"><a href="#section-11.21" class="auto internal xref">11.21</a>. <a href="#name-capturedpeople" class="internal xref">&lt;capturedPeople&gt;</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.21.2.1">
+>                     <p id="section-toc.1-1.11.2.21.2.1.1"><a href="#section-11.21.1" class="auto internal xref">11.21.1</a>.  <a href="#name-personidref" class="internal xref">&lt;personIDREF&gt;</a></p>
+1393,1397c1429,1433
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-12" class="xref">12</a>. <a href="#name-audio-captures" class="xref">Audio Captures</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.12.2.1">
+<                 <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="xref">12.1</a>.  <a href="#name-sensitivitypattern" class="xref">&lt;sensitivityPattern&gt;</a><a href="#section-toc.1-1.12.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-audio-captures" class="internal xref">Audio Captures</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1">
+>                 <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="auto internal xref">12.1</a>.  <a href="#name-sensitivitypattern" class="internal xref">&lt;sensitivityPattern&gt;</a></p>
+1401,1402c1437,1438
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-13" class="xref">13</a>. <a href="#name-video-captures" class="xref">Video Captures</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1"><a href="#section-13" class="auto internal xref">13</a>. <a href="#name-video-captures" class="internal xref">Video Captures</a></p>
+1404,1405c1440,1441
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.14">
+<             <p id="section-toc.1-1.14.1"><a href="#section-14" class="xref">14</a>. <a href="#name-text-captures" class="xref">Text Captures</a><a href="#section-toc.1-1.14.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+>             <p id="section-toc.1-1.14.1"><a href="#section-14" class="auto internal xref">14</a>. <a href="#name-text-captures" class="internal xref">Text Captures</a></p>
+1407,1408c1443,1444
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.15">
+<             <p id="section-toc.1-1.15.1"><a href="#section-15" class="xref">15</a>. <a href="#name-other-capture-types" class="xref">Other Capture Types</a><a href="#section-toc.1-1.15.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
+>             <p id="section-toc.1-1.15.1"><a href="#section-15" class="auto internal xref">15</a>. <a href="#name-other-capture-types" class="internal xref">Other Capture Types</a></p>
+1410,1414c1446,1450
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.16">
+<             <p id="section-toc.1-1.16.1"><a href="#section-16" class="xref">16</a>. <a href="#name-capturescene" class="xref">&lt;captureScene&gt;</a><a href="#section-toc.1-1.16.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.16.2.1">
+<                 <p id="section-toc.1-1.16.2.1.1"><a href="#section-16.1" class="xref">16.1</a>.  <a href="#name-sceneinformation" class="xref">&lt;sceneInformation&gt;</a><a href="#section-toc.1-1.16.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
+>             <p id="section-toc.1-1.16.1"><a href="#section-16" class="auto internal xref">16</a>. <a href="#name-capturescene" class="internal xref">&lt;captureScene&gt;</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.1">
+>                 <p id="section-toc.1-1.16.2.1.1"><a href="#section-16.1" class="auto internal xref">16.1</a>.  <a href="#name-sceneinformation" class="internal xref">&lt;sceneInformation&gt;</a></p>
+1416,1417c1452,1453
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.16.2.2">
+<                 <p id="section-toc.1-1.16.2.2.1"><a href="#section-16.2" class="xref">16.2</a>.  <a href="#name-sceneviews" class="xref">&lt;sceneViews&gt;</a><a href="#section-toc.1-1.16.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.2">
+>                 <p id="section-toc.1-1.16.2.2.1"><a href="#section-16.2" class="auto internal xref">16.2</a>.  <a href="#name-sceneviews" class="internal xref">&lt;sceneViews&gt;</a></p>
+1419,1420c1455,1456
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.16.2.3">
+<                 <p id="section-toc.1-1.16.2.3.1"><a href="#section-16.3" class="xref">16.3</a>.  <a href="#name-sceneid-attribute" class="xref">sceneID Attribute</a><a href="#section-toc.1-1.16.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.3">
+>                 <p id="section-toc.1-1.16.2.3.1"><a href="#section-16.3" class="auto internal xref">16.3</a>.  <a href="#name-sceneid-attribute" class="internal xref">sceneID Attribute</a></p>
+1422,1423c1458,1459
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.16.2.4">
+<                 <p id="section-toc.1-1.16.2.4.1"><a href="#section-16.4" class="xref">16.4</a>.  <a href="#name-scale-attribute" class="xref">scale Attribute</a><a href="#section-toc.1-1.16.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.4">
+>                 <p id="section-toc.1-1.16.2.4.1"><a href="#section-16.4" class="auto internal xref">16.4</a>.  <a href="#name-scale-attribute" class="internal xref">scale Attribute</a></p>
+1427,1431c1463,1467
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.17">
+<             <p id="section-toc.1-1.17.1"><a href="#section-17" class="xref">17</a>. <a href="#name-sceneview" class="xref">&lt;sceneView&gt;</a><a href="#section-toc.1-1.17.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.17.2.1">
+<                 <p id="section-toc.1-1.17.2.1.1"><a href="#section-17.1" class="xref">17.1</a>.  <a href="#name-mediacaptureids" class="xref">&lt;mediaCaptureIDs&gt;</a><a href="#section-toc.1-1.17.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17">
+>             <p id="section-toc.1-1.17.1"><a href="#section-17" class="auto internal xref">17</a>. <a href="#name-sceneview" class="internal xref">&lt;sceneView&gt;</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17.2.1">
+>                 <p id="section-toc.1-1.17.2.1.1"><a href="#section-17.1" class="auto internal xref">17.1</a>.  <a href="#name-mediacaptureids" class="internal xref">&lt;mediaCaptureIDs&gt;</a></p>
+1433,1434c1469,1470
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.17.2.2">
+<                 <p id="section-toc.1-1.17.2.2.1"><a href="#section-17.2" class="xref">17.2</a>.  <a href="#name-sceneviewid-attribute" class="xref">sceneViewID Attribute</a><a href="#section-toc.1-1.17.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17.2.2">
+>                 <p id="section-toc.1-1.17.2.2.1"><a href="#section-17.2" class="auto internal xref">17.2</a>.  <a href="#name-sceneviewid-attribute" class="internal xref">sceneViewID Attribute</a></p>
+1438,1442c1474,1478
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.18">
+<             <p id="section-toc.1-1.18.1"><a href="#section-18" class="xref">18</a>. <a href="#name-encodinggroup" class="xref">&lt;encodingGroup&gt;</a><a href="#section-toc.1-1.18.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.18.2.1">
+<                 <p id="section-toc.1-1.18.2.1.1"><a href="#section-18.1" class="xref">18.1</a>.  <a href="#name-maxgroupbandwidth" class="xref">&lt;maxGroupBandwidth&gt;</a><a href="#section-toc.1-1.18.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.18">
+>             <p id="section-toc.1-1.18.1"><a href="#section-18" class="auto internal xref">18</a>. <a href="#name-encodinggroup" class="internal xref">&lt;encodingGroup&gt;</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.18.2.1">
+>                 <p id="section-toc.1-1.18.2.1.1"><a href="#section-18.1" class="auto internal xref">18.1</a>.  <a href="#name-maxgroupbandwidth" class="internal xref">&lt;maxGroupBandwidth&gt;</a></p>
+1444,1445c1480,1481
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.18.2.2">
+<                 <p id="section-toc.1-1.18.2.2.1"><a href="#section-18.2" class="xref">18.2</a>.  <a href="#name-encodingidlist" class="xref">&lt;encodingIDList&gt;</a><a href="#section-toc.1-1.18.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.18.2.2">
+>                 <p id="section-toc.1-1.18.2.2.1"><a href="#section-18.2" class="auto internal xref">18.2</a>.  <a href="#name-encodingidlist" class="internal xref">&lt;encodingIDList&gt;</a></p>
+1447,1448c1483,1484
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.18.2.3">
+<                 <p id="section-toc.1-1.18.2.3.1"><a href="#section-18.3" class="xref">18.3</a>.  <a href="#name-encodinggroupid-attribute" class="xref">encodingGroupID Attribute</a><a href="#section-toc.1-1.18.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.18.2.3">
+>                 <p id="section-toc.1-1.18.2.3.1"><a href="#section-18.3" class="auto internal xref">18.3</a>.  <a href="#name-encodinggroupid-attribute" class="internal xref">encodingGroupID Attribute</a></p>
+1452,1459c1488,1495
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.19">
+<             <p id="section-toc.1-1.19.1"><a href="#section-19" class="xref">19</a>. <a href="#name-simultaneousset" class="xref">&lt;simultaneousSet&gt;</a><a href="#section-toc.1-1.19.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.19.2.1">
+<                 <p id="section-toc.1-1.19.2.1.1"><a href="#section-19.1" class="xref">19.1</a>.  <a href="#name-setid-attribute" class="xref">setID Attribute</a><a href="#section-toc.1-1.19.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.19.2.2">
+<                 <p id="section-toc.1-1.19.2.2.1"><a href="#section-19.2" class="xref">19.2</a>.  <a href="#name-mediatype-attribute-2" class="xref">mediaType Attribute</a><a href="#section-toc.1-1.19.2.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.19">
+>             <p id="section-toc.1-1.19.1"><a href="#section-19" class="auto internal xref">19</a>. <a href="#name-simultaneousset" class="internal xref">&lt;simultaneousSet&gt;</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.19.2.1">
+>                 <p id="section-toc.1-1.19.2.1.1"><a href="#section-19.1" class="auto internal xref">19.1</a>.  <a href="#name-setid-attribute" class="internal xref">setID Attribute</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.19.2.2">
+>                 <p id="section-toc.1-1.19.2.2.1"><a href="#section-19.2" class="auto internal xref">19.2</a>.  <a href="#name-mediatype-attribute-2" class="internal xref">mediaType Attribute</a></p>
+1461,1462c1497,1498
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.19.2.3">
+<                 <p id="section-toc.1-1.19.2.3.1"><a href="#section-19.3" class="xref">19.3</a>.  <a href="#name-mediacaptureidref" class="xref">&lt;mediaCaptureIDREF&gt;</a><a href="#section-toc.1-1.19.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.19.2.3">
+>                 <p id="section-toc.1-1.19.2.3.1"><a href="#section-19.3" class="auto internal xref">19.3</a>.  <a href="#name-mediacaptureidref" class="internal xref">&lt;mediaCaptureIDREF&gt;</a></p>
+1464,1465c1500,1501
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.19.2.4">
+<                 <p id="section-toc.1-1.19.2.4.1"><a href="#section-19.4" class="xref">19.4</a>.  <a href="#name-sceneviewidref" class="xref">&lt;sceneViewIDREF&gt;</a><a href="#section-toc.1-1.19.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.19.2.4">
+>                 <p id="section-toc.1-1.19.2.4.1"><a href="#section-19.4" class="auto internal xref">19.4</a>.  <a href="#name-sceneviewidref" class="internal xref">&lt;sceneViewIDREF&gt;</a></p>
+1467,1468c1503,1504
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.19.2.5">
+<                 <p id="section-toc.1-1.19.2.5.1"><a href="#section-19.5" class="xref">19.5</a>.  <a href="#name-capturesceneidref-2" class="xref">&lt;captureSceneIDREF&gt;</a><a href="#section-toc.1-1.19.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.19.2.5">
+>                 <p id="section-toc.1-1.19.2.5.1"><a href="#section-19.5" class="auto internal xref">19.5</a>.  <a href="#name-capturesceneidref-2" class="internal xref">&lt;captureSceneIDREF&gt;</a></p>
+1472,1473c1508,1509
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.20">
+<             <p id="section-toc.1-1.20.1"><a href="#section-20" class="xref">20</a>. <a href="#name-globalview" class="xref">&lt;globalView&gt;</a><a href="#section-toc.1-1.20.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.20">
+>             <p id="section-toc.1-1.20.1"><a href="#section-20" class="auto internal xref">20</a>. <a href="#name-globalview" class="internal xref">&lt;globalView&gt;</a></p>
+1475,1482c1511,1518
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.21">
+<             <p id="section-toc.1-1.21.1"><a href="#section-21" class="xref">21</a>. <a href="#name-people" class="xref">&lt;people&gt;</a><a href="#section-toc.1-1.21.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.21.2.1">
+<                 <p id="section-toc.1-1.21.2.1.1"><a href="#section-21.1" class="xref">21.1</a>.  <a href="#name-person" class="xref">&lt;person&gt;</a><a href="#section-toc.1-1.21.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.21.2.1.2.1">
+<                     <p id="section-toc.1-1.21.2.1.2.1.1"><a href="#section-21.1.1" class="xref">21.1.1</a>.  <a href="#name-personid-attribute" class="xref">personID Attribute</a><a href="#section-toc.1-1.21.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21">
+>             <p id="section-toc.1-1.21.1"><a href="#section-21" class="auto internal xref">21</a>. <a href="#name-people" class="internal xref">&lt;people&gt;</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.1">
+>                 <p id="section-toc.1-1.21.2.1.1"><a href="#section-21.1" class="auto internal xref">21.1</a>.  <a href="#name-person" class="internal xref">&lt;person&gt;</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.1.2.1">
+>                     <p id="section-toc.1-1.21.2.1.2.1.1"><a href="#section-21.1.1" class="auto internal xref">21.1.1</a>.  <a href="#name-personid-attribute" class="internal xref">personID Attribute</a></p>
+1484,1485c1520,1521
+<                   <li class="compact ulEmpty toc" id="section-toc.1-1.21.2.1.2.2">
+<                     <p id="section-toc.1-1.21.2.1.2.2.1"><a href="#section-21.1.2" class="xref">21.1.2</a>.  <a href="#name-personinfo" class="xref">&lt;personInfo&gt;</a><a href="#section-toc.1-1.21.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.1.2.2">
+>                     <p id="section-toc.1-1.21.2.1.2.2.1"><a href="#section-21.1.2" class="auto internal xref">21.1.2</a>.  <a href="#name-personinfo" class="internal xref">&lt;personInfo&gt;</a></p>
+1487,1488c1523,1524
+<                   <li class="compact ulEmpty toc" id="section-toc.1-1.21.2.1.2.3">
+<                     <p id="section-toc.1-1.21.2.1.2.3.1"><a href="#section-21.1.3" class="xref">21.1.3</a>.  <a href="#name-persontype" class="xref">&lt;personType&gt;</a><a href="#section-toc.1-1.21.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.1.2.3">
+>                     <p id="section-toc.1-1.21.2.1.2.3.1"><a href="#section-21.1.3" class="auto internal xref">21.1.3</a>.  <a href="#name-persontype" class="internal xref">&lt;personType&gt;</a></p>
+1494,1498c1530,1534
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.22">
+<             <p id="section-toc.1-1.22.1"><a href="#section-22" class="xref">22</a>. <a href="#name-captureencoding" class="xref">&lt;captureEncoding&gt;</a><a href="#section-toc.1-1.22.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.22.2.1">
+<                 <p id="section-toc.1-1.22.2.1.1"><a href="#section-22.1" class="xref">22.1</a>.  <a href="#name-captureid" class="xref">&lt;captureID&gt;</a><a href="#section-toc.1-1.22.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22">
+>             <p id="section-toc.1-1.22.1"><a href="#section-22" class="auto internal xref">22</a>. <a href="#name-captureencoding" class="internal xref">&lt;captureEncoding&gt;</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.1">
+>                 <p id="section-toc.1-1.22.2.1.1"><a href="#section-22.1" class="auto internal xref">22.1</a>.  <a href="#name-captureid" class="internal xref">&lt;captureID&gt;</a></p>
+1500,1501c1536,1537
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.22.2.2">
+<                 <p id="section-toc.1-1.22.2.2.1"><a href="#section-22.2" class="xref">22.2</a>.  <a href="#name-encodingid" class="xref">&lt;encodingID&gt;</a><a href="#section-toc.1-1.22.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.2">
+>                 <p id="section-toc.1-1.22.2.2.1"><a href="#section-22.2" class="auto internal xref">22.2</a>.  <a href="#name-encodingid" class="internal xref">&lt;encodingID&gt;</a></p>
+1503,1504c1539,1540
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.22.2.3">
+<                 <p id="section-toc.1-1.22.2.3.1"><a href="#section-22.3" class="xref">22.3</a>.  <a href="#name-configuredcontent" class="xref">&lt;configuredContent&gt;</a><a href="#section-toc.1-1.22.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3">
+>                 <p id="section-toc.1-1.22.2.3.1"><a href="#section-22.3" class="auto internal xref">22.3</a>.  <a href="#name-configuredcontent" class="internal xref">&lt;configuredContent&gt;</a></p>
+1508,1509c1544,1545
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.23">
+<             <p id="section-toc.1-1.23.1"><a href="#section-23" class="xref">23</a>. <a href="#name-clueinfo" class="xref">&lt;clueInfo&gt;</a><a href="#section-toc.1-1.23.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.23">
+>             <p id="section-toc.1-1.23.1"><a href="#section-23" class="auto internal xref">23</a>. <a href="#name-clueinfo" class="internal xref">&lt;clueInfo&gt;</a></p>
+1511,1515c1547,1551
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.24">
+<             <p id="section-toc.1-1.24.1"><a href="#section-24" class="xref">24</a>. <a href="#name-xml-schema-extensibility" class="xref">XML Schema Extensibility</a><a href="#section-toc.1-1.24.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.24.2.1">
+<                 <p id="section-toc.1-1.24.2.1.1"><a href="#section-24.1" class="xref">24.1</a>.  <a href="#name-example-of-extension" class="xref">Example of Extension</a><a href="#section-toc.1-1.24.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.24">
+>             <p id="section-toc.1-1.24.1"><a href="#section-24" class="auto internal xref">24</a>. <a href="#name-xml-schema-extensibility" class="internal xref">XML Schema Extensibility</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.24.2.1">
+>                 <p id="section-toc.1-1.24.2.1.1"><a href="#section-24.1" class="auto internal xref">24.1</a>.  <a href="#name-example-of-extension" class="internal xref">Example of Extension</a></p>
+1519,1520c1555,1556
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.25">
+<             <p id="section-toc.1-1.25.1"><a href="#section-25" class="xref">25</a>. <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.25.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.25">
+>             <p id="section-toc.1-1.25.1"><a href="#section-25" class="auto internal xref">25</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1522,1526c1558,1562
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.26">
+<             <p id="section-toc.1-1.26.1"><a href="#section-26" class="xref">26</a>. <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.26.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.26.2.1">
+<                 <p id="section-toc.1-1.26.2.1.1"><a href="#section-26.1" class="xref">26.1</a>.  <a href="#name-xml-namespace-registration" class="xref">XML Namespace Registration</a><a href="#section-toc.1-1.26.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.26">
+>             <p id="section-toc.1-1.26.1"><a href="#section-26" class="auto internal xref">26</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.26.2.1">
+>                 <p id="section-toc.1-1.26.2.1.1"><a href="#section-26.1" class="auto internal xref">26.1</a>.  <a href="#name-xml-namespace-registration" class="internal xref">XML Namespace Registration</a></p>
+1528,1529c1564,1565
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.26.2.2">
+<                 <p id="section-toc.1-1.26.2.2.1"><a href="#section-26.2" class="xref">26.2</a>.  <a href="#name-xml-schema-registration" class="xref">XML Schema Registration</a><a href="#section-toc.1-1.26.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.26.2.2">
+>                 <p id="section-toc.1-1.26.2.2.1"><a href="#section-26.2" class="auto internal xref">26.2</a>.  <a href="#name-xml-schema-registration" class="internal xref">XML Schema Registration</a></p>
+1531,1532c1567,1568
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.26.2.3">
+<                 <p id="section-toc.1-1.26.2.3.1"><a href="#section-26.3" class="xref">26.3</a>.  <a href="#name-media-type-registration-for" class="xref">Media Type Registration for "application/clue_info+xml"</a><a href="#section-toc.1-1.26.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.26.2.3">
+>                 <p id="section-toc.1-1.26.2.3.1"><a href="#section-26.3" class="auto internal xref">26.3</a>.  <a href="#name-media-type-registration-for" class="internal xref">Media Type Registration for "application/clue_info+xml"</a></p>
+1534,1535c1570,1571
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.26.2.4">
+<                 <p id="section-toc.1-1.26.2.4.1"><a href="#section-26.4" class="xref">26.4</a>.  <a href="#name-registry-for-acceptable-vie" class="xref">Registry for Acceptable &lt;view&gt; Values</a><a href="#section-toc.1-1.26.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.26.2.4">
+>                 <p id="section-toc.1-1.26.2.4.1"><a href="#section-26.4" class="auto internal xref">26.4</a>.  <a href="#name-registry-for-acceptable-vie" class="internal xref">Registry for Acceptable &lt;view&gt; Values</a></p>
+1537,1538c1573,1574
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.26.2.5">
+<                 <p id="section-toc.1-1.26.2.5.1"><a href="#section-26.5" class="xref">26.5</a>.  <a href="#name-registry-for-acceptable-pre" class="xref">Registry for Acceptable &lt;presentation&gt; Values</a><a href="#section-toc.1-1.26.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.26.2.5">
+>                 <p id="section-toc.1-1.26.2.5.1"><a href="#section-26.5" class="auto internal xref">26.5</a>.  <a href="#name-registry-for-acceptable-pre" class="internal xref">Registry for Acceptable &lt;presentation&gt; Values</a></p>
+1540,1541c1576,1577
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.26.2.6">
+<                 <p id="section-toc.1-1.26.2.6.1"><a href="#section-26.6" class="xref">26.6</a>.  <a href="#name-registry-for-acceptable-sen" class="xref">Registry for Acceptable &lt;sensitivityPattern&gt; Values</a><a href="#section-toc.1-1.26.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.26.2.6">
+>                 <p id="section-toc.1-1.26.2.6.1"><a href="#section-26.6" class="auto internal xref">26.6</a>.  <a href="#name-registry-for-acceptable-sen" class="internal xref">Registry for Acceptable &lt;sensitivityPattern&gt; Values</a></p>
+1543,1544c1579,1580
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.26.2.7">
+<                 <p id="section-toc.1-1.26.2.7.1"><a href="#section-26.7" class="xref">26.7</a>.  <a href="#name-registry-for-acceptable-per" class="xref">Registry for Acceptable &lt;personType&gt; Values</a><a href="#section-toc.1-1.26.2.7.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.26.2.7">
+>                 <p id="section-toc.1-1.26.2.7.1"><a href="#section-26.7" class="auto internal xref">26.7</a>.  <a href="#name-registry-for-acceptable-per" class="internal xref">Registry for Acceptable &lt;personType&gt; Values</a></p>
+1548,1549c1584,1585
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.27">
+<             <p id="section-toc.1-1.27.1"><a href="#section-27" class="xref">27</a>. <a href="#name-sample-xml-file" class="xref">Sample XML File</a><a href="#section-toc.1-1.27.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.27">
+>             <p id="section-toc.1-1.27.1"><a href="#section-27" class="auto internal xref">27</a>. <a href="#name-sample-xml-file" class="internal xref">Sample XML File</a></p>
+1551,1552c1587,1588
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.28">
+<             <p id="section-toc.1-1.28.1"><a href="#section-28" class="xref">28</a>. <a href="#name-mcc-example" class="xref">MCC Example</a><a href="#section-toc.1-1.28.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.28">
+>             <p id="section-toc.1-1.28.1"><a href="#section-28" class="auto internal xref">28</a>. <a href="#name-mcc-example" class="internal xref">MCC Example</a></p>
+1554,1558c1590,1594
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.29">
+<             <p id="section-toc.1-1.29.1"><a href="#section-29" class="xref">29</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.29.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.29.2.1">
+<                 <p id="section-toc.1-1.29.2.1.1"><a href="#section-29.1" class="xref">29.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.29.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.29">
+>             <p id="section-toc.1-1.29.1"><a href="#section-29" class="auto internal xref">29</a>. <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.29.2.1">
+>                 <p id="section-toc.1-1.29.2.1.1"><a href="#section-29.1" class="auto internal xref">29.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1560,1561c1596,1597
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.29.2.2">
+<                 <p id="section-toc.1-1.29.2.2.1"><a href="#section-29.2" class="xref">29.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.29.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.29.2.2">
+>                 <p id="section-toc.1-1.29.2.2.1"><a href="#section-29.2" class="auto internal xref">29.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1565,1566c1601,1602
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.30">
+<             <p id="section-toc.1-1.30.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.30.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.30">
+>             <p id="section-toc.1-1.30.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1568,1569c1604,1605
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.31">
+<             <p id="section-toc.1-1.31.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.31.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.31">
+>             <p id="section-toc.1-1.31.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1588c1624
+< framework can be found in <span>[<a href="#RFC8845" class="xref">RFC8845</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+---
+> framework can be found in <span>[<a href="#RFC8845" class="cite xref">RFC8845</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+1591c1627
+< <span>[<a href="#RFC8845" class="xref">RFC8845</a>]</span>.
+---
+> <span>[<a href="#RFC8845" class="cite xref">RFC8845</a>]</span>.
+1599c1635
+< <span>[<a href="#RFC8847" class="xref">RFC8847</a>]</span>, enabling the dialogue between
+---
+> <span>[<a href="#RFC8847" class="cite xref">RFC8847</a>]</span>, enabling the dialogue between
+1617c1653
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1627c1663
+< <span>[<a href="#RFC8845" class="xref">RFC8845</a>]</span>, except for the "CLUE 
+---
+> <span>[<a href="#RFC8845" class="cite xref">RFC8845</a>]</span>, except for the "CLUE 
+1670c1706
+< <span>[<a href="#RFC8847" class="xref">RFC8847</a>]</span>.<a href="#section-3-2.14" class="pilcrow">¶</a>
+---
+> <span>[<a href="#RFC8847" class="cite xref">RFC8847</a>]</span>.<a href="#section-3-2.14" class="pilcrow">¶</a>
+1696c1732
+<    participant <span>[<a href="#RFC4353" class="xref">RFC4353</a>]</span> (which, in turn, includes exactly one SIP User Agent).  Endpoints can be anything from multiscreen/multicamera rooms to
+---
+>    participant <span>[<a href="#RFC4353" class="cite xref">RFC4353</a>]</span> (which, in turn, includes exactly one SIP User Agent).  Endpoints can be anything from multiscreen/multicamera rooms to
+1734c1770
+<    conference <span>[<a href="#RFC7667" class="xref">RFC7667</a>]</span>.
+---
+>    conference <span>[<a href="#RFC7667" class="cite xref">RFC7667</a>]</span>.
+1736c1772
+<    <span>[<a href="#RFC4353" class="xref">RFC4353</a>]</span>, but
+---
+>    <span>[<a href="#RFC4353" class="cite xref">RFC4353</a>]</span>, but
+1781c1817
+<  via RTP <span>[<a href="#RFC3550" class="xref">RFC3550</a>]</span>.<a href="#section-3-2.50" class="pilcrow">¶</a>
+---
+>  via RTP <span>[<a href="#RFC3550" class="cite xref">RFC3550</a>]</span>.<a href="#section-3-2.50" class="pilcrow">¶</a>
+1810c1846
+< ADVERTISEMENT <span>[<a href="#RFC8847" class="xref">RFC8847</a>]</span>.<a href="#section-4-2" class="pilcrow">¶</a></p>
+---
+> ADVERTISEMENT <span>[<a href="#RFC8847" class="cite xref">RFC8847</a>]</span>.<a href="#section-4-2" class="pilcrow">¶</a></p>
+1817c1853
+<   (<a href="#sec-media-captures" class="xref">Section 5</a>)<a href="#section-4-4.1.1.2" class="pilcrow">¶</a>
+---
+>   (<a href="#sec-media-captures" class="auto internal xref">Section 5</a>)<a href="#section-4-4.1.1.2" class="pilcrow">¶</a>
+1822c1858
+<   (<a href="#sec-encoding-groups" class="xref">Section 6</a>)<a href="#section-4-4.1.1.4" class="pilcrow">¶</a>
+---
+>   (<a href="#sec-encoding-groups" class="auto internal xref">Section 6</a>)<a href="#section-4-4.1.1.4" class="pilcrow">¶</a>
+1827c1863
+<   (<a href="#sec-capture-scenes" class="xref">Section 7</a>)<a href="#section-4-4.1.1.6" class="pilcrow">¶</a>
+---
+>   (<a href="#sec-capture-scenes" class="auto internal xref">Section 7</a>)<a href="#section-4-4.1.1.6" class="pilcrow">¶</a>
+1832c1868
+<   sets (<a href="#sec-simultaneous-sets" class="xref">Section 8</a>)<a href="#section-4-4.1.1.8" class="pilcrow">¶</a>
+---
+>   sets (<a href="#sec-simultaneous-sets" class="auto internal xref">Section 8</a>)<a href="#section-4-4.1.1.8" class="pilcrow">¶</a>
+1837c1873
+<   (<a href="#sec-global-views" class="xref">Section 9</a>)<a href="#section-4-4.1.1.10" class="pilcrow">¶</a>
+---
+>   (<a href="#sec-global-views" class="auto internal xref">Section 9</a>)<a href="#section-4-4.1.1.10" class="pilcrow">¶</a>
+1842c1878
+<   in the telepresence session (<a href="#sec-participants" class="xref">Section 21</a>)<a href="#section-4-4.1.1.12" class="pilcrow">¶</a>
+---
+>   in the telepresence session (<a href="#sec-participants" class="auto internal xref">Section 21</a>)<a href="#section-4-4.1.1.12" class="pilcrow">¶</a>
+1847c1883
+<   encodings (<a href="#sec-capture-encodings" class="xref">Section 10</a>)<a href="#section-4-4.1.1.14" class="pilcrow">¶</a>
+---
+>   encodings (<a href="#sec-capture-encodings" class="auto internal xref">Section 10</a>)<a href="#section-4-4.1.1.14" class="pilcrow">¶</a>
+1855c1891
+< introduced in <span>[<a href="#RFC8845" class="xref">RFC8845</a>]</span> 
+---
+> introduced in <span>[<a href="#RFC8845" class="cite xref">RFC8845</a>]</span> 
+1857,1858c1893,1894
+< <div id="section-4-6">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="breakable lang-xml sourcecode" id="section-4-6">
+> <pre>
+2380c2416
+< element (<a href="#sec-media-capture" class="xref">Section 11</a>).<a href="#section-5-1" class="pilcrow">¶</a></p>
+---
+> element (<a href="#sec-media-capture" class="auto internal xref">Section 11</a>).<a href="#section-5-1" class="pilcrow">¶</a></p>
+2392c2428
+< &lt;encodingGroup&gt; element (<a href="#sec-encoding-group" class="xref">Section 18</a>).<a href="#section-6-1" class="pilcrow">¶</a></p>
+---
+> &lt;encodingGroup&gt; element (<a href="#sec-encoding-group" class="auto internal xref">Section 18</a>).<a href="#section-6-1" class="pilcrow">¶</a></p>
+2404c2440
+< &lt;captureScene&gt; element (<a href="#sec-capture-scene" class="xref">Section 16</a>).<a href="#section-7-1" class="pilcrow">¶</a></p>
+---
+> &lt;captureScene&gt; element (<a href="#sec-capture-scene" class="auto internal xref">Section 16</a>).<a href="#section-7-1" class="pilcrow">¶</a></p>
+2416c2452
+< &lt;simultaneousSet&gt; element (<a href="#sec-simultaneous-set" class="xref">Section 19</a>).<a href="#section-8-1" class="pilcrow">¶</a></p>
+---
+> &lt;simultaneousSet&gt; element (<a href="#sec-simultaneous-set" class="auto internal xref">Section 19</a>).<a href="#section-8-1" class="pilcrow">¶</a></p>
+2428c2464
+< &lt;globalView&gt; element (<a href="#sec-global-view" class="xref">Section 20</a>).<a href="#section-9-1" class="pilcrow">¶</a></p>
+---
+> &lt;globalView&gt; element (<a href="#sec-global-view" class="auto internal xref">Section 20</a>).<a href="#section-9-1" class="pilcrow">¶</a></p>
+2444c2480
+< &lt;captureEncoding&gt; element (<a href="#sec-capture-encoding" class="xref">Section 22</a>).<a href="#section-10-1" class="pilcrow">¶</a></p>
+---
+> &lt;captureEncoding&gt; element (<a href="#sec-capture-encoding" class="auto internal xref">Section 22</a>).<a href="#section-10-1" class="pilcrow">¶</a></p>
+2468,2469c2504,2505
+< <div id="section-11-3">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-11-3">
+> <pre>
+2536c2572
+< <span>[<a href="#RFC6838" class="xref">RFC6838</a>]</span>. 
+---
+> <span>[<a href="#RFC6838" class="cite xref">RFC6838</a>]</span>. 
+2542c2578
+< and text capture types <span>[<a href="#RFC6838" class="xref">RFC6838</a>]</span> have been specified; (iii) a generic 
+---
+> and text capture types <span>[<a href="#RFC6838" class="cite xref">RFC6838</a>]</span> have been specified; (iii) a generic 
+2559c2595
+< sceneID attribute (<a href="#sec-sceneID" class="xref">Section 16.3</a>) of
+---
+> sceneID attribute (<a href="#sec-sceneID" class="auto internal xref">Section 16.3</a>) of
+2565c2601
+< of point coordinates (see <a href="#sec-spatial-info" class="xref">Section 11.5</a>).
+---
+> of point coordinates (see <a href="#sec-spatial-info" class="auto internal xref">Section 11.5</a>).
+2577c2613
+< attribute (<a href="#sec-encodingGroupID" class="xref">Section 18.3</a>) of that encoding group.
+---
+> attribute (<a href="#sec-encodingGroupID" class="auto internal xref">Section 18.3</a>) of that encoding group.
+2621c2657
+< <a href="#sub-sec-nonspatiallydef" class="xref">Section 11.6</a>).<a href="#section-11.5-4" class="pilcrow">¶</a></p>
+---
+> <a href="#sub-sec-nonspatiallydef" class="auto internal xref">Section 11.6</a>).<a href="#section-11.5-4" class="pilcrow">¶</a></p>
+2624,2625c2660,2661
+< <div id="section-11.5-6">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-11.5-6">
+> <pre>
+2643c2679
+< on line of capture); see <a href="#sec-capture-origin" class="xref">Section 11.5.1</a>.<a href="#section-11.5-7" class="pilcrow">¶</a></p>
+---
+> on line of capture); see <a href="#sec-capture-origin" class="auto internal xref">Section 11.5.1</a>.<a href="#section-11.5-7" class="pilcrow">¶</a></p>
+2648c2684
+< (see <a href="#sec-capture-area" class="xref">Section 11.5.2</a>).<a href="#section-11.5-8" class="pilcrow">¶</a></p>
+---
+> (see <a href="#sec-capture-area" class="auto internal xref">Section 11.5.2</a>).<a href="#section-11.5-8" class="pilcrow">¶</a></p>
+2650c2686
+< the scale attribute (<a href="#sec-scale" class="xref">Section 16.4</a>) of the capture scene
+---
+> the scale attribute (<a href="#sec-scale" class="auto internal xref">Section 16.4</a>) of the capture scene
+2669,2670c2705,2706
+< <div id="section-11.5.1-3">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-11.5.1-3">
+> <pre>
+2740,2741c2776,2777
+< <div id="section-11.5.2-3">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-11.5.2-3">
+> <pre>
+2798,2799c2834,2835
+< <div id="section-11.7-2">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-11.7-2">
+> <pre>
+2863,2864c2899,2900
+< <div id="section-11.10-2">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-11.10-2">
+> <pre>
+2874c2910
+< <span>[<a href="#RFC8845" class="xref">RFC8845</a>]</span> as follows:<a href="#section-11.10-3" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#RFC8845" class="cite xref">RFC8845</a>]</span> as follows:<a href="#section-11.10-3" class="pilcrow">¶</a></p>
+2912,2913c2948,2949
+< <div id="section-11.11-2">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-11.11-2">
+> <pre>
+2960,2961c2996,2997
+< (from Sections <a href="#sub-sec-content" class="xref">11.7</a> to 
+< <a href="#sub-sec-maxCaptures" class="xref">11.11</a>) are mutually 
+---
+> (from Sections <a href="#sub-sec-content" class="auto internal xref">11.7</a> to 
+> <a href="#sub-sec-maxCaptures" class="auto internal xref">11.11</a>) are mutually 
+2978c3014
+< (<a href="#sec-media-capture" class="xref">Section 11</a>)), zero or more 
+---
+> (<a href="#sec-media-capture" class="auto internal xref">Section 11</a>)), zero or more 
+2983,2984c3019,3020
+< <div id="section-11.13-2">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-11.13-2">
+> <pre>
+3001c3037
+< from <span>[<a href="#RFC5646" class="xref">RFC5646</a>]</span>.<a href="#section-11.13-3" class="pilcrow">¶</a></p>
+---
+> from <span>[<a href="#RFC5646" class="cite xref">RFC5646</a>]</span>.<a href="#section-11.13-3" class="pilcrow">¶</a></p>
+3031c3067
+< Language-Tag ABNF production from <span>[<a href="#RFC5646" class="xref">RFC5646</a>]</span>.<a href="#section-11.15-1" class="pilcrow">¶</a></p>
+---
+> Language-Tag ABNF production from <span>[<a href="#RFC5646" class="cite xref">RFC5646</a>]</span>.<a href="#section-11.15-1" class="pilcrow">¶</a></p>
+3075c3111
+< value of the <span><a href="#sec-captureID" class="xref">captureID attribute</a> (<a href="#sec-captureID" class="xref">Section 11.1</a>)</span> 
+---
+> value of the <span><a href="#sec-captureID" class="internal xref">captureID attribute</a> (<a href="#sec-captureID" class="auto internal xref">Section 11.1</a>)</span> 
+3091,3092c3127,3128
+< <div id="section-11.18-2">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-11.18-2">
+> <pre>
+3107c3143
+< <span>[<a href="#RFC8845" class="xref">RFC8845</a>]</span>, are: "room", "table", 
+---
+> <span>[<a href="#RFC8845" class="cite xref">RFC8845</a>]</span>, are: "room", "table", 
+3120,3121c3156,3157
+< <div id="section-11.19-2">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-11.19-2">
+> <pre>
+3136c3172
+< <span>[<a href="#RFC8845" class="xref">RFC8845</a>]</span>, are "slides" and "images".<a href="#section-11.19-3" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#RFC8845" class="cite xref">RFC8845</a>]</span>, are "slides" and "images".<a href="#section-11.19-3" class="pilcrow">¶</a></p>
+3153,3154c3189,3190
+< <div id="section-11.20-3">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-11.20-3">
+> <pre>
+3184c3220
+< i.e., the value of the related <span><a href="#sub-sec-participantID" class="xref">personID attribute</a> (<a href="#sub-sec-participantID" class="xref">Section 21.1.1</a>)</span>.
+---
+> i.e., the value of the related <span><a href="#sub-sec-participantID" class="internal xref">personID attribute</a> (<a href="#sub-sec-participantID" class="auto internal xref">Section 21.1.1</a>)</span>.
+3186c3222
+< the &lt;people&gt; list (<a href="#sec-participants" class="xref">Section 21</a>).<a href="#section-11.21.1-1" class="pilcrow">¶</a></p>
+---
+> the &lt;people&gt; list (<a href="#sec-participants" class="auto internal xref">Section 21</a>).<a href="#section-11.21.1-1" class="pilcrow">¶</a></p>
+3201,3202c3237,3238
+< <div id="section-12-2">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-12-2">
+> <pre>
+3221c3257
+< element (<a href="#sec-sensitivity-pattern" class="xref">Section 12.1</a>).<a href="#section-12-3" class="pilcrow">¶</a></p>
+---
+> element (<a href="#sec-sensitivity-pattern" class="auto internal xref">Section 12.1</a>).<a href="#section-12-3" class="pilcrow">¶</a></p>
+3232,3233c3268,3269
+< <div id="section-12.1-2">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-12.1-2">
+> <pre>
+3248c3284
+< <span>[<a href="#RFC8845" class="xref">RFC8845</a>]</span>, are "uni", "shotgun", "omni",
+---
+> <span>[<a href="#RFC8845" class="cite xref">RFC8845</a>]</span>, are "uni", "shotgun", "omni",
+3263,3264c3299,3300
+< <div id="section-13-3">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-13-3">
+> <pre>
+3289,3290c3325,3326
+< <div id="section-14-3">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-14-3">
+> <pre>
+3307c3343
+< <span><a href="#sub-sec-nonspatiallydef" class="xref">&lt;nonSpatiallyDefinable&gt;</a> (<a href="#sub-sec-nonspatiallydef" class="xref">Section 11.6</a>)</span> element set to "true").<a href="#section-14-4" class="pilcrow">¶</a></p>
+---
+> <span><a href="#sub-sec-nonspatiallydef" class="internal xref">&lt;nonSpatiallyDefinable&gt;</a> (<a href="#sub-sec-nonspatiallydef" class="auto internal xref">Section 11.6</a>)</span> element set to "true").<a href="#section-14-4" class="pilcrow">¶</a></p>
+3321c3357
+< (see <a href="#sec-extension" class="xref">Section 24</a> for an example). 
+---
+> (see <a href="#sec-extension" class="auto internal xref">Section 24</a> for an example). 
+3326,3327c3362,3363
+< <div id="section-15-3">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-15-3">
+> <pre>
+3365,3366c3401,3402
+< <div id="section-16-3">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-16-3">
+> <pre>
+3387c3423
+< <a href="#sec-description" class="xref">Section 11.13</a>.
+---
+> <a href="#sec-description" class="auto internal xref">Section 11.13</a>.
+3391c3427
+< (<a href="#sec-scene-info" class="xref">Section 16.1</a>), 
+---
+> (<a href="#sec-scene-info" class="auto internal xref">Section 16.1</a>), 
+3395c3431
+< (<a href="#sec-scene-views" class="xref">Section 16.2</a>), which is the list of 
+---
+> (<a href="#sec-scene-views" class="auto internal xref">Section 16.2</a>), which is the list of 
+3410c3446
+< specification <span>[<a href="#RFC6351" class="xref">RFC6351</a>]</span>.<a href="#section-16.1-1" class="pilcrow">¶</a></p>
+---
+> specification <span>[<a href="#RFC6351" class="cite xref">RFC6351</a>]</span>.<a href="#section-16.1-1" class="pilcrow">¶</a></p>
+3423,3425c3459,3461
+< element (<a href="#sec-scene-view" class="xref">Section 17</a>).<a href="#section-16.2-1" class="pilcrow">¶</a></p>
+< <div id="section-16.2-2">
+< <pre class="sourcecode lang-xml">
+---
+> element (<a href="#sec-scene-view" class="auto internal xref">Section 17</a>).<a href="#section-16.2-1" class="pilcrow">¶</a></p>
+> <div class="lang-xml sourcecode" id="section-16.2-2">
+> <pre>
+3492,3493c3528,3529
+< <div id="section-16.4-3">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-16.4-3">
+> <pre>
+3519,3520c3555,3556
+< <div id="section-17-3">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-17-3">
+> <pre>
+3534c3570
+< view contains. &lt;description&gt; is defined in <a href="#sec-description" class="xref">Section 11.13</a>.<a href="#section-17-4" class="pilcrow">¶</a></p>
+---
+> view contains. &lt;description&gt; is defined in <a href="#sec-description" class="auto internal xref">Section 11.13</a>.<a href="#section-17-4" class="pilcrow">¶</a></p>
+3549,3550c3585,3586
+< <div id="section-17.1-2">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-17.1-2">
+> <pre>
+3586,3587c3622,3623
+< <div id="section-18-2">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-18-2">
+> <pre>
+3621,3622c3657,3658
+< <div id="section-18.2-2">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-18.2-2">
+> <pre>
+3656,3657c3692,3693
+< <div id="section-19-2">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-19-2">
+> <pre>
+3749,3750c3785,3786
+< <div id="section-20-2">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-20-2">
+> <pre>
+3776,3777c3812,3813
+< <div id="section-21-2">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-21-2">
+> <pre>
+3794c3830
+< &lt;personInfo&gt; element; see <a href="#sub-sec-vcard" class="xref">Section 21.1.2</a>)
+---
+> &lt;personInfo&gt; element; see <a href="#sub-sec-vcard" class="auto internal xref">Section 21.1.2</a>)
+3796c3832
+< see <a href="#sub-sec-participantType" class="xref">Section 21.1.3</a>).
+---
+> see <a href="#sub-sec-participantType" class="auto internal xref">Section 21.1.3</a>).
+3798,3800c3834,3836
+< (<a href="#sub-sec-participantID" class="xref">Section 21.1.1</a>).<a href="#section-21.1-1" class="pilcrow">¶</a></p>
+< <div id="section-21.1-2">
+< <pre class="sourcecode lang-xml">
+---
+> (<a href="#sub-sec-participantID" class="auto internal xref">Section 21.1.1</a>).<a href="#section-21.1-1" class="pilcrow">¶</a></p>
+> <div class="lang-xml sourcecode" id="section-21.1-2">
+> <pre>
+3824c3860
+< representation (<a href="#sec-participantIDs" class="xref">Section 11.21</a>).<a href="#section-21.1.1-1" class="pilcrow">¶</a></p>
+---
+> representation (<a href="#sec-participantIDs" class="auto internal xref">Section 11.21</a>).<a href="#section-21.1.1-1" class="pilcrow">¶</a></p>
+3834,3835c3870,3871
+< <span>[<a href="#RFC6351" class="xref">RFC6351</a>]</span>. 
+< The vcardType is imported by the xCard XML schema provided in <span><a href="https://www.rfc-editor.org/rfc/rfc7852#appendix-A" class="relref">Appendix A</a> of [<a href="#RFC7852" class="xref">RFC7852</a>]</span>.
+---
+> <span>[<a href="#RFC6351" class="cite xref">RFC6351</a>]</span>. 
+> The vcardType is imported by the xCard XML schema provided in <span><a href="https://rfc-editor.org/rfc/rfc7852#appendix-A" class="relref">Appendix A</a> of [<a href="#RFC7852" class="cite xref">RFC7852</a>]</span>.
+3849,3850c3885,3886
+< <div id="section-21.1.3-2">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-21.1.3-2">
+> <pre>
+3865c3901
+< <span>[<a href="#RFC8845" class="xref">RFC8845</a>]</span>, are: "presenter", 
+---
+> <span>[<a href="#RFC8845" class="cite xref">RFC8845</a>]</span>, are: "presenter", 
+3885c3921
+< <span>[<a href="#RFC8845" class="xref">RFC8845</a>]</span>.
+---
+> <span>[<a href="#RFC8845" class="cite xref">RFC8845</a>]</span>.
+3898,3899c3934,3935
+< <div id="section-22-2">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-22-2">
+> <pre>
+3957c3993
+<  (see "&lt;mediaCaptures&gt;", <a href="#sec-media-captures" class="xref">Section 5</a>)<a href="#section-23-2.1" class="pilcrow">¶</a>
+---
+>  (see "&lt;mediaCaptures&gt;", <a href="#sec-media-captures" class="auto internal xref">Section 5</a>)<a href="#section-23-2.1" class="pilcrow">¶</a>
+3960c3996
+<   (see "&lt;encodingGroups&gt;", <a href="#sec-encoding-groups" class="xref">Section 6</a>)<a href="#section-23-2.2" class="pilcrow">¶</a>
+---
+>   (see "&lt;encodingGroups&gt;", <a href="#sec-encoding-groups" class="auto internal xref">Section 6</a>)<a href="#section-23-2.2" class="pilcrow">¶</a>
+3963c3999
+<   (see "&lt;captureScenes&gt;", <a href="#sec-capture-scenes" class="xref">Section 7</a>)<a href="#section-23-2.3" class="pilcrow">¶</a>
+---
+>   (see "&lt;captureScenes&gt;", <a href="#sec-capture-scenes" class="auto internal xref">Section 7</a>)<a href="#section-23-2.3" class="pilcrow">¶</a>
+3966c4002
+<   (see "&lt;simultaneousSets&gt;", <a href="#sec-simultaneous-sets" class="xref">Section 8</a>)<a href="#section-23-2.4" class="pilcrow">¶</a>
+---
+>   (see "&lt;simultaneousSets&gt;", <a href="#sec-simultaneous-sets" class="auto internal xref">Section 8</a>)<a href="#section-23-2.4" class="pilcrow">¶</a>
+3969c4005
+<   (see "&lt;globalViews&gt;", <a href="#sec-global-views" class="xref">Section 9</a>)<a href="#section-23-2.5" class="pilcrow">¶</a>
+---
+>   (see "&lt;globalViews&gt;", <a href="#sec-global-views" class="auto internal xref">Section 9</a>)<a href="#section-23-2.5" class="pilcrow">¶</a>
+3972c4008
+<   session (see "&lt;people&gt;", <a href="#sec-participants" class="xref">Section 21</a>)<a href="#section-23-2.6" class="pilcrow">¶</a>
+---
+>   session (see "&lt;people&gt;", <a href="#sec-participants" class="auto internal xref">Section 21</a>)<a href="#section-23-2.6" class="pilcrow">¶</a>
+3981c4017
+< <a href="#sec-XML-sample" class="xref">27</a> and <a href="#sec-MCC-sample" class="xref">28</a>  
+---
+> <a href="#sec-XML-sample" class="auto internal xref">27</a> and <a href="#sec-MCC-sample" class="auto internal xref">28</a>  
+3983,3984c4019,4020
+< <div id="section-23-4">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-23-4">
+> <pre>
+4039,4040c4075,4076
+< <div id="section-24.1-3">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-24.1-3">
+> <pre>
+4070,4071c4106,4107
+< <div id="section-24.1-4">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-24.1-4">
+> <pre>
+4136c4172
+<  <span>[<a href="#RFC8845" class="xref">RFC8845</a>], <a href="https://www.rfc-editor.org/rfc/rfc8845#section-15" class="relref">Section 15</a></span> apply to this 
+---
+>  <span>[<a href="#RFC8845" class="cite xref">RFC8845</a>], <a href="https://rfc-editor.org/rfc/rfc8845#section-15" class="relref">Section 15</a></span> apply to this 
+4155c4191
+< elements (<a href="#sub-sec-participantInfo" class="xref">Section 21.1</a>) 
+---
+> elements (<a href="#sub-sec-participantInfo" class="auto internal xref">Section 21.1</a>) 
+4160c4196
+< &lt;sceneInformation&gt; elements (<a href="#sec-scene-info" class="xref">Section 16.1</a>)
+---
+> &lt;sceneInformation&gt; elements (<a href="#sec-scene-info" class="auto internal xref">Section 16.1</a>)
+4162c4198
+< The &lt;description&gt; elements (<a href="#sec-description" class="xref">Section 11.13</a>) also
+---
+> The &lt;description&gt; elements (<a href="#sec-description" class="auto internal xref">Section 11.13</a>) also
+4174,4175c4210,4211
+< <span>[<a href="#RFC8847" class="xref">RFC8847</a>]</span>  
+< and the CLUE data channel <span>[<a href="#RFC8850" class="xref">RFC8850</a>]</span>.<a href="#section-25-5" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#RFC8847" class="cite xref">RFC8847</a>]</span>  
+> and the CLUE data channel <span>[<a href="#RFC8850" class="cite xref">RFC8850</a>]</span>.<a href="#section-25-5" class="pilcrow">¶</a></p>
+4211,4212c4247,4248
+< <div id="section-26.1-2">
+< <pre class="sourcecode lang-xml">&lt;CODE BEGINS&gt;
+---
+> <div class="lang-xml sourcecode" id="section-26.1-2">
+> <pre>&lt;CODE BEGINS&gt;
+4240c4276
+< <span>[<a href="#RFC3688" class="xref">RFC3688</a>]</span>.<a href="#section-26.2-1" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#RFC3688" class="cite xref">RFC3688</a>]</span>.<a href="#section-26.2-1" class="pilcrow">¶</a></p>
+4253c4289
+< <a href="#sec-schema" class="xref">Section 4</a> of this document.<a href="#section-26.2-2.6" class="pilcrow">¶</a>
+---
+> <a href="#sec-schema" class="auto internal xref">Section 4</a> of this document.<a href="#section-26.2-2.6" class="pilcrow">¶</a>
+4287c4323
+< <span>[<a href="#RFC7303" class="xref">RFC7303</a>], <a href="https://www.rfc-editor.org/rfc/rfc7303#section-3.2" class="relref">Section 3.2</a></span>.<a href="#section-26.3-2.12" class="pilcrow">¶</a>
+---
+> <span>[<a href="#RFC7303" class="cite xref">RFC7303</a>], <a href="https://rfc-editor.org/rfc/rfc7303#section-3.2" class="relref">Section 3.2</a></span>.<a href="#section-26.3-2.12" class="pilcrow">¶</a>
+4292c4328
+< "application/xml" as specified in <span>[<a href="#RFC7303" class="xref">RFC7303</a>], <a href="https://www.rfc-editor.org/rfc/rfc7303#section-3.2" class="relref">Section 3.2</a></span>.<a href="#section-26.3-2.14" class="pilcrow">¶</a>
+---
+> "application/xml" as specified in <span>[<a href="#RFC7303" class="cite xref">RFC7303</a>], <a href="https://rfc-editor.org/rfc/rfc7303#section-3.2" class="relref">Section 3.2</a></span>.<a href="#section-26.3-2.14" class="pilcrow">¶</a>
+4300c4336
+< <a href="#sec_security" class="xref">Section 25</a>
+---
+> <a href="#sec_security" class="auto internal xref">Section 25</a>
+4321c4357
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-26.3-2.24.2">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-26.3-2.24.2">
+4352c4388
+< "application/xml" <span>[<a href="#RFC7303" class="xref">RFC7303</a>]</span>, and many of the considerations
+---
+> "application/xml" <span>[<a href="#RFC7303" class="cite xref">RFC7303</a>]</span>, and many of the considerations
+4364c4400
+< &lt;view&gt; tag as defined in <a href="#sec-view" class="xref">Section 11.18</a>. 
+---
+> &lt;view&gt; tag as defined in <a href="#sec-view" class="auto internal xref">Section 11.18</a>. 
+4369c4405
+< New values are assigned by Expert Review per <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>.
+---
+> New values are assigned by Expert Review per <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>.
+4380c4416
+< <a href="#sec-presentation" class="xref">Section 11.19</a>. 
+---
+> <a href="#sec-presentation" class="auto internal xref">Section 11.19</a>. 
+4383c4419
+< New values are assigned by Expert Review per <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>.
+---
+> New values are assigned by Expert Review per <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>.
+4394c4430
+< <a href="#sec-sensitivity-pattern" class="xref">Section 12.1</a>. 
+---
+> <a href="#sec-sensitivity-pattern" class="auto internal xref">Section 12.1</a>. 
+4398c4434
+< New values are assigned by Expert Review per <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>.
+---
+> New values are assigned by Expert Review per <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>.
+4409c4445
+< <a href="#sub-sec-participantType" class="xref">Section 21.1.3</a>. 
+---
+> <a href="#sub-sec-participantType" class="auto internal xref">Section 21.1.3</a>. 
+4414c4450
+< New values are assigned by Expert Review per <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>.
+---
+> New values are assigned by Expert Review per <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>.
+4427c4463
+<   the framework specification <span>[<a href="#RFC8845" class="xref">RFC8845</a>]</span>,
+---
+>   the framework specification <span>[<a href="#RFC8845" class="cite xref">RFC8845</a>]</span>,
+4484,4485c4520,4521
+< <div id="section-27-9">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="breakable lang-xml sourcecode" id="section-27-9">
+> <pre>
+4863,4864c4899,4900
+< <div id="section-28-3">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="breakable lang-xml sourcecode" id="section-28-3">
+> <pre>
+5363c5399
+< <span class="refAuthor">Phillips, A., Ed.</span><span class="refAuthor"> and M. Davis, Ed.</span>, <span class="refTitle">"Tags for Identifying Languages"</span>, <span class="seriesInfo">BCP 47</span>, <span class="seriesInfo">RFC 5646</span>, <span class="seriesInfo">DOI 10.17487/RFC5646</span>, <time datetime="2009-09" class="refDate">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5646">https://www.rfc-editor.org/info/rfc5646</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Phillips, A., Ed.</span> and <span class="refAuthor">M. Davis, Ed.</span>, <span class="refTitle">"Tags for Identifying Languages"</span>, <span class="seriesInfo">BCP 47</span>, <span class="seriesInfo">RFC 5646</span>, <span class="seriesInfo">DOI 10.17487/RFC5646</span>, <time datetime="2009-09" class="refDate">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5646">https://www.rfc-editor.org/info/rfc5646</a>&gt;</span>. </dd>
+5371c5407
+< <span class="refAuthor">Thompson, H.</span><span class="refAuthor"> and C. Lilley</span>, <span class="refTitle">"XML Media Types"</span>, <span class="seriesInfo">RFC 7303</span>, <span class="seriesInfo">DOI 10.17487/RFC7303</span>, <time datetime="2014-07" class="refDate">July 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7303">https://www.rfc-editor.org/info/rfc7303</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Thompson, H.</span> and <span class="refAuthor">C. Lilley</span>, <span class="refTitle">"XML Media Types"</span>, <span class="seriesInfo">RFC 7303</span>, <span class="seriesInfo">DOI 10.17487/RFC7303</span>, <time datetime="2014-07" class="refDate">July 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7303">https://www.rfc-editor.org/info/rfc7303</a>&gt;</span>. </dd>
+5375c5411
+< <span class="refAuthor">Gellens, R.</span><span class="refAuthor">, Rosen, B.</span><span class="refAuthor">, Tschofenig, H.</span><span class="refAuthor">, Marshall, R.</span><span class="refAuthor">, and J. Winterbottom</span>, <span class="refTitle">"Additional Data Related to an Emergency Call"</span>, <span class="seriesInfo">RFC 7852</span>, <span class="seriesInfo">DOI 10.17487/RFC7852</span>, <time datetime="2016-07" class="refDate">July 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7852">https://www.rfc-editor.org/info/rfc7852</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Gellens, R.</span>, <span class="refAuthor">Rosen, B.</span>, <span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Marshall, R.</span>, and <span class="refAuthor">J. Winterbottom</span>, <span class="refTitle">"Additional Data Related to an Emergency Call"</span>, <span class="seriesInfo">RFC 7852</span>, <span class="seriesInfo">DOI 10.17487/RFC7852</span>, <time datetime="2016-07" class="refDate">July 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7852">https://www.rfc-editor.org/info/rfc7852</a>&gt;</span>. </dd>
+5379c5415
+< <span class="refAuthor">Cotton, M.</span><span class="refAuthor">, Leiba, B.</span><span class="refAuthor">, and T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cotton, M.</span>, <span class="refAuthor">Leiba, B.</span>, and <span class="refAuthor">T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+5387c5423
+< <span class="refAuthor">Duckworth, M., Ed.</span><span class="refAuthor">, Pepperell, A.</span><span class="refAuthor">, and S. Wenger</span>, <span class="refTitle">"Framework for Telepresence Multi-Streams"</span>, <span class="seriesInfo">RFC 8845</span>, <span class="seriesInfo">DOI 10.17487/RFC8845</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8845">https://www.rfc-editor.org/info/rfc8845</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Duckworth, M., Ed.</span>, <span class="refAuthor">Pepperell, A.</span>, and <span class="refAuthor">S. Wenger</span>, <span class="refTitle">"Framework for Telepresence Multi-Streams"</span>, <span class="seriesInfo">RFC 8845</span>, <span class="seriesInfo">DOI 10.17487/RFC8845</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8845">https://www.rfc-editor.org/info/rfc8845</a>&gt;</span>. </dd>
+5391c5427
+< <span class="refAuthor">Presta, R.</span><span class="refAuthor"> and S P. Romano</span>, <span class="refTitle">"Protocol for Controlling Multiple Streams for Telepresence (CLUE)"</span>, <span class="seriesInfo">RFC 8847</span>, <span class="seriesInfo">DOI 10.17487/RFC8847</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8847">https://www.rfc-editor.org/info/rfc8847</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Presta, R.</span> and <span class="refAuthor">S P. Romano</span>, <span class="refTitle">"Protocol for Controlling Multiple Streams for Telepresence (CLUE)"</span>, <span class="seriesInfo">RFC 8847</span>, <span class="seriesInfo">DOI 10.17487/RFC8847</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8847">https://www.rfc-editor.org/info/rfc8847</a>&gt;</span>. </dd>
+5406c5442
+< <span class="refAuthor">Schulzrinne, H.</span><span class="refAuthor">, Casner, S.</span><span class="refAuthor">, Frederick, R.</span><span class="refAuthor">, and V. Jacobson</span>, <span class="refTitle">"RTP: A Transport Protocol for Real-Time Applications"</span>, <span class="seriesInfo">STD 64</span>, <span class="seriesInfo">RFC 3550</span>, <span class="seriesInfo">DOI 10.17487/RFC3550</span>, <time datetime="2003-07" class="refDate">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3550">https://www.rfc-editor.org/info/rfc3550</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schulzrinne, H.</span>, <span class="refAuthor">Casner, S.</span>, <span class="refAuthor">Frederick, R.</span>, and <span class="refAuthor">V. Jacobson</span>, <span class="refTitle">"RTP: A Transport Protocol for Real-Time Applications"</span>, <span class="seriesInfo">STD 64</span>, <span class="seriesInfo">RFC 3550</span>, <span class="seriesInfo">DOI 10.17487/RFC3550</span>, <time datetime="2003-07" class="refDate">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3550">https://www.rfc-editor.org/info/rfc3550</a>&gt;</span>. </dd>
+5418c5454
+< <span class="refAuthor">Freed, N.</span><span class="refAuthor">, Klensin, J.</span><span class="refAuthor">, and T. Hansen</span>, <span class="refTitle">"Media Type Specifications and Registration Procedures"</span>, <span class="seriesInfo">BCP 13</span>, <span class="seriesInfo">RFC 6838</span>, <span class="seriesInfo">DOI 10.17487/RFC6838</span>, <time datetime="2013-01" class="refDate">January 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6838">https://www.rfc-editor.org/info/rfc6838</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Freed, N.</span>, <span class="refAuthor">Klensin, J.</span>, and <span class="refAuthor">T. Hansen</span>, <span class="refTitle">"Media Type Specifications and Registration Procedures"</span>, <span class="seriesInfo">BCP 13</span>, <span class="seriesInfo">RFC 6838</span>, <span class="seriesInfo">DOI 10.17487/RFC6838</span>, <time datetime="2013-01" class="refDate">January 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6838">https://www.rfc-editor.org/info/rfc6838</a>&gt;</span>. </dd>
+5422c5458
+< <span class="refAuthor">Westerlund, M.</span><span class="refAuthor"> and S. Wenger</span>, <span class="refTitle">"RTP Topologies"</span>, <span class="seriesInfo">RFC 7667</span>, <span class="seriesInfo">DOI 10.17487/RFC7667</span>, <time datetime="2015-11" class="refDate">November 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7667">https://www.rfc-editor.org/info/rfc7667</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Westerlund, M.</span> and <span class="refAuthor">S. Wenger</span>, <span class="refTitle">"RTP Topologies"</span>, <span class="seriesInfo">RFC 7667</span>, <span class="seriesInfo">DOI 10.17487/RFC7667</span>, <time datetime="2015-11" class="refDate">November 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7667">https://www.rfc-editor.org/info/rfc7667</a>&gt;</span>. </dd>
+5427c5463
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+5431c5467
+< <p id="section-appendix.a-1">
+---
+> <p id="appendix-A-1">
+5435c5471
+< helped us improve the quality of the document.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+> helped us improve the quality of the document.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+5438c5474
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">

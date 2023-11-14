@@ -1,0 +1,641 @@
+28c28
+< <meta content="xml2rfc 2.40.1" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+30c30,46
+< <link href="rfc8741.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.0.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.10
+> -->
+> <link href="rfc/rfc8741.xml" rel="alternate" type="application/rfc+xml">
+40c56
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+49a66,71
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+52d73
+<   width: extend-to-zoom;
+67c88
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+69a91
+>   overflow-wrap: break-word;
+155a178,186
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+170,173d200
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+174a202
+>   border: none;
+197a226,228
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+239c270,271
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+249c281
+< tt, code, pre, code {
+---
+> tt, code, pre {
+251c283
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+290a323,325
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+380a416,421
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+482c523
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+622d662
+< 
+644a685,687
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+712c755
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+812c855
+< tt, code, pre, code {
+---
+> tt, code, pre {
+817c860
+< pre.sourcecode,
+---
+> .sourcecode pre,
+853c896
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+931,936d973
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1007c1044
+<   margin: 0 0 0.25em 0;
+---
+>   margin-bottom: 0.25em;
+1040a1078
+>   .artwork > pre,
+1045,1052d1082
+< /*
+<   The margin-left: 0 on <dd> removes all distinction
+<   between levels from nested <dl>s.  Undo that.
+< */
+< dl.olPercent > dd,
+< dd {
+<   margin-left: revert;
+< }
+1063c1093
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1069a1100,1102
+> tr {
+>   break-inside: avoid;
+> }
+1077a1111,1212
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1079a1215
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-pce-lsp-control-request-11" rel="prev">
+1082c1218
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-pce-lsp-control-request-11" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1084,1085c1220,1221
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1201,1203c1337,1339
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+1205,1209c1341,1345
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.1">
+<                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+>                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+1213,1214c1349,1350
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-lsp-control-request-flag" class="xref">LSP Control Request Flag</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-lsp-control-request-flag" class="internal xref">LSP Control Request Flag</a></p>
+1216,1217c1352,1353
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-operation" class="xref">Operation</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-operation" class="internal xref">Operation</a></p>
+1219,1220c1355,1356
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1222,1223c1358,1359
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1225,1229c1361,1365
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-manageability-consideration" class="xref">Manageability Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-control-of-function-and-pol" class="xref">Control of Function and Policy</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-manageability-consideration" class="internal xref">Manageability Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1" class="keepWithNext"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-control-of-function-and-pol" class="internal xref">Control of Function and Policy</a></p>
+1231,1232c1367,1368
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-information-and-data-models" class="xref">Information and Data Models</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1" class="keepWithNext"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-information-and-data-models" class="internal xref">Information and Data Models</a></p>
+1234,1235c1370,1371
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.3">
+<                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="xref">7.3</a>.  <a href="#name-liveness-detection-and-moni" class="xref">Liveness Detection and Monitoring</a><a href="#section-toc.1-1.7.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3">
+>                 <p id="section-toc.1-1.7.2.3.1" class="keepWithNext"><a href="#section-7.3" class="auto internal xref">7.3</a>.  <a href="#name-liveness-detection-and-moni" class="internal xref">Liveness Detection and Monitoring</a></p>
+1237,1238c1373,1374
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.4">
+<                 <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="xref">7.4</a>.  <a href="#name-verify-correct-operations" class="xref">Verify Correct Operations</a><a href="#section-toc.1-1.7.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.4">
+>                 <p id="section-toc.1-1.7.2.4.1" class="keepWithNext"><a href="#section-7.4" class="auto internal xref">7.4</a>.  <a href="#name-verify-correct-operations" class="internal xref">Verify Correct Operations</a></p>
+1240,1241c1376,1377
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.5">
+<                 <p id="section-toc.1-1.7.2.5.1"><a href="#section-7.5" class="xref">7.5</a>.  <a href="#name-requirements-on-other-proto" class="xref">Requirements on Other Protocols</a><a href="#section-toc.1-1.7.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.5">
+>                 <p id="section-toc.1-1.7.2.5.1" class="keepWithNext"><a href="#section-7.5" class="auto internal xref">7.5</a>.  <a href="#name-requirements-on-other-proto" class="internal xref">Requirements on Other Protocols</a></p>
+1243,1244c1379,1380
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.6">
+<                 <p id="section-toc.1-1.7.2.6.1"><a href="#section-7.6" class="xref">7.6</a>.  <a href="#name-impact-on-network-operation" class="xref">Impact on Network Operations</a><a href="#section-toc.1-1.7.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.6">
+>                 <p id="section-toc.1-1.7.2.6.1" class="keepWithNext"><a href="#section-7.6" class="auto internal xref">7.6</a>.  <a href="#name-impact-on-network-operation" class="internal xref">Impact on Network Operations</a></p>
+1248,1252c1384,1388
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.8.2.1">
+<                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+>                 <p id="section-toc.1-1.8.2.1.1" class="keepWithNext"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1254,1255c1390,1391
+< <li class="toc ulEmpty" id="section-toc.1-1.8.2.2">
+<                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+>                 <p id="section-toc.1-1.8.2.2.1" class="keepWithNext"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1259,1260c1395,1396
+< <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1262,1263c1398,1399
+< <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+1265,1266c1401,1402
+< <li class="toc ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1" class="keepWithNext"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1279,1280c1415,1416
+<       <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span> specifies a set of
+<       extensions to PCEP <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span> to enable
+---
+>       <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span> specifies a set of
+>       extensions to PCEP <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span> to enable
+1282c1418
+<       between and across PCEP sessions in compliance with <span>[<a href="#RFC4657" class="xref">RFC4657</a>]</span>. 
+---
+>       between and across PCEP sessions in compliance with <span>[<a href="#RFC4657" class="cite xref">RFC4657</a>]</span>. 
+1288c1424
+< <dl class="dlParallel" id="section-1-2">
+---
+> <span class="break"></span><dl class="dlParallel" id="section-1-2">
+1290c1426
+< <dd style="margin-left: 6.5em" id="section-1-2.2">As per <span>[<a href="#RFC8051" class="xref">RFC8051</a>]</span>, an operation to
+---
+>         <dd style="margin-left: 6.5em" id="section-1-2.2">As per <span>[<a href="#RFC8051" class="cite xref">RFC8051</a>]</span>, an operation to
+1295a1432
+>         <dd class="break"></dd>
+1297c1434
+< <dd style="margin-left: 6.5em" id="section-1-2.4">As per <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span>, an operation
+---
+>         <dd style="margin-left: 6.5em" id="section-1-2.4">As per <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span>, an operation
+1300a1438
+>       <dd class="break"></dd>
+1302c1440
+< <p id="section-1-3">For redundant stateful PCEs (<span><a href="https://www.rfc-editor.org/rfc/rfc8231#section-5.7.4" class="relref">Section 5.7.4</a> of [<a href="#RFC8231" class="xref">RFC8231</a>]</span>), during a PCE failure, one of the redundant PCEs
+---
+> <p id="section-1-3">For redundant stateful PCEs (<span><a href="https://rfc-editor.org/rfc/rfc8231#section-5.7.4" class="relref">Section 5.7.4</a> of [<a href="#RFC8231" class="cite xref">RFC8231</a>]</span>), during a PCE failure, one of the redundant PCEs
+1320c1458
+< <p id="section-1-6">Note that <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span> specifies a
+---
+> <p id="section-1-6">Note that <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span> specifies a
+1322c1460
+<       mechanism defined in this document can be used in conjunction with <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span>. Ultimately, it is the PCC that
+---
+>       mechanism defined in this document can be used in conjunction with <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span>. Ultimately, it is the PCC that
+1327c1465
+<       the LSPs are specified in accordance with <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span> unless explicitly set aside in this
+---
+>       the LSPs are specified in accordance with <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span> unless explicitly set aside in this
+1335,1336c1473,1474
+< <p id="section-2-1"> This document uses the following terms defined in <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>:<a href="#section-2-1" class="pilcrow">¶</a></p>
+< <dl class="dlParallel" id="section-2-2">
+---
+> <p id="section-2-1"> This document uses the following terms defined in <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>:<a href="#section-2-1" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlParallel" id="section-2-2">
+1339a1478
+>         <dd class="break"></dd>
+1342a1482
+>         <dd class="break"></dd>
+1345a1486
+>       <dd class="break"></dd>
+1347,1348c1488,1489
+< <p id="section-2-3">This document uses the following terms defined in <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span>:<a href="#section-2-3" class="pilcrow">¶</a></p>
+< <dl class="dlParallel" id="section-2-4">
+---
+> <p id="section-2-3">This document uses the following terms defined in <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span>:<a href="#section-2-3" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlParallel" id="section-2-4">
+1351a1493
+>         <dd class="break"></dd>
+1354a1497
+>         <dd class="break"></dd>
+1357a1501
+>         <dd class="break"></dd>
+1360a1505
+>       <dd class="break"></dd>
+1362c1507
+< <p id="section-2-5">Readers of this document are expected to have some familiarity with <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span>.<a href="#section-2-5" class="pilcrow">¶</a></p>
+---
+> <p id="section-2-5">Readers of this document are expected to have some familiarity with <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span>.<a href="#section-2-5" class="pilcrow">¶</a></p>
+1370c1515
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1380c1525
+<       <span><a href="https://www.rfc-editor.org/rfc/rfc8231#section-7.2" class="relref">Section 7.2</a> of [<a href="#RFC8231" class="xref">RFC8231</a>]</span> and includes
+---
+>       <span><a href="https://rfc-editor.org/rfc/rfc8231#section-7.2" class="relref">Section 7.2</a> of [<a href="#RFC8231" class="cite xref">RFC8231</a>]</span> and includes
+1393c1538
+< <p id="section-3-3">The C flag is ignored in case the R flag <span>[<a href="#RFC8281" class="xref">RFC8281</a>]</span> in the SRP object
+---
+> <p id="section-3-3">The C flag is ignored in case the R flag <span>[<a href="#RFC8281" class="cite xref">RFC8281</a>]</span> in the SRP object
+1403c1548
+<       an LSP sets the Delegate (D) flag (<span><a href="https://www.rfc-editor.org/rfc/rfc8231#section-7.3" class="relref">Section 7.3</a> of [<a href="#RFC8231" class="xref">RFC8231</a>]</span>) to 1 in all PCRpt messages pertaining to the
+---
+>       an LSP sets the Delegate (D) flag (<span><a href="https://rfc-editor.org/rfc/rfc8231#section-7.3" class="relref">Section 7.3</a> of [<a href="#RFC8231" class="cite xref">RFC8231</a>]</span>) to 1 in all PCRpt messages pertaining to the
+1416c1561
+<       check for PLSP-ID (as per <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span>). The D flag and C flag are mutually exclusive in a
+---
+>       check for PLSP-ID (as per <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span>). The D flag and C flag are mutually exclusive in a
+1426c1571
+< accordance with stateful PCEP <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span>. If
+---
+> accordance with stateful PCEP <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span>. If
+1432c1577
+< the error handling as specified in <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span>
+---
+> the error handling as specified in <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span>
+1436c1581
+< <p id="section-4-3">As per <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span>, a PCC cannot
+---
+> <p id="section-4-3">As per <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span>, a PCC cannot
+1448c1593
+<    specified in <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span> (i.e., a PCErr with
+---
+>    specified in <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span> (i.e., a PCErr with
+1451c1596
+<    0, the error condition, as specified in <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span>, (i.e., a PCErr with Error-type=19 (Invalid Operation)
+---
+>    0, the error condition, as specified in <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span>, (i.e., a PCErr with Error-type=19 (Invalid Operation)
+1454c1599
+< <p id="section-4-5"><span>[<a href="#RFC8281" class="xref">RFC8281</a>]</span> describes the setup,
+---
+> <p id="section-4-5"><span>[<a href="#RFC8281" class="cite xref">RFC8281</a>]</span> describes the setup,
+1458c1603
+<    in this document in conjunction with those in <span>[<a href="#RFC8281" class="xref">RFC8281</a>]</span>.<a href="#section-4-5" class="pilcrow">¶</a></p>
+---
+>    in this document in conjunction with those in <span>[<a href="#RFC8281" class="cite xref">RFC8281</a>]</span>.<a href="#section-4-5" class="pilcrow">¶</a></p>
+1466c1611
+< <p id="section-5-1">The security considerations listed in <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span> and <span>[<a href="#RFC8281" class="xref">RFC8281</a>]</span> 
+---
+> <p id="section-5-1">The security considerations listed in <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span> and <span>[<a href="#RFC8281" class="cite xref">RFC8281</a>]</span> 
+1475c1620
+< <p id="section-5-2">A PCC is the ultimate arbiter of delegation. As per <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span>, a local policy at the PCC is used to
+---
+> <p id="section-5-2">A PCC is the ultimate arbiter of delegation. As per <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span>, a local policy at the PCC is used to
+1482c1627
+<       in turn respond with an error, as described in <a href="#Operation" class="xref">Section 4</a>. So, a PCE would learn this fact only when it wants to
+---
+>       in turn respond with an error, as described in <a href="#Operation" class="auto internal xref">Section 4</a>. So, a PCE would learn this fact only when it wants to
+1485c1630
+< <p id="section-5-4">As per <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span>, it is <span class="bcp14">RECOMMENDED</span>
+---
+> <p id="section-5-4">As per <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span>, it is <span class="bcp14">RECOMMENDED</span>
+1489c1634
+<    <span>[<a href="#RFC8253" class="xref">RFC8253</a>]</span>, as per the recommendations and
+---
+>    <span>[<a href="#RFC8253" class="cite xref">RFC8253</a>]</span>, as per the recommendations and
+1491,1492c1636,1637
+<    BCP 195 <span>[<a href="#RFC7525" class="xref">RFC7525</a>]</span> (unless explicitly
+<    excluded in <span>[<a href="#RFC8253" class="xref">RFC8253</a>]</span>).<a href="#section-5-4" class="pilcrow">¶</a></p>
+---
+>    BCP 195 <span>[<a href="#RFC7525" class="cite xref">RFC7525</a>]</span> (unless explicitly
+>    excluded in <span>[<a href="#RFC8253" class="cite xref">RFC8253</a>]</span>).<a href="#section-5-4" class="pilcrow">¶</a></p>
+1527,1528c1672,1673
+<   All manageability requirements and considerations listed in <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>  
+<   and <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span> 
+---
+>   All manageability requirements and considerations listed in <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>  
+>   and <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span> 
+1552c1697
+< <p id="section-7.2-1">The PCEP YANG module <span>[<a href="#I-D.ietf-pce-pcep-yang" class="xref">PCEP-YANG</a>]</span> could be extended to include a mechanism to trigger
+---
+> <p id="section-7.2-1">The PCEP YANG module <span>[<a href="#I-D.ietf-pce-pcep-yang" class="cite xref">PCEP-YANG</a>]</span> could be extended to include a mechanism to trigger
+1561c1706
+<   and monitoring requirements in addition to those already listed in <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
+---
+>   and monitoring requirements in addition to those already listed in <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
+1569,1570c1714,1715
+<   verification requirements in addition to those already listed in <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>  
+<   and <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span>.<a href="#section-7.4-1" class="pilcrow">¶</a></p>
+---
+>   verification requirements in addition to those already listed in <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>  
+>   and <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span>.<a href="#section-7.4-1" class="pilcrow">¶</a></p>
+1584c1729
+<   Mechanisms defined in <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span> 
+---
+>   Mechanisms defined in <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span> 
+1586c1731
+<   <span>[<a href="#RFC8231" class="xref">RFC8231</a>]</span> also apply to PCEP extensions defined in this document. 
+---
+>   <span>[<a href="#RFC8231" class="cite xref">RFC8231</a>]</span> also apply to PCEP extensions defined in this document. 
+1602c1747,1748
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1605c1751,1752
+< <span class="refAuthor">Vasseur, JP., Ed.</span><span class="refAuthor"> and JL. Le Roux, Ed.</span>, <span class="refTitle">"Path Computation Element (PCE) Communication Protocol (PCEP)"</span>, <span class="seriesInfo">RFC 5440</span>, <span class="seriesInfo">DOI 10.17487/RFC5440</span>, <time datetime="2009-03">March 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5440">https://www.rfc-editor.org/info/rfc5440</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Vasseur, JP., Ed.</span> and <span class="refAuthor">JL. Le Roux, Ed.</span>, <span class="refTitle">"Path Computation Element (PCE) Communication Protocol (PCEP)"</span>, <span class="seriesInfo">RFC 5440</span>, <span class="seriesInfo">DOI 10.17487/RFC5440</span>, <time datetime="2009-03" class="refDate">March 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5440">https://www.rfc-editor.org/info/rfc5440</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1608c1755,1756
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1611c1759,1760
+< <span class="refAuthor">Crabbe, E.</span><span class="refAuthor">, Minei, I.</span><span class="refAuthor">, Medved, J.</span><span class="refAuthor">, and R. Varga</span>, <span class="refTitle">"Path Computation Element Communication Protocol (PCEP) Extensions for Stateful PCE"</span>, <span class="seriesInfo">RFC 8231</span>, <span class="seriesInfo">DOI 10.17487/RFC8231</span>, <time datetime="2017-09">September 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8231">https://www.rfc-editor.org/info/rfc8231</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Crabbe, E.</span>, <span class="refAuthor">Minei, I.</span>, <span class="refAuthor">Medved, J.</span>, and <span class="refAuthor">R. Varga</span>, <span class="refTitle">"Path Computation Element Communication Protocol (PCEP) Extensions for Stateful PCE"</span>, <span class="seriesInfo">RFC 8231</span>, <span class="seriesInfo">DOI 10.17487/RFC8231</span>, <time datetime="2017-09" class="refDate">September 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8231">https://www.rfc-editor.org/info/rfc8231</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1614c1763,1764
+< <span class="refAuthor">Crabbe, E.</span><span class="refAuthor">, Minei, I.</span><span class="refAuthor">, Sivabalan, S.</span><span class="refAuthor">, and R. Varga</span>, <span class="refTitle">"Path Computation Element Communication Protocol (PCEP) Extensions for PCE-Initiated LSP Setup in a Stateful PCE Model"</span>, <span class="seriesInfo">RFC 8281</span>, <span class="seriesInfo">DOI 10.17487/RFC8281</span>, <time datetime="2017-12">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8281">https://www.rfc-editor.org/info/rfc8281</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Crabbe, E.</span>, <span class="refAuthor">Minei, I.</span>, <span class="refAuthor">Sivabalan, S.</span>, and <span class="refAuthor">R. Varga</span>, <span class="refTitle">"Path Computation Element Communication Protocol (PCEP) Extensions for PCE-Initiated LSP Setup in a Stateful PCE Model"</span>, <span class="seriesInfo">RFC 8281</span>, <span class="seriesInfo">DOI 10.17487/RFC8281</span>, <time datetime="2017-12" class="refDate">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8281">https://www.rfc-editor.org/info/rfc8281</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1624c1774,1775
+< <span class="refAuthor">Dhody, D.</span><span class="refAuthor">, Hardwick, J.</span><span class="refAuthor">, Beeram, V.</span><span class="refAuthor">, and J. Tantsura</span>, <span class="refTitle">"A YANG Data Model for Path Computation Element Communications Protocol (PCEP)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-pce-pcep-yang-13</span>, <time datetime="2019-10-31">31 October 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-pce-pcep-yang-13">https://tools.ietf.org/html/draft-ietf-pce-pcep-yang-13</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Dhody, D.</span>, <span class="refAuthor">Hardwick, J.</span>, <span class="refAuthor">Beeram, V.</span>, and <span class="refAuthor">J. Tantsura</span>, <span class="refTitle">"A YANG Data Model for Path Computation Element Communications Protocol (PCEP)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-pce-pcep-yang-13</span>, <time datetime="2019-10-31" class="refDate">31 October 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-pce-pcep-yang-13">https://tools.ietf.org/html/draft-ietf-pce-pcep-yang-13</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1627c1778,1779
+< <span class="refAuthor">Ash, J., Ed.</span><span class="refAuthor"> and J.L. Le Roux, Ed.</span>, <span class="refTitle">"Path Computation Element (PCE) Communication Protocol Generic Requirements"</span>, <span class="seriesInfo">RFC 4657</span>, <span class="seriesInfo">DOI 10.17487/RFC4657</span>, <time datetime="2006-09">September 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4657">https://www.rfc-editor.org/info/rfc4657</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Ash, J., Ed.</span> and <span class="refAuthor">J.L. Le Roux, Ed.</span>, <span class="refTitle">"Path Computation Element (PCE) Communication Protocol Generic Requirements"</span>, <span class="seriesInfo">RFC 4657</span>, <span class="seriesInfo">DOI 10.17487/RFC4657</span>, <time datetime="2006-09" class="refDate">September 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4657">https://www.rfc-editor.org/info/rfc4657</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1630c1782,1783
+< <span class="refAuthor">Sheffer, Y.</span><span class="refAuthor">, Holz, R.</span><span class="refAuthor">, and P. Saint-Andre</span>, <span class="refTitle">"Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)"</span>, <span class="seriesInfo">BCP 195</span>, <span class="seriesInfo">RFC 7525</span>, <span class="seriesInfo">DOI 10.17487/RFC7525</span>, <time datetime="2015-05">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7525">https://www.rfc-editor.org/info/rfc7525</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Sheffer, Y.</span>, <span class="refAuthor">Holz, R.</span>, and <span class="refAuthor">P. Saint-Andre</span>, <span class="refTitle">"Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)"</span>, <span class="seriesInfo">BCP 195</span>, <span class="seriesInfo">RFC 7525</span>, <span class="seriesInfo">DOI 10.17487/RFC7525</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7525">https://www.rfc-editor.org/info/rfc7525</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1633c1786,1787
+< <span class="refAuthor">Zhang, X., Ed.</span><span class="refAuthor"> and I. Minei, Ed.</span>, <span class="refTitle">"Applicability of a Stateful Path Computation Element (PCE)"</span>, <span class="seriesInfo">RFC 8051</span>, <span class="seriesInfo">DOI 10.17487/RFC8051</span>, <time datetime="2017-01">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8051">https://www.rfc-editor.org/info/rfc8051</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Zhang, X., Ed.</span> and <span class="refAuthor">I. Minei, Ed.</span>, <span class="refTitle">"Applicability of a Stateful Path Computation Element (PCE)"</span>, <span class="seriesInfo">RFC 8051</span>, <span class="seriesInfo">DOI 10.17487/RFC8051</span>, <time datetime="2017-01" class="refDate">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8051">https://www.rfc-editor.org/info/rfc8051</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1636c1790,1791
+< <span class="refAuthor">Lopez, D.</span><span class="refAuthor">, Gonzalez de Dios, O.</span><span class="refAuthor">, Wu, Q.</span><span class="refAuthor">, and D. Dhody</span>, <span class="refTitle">"PCEPS: Usage of TLS to Provide a Secure Transport for the Path Computation Element Communication Protocol (PCEP)"</span>, <span class="seriesInfo">RFC 8253</span>, <span class="seriesInfo">DOI 10.17487/RFC8253</span>, <time datetime="2017-10">October 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8253">https://www.rfc-editor.org/info/rfc8253</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Lopez, D.</span>, <span class="refAuthor">Gonzalez de Dios, O.</span>, <span class="refAuthor">Wu, Q.</span>, and <span class="refAuthor">D. Dhody</span>, <span class="refTitle">"PCEPS: Usage of TLS to Provide a Secure Transport for the Path Computation Element Communication Protocol (PCEP)"</span>, <span class="seriesInfo">RFC 8253</span>, <span class="seriesInfo">DOI 10.17487/RFC8253</span>, <time datetime="2017-10" class="refDate">October 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8253">https://www.rfc-editor.org/info/rfc8253</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1641c1796
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+1645,1652c1800,1807
+< <p id="section-appendix.a-1">Thanks to <span class="contact-name">Jonathan Hardwick</span> for reminding the authors to not use
+<       suggested values in IANA section.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2">Thanks to <span class="contact-name">Adrian Farrel</span>, <span class="contact-name">Haomian Zheng</span>, and <span class="contact-name">Tomonori Takeda</span> for their
+<       valuable comments.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-3">Thanks to <span class="contact-name">Shawn M. Emery</span> for his Security Directorate review.<a href="#section-appendix.a-3" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-4">Thanks to <span class="contact-name">Francesca Palombini</span> for GENART review.<a href="#section-appendix.a-4" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-5">Thanks to <span class="contact-name">Benjamin Kaduk</span>, <span class="contact-name">Martin Vigoureux</span>, <span class="contact-name">Alvaro Retana</span>, and
+<       <span class="contact-name">Barry Leiba</span> for IESG reviews.<a href="#section-appendix.a-5" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A-1">Thanks to <span class="contact-name">Jonathan Hardwick</span> for reminding the authors to not use
+>       suggested values in IANA section.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2">Thanks to <span class="contact-name">Adrian Farrel</span>, <span class="contact-name">Haomian Zheng</span>, and <span class="contact-name">Tomonori Takeda</span> for their
+>       valuable comments.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+> <p id="appendix-A-3">Thanks to <span class="contact-name">Shawn M. Emery</span> for his Security Directorate review.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+> <p id="appendix-A-4">Thanks to <span class="contact-name">Francesca Palombini</span> for GENART review.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+> <p id="appendix-A-5">Thanks to <span class="contact-name">Benjamin Kaduk</span>, <span class="contact-name">Martin Vigoureux</span>, <span class="contact-name">Alvaro Retana</span>, and
+>       <span class="contact-name">Barry Leiba</span> for IESG reviews.<a href="#appendix-A-5" class="pilcrow">¶</a></p>
+1656c1811
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+1660,1661c1815,1816
+< <p id="section-appendix.b-1">The following people contributed substantially to the content of this
+< document and should be considered coauthors:<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-B-1">The following people contributed substantially to the content of this
+> document and should be considered coauthors:<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+1705c1860
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
