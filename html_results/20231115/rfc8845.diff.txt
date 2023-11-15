@@ -1,0 +1,843 @@
+21c21
+< <meta content="xml2rfc 3.5.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+28,45c28,41
+<   xml2rfc 3.5.0
+<     Python 3.6.10
+<     appdirs 1.4.4
+<     ConfigArgParse 1.2.3
+<     google-i18n-address 2.3.5
+<     html5lib 1.0.1
+<     intervaltree 3.0.2
+<     Jinja2 2.11.2
+<     kitchen 1.2.6
+<     lxml 4.4.2
+<     pycairo 1.19.0
+<     pycountry 19.8.18
+<     pyflakes 2.1.1
+<     PyYAML 5.3.1
+<     requests 2.22.0
+<     setuptools 40.6.2
+<     six 1.14.0
+<     WeasyPrint 51
+---
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.0.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.10
+47c43
+< <link href="rfc8845.xml" rel="alternate" type="application/rfc+xml">
+---
+> <link href="rfc/rfc8845.xml" rel="alternate" type="application/rfc+xml">
+57c53
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+66a63,68
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+69d70
+<   width: extend-to-zoom;
+84c85
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+86a88
+>   overflow-wrap: break-word;
+172a175,183
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+187,190d197
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+191a199
+>   border: none;
+214a223,225
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+256c267,268
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+266c278
+< tt, code, pre, code {
+---
+> tt, code, pre {
+268c280
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+307a320,322
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+397a413,418
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+499c520
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+639d659
+< 
+661a682,684
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+729c752
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+829c852
+< tt, code, pre, code {
+---
+> tt, code, pre {
+834c857
+< pre.sourcecode,
+---
+> .sourcecode pre,
+870c893
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1051a1075
+>   .artwork > pre,
+1066c1090
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1072a1097,1099
+> tr {
+>   break-inside: avoid;
+> }
+1092c1119
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1123c1150
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1148c1175
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1166c1193
+< dd > div:first-child > pre.sourcecode,
+---
+> dd > div.sourcecode:first-child,
+1174a1202,1209
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1176a1212
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-clue-framework-25" rel="prev">
+1179c1215
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-clue-framework-25" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1181,1182c1217,1218
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1285,1311c1321,1347
+< <nav class="toc"><ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="xref">3</a>.  <a href="#name-definitions" class="xref">Definitions</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-overview-and-motivation" class="xref">Overview and Motivation</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-description-of-the-framewor" class="xref">Description of the Framework/Model</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-spatial-relationships" class="xref">Spatial Relationships</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-media-captures-and-capture-" class="xref">Media Captures and Capture Scenes</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-media-captures" class="xref">Media Captures</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.7.2.1.2.1">
+<                     <p id="section-toc.1-1.7.2.1.2.1.1"><a href="#section-7.1.1" class="xref">7.1.1</a>.  <a href="#name-media-capture-attributes" class="xref">Media Capture Attributes</a><a href="#section-toc.1-1.7.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-definitions" class="internal xref">Definitions</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-overview-and-motivation" class="internal xref">Overview and Motivation</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-description-of-the-framewor" class="internal xref">Description of the Framework/Model</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-spatial-relationships" class="internal xref">Spatial Relationships</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-media-captures-and-capture-" class="internal xref">Media Captures and Capture Scenes</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-media-captures" class="internal xref">Media Captures</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1.2.1">
+>                     <p id="section-toc.1-1.7.2.1.2.1.1"><a href="#section-7.1.1" class="auto internal xref">7.1.1</a>.  <a href="#name-media-capture-attributes" class="internal xref">Media Capture Attributes</a></p>
+1315,1319c1351,1355
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-multiple-content-capture" class="xref">Multiple Content Capture</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.7.2.2.2.1">
+<                     <p id="section-toc.1-1.7.2.2.2.1.1"><a href="#section-7.2.1" class="xref">7.2.1</a>.  <a href="#name-mcc-attributes" class="xref">MCC Attributes</a><a href="#section-toc.1-1.7.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-multiple-content-capture" class="internal xref">Multiple Content Capture</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.1">
+>                     <p id="section-toc.1-1.7.2.2.2.1.1"><a href="#section-7.2.1" class="auto internal xref">7.2.1</a>.  <a href="#name-mcc-attributes" class="internal xref">MCC Attributes</a></p>
+1323,1327c1359,1363
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.7.2.3">
+<                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="xref">7.3</a>.  <a href="#name-capture-scene" class="xref">Capture Scene</a><a href="#section-toc.1-1.7.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.7.2.3.2.1">
+<                     <p id="section-toc.1-1.7.2.3.2.1.1"><a href="#section-7.3.1" class="xref">7.3.1</a>.  <a href="#name-capture-scene-attributes" class="xref">Capture Scene Attributes</a><a href="#section-toc.1-1.7.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3">
+>                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="auto internal xref">7.3</a>.  <a href="#name-capture-scene" class="internal xref">Capture Scene</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3.2.1">
+>                     <p id="section-toc.1-1.7.2.3.2.1.1"><a href="#section-7.3.1" class="auto internal xref">7.3.1</a>.  <a href="#name-capture-scene-attributes" class="internal xref">Capture Scene Attributes</a></p>
+1329,1330c1365,1366
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.7.2.3.2.2">
+<                     <p id="section-toc.1-1.7.2.3.2.2.1"><a href="#section-7.3.2" class="xref">7.3.2</a>.  <a href="#name-capture-scene-view-attribut" class="xref">Capture Scene View Attributes</a><a href="#section-toc.1-1.7.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3.2.2">
+>                     <p id="section-toc.1-1.7.2.3.2.2.1"><a href="#section-7.3.2" class="auto internal xref">7.3.2</a>.  <a href="#name-capture-scene-view-attribut" class="internal xref">Capture Scene View Attributes</a></p>
+1334,1335c1370,1371
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.7.2.4">
+<                 <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="xref">7.4</a>.  <a href="#name-global-view-list" class="xref">Global View List</a><a href="#section-toc.1-1.7.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.4">
+>                 <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="auto internal xref">7.4</a>.  <a href="#name-global-view-list" class="internal xref">Global View List</a></p>
+1339,1340c1375,1376
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-simultaneous-transmission-s" class="xref">Simultaneous Transmission Set Constraints</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-simultaneous-transmission-s" class="internal xref">Simultaneous Transmission Set Constraints</a></p>
+1342,1346c1378,1382
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-encodings" class="xref">Encodings</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.9.2.1">
+<                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="xref">9.1</a>.  <a href="#name-individual-encodings" class="xref">Individual Encodings</a><a href="#section-toc.1-1.9.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-encodings" class="internal xref">Encodings</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
+>                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="auto internal xref">9.1</a>.  <a href="#name-individual-encodings" class="internal xref">Individual Encodings</a></p>
+1348,1349c1384,1385
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.9.2.2">
+<                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="xref">9.2</a>.  <a href="#name-encoding-group" class="xref">Encoding Group</a><a href="#section-toc.1-1.9.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
+>                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-encoding-group" class="internal xref">Encoding Group</a></p>
+1351,1352c1387,1388
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.9.2.3">
+<                 <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="xref">9.3</a>.  <a href="#name-associating-captures-with-e" class="xref">Associating Captures with Encoding Groups</a><a href="#section-toc.1-1.9.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.3">
+>                 <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="auto internal xref">9.3</a>.  <a href="#name-associating-captures-with-e" class="internal xref">Associating Captures with Encoding Groups</a></p>
+1356,1360c1392,1396
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-consumers-choice-of-streams" class="xref">Consumer's Choice of Streams to Receive from the Provider</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.10.2.1">
+<                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="xref">10.1</a>.  <a href="#name-local-preference" class="xref">Local Preference</a><a href="#section-toc.1-1.10.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-consumers-choice-of-streams" class="internal xref">Consumer's Choice of Streams to Receive from the Provider</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
+>                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="auto internal xref">10.1</a>.  <a href="#name-local-preference" class="internal xref">Local Preference</a></p>
+1362,1363c1398,1399
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.10.2.2">
+<                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="xref">10.2</a>.  <a href="#name-physical-simultaneity-restr" class="xref">Physical Simultaneity Restrictions</a><a href="#section-toc.1-1.10.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
+>                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="auto internal xref">10.2</a>.  <a href="#name-physical-simultaneity-restr" class="internal xref">Physical Simultaneity Restrictions</a></p>
+1365,1366c1401,1402
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.10.2.3">
+<                 <p id="section-toc.1-1.10.2.3.1"><a href="#section-10.3" class="xref">10.3</a>.  <a href="#name-encoding-and-encoding-group" class="xref">Encoding and Encoding Group Limits</a><a href="#section-toc.1-1.10.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.3">
+>                 <p id="section-toc.1-1.10.2.3.1"><a href="#section-10.3" class="auto internal xref">10.3</a>.  <a href="#name-encoding-and-encoding-group" class="internal xref">Encoding and Encoding Group Limits</a></p>
+1370,1371c1406,1407
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-extensibility" class="xref">Extensibility</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-extensibility" class="internal xref">Extensibility</a></p>
+1373,1380c1409,1416
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-12" class="xref">12</a>. <a href="#name-examples-using-the-framewor" class="xref">Examples - Using the Framework (Informative)</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.1">
+<                 <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="xref">12.1</a>.  <a href="#name-provider-behavior" class="xref">Provider Behavior</a><a href="#section-toc.1-1.12.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.1.2.1">
+<                     <p id="section-toc.1-1.12.2.1.2.1.1"><a href="#section-12.1.1" class="xref">12.1.1</a>.  <a href="#name-three-screen-endpoint-provi" class="xref">Three-Screen Endpoint Provider</a><a href="#section-toc.1-1.12.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-examples-using-the-framewor" class="internal xref">Examples - Using the Framework (Informative)</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1">
+>                 <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="auto internal xref">12.1</a>.  <a href="#name-provider-behavior" class="internal xref">Provider Behavior</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1.2.1">
+>                     <p id="section-toc.1-1.12.2.1.2.1.1"><a href="#section-12.1.1" class="auto internal xref">12.1.1</a>.  <a href="#name-three-screen-endpoint-provi" class="internal xref">Three-Screen Endpoint Provider</a></p>
+1382,1383c1418,1419
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.1.2.2">
+<                     <p id="section-toc.1-1.12.2.1.2.2.1"><a href="#section-12.1.2" class="xref">12.1.2</a>.  <a href="#name-encoding-group-example" class="xref">Encoding Group Example</a><a href="#section-toc.1-1.12.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1.2.2">
+>                     <p id="section-toc.1-1.12.2.1.2.2.1"><a href="#section-12.1.2" class="auto internal xref">12.1.2</a>.  <a href="#name-encoding-group-example" class="internal xref">Encoding Group Example</a></p>
+1385,1386c1421,1422
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.1.2.3">
+<                     <p id="section-toc.1-1.12.2.1.2.3.1"><a href="#section-12.1.3" class="xref">12.1.3</a>.  <a href="#name-the-mcu-case" class="xref">The MCU Case</a><a href="#section-toc.1-1.12.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1.2.3">
+>                     <p id="section-toc.1-1.12.2.1.2.3.1"><a href="#section-12.1.3" class="auto internal xref">12.1.3</a>.  <a href="#name-the-mcu-case" class="internal xref">The MCU Case</a></p>
+1390,1394c1426,1430
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.2">
+<                 <p id="section-toc.1-1.12.2.2.1"><a href="#section-12.2" class="xref">12.2</a>.  <a href="#name-media-consumer-behavior" class="xref">Media Consumer Behavior</a><a href="#section-toc.1-1.12.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.2.2.1">
+<                     <p id="section-toc.1-1.12.2.2.2.1.1"><a href="#section-12.2.1" class="xref">12.2.1</a>.  <a href="#name-one-screen-media-consumer" class="xref">One-Screen Media Consumer</a><a href="#section-toc.1-1.12.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.2">
+>                 <p id="section-toc.1-1.12.2.2.1"><a href="#section-12.2" class="auto internal xref">12.2</a>.  <a href="#name-media-consumer-behavior" class="internal xref">Media Consumer Behavior</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.2.2.1">
+>                     <p id="section-toc.1-1.12.2.2.2.1.1"><a href="#section-12.2.1" class="auto internal xref">12.2.1</a>.  <a href="#name-one-screen-media-consumer" class="internal xref">One-Screen Media Consumer</a></p>
+1396,1397c1432,1433
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.2.2.2">
+<                     <p id="section-toc.1-1.12.2.2.2.2.1"><a href="#section-12.2.2" class="xref">12.2.2</a>.  <a href="#name-two-screen-media-consumer-c" class="xref">Two-Screen Media Consumer Configuring the Example</a><a href="#section-toc.1-1.12.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.2.2.2">
+>                     <p id="section-toc.1-1.12.2.2.2.2.1"><a href="#section-12.2.2" class="auto internal xref">12.2.2</a>.  <a href="#name-two-screen-media-consumer-c" class="internal xref">Two-Screen Media Consumer Configuring the Example</a></p>
+1399,1400c1435,1436
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.2.2.3">
+<                     <p id="section-toc.1-1.12.2.2.2.3.1"><a href="#section-12.2.3" class="xref">12.2.3</a>.  <a href="#name-three-screen-media-consumer" class="xref">Three-Screen Media Consumer Configuring the Example</a><a href="#section-toc.1-1.12.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.2.2.3">
+>                     <p id="section-toc.1-1.12.2.2.2.3.1"><a href="#section-12.2.3" class="auto internal xref">12.2.3</a>.  <a href="#name-three-screen-media-consumer" class="internal xref">Three-Screen Media Consumer Configuring the Example</a></p>
+1404,1408c1440,1444
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.3">
+<                 <p id="section-toc.1-1.12.2.3.1"><a href="#section-12.3" class="xref">12.3</a>.  <a href="#name-multipoint-conference-utili" class="xref">Multipoint Conference Utilizing Multiple Content Captures</a><a href="#section-toc.1-1.12.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.3.2.1">
+<                     <p id="section-toc.1-1.12.2.3.2.1.1"><a href="#section-12.3.1" class="xref">12.3.1</a>.  <a href="#name-single-media-captures-and-m" class="xref">Single Media Captures and MCC in the Same Advertisement</a><a href="#section-toc.1-1.12.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.3">
+>                 <p id="section-toc.1-1.12.2.3.1"><a href="#section-12.3" class="auto internal xref">12.3</a>.  <a href="#name-multipoint-conference-utili" class="internal xref">Multipoint Conference Utilizing Multiple Content Captures</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.3.2.1">
+>                     <p id="section-toc.1-1.12.2.3.2.1.1"><a href="#section-12.3.1" class="auto internal xref">12.3.1</a>.  <a href="#name-single-media-captures-and-m" class="internal xref">Single Media Captures and MCC in the Same Advertisement</a></p>
+1410,1411c1446,1447
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.3.2.2">
+<                     <p id="section-toc.1-1.12.2.3.2.2.1"><a href="#section-12.3.2" class="xref">12.3.2</a>.  <a href="#name-several-mccs-in-the-same-ad" class="xref">Several MCCs in the Same Advertisement</a><a href="#section-toc.1-1.12.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.3.2.2">
+>                     <p id="section-toc.1-1.12.2.3.2.2.1"><a href="#section-12.3.2" class="auto internal xref">12.3.2</a>.  <a href="#name-several-mccs-in-the-same-ad" class="internal xref">Several MCCs in the Same Advertisement</a></p>
+1413,1414c1449,1450
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.3.2.3">
+<                     <p id="section-toc.1-1.12.2.3.2.3.1"><a href="#section-12.3.3" class="xref">12.3.3</a>.  <a href="#name-heterogeneous-conference-wi" class="xref">Heterogeneous Conference with Switching and Composition</a><a href="#section-toc.1-1.12.2.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.3.2.3">
+>                     <p id="section-toc.1-1.12.2.3.2.3.1"><a href="#section-12.3.3" class="auto internal xref">12.3.3</a>.  <a href="#name-heterogeneous-conference-wi" class="internal xref">Heterogeneous Conference with Switching and Composition</a></p>
+1416,1417c1452,1453
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.12.2.3.2.4">
+<                     <p id="section-toc.1-1.12.2.3.2.4.1"><a href="#section-12.3.4" class="xref">12.3.4</a>.  <a href="#name-heterogeneous-conference-wit" class="xref">Heterogeneous Conference with Voice-Activated Switching</a><a href="#section-toc.1-1.12.2.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.3.2.4">
+>                     <p id="section-toc.1-1.12.2.3.2.4.1"><a href="#section-12.3.4" class="auto internal xref">12.3.4</a>.  <a href="#name-heterogeneous-conference-wit" class="internal xref">Heterogeneous Conference with Voice-Activated Switching</a></p>
+1423,1424c1459,1460
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-13" class="xref">13</a>. <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1"><a href="#section-13" class="auto internal xref">13</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1426,1427c1462,1463
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.14">
+<             <p id="section-toc.1-1.14.1"><a href="#section-14" class="xref">14</a>. <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.14.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+>             <p id="section-toc.1-1.14.1"><a href="#section-14" class="auto internal xref">14</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1429,1433c1465,1469
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.15">
+<             <p id="section-toc.1-1.15.1"><a href="#section-15" class="xref">15</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.15.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.15.2.1">
+<                 <p id="section-toc.1-1.15.2.1.1"><a href="#section-15.1" class="xref">15.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.15.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
+>             <p id="section-toc.1-1.15.1"><a href="#section-15" class="auto internal xref">15</a>. <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.1">
+>                 <p id="section-toc.1-1.15.2.1.1"><a href="#section-15.1" class="auto internal xref">15.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1435,1436c1471,1472
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.15.2.2">
+<                 <p id="section-toc.1-1.15.2.2.1"><a href="#section-15.2" class="xref">15.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.15.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.2">
+>                 <p id="section-toc.1-1.15.2.2.1"><a href="#section-15.2" class="auto internal xref">15.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1440,1441c1476,1477
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.16">
+<             <p id="section-toc.1-1.16.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.16.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
+>             <p id="section-toc.1-1.16.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1443,1444c1479,1480
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.17">
+<             <p id="section-toc.1-1.17.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.17.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17">
+>             <p id="section-toc.1-1.17.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1457c1493
+<    as RTP <span>[<a href="#RFC3550" class="xref">RFC3550</a>]</span> and SIP <span>[<a href="#RFC3261" class="xref">RFC3261</a>]</span>, cannot easily interoperate with
+---
+>    as RTP <span>[<a href="#RFC3550" class="cite xref">RFC3550</a>]</span> and SIP <span>[<a href="#RFC3261" class="cite xref">RFC3261</a>]</span>, cannot easily interoperate with
+1465,1466c1501,1502
+<    <span>[<a href="#RFC7205" class="xref">RFC7205</a>]</span> and to meet the requirements in "Requirements for
+<    Telepresence Multistreams" <span>[<a href="#RFC7262" class="xref">RFC7262</a>]</span>. This includes cases using
+---
+>    <span>[<a href="#RFC7205" class="cite xref">RFC7205</a>]</span> and to meet the requirements in "Requirements for
+>    Telepresence Multistreams" <span>[<a href="#RFC7262" class="cite xref">RFC7262</a>]</span>. This includes cases using
+1469,1470c1505,1506
+<    The basic session setup for the use cases is based on SIP <span>[<a href="#RFC3261" class="xref">RFC3261</a>]</span>
+<    and SDP offer/answer <span>[<a href="#RFC3264" class="xref">RFC3264</a>]</span>.  In addition to basic SIP &amp; SDP
+---
+>    The basic session setup for the use cases is based on SIP <span>[<a href="#RFC3261" class="cite xref">RFC3261</a>]</span>
+>    and SDP offer/answer <span>[<a href="#RFC3264" class="cite xref">RFC3264</a>]</span>.  In addition to basic SIP &amp; SDP
+1477c1513
+<    <span>[<a href="#RFC8848" class="xref">RFC8848</a>]</span>, the data model <span>[<a href="#RFC8846" class="xref">RFC8846</a>]</span>, and the protocol <span>[<a href="#RFC8847" class="xref">RFC8847</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+---
+>    <span>[<a href="#RFC8848" class="cite xref">RFC8848</a>]</span>, the data model <span>[<a href="#RFC8846" class="cite xref">RFC8846</a>]</span>, and the protocol <span>[<a href="#RFC8847" class="cite xref">RFC8847</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+1488c1524
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1555c1591
+<    <span>[<a href="#RFC8850" class="xref">RFC8850</a>]</span>, the CLUE protocol <span>[<a href="#RFC8847" class="xref">RFC8847</a>]</span> and the principles of CLUE negotiation; it also seeks CLUE-enabled calls.<a href="#section-3-2.18" class="pilcrow">¶</a>
+---
+>    <span>[<a href="#RFC8850" class="cite xref">RFC8850</a>]</span>, the CLUE protocol <span>[<a href="#RFC8847" class="cite xref">RFC8847</a>]</span> and the principles of CLUE negotiation; it also seeks CLUE-enabled calls.<a href="#section-3-2.18" class="pilcrow">¶</a>
+1561c1597
+<    <span>[<a href="#RFC4566" class="xref">RFC4566</a>]</span>. A CLUE-enabled call is not necessarily immediately able
+---
+>    <span>[<a href="#RFC4566" class="cite xref">RFC4566</a>]</span>. A CLUE-enabled call is not necessarily immediately able
+1570c1606
+<    Conferencing within the Session Initiation Protocol (SIP)" <span>[<a href="#RFC4353" class="xref">RFC4353</a>]</span>.<a href="#section-3-2.22" class="pilcrow">¶</a>
+---
+>    Conferencing within the Session Initiation Protocol (SIP)" <span>[<a href="#RFC4353" class="cite xref">RFC4353</a>]</span>.<a href="#section-3-2.22" class="pilcrow">¶</a>
+1599c1635
+<    that source and sink Media Streams, and exactly one <span>[<a href="#RFC4353" class="xref">RFC4353</a>]</span>
+---
+>    that source and sink Media Streams, and exactly one <span>[<a href="#RFC4353" class="cite xref">RFC4353</a>]</span>
+1627,1628c1663,1664
+<    Conference <span>[<a href="#RFC7667" class="xref">RFC7667</a>]</span>.  An MCU includes a Mixer like that described in <span>[<a href="#RFC4353" class="xref">RFC4353</a>]</span>,
+<    without the requirement of <span>[<a href="#RFC4353" class="xref">RFC4353</a>]</span> to send Media to each
+---
+>    Conference <span>[<a href="#RFC7667" class="cite xref">RFC7667</a>]</span>.  An MCU includes a Mixer like that described in <span>[<a href="#RFC4353" class="cite xref">RFC4353</a>]</span>,
+>    without the requirement of <span>[<a href="#RFC4353" class="cite xref">RFC4353</a>]</span> to send Media to each
+1696c1732
+<    Consumer via RTP <span>[<a href="#RFC3550" class="xref">RFC3550</a>]</span>.<a href="#section-3-2.66" class="pilcrow">¶</a>
+---
+>    Consumer via RTP <span>[<a href="#RFC3550" class="cite xref">RFC3550</a>]</span>.<a href="#section-3-2.66" class="pilcrow">¶</a>
+1774c1810
+<       Provider about its choices.  Details are provided in <a href="#s-7" class="xref">Section 7</a>.<a href="#section-4-4.2" class="pilcrow">¶</a>
+---
+>       Provider about its choices.  Details are provided in <a href="#s-7" class="auto internal xref">Section 7</a>.<a href="#section-4-4.2" class="pilcrow">¶</a>
+1785c1821
+<       Capture Scene description and are discussed in <a href="#s-8" class="xref">Section 8</a>.<a href="#section-4-4.3" class="pilcrow">¶</a>
+---
+>       Capture Scene description and are discussed in <a href="#s-8" class="auto internal xref">Section 8</a>.<a href="#section-4-4.3" class="pilcrow">¶</a>
+1795c1831
+<       Provider using the Encoding Group concept, which is described in <a href="#s-9" class="xref">Section 9</a>.<a href="#section-4-4.4" class="pilcrow">¶</a>
+---
+>       Provider using the Encoding Group concept, which is described in <a href="#s-9" class="auto internal xref">Section 9</a>.<a href="#section-4-4.4" class="pilcrow">¶</a>
+1820c1856
+<       found in <a href="#s-5" class="xref">Section 5</a>.<a href="#section-4-4.5" class="pilcrow">¶</a>
+---
+>       found in <a href="#s-5" class="auto internal xref">Section 5</a>.<a href="#section-4-4.5" class="pilcrow">¶</a>
+1862c1898
+<    The data model <span>[<a href="#RFC8846" class="xref">RFC8846</a>]</span> is based around two
+---
+>    The data model <span>[<a href="#RFC8846" class="cite xref">RFC8846</a>]</span> is based around two
+1878c1914
+<    relate to items in SDP <span>[<a href="#RFC4566" class="xref">RFC4566</a>]</span>.<a href="#section-5-7" class="pilcrow">¶</a></p>
+---
+>    relate to items in SDP <span>[<a href="#RFC4566" class="cite xref">RFC4566</a>]</span>.<a href="#section-5-7" class="pilcrow">¶</a></p>
+1892c1928
+<         <div class="artwork art-text alignLeft" id="section-5-10.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-5-10.1">
+1938c1974
+< <p id="section-5-11"><a href="#ref-basic-information-flow" class="xref">Figure 2</a> illustrates the call flow used by a simple system (two Endpoints) in compliance with this document.  A very brief outline of the call flow is described in the text that follows.<a href="#section-5-11" class="pilcrow">¶</a></p>
+---
+> <p id="section-5-11"><a href="#ref-basic-information-flow" class="auto internal xref">Figure 2</a> illustrates the call flow used by a simple system (two Endpoints) in compliance with this document.  A very brief outline of the call flow is described in the text that follows.<a href="#section-5-11" class="pilcrow">¶</a></p>
+1941c1977
+<         <div class="artwork art-text alignLeft" id="section-5-12.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-5-12.1">
+2056c2092
+<    described in <span>[<a href="#RFC8848" class="xref">RFC8848</a>]</span>.  If the other device does
+---
+>    described in <span>[<a href="#RFC8848" class="cite xref">RFC8848</a>]</span>.  If the other device does
+2348c2384
+<    provide more detail on the type of presentation. Refer to <span>[<a href="#RFC8846" class="xref">RFC8846</a>]</span> for how to extend the model.<a href="#section-7.1.1.7-2" class="pilcrow">¶</a></p>
+---
+>    provide more detail on the type of presentation. Refer to <span>[<a href="#RFC8846" class="cite xref">RFC8846</a>]</span> for how to extend the model.<a href="#section-7.1.1.7-2" class="pilcrow">¶</a></p>
+2403c2439
+<    The Language attribute is coded per <span>[<a href="#RFC5646" class="xref">RFC5646</a>]</span>.<a href="#section-7.1.1.9-3" class="pilcrow">¶</a></p>
+---
+>    The Language attribute is coded per <span>[<a href="#RFC5646" class="cite xref">RFC5646</a>]</span>.<a href="#section-7.1.1.9-3" class="pilcrow">¶</a></p>
+2416c2452
+<    a variety of sources; however, the xCard <span>[<a href="#RFC6351" class="xref">RFC6351</a>]</span> format is used to
+---
+>    a variety of sources; however, the xCard <span>[<a href="#RFC6351" class="cite xref">RFC6351</a>]</span> format is used to
+2418,2420c2454,2456
+<    Identification information (<span><a href="https://www.rfc-editor.org/rfc/rfc6350#section-6.2" class="relref">Section 6.2</a> of [<a href="#RFC6350" class="xref">RFC6350</a>]</span>), Communication
+<    Information (<span><a href="https://www.rfc-editor.org/rfc/rfc6350#section-6.4" class="relref">Section 6.4</a> of [<a href="#RFC6350" class="xref">RFC6350</a>]</span>), and Organizational information
+<    (<span><a href="https://www.rfc-editor.org/rfc/rfc6350#section-6.6" class="relref">Section 6.6</a> of [<a href="#RFC6350" class="xref">RFC6350</a>]</span>), to be communicated. A Consumer may then
+---
+>    Identification information (<span><a href="https://rfc-editor.org/rfc/rfc6350#section-6.2" class="relref">Section 6.2</a> of [<a href="#RFC6350" class="cite xref">RFC6350</a>]</span>), Communication
+>    Information (<span><a href="https://rfc-editor.org/rfc/rfc6350#section-6.4" class="relref">Section 6.4</a> of [<a href="#RFC6350" class="cite xref">RFC6350</a>]</span>), and Organizational information
+>    (<span><a href="https://rfc-editor.org/rfc/rfc6350#section-6.6" class="relref">Section 6.6</a> of [<a href="#RFC6350" class="cite xref">RFC6350</a>]</span>), to be communicated. A Consumer may then
+2427c2463
+<    set of information. However, it <span class="bcp14">MUST</span> be compliant to <span>[<a href="#RFC6350" class="xref">RFC6350</a>]</span> and
+---
+>    set of information. However, it <span class="bcp14">MUST</span> be compliant to <span>[<a href="#RFC6350" class="cite xref">RFC6350</a>]</span> and
+2429c2465
+<    multiple xCards per Capture of any KIND (<span><a href="https://www.rfc-editor.org/rfc/rfc6350#section-6.1.4" class="relref">Section 6.1.4</a> of [<a href="#RFC6350" class="xref">RFC6350</a>]</span>).<a href="#section-7.1.1.10-2" class="pilcrow">¶</a></p>
+---
+>    multiple xCards per Capture of any KIND (<span><a href="https://rfc-editor.org/rfc/rfc6350#section-6.1.4" class="relref">Section 6.1.4</a> of [<a href="#RFC6350" class="cite xref">RFC6350</a>]</span>).<a href="#section-7.1.1.10-2" class="pilcrow">¶</a></p>
+2588c2624
+<    represent a Capture Scene.  <a href="#ref-advertisement-sent-to-endpoint-f-two-encodings" class="xref">Table 14</a> provides an example of this
+---
+>    represent a Capture Scene.  <a href="#ref-advertisement-sent-to-endpoint-f-two-encodings" class="auto internal xref">Table 14</a> provides an example of this
+2591c2627
+<    As outlined in <a href="#s-7.1" class="xref">Section 7.1</a>, each instance of the MCC has its own
+---
+>    As outlined in <a href="#s-7.1" class="auto internal xref">Section 7.1</a>, each instance of the MCC has its own
+2652c2688
+<    below. The attributes described in <a href="#s-7.1.1" class="xref">Section 7.1.1</a> <span class="bcp14">MAY</span> also be used
+---
+>    below. The attributes described in <a href="#s-7.1.1" class="auto internal xref">Section 7.1.1</a> <span class="bcp14">MAY</span> also be used
+2683,2684c2719,2720
+<                   <ul class="text-right ulEmpty compact">
+< <li class="text-right ulEmpty compact" id="section-7.2.1-6.2.1.2.1.1">AreaofCapture=(0,0,0)(9,0,0)<a href="#section-7.2.1-6.2.1.2.1.1" class="pilcrow">¶</a>
+---
+>                   <ul class="compact text-right ulEmpty">
+> <li class="compact text-right ulEmpty" id="section-7.2.1-6.2.1.2.1.1">AreaofCapture=(0,0,0)(9,0,0)<a href="#section-7.2.1-6.2.1.2.1.1" class="pilcrow">¶</a>
+2686c2722
+<                     <li class="text-right ulEmpty compact" id="section-7.2.1-6.2.1.2.1.2">(0,0,9)(9,0,9)<a href="#section-7.2.1-6.2.1.2.1.2" class="pilcrow">¶</a>
+---
+>                     <li class="compact text-right ulEmpty" id="section-7.2.1-6.2.1.2.1.2">(0,0,9)(9,0,9)<a href="#section-7.2.1-6.2.1.2.1.2" class="pilcrow">¶</a>
+2694,2695c2730,2731
+<                   <ul class="text-right ulEmpty compact">
+< <li class="text-right ulEmpty compact" id="section-7.2.1-6.2.2.2.1.1">AreaofCapture=(10,0,0)(19,0,0)<a href="#section-7.2.1-6.2.2.2.1.1" class="pilcrow">¶</a>
+---
+>                   <ul class="compact text-right ulEmpty">
+> <li class="compact text-right ulEmpty" id="section-7.2.1-6.2.2.2.1.1">AreaofCapture=(10,0,0)(19,0,0)<a href="#section-7.2.1-6.2.2.2.1.1" class="pilcrow">¶</a>
+2697c2733
+<                     <li class="text-right ulEmpty compact" id="section-7.2.1-6.2.2.2.1.2">(10,0,9)(19,0,9)<a href="#section-7.2.1-6.2.2.2.1.2" class="pilcrow">¶</a>
+---
+>                     <li class="compact text-right ulEmpty" id="section-7.2.1-6.2.2.2.1.2">(10,0,9)(19,0,9)<a href="#section-7.2.1-6.2.2.2.1.2" class="pilcrow">¶</a>
+2705,2706c2741,2742
+<                   <ul class="text-right ulEmpty compact">
+< <li class="text-right ulEmpty compact" id="section-7.2.1-6.2.3.2.1.1">MaxCaptures=2<a href="#section-7.2.1-6.2.3.2.1.1" class="pilcrow">¶</a>
+---
+>                   <ul class="compact text-right ulEmpty">
+> <li class="compact text-right ulEmpty" id="section-7.2.1-6.2.3.2.1.1">MaxCaptures=2<a href="#section-7.2.1-6.2.3.2.1.1" class="pilcrow">¶</a>
+2708c2744
+<                     <li class="text-right ulEmpty compact" id="section-7.2.1-6.2.3.2.1.2">AreaofCapture=(0,0,0)(19,0,0)<a href="#section-7.2.1-6.2.3.2.1.2" class="pilcrow">¶</a>
+---
+>                     <li class="compact text-right ulEmpty" id="section-7.2.1-6.2.3.2.1.2">AreaofCapture=(0,0,0)(19,0,0)<a href="#section-7.2.1-6.2.3.2.1.2" class="pilcrow">¶</a>
+2710c2746
+<                     <li class="text-right ulEmpty compact" id="section-7.2.1-6.2.3.2.1.3">(0,0,9)(19,0,9)<a href="#section-7.2.1-6.2.3.2.1.3" class="pilcrow">¶</a>
+---
+>                     <li class="compact text-right ulEmpty" id="section-7.2.1-6.2.3.2.1.3">(0,0,9)(19,0,9)<a href="#section-7.2.1-6.2.3.2.1.3" class="pilcrow">¶</a>
+3110c3146
+<    measurement system as outlined in <a href="#s-6" class="xref">Section 6</a>.<a href="#section-7.3-5" class="pilcrow">¶</a></p>
+---
+>    measurement system as outlined in <a href="#s-6" class="auto internal xref">Section 6</a>.<a href="#section-7.3-5" class="pilcrow">¶</a></p>
+3130c3166
+<    Simultaneous Transmission Set mechanism, described in <a href="#s-8" class="xref">Section 8</a>.<a href="#section-7.3-6" class="pilcrow">¶</a></p>
+---
+>    Simultaneous Transmission Set mechanism, described in <a href="#s-8" class="auto internal xref">Section 8</a>.<a href="#section-7.3-6" class="pilcrow">¶</a></p>
+3143c3179
+<    <a href="#s-8" class="xref">Section 8</a>.<a href="#section-7.3-7" class="pilcrow">¶</a></p>
+---
+>    <a href="#s-8" class="auto internal xref">Section 8</a>.<a href="#section-7.3-7" class="pilcrow">¶</a></p>
+3202c3238
+<         described in <a href="#s-6" class="xref">Section 6</a>.<a href="#section-7.3.1-2.3" class="pilcrow">¶</a>
+---
+>         described in <a href="#s-6" class="auto internal xref">Section 6</a>.<a href="#section-7.3.1-2.3" class="pilcrow">¶</a>
+3221c3257
+<    As per <a href="#s-7.1.1.10" class="xref">Section 7.1.1.10</a>, the xCard format is used to convey this
+---
+>    As per <a href="#s-7.1.1.10" class="auto internal xref">Section 7.1.1.10</a>, the xCard format is used to convey this
+3300c3336
+<           <div class="artwork art-text alignLeft" id="section-7.4-6.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-7.4-6.1">
+3387c3423
+<    <a href="#ref-two-simultaneous-transmission-sets" class="xref">Table 5</a>.  If a Provider advertises one or more mutually exclusive
+---
+>    <a href="#ref-two-simultaneous-transmission-sets" class="auto internal xref">Table 5</a>.  If a Provider advertises one or more mutually exclusive
+3456c3492
+<    exchange, please refer to <a href="#s-5" class="xref">Section 5</a>.<a href="#section-9-1" class="pilcrow">¶</a></p>
+---
+>    exchange, please refer to <a href="#s-5" class="auto internal xref">Section 5</a>.<a href="#section-9-1" class="pilcrow">¶</a></p>
+3474c3510
+< <span>[<a href="#RFC4566" class="xref">RFC4566</a>]</span>,
+---
+> <span>[<a href="#RFC4566" class="cite xref">RFC4566</a>]</span>,
+3524c3560
+<           <div class="artwork art-text alignLeft" id="section-9.2-6.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-9.2-6.1">
+3920c3956
+<             <div class="artwork art-text alignLeft" id="section-12.1.1-8.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-12.1.1-8.1">
+3959c3995
+< <div class="artwork art-text alignLeft" id="section-12.1.1-14">
+---
+> <div class="alignLeft art-text artwork" id="section-12.1.1-14">
+3972c4008
+< <div class="artwork art-text alignLeft" id="section-12.1.1-16">
+---
+> <div class="alignLeft art-text artwork" id="section-12.1.1-16">
+4018c4054
+< <div class="artwork art-text alignLeft" id="section-12.1.1-22">
+---
+> <div class="alignLeft art-text artwork" id="section-12.1.1-22">
+4060c4096
+<             <div class="artwork art-text alignLeft" id="section-12.1.1-30.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-12.1.1-30.1">
+4094c4130
+<             <div class="artwork art-text alignLeft" id="section-12.1.1-32.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-12.1.1-32.1">
+4198c4234
+< <div class="artwork art-text alignLeft" id="section-12.1.2-2">
+---
+> <div class="alignLeft art-text artwork" id="section-12.1.2-2">
+4225c4261
+< <div class="artwork art-text alignLeft" id="section-12.1.2-6">
+---
+> <div class="alignLeft art-text artwork" id="section-12.1.2-6">
+4991c5027
+<             <div class="artwork art-text alignLeft" id="section-12.3.3-6.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-12.3.3-6.1">
+5015c5051
+<             <div class="artwork art-text alignLeft" id="section-12.3.3-8.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-12.3.3-8.1">
+5505c5541
+<    described in <span>[<a href="#RFC8849" class="xref">RFC8849</a>]</span>, to convey this
+---
+>    described in <span>[<a href="#RFC8849" class="cite xref">RFC8849</a>]</span>, to convey this
+5743c5779
+<    Information Data Model for Centralized Conferencing (XCON) framework <span>[<a href="#RFC5239" class="xref">RFC5239</a>]</span>. Examples of attacks include the
+---
+>    Information Data Model for Centralized Conferencing (XCON) framework <span>[<a href="#RFC5239" class="cite xref">RFC5239</a>]</span>. Examples of attacks include the
+5753c5789
+<    protocol, thus the security considerations in <span>[<a href="#RFC4579" class="xref">RFC4579</a>]</span> <span class="bcp14">MUST</span> be
+---
+>    protocol, thus the security considerations in <span>[<a href="#RFC4579" class="cite xref">RFC4579</a>]</span> <span class="bcp14">MUST</span> be
+5755c5791
+<    the XCON framework <span>[<a href="#RFC5239" class="xref">RFC5239</a>]</span>. The use of xCard with potentially
+---
+>    the XCON framework <span>[<a href="#RFC5239" class="cite xref">RFC5239</a>]</span>. The use of xCard with potentially
+5757c5793
+<    recommendations in <span><a href="https://www.rfc-editor.org/rfc/rfc5239#section-11" class="relref">Section 11</a> of [<a href="#RFC5239" class="xref">RFC5239</a>]</span>.<a href="#section-14-2" class="pilcrow">¶</a></p>
+---
+>    recommendations in <span><a href="https://rfc-editor.org/rfc/rfc5239#section-11" class="relref">Section 11</a> of [<a href="#RFC5239" class="cite xref">RFC5239</a>]</span>.<a href="#section-14-2" class="pilcrow">¶</a></p>
+5763,5764c5799,5800
+<    sessions involving multiple Endpoints and MCUs. <a href="#ref-basic-information-flow" class="xref">Figure 2</a> in
+<    <a href="#s-5" class="xref">Section 5</a> provides a basic flow of information exchange for CLUE
+---
+>    sessions involving multiple Endpoints and MCUs. <a href="#ref-basic-information-flow" class="auto internal xref">Figure 2</a> in
+>    <a href="#s-5" class="auto internal xref">Section 5</a> provides a basic flow of information exchange for CLUE
+5767c5803
+<    As described in <a href="#s-5" class="xref">Section 5</a>, CLUE uses SIP/SDP to
+---
+>    As described in <a href="#s-5" class="auto internal xref">Section 5</a>, CLUE uses SIP/SDP to
+5770c5806
+<    <span>[<a href="#RFC3261" class="xref">RFC3261</a>]</span>, including user authentication and
+---
+>    <span>[<a href="#RFC3261" class="cite xref">RFC3261</a>]</span>, including user authentication and
+5774,5775c5810,5811
+<    Media, which is based on RTP, is secured by other means (see <span>[<a href="#RFC7201" class="xref">RFC7201</a>]</span> <span>[<a href="#RFC7202" class="xref">RFC7202</a>]</span>).  Media security is
+<    also discussed in <span>[<a href="#RFC8848" class="xref">RFC8848</a>]</span> and <span>[<a href="#RFC8849" class="xref">RFC8849</a>]</span>. Note that SIP call setup is done before any
+---
+>    Media, which is based on RTP, is secured by other means (see <span>[<a href="#RFC7201" class="cite xref">RFC7201</a>]</span> <span>[<a href="#RFC7202" class="cite xref">RFC7202</a>]</span>).  Media security is
+>    also discussed in <span>[<a href="#RFC8848" class="cite xref">RFC8848</a>]</span> and <span>[<a href="#RFC8849" class="cite xref">RFC8849</a>]</span>. Note that SIP call setup is done before any
+5785c5821
+<    model <span>[<a href="#RFC8846" class="xref">RFC8846</a>]</span> defines, through an XML
+---
+>    model <span>[<a href="#RFC8846" class="cite xref">RFC8846</a>]</span> defines, through an XML
+5788c5824
+<    described in <a href="#s-7.1.1.10" class="xref">Section 7.1.1.10</a>. The decision about which xCard
+---
+>    described in <a href="#s-7.1.1.10" class="auto internal xref">Section 7.1.1.10</a>. The decision about which xCard
+5797c5833
+<    attribute (<a href="#s-7.1.1.6" class="xref">Section 7.1.1.6</a>) could possibly reveal sensitive
+---
+>    attribute (<a href="#s-7.1.1.6" class="auto internal xref">Section 7.1.1.6</a>) could possibly reveal sensitive
+5799,5800c5835,5836
+<    descriptions in the Capture Scene (<a href="#s-7.3.1" class="xref">Section 7.3.1</a>) and CSV
+<    (<a href="#s-7.3.2" class="xref">Section 7.3.2</a>) attributes. An implementation <span class="bcp14">SHOULD</span> give users
+---
+>    descriptions in the Capture Scene (<a href="#s-7.3.1" class="auto internal xref">Section 7.3.1</a>) and CSV
+>    (<a href="#s-7.3.2" class="auto internal xref">Section 7.3.2</a>) attributes. An implementation <span class="bcp14">SHOULD</span> give users
+5820c5856
+<    CLUE data channel solution document <span>[<a href="#RFC8850" class="xref">RFC8850</a>]</span>.<a href="#section-14-7" class="pilcrow">¶</a></p>
+---
+>    CLUE data channel solution document <span>[<a href="#RFC8850" class="cite xref">RFC8850</a>]</span>.<a href="#section-14-7" class="pilcrow">¶</a></p>
+5845c5881
+< <span class="refAuthor">Rosenberg, J.</span><span class="refAuthor">, Schulzrinne, H.</span><span class="refAuthor">, Camarillo, G.</span><span class="refAuthor">, Johnston, A.</span><span class="refAuthor">, Peterson, J.</span><span class="refAuthor">, Sparks, R.</span><span class="refAuthor">, Handley, M.</span><span class="refAuthor">, and E. Schooler</span>, <span class="refTitle">"SIP: Session Initiation Protocol"</span>, <span class="seriesInfo">RFC 3261</span>, <span class="seriesInfo">DOI 10.17487/RFC3261</span>, <time datetime="2002-06" class="refDate">June 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3261">https://www.rfc-editor.org/info/rfc3261</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rosenberg, J.</span>, <span class="refAuthor">Schulzrinne, H.</span>, <span class="refAuthor">Camarillo, G.</span>, <span class="refAuthor">Johnston, A.</span>, <span class="refAuthor">Peterson, J.</span>, <span class="refAuthor">Sparks, R.</span>, <span class="refAuthor">Handley, M.</span>, and <span class="refAuthor">E. Schooler</span>, <span class="refTitle">"SIP: Session Initiation Protocol"</span>, <span class="seriesInfo">RFC 3261</span>, <span class="seriesInfo">DOI 10.17487/RFC3261</span>, <time datetime="2002-06" class="refDate">June 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3261">https://www.rfc-editor.org/info/rfc3261</a>&gt;</span>. </dd>
+5849c5885
+< <span class="refAuthor">Rosenberg, J.</span><span class="refAuthor"> and H. Schulzrinne</span>, <span class="refTitle">"An Offer/Answer Model with Session Description Protocol (SDP)"</span>, <span class="seriesInfo">RFC 3264</span>, <span class="seriesInfo">DOI 10.17487/RFC3264</span>, <time datetime="2002-06" class="refDate">June 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3264">https://www.rfc-editor.org/info/rfc3264</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rosenberg, J.</span> and <span class="refAuthor">H. Schulzrinne</span>, <span class="refTitle">"An Offer/Answer Model with Session Description Protocol (SDP)"</span>, <span class="seriesInfo">RFC 3264</span>, <span class="seriesInfo">DOI 10.17487/RFC3264</span>, <time datetime="2002-06" class="refDate">June 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3264">https://www.rfc-editor.org/info/rfc3264</a>&gt;</span>. </dd>
+5853c5889
+< <span class="refAuthor">Schulzrinne, H.</span><span class="refAuthor">, Casner, S.</span><span class="refAuthor">, Frederick, R.</span><span class="refAuthor">, and V. Jacobson</span>, <span class="refTitle">"RTP: A Transport Protocol for Real-Time Applications"</span>, <span class="seriesInfo">STD 64</span>, <span class="seriesInfo">RFC 3550</span>, <span class="seriesInfo">DOI 10.17487/RFC3550</span>, <time datetime="2003-07" class="refDate">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3550">https://www.rfc-editor.org/info/rfc3550</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schulzrinne, H.</span>, <span class="refAuthor">Casner, S.</span>, <span class="refAuthor">Frederick, R.</span>, and <span class="refAuthor">V. Jacobson</span>, <span class="refTitle">"RTP: A Transport Protocol for Real-Time Applications"</span>, <span class="seriesInfo">STD 64</span>, <span class="seriesInfo">RFC 3550</span>, <span class="seriesInfo">DOI 10.17487/RFC3550</span>, <time datetime="2003-07" class="refDate">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3550">https://www.rfc-editor.org/info/rfc3550</a>&gt;</span>. </dd>
+5857c5893
+< <span class="refAuthor">Handley, M.</span><span class="refAuthor">, Jacobson, V.</span><span class="refAuthor">, and C. Perkins</span>, <span class="refTitle">"SDP: Session Description Protocol"</span>, <span class="seriesInfo">RFC 4566</span>, <span class="seriesInfo">DOI 10.17487/RFC4566</span>, <time datetime="2006-07" class="refDate">July 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4566">https://www.rfc-editor.org/info/rfc4566</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Handley, M.</span>, <span class="refAuthor">Jacobson, V.</span>, and <span class="refAuthor">C. Perkins</span>, <span class="refTitle">"SDP: Session Description Protocol"</span>, <span class="seriesInfo">RFC 4566</span>, <span class="seriesInfo">DOI 10.17487/RFC4566</span>, <time datetime="2006-07" class="refDate">July 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4566">https://www.rfc-editor.org/info/rfc4566</a>&gt;</span>. </dd>
+5861c5897
+< <span class="refAuthor">Johnston, A.</span><span class="refAuthor"> and O. Levin</span>, <span class="refTitle">"Session Initiation Protocol (SIP) Call Control - Conferencing for User Agents"</span>, <span class="seriesInfo">BCP 119</span>, <span class="seriesInfo">RFC 4579</span>, <span class="seriesInfo">DOI 10.17487/RFC4579</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4579">https://www.rfc-editor.org/info/rfc4579</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Johnston, A.</span> and <span class="refAuthor">O. Levin</span>, <span class="refTitle">"Session Initiation Protocol (SIP) Call Control - Conferencing for User Agents"</span>, <span class="seriesInfo">BCP 119</span>, <span class="seriesInfo">RFC 4579</span>, <span class="seriesInfo">DOI 10.17487/RFC4579</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4579">https://www.rfc-editor.org/info/rfc4579</a>&gt;</span>. </dd>
+5865c5901
+< <span class="refAuthor">Barnes, M.</span><span class="refAuthor">, Boulton, C.</span><span class="refAuthor">, and O. Levin</span>, <span class="refTitle">"A Framework for Centralized Conferencing"</span>, <span class="seriesInfo">RFC 5239</span>, <span class="seriesInfo">DOI 10.17487/RFC5239</span>, <time datetime="2008-06" class="refDate">June 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5239">https://www.rfc-editor.org/info/rfc5239</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Barnes, M.</span>, <span class="refAuthor">Boulton, C.</span>, and <span class="refAuthor">O. Levin</span>, <span class="refTitle">"A Framework for Centralized Conferencing"</span>, <span class="seriesInfo">RFC 5239</span>, <span class="seriesInfo">DOI 10.17487/RFC5239</span>, <time datetime="2008-06" class="refDate">June 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5239">https://www.rfc-editor.org/info/rfc5239</a>&gt;</span>. </dd>
+5869c5905
+< <span class="refAuthor">Phillips, A., Ed.</span><span class="refAuthor"> and M. Davis, Ed.</span>, <span class="refTitle">"Tags for Identifying Languages"</span>, <span class="seriesInfo">BCP 47</span>, <span class="seriesInfo">RFC 5646</span>, <span class="seriesInfo">DOI 10.17487/RFC5646</span>, <time datetime="2009-09" class="refDate">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5646">https://www.rfc-editor.org/info/rfc5646</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Phillips, A., Ed.</span> and <span class="refAuthor">M. Davis, Ed.</span>, <span class="refTitle">"Tags for Identifying Languages"</span>, <span class="seriesInfo">BCP 47</span>, <span class="seriesInfo">RFC 5646</span>, <span class="seriesInfo">DOI 10.17487/RFC5646</span>, <time datetime="2009-09" class="refDate">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5646">https://www.rfc-editor.org/info/rfc5646</a>&gt;</span>. </dd>
+5885c5921
+< <span class="refAuthor">Presta, R.</span><span class="refAuthor"> and S P. Romano</span>, <span class="refTitle">"An XML Schema for the Controlling Multiple Streams for Telepresence (CLUE) Data Model"</span>, <span class="seriesInfo">RFC 8846</span>, <span class="seriesInfo">DOI 10.17487/RFC8846</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="http://www.rfc-editor.org/info/rfc8846">http://www.rfc-editor.org/info/rfc8846</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Presta, R.</span> and <span class="refAuthor">S P. Romano</span>, <span class="refTitle">"An XML Schema for the Controlling Multiple Streams for Telepresence (CLUE) Data Model"</span>, <span class="seriesInfo">RFC 8846</span>, <span class="seriesInfo">DOI 10.17487/RFC8846</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="http://www.rfc-editor.org/info/rfc8846">http://www.rfc-editor.org/info/rfc8846</a>&gt;</span>. </dd>
+5889c5925
+< <span class="refAuthor">Presta, R.</span><span class="refAuthor"> and S P. Romano</span>, <span class="refTitle">"Protocol for Controlling Multiple Streams for Telepresence (CLUE)"</span>, <span class="seriesInfo">RFC 8847</span>, <span class="seriesInfo">DOI 10.17487/RFC8847</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8847">https://www.rfc-editor.org/info/rfc8847</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Presta, R.</span> and <span class="refAuthor">S P. Romano</span>, <span class="refTitle">"Protocol for Controlling Multiple Streams for Telepresence (CLUE)"</span>, <span class="seriesInfo">RFC 8847</span>, <span class="seriesInfo">DOI 10.17487/RFC8847</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8847">https://www.rfc-editor.org/info/rfc8847</a>&gt;</span>. </dd>
+5893c5929
+< <span class="refAuthor">Hanton, R.</span><span class="refAuthor">, Kyzivat, P.</span><span class="refAuthor">, Xiao, L.</span><span class="refAuthor">, and C. Groves</span>, <span class="refTitle">"Session Signaling for Controlling Multiple Streams for Telepresence (CLUE)"</span>, <span class="seriesInfo">RFC 8848</span>, <span class="seriesInfo">DOI 10.17487/RFC8848</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8848">https://www.rfc-editor.org/info/rfc8848</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hanton, R.</span>, <span class="refAuthor">Kyzivat, P.</span>, <span class="refAuthor">Xiao, L.</span>, and <span class="refAuthor">C. Groves</span>, <span class="refTitle">"Session Signaling for Controlling Multiple Streams for Telepresence (CLUE)"</span>, <span class="seriesInfo">RFC 8848</span>, <span class="seriesInfo">DOI 10.17487/RFC8848</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8848">https://www.rfc-editor.org/info/rfc8848</a>&gt;</span>. </dd>
+5912c5948
+< <span class="refAuthor">Westerlund, M.</span><span class="refAuthor"> and C. Perkins</span>, <span class="refTitle">"Options for Securing RTP Sessions"</span>, <span class="seriesInfo">RFC 7201</span>, <span class="seriesInfo">DOI 10.17487/RFC7201</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7201">https://www.rfc-editor.org/info/rfc7201</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Westerlund, M.</span> and <span class="refAuthor">C. Perkins</span>, <span class="refTitle">"Options for Securing RTP Sessions"</span>, <span class="seriesInfo">RFC 7201</span>, <span class="seriesInfo">DOI 10.17487/RFC7201</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7201">https://www.rfc-editor.org/info/rfc7201</a>&gt;</span>. </dd>
+5916c5952
+< <span class="refAuthor">Perkins, C.</span><span class="refAuthor"> and M. Westerlund</span>, <span class="refTitle">"Securing the RTP Framework: Why RTP Does Not Mandate a Single Media Security Solution"</span>, <span class="seriesInfo">RFC 7202</span>, <span class="seriesInfo">DOI 10.17487/RFC7202</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7202">https://www.rfc-editor.org/info/rfc7202</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Perkins, C.</span> and <span class="refAuthor">M. Westerlund</span>, <span class="refTitle">"Securing the RTP Framework: Why RTP Does Not Mandate a Single Media Security Solution"</span>, <span class="seriesInfo">RFC 7202</span>, <span class="seriesInfo">DOI 10.17487/RFC7202</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7202">https://www.rfc-editor.org/info/rfc7202</a>&gt;</span>. </dd>
+5920c5956
+< <span class="refAuthor">Romanow, A.</span><span class="refAuthor">, Botzko, S.</span><span class="refAuthor">, Duckworth, M.</span><span class="refAuthor">, and R. Even, Ed.</span>, <span class="refTitle">"Use Cases for Telepresence Multistreams"</span>, <span class="seriesInfo">RFC 7205</span>, <span class="seriesInfo">DOI 10.17487/RFC7205</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7205">https://www.rfc-editor.org/info/rfc7205</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Romanow, A.</span>, <span class="refAuthor">Botzko, S.</span>, <span class="refAuthor">Duckworth, M.</span>, and <span class="refAuthor">R. Even, Ed.</span>, <span class="refTitle">"Use Cases for Telepresence Multistreams"</span>, <span class="seriesInfo">RFC 7205</span>, <span class="seriesInfo">DOI 10.17487/RFC7205</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7205">https://www.rfc-editor.org/info/rfc7205</a>&gt;</span>. </dd>
+5924c5960
+< <span class="refAuthor">Romanow, A.</span><span class="refAuthor">, Botzko, S.</span><span class="refAuthor">, and M. Barnes</span>, <span class="refTitle">"Requirements for Telepresence Multistreams"</span>, <span class="seriesInfo">RFC 7262</span>, <span class="seriesInfo">DOI 10.17487/RFC7262</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7262">https://www.rfc-editor.org/info/rfc7262</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Romanow, A.</span>, <span class="refAuthor">Botzko, S.</span>, and <span class="refAuthor">M. Barnes</span>, <span class="refTitle">"Requirements for Telepresence Multistreams"</span>, <span class="seriesInfo">RFC 7262</span>, <span class="seriesInfo">DOI 10.17487/RFC7262</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7262">https://www.rfc-editor.org/info/rfc7262</a>&gt;</span>. </dd>
+5928c5964
+< <span class="refAuthor">Westerlund, M.</span><span class="refAuthor"> and S. Wenger</span>, <span class="refTitle">"RTP Topologies"</span>, <span class="seriesInfo">RFC 7667</span>, <span class="seriesInfo">DOI 10.17487/RFC7667</span>, <time datetime="2015-11" class="refDate">November 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7667">https://www.rfc-editor.org/info/rfc7667</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Westerlund, M.</span> and <span class="refAuthor">S. Wenger</span>, <span class="refTitle">"RTP Topologies"</span>, <span class="seriesInfo">RFC 7667</span>, <span class="seriesInfo">DOI 10.17487/RFC7667</span>, <time datetime="2015-11" class="refDate">November 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7667">https://www.rfc-editor.org/info/rfc7667</a>&gt;</span>. </dd>
+5932c5968
+< <span class="refAuthor">Even, R.</span><span class="refAuthor"> and J. Lennox</span>, <span class="refTitle">"Mapping RTP Streams to Controlling Multiple Streams for Telepresence (CLUE) Media Captures"</span>, <span class="seriesInfo">RFC 8849</span>, <span class="seriesInfo">DOI 10.17487/RFC8849</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8849">https://www.rfc-editor.org/info/rfc8849</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Even, R.</span> and <span class="refAuthor">J. Lennox</span>, <span class="refTitle">"Mapping RTP Streams to Controlling Multiple Streams for Telepresence (CLUE) Media Captures"</span>, <span class="seriesInfo">RFC 8849</span>, <span class="seriesInfo">DOI 10.17487/RFC8849</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8849">https://www.rfc-editor.org/info/rfc8849</a>&gt;</span>. </dd>
+5938c5974
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+5942c5978
+< <p id="section-appendix.a-1">
+---
+> <p id="appendix-A-1">
+5956c5992
+<    <span class="contact-name">Paul Coverdale</span>.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+>    <span class="contact-name">Paul Coverdale</span>.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+5960c5996
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
