@@ -1,0 +1,190 @@
+110,113c110,113
+<    access will be redeemed (e.g., "email", "admin:org", "user_photos",
+<    "channels:read", and "channels:write" are a small sample of scope
+<    values in use in the wild that convey only the type of access and not
+<    the location or identity).
+---
+>    access will be redeemed (e.g., email, admin:org, user_photos,
+>    channels:read, and channels:write are a small sample of scope values
+>    in use in the wild that convey only the type of access and not the
+>    location or identity).
+154c154
+<       application.  The "resource" parameter URI value is an identifier
+---
+>       application.  The resource parameter URI value is an identifier
+157c157
+<       target resource is hosted.  Multiple "resource" parameters MAY be
+---
+>       target resource is hosted.  Multiple resource parameters MAY be
+173,174c173,174
+<    "resource" parameter.  The client SHOULD use the base URI of the API
+<    as the "resource" parameter value unless specific knowledge of the
+---
+>    resource parameter.  The client SHOULD use the base URI of the API as
+>    the resource parameter value unless specific knowledge of the
+176c176
+<    "https://api.example.com/" would be used for a resource that is the
+---
+>    https://api.example.com/ would be used for a resource that is the
+179,185c179,185
+<    "https://api.example.com/app/" would be used as a more specific
+<    value.  Another example is when an API has multiple endpoints, e.g.,
+<    when System for Cross-domain Identity Management (SCIM) [RFC7644] has
+<    endpoints such as "https://apps.example.com/scim/Users",
+<    "https://apps.example.com/scim/Groups", and
+<    "https://apps.example.com/scim/Schemas".  The client would use
+<    "https://apps.example.com/scim/" as the resource so that the issued
+---
+>    https://api.example.com/app/ would be used as a more specific value.
+>    Another example is when an API has multiple endpoints, e.g., when
+>    System for Cross-domain Identity Management (SCIM) [RFC7644] has
+>    endpoints such as https://apps.example.com/scim/Users,
+>    https://apps.example.com/scim/Groups, and
+>    https://apps.example.com/scim/Schemas.  The client would use
+>    https://apps.example.com/scim/ as the resource so that the issued
+198c198
+<    tokens to the resource(s) indicated by the "resource" parameter.
+---
+>    tokens to the resource(s) indicated by the resource parameter.
+200c200
+<    [RFC7519] with the "aud" claim and the top-level member of the same
+---
+>    [RFC7519] with the aud claim and the top-level member of the same
+203c203
+<    the exact "resource" value as the audience or it may map from that
+---
+>    the exact resource value as the audience or it may map from that
+209c209
+<    When the "resource" parameter is used in an authorization request to
+---
+>    When the resource parameter is used in an authorization request to
+222c222
+<    "resource" parameter value is represented as a JSON string while
+---
+>    resource parameter value is represented as a JSON string while
+225c225
+<    If the client omits the "resource" parameter when requesting
+---
+>    If the client omits the resource parameter when requesting
+230c230
+<    that omit the parameter with an "invalid_target" error.  The
+---
+>    that omit the parameter with an invalid_target error.  The
+239,240c239,240
+<    request with an error response using the error code "invalid_target"
+<    as the value of the "error" parameter and can provide additional
+---
+>    request with an error response using the error code invalid_target as
+>    the value of the error parameter and can provide additional
+242c242
+<    "error_description".
+---
+>    error_description.
+246c246
+<    "https://api.example.com/app/" is shown in Figure 1 below (extra line
+---
+>    https://api.example.com/app/ is shown in Figure 1 below (extra line
+259c259
+<    "code" response type where the client is requesting access to the
+---
+>    code response type where the client is requesting access to the
+261c261
+<    "https://cal.example.com/" and "https://contacts.example.com/" (extra
+---
+>    https://cal.example.com/ and https://contacts.example.com/ (extra
+277c277
+<    When the "resource" parameter is used on an access token request made
+---
+>    When the resource parameter is used on an access token request made
+284,285c284,285
+<    on local policy or configuration.  In the case of a "refresh_token"
+<    or "authorization_code" grant type request, such policy may limit the
+---
+>    on local policy or configuration.  In the case of a refresh_token or
+>    authorization_code grant type request, such policy may limit the
+287c287
+<    resource owner or a subset thereof.  In the "authorization_code" case
+---
+>    resource owner or a subset thereof.  In the authorization_code case
+294,313c294,313
+<    service(s) where it intends to use that token by way of the
+<    "resource" parameter and can indicate the desired scope of the
+<    requested token using the "scope" parameter.  The semantics of such a
+<    request are that the client is asking for a token with the requested
+<    scope that is usable at all the requested target services.
+<    Effectively, the requested access rights of the token are the
+<    cartesian product of all the scopes at all the target services.  To
+<    the extent possible, when issuing access tokens, the authorization
+<    server should downscope the scope value associated with an access
+<    token to the value the respective resource is able to process and
+<    needs to know.  (Here, "downscope" means give fewer permissions than
+<    originally authorized by the resource owner.)  This further improves
+<    privacy as a list of scope values is an indication that the resource
+<    owner uses the multiple various services listed; downscoping a token
+<    to only that which is needed for a particular service can limit the
+<    extent to which such information is revealed across different
+<    services.  As specified in Section 5.1 of [RFC6749], the
+<    authorization server must indicate the access token's effective scope
+<    to the client in the "scope" response parameter value when it differs
+<    from the scope requested by the client.
+---
+>    service(s) where it intends to use that token by way of the resource
+>    parameter and can indicate the desired scope of the requested token
+>    using the scope parameter.  The semantics of such a request are that
+>    the client is asking for a token with the requested scope that is
+>    usable at all the requested target services.  Effectively, the
+>    requested access rights of the token are the cartesian product of all
+>    the scopes at all the target services.  To the extent possible, when
+>    issuing access tokens, the authorization server should downscope the
+>    scope value associated with an access token to the value the
+>    respective resource is able to process and needs to know.  (Here,
+>    "downscope" means give fewer permissions than originally authorized
+>    by the resource owner.)  This further improves privacy as a list of
+>    scope values is an indication that the resource owner uses the
+>    multiple various services listed; downscoping a token to only that
+>    which is needed for a particular service can limit the extent to
+>    which such information is revealed across different services.  As
+>    specified in Section 5.1 of [RFC6749], the authorization server must
+>    indicate the access token's effective scope to the client in the
+>    scope response parameter value when it differs from the scope
+>    requested by the client.
+316,320c316,320
+<    the below examples show an "authorization_code" grant type access
+<    token request (Figure 3) and response (Figure 4) where the client
+<    tells the authorization server that it wants the access token for use
+<    at "https://cal.example.com/" (extra line breaks and indentation are
+<    for display purposes only).
+---
+>    the below examples show an authorization_code grant type access token
+>    request (Figure 3) and response (Figure 4) where the client tells the
+>    authorization server that it wants the access token for use at
+>    https://cal.example.com/ (extra line breaks and indentation are for
+>    display purposes only).
+355c355
+<    for use at "https://contacts.example.com/" is shown in Figure 5 below
+---
+>    for use at https://contacts.example.com/ is shown in Figure 5 below
+392c392
+<    elsewhere for illegitimate access to other resources.  The "resource"
+---
+>    elsewhere for illegitimate access to other resources.  The resource
+407,408c407,408
+<    Although multiple occurrences of the "resource" parameter may be
+<    included in a token request, using only a single "resource" parameter
+---
+>    Although multiple occurrences of the resource parameter may be
+>    included in a token request, using only a single resource parameter
+417c417
+<    Whenever feasible, the "resource" parameter should correspond to the
+---
+>    Whenever feasible, the resource parameter should correspond to the
+422c422
+<    resources.  If the "resource" parameter contains an abstract
+---
+>    resources.  If the resource parameter contains an abstract
+534d533
+< 
+540d538
+< 
+546d543
+< 
