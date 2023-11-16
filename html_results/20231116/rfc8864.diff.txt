@@ -1,0 +1,1101 @@
+19c19
+< <meta content="xml2rfc 3.5.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+22,39c22,35
+<   xml2rfc 3.5.0
+<     Python 3.6.10
+<     appdirs 1.4.4
+<     ConfigArgParse 1.2.3
+<     google-i18n-address 2.3.5
+<     html5lib 1.0.1
+<     intervaltree 3.0.2
+<     Jinja2 2.11.2
+<     kitchen 1.2.6
+<     lxml 4.4.2
+<     pycairo 1.19.0
+<     pycountry 19.8.18
+<     pyflakes 2.1.1
+<     PyYAML 5.3.1
+<     requests 2.22.0
+<     setuptools 40.6.2
+<     six 1.14.0
+<     WeasyPrint 51
+---
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.0.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.10
+41c37
+< <link href="rfc8864.xml" rel="alternate" type="application/rfc+xml">
+---
+> <link href="rfc/rfc8864.xml" rel="alternate" type="application/rfc+xml">
+51c47
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+60a57,62
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+63d64
+<   width: extend-to-zoom;
+78c79
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+80a82
+>   overflow-wrap: break-word;
+166a169,177
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+181,184d191
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+185a193
+>   border: none;
+208a217,219
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+250c261,262
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+260c272
+< tt, code, pre, code {
+---
+> tt, code, pre {
+262c274
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+301a314,316
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+391a407,412
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+493c514
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+633d653
+< 
+655a676,678
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+723c746
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+823c846
+< tt, code, pre, code {
+---
+> tt, code, pre {
+828c851
+< pre.sourcecode,
+---
+> .sourcecode pre,
+864c887
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1045a1069
+>   .artwork > pre,
+1060c1084
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1066a1091,1093
+> tr {
+>   break-inside: avoid;
+> }
+1086c1113
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1117c1144
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1142c1169
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1160c1187
+< dd > div:first-child > pre.sourcecode,
+---
+> dd > div.sourcecode:first-child,
+1168a1196,1203
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1170a1206
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-mmusic-data-channel-sdpneg-28" rel="prev">
+1173c1209
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-mmusic-data-channel-sdpneg-28" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1175,1176c1211,1212
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1282,1284c1318,1320
+< <nav class="toc"><ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+1286,1287c1322,1323
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-conventions" class="xref">Conventions</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-conventions" class="internal xref">Conventions</a></p>
+1289,1290c1325,1326
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="xref">3</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+1292,1293c1328,1329
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-applicability-statement" class="xref">Applicability Statement</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-applicability-statement" class="internal xref">Applicability Statement</a></p>
+1295,1302c1331,1338
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-sdp-data-channel-attributes" class="xref">SDP Data Channel Attributes</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-sdp-dcmap-attribute" class="xref">SDP DCMAP Attribute</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.1.2.1">
+<                     <p id="section-toc.1-1.5.2.1.2.1.1"><a href="#section-5.1.1" class="xref">5.1.1</a>.  <a href="#name-dcmap-attribute-syntax" class="xref">DCMAP Attribute Syntax</a><a href="#section-toc.1-1.5.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-sdp-data-channel-attributes" class="internal xref">SDP Data Channel Attributes</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-sdp-dcmap-attribute" class="internal xref">SDP DCMAP Attribute</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.1">
+>                     <p id="section-toc.1-1.5.2.1.2.1.1"><a href="#section-5.1.1" class="auto internal xref">5.1.1</a>.  <a href="#name-dcmap-attribute-syntax" class="internal xref">DCMAP Attribute Syntax</a></p>
+1304,1305c1340,1341
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.1.2.2">
+<                     <p id="section-toc.1-1.5.2.1.2.2.1"><a href="#section-5.1.2" class="xref">5.1.2</a>.  <a href="#name-dcmap-stream-id-parameter" class="xref">'dcmap-stream-id' Parameter</a><a href="#section-toc.1-1.5.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.2">
+>                     <p id="section-toc.1-1.5.2.1.2.2.1"><a href="#section-5.1.2" class="auto internal xref">5.1.2</a>.  <a href="#name-dcmap-stream-id-parameter" class="internal xref">'dcmap-stream-id' Parameter</a></p>
+1307,1308c1343,1344
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.1.2.3">
+<                     <p id="section-toc.1-1.5.2.1.2.3.1"><a href="#section-5.1.3" class="xref">5.1.3</a>.  <a href="#name-label-parameter" class="xref">'label' Parameter</a><a href="#section-toc.1-1.5.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.3">
+>                     <p id="section-toc.1-1.5.2.1.2.3.1"><a href="#section-5.1.3" class="auto internal xref">5.1.3</a>.  <a href="#name-label-parameter" class="internal xref">'label' Parameter</a></p>
+1310,1311c1346,1347
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.1.2.4">
+<                     <p id="section-toc.1-1.5.2.1.2.4.1"><a href="#section-5.1.4" class="xref">5.1.4</a>.  <a href="#name-subprotocol-parameter" class="xref">'subprotocol' Parameter</a><a href="#section-toc.1-1.5.2.1.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.4">
+>                     <p id="section-toc.1-1.5.2.1.2.4.1"><a href="#section-5.1.4" class="auto internal xref">5.1.4</a>.  <a href="#name-subprotocol-parameter" class="internal xref">'subprotocol' Parameter</a></p>
+1313,1314c1349,1350
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.1.2.5">
+<                     <p id="section-toc.1-1.5.2.1.2.5.1"><a href="#section-5.1.5" class="xref">5.1.5</a>.  <a href="#name-max-retr-parameter" class="xref">'max-retr' Parameter</a><a href="#section-toc.1-1.5.2.1.2.5.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.5">
+>                     <p id="section-toc.1-1.5.2.1.2.5.1"><a href="#section-5.1.5" class="auto internal xref">5.1.5</a>.  <a href="#name-max-retr-parameter" class="internal xref">'max-retr' Parameter</a></p>
+1316,1317c1352,1353
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.1.2.6">
+<                     <p id="section-toc.1-1.5.2.1.2.6.1"><a href="#section-5.1.6" class="xref">5.1.6</a>.  <a href="#name-max-time-parameter" class="xref">'max-time' Parameter</a><a href="#section-toc.1-1.5.2.1.2.6.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.6">
+>                     <p id="section-toc.1-1.5.2.1.2.6.1"><a href="#section-5.1.6" class="auto internal xref">5.1.6</a>.  <a href="#name-max-time-parameter" class="internal xref">'max-time' Parameter</a></p>
+1319,1320c1355,1356
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.1.2.7">
+<                     <p id="section-toc.1-1.5.2.1.2.7.1"><a href="#section-5.1.7" class="xref">5.1.7</a>.  <a href="#name-ordered-parameter" class="xref">'ordered' Parameter</a><a href="#section-toc.1-1.5.2.1.2.7.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.7">
+>                     <p id="section-toc.1-1.5.2.1.2.7.1"><a href="#section-5.1.7" class="auto internal xref">5.1.7</a>.  <a href="#name-ordered-parameter" class="internal xref">'ordered' Parameter</a></p>
+1322,1323c1358,1359
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.1.2.8">
+<                     <p id="section-toc.1-1.5.2.1.2.8.1"><a href="#section-5.1.8" class="xref">5.1.8</a>.  <a href="#name-priority-parameter" class="xref">'priority' Parameter</a><a href="#section-toc.1-1.5.2.1.2.8.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.8">
+>                     <p id="section-toc.1-1.5.2.1.2.8.1"><a href="#section-5.1.8" class="auto internal xref">5.1.8</a>.  <a href="#name-priority-parameter" class="internal xref">'priority' Parameter</a></p>
+1325,1326c1361,1362
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.1.2.9">
+<                     <p id="section-toc.1-1.5.2.1.2.9.1"><a href="#section-5.1.9" class="xref">5.1.9</a>.  <a href="#name-dcmap-multiplexing-category" class="xref">DCMAP Multiplexing Category</a><a href="#section-toc.1-1.5.2.1.2.9.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.9">
+>                     <p id="section-toc.1-1.5.2.1.2.9.1"><a href="#section-5.1.9" class="auto internal xref">5.1.9</a>.  <a href="#name-dcmap-multiplexing-category" class="internal xref">DCMAP Multiplexing Category</a></p>
+1330,1334c1366,1370
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-sdp-dcsa-attribute" class="xref">SDP DCSA Attribute</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.2.2.1">
+<                     <p id="section-toc.1-1.5.2.2.2.1.1"><a href="#section-5.2.1" class="xref">5.2.1</a>.  <a href="#name-dcsa-attribute-syntax" class="xref">DCSA Attribute Syntax</a><a href="#section-toc.1-1.5.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-sdp-dcsa-attribute" class="internal xref">SDP DCSA Attribute</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.1">
+>                     <p id="section-toc.1-1.5.2.2.2.1.1"><a href="#section-5.2.1" class="auto internal xref">5.2.1</a>.  <a href="#name-dcsa-attribute-syntax" class="internal xref">DCSA Attribute Syntax</a></p>
+1336,1337c1372,1373
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.2.2.2">
+<                     <p id="section-toc.1-1.5.2.2.2.2.1"><a href="#section-5.2.2" class="xref">5.2.2</a>.  <a href="#name-dcsa-multiplexing-category" class="xref">DCSA Multiplexing Category</a><a href="#section-toc.1-1.5.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.2">
+>                     <p id="section-toc.1-1.5.2.2.2.2.1"><a href="#section-5.2.2" class="auto internal xref">5.2.2</a>.  <a href="#name-dcsa-multiplexing-category" class="internal xref">DCSA Multiplexing Category</a></p>
+1343,1347c1379,1383
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-sdp-offer-answer-procedures" class="xref">SDP Offer/Answer Procedures</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-managing-stream-identifiers" class="xref">Managing Stream Identifiers</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-sdp-offer-answer-procedures" class="internal xref">SDP Offer/Answer Procedures</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-managing-stream-identifiers" class="internal xref">Managing Stream Identifiers</a></p>
+1349,1350c1385,1386
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.6.2.2">
+<                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-negotiating-data-channel-pa" class="xref">Negotiating Data Channel Parameters</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+>                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-negotiating-data-channel-pa" class="internal xref">Negotiating Data Channel Parameters</a></p>
+1352,1353c1388,1389
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.6.2.3">
+<                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="xref">6.3</a>.  <a href="#name-generating-the-initial-offe" class="xref">Generating the Initial Offer for a Data Channel</a><a href="#section-toc.1-1.6.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
+>                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-generating-the-initial-offe" class="internal xref">Generating the Initial Offer for a Data Channel</a></p>
+1355,1356c1391,1392
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.6.2.4">
+<                 <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="xref">6.4</a>.  <a href="#name-generating-the-sdp-answer" class="xref">Generating the SDP Answer</a><a href="#section-toc.1-1.6.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
+>                 <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="auto internal xref">6.4</a>.  <a href="#name-generating-the-sdp-answer" class="internal xref">Generating the SDP Answer</a></p>
+1358,1359c1394,1395
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.6.2.5">
+<                 <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="xref">6.5</a>.  <a href="#name-offerer-processing-of-the-s" class="xref">Offerer Processing of the SDP Answer</a><a href="#section-toc.1-1.6.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5">
+>                 <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="auto internal xref">6.5</a>.  <a href="#name-offerer-processing-of-the-s" class="internal xref">Offerer Processing of the SDP Answer</a></p>
+1361,1365c1397,1401
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.6.2.6">
+<                 <p id="section-toc.1-1.6.2.6.1"><a href="#section-6.6" class="xref">6.6</a>.  <a href="#name-modifying-the-session" class="xref">Modifying the Session</a><a href="#section-toc.1-1.6.2.6.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.6.2.6.2.1">
+<                     <p id="section-toc.1-1.6.2.6.2.1.1"><a href="#section-6.6.1" class="xref">6.6.1</a>.  <a href="#name-closing-a-data-channel" class="xref">Closing a Data Channel</a><a href="#section-toc.1-1.6.2.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6">
+>                 <p id="section-toc.1-1.6.2.6.1"><a href="#section-6.6" class="auto internal xref">6.6</a>.  <a href="#name-modifying-the-session" class="internal xref">Modifying the Session</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6.2.1">
+>                     <p id="section-toc.1-1.6.2.6.2.1.1"><a href="#section-6.6.1" class="auto internal xref">6.6.1</a>.  <a href="#name-closing-a-data-channel" class="internal xref">Closing a Data Channel</a></p>
+1369,1370c1405,1406
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.6.2.7">
+<                 <p id="section-toc.1-1.6.2.7.1"><a href="#section-6.7" class="xref">6.7</a>.  <a href="#name-various-sdp-offer-answer-co" class="xref">Various SDP Offer/Answer Considerations</a><a href="#section-toc.1-1.6.2.7.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.7">
+>                 <p id="section-toc.1-1.6.2.7.1"><a href="#section-6.7" class="auto internal xref">6.7</a>.  <a href="#name-various-sdp-offer-answer-co" class="internal xref">Various SDP Offer/Answer Considerations</a></p>
+1374,1375c1410,1411
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-examples" class="xref">Examples</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-examples" class="internal xref">Examples</a></p>
+1377,1378c1413,1414
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1380,1384c1416,1420
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.9.2.1">
+<                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="xref">9.1</a>.  <a href="#name-subprotocol-identifiers" class="xref">Subprotocol Identifiers</a><a href="#section-toc.1-1.9.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
+>                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="auto internal xref">9.1</a>.  <a href="#name-subprotocol-identifiers" class="internal xref">Subprotocol Identifiers</a></p>
+1386,1390c1422,1426
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.9.2.2">
+<                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="xref">9.2</a>.  <a href="#name-new-sdp-attributes" class="xref">New SDP Attributes</a><a href="#section-toc.1-1.9.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.9.2.2.2.1">
+<                     <p id="section-toc.1-1.9.2.2.2.1.1"><a href="#section-9.2.1" class="xref">9.2.1</a>.  <a href="#name-dcmap" class="xref">dcmap</a><a href="#section-toc.1-1.9.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
+>                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-new-sdp-attributes" class="internal xref">New SDP Attributes</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2.2.1">
+>                     <p id="section-toc.1-1.9.2.2.2.1.1"><a href="#section-9.2.1" class="auto internal xref">9.2.1</a>.  <a href="#name-dcmap" class="internal xref">dcmap</a></p>
+1392,1393c1428,1429
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.9.2.2.2.2">
+<                     <p id="section-toc.1-1.9.2.2.2.2.1"><a href="#section-9.2.2" class="xref">9.2.2</a>.  <a href="#name-dcsa" class="xref">dcsa</a><a href="#section-toc.1-1.9.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2.2.2">
+>                     <p id="section-toc.1-1.9.2.2.2.2.1"><a href="#section-9.2.2" class="auto internal xref">9.2.2</a>.  <a href="#name-dcsa" class="internal xref">dcsa</a></p>
+1397,1398c1433,1434
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.9.2.3">
+<                 <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="xref">9.3</a>.  <a href="#name-registering-attributes-for-" class="xref">Registering Attributes for Use with Data Channels</a><a href="#section-toc.1-1.9.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.3">
+>                 <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="auto internal xref">9.3</a>.  <a href="#name-registering-attributes-for-" class="internal xref">Registering Attributes for Use with Data Channels</a></p>
+1402,1406c1438,1442
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.10.2.1">
+<                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="xref">10.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.10.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
+>                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="auto internal xref">10.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1408,1409c1444,1445
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.10.2.2">
+<                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="xref">10.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.10.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
+>                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="auto internal xref">10.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1413,1417c1449,1453
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-generic-data-channel-negoti" class="xref">Generic Data Channel Negotiation Aspects when Not Using DCEP</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.11.2.1">
+<                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-a.1" class="xref">A.1</a>.  <a href="#name-stream-identifier-numbering" class="xref">Stream Identifier Numbering</a><a href="#section-toc.1-1.11.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-generic-data-channel-negoti" class="internal xref">Generic Data Channel Negotiation Aspects when Not Using DCEP</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
+>                 <p id="section-toc.1-1.11.2.1.1"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <a href="#name-stream-identifier-numbering" class="internal xref">Stream Identifier Numbering</a></p>
+1419,1423c1455,1459
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.11.2.2">
+<                 <p id="section-toc.1-1.11.2.2.1"><a href="#section-a.2" class="xref">A.2</a>.  <a href="#name-generic-data-channel-negotia" class="xref">Generic Data Channel Negotiation Not Using DCEP</a><a href="#section-toc.1-1.11.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.11.2.2.2.1">
+<                     <p id="section-toc.1-1.11.2.2.2.1.1"><a href="#section-a.2.1" class="xref">A.2.1</a>.  <a href="#name-overview" class="xref">Overview</a><a href="#section-toc.1-1.11.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
+>                 <p id="section-toc.1-1.11.2.2.1"><a href="#appendix-A.2" class="auto internal xref">A.2</a>.  <a href="#name-generic-data-channel-negotia" class="internal xref">Generic Data Channel Negotiation Not Using DCEP</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.1">
+>                     <p id="section-toc.1-1.11.2.2.2.1.1"><a href="#appendix-A.2.1" class="auto internal xref">A.2.1</a>.  <a href="#name-overview" class="internal xref">Overview</a></p>
+1425,1426c1461,1462
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.11.2.2.2.2">
+<                     <p id="section-toc.1-1.11.2.2.2.2.1"><a href="#section-a.2.2" class="xref">A.2.2</a>.  <a href="#name-opening-a-data-channel" class="xref">Opening a Data Channel</a><a href="#section-toc.1-1.11.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.2">
+>                     <p id="section-toc.1-1.11.2.2.2.2.1"><a href="#appendix-A.2.2" class="auto internal xref">A.2.2</a>.  <a href="#name-opening-a-data-channel" class="internal xref">Opening a Data Channel</a></p>
+1428,1429c1464,1465
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.11.2.2.2.3">
+<                     <p id="section-toc.1-1.11.2.2.2.3.1"><a href="#section-a.2.3" class="xref">A.2.3</a>.  <a href="#name-closing-a-data-channel-2" class="xref">Closing a Data Channel</a><a href="#section-toc.1-1.11.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.3">
+>                     <p id="section-toc.1-1.11.2.2.2.3.1"><a href="#appendix-A.2.3" class="auto internal xref">A.2.3</a>.  <a href="#name-closing-a-data-channel-2" class="internal xref">Closing a Data Channel</a></p>
+1435,1436c1471,1472
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1438,1439c1474,1475
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+1441,1442c1477,1478
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.14">
+<             <p id="section-toc.1-1.14.1"><a href="#section-appendix.d" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.14.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+>             <p id="section-toc.1-1.14.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1456,1457c1492,1493
+<  <span>[<a href="#RFC8831" class="xref">RFC8831</a>]</span>, allowing applications to use data channels. An in-band Data
+<    Channel Establishment Protocol (DCEP) is described in <span>[<a href="#RFC8832" class="xref">RFC8832</a>]</span>;
+---
+>  <span>[<a href="#RFC8831" class="cite xref">RFC8831</a>]</span>, allowing applications to use data channels. An in-band Data
+>    Channel Establishment Protocol (DCEP) is described in <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span>;
+1462c1498
+<    (1) the WebRTC API (Application Programming Interface) <span>[<a href="#WebRtcAPI" class="xref">WebRtcAPI</a>]</span> or (2)  other protocols
+---
+>    (1) the WebRTC API (Application Programming Interface) <span>[<a href="#WebRtcAPI" class="cite xref">WebRtcAPI</a>]</span> or (2)  other protocols
+1464c1500
+<  <span>[<a href="#RFC8850" class="xref">RFC8850</a>]</span>).  The protocols can be signaled 
+---
+>  <span>[<a href="#RFC8850" class="cite xref">RFC8850</a>]</span>).  The protocols can be signaled 
+1466c1502
+<    a WebSocket subprotocol as described in <span>[<a href="#RFC6455" class="xref">RFC6455</a>]</span>.
+---
+>    a WebSocket subprotocol as described in <span>[<a href="#RFC6455" class="cite xref">RFC6455</a>]</span>.
+1472c1508
+<       procedures <span>[<a href="#RFC3264" class="xref">RFC3264</a>]</span> that enable out-of-band negotiation
+---
+>       procedures <span>[<a href="#RFC3264" class="cite xref">RFC3264</a>]</span> that enable out-of-band negotiation
+1474c1510
+<    These procedures are based on generic SDP offer/answer negotiation rules for SCTP-based media transport as specified in <span>[<a href="#RFC8841" class="xref">RFC8841</a>]</span> for 
+---
+>    These procedures are based on generic SDP offer/answer negotiation rules for SCTP-based media transport as specified in <span>[<a href="#RFC8841" class="cite xref">RFC8841</a>]</span> for 
+1476,1477c1512,1513
+< <p id="section-1-3">This document uses MSRP (the Message Session Relay Protocol) <span>[<a href="#RFC4975" class="xref">RFC4975</a>]</span>
+<    and BFCP (the Binary Floor Control Protocol) <span>[<a href="#RFC8855" class="xref">RFC8855</a>]</span> in several examples. It does not provide a 
+---
+> <p id="section-1-3">This document uses MSRP (the Message Session Relay Protocol) <span>[<a href="#RFC4975" class="cite xref">RFC4975</a>]</span>
+>    and BFCP (the Binary Floor Control Protocol) <span>[<a href="#RFC8855" class="cite xref">RFC8855</a>]</span> in several examples. It does not provide a 
+1480c1516
+<    subprotocol would have to be documented elsewhere. For MSRP, they are documented in <span>[<a href="#RFC8873" class="xref">RFC8873</a>]</span>. The use of MSRP in some examples is only to show how the generic 
+---
+>    subprotocol would have to be documented elsewhere. For MSRP, they are documented in <span>[<a href="#RFC8873" class="cite xref">RFC8873</a>]</span>. The use of MSRP in some examples is only to show how the generic 
+1494,1495c1530,1531
+<      to be interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span>
+<         <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when, and only when, they appear in all capitals,
+---
+>      to be interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span>
+>         <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they appear in all capitals,
+1507c1543
+<      <span>[<a href="#RFC8831" class="xref">RFC8831</a>]</span>.<a href="#section-3-2.2" class="pilcrow">¶</a>
+---
+>      <span>[<a href="#RFC8831" class="cite xref">RFC8831</a>]</span>.<a href="#section-3-2.2" class="pilcrow">¶</a>
+1534c1570
+<      described in <a href="#subprotocol-parameter" class="xref">Section 5.1.4</a>. Within this document, the term  
+---
+>      described in <a href="#subprotocol-parameter" class="auto internal xref">Section 5.1.4</a>. Within this document, the term  
+1540c1576
+<      <span>[<a href="#RFC8832" class="xref">RFC8832</a>]</span>.<a href="#section-3-2.10" class="pilcrow">¶</a>
+---
+>      <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span>.<a href="#section-3-2.10" class="pilcrow">¶</a>
+1560c1596
+<      in <span>[<a href="#RFC4960" class="xref">RFC4960</a>]</span>.<a href="#section-3-2.18" class="pilcrow">¶</a>
+---
+>      in <span>[<a href="#RFC4960" class="cite xref">RFC4960</a>]</span>.<a href="#section-3-2.18" class="pilcrow">¶</a>
+1576,1577c1612,1613
+< <p id="section-4-1"> The mechanism described in this document only applies to SDP <span>[<a href="#RFC8866" class="xref">RFC8866</a>]</span> when used together with the SDP offer/answer 
+<    mechanism <span>[<a href="#RFC3264" class="xref">RFC3264</a>]</span>. Declarative usage of SDP is out of scope for this 
+---
+> <p id="section-4-1"> The mechanism described in this document only applies to SDP <span>[<a href="#RFC8866" class="cite xref">RFC8866</a>]</span> when used together with the SDP offer/answer 
+>    mechanism <span>[<a href="#RFC3264" class="cite xref">RFC3264</a>]</span>. Declarative usage of SDP is out of scope for this 
+1589,1590c1625,1626
+<       usage of DCEP <span>[<a href="#RFC8832" class="xref">RFC8832</a>]</span>. The first attribute (<a href="#subsec-sdp-attr-for-dc-par-neg" class="xref">Section 5.1</a>) provides for negotiation of 
+<      channel-specific parameters. The second attribute (<a href="#prot_att" class="xref">Section 5.2</a>) provides for 
+---
+>       usage of DCEP <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span>. The first attribute (<a href="#subsec-sdp-attr-for-dc-par-neg" class="auto internal xref">Section 5.1</a>) provides for negotiation of 
+>      channel-specific parameters. The second attribute (<a href="#prot_att" class="auto internal xref">Section 5.2</a>) provides for 
+1594c1630
+< Note: <a href="#generic-out-of-band-aspects" class="xref">Appendix A</a> provides information
+---
+> Note: <a href="#generic-out-of-band-aspects" class="auto internal xref">Appendix A</a> provides information
+1615c1651
+<           definition and ABNF (Augmented Backus-Naur Form) syntax <span>[<a href="#RFC5234" class="xref">RFC5234</a>]</span>.<a href="#section-5.1.1-1" class="pilcrow">¶</a></p>
+---
+>           definition and ABNF (Augmented Backus-Naur Form) syntax <span>[<a href="#RFC5234" class="cite xref">RFC5234</a>]</span>.<a href="#section-5.1.1-1" class="pilcrow">¶</a></p>
+1648,1649c1684,1685
+< <div id="section-5.1.1-4">
+< <pre class="sourcecode lang-abnf">
+---
+> <div class="lang-abnf sourcecode" id="section-5.1.1-4">
+> <pre>
+1687,1688c1723,1724
+< <div id="section-5.1.1-6">
+< <pre class="sourcecode lang-sdp">
+---
+> <div class="lang-sdp sourcecode" id="section-5.1.1-6">
+> <pre>
+1720c1756
+<        in the context of the WebRTC API <span>[<a href="#WebRtcAPI" class="xref">WebRtcAPI</a>]</span>, 
+---
+>        in the context of the WebRTC API <span>[<a href="#WebRtcAPI" class="cite xref">WebRtcAPI</a>]</span>, 
+1723c1759
+<        <span>[<a href="#RFC8832" class="xref">RFC8832</a>]</span>.       
+---
+>        <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span>.       
+1729c1765
+< <li class="normal" id="section-5.1.3-3.1">Serialize the WebRTC label as a UTF-8 string <span>[<a href="#RFC3629" class="xref">RFC3629</a>]</span>.<a href="#section-5.1.3-3.1" class="pilcrow">¶</a>
+---
+> <li class="normal" id="section-5.1.3-3.1">Serialize the WebRTC label as a UTF-8 string <span>[<a href="#RFC3629" class="cite xref">RFC3629</a>]</span>.<a href="#section-5.1.3-3.1" class="pilcrow">¶</a>
+1747c1783
+<        <span>[<a href="#RFC8832" class="xref">RFC8832</a>]</span> allows the DATA_CHANNEL_OPEN 
+---
+>        <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span> allows the DATA_CHANNEL_OPEN 
+1759,1760c1795,1796
+<        <span>[<a href="#RFC8832" class="xref">RFC8832</a>]</span>.
+<        <a href="#IANA_subproto_ids" class="xref">Section 9.1</a> specifies how values for new subprotocol parameters are registered.
+---
+>        <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span>.
+>        <a href="#IANA_subproto_ids" class="auto internal xref">Section 9.1</a> specifies how values for new subprotocol parameters are registered.
+1768c1804
+<        present at all. <span>[<a href="#RFC8832" class="xref">RFC8832</a>]</span> allows the 
+---
+>        present at all. <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span> allows the 
+1782c1818
+<        transmission is performed as specified in <span>[<a href="#RFC4960" class="xref">RFC4960</a>]</span>. 
+---
+>        transmission is performed as specified in <span>[<a href="#RFC4960" class="cite xref">RFC4960</a>]</span>. 
+1784c1820
+<        defined in <span>[<a href="#RFC8832" class="xref">RFC8832</a>]</span>.<a href="#section-5.1.5-1" class="pilcrow">¶</a></p>
+---
+>        defined in <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span>.<a href="#section-5.1.5-1" class="pilcrow">¶</a></p>
+1796c1832
+<        transmission is performed as specified in <span>[<a href="#RFC4960" class="xref">RFC4960</a>]</span>. 
+---
+>        transmission is performed as specified in <span>[<a href="#RFC4960" class="cite xref">RFC4960</a>]</span>. 
+1798c1834
+<        defined in <span>[<a href="#RFC8832" class="xref">RFC8832</a>]</span>.<a href="#section-5.1.6-1" class="pilcrow">¶</a></p>
+---
+>        defined in <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span>.<a href="#section-5.1.6-1" class="pilcrow">¶</a></p>
+1814c1850
+<        <span>[<a href="#RFC8832" class="xref">RFC8832</a>]</span>.<a href="#section-5.1.7-1" class="pilcrow">¶</a></p>
+---
+>        <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span>.<a href="#section-5.1.7-1" class="pilcrow">¶</a></p>
+1826c1862
+<        <span>[<a href="#RFC8832" class="xref">RFC8832</a>]</span>. 
+---
+>        <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span>. 
+1836c1872
+< <p id="section-5.1.9-1">The multiplexing category <span>[<a href="#RFC8859" class="xref">RFC8859</a>]</span> of the "a=dcmap:" attribute is SPECIAL.<a href="#section-5.1.9-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-5.1.9-1">The multiplexing category <span>[<a href="#RFC8859" class="cite xref">RFC8859</a>]</span> of the "a=dcmap:" attribute is SPECIAL.<a href="#section-5.1.9-1" class="pilcrow">¶</a></p>
+1838c1874
+<        association is outside the scope of <span>[<a href="#RFC8841" class="xref">RFC8841</a>]</span>,
+---
+>        association is outside the scope of <span>[<a href="#RFC8841" class="cite xref">RFC8841</a>]</span>,
+1841c1877
+<        If future extensions of <span>[<a href="#RFC8841" class="xref">RFC8841</a>]</span> define how to 
+---
+>        If future extensions of <span>[<a href="#RFC8841" class="cite xref">RFC8841</a>]</span> define how to 
+1861c1897
+<         with a data channel are given in <a href="#IANA-reg-data-channel-attribs" class="xref">Section 9.3</a>.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+---
+>         with a data channel are given in <a href="#IANA-reg-data-channel-attribs" class="auto internal xref">Section 9.3</a>.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+1875c1911
+<         (Internet Assigned Numbers Authority) registration procedures for the "WebSocket Subprotocol Name Registry" (<a href="#IANA_subproto_ids" class="xref">Section 9.1</a>) do not strictly require a specification of the offer/answer procedures for the subprotocol when used with dcsa. If the subprotocol has defined offer/answer procedures when used outside of dcsa, such a specification is encouraged to ensure interoperability. If the subprotocol has defined offer/answer procedures when used outside of dcsa but no specification exists for the offer/answer procedures for the subprotocol when used with dcsa, implementations <span class="bcp14">SHOULD</span> assume the use of the default values for all otherwise-negotiable and applicable subprotocol parameters.<a href="#section-5.2-4" class="pilcrow">¶</a></p>
+---
+>         (Internet Assigned Numbers Authority) registration procedures for the "WebSocket Subprotocol Name Registry" (<a href="#IANA_subproto_ids" class="auto internal xref">Section 9.1</a>) do not strictly require a specification of the offer/answer procedures for the subprotocol when used with dcsa. If the subprotocol has defined offer/answer procedures when used outside of dcsa, such a specification is encouraged to ensure interoperability. If the subprotocol has defined offer/answer procedures when used outside of dcsa but no specification exists for the offer/answer procedures for the subprotocol when used with dcsa, implementations <span class="bcp14">SHOULD</span> assume the use of the default values for all otherwise-negotiable and applicable subprotocol parameters.<a href="#section-5.2-4" class="pilcrow">¶</a></p>
+1882c1918
+< ABNF (Augmented Backus-Naur Form) syntax <span>[<a href="#RFC5234" class="xref">RFC5234</a>]</span>.<a href="#section-5.2.1-1" class="pilcrow">¶</a></p>
+---
+> ABNF (Augmented Backus-Naur Form) syntax <span>[<a href="#RFC5234" class="cite xref">RFC5234</a>]</span>.<a href="#section-5.2.1-1" class="pilcrow">¶</a></p>
+1915,1916c1951,1952
+< <div id="section-5.2.1-4">
+< <pre class="sourcecode lang-abnf">
+---
+> <div class="lang-abnf sourcecode" id="section-5.2.1-4">
+> <pre>
+1922,1923c1958,1959
+< <div id="section-5.2.1-6">
+< <pre class="sourcecode lang-sdp">
+---
+> <div class="lang-sdp sourcecode" id="section-5.2.1-6">
+> <pre>
+1928c1964
+< <p id="section-5.2.1-7">The reference to <span>[<a href="#RFC8866" class="xref">RFC8866</a>]</span> defines where the 
+---
+> <p id="section-5.2.1-7">The reference to <span>[<a href="#RFC8866" class="cite xref">RFC8866</a>]</span> defines where the 
+1959c1995
+<       <a href="#IANA_subproto_ids" class="xref">Section 9.1</a>.<a href="#section-5.2.1-11" class="pilcrow">¶</a></p>
+---
+>       <a href="#IANA_subproto_ids" class="auto internal xref">Section 9.1</a>.<a href="#section-5.2.1-11" class="pilcrow">¶</a></p>
+1969c2005
+<        association is outside the scope of <span>[<a href="#RFC8841" class="xref">RFC8841</a>]</span>,
+---
+>        association is outside the scope of <span>[<a href="#RFC8841" class="cite xref">RFC8841</a>]</span>,
+1972c2008
+<        If future extensions of <span>[<a href="#RFC8841" class="xref">RFC8841</a>]</span> define how to 
+---
+>        If future extensions of <span>[<a href="#RFC8841" class="cite xref">RFC8841</a>]</span> define how to 
+1993c2029
+< <p id="section-6-2">The generic offer/answer procedures for negotiating the SCTP association used to realize data channels are defined in <span>[<a href="#RFC8841" class="xref">RFC8841</a>]</span>. This section only defines the data-channel-specific procedures.<a href="#section-6-2" class="pilcrow">¶</a></p>
+---
+> <p id="section-6-2">The generic offer/answer procedures for negotiating the SCTP association used to realize data channels are defined in <span>[<a href="#RFC8841" class="cite xref">RFC8841</a>]</span>. This section only defines the data-channel-specific procedures.<a href="#section-6-2" class="pilcrow">¶</a></p>
+1996c2032
+< <p id="section-6-4">The detailed offer/answer procedures for the dcsa attribute are dependent on the associated subprotocol; see <a href="#prot_att" class="xref">Section 5.2</a>.<a href="#section-6-4" class="pilcrow">¶</a></p>
+---
+> <p id="section-6-4">The detailed offer/answer procedures for the dcsa attribute are dependent on the associated subprotocol; see <a href="#prot_att" class="auto internal xref">Section 5.2</a>.<a href="#section-6-4" class="pilcrow">¶</a></p>
+2004c2040
+<         <span>[<a href="#RFC8832" class="xref">RFC8832</a>]</span>, the endpoint acting as a DTLS client (for
+---
+>         <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span>, the endpoint acting as a DTLS client (for
+2016c2052
+<    The data channel types defined in <span>[<a href="#RFC8832" class="xref">RFC8832</a>]</span> are
+---
+>    The data channel types defined in <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span> are
+2018,2019c2054,2055
+< <div id="section-6.2-2">
+< <pre class="sourcecode lang-sdp">
+---
+> <div class="lang-sdp sourcecode" id="section-6.2-2">
+> <pre>
+2056c2092
+<           (Sections <a href="#subsec-sdp-attr-for-dc-par-neg" class="xref">5.1</a> and  <a href="#param_negotiation" class="xref">6.2</a>) associated with the data channel in the "m=" section representing the SCTP association used to realize the data channel, and<a href="#section-6.3-2.1" class="pilcrow">¶</a>
+---
+>           (Sections <a href="#subsec-sdp-attr-for-dc-par-neg" class="auto internal xref">5.1</a> and  <a href="#param_negotiation" class="auto internal xref">6.2</a>) associated with the data channel in the "m=" section representing the SCTP association used to realize the data channel, and<a href="#section-6.3-2.1" class="pilcrow">¶</a>
+2059c2095
+<             <span class="bcp14">MAY</span> include one or more SDP dcsa attributes (<a href="#prot_att" class="xref">Section 5.2</a>) associated with the
+---
+>             <span class="bcp14">MAY</span> include one or more SDP dcsa attributes (<a href="#prot_att" class="auto internal xref">Section 5.2</a>) associated with the
+2074c2110
+<           (Sections <a href="#subsec-sdp-attr-for-dc-par-neg" class="xref">5.1</a> and  <a href="#param_negotiation" class="xref">6.2</a>)
+---
+>           (Sections <a href="#subsec-sdp-attr-for-dc-par-neg" class="auto internal xref">5.1</a> and  <a href="#param_negotiation" class="auto internal xref">6.2</a>)
+2082c2118
+<             <span class="bcp14">MAY</span> include one or more SDP dcsa attributes (<a href="#prot_att" class="xref">Section 5.2</a>) associated with the
+---
+>             <span class="bcp14">MAY</span> include one or more SDP dcsa attributes (<a href="#prot_att" class="auto internal xref">Section 5.2</a>) associated with the
+2094c2130
+<        <a href="#close-dc" class="xref">Section 6.6.1</a>
+---
+>        <a href="#close-dc" class="auto internal xref">Section 6.6.1</a>
+2100c2136
+<    point, the offerer may use DCEP negotiation <span>[<a href="#RFC8832" class="xref">RFC8832</a>]</span> to open data channels.<a href="#section-6.5-2.1" class="pilcrow">¶</a>
+---
+>    point, the offerer may use DCEP negotiation <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span> to open data channels.<a href="#section-6.5-2.1" class="pilcrow">¶</a>
+2130c2166
+<    close the data channel (<a href="#close-dc" class="xref">Section 6.6.1</a>), the offerer <span class="bcp14">SHALL</span> include the
+---
+>    close the data channel (<a href="#close-dc" class="auto internal xref">Section 6.6.1</a>), the offerer <span class="bcp14">SHALL</span> include the
+2134c2170
+<    offer <span>[<a href="#RFC3264" class="xref">RFC3264</a>]</span>.<a href="#section-6.6-1" class="pilcrow">¶</a></p>
+---
+>    offer <span>[<a href="#RFC3264" class="cite xref">RFC3264</a>]</span>.<a href="#section-6.6-1" class="pilcrow">¶</a></p>
+2142c2178
+<    <span class="bcp14">SHALL</span> send an SCTP SSN Reset message <span>[<a href="#RFC6525" class="xref">RFC6525</a>]</span>, following the procedure in <span><a href="https://www.rfc-editor.org/rfc/rfc8831#section-6.7" class="relref">Section 6.7</a> of [<a href="#RFC8831" class="xref">RFC8831</a>]</span>.
+---
+>    <span class="bcp14">SHALL</span> send an SCTP SSN Reset message <span>[<a href="#RFC6525" class="cite xref">RFC6525</a>]</span>, following the procedure in <span><a href="https://rfc-editor.org/rfc/rfc8831#section-6.7" class="relref">Section 6.7</a> of [<a href="#RFC8831" class="cite xref">RFC8831</a>]</span>.
+2144c2180
+< mechanism (<a href="#opendc" class="xref">Section 6.3</a>), the endpoint that closed the data channel
+---
+> mechanism (<a href="#opendc" class="auto internal xref">Section 6.3</a>), the endpoint that closed the data channel
+2153c2189
+<             <li class="normal" id="section-6.6.1-2.2">After a reset has been performed, reuses the SCTP stream used for the closed data channel for a new data channel, following the procedure in <a href="#opendc" class="xref">Section 6.3</a>. The offerer <span class="bcp14">SHALL</span> use a different SDP dcmap attribute value for the data channel using the same SCTP stream.<a href="#section-6.6.1-2.2" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-6.6.1-2.2">After a reset has been performed, reuses the SCTP stream used for the closed data channel for a new data channel, following the procedure in <a href="#opendc" class="auto internal xref">Section 6.3</a>. The offerer <span class="bcp14">SHALL</span> use a different SDP dcmap attribute value for the data channel using the same SCTP stream.<a href="#section-6.6.1-2.2" class="pilcrow">¶</a>
+2194c2230
+< <p id="section-7-1"><a href="#example1" class="xref">Figure 1</a> shows an example of an SDP offer and answer
+---
+> <p id="section-7-1"><a href="#example1" class="auto internal xref">Figure 1</a> shows an example of an SDP offer and answer
+2205,2206c2241,2242
+<         <div id="section-7-2.1">
+< <pre class="sourcecode lang-sdp">
+---
+>         <div class="lang-sdp sourcecode" id="section-7-2.1">
+> <pre>
+2217,2218c2253,2254
+< <div id="section-7-2.2">
+< <pre class="sourcecode lang-sdp">
+---
+> <div class="lang-sdp sourcecode" id="section-7-2.2">
+> <pre>
+2232c2268
+< <p id="section-7-3"><a href="#example2" class="xref">Figure 2</a> shows an example of an SDP offer and answer
+---
+> <p id="section-7-3"><a href="#example2" class="auto internal xref">Figure 2</a> shows an example of an SDP offer and answer
+2242,2243c2278,2279
+<         <div id="section-7-4.1">
+< <pre class="sourcecode lang-sdp">
+---
+>         <div class="lang-sdp sourcecode" id="section-7-4.1">
+> <pre>
+2257,2258c2293,2294
+< <div id="section-7-4.2">
+< <pre class="sourcecode lang-sdp">
+---
+> <div class="lang-sdp sourcecode" id="section-7-4.2">
+> <pre>
+2275c2311
+< <p id="section-7-5">The example in <a href="#example3" class="xref">Figure 3</a> is a continuation of the example in <a href="#example2" class="xref">Figure 2</a>. 
+---
+> <p id="section-7-5">The example in <a href="#example3" class="auto internal xref">Figure 3</a> is a continuation of the example in <a href="#example2" class="auto internal xref">Figure 2</a>. 
+2284,2285c2320,2321
+<         <div id="section-7-6.1">
+< <pre class="sourcecode lang-sdp">
+---
+>         <div class="lang-sdp sourcecode" id="section-7-6.1">
+> <pre>
+2298,2299c2334,2335
+< <div id="section-7-6.2">
+< <pre class="sourcecode lang-sdp">
+---
+> <div class="lang-sdp sourcecode" id="section-7-6.2">
+> <pre>
+2325c2361
+< These parameters are negotiated as part of opening an SCTP channel over DTLS as specified in <span>[<a href="#RFC8841" class="xref">RFC8841</a>]</span>. Each 
+---
+> These parameters are negotiated as part of opening an SCTP channel over DTLS as specified in <span>[<a href="#RFC8841" class="cite xref">RFC8841</a>]</span>. Each 
+2327c2363
+< Otherwise, this document does not add any security considerations to those specified in <span>[<a href="#RFC8841" class="xref">RFC8841</a>]</span>.<a href="#section-8-2" class="pilcrow">¶</a></p>
+---
+> Otherwise, this document does not add any security considerations to those specified in <span>[<a href="#RFC8841" class="cite xref">RFC8841</a>]</span>.<a href="#section-8-2" class="pilcrow">¶</a></p>
+2329c2365
+<       of the odd/even rule (<a href="#id_mgmt" class="xref">Section 6.1</a>) <span class="bcp14">MUST</span>
+---
+>       of the odd/even rule (<a href="#id_mgmt" class="auto internal xref">Section 6.1</a>) <span class="bcp14">MUST</span>
+2397c2433
+<                 <td class="text-left" rowspan="1" colspan="1">As per <a href="#dcmap-attr-definition" class="xref">Section 5.1.1</a>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">As per <a href="#dcmap-attr-definition" class="auto internal xref">Section 5.1.1</a>
+2402c2438
+<                 <td class="text-left" rowspan="1" colspan="1">As per <a href="#dcmap-attr-definition" class="xref">Section 5.1.1</a>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">As per <a href="#dcmap-attr-definition" class="auto internal xref">Section 5.1.1</a>
+2419c2455
+<                 <td class="text-left" rowspan="1" colspan="1">As per <a href="#dcmap-attr-definition" class="xref">Section 5.1.1</a>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">As per <a href="#dcmap-attr-definition" class="auto internal xref">Section 5.1.1</a>
+2424c2460
+<                 <td class="text-left" rowspan="1" colspan="1">SDP offer/answer procedures as per <a href="#section_procedures" class="xref">Section 6</a>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">SDP offer/answer procedures as per <a href="#section_procedures" class="auto internal xref">Section 6</a>
+2429c2465
+<                 <td class="text-left" rowspan="1" colspan="1">SPECIAL. See <a href="#dcmap-mux-category" class="xref">Section 5.1.9</a>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">SPECIAL. See <a href="#dcmap-mux-category" class="auto internal xref">Section 5.1.9</a>
+2473c2509
+<                 <td class="text-left" rowspan="1" colspan="1">As per <a href="#dcsa-attribute" class="xref">Section 5.2.1</a>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">As per <a href="#dcsa-attribute" class="auto internal xref">Section 5.2.1</a>
+2478c2514
+<                 <td class="text-left" rowspan="1" colspan="1">As per <a href="#dcsa-attribute" class="xref">Section 5.2.1</a>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">As per <a href="#dcsa-attribute" class="auto internal xref">Section 5.2.1</a>
+2495c2531
+<                 <td class="text-left" rowspan="1" colspan="1">As per <a href="#dcsa-attribute" class="xref">Section 5.2.1</a>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">As per <a href="#dcsa-attribute" class="auto internal xref">Section 5.2.1</a>
+2500c2536
+<                 <td class="text-left" rowspan="1" colspan="1">SDP offer/answer procedures as per <a href="#section_procedures" class="xref">Section 6</a>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">SDP offer/answer procedures as per <a href="#section_procedures" class="auto internal xref">Section 6</a>
+2505c2541
+<                 <td class="text-left" rowspan="1" colspan="1">SPECIAL. See <a href="#dcsa-mux-category" class="xref">Section 5.2.2</a>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">SPECIAL. See <a href="#dcsa-mux-category" class="auto internal xref">Section 5.2.2</a>
+2527c2563
+<         <span>[<a href="#RFC8866" class="xref">RFC8866</a>], <a href="https://www.rfc-editor.org/rfc/rfc8866#section-8.2.4" class="relref">Section 8.2.4</a></span>.  This
+---
+>         <span>[<a href="#RFC8866" class="cite xref">RFC8866</a>], <a href="https://rfc-editor.org/rfc/rfc8866#section-8.2.4" class="relref">Section 8.2.4</a></span>.  This
+2553c2589
+< <span class="refAuthor">Rosenberg, J.</span><span class="refAuthor"> and H. Schulzrinne</span>, <span class="refTitle">"An Offer/Answer Model with Session Description Protocol (SDP)"</span>, <span class="seriesInfo">RFC 3264</span>, <span class="seriesInfo">DOI 10.17487/RFC3264</span>, <time datetime="2002-06" class="refDate">June 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3264">https://www.rfc-editor.org/info/rfc3264</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rosenberg, J.</span> and <span class="refAuthor">H. Schulzrinne</span>, <span class="refTitle">"An Offer/Answer Model with Session Description Protocol (SDP)"</span>, <span class="seriesInfo">RFC 3264</span>, <span class="seriesInfo">DOI 10.17487/RFC3264</span>, <time datetime="2002-06" class="refDate">June 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3264">https://www.rfc-editor.org/info/rfc3264</a>&gt;</span>. </dd>
+2565c2601
+< <span class="refAuthor">Crocker, D., Ed.</span><span class="refAuthor"> and P. Overell</span>, <span class="refTitle">"Augmented BNF for Syntax Specifications: ABNF"</span>, <span class="seriesInfo">STD 68</span>, <span class="seriesInfo">RFC 5234</span>, <span class="seriesInfo">DOI 10.17487/RFC5234</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5234">https://www.rfc-editor.org/info/rfc5234</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Crocker, D., Ed.</span> and <span class="refAuthor">P. Overell</span>, <span class="refTitle">"Augmented BNF for Syntax Specifications: ABNF"</span>, <span class="seriesInfo">STD 68</span>, <span class="seriesInfo">RFC 5234</span>, <span class="seriesInfo">DOI 10.17487/RFC5234</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5234">https://www.rfc-editor.org/info/rfc5234</a>&gt;</span>. </dd>
+2569c2605
+< <span class="refAuthor">Stewart, R.</span><span class="refAuthor">, Tuexen, M.</span><span class="refAuthor">, and P. Lei</span>, <span class="refTitle">"Stream Control Transmission Protocol (SCTP) Stream Reconfiguration"</span>, <span class="seriesInfo">RFC 6525</span>, <span class="seriesInfo">DOI 10.17487/RFC6525</span>, <time datetime="2012-02" class="refDate">February 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6525">https://www.rfc-editor.org/info/rfc6525</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Stewart, R.</span>, <span class="refAuthor">Tuexen, M.</span>, and <span class="refAuthor">P. Lei</span>, <span class="refTitle">"Stream Control Transmission Protocol (SCTP) Stream Reconfiguration"</span>, <span class="seriesInfo">RFC 6525</span>, <span class="seriesInfo">DOI 10.17487/RFC6525</span>, <time datetime="2012-02" class="refDate">February 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6525">https://www.rfc-editor.org/info/rfc6525</a>&gt;</span>. </dd>
+2577c2613
+< <span class="refAuthor">Jesup, R.</span><span class="refAuthor">, Loreto, S.</span><span class="refAuthor">, and M. Tüxen</span>, <span class="refTitle">"WebRTC Data Channels"</span>, <span class="seriesInfo">RFC 8831</span>, <span class="seriesInfo">DOI 10.17487/RFC8831</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8831">https://www.rfc-editor.org/info/rfc8831</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jesup, R.</span>, <span class="refAuthor">Loreto, S.</span>, and <span class="refAuthor">M. Tüxen</span>, <span class="refTitle">"WebRTC Data Channels"</span>, <span class="seriesInfo">RFC 8831</span>, <span class="seriesInfo">DOI 10.17487/RFC8831</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8831">https://www.rfc-editor.org/info/rfc8831</a>&gt;</span>. </dd>
+2581c2617
+< <span class="refAuthor">Jesup, R.</span><span class="refAuthor">, Loreto, S.</span><span class="refAuthor">, and M. Tüxen</span>, <span class="refTitle">"WebRTC Data Channel Establishment Protocol"</span>, <span class="seriesInfo">RFC 8832</span>, <span class="seriesInfo">DOI 10.17487/RFC8832</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8832">https://www.rfc-editor.org/info/rfc8832</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jesup, R.</span>, <span class="refAuthor">Loreto, S.</span>, and <span class="refAuthor">M. Tüxen</span>, <span class="refTitle">"WebRTC Data Channel Establishment Protocol"</span>, <span class="seriesInfo">RFC 8832</span>, <span class="seriesInfo">DOI 10.17487/RFC8832</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8832">https://www.rfc-editor.org/info/rfc8832</a>&gt;</span>. </dd>
+2585c2621
+< <span class="refAuthor">Holmberg, C.</span><span class="refAuthor">, Shpount, R.</span><span class="refAuthor">, Loreto, S.</span><span class="refAuthor">, and G. Camarillo</span>, <span class="refTitle">"Session Description Protocol (SDP) Offer/Answer Procedures for Stream Control Transmission Protocol (SCTP) over Datagram Transport Layer Security (DTLS) Transport"</span>, <span class="seriesInfo">RFC 8841</span>, <span class="seriesInfo">DOI 10.17487/RFC8841</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8841">https://www.rfc-editor.org/info/rfc8841</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Holmberg, C.</span>, <span class="refAuthor">Shpount, R.</span>, <span class="refAuthor">Loreto, S.</span>, and <span class="refAuthor">G. Camarillo</span>, <span class="refTitle">"Session Description Protocol (SDP) Offer/Answer Procedures for Stream Control Transmission Protocol (SCTP) over Datagram Transport Layer Security (DTLS) Transport"</span>, <span class="seriesInfo">RFC 8841</span>, <span class="seriesInfo">DOI 10.17487/RFC8841</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8841">https://www.rfc-editor.org/info/rfc8841</a>&gt;</span>. </dd>
+2593c2629
+< <span class="refAuthor">Begen, A.</span><span class="refAuthor">, Kyzivat, P.</span><span class="refAuthor">, Perkins, C.</span><span class="refAuthor">, and M. Handley</span>, <span class="refTitle">"SDP: Session Description Protocol"</span>, <span class="seriesInfo">RFC 8866</span>, <span class="seriesInfo">DOI 10.17487/RFC8866</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8866">https://www.rfc-editor.org/info/rfc8866</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Begen, A.</span>, <span class="refAuthor">Kyzivat, P.</span>, <span class="refAuthor">Perkins, C.</span>, and <span class="refAuthor">M. Handley</span>, <span class="refTitle">"SDP: Session Description Protocol"</span>, <span class="seriesInfo">RFC 8866</span>, <span class="seriesInfo">DOI 10.17487/RFC8866</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8866">https://www.rfc-editor.org/info/rfc8866</a>&gt;</span>. </dd>
+2604c2640
+< <span class="refAuthor">Campbell, B., Ed.</span><span class="refAuthor">, Mahy, R., Ed.</span><span class="refAuthor">, and C. Jennings, Ed.</span>, <span class="refTitle">"The Message Session Relay Protocol (MSRP)"</span>, <span class="seriesInfo">RFC 4975</span>, <span class="seriesInfo">DOI 10.17487/RFC4975</span>, <time datetime="2007-09" class="refDate">September 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4975">https://www.rfc-editor.org/info/rfc4975</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Campbell, B., Ed.</span>, <span class="refAuthor">Mahy, R., Ed.</span>, and <span class="refAuthor">C. Jennings, Ed.</span>, <span class="refTitle">"The Message Session Relay Protocol (MSRP)"</span>, <span class="seriesInfo">RFC 4975</span>, <span class="seriesInfo">DOI 10.17487/RFC4975</span>, <time datetime="2007-09" class="refDate">September 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4975">https://www.rfc-editor.org/info/rfc4975</a>&gt;</span>. </dd>
+2608c2644
+< <span class="refAuthor">Fette, I.</span><span class="refAuthor"> and A. Melnikov</span>, <span class="refTitle">"The WebSocket Protocol"</span>, <span class="seriesInfo">RFC 6455</span>, <span class="seriesInfo">DOI 10.17487/RFC6455</span>, <time datetime="2011-12" class="refDate">December 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6455">https://www.rfc-editor.org/info/rfc6455</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fette, I.</span> and <span class="refAuthor">A. Melnikov</span>, <span class="refTitle">"The WebSocket Protocol"</span>, <span class="seriesInfo">RFC 6455</span>, <span class="seriesInfo">DOI 10.17487/RFC6455</span>, <time datetime="2011-12" class="refDate">December 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6455">https://www.rfc-editor.org/info/rfc6455</a>&gt;</span>. </dd>
+2616c2652
+< <span class="refAuthor">Camarillo, G.</span><span class="refAuthor">, Drage, K.</span><span class="refAuthor">, Kristensen, T.</span><span class="refAuthor">, Ott, J.</span><span class="refAuthor">, and C. Eckel</span>, <span class="refTitle">"The Binary Floor Control Protocol (BFCP)"</span>, <span class="seriesInfo">RFC 8855</span>, <span class="seriesInfo">DOI 10.17487/RFC8855</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8855">https://www.rfc-editor.org/info/rfc8855</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Camarillo, G.</span>, <span class="refAuthor">Drage, K.</span>, <span class="refAuthor">Kristensen, T.</span>, <span class="refAuthor">Ott, J.</span>, and <span class="refAuthor">C. Eckel</span>, <span class="refTitle">"The Binary Floor Control Protocol (BFCP)"</span>, <span class="seriesInfo">RFC 8855</span>, <span class="seriesInfo">DOI 10.17487/RFC8855</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8855">https://www.rfc-editor.org/info/rfc8855</a>&gt;</span>. </dd>
+2620c2656
+< <span class="refAuthor">Recio, JM., Ed.</span><span class="refAuthor"> and C. Holmberg</span>, <span class="refTitle">"Message Session Relay Protocol (MSRP) over Data Channels"</span>, <span class="seriesInfo">RFC 8873</span>, <span class="seriesInfo">DOI 10.17487/RFC8873</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8873">https://www.rfc-editor.org/info/rfc8873</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Recio, JM., Ed.</span> and <span class="refAuthor">C. Holmberg</span>, <span class="refTitle">"Message Session Relay Protocol (MSRP) over Data Channels"</span>, <span class="seriesInfo">RFC 8873</span>, <span class="seriesInfo">DOI 10.17487/RFC8873</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8873">https://www.rfc-editor.org/info/rfc8873</a>&gt;</span>. </dd>
+2628c2664
+< <span class="refAuthor">Jennings, C.</span><span class="refAuthor">, Boström, H.</span><span class="refAuthor">, and J-I. Bruaroey</span>, <span class="refTitle">"WebRTC 1.0: Real-time Communication Between Browsers"</span>, <span class="refContent">W3C Proposed Recommendation</span>, <span>&lt;<a href="https://www.w3.org/TR/webrtc/">https://www.w3.org/TR/webrtc/</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jennings, C.</span>, <span class="refAuthor">Boström, H.</span>, and <span class="refAuthor">J-I. Bruaroey</span>, <span class="refTitle">"WebRTC 1.0: Real-time Communication Between Browsers"</span>, <span class="refContent">W3C Proposed Recommendation</span>, <span>&lt;<a href="https://www.w3.org/TR/webrtc/">https://www.w3.org/TR/webrtc/</a>&gt;</span>. </dd>
+2634c2670
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2636c2672
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-generic-data-channel-negoti" class="section-name selfRef">Generic Data Channel Negotiation Aspects when Not Using DCEP</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-generic-data-channel-negoti" class="section-name selfRef">Generic Data Channel Negotiation Aspects when Not Using DCEP</a>
+2638c2674
+< <p id="section-appendix.a-1">This appendix summarizes how data channels work in general and discusses 
+---
+> <p id="appendix-A-1">This appendix summarizes how data channels work in general and discusses 
+2640,2641c2676,2677
+<    channels if DCEP is not used.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2">A WebRTC application creates a data channel
+---
+>    channels if DCEP is not used.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2">A WebRTC application creates a data channel
+2646,2652c2682,2688
+<    <span>[<a href="#RFC8832" class="xref">RFC8832</a>]</span> or 
+<    intends to negotiate data channels using the SDP offer/answer protocol.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-3">In any case, the SDP offer generated by the application is per 
+<    <span>[<a href="#RFC8841" class="xref">RFC8841</a>]</span>. In brief, it contains one 
+<    "m=" line for the SCTP association on top of which the data channels will run:<a href="#section-appendix.a-3" class="pilcrow">¶</a></p>
+< <div id="section-appendix.a-4">
+< <pre class="sourcecode lang-sdp">
+---
+>    <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span> or 
+>    intends to negotiate data channels using the SDP offer/answer protocol.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+> <p id="appendix-A-3">In any case, the SDP offer generated by the application is per 
+>    <span>[<a href="#RFC8841" class="cite xref">RFC8841</a>]</span>. In brief, it contains one 
+>    "m=" line for the SCTP association on top of which the data channels will run:<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+> <div class="lang-sdp sourcecode" id="appendix-A-4">
+> <pre>
+2660c2696
+<     4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB</pre><a href="#section-appendix.a-4" class="pilcrow">¶</a>
+---
+>     4A:AD:B9:B1:3F:82:18:3B:54:02:12:DF:3E:5D:49:6B:19:E5:7C:AB</pre><a href="#appendix-A-4" class="pilcrow">¶</a>
+2662,2663c2698,2699
+< <aside id="section-appendix.a-5">
+<         <p id="section-appendix.a-5.1">Note: A WebRTC application will only use the "m=" line format "webrtc-datachannel"
+---
+> <aside id="appendix-A-5">
+>         <p id="appendix-A-5.1">Note: A WebRTC application will only use the "m=" line format "webrtc-datachannel"
+2665,2667c2701,2703
+<    such as T.38 <span>[<a href="#T38" class="xref">T38</a>]</span>.
+<    <span>[<a href="#RFC8841" class="xref">RFC8841</a>]</span> supports only one SCTP
+<    association to be established on top of a DTLS association.<a href="#section-appendix.a-5.1" class="pilcrow">¶</a></p>
+---
+>    such as T.38 <span>[<a href="#T38" class="cite xref">T38</a>]</span>.
+>    <span>[<a href="#RFC8841" class="cite xref">RFC8841</a>]</span> supports only one SCTP
+>    association to be established on top of a DTLS association.<a href="#appendix-A-5.1" class="pilcrow">¶</a></p>
+2669,2671c2705,2707
+< <aside id="section-appendix.a-6">
+<         <p id="section-appendix.a-6.1">Note: The above SDP media description does not contain any channel-specific 
+<    information.<a href="#section-appendix.a-6.1" class="pilcrow">¶</a></p>
+---
+> <aside id="appendix-A-6">
+>         <p id="appendix-A-6.1">Note: The above SDP media description does not contain any channel-specific 
+>    information.<a href="#appendix-A-6.1" class="pilcrow">¶</a></p>
+2674,2678c2710,2714
+< <section id="section-a.1">
+<         <h2 id="name-stream-identifier-numbering">
+< <a href="#section-a.1" class="section-number selfRef">A.1. </a><a href="#name-stream-identifier-numbering" class="section-name selfRef">Stream Identifier Numbering</a>
+<         </h2>
+< <p id="section-a.1-1">Independently from the requested type of negotiation, the application 
+---
+> <section id="appendix-A.1">
+>         <h3 id="name-stream-identifier-numbering">
+> <a href="#appendix-A.1" class="section-number selfRef">A.1. </a><a href="#name-stream-identifier-numbering" class="section-name selfRef">Stream Identifier Numbering</a>
+>         </h3>
+> <p id="appendix-A.1-1">Independently from the requested type of negotiation, the application 
+2681,2682c2717,2718
+<     one identifier from the unused ones.<a href="#section-a.1-1" class="pilcrow">¶</a></p>
+< <p id="section-a.1-2">Moreover, to avoid glare situations <span>[<a href="#RFC3264" class="xref">RFC3264</a>]</span>, each endpoint can own an 
+---
+>     one identifier from the unused ones.<a href="#appendix-A.1-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A.1-2">Moreover, to avoid glare situations <span>[<a href="#RFC3264" class="cite xref">RFC3264</a>]</span>, each endpoint can own an 
+2684,2688c2720,2724
+<     only create a data channel with a stream identifier it owns.<a href="#section-a.1-2" class="pilcrow">¶</a></p>
+< <p id="section-a.1-3">Which set of stream identifiers is owned by which endpoint is 
+<     determined by convention or other means.<a href="#section-a.1-3" class="pilcrow">¶</a></p>
+< <aside id="section-a.1-4">
+<           <p id="section-a.1-4.1">Note: For data channels negotiated with DCEP, one endpoint owns by 
+---
+>     only create a data channel with a stream identifier it owns.<a href="#appendix-A.1-2" class="pilcrow">¶</a></p>
+> <p id="appendix-A.1-3">Which set of stream identifiers is owned by which endpoint is 
+>     determined by convention or other means.<a href="#appendix-A.1-3" class="pilcrow">¶</a></p>
+> <aside id="appendix-A.1-4">
+>           <p id="appendix-A.1-4.1">Note: For data channels negotiated with DCEP, one endpoint owns by 
+2691c2727
+<       <span>[<a href="#RFC8832" class="xref">RFC8832</a>]</span>.<a href="#section-a.1-4.1" class="pilcrow">¶</a></p>
+---
+>       <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span>.<a href="#appendix-A.1-4.1" class="pilcrow">¶</a></p>
+2693,2695c2729,2731
+< <aside id="section-a.1-5">
+<           <p id="section-a.1-5.1">Note: For data channels negotiated via a protocol other than DCEP, 
+<       no convention is defined by default.<a href="#section-a.1-5.1" class="pilcrow">¶</a></p>
+---
+> <aside id="appendix-A.1-5">
+>           <p id="appendix-A.1-5.1">Note: For data channels negotiated via a protocol other than DCEP, 
+>       no convention is defined by default.<a href="#appendix-A.1-5.1" class="pilcrow">¶</a></p>
+2700,2706c2736,2738
+< <section id="section-a.2">
+<         <h2 id="name-generic-data-channel-negotia">
+< <a href="#section-a.2" class="section-number selfRef">A.2. </a><a href="#name-generic-data-channel-negotia" class="section-name selfRef">Generic Data Channel Negotiation Not Using DCEP</a>
+<         </h2>
+< <section id="section-a.2.1">
+<           <h3 id="name-overview">
+< <a href="#section-a.2.1" class="section-number selfRef">A.2.1. </a><a href="#name-overview" class="section-name selfRef">Overview</a>
+---
+> <section id="appendix-A.2">
+>         <h3 id="name-generic-data-channel-negotia">
+> <a href="#appendix-A.2" class="section-number selfRef">A.2. </a><a href="#name-generic-data-channel-negotia" class="section-name selfRef">Generic Data Channel Negotiation Not Using DCEP</a>
+2708c2740,2744
+< <p id="section-a.2.1-1">DCEP negotiation only provides for negotiation of data channel 
+---
+> <section id="appendix-A.2.1">
+>           <h4 id="name-overview">
+> <a href="#appendix-A.2.1" class="section-number selfRef">A.2.1. </a><a href="#name-overview" class="section-name selfRef">Overview</a>
+>           </h4>
+> <p id="appendix-A.2.1-1">DCEP negotiation only provides for negotiation of data channel 
+2713,2714c2749,2750
+<      particular data channel.<a href="#section-a.2.1-1" class="pilcrow">¶</a></p>
+< <p id="section-a.2.1-2">The following procedures are common to all methods of data channel
+---
+>      particular data channel.<a href="#appendix-A.2.1-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A.2.1-2">The following procedures are common to all methods of data channel
+2718c2754
+<      some other protocol associated with the signaling channel).<a href="#section-a.2.1-2" class="pilcrow">¶</a></p>
+---
+>      some other protocol associated with the signaling channel).<a href="#appendix-A.2.1-2" class="pilcrow">¶</a></p>
+2721,2725c2757,2761
+< <section id="section-a.2.2">
+<           <h3 id="name-opening-a-data-channel">
+< <a href="#section-a.2.2" class="section-number selfRef">A.2.2. </a><a href="#name-opening-a-data-channel" class="section-name selfRef">Opening a Data Channel</a>
+<           </h3>
+< <p id="section-a.2.2-1">In the case of non-DCEP negotiation, the endpoint application has the 
+---
+> <section id="appendix-A.2.2">
+>           <h4 id="name-opening-a-data-channel">
+> <a href="#appendix-A.2.2" class="section-number selfRef">A.2.2. </a><a href="#name-opening-a-data-channel" class="section-name selfRef">Opening a Data Channel</a>
+>           </h4>
+> <p id="appendix-A.2.2-1">In the case of non-DCEP negotiation, the endpoint application has the 
+2730,2731c2766,2767
+<      assignment of stream identifiers.<a href="#section-a.2.2-1" class="pilcrow">¶</a></p>
+< <p id="section-a.2.2-2">When the application requests that the creation of a new data channel 
+---
+>      assignment of stream identifiers.<a href="#appendix-A.2.2-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A.2.2-2">When the application requests that the creation of a new data channel 
+2744,2745c2780,2781
+<      ready to handle it.<a href="#section-a.2.2-2" class="pilcrow">¶</a></p>
+< <p id="section-a.2.2-3">If the peer rejects the data channel part of the offer, then it 
+---
+>      ready to handle it.<a href="#appendix-A.2.2-2" class="pilcrow">¶</a></p>
+> <p id="appendix-A.2.2-3">If the peer rejects the data channel part of the offer, then it 
+2749,2750c2785,2786
+<      procedures.<a href="#section-a.2.2-3" class="pilcrow">¶</a></p>
+< <p id="section-a.2.2-4">It is also worth noting that a data channel stack implementation may 
+---
+>      procedures.<a href="#appendix-A.2.2-3" class="pilcrow">¶</a></p>
+> <p id="appendix-A.2.2-4">It is also worth noting that a data channel stack implementation may 
+2754,2755c2790,2791
+<      on both of the peers.<a href="#section-a.2.2-4" class="pilcrow">¶</a></p>
+< <p id="section-a.2.2-5">The application then negotiates the data channel 
+---
+>      on both of the peers.<a href="#appendix-A.2.2-4" class="pilcrow">¶</a></p>
+> <p id="appendix-A.2.2-5">The application then negotiates the data channel 
+2757,2758c2793,2794
+<      using a mechanism different from DCEP.<a href="#section-a.2.2-5" class="pilcrow">¶</a></p>
+< <p id="section-a.2.2-6">The peer then symmetrically creates a data channel 
+---
+>      using a mechanism different from DCEP.<a href="#appendix-A.2.2-5" class="pilcrow">¶</a></p>
+> <p id="appendix-A.2.2-6">The peer then symmetrically creates a data channel 
+2765c2801
+<      stream identifier.<a href="#section-a.2.2-6" class="pilcrow">¶</a></p>
+---
+>      stream identifier.<a href="#appendix-A.2.2-6" class="pilcrow">¶</a></p>
+2768,2772c2804,2808
+< <section id="section-a.2.3">
+<           <h3 id="name-closing-a-data-channel-2">
+< <a href="#section-a.2.3" class="section-number selfRef">A.2.3. </a><a href="#name-closing-a-data-channel-2" class="section-name selfRef">Closing a Data Channel</a>
+<           </h3>
+< <p id="section-a.2.3-1">When the application requests the closing of a 
+---
+> <section id="appendix-A.2.3">
+>           <h4 id="name-closing-a-data-channel-2">
+> <a href="#appendix-A.2.3" class="section-number selfRef">A.2.3. </a><a href="#name-closing-a-data-channel-2" class="section-name selfRef">Closing a Data Channel</a>
+>           </h4>
+> <p id="appendix-A.2.3-1">When the application requests the closing of a 
+2775,2777c2811,2813
+<      Reset for this channel.<a href="#section-a.2.3-1" class="pilcrow">¶</a></p>
+< <p id="section-a.2.3-2">Depending upon the method used for non-DCEP negotiation and the 
+<      subprotocol associated with the data channel, the closing of the data channel might also be signaled to the peer via SDP offer/answer negotiation.<a href="#section-a.2.3-2" class="pilcrow">¶</a></p>
+---
+>      Reset for this channel.<a href="#appendix-A.2.3-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A.2.3-2">Depending upon the method used for non-DCEP negotiation and the 
+>      subprotocol associated with the data channel, the closing of the data channel might also be signaled to the peer via SDP offer/answer negotiation.<a href="#appendix-A.2.3-2" class="pilcrow">¶</a></p>
+2784c2820
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+2788c2824
+< <p id="section-appendix.b-1">The authors wish to acknowledge the borrowing of ideas from other 
+---
+> <p id="appendix-B-1">The authors wish to acknowledge the borrowing of ideas from other 
+2792,2794c2828,2830
+<    <span class="contact-name">Uwe Rauschenbach</span>, and <span class="contact-name">Roman Shpount</span> for their invaluable comments.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-2">Special thanks to <span class="contact-name">Christer Holmberg</span> for helping
+<       finish the document and cleaning up <a href="#section_procedures" class="xref">Section 6</a>.<a href="#section-appendix.b-2" class="pilcrow">¶</a></p>
+---
+>    <span class="contact-name">Uwe Rauschenbach</span>, and <span class="contact-name">Roman Shpount</span> for their invaluable comments.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+> <p id="appendix-B-2">Special thanks to <span class="contact-name">Christer Holmberg</span> for helping
+>       finish the document and cleaning up <a href="#section_procedures" class="auto internal xref">Section 6</a>.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+2798c2834
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
+2802,2803c2838,2839
+< <p id="section-appendix.c-1"><span class="contact-name">Juergen Stoetzer-Bradler</span> made significant
+<       contributions to this document and should be considered a coauthor.<a href="#section-appendix.c-1" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-C-1"><span class="contact-name">Juergen Stoetzer-Bradler</span> made significant
+>       contributions to this document and should be considered a coauthor.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+2807c2843
+< <section id="section-appendix.d">
+---
+> <section id="appendix-D">
