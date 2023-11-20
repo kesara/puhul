@@ -1,0 +1,1460 @@
+25c25
+< <meta content="xml2rfc 2.40.1" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+41c41,57
+< <link href="rfc8705.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.0.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.10
+> -->
+> <link href="rfc/rfc8705.xml" rel="alternate" type="application/rfc+xml">
+51c67
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+60a77,82
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+63d84
+<   width: extend-to-zoom;
+78c99
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+80a102
+>   overflow-wrap: break-word;
+166a189,197
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+181,184d211
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+185a213
+>   border: none;
+208a237,239
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+250c281,282
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+260c292
+< tt, code, pre, code {
+---
+> tt, code, pre {
+262c294
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+301a334,336
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+391a427,432
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+493c534
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+633d673
+< 
+655a696,698
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+723c766
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+823c866
+< tt, code, pre, code {
+---
+> tt, code, pre {
+828c871
+< pre.sourcecode,
+---
+> .sourcecode pre,
+864c907
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+942,947d984
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1018c1055
+<   margin: 0 0 0.25em 0;
+---
+>   margin-bottom: 0.25em;
+1051a1089
+>   .artwork > pre,
+1056,1063d1093
+< /*
+<   The margin-left: 0 on <dd> removes all distinction
+<   between levels from nested <dl>s.  Undo that.
+< */
+< dl.olPercent > dd,
+< dd {
+<   margin-left: revert;
+< }
+1074c1104
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1080a1111,1113
+> tr {
+>   break-inside: avoid;
+> }
+1088a1122,1223
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1090a1226
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-oauth-mtls-17" rel="prev">
+1093c1229
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-oauth-mtls-17" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1095,1096c1231,1232
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1205,1210c1341,1346
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-requirements-notation-and-c" class="xref">Requirements Notation and Conventions</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-requirements-notation-and-c" class="internal xref">Requirements Notation and Conventions</a></p>
+1212,1213c1348,1349
+< <li class="toc ulEmpty" id="section-toc.1-1.1.2.2">
+<                 <p id="section-toc.1-1.1.2.2.1"><a href="#section-1.2" class="xref">1.2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+>                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+1217,1224c1353,1360
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-mutual-tls-for-oauth-client" class="xref">Mutual TLS for OAuth Client Authentication</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.1">
+<                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-pki-mutual-tls-method" class="xref">PKI Mutual-TLS Method</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.1.2.1">
+<                     <p id="section-toc.1-1.2.2.1.2.1.1"><a href="#section-2.1.1" class="xref">2.1.1</a>.  <a href="#name-pki-method-metadata-value" class="xref">PKI Method Metadata Value</a><a href="#section-toc.1-1.2.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-mutual-tls-for-oauth-client" class="internal xref">Mutual TLS for OAuth Client Authentication</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+>                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-pki-mutual-tls-method" class="internal xref">PKI Mutual-TLS Method</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.1">
+>                     <p id="section-toc.1-1.2.2.1.2.1.1" class="keepWithNext"><a href="#section-2.1.1" class="auto internal xref">2.1.1</a>.  <a href="#name-pki-method-metadata-value" class="internal xref">PKI Method Metadata Value</a></p>
+1226,1227c1362,1363
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.1.2.2">
+<                     <p id="section-toc.1-1.2.2.1.2.2.1"><a href="#section-2.1.2" class="xref">2.1.2</a>.  <a href="#name-client-registration-metadat" class="xref">Client Registration Metadata</a><a href="#section-toc.1-1.2.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.2">
+>                     <p id="section-toc.1-1.2.2.1.2.2.1" class="keepWithNext"><a href="#section-2.1.2" class="auto internal xref">2.1.2</a>.  <a href="#name-client-registration-metadat" class="internal xref">Client Registration Metadata</a></p>
+1231,1235c1367,1371
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.2">
+<                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-self-signed-certificate-mut" class="xref">Self-Signed Certificate Mutual-TLS Method</a><a href="#section-toc.1-1.2.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.2.2.1">
+<                     <p id="section-toc.1-1.2.2.2.2.1.1"><a href="#section-2.2.1" class="xref">2.2.1</a>.  <a href="#name-self-signed-method-metadata" class="xref">Self-Signed Method Metadata Value</a><a href="#section-toc.1-1.2.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+>                 <p id="section-toc.1-1.2.2.2.1" class="keepWithNext"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-self-signed-certificate-mut" class="internal xref">Self-Signed Certificate Mutual-TLS Method</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2.2.1">
+>                     <p id="section-toc.1-1.2.2.2.2.1.1" class="keepWithNext"><a href="#section-2.2.1" class="auto internal xref">2.2.1</a>.  <a href="#name-self-signed-method-metadata" class="internal xref">Self-Signed Method Metadata Value</a></p>
+1237,1238c1373,1374
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.2.2.2">
+<                     <p id="section-toc.1-1.2.2.2.2.2.1"><a href="#section-2.2.2" class="xref">2.2.2</a>.  <a href="#name-client-registration-metadata" class="xref">Client Registration Metadata</a><a href="#section-toc.1-1.2.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2.2.2">
+>                     <p id="section-toc.1-1.2.2.2.2.2.1" class="keepWithNext"><a href="#section-2.2.2" class="auto internal xref">2.2.2</a>.  <a href="#name-client-registration-metadata" class="internal xref">Client Registration Metadata</a></p>
+1244,1248c1380,1384
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-mutual-tls-client-certifica" class="xref">Mutual-TLS Client Certificate-Bound Access Tokens</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-jwt-certificate-thumbprint-" class="xref">JWT Certificate Thumbprint Confirmation Method</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-mutual-tls-client-certifica" class="internal xref">Mutual-TLS Client Certificate-Bound Access Tokens</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-jwt-certificate-thumbprint-" class="internal xref">JWT Certificate Thumbprint Confirmation Method</a></p>
+1250,1251c1386,1387
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-confirmation-method-for-tok" class="xref">Confirmation Method for Token Introspection</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1" class="keepWithNext"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-confirmation-method-for-tok" class="internal xref">Confirmation Method for Token Introspection</a></p>
+1253,1254c1389,1390
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.3">
+<                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-authorization-server-metada" class="xref">Authorization Server Metadata</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+>                 <p id="section-toc.1-1.3.2.3.1" class="keepWithNext"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-authorization-server-metada" class="internal xref">Authorization Server Metadata</a></p>
+1256,1257c1392,1393
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.4">
+<                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="xref">3.4</a>.  <a href="#name-client-registration-metadata-2" class="xref">Client Registration Metadata</a><a href="#section-toc.1-1.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+>                 <p id="section-toc.1-1.3.2.4.1" class="keepWithNext"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-client-registration-metadata-2" class="internal xref">Client Registration Metadata</a></p>
+1261,1262c1397,1398
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-public-clients-and-certific" class="xref">Public Clients and Certificate-Bound Tokens</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-public-clients-and-certific" class="internal xref">Public Clients and Certificate-Bound Tokens</a></p>
+1264,1265c1400,1401
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-metadata-for-mutual-tls-end" class="xref">Metadata for Mutual-TLS Endpoint Aliases</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-metadata-for-mutual-tls-end" class="internal xref">Metadata for Mutual-TLS Endpoint Aliases</a></p>
+1267,1271c1403,1407
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-implementation-consideratio" class="xref">Implementation Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-authorization-server" class="xref">Authorization Server</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-implementation-consideratio" class="internal xref">Implementation Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1" class="keepWithNext"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-authorization-server" class="internal xref">Authorization Server</a></p>
+1273,1274c1409,1410
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.2">
+<                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-resource-server" class="xref">Resource Server</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+>                 <p id="section-toc.1-1.6.2.2.1" class="keepWithNext"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-resource-server" class="internal xref">Resource Server</a></p>
+1276,1277c1412,1413
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.3">
+<                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="xref">6.3</a>.  <a href="#name-certificate-expiration-and-" class="xref">Certificate Expiration and Bound Access Tokens</a><a href="#section-toc.1-1.6.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
+>                 <p id="section-toc.1-1.6.2.3.1" class="keepWithNext"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-certificate-expiration-and-" class="internal xref">Certificate Expiration and Bound Access Tokens</a></p>
+1279,1280c1415,1416
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.4">
+<                 <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="xref">6.4</a>.  <a href="#name-implicit-grant-unsupported" class="xref">Implicit Grant Unsupported</a><a href="#section-toc.1-1.6.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
+>                 <p id="section-toc.1-1.6.2.4.1" class="keepWithNext"><a href="#section-6.4" class="auto internal xref">6.4</a>.  <a href="#name-implicit-grant-unsupported" class="internal xref">Implicit Grant Unsupported</a></p>
+1282,1283c1418,1419
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.5">
+<                 <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="xref">6.5</a>.  <a href="#name-tls-termination" class="xref">TLS Termination</a><a href="#section-toc.1-1.6.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5">
+>                 <p id="section-toc.1-1.6.2.5.1" class="keepWithNext"><a href="#section-6.5" class="auto internal xref">6.5</a>.  <a href="#name-tls-termination" class="internal xref">TLS Termination</a></p>
+1287,1294c1423,1430
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-certificate-bound-refresh-t" class="xref">Certificate-Bound Refresh Tokens</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-certificate-thumbprint-bind" class="xref">Certificate Thumbprint Binding</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1" class="keepWithNext"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-certificate-bound-refresh-t" class="internal xref">Certificate-Bound Refresh Tokens</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1" class="keepWithNext"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-certificate-thumbprint-bind" class="internal xref">Certificate Thumbprint Binding</a></p>
+1296,1297c1432,1433
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.3">
+<                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="xref">7.3</a>.  <a href="#name-tls-versions-and-best-pract" class="xref">TLS Versions and Best Practices</a><a href="#section-toc.1-1.7.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3">
+>                 <p id="section-toc.1-1.7.2.3.1" class="keepWithNext"><a href="#section-7.3" class="auto internal xref">7.3</a>.  <a href="#name-tls-versions-and-best-pract" class="internal xref">TLS Versions and Best Practices</a></p>
+1299,1300c1435,1436
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.4">
+<                 <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="xref">7.4</a>.  <a href="#name-x509-certificate-spoofing" class="xref">X.509 Certificate Spoofing</a><a href="#section-toc.1-1.7.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.4">
+>                 <p id="section-toc.1-1.7.2.4.1" class="keepWithNext"><a href="#section-7.4" class="auto internal xref">7.4</a>.  <a href="#name-x509-certificate-spoofing" class="internal xref">X.509 Certificate Spoofing</a></p>
+1302,1303c1438,1439
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.5">
+<                 <p id="section-toc.1-1.7.2.5.1"><a href="#section-7.5" class="xref">7.5</a>.  <a href="#name-x509-certificate-parsing-an" class="xref">X.509 Certificate Parsing and Validation Complexity</a><a href="#section-toc.1-1.7.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.5">
+>                 <p id="section-toc.1-1.7.2.5.1" class="keepWithNext"><a href="#section-7.5" class="auto internal xref">7.5</a>.  <a href="#name-x509-certificate-parsing-an" class="internal xref">X.509 Certificate Parsing and Validation Complexity</a></p>
+1307,1308c1443,1444
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-privacy-considerations" class="xref">Privacy Considerations</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-privacy-considerations" class="internal xref">Privacy Considerations</a></p>
+1310,1317c1446,1453
+< <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.9.2.1">
+<                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="xref">9.1</a>.  <a href="#name-jwt-confirmation-methods-re" class="xref">JWT Confirmation Methods Registration</a><a href="#section-toc.1-1.9.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.9.2.2">
+<                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="xref">9.2</a>.  <a href="#name-authorization-server-metadat" class="xref">Authorization Server Metadata Registration</a><a href="#section-toc.1-1.9.2.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1" class="keepWithNext"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
+>                 <p id="section-toc.1-1.9.2.1.1" class="keepWithNext"><a href="#section-9.1" class="auto internal xref">9.1</a>.  <a href="#name-jwt-confirmation-methods-re" class="internal xref">JWT Confirmation Methods Registration</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
+>                 <p id="section-toc.1-1.9.2.2.1" class="keepWithNext"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-authorization-server-metadat" class="internal xref">Authorization Server Metadata Registration</a></p>
+1319,1320c1455,1456
+< <li class="toc ulEmpty" id="section-toc.1-1.9.2.3">
+<                 <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="xref">9.3</a>.  <a href="#name-token-endpoint-authenticati" class="xref">Token Endpoint Authentication Method Registration</a><a href="#section-toc.1-1.9.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.3">
+>                 <p id="section-toc.1-1.9.2.3.1" class="keepWithNext"><a href="#section-9.3" class="auto internal xref">9.3</a>.  <a href="#name-token-endpoint-authenticati" class="internal xref">Token Endpoint Authentication Method Registration</a></p>
+1322,1323c1458,1459
+< <li class="toc ulEmpty" id="section-toc.1-1.9.2.4">
+<                 <p id="section-toc.1-1.9.2.4.1"><a href="#section-9.4" class="xref">9.4</a>.  <a href="#name-token-introspection-respons" class="xref">Token Introspection Response Registration</a><a href="#section-toc.1-1.9.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.4">
+>                 <p id="section-toc.1-1.9.2.4.1" class="keepWithNext"><a href="#section-9.4" class="auto internal xref">9.4</a>.  <a href="#name-token-introspection-respons" class="internal xref">Token Introspection Response Registration</a></p>
+1325,1326c1461,1462
+< <li class="toc ulEmpty" id="section-toc.1-1.9.2.5">
+<                 <p id="section-toc.1-1.9.2.5.1"><a href="#section-9.5" class="xref">9.5</a>.  <a href="#name-dynamic-client-registration" class="xref">Dynamic Client Registration Metadata Registration</a><a href="#section-toc.1-1.9.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.5">
+>                 <p id="section-toc.1-1.9.2.5.1" class="keepWithNext"><a href="#section-9.5" class="auto internal xref">9.5</a>.  <a href="#name-dynamic-client-registration" class="internal xref">Dynamic Client Registration Metadata Registration</a></p>
+1330,1334c1466,1470
+< <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.10.2.1">
+<                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="xref">10.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.10.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1" class="keepWithNext"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
+>                 <p id="section-toc.1-1.10.2.1.1" class="keepWithNext"><a href="#section-10.1" class="auto internal xref">10.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1336,1337c1472,1473
+< <li class="toc ulEmpty" id="section-toc.1-1.10.2.2">
+<                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="xref">10.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.10.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
+>                 <p id="section-toc.1-1.10.2.2.1" class="keepWithNext"><a href="#section-10.2" class="auto internal xref">10.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1341,1342c1477,1478
+< <li class="toc ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-example-cnf-claim-certifica" class="xref">Example "cnf" Claim, Certificate, and JWK</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-example-cnf-claim-certifica" class="internal xref">Example "cnf" Claim, Certificate, and JWK</a></p>
+1344,1345c1480,1481
+< <li class="toc ulEmpty" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-appendix.b" class="xref">Appendix B</a>.  <a href="#name-relationship-to-token-bindi" class="xref">Relationship to Token Binding</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-relationship-to-token-bindi" class="internal xref">Relationship to Token Binding</a></p>
+1347,1348c1483,1484
+< <li class="toc ulEmpty" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1" class="keepWithNext"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1350,1351c1486,1487
+< <li class="toc ulEmpty" id="section-toc.1-1.14">
+<             <p id="section-toc.1-1.14.1"><a href="#section-appendix.d" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.14.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+>             <p id="section-toc.1-1.14.1" class="keepWithNext"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1363c1499
+<   The OAuth 2.0 Authorization Framework <span>[<a href="#RFC6749" class="xref">RFC6749</a>]</span> enables third-party
+---
+>   The OAuth 2.0 Authorization Framework <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> enables third-party
+1365c1501
+<   In the prototypical abstract OAuth flow, illustrated in <a href="#protocol-flow-figure" class="xref">Figure 1</a>,
+---
+>   In the prototypical abstract OAuth flow, illustrated in <a href="#protocol-flow-figure" class="auto internal xref">Figure 1</a>,
+1371c1507
+<         <div class="artwork art-text alignLeft" id="section-1-2.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-1-2.1">
+1402,1403c1538,1539
+<   The flow illustrated in <a href="#protocol-flow-figure" class="xref">Figure 1</a> includes the following steps:<a href="#section-1-3" class="pilcrow">¶</a></p>
+< <dl class="olPercent" id="section-1-4">
+---
+>   The flow illustrated in <a href="#protocol-flow-figure" class="auto internal xref">Figure 1</a> includes the following steps:<a href="#section-1-3" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="olPercent" id="section-1-4">
+1412a1549
+>         <dd class="break"></dd>
+1416a1554
+>         <dd class="break"></dd>
+1424a1563
+>       <dd class="break"></dd>
+1429c1568
+<   TLS. <a href="#mtlsca" class="xref">Section 2</a> provides options for
+---
+>   TLS. <a href="#mtlsca" class="auto internal xref">Section 2</a> provides options for
+1433,1435c1572,1574
+<   and remote processing in Sections <a href="#x5t" class="xref">3.1</a> and
+<   <a href="#introspect" class="xref">3.2</a>, respectively. This ensures
+<   that, as described in <a href="#CertificateBoundAccessTokens" class="xref">Section 3</a>, protected resource access in Step
+---
+>   and remote processing in Sections <a href="#x5t" class="auto internal xref">3.1</a> and
+>   <a href="#introspect" class="auto internal xref">3.2</a>, respectively. This ensures
+>   that, as described in <a href="#CertificateBoundAccessTokens" class="auto internal xref">Section 3</a>, protected resource access in Step
+1447,1450c1586,1589
+<   While <span>[<a href="#RFC6749" class="xref">RFC6749</a>]</span> documents client authentication for requests to the token endpoint,
+<   extensions to OAuth 2.0 (such as Introspection <span>[<a href="#RFC7662" class="xref">RFC7662</a>]</span>,
+<   Revocation <span>[<a href="#RFC7009" class="xref">RFC7009</a>]</span>, and the Backchannel Authentication Endpoint
+<   in <span>[<a href="#OpenID.CIBA" class="xref">OpenID.CIBA</a>]</span>) define endpoints that also utilize client authentication,
+---
+>   While <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> documents client authentication for requests to the token endpoint,
+>   extensions to OAuth 2.0 (such as Introspection <span>[<a href="#RFC7662" class="cite xref">RFC7662</a>]</span>,
+>   Revocation <span>[<a href="#RFC7009" class="cite xref">RFC7009</a>]</span>, and the Backchannel Authentication Endpoint
+>   in <span>[<a href="#OpenID.CIBA" class="cite xref">OpenID.CIBA</a>]</span>) define endpoints that also utilize client authentication,
+1459c1598
+<   bearer token described in <span>[<a href="#RFC6750" class="xref">RFC6750</a>]</span>, where any party in
+---
+>   bearer token described in <span>[<a href="#RFC6750" class="cite xref">RFC6750</a>]</span>, where any party in
+1471c1610
+<   Dynamic Client Registration Protocol <span>[<a href="#RFC7591" class="xref">RFC7591</a>]</span>, which defines mechanisms for dynamically registering
+---
+>   Dynamic Client Registration Protocol <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>, which defines mechanisms for dynamically registering
+1473c1612
+<   Also the metadata defined by <span>[<a href="#RFC7591" class="xref">RFC7591</a>]</span>, and registered extensions to
+---
+>   Also the metadata defined by <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>, and registered extensions to
+1486c1625
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1500c1639
+<   In contemporary versions of TLS <span>[<a href="#RFC5246" class="xref">RFC5246</a>]</span> <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span>, this requires that the client send
+---
+>   In contemporary versions of TLS <span>[<a href="#RFC5246" class="cite xref">RFC5246</a>]</span> <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>, this requires that the client send
+1514c1653
+<   <span><a href="https://www.rfc-editor.org/rfc/rfc6749#section-2.3" class="relref">Section 2.3</a> of OAuth 2.0 [<a href="#RFC6749" class="xref">RFC6749</a>]</span>, two distinct methods of using
+---
+>   <span><a href="https://rfc-editor.org/rfc/rfc6749#section-2.3" class="relref">Section 2.3</a> of OAuth 2.0 [<a href="#RFC6749" class="cite xref">RFC6749</a>]</span>, two distinct methods of using
+1528c1667
+<   <code>client_id</code> parameter described in <span><a href="https://www.rfc-editor.org/rfc/rfc6749#section-2.2" class="relref">Section 2.2</a> of OAuth 2.0 [<a href="#RFC6749" class="xref">RFC6749</a>]</span>.  The presence of the
+---
+>   <code>client_id</code> parameter described in <span><a href="https://rfc-editor.org/rfc/rfc6749#section-2.2" class="relref">Section 2.2</a> of OAuth 2.0 [<a href="#RFC6749" class="cite xref">RFC6749</a>]</span>.  The presence of the
+1535c1674
+<   described in either Section <a href="#pki_method" class="xref">2.1</a> or <a href="#self_signed_method" class="xref">2.2</a> below.  If no certificate is
+---
+>   described in either Section <a href="#pki_method" class="auto internal xref">2.1</a> or <a href="#self_signed_method" class="auto internal xref">2.2</a> below.  If no certificate is
+1538c1677
+<   OAuth 2.0 error response per <span><a href="https://www.rfc-editor.org/rfc/rfc6749#section-5.2" class="relref">Section 5.2</a> of [<a href="#RFC6749" class="xref">RFC6749</a>]</span> with the <code>invalid_client</code> error code to
+---
+>   OAuth 2.0 error response per <span><a href="https://rfc-editor.org/rfc/rfc6749#section-5.2" class="relref">Section 5.2</a> of [<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> with the <code>invalid_client</code> error code to
+1548c1687
+<         for authentication. It relies on a validated certificate chain <span>[<a href="#RFC5280" class="xref">RFC5280</a>]</span>
+---
+>         for authentication. It relies on a validated certificate chain <span>[<a href="#RFC5280" class="cite xref">RFC5280</a>]</span>
+1558c1697
+<         rule from <span>[<a href="#RFC4517" class="xref">RFC4517</a>]</span>, is needed in comparing the
+---
+>         rule from <span>[<a href="#RFC4517" class="cite xref">RFC4517</a>]</span>, is needed in comparing the
+1574,1575c1713,1714
+<           <span>[<a href="#IANA.OAuth.Parameters" class="xref">IANA.OAuth.Parameters</a>]</span>.<a href="#section-2.1.1-1" class="pilcrow">¶</a></p>
+< <dl class="dlNewline" id="section-2.1.1-2">
+---
+>           <span>[<a href="#IANA.OAuth.Parameters" class="cite xref">IANA.OAuth.Parameters</a>]</span>.<a href="#section-2.1.1-1" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlNewline" id="section-2.1.1-2">
+1577c1716
+< <dd id="section-2.1.1-2.2">
+---
+>             <dd style="margin-left: 1.5em" id="section-2.1.1-2.2">
+1580a1720
+>           <dd class="break"></dd>
+1593c1733
+<           OAuth 2.0 Dynamic Client Registration Protocol <span>[<a href="#RFC7591" class="xref">RFC7591</a>]</span> in support of
+---
+>           OAuth 2.0 Dynamic Client Registration Protocol <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span> in support of
+1598c1738
+< <dl class="dlNewline" id="section-2.1.2-2">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-2.1.2-2">
+1600,1601c1740,1741
+< <dd id="section-2.1.2-2.2">
+<               A string representation -- as defined in <span>[<a href="#RFC4514" class="xref">RFC4514</a>]</span> -- of the expected subject distinguished
+---
+>             <dd style="margin-left: 1.5em" id="section-2.1.2-2.2">
+>               A string representation -- as defined in <span>[<a href="#RFC4514" class="cite xref">RFC4514</a>]</span> -- of the expected subject distinguished
+1603a1744
+>             <dd class="break"></dd>
+1605c1746
+< <dd id="section-2.1.2-2.4">
+---
+>             <dd style="margin-left: 1.5em" id="section-2.1.2-2.4">
+1609a1751
+>             <dd class="break"></dd>
+1611c1753
+< <dd id="section-2.1.2-2.6">
+---
+>             <dd style="margin-left: 1.5em" id="section-2.1.2-2.6">
+1615a1758
+>             <dd class="break"></dd>
+1617c1760
+< <dd id="section-2.1.2-2.8">
+---
+>             <dd style="margin-left: 1.5em" id="section-2.1.2-2.8">
+1620c1763
+<               IPv6, as defined in <span>[<a href="#RFC5952" class="xref">RFC5952</a>]</span>)
+---
+>               IPv6, as defined in <span>[<a href="#RFC5952" class="cite xref">RFC5952</a>]</span>)
+1623c1766
+<               authentication. Per <span><a href="https://www.rfc-editor.org/rfc/rfc5952#section-8" class="relref">Section 8</a> of [<a href="#RFC5952" class="xref">RFC5952</a>]</span>, the IP address comparison of the value in
+---
+>               authentication. Per <span><a href="https://rfc-editor.org/rfc/rfc5952#section-8" class="relref">Section 8</a> of [<a href="#RFC5952" class="cite xref">RFC5952</a>]</span>, the IP address comparison of the value in
+1626a1770
+>             <dd class="break"></dd>
+1628c1772
+< <dd id="section-2.1.2-2.10">
+---
+>             <dd style="margin-left: 1.5em" id="section-2.1.2-2.10">
+1632a1777
+>           <dd class="break"></dd>
+1647,1648c1792,1793
+<         (using <code>jwks</code> defined in <span>[<a href="#RFC7591" class="xref">RFC7591</a>]</span>) or a reference to a trusted source
+<         for its X.509 certificates (using <code>jwks_uri</code> from <span>[<a href="#RFC7591" class="xref">RFC7591</a>]</span>)
+---
+>         (using <code>jwks</code> defined in <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>) or a reference to a trusted source
+>         for its X.509 certificates (using <code>jwks_uri</code> from <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>)
+1669,1670c1814,1815
+<           <span>[<a href="#IANA.OAuth.Parameters" class="xref">IANA.OAuth.Parameters</a>]</span>.<a href="#section-2.2.1-1" class="pilcrow">¶</a></p>
+< <dl class="dlNewline" id="section-2.2.1-2">
+---
+>           <span>[<a href="#IANA.OAuth.Parameters" class="cite xref">IANA.OAuth.Parameters</a>]</span>.<a href="#section-2.2.1-1" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlNewline" id="section-2.2.1-2">
+1672c1817
+< <dd id="section-2.2.1-2.2">
+---
+>             <dd style="margin-left: 1.5em" id="section-2.2.1-2.2">
+1675a1821
+>           <dd class="break"></dd>
+1687,1688c1833,1834
+<           <code>jwks_uri</code> or <code>jwks</code> metadata parameters from <span>[<a href="#RFC7591" class="xref">RFC7591</a>]</span> are used to convey the client's
+<           certificates via JSON Web Key (JWK) in a JWK Set <span>[<a href="#RFC7517" class="xref">RFC7517</a>]</span>. The <code>jwks</code> metadata
+---
+>           <code>jwks_uri</code> or <code>jwks</code> metadata parameters from <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span> are used to convey the client's
+>           certificates via JSON Web Key (JWK) in a JWK Set <span>[<a href="#RFC7517" class="cite xref">RFC7517</a>]</span>. The <code>jwks</code> metadata
+1695c1841
+<           parameters per <span>[<a href="#RFC7518" class="xref">RFC7518</a>]</span> so will be
+---
+>           parameters per <span>[<a href="#RFC7518" class="cite xref">RFC7518</a>]</span> so will be
+1697c1843
+<           that <span><a href="https://www.rfc-editor.org/rfc/rfc7517#section-4.7" class="relref">Section 4.7</a> of [<a href="#RFC7517" class="xref">RFC7517</a>]</span> requires that the key in the first certificate of
+---
+>           that <span><a href="https://rfc-editor.org/rfc/rfc7517#section-4.7" class="relref">Section 4.7</a> of [<a href="#RFC7517" class="cite xref">RFC7517</a>]</span> requires that the key in the first certificate of
+1716,1717c1862,1863
+<   hash in the issued access token directly, using the syntax described in <a href="#x5t" class="xref">Section 3.1</a>,
+<   or through token introspection as described in <a href="#introspect" class="xref">Section 3.2</a>.
+---
+>   hash in the issued access token directly, using the syntax described in <a href="#x5t" class="auto internal xref">Section 3.1</a>,
+>   or through token introspection as described in <a href="#introspect" class="auto internal xref">Section 3.2</a>.
+1739c1885
+<   <span>[<a href="#RFC5246" class="xref">RFC5246</a>]</span> or TLS 1.3 post-handshake authentication <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span>, this document
+---
+>   <span>[<a href="#RFC5246" class="cite xref">RFC5246</a>]</span> or TLS 1.3 post-handshake authentication <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>, this document
+1750c1896
+<   the client makes protected resource requests, as described in <span>[<a href="#RFC6750" class="xref">RFC6750</a>]</span>,
+---
+>   the client makes protected resource requests, as described in <span>[<a href="#RFC6750" class="cite xref">RFC6750</a>]</span>,
+1758c1904
+<   the resource access attempt <span class="bcp14">MUST</span> be rejected with an error, per <span>[<a href="#RFC6750" class="xref">RFC6750</a>]</span>,
+---
+>   the resource access attempt <span class="bcp14">MUST</span> be rejected with an error, per <span>[<a href="#RFC6750" class="cite xref">RFC6750</a>]</span>,
+1762c1908
+<   is defined in Sections <a href="#server_metadata_at" class="xref">3.3</a> and <a href="#client_metadata_at" class="xref">3.4</a>, respectively.<a href="#section-3-5" class="pilcrow">¶</a></p>
+---
+>   is defined in Sections <a href="#server_metadata_at" class="auto internal xref">3.3</a> and <a href="#client_metadata_at" class="auto internal xref">3.4</a>, respectively.<a href="#section-3-5" class="pilcrow">¶</a></p>
+1769c1915
+<     When access tokens are represented as JSON Web Tokens (JWT) <span>[<a href="#RFC7519" class="xref">RFC7519</a>]</span>,
+---
+>     When access tokens are represented as JSON Web Tokens (JWT) <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span>,
+1774c1920
+<     defines the new JWT Confirmation Method <span>[<a href="#RFC7800" class="xref">RFC7800</a>]</span> member <code>x5t#S256</code> for the X.509
+---
+>     defines the new JWT Confirmation Method <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span> member <code>x5t#S256</code> for the X.509
+1776,1779c1922,1925
+<     is a base64url-encoded <span>[<a href="#RFC4648" class="xref">RFC4648</a>]</span> SHA-256
+<     <span>[<a href="#SHS" class="xref">SHS</a>]</span> hash (a.k.a., thumbprint, fingerprint,
+<     or digest) of the DER encoding <span>[<a href="#X690" class="xref">X690</a>]</span> of
+<     the X.509 certificate <span>[<a href="#RFC5280" class="xref">RFC5280</a>]</span>. The
+---
+>     is a base64url-encoded <span>[<a href="#RFC4648" class="cite xref">RFC4648</a>]</span> SHA-256
+>     <span>[<a href="#SHS" class="cite xref">SHS</a>]</span> hash (a.k.a., thumbprint, fingerprint,
+>     or digest) of the DER encoding <span>[<a href="#X690" class="cite xref">X690</a>]</span> of
+>     the X.509 certificate <span>[<a href="#RFC5280" class="cite xref">RFC5280</a>]</span>. The
+1791,1792c1937,1938
+<           <div id="section-3.1-4.1">
+< <pre class="sourcecode lang-json">
+---
+>           <div class="lang-json sourcecode" id="section-3.1-4.1">
+> <pre>
+1816c1962
+<           OAuth 2.0 Token Introspection <span>[<a href="#RFC7662" class="xref">RFC7662</a>]</span> defines a
+---
+>           OAuth 2.0 Token Introspection <span>[<a href="#RFC7662" class="cite xref">RFC7662</a>]</span> defines a
+1827c1973
+<           <a href="#x5t" class="xref">Section 3.1</a>, as a top-level member of the introspection response JSON.
+---
+>           <a href="#x5t" class="auto internal xref">Section 3.1</a>, as a top-level member of the introspection response JSON.
+1841c1987
+<           <div class="artwork art-text alignLeft" id="section-3.2-4.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-3.2-4.1">
+1870,1871c2016,2017
+<             metadata <span>[<a href="#RFC8414" class="xref">RFC8414</a>]</span> parameter to signal the server's capability to issue certificate-bound access tokens:<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+< <dl class="dlNewline" id="section-3.3-2">
+---
+>             metadata <span>[<a href="#RFC8414" class="cite xref">RFC8414</a>]</span> parameter to signal the server's capability to issue certificate-bound access tokens:<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlNewline" id="section-3.3-2">
+1873c2019
+< <dd id="section-3.3-2.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-3.3-2.2">
+1877a2024
+>         <dd class="break"></dd>
+1888c2035
+< <dl class="dlNewline" id="section-3.4-2">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-3.4-2">
+1890c2037
+< <dd id="section-3.4-2.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-3.4-2.2">
+1894a2042
+>         <dd class="break"></dd>
+1950c2098
+< <dl class="dlNewline" id="section-5-3">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-5-3">
+1952c2100
+< <dd id="section-5-3.2">
+---
+>         <dd style="margin-left: 1.5em" id="section-5-3.2">
+1972a2121
+>       <dd class="break"></dd>
+1982c2131
+<         (via TLS <code>server_name</code> extension <span>[<a href="#RFC6066" class="xref">RFC6066</a>]</span> or actual distinct hosts) to differentiate its TLS behavior as appropriate.<a href="#section-5-4" class="pilcrow">¶</a></p>
+---
+>         (via TLS <code>server_name</code> extension <span>[<a href="#RFC6066" class="cite xref">RFC6066</a>]</span> or actual distinct hosts) to differentiate its TLS behavior as appropriate.<a href="#section-5-4" class="pilcrow">¶</a></p>
+1985,1986c2134,2135
+<         <div id="section-5-5.1">
+< <pre class="sourcecode lang-json">
+---
+>         <div class="lang-json sourcecode" id="section-5-5.1">
+> <pre>
+2034c2183
+< <p id="section-6.1-4">As described in <a href="#CertificateBoundAccessTokens" class="xref">Section 3</a>, the authorization server
+---
+> <p id="section-6.1-4">As described in <a href="#CertificateBoundAccessTokens" class="auto internal xref">Section 3</a>, the authorization server
+2041c2190
+<     its other endpoints, e.g., the authorization endpoint. As described in <a href="#endpointAliases" class="xref">Section 5</a>,
+---
+>     its other endpoints, e.g., the authorization endpoint. As described in <a href="#endpointAliases" class="auto internal xref">Section 5</a>,
+2075c2224
+<         As described in <a href="#CertificateBoundAccessTokens" class="xref">Section 3</a>,
+---
+>         As described in <a href="#CertificateBoundAccessTokens" class="auto internal xref">Section 3</a>,
+2126c2275
+< <p id="section-7.1-1">The OAuth 2.0 Authorization Framework <span>[<a href="#RFC6749" class="xref">RFC6749</a>]</span> requires that an authorization server (AS)
+---
+> <p id="section-7.1-1">The OAuth 2.0 Authorization Framework <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> requires that an authorization server (AS)
+2133c2282
+<           <a href="#PubClient" class="xref">Section 4</a> describes certificate-bound refresh tokens issued to public clients (those without
+---
+>           <a href="#PubClient" class="auto internal xref">Section 4</a> describes certificate-bound refresh tokens issued to public clients (those without
+2141c2290
+<           The binding between the certificate and access token specified in <a href="#x5t" class="xref">Section 3.1</a> uses
+---
+>           The binding between the certificate and access token specified in <a href="#x5t" class="auto internal xref">Section 3.1</a> uses
+2150c2299
+<           <span>[<a href="#IANA.JWT.Claims" class="xref">IANA.JWT.Claims</a>]</span>
+---
+>           <span>[<a href="#IANA.JWT.Claims" class="cite xref">IANA.JWT.Claims</a>]</span>
+2166c2315
+<           Both <span><a href="#RFC8446" class="xref">TLS 1.3</a> [<a href="#RFC8446" class="xref">RFC8446</a>]</span> and <span><a href="#RFC5246" class="xref">TLS 1.2</a> [<a href="#RFC5246" class="xref">RFC5246</a>]</span> are cited herein, because,
+---
+>           Both <span><a href="#RFC8446" class="internal xref">TLS 1.3</a> [<a href="#RFC8446" class="cite xref">RFC8446</a>]</span> and <span><a href="#RFC5246" class="internal xref">TLS 1.2</a> [<a href="#RFC5246" class="cite xref">RFC5246</a>]</span> are cited herein, because,
+2169c2318
+<           can be found in <span>[<a href="#BCP195" class="xref">BCP195</a>]</span>.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
+---
+>           can be found in <span>[<a href="#BCP195" class="cite xref">BCP195</a>]</span>.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
+2205,2207c2354,2356
+<           <span>[<a href="#CX5P" class="xref">CX5P</a>]</span> <span>[<a href="#DCW" class="xref">DCW</a>]</span> <span>[<a href="#RFC5280" class="xref">RFC5280</a>]</span>:<a href="#section-7.5-1" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-7.5-2.1">checking of basic constraints, basic and extended key usage constraints, validity periods, and critical extensions;<a href="#section-7.5-2.1" class="pilcrow">¶</a>
+---
+>           <span>[<a href="#CX5P" class="cite xref">CX5P</a>]</span> <span>[<a href="#DCW" class="cite xref">DCW</a>]</span> <span>[<a href="#RFC5280" class="cite xref">RFC5280</a>]</span>:<a href="#section-7.5-1" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="section-7.5-2.1">checking of basic constraints, basic and extended key usage constraints, validity periods, and critical extensions;<a href="#section-7.5-2.1" class="pilcrow">¶</a>
+2209c2358
+< <li id="section-7.5-2.2">handling of embedded NUL bytes in ASN.1 counted-length strings and non-canonical or non-normalized string representations in subject names;<a href="#section-7.5-2.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-7.5-2.2">handling of embedded NUL bytes in ASN.1 counted-length strings and non-canonical or non-normalized string representations in subject names;<a href="#section-7.5-2.2" class="pilcrow">¶</a>
+2211c2360
+< <li id="section-7.5-2.3">handling of wildcard patterns in subject names;<a href="#section-7.5-2.3" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-7.5-2.3">handling of wildcard patterns in subject names;<a href="#section-7.5-2.3" class="pilcrow">¶</a>
+2213c2362
+< <li id="section-7.5-2.4">recursive verification of certificate chains and checking certificate revocation.<a href="#section-7.5-2.4" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-7.5-2.4">recursive verification of certificate chains and checking certificate revocation.<a href="#section-7.5-2.4" class="pilcrow">¶</a>
+2251c2400
+<           <span>[<a href="#IANA.JWT.Claims" class="xref">IANA.JWT.Claims</a>]</span>
+---
+>           <span>[<a href="#IANA.JWT.Claims" class="cite xref">IANA.JWT.Claims</a>]</span>
+2253,2254c2402,2403
+<           established by <span>[<a href="#RFC7800" class="xref">RFC7800</a>]</span>.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
+< <dl class="dlParallel dlCompact" id="section-9.1-2">
+---
+>           established by <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-9.1-2">
+2256c2405
+< <dd id="section-9.1-2.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-9.1-2.2">
+2258a2408
+>           <dd class="break"></dd>
+2260c2410
+< <dd id="section-9.1-2.4">X.509 Certificate SHA-256 Thumbprint<a href="#section-9.1-2.4" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.1-2.4">X.509 Certificate SHA-256 Thumbprint<a href="#section-9.1-2.4" class="pilcrow">¶</a>
+2261a2412
+>           <dd class="break"></dd>
+2263c2414
+< <dd id="section-9.1-2.6">IESG<a href="#section-9.1-2.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.1-2.6">IESG<a href="#section-9.1-2.6" class="pilcrow">¶</a>
+2264a2416
+>           <dd class="break"></dd>
+2266,2267c2418,2419
+< <dd id="section-9.1-2.8">
+<             <a href="#x5t" class="xref">Section 3.1</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.1-2.8">
+>             <a href="#x5t" class="auto internal xref">Section 3.1</a>
+2269a2422
+>         <dd class="break"></dd>
+2279,2280c2432,2433
+<           <span>[<a href="#IANA.OAuth.Parameters" class="xref">IANA.OAuth.Parameters</a>]</span> established by <span>[<a href="#RFC8414" class="xref">RFC8414</a>]</span>.<a href="#section-9.2-1" class="pilcrow">¶</a></p>
+< <dl class="dlParallel dlCompact" id="section-9.2-2">
+---
+>           <span>[<a href="#IANA.OAuth.Parameters" class="cite xref">IANA.OAuth.Parameters</a>]</span> established by <span>[<a href="#RFC8414" class="cite xref">RFC8414</a>]</span>.<a href="#section-9.2-1" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-9.2-2">
+2282c2435
+< <dd id="section-9.2-2.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-9.2-2.2">
+2284a2438
+>           <dd class="break"></dd>
+2286c2440
+< <dd id="section-9.2-2.4">Indicates authorization server
+---
+>           <dd style="margin-left: 1.5em" id="section-9.2-2.4">Indicates authorization server
+2288a2443
+>           <dd class="break"></dd>
+2290c2445
+< <dd id="section-9.2-2.6">IESG<a href="#section-9.2-2.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.2-2.6">IESG<a href="#section-9.2-2.6" class="pilcrow">¶</a>
+2291a2447
+>           <dd class="break"></dd>
+2293,2294c2449,2450
+< <dd id="section-9.2-2.8">
+<             <a href="#server_metadata_at" class="xref">Section 3.3</a> of RFC 8705<a href="#section-9.2-2.8" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.2-2.8">
+>             <a href="#server_metadata_at" class="auto internal xref">Section 3.3</a> of RFC 8705<a href="#section-9.2-2.8" class="pilcrow">¶</a>
+2295a2452
+>         <dd class="break"></dd>
+2297c2454
+< <dl class="dlParallel dlCompact" id="section-9.2-3">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-9.2-3">
+2299c2456
+< <dd id="section-9.2-3.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-9.2-3.2">
+2301a2459
+>           <dd class="break"></dd>
+2303c2461
+< <dd id="section-9.2-3.4">JSON object containing alternative
+---
+>           <dd style="margin-left: 1.5em" id="section-9.2-3.4">JSON object containing alternative
+2306a2465
+>           <dd class="break"></dd>
+2308c2467
+< <dd id="section-9.2-3.6">IESG<a href="#section-9.2-3.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.2-3.6">IESG<a href="#section-9.2-3.6" class="pilcrow">¶</a>
+2309a2469
+>           <dd class="break"></dd>
+2311,2312c2471,2472
+< <dd id="section-9.2-3.8">
+<             <a href="#endpointAliases" class="xref">Section 5</a> of RFC 8705<a href="#section-9.2-3.8" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.2-3.8">
+>             <a href="#endpointAliases" class="auto internal xref">Section 5</a> of RFC 8705<a href="#section-9.2-3.8" class="pilcrow">¶</a>
+2313a2474
+>         <dd class="break"></dd>
+2323,2324c2484,2485
+<           <span>[<a href="#IANA.OAuth.Parameters" class="xref">IANA.OAuth.Parameters</a>]</span> established by <span>[<a href="#RFC7591" class="xref">RFC7591</a>]</span>.<a href="#section-9.3-1" class="pilcrow">¶</a></p>
+< <dl class="dlParallel dlCompact" id="section-9.3-2">
+---
+>           <span>[<a href="#IANA.OAuth.Parameters" class="cite xref">IANA.OAuth.Parameters</a>]</span> established by <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>.<a href="#section-9.3-1" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-9.3-2">
+2326c2487
+< <dd id="section-9.3-2.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-9.3-2.2">
+2328a2490
+>           <dd class="break"></dd>
+2330c2492
+< <dd id="section-9.3-2.4">IESG<a href="#section-9.3-2.4" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.3-2.4">IESG<a href="#section-9.3-2.4" class="pilcrow">¶</a>
+2331a2494
+>           <dd class="break"></dd>
+2333,2334c2496,2497
+< <dd id="section-9.3-2.6">
+<             <a href="#metadata_auth_value_pki" class="xref">Section 2.1.1</a> of RFC 8705<a href="#section-9.3-2.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.3-2.6">
+>             <a href="#metadata_auth_value_pki" class="auto internal xref">Section 2.1.1</a> of RFC 8705<a href="#section-9.3-2.6" class="pilcrow">¶</a>
+2335a2499
+>         <dd class="break"></dd>
+2337c2501
+< <dl class="dlParallel dlCompact" id="section-9.3-3">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-9.3-3">
+2340c2504
+< <dd id="section-9.3-3.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-9.3-3.2">
+2342a2507
+>           <dd class="break"></dd>
+2344c2509
+< <dd id="section-9.3-3.4">IESG<a href="#section-9.3-3.4" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.3-3.4">IESG<a href="#section-9.3-3.4" class="pilcrow">¶</a>
+2345a2511
+>           <dd class="break"></dd>
+2347,2348c2513,2514
+< <dd id="section-9.3-3.6">
+<             <a href="#metadata_auth_value_self_signed" class="xref">Section 2.2.1</a> of RFC 8705<a href="#section-9.3-3.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.3-3.6">
+>             <a href="#metadata_auth_value_self_signed" class="auto internal xref">Section 2.2.1</a> of RFC 8705<a href="#section-9.3-3.6" class="pilcrow">¶</a>
+2349a2516
+>         <dd class="break"></dd>
+2357c2524
+<           "Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)" <span>[<a href="#RFC7800" class="xref">RFC7800</a>]</span> defined the
+---
+>           "Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)" <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span> defined the
+2364c2531
+<           OAuth 2.0 Token Introspection <span>[<a href="#RFC7662" class="xref">RFC7662</a>]</span> using the <code>cnf</code>
+---
+>           OAuth 2.0 Token Introspection <span>[<a href="#RFC7662" class="cite xref">RFC7662</a>]</span> using the <code>cnf</code>
+2367c2534
+<           has the same semantics and format as the claim of the same name defined in <span>[<a href="#RFC7800" class="xref">RFC7800</a>]</span>.
+---
+>           has the same semantics and format as the claim of the same name defined in <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>.
+2369c2536
+<           confirmation method member (see <a href="#introspect" class="xref">Section 3.2</a>), it needs to define and register
+---
+>           confirmation method member (see <a href="#introspect" class="auto internal xref">Section 3.2</a>), it needs to define and register
+2376,2378c2543,2545
+<           <span>[<a href="#IANA.OAuth.Parameters" class="xref">IANA.OAuth.Parameters</a>]</span>
+<           established by <span>[<a href="#RFC7662" class="xref">RFC7662</a>]</span>.<a href="#section-9.4-2" class="pilcrow">¶</a></p>
+< <dl class="dlParallel dlCompact" id="section-9.4-3">
+---
+>           <span>[<a href="#IANA.OAuth.Parameters" class="cite xref">IANA.OAuth.Parameters</a>]</span>
+>           established by <span>[<a href="#RFC7662" class="cite xref">RFC7662</a>]</span>.<a href="#section-9.4-2" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-9.4-3">
+2380c2547
+< <dd id="section-9.4-3.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-9.4-3.2">
+2382a2550
+>           <dd class="break"></dd>
+2384c2552
+< <dd id="section-9.4-3.4">Confirmation<a href="#section-9.4-3.4" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.4-3.4">Confirmation<a href="#section-9.4-3.4" class="pilcrow">¶</a>
+2385a2554
+>           <dd class="break"></dd>
+2387c2556
+< <dd id="section-9.4-3.6">IESG<a href="#section-9.4-3.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.4-3.6">IESG<a href="#section-9.4-3.6" class="pilcrow">¶</a>
+2388a2558
+>           <dd class="break"></dd>
+2390,2391c2560,2561
+< <dd id="section-9.4-3.8">
+<             <span>[<a href="#RFC7800" class="xref">RFC7800</a>]</span> and RFC 8705<a href="#section-9.4-3.8" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.4-3.8">
+>             <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span> and RFC 8705<a href="#section-9.4-3.8" class="pilcrow">¶</a>
+2392a2563
+>         <dd class="break"></dd>
+2402,2404c2573,2575
+<           <span>[<a href="#IANA.OAuth.Parameters" class="xref">IANA.OAuth.Parameters</a>]</span>
+<           established by <span>[<a href="#RFC7591" class="xref">RFC7591</a>]</span>:<a href="#section-9.5-1" class="pilcrow">¶</a></p>
+< <dl class="dlParallel dlCompact" id="section-9.5-2">
+---
+>           <span>[<a href="#IANA.OAuth.Parameters" class="cite xref">IANA.OAuth.Parameters</a>]</span>
+>           established by <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>:<a href="#section-9.5-1" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-9.5-2">
+2407c2578
+< <dd id="section-9.5-2.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-2.2">
+2409a2581
+>           <dd class="break"></dd>
+2412c2584
+< <dd id="section-9.5-2.4">Indicates the client's
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-2.4">Indicates the client's
+2415a2588
+>           <dd class="break"></dd>
+2418c2591
+< <dd id="section-9.5-2.6">IESG<a href="#section-9.5-2.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-2.6">IESG<a href="#section-9.5-2.6" class="pilcrow">¶</a>
+2419a2593
+>           <dd class="break"></dd>
+2422,2423c2596,2597
+< <dd id="section-9.5-2.8">
+<             <a href="#client_metadata_at" class="xref">Section 3.4</a> of RFC 8705<a href="#section-9.5-2.8" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-2.8">
+>             <a href="#client_metadata_at" class="auto internal xref">Section 3.4</a> of RFC 8705<a href="#section-9.5-2.8" class="pilcrow">¶</a>
+2424a2599
+>         <dd class="break"></dd>
+2426c2601
+< <dl class="dlParallel dlCompact" id="section-9.5-3">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-9.5-3">
+2429c2604
+< <dd id="section-9.5-3.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-3.2">
+2431a2607
+>           <dd class="break"></dd>
+2434c2610
+< <dd id="section-9.5-3.4">String value specifying
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-3.4">String value specifying
+2436a2613
+>           <dd class="break"></dd>
+2439c2616
+< <dd id="section-9.5-3.6">IESG<a href="#section-9.5-3.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-3.6">IESG<a href="#section-9.5-3.6" class="pilcrow">¶</a>
+2440a2618
+>           <dd class="break"></dd>
+2443,2444c2621,2622
+< <dd id="section-9.5-3.8">
+<             <a href="#client_metadata_pki" class="xref">Section 2.1.2</a> of RFC 8705<a href="#section-9.5-3.8" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-3.8">
+>             <a href="#client_metadata_pki" class="auto internal xref">Section 2.1.2</a> of RFC 8705<a href="#section-9.5-3.8" class="pilcrow">¶</a>
+2445a2624
+>         <dd class="break"></dd>
+2447c2626
+< <dl class="dlParallel dlCompact" id="section-9.5-4">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-9.5-4">
+2450c2629
+< <dd id="section-9.5-4.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-4.2">
+2452a2632
+>           <dd class="break"></dd>
+2455c2635
+< <dd id="section-9.5-4.4">String value specifying
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-4.4">String value specifying
+2457a2638
+>           <dd class="break"></dd>
+2460c2641
+< <dd id="section-9.5-4.6">IESG<a href="#section-9.5-4.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-4.6">IESG<a href="#section-9.5-4.6" class="pilcrow">¶</a>
+2461a2643
+>           <dd class="break"></dd>
+2464,2465c2646,2647
+< <dd id="section-9.5-4.8">
+<             <a href="#client_metadata_pki" class="xref">Section 2.1.2</a> of RFC 8705<a href="#section-9.5-4.8" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-4.8">
+>             <a href="#client_metadata_pki" class="auto internal xref">Section 2.1.2</a> of RFC 8705<a href="#section-9.5-4.8" class="pilcrow">¶</a>
+2466a2649
+>         <dd class="break"></dd>
+2468c2651
+< <dl class="dlParallel dlCompact" id="section-9.5-5">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-9.5-5">
+2471c2654
+< <dd id="section-9.5-5.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-5.2">
+2473a2657
+>           <dd class="break"></dd>
+2476c2660
+< <dd id="section-9.5-5.4">String value specifying
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-5.4">String value specifying
+2479a2664
+>           <dd class="break"></dd>
+2482c2667
+< <dd id="section-9.5-5.6">IESG<a href="#section-9.5-5.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-5.6">IESG<a href="#section-9.5-5.6" class="pilcrow">¶</a>
+2483a2669
+>           <dd class="break"></dd>
+2486,2487c2672,2673
+< <dd id="section-9.5-5.8">
+<             <a href="#client_metadata_pki" class="xref">Section 2.1.2</a> of RFC 8705<a href="#section-9.5-5.8" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-5.8">
+>             <a href="#client_metadata_pki" class="auto internal xref">Section 2.1.2</a> of RFC 8705<a href="#section-9.5-5.8" class="pilcrow">¶</a>
+2488a2675
+>         <dd class="break"></dd>
+2490c2677
+< <dl class="dlParallel dlCompact" id="section-9.5-6">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-9.5-6">
+2493c2680
+< <dd id="section-9.5-6.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-6.2">
+2495a2683
+>           <dd class="break"></dd>
+2498c2686
+< <dd id="section-9.5-6.4">String value specifying
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-6.4">String value specifying
+2500a2689
+>           <dd class="break"></dd>
+2503c2692
+< <dd id="section-9.5-6.6">IESG<a href="#section-9.5-6.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-6.6">IESG<a href="#section-9.5-6.6" class="pilcrow">¶</a>
+2504a2694
+>           <dd class="break"></dd>
+2507,2508c2697,2698
+< <dd id="section-9.5-6.8">
+<             <a href="#client_metadata_pki" class="xref">Section 2.1.2</a> of RFC 8705<a href="#section-9.5-6.8" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-6.8">
+>             <a href="#client_metadata_pki" class="auto internal xref">Section 2.1.2</a> of RFC 8705<a href="#section-9.5-6.8" class="pilcrow">¶</a>
+2509a2700
+>         <dd class="break"></dd>
+2511c2702
+< <dl class="dlParallel dlCompact" id="section-9.5-7">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-9.5-7">
+2514c2705
+< <dd id="section-9.5-7.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-7.2">
+2516a2708
+>           <dd class="break"></dd>
+2519c2711
+< <dd id="section-9.5-7.4">String value specifying
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-7.4">String value specifying
+2521a2714
+>           <dd class="break"></dd>
+2524c2717
+< <dd id="section-9.5-7.6">IESG<a href="#section-9.5-7.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-7.6">IESG<a href="#section-9.5-7.6" class="pilcrow">¶</a>
+2525a2719
+>           <dd class="break"></dd>
+2528,2529c2722,2723
+< <dd id="section-9.5-7.8">
+<             <a href="#client_metadata_pki" class="xref">Section 2.1.2</a> of RFC 8705<a href="#section-9.5-7.8" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-9.5-7.8">
+>             <a href="#client_metadata_pki" class="auto internal xref">Section 2.1.2</a> of RFC 8705<a href="#section-9.5-7.8" class="pilcrow">¶</a>
+2530a2725
+>         <dd class="break"></dd>
+2546c2741,2742
+< <span class="refAuthor">Sheffer, Y.</span><span class="refAuthor">, Holz, R.</span><span class="refAuthor">, and P. Saint-Andre</span>, <span class="refTitle">"Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)"</span>, <span class="seriesInfo">BCP 195</span>, <span class="seriesInfo">RFC 7525</span>, <time datetime="2015-05">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/bcp195">https://www.rfc-editor.org/info/bcp195</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Sheffer, Y.</span>, <span class="refAuthor">Holz, R.</span>, and <span class="refAuthor">P. Saint-Andre</span>, <span class="refTitle">"Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)"</span>, <span class="seriesInfo">BCP 195</span>, <span class="seriesInfo">RFC 7525</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/bcp195">https://www.rfc-editor.org/info/bcp195</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2549c2745,2746
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2552c2749,2750
+< <span class="refAuthor">Zeilenga, K., Ed.</span>, <span class="refTitle">"Lightweight Directory Access Protocol (LDAP): String Representation of Distinguished Names"</span>, <span class="seriesInfo">RFC 4514</span>, <span class="seriesInfo">DOI 10.17487/RFC4514</span>, <time datetime="2006-06">June 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4514">https://www.rfc-editor.org/info/rfc4514</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Zeilenga, K., Ed.</span>, <span class="refTitle">"Lightweight Directory Access Protocol (LDAP): String Representation of Distinguished Names"</span>, <span class="seriesInfo">RFC 4514</span>, <span class="seriesInfo">DOI 10.17487/RFC4514</span>, <time datetime="2006-06" class="refDate">June 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4514">https://www.rfc-editor.org/info/rfc4514</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2555c2753,2754
+< <span class="refAuthor">Josefsson, S.</span>, <span class="refTitle">"The Base16, Base32, and Base64 Data Encodings"</span>, <span class="seriesInfo">RFC 4648</span>, <span class="seriesInfo">DOI 10.17487/RFC4648</span>, <time datetime="2006-10">October 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4648">https://www.rfc-editor.org/info/rfc4648</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Josefsson, S.</span>, <span class="refTitle">"The Base16, Base32, and Base64 Data Encodings"</span>, <span class="seriesInfo">RFC 4648</span>, <span class="seriesInfo">DOI 10.17487/RFC4648</span>, <time datetime="2006-10" class="refDate">October 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4648">https://www.rfc-editor.org/info/rfc4648</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2558c2757,2758
+< <span class="refAuthor">Dierks, T.</span><span class="refAuthor"> and E. Rescorla</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.2"</span>, <span class="seriesInfo">RFC 5246</span>, <span class="seriesInfo">DOI 10.17487/RFC5246</span>, <time datetime="2008-08">August 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5246">https://www.rfc-editor.org/info/rfc5246</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Dierks, T.</span> and <span class="refAuthor">E. Rescorla</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.2"</span>, <span class="seriesInfo">RFC 5246</span>, <span class="seriesInfo">DOI 10.17487/RFC5246</span>, <time datetime="2008-08" class="refDate">August 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5246">https://www.rfc-editor.org/info/rfc5246</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2561c2761,2762
+< <span class="refAuthor">Cooper, D.</span><span class="refAuthor">, Santesson, S.</span><span class="refAuthor">, Farrell, S.</span><span class="refAuthor">, Boeyen, S.</span><span class="refAuthor">, Housley, R.</span><span class="refAuthor">, and W. Polk</span>, <span class="refTitle">"Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile"</span>, <span class="seriesInfo">RFC 5280</span>, <span class="seriesInfo">DOI 10.17487/RFC5280</span>, <time datetime="2008-05">May 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5280">https://www.rfc-editor.org/info/rfc5280</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cooper, D.</span>, <span class="refAuthor">Santesson, S.</span>, <span class="refAuthor">Farrell, S.</span>, <span class="refAuthor">Boeyen, S.</span>, <span class="refAuthor">Housley, R.</span>, and <span class="refAuthor">W. Polk</span>, <span class="refTitle">"Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile"</span>, <span class="seriesInfo">RFC 5280</span>, <span class="seriesInfo">DOI 10.17487/RFC5280</span>, <time datetime="2008-05" class="refDate">May 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5280">https://www.rfc-editor.org/info/rfc5280</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2564c2765,2766
+< <span class="refAuthor">Hardt, D., Ed.</span>, <span class="refTitle">"The OAuth 2.0 Authorization Framework"</span>, <span class="seriesInfo">RFC 6749</span>, <span class="seriesInfo">DOI 10.17487/RFC6749</span>, <time datetime="2012-10">October 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6749">https://www.rfc-editor.org/info/rfc6749</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hardt, D., Ed.</span>, <span class="refTitle">"The OAuth 2.0 Authorization Framework"</span>, <span class="seriesInfo">RFC 6749</span>, <span class="seriesInfo">DOI 10.17487/RFC6749</span>, <time datetime="2012-10" class="refDate">October 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6749">https://www.rfc-editor.org/info/rfc6749</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2567c2769,2770
+< <span class="refAuthor">Jones, M.</span><span class="refAuthor"> and D. Hardt</span>, <span class="refTitle">"The OAuth 2.0 Authorization Framework: Bearer Token Usage"</span>, <span class="seriesInfo">RFC 6750</span>, <span class="seriesInfo">DOI 10.17487/RFC6750</span>, <time datetime="2012-10">October 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6750">https://www.rfc-editor.org/info/rfc6750</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jones, M.</span> and <span class="refAuthor">D. Hardt</span>, <span class="refTitle">"The OAuth 2.0 Authorization Framework: Bearer Token Usage"</span>, <span class="seriesInfo">RFC 6750</span>, <span class="seriesInfo">DOI 10.17487/RFC6750</span>, <time datetime="2012-10" class="refDate">October 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6750">https://www.rfc-editor.org/info/rfc6750</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2570c2773,2774
+< <span class="refAuthor">Jones, M.</span>, <span class="refTitle">"JSON Web Key (JWK)"</span>, <span class="seriesInfo">RFC 7517</span>, <span class="seriesInfo">DOI 10.17487/RFC7517</span>, <time datetime="2015-05">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7517">https://www.rfc-editor.org/info/rfc7517</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jones, M.</span>, <span class="refTitle">"JSON Web Key (JWK)"</span>, <span class="seriesInfo">RFC 7517</span>, <span class="seriesInfo">DOI 10.17487/RFC7517</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7517">https://www.rfc-editor.org/info/rfc7517</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2573c2777,2778
+< <span class="refAuthor">Jones, M.</span><span class="refAuthor">, Bradley, J.</span><span class="refAuthor">, and N. Sakimura</span>, <span class="refTitle">"JSON Web Token (JWT)"</span>, <span class="seriesInfo">RFC 7519</span>, <span class="seriesInfo">DOI 10.17487/RFC7519</span>, <time datetime="2015-05">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7519">https://www.rfc-editor.org/info/rfc7519</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">N. Sakimura</span>, <span class="refTitle">"JSON Web Token (JWT)"</span>, <span class="seriesInfo">RFC 7519</span>, <span class="seriesInfo">DOI 10.17487/RFC7519</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7519">https://www.rfc-editor.org/info/rfc7519</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2576c2781,2782
+< <span class="refAuthor">Richer, J., Ed.</span><span class="refAuthor">, Jones, M.</span><span class="refAuthor">, Bradley, J.</span><span class="refAuthor">, Machulak, M.</span><span class="refAuthor">, and P. Hunt</span>, <span class="refTitle">"OAuth 2.0 Dynamic Client Registration Protocol"</span>, <span class="seriesInfo">RFC 7591</span>, <span class="seriesInfo">DOI 10.17487/RFC7591</span>, <time datetime="2015-07">July 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7591">https://www.rfc-editor.org/info/rfc7591</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Richer, J., Ed.</span>, <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Machulak, M.</span>, and <span class="refAuthor">P. Hunt</span>, <span class="refTitle">"OAuth 2.0 Dynamic Client Registration Protocol"</span>, <span class="seriesInfo">RFC 7591</span>, <span class="seriesInfo">DOI 10.17487/RFC7591</span>, <time datetime="2015-07" class="refDate">July 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7591">https://www.rfc-editor.org/info/rfc7591</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2579c2785,2786
+< <span class="refAuthor">Richer, J., Ed.</span>, <span class="refTitle">"OAuth 2.0 Token Introspection"</span>, <span class="seriesInfo">RFC 7662</span>, <span class="seriesInfo">DOI 10.17487/RFC7662</span>, <time datetime="2015-10">October 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7662">https://www.rfc-editor.org/info/rfc7662</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Richer, J., Ed.</span>, <span class="refTitle">"OAuth 2.0 Token Introspection"</span>, <span class="seriesInfo">RFC 7662</span>, <span class="seriesInfo">DOI 10.17487/RFC7662</span>, <time datetime="2015-10" class="refDate">October 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7662">https://www.rfc-editor.org/info/rfc7662</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2582c2789,2790
+< <span class="refAuthor">Jones, M.</span><span class="refAuthor">, Bradley, J.</span><span class="refAuthor">, and H. Tschofenig</span>, <span class="refTitle">"Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)"</span>, <span class="seriesInfo">RFC 7800</span>, <span class="seriesInfo">DOI 10.17487/RFC7800</span>, <time datetime="2016-04">April 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7800">https://www.rfc-editor.org/info/rfc7800</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)"</span>, <span class="seriesInfo">RFC 7800</span>, <span class="seriesInfo">DOI 10.17487/RFC7800</span>, <time datetime="2016-04" class="refDate">April 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7800">https://www.rfc-editor.org/info/rfc7800</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2585c2793,2794
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2588c2797,2798
+< <span class="refAuthor">Jones, M.</span><span class="refAuthor">, Sakimura, N.</span><span class="refAuthor">, and J. Bradley</span>, <span class="refTitle">"OAuth 2.0 Authorization Server Metadata"</span>, <span class="seriesInfo">RFC 8414</span>, <span class="seriesInfo">DOI 10.17487/RFC8414</span>, <time datetime="2018-06">June 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8414">https://www.rfc-editor.org/info/rfc8414</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Sakimura, N.</span>, and <span class="refAuthor">J. Bradley</span>, <span class="refTitle">"OAuth 2.0 Authorization Server Metadata"</span>, <span class="seriesInfo">RFC 8414</span>, <span class="seriesInfo">DOI 10.17487/RFC8414</span>, <time datetime="2018-06" class="refDate">June 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8414">https://www.rfc-editor.org/info/rfc8414</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2591c2801,2802
+< <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8446">https://www.rfc-editor.org/info/rfc8446</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8446">https://www.rfc-editor.org/info/rfc8446</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2594c2805,2806
+< <span class="refAuthor">National Institute of Standards and Technology (NIST)</span>, <span class="refTitle">"Secure Hash Standard (SHS)"</span>, <span class="seriesInfo">FIPS PUB 180-4</span>, <span class="seriesInfo">DOI 10.6028/NIST.FIPS.180-4</span>, <time datetime="2015-08">August 2015</time>, <span>&lt;<a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf">https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">National Institute of Standards and Technology (NIST)</span>, <span class="refTitle">"Secure Hash Standard (SHS)"</span>, <span class="seriesInfo">FIPS PUB 180-4</span>, <span class="seriesInfo">DOI 10.6028/NIST.FIPS.180-4</span>, <time datetime="2015-08" class="refDate">August 2015</time>, <span>&lt;<a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf">https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2597c2809,2810
+< <span class="refAuthor">ITU-T</span>, <span class="refTitle">"Information Technology - ASN.1 encoding rules: Specification of Basic Encoding Rules (BER), Canonical Encoding Rules (CER) and Distinguished Encoding Rules (DER)"</span>, <span class="seriesInfo">ITU-T Recommendation X.690</span>, <time datetime="2015-08">August 2015</time>. </dd>
+---
+> <span class="refAuthor">ITU-T</span>, <span class="refTitle">"Information Technology - ASN.1 encoding rules: Specification of Basic Encoding Rules (BER), Canonical Encoding Rules (CER) and Distinguished Encoding Rules (DER)"</span>, <span class="seriesInfo">ITU-T Recommendation X.690</span>, <time datetime="2015-08" class="refDate">August 2015</time>. </dd>
+> <dd class="break"></dd>
+2607c2820,2821
+< <span class="refAuthor">Wong, D.</span>, <span class="refTitle">"Common x509 certificate validation/creation pitfalls"</span>, <time datetime="2016-09">September 2016</time>, <span>&lt;<a href="https://www.cryptologie.net/article/374/common-x509-certificate-validationcreation-pitfalls">https://www.cryptologie.net/article/374/common-x509-certificate-validationcreation-pitfalls</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Wong, D.</span>, <span class="refTitle">"Common x509 certificate validation/creation pitfalls"</span>, <time datetime="2016-09" class="refDate">September 2016</time>, <span>&lt;<a href="https://www.cryptologie.net/article/374/common-x509-certificate-validationcreation-pitfalls">https://www.cryptologie.net/article/374/common-x509-certificate-validationcreation-pitfalls</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2610c2824,2825
+< <span class="refAuthor">Georgiev, M.</span><span class="refAuthor">, Iyengar, S.</span><span class="refAuthor">, Jana, S.</span><span class="refAuthor">, Anubhai, R.</span><span class="refAuthor">, Boneh, D.</span><span class="refAuthor">, and V. Shmatikov</span>, <span class="refTitle">"The Most Dangerous Code in the World: Validating SSL Certificates in Non-Browser Software"</span>, <span class="seriesInfo">DOI 10.1145/2382196.2382204</span>, <time datetime="2012-10">October 2012</time>, <span>&lt;<a href="http://www.cs.utexas.edu/~shmat/shmat_ccs12.pdf">http://www.cs.utexas.edu/~shmat/shmat_ccs12.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Georgiev, M.</span>, <span class="refAuthor">Iyengar, S.</span>, <span class="refAuthor">Jana, S.</span>, <span class="refAuthor">Anubhai, R.</span>, <span class="refAuthor">Boneh, D.</span>, and <span class="refAuthor">V. Shmatikov</span>, <span class="refTitle">"The Most Dangerous Code in the World: Validating SSL Certificates in Non-Browser Software"</span>, <span class="seriesInfo">DOI 10.1145/2382196.2382204</span>, <time datetime="2012-10" class="refDate">October 2012</time>, <span>&lt;<a href="http://www.cs.utexas.edu/~shmat/shmat_ccs12.pdf">http://www.cs.utexas.edu/~shmat/shmat_ccs12.pdf</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2613a2829
+> <dd class="break"></dd>
+2616a2833
+> <dd class="break"></dd>
+2619c2836,2837
+< <span class="refAuthor">Fernandez, G.</span><span class="refAuthor">, Walter, F.</span><span class="refAuthor">, Nennker, A.</span><span class="refAuthor">, Tonge, D.</span><span class="refAuthor">, and B. Campbell</span>, <span class="refTitle">"OpenID Connect Client Initiated Backchannel Authentication Flow - Core 1.0"</span>, <time datetime="2019-01-16">16 January 2019</time>, <span>&lt;<a href="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html">https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fernandez, G.</span>, <span class="refAuthor">Walter, F.</span>, <span class="refAuthor">Nennker, A.</span>, <span class="refAuthor">Tonge, D.</span>, and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"OpenID Connect Client Initiated Backchannel Authentication Flow - Core 1.0"</span>, <time datetime="2019-01-16" class="refDate">16 January 2019</time>, <span>&lt;<a href="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html">https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2622c2840,2841
+< <span class="refAuthor">Legg, S., Ed.</span>, <span class="refTitle">"Lightweight Directory Access Protocol (LDAP): Syntaxes and Matching Rules"</span>, <span class="seriesInfo">RFC 4517</span>, <span class="seriesInfo">DOI 10.17487/RFC4517</span>, <time datetime="2006-06">June 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4517">https://www.rfc-editor.org/info/rfc4517</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Legg, S., Ed.</span>, <span class="refTitle">"Lightweight Directory Access Protocol (LDAP): Syntaxes and Matching Rules"</span>, <span class="seriesInfo">RFC 4517</span>, <span class="seriesInfo">DOI 10.17487/RFC4517</span>, <time datetime="2006-06" class="refDate">June 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4517">https://www.rfc-editor.org/info/rfc4517</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2625c2844,2845
+< <span class="refAuthor">Kawamura, S.</span><span class="refAuthor"> and M. Kawashima</span>, <span class="refTitle">"A Recommendation for IPv6 Address Text Representation"</span>, <span class="seriesInfo">RFC 5952</span>, <span class="seriesInfo">DOI 10.17487/RFC5952</span>, <time datetime="2010-08">August 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5952">https://www.rfc-editor.org/info/rfc5952</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Kawamura, S.</span> and <span class="refAuthor">M. Kawashima</span>, <span class="refTitle">"A Recommendation for IPv6 Address Text Representation"</span>, <span class="seriesInfo">RFC 5952</span>, <span class="seriesInfo">DOI 10.17487/RFC5952</span>, <time datetime="2010-08" class="refDate">August 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5952">https://www.rfc-editor.org/info/rfc5952</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2628c2848,2849
+< <span class="refAuthor">Eastlake 3rd, D.</span>, <span class="refTitle">"Transport Layer Security (TLS) Extensions: Extension Definitions"</span>, <span class="seriesInfo">RFC 6066</span>, <span class="seriesInfo">DOI 10.17487/RFC6066</span>, <time datetime="2011-01">January 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6066">https://www.rfc-editor.org/info/rfc6066</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Eastlake 3rd, D.</span>, <span class="refTitle">"Transport Layer Security (TLS) Extensions: Extension Definitions"</span>, <span class="seriesInfo">RFC 6066</span>, <span class="seriesInfo">DOI 10.17487/RFC6066</span>, <time datetime="2011-01" class="refDate">January 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6066">https://www.rfc-editor.org/info/rfc6066</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2631c2852,2853
+< <span class="refAuthor">Lodderstedt, T., Ed.</span><span class="refAuthor">, Dronia, S.</span><span class="refAuthor">, and M. Scurtescu</span>, <span class="refTitle">"OAuth 2.0 Token Revocation"</span>, <span class="seriesInfo">RFC 7009</span>, <span class="seriesInfo">DOI 10.17487/RFC7009</span>, <time datetime="2013-08">August 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7009">https://www.rfc-editor.org/info/rfc7009</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Lodderstedt, T., Ed.</span>, <span class="refAuthor">Dronia, S.</span>, and <span class="refAuthor">M. Scurtescu</span>, <span class="refTitle">"OAuth 2.0 Token Revocation"</span>, <span class="seriesInfo">RFC 7009</span>, <span class="seriesInfo">DOI 10.17487/RFC7009</span>, <time datetime="2013-08" class="refDate">August 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7009">https://www.rfc-editor.org/info/rfc7009</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2634c2856,2857
+< <span class="refAuthor">Jones, M.</span>, <span class="refTitle">"JSON Web Algorithms (JWA)"</span>, <span class="seriesInfo">RFC 7518</span>, <span class="seriesInfo">DOI 10.17487/RFC7518</span>, <time datetime="2015-05">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7518">https://www.rfc-editor.org/info/rfc7518</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jones, M.</span>, <span class="refTitle">"JSON Web Algorithms (JWA)"</span>, <span class="seriesInfo">RFC 7518</span>, <span class="seriesInfo">DOI 10.17487/RFC7518</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7518">https://www.rfc-editor.org/info/rfc7518</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2637c2860,2861
+< <span class="refAuthor">Jones, M.</span><span class="refAuthor">, Campbell, B.</span><span class="refAuthor">, Bradley, J.</span><span class="refAuthor">, and W. Denniss</span>, <span class="refTitle">"OAuth 2.0 Token Binding"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-token-binding-08</span>, <time datetime="2018-10-19">19 October 2018</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-oauth-token-binding-08">https://tools.ietf.org/html/draft-ietf-oauth-token-binding-08</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Campbell, B.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">W. Denniss</span>, <span class="refTitle">"OAuth 2.0 Token Binding"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-token-binding-08</span>, <time datetime="2018-10-19" class="refDate">19 October 2018</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-oauth-token-binding-08">https://tools.ietf.org/html/draft-ietf-oauth-token-binding-08</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2642c2866
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2644c2868
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-example-cnf-claim-certifica" class="section-name selfRef">Example "cnf" Claim, Certificate, and JWK</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-example-cnf-claim-certifica" class="section-name selfRef">Example "cnf" Claim, Certificate, and JWK</a>
+2646c2870
+< <p id="section-appendix.a-1">
+---
+> <p id="appendix-A-1">
+2649c2873
+<         Figures <a href="#cnf" class="xref">5</a> and <a href="#pem" class="xref">6</a>, respectively. A JWK representation of the
+---
+>         Figures <a href="#cnf" class="auto internal xref">5</a> and <a href="#pem" class="auto internal xref">6</a>, respectively. A JWK representation of the
+2651c2875
+<         provided in <a href="#jwk" class="xref">Figure 7</a>.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+>         provided in <a href="#jwk" class="auto internal xref">Figure 7</a>.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+2654,2655c2878,2879
+<         <div id="section-appendix.a-2.1">
+< <pre class="sourcecode lang-json">
+---
+>         <div class="lang-json sourcecode" id="appendix-A-2.1">
+> <pre>
+2665c2889
+<         <div class="artwork art-text alignLeft" id="section-appendix.a-3.1">
+---
+>         <div class="alignLeft art-text artwork" id="appendix-A-3.1">
+2682,2683c2906,2907
+<         <div id="section-appendix.a-4.1">
+< <pre class="sourcecode lang-json">
+---
+>         <div class="lang-json sourcecode" id="appendix-A-4.1">
+> <pre>
+2706c2930
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+2708c2932
+< <a href="#section-appendix.b" class="section-number selfRef">Appendix B. </a><a href="#name-relationship-to-token-bindi" class="section-name selfRef">Relationship to Token Binding</a>
+---
+> <a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-relationship-to-token-bindi" class="section-name selfRef">Relationship to Token Binding</a>
+2710,2711c2934,2935
+< <p id="section-appendix.b-1">
+<         OAuth 2.0 Token Binding <span>[<a href="#I-D.ietf-oauth-token-binding" class="xref">TOKEN</a>]</span>
+---
+> <p id="appendix-B-1">
+>         OAuth 2.0 Token Binding <span>[<a href="#I-D.ietf-oauth-token-binding" class="cite xref">TOKEN</a>]</span>
+2720,2721c2944,2945
+<         with respect to the TLS connection over which the protected resource is accessed.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-2">
+---
+>         with respect to the TLS connection over which the protected resource is accessed.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+> <p id="appendix-B-2">
+2736c2960
+<         proof-of-possession mechanisms for tokens issued to different clients.<a href="#section-appendix.b-2" class="pilcrow">¶</a></p>
+---
+>         proof-of-possession mechanisms for tokens issued to different clients.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+2740c2964
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
+2744c2968
+< <p id="section-appendix.c-1">
+---
+> <p id="appendix-C-1">
+2748,2749c2972,2973
+<         informed some of the content of this document.<a href="#section-appendix.c-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.c-2">
+---
+>         informed some of the content of this document.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+> <p id="appendix-C-2">
+2785c3009
+<         <span class="contact-name">Hannes Tschofenig</span>.<a href="#section-appendix.c-2" class="pilcrow">¶</a></p>
+---
+>         <span class="contact-name">Hannes Tschofenig</span>.<a href="#appendix-C-2" class="pilcrow">¶</a></p>
+2789c3013
+< <section id="section-appendix.d">
+---
+> <section id="appendix-D">

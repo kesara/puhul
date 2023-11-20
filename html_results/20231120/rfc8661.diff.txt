@@ -1,0 +1,1222 @@
+26c26
+< <meta content="xml2rfc 2.35.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+29c29,45
+< <link href="rfc8661.xml" type="application/rfc+xml" rel="alternate">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.0.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.10
+> -->
+> <link href="rfc/rfc8661.xml" rel="alternate" type="application/rfc+xml">
+39c55
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+48a65,70
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+51d72
+<   width: extend-to-zoom;
+66c87
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+68a90
+>   overflow-wrap: break-word;
+154a177,185
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+169,172d199
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+173a201
+>   border: none;
+196a225,227
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+238c269,270
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+248c280
+< tt, code, pre, code {
+---
+> tt, code, pre {
+250c282
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+289a322,324
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+379a415,420
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+481c522
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+621d661
+< 
+643a684,686
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+711c754
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+811c854
+< tt, code, pre, code {
+---
+> tt, code, pre {
+816c859
+< pre.sourcecode,
+---
+> .sourcecode pre,
+852c895
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+930,935d972
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1006c1043
+<   margin: 0 0 0.25em 0;
+---
+>   margin-bottom: 0.25em;
+1020c1057
+<   margin-bottom: 0;
+---
+>   margin-bottom: 0.5em;
+1038a1076,1077
+>   .artwork,
+>   .artwork > pre,
+1042,1043c1081,1214
+< }</style>
+< <link href="rfc-local.css" type="text/css" rel="stylesheet">
+---
+> }
+> /* Avoid narrow tables forcing too narrow table captions, which may render badly */
+> table {
+>   min-width: 20em;
+> }
+> /* ol type a */
+> ol.type-a { list-style-type: lower-alpha; }
+> ol.type-A { list-style-type: upper-alpha; }
+> ol.type-i { list-style-type: lower-roman; }
+> ol.type-I { list-style-type: lower-roman; }
+> /* Apply the print table and row borders in general, on request from the RPC,
+> and increase the contrast between border and odd row background slightly */
+> table {
+>   border: 1px solid #ddd;
+> }
+> td {
+>   border-top: 1px solid #ddd;
+> }
+> tr {
+>   break-inside: avoid;
+> }
+> tr:nth-child(2n+1) > td {
+>   background-color: #f8f8f8;
+> }
+> /* Use style rules to govern display of the TOC. */
+> @media screen and (max-width: 1023px) {
+>   #toc nav { display: none; }
+>   #toc.active nav { display: block; }
+> }
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+> <link href="rfc-local.css" rel="stylesheet" type="text/css">
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-spring-segment-routing-ldp-interop-15" rel="prev">
+1046c1217
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-spring-segment-routing-ldp-interop-15" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1048,1049c1219,1220
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1165,1170c1336,1341
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+1174,1178c1345,1349
+<           <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-sr-ldp-ships-in-the-night-c" class="xref">SR-LDP Ships-in-the-Night Coexistence</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.1">
+<                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-mpls2mpls-mpls2ip-and-ip2mp" class="xref">MPLS2MPLS, MPLS2IP, and IP2MPLS Coexistence</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-sr-ldp-ships-in-the-night-c" class="internal xref">SR-LDP Ships-in-the-Night Coexistence</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+>                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-mpls2mpls-mpls2ip-and-ip2mp" class="internal xref">MPLS2MPLS, MPLS2IP, and IP2MPLS Coexistence</a></p>
+1182,1189c1353,1360
+<           <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-sr-and-ldp-interworking" class="xref">SR and LDP Interworking</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-ldp-to-sr" class="xref">LDP to SR</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.1.2.1">
+<                     <p id="section-toc.1-1.3.2.1.2.1.1"><a href="#section-3.1.1" class="xref">3.1.1</a>.  <a href="#name-ldp-to-sr-behavior" class="xref">LDP to SR Behavior</a><a href="#section-toc.1-1.3.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-sr-and-ldp-interworking" class="internal xref">SR and LDP Interworking</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-ldp-to-sr" class="internal xref">LDP to SR</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1.2.1">
+>                     <p id="section-toc.1-1.3.2.1.2.1.1" class="keepWithNext"><a href="#section-3.1.1" class="auto internal xref">3.1.1</a>.  <a href="#name-ldp-to-sr-behavior" class="internal xref">LDP to SR Behavior</a></p>
+1193,1197c1364,1368
+<               <li class="toc ulEmpty" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-sr-to-ldp" class="xref">SR to LDP</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.2.2.1">
+<                     <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="xref">3.2.1</a>.  <a href="#name-segment-routing-mapping-ser" class="xref">Segment Routing Mapping Server (SRMS)</a><a href="#section-toc.1-1.3.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1" class="keepWithNext"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-sr-to-ldp" class="internal xref">SR to LDP</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.1">
+>                     <p id="section-toc.1-1.3.2.2.2.1.1" class="keepWithNext"><a href="#section-3.2.1" class="auto internal xref">3.2.1</a>.  <a href="#name-segment-routing-mapping-ser" class="internal xref">Segment Routing Mapping Server (SRMS)</a></p>
+1199,1200c1370,1371
+<                   <li class="toc ulEmpty" id="section-toc.1-1.3.2.2.2.2">
+<                     <p id="section-toc.1-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="xref">3.2.2</a>.  <a href="#name-sr-to-ldp-behavior" class="xref">SR to LDP Behavior</a><a href="#section-toc.1-1.3.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.2">
+>                     <p id="section-toc.1-1.3.2.2.2.2.1" class="keepWithNext"><a href="#section-3.2.2" class="auto internal xref">3.2.2</a>.  <a href="#name-sr-to-ldp-behavior" class="internal xref">SR to LDP Behavior</a></p>
+1202,1203c1373,1374
+<                   <li class="toc ulEmpty" id="section-toc.1-1.3.2.2.2.3">
+<                     <p id="section-toc.1-1.3.2.2.2.3.1"><a href="#section-3.2.3" class="xref">3.2.3</a>.  <a href="#name-interoperability-of-multipl" class="xref">Interoperability of Multiple SRMSes and Prefix-SID Advertisements</a><a href="#section-toc.1-1.3.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.3">
+>                     <p id="section-toc.1-1.3.2.2.2.3.1" class="keepWithNext"><a href="#section-3.2.3" class="auto internal xref">3.2.3</a>.  <a href="#name-interoperability-of-multipl" class="internal xref">Interoperability of Multiple SRMSes and Prefix-SID Advertisements</a></p>
+1209,1213c1380,1384
+<           <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-sr-ldp-interworking-use-cas" class="xref">SR-LDP Interworking Use Cases</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-sr-protection-of-ldp-based-" class="xref">SR Protection of LDP-Based Traffic</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-sr-ldp-interworking-use-cas" class="internal xref">SR-LDP Interworking Use Cases</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1" class="keepWithNext"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-sr-protection-of-ldp-based-" class="internal xref">SR Protection of LDP-Based Traffic</a></p>
+1215,1216c1386,1387
+<               <li class="toc ulEmpty" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-eliminating-targeted-ldp-se" class="xref">Eliminating Targeted LDP Sessions</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1" class="keepWithNext"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-eliminating-targeted-ldp-se" class="internal xref">Eliminating Targeted LDP Sessions</a></p>
+1218,1219c1389,1390
+<               <li class="toc ulEmpty" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-guaranteed-frr-coverage" class="xref">Guaranteed FRR Coverage</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1" class="keepWithNext"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-guaranteed-frr-coverage" class="internal xref">Guaranteed FRR Coverage</a></p>
+1221,1222c1392,1393
+<               <li class="toc ulEmpty" id="section-toc.1-1.4.2.4">
+<                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-inter-as-option-c-carriers-" class="xref">Inter-AS Option C, Carrier's Carrier</a><a href="#section-toc.1-1.4.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
+>                 <p id="section-toc.1-1.4.2.4.1" class="keepWithNext"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-inter-as-option-c-carriers-" class="internal xref">Inter-AS Option C, Carrier's Carrier</a></p>
+1226,1227c1397,1398
+<           <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1229,1233c1400,1404
+<           <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-manageability-consideration" class="xref">Manageability Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-sr-and-ldp-coexistence" class="xref">SR and LDP Coexistence</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-manageability-consideration" class="internal xref">Manageability Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1" class="keepWithNext"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-sr-and-ldp-coexistence" class="internal xref">SR and LDP Coexistence</a></p>
+1235,1236c1406,1407
+<               <li class="toc ulEmpty" id="section-toc.1-1.6.2.2">
+<                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-data-plane-verification" class="xref">Data-Plane Verification</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+>                 <p id="section-toc.1-1.6.2.2.1" class="keepWithNext"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-data-plane-verification" class="internal xref">Data-Plane Verification</a></p>
+1240,1241c1411,1412
+<           <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1243,1247c1414,1418
+<           <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.8.2.1">
+<                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+>                 <p id="section-toc.1-1.8.2.1.1" class="keepWithNext"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1249,1250c1420,1421
+<               <li class="toc ulEmpty" id="section-toc.1-1.8.2.2">
+<                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+>                 <p id="section-toc.1-1.8.2.2.1" class="keepWithNext"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1254,1255c1425,1426
+<           <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-migration-from-ldp-to-sr" class="xref">Migration from LDP to SR</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-migration-from-ldp-to-sr" class="internal xref">Migration from LDP to SR</a></p>
+1257,1258c1428,1429
+<           <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1260,1261c1431,1432
+<           <li class="toc ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1" class="keepWithNext"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+1263,1264c1434,1435
+<           <li class="toc ulEmpty" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-appendix.d" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1" class="keepWithNext"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1275,1276c1446,1447
+< <p id="section-1-1">Segment Routing, as described in <span>[<a href="#RFC8402" class="xref">RFC8402</a>]</span>, can be used on top of the
+<       MPLS data plane without any modification as described in <span>[<a href="#RFC8660" class="xref">RFC8660</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-1-1">Segment Routing, as described in <span>[<a href="#RFC8402" class="cite xref">RFC8402</a>]</span>, can be used on top of the
+>       MPLS data plane without any modification as described in <span>[<a href="#RFC8660" class="cite xref">RFC8660</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+1278c1449
+<       distribution protocols such as LDP <span>[<a href="#RFC5036" class="xref">RFC5036</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+---
+>       distribution protocols such as LDP <span>[<a href="#RFC5036" class="cite xref">RFC5036</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+1283,1284c1454,1455
+< <p id="section-1-4"><a href="#sec-2" class="xref">Section 2</a> describes the coexistence of SR with
+<       other MPLS control-plane protocols. <a href="#sec-4" class="xref">Section 3</a> documents
+---
+> <p id="section-1-4"><a href="#sec-2" class="auto internal xref">Section 2</a> describes the coexistence of SR with
+>       other MPLS control-plane protocols. <a href="#sec-4" class="auto internal xref">Section 3</a> documents
+1286c1457
+<       deployment. <a href="#sec-5" class="xref">Section 4</a> describes how a partial SR
+---
+>       deployment. <a href="#sec-5" class="auto internal xref">Section 4</a> describes how a partial SR
+1289c1460
+<       MPLS use cases. <a href="#Appendix-A" class="xref">Appendix A</a> documents a method to
+---
+>       MPLS use cases. <a href="#Appendix-A" class="auto internal xref">Appendix A</a> documents a method to
+1301c1472
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1313c1484
+<       <span>[<a href="#RFC5036" class="xref">RFC5036</a>]</span>, RSVP-TE <span>[<a href="#RFC3209" class="xref">RFC3209</a>]</span>, BGP <span>[<a href="#RFC8277" class="xref">RFC8277</a>]</span>, etc., are examples of MCCs.<a href="#section-2-1" class="pilcrow">¶</a></p>
+---
+>       <span>[<a href="#RFC5036" class="cite xref">RFC5036</a>]</span>, RSVP-TE <span>[<a href="#RFC3209" class="cite xref">RFC3209</a>]</span>, BGP <span>[<a href="#RFC8277" class="cite xref">RFC8277</a>]</span>, etc., are examples of MCCs.<a href="#section-2-1" class="pilcrow">¶</a></p>
+1318c1489
+<       as defined in <span>[<a href="#RFC8402" class="xref">RFC8402</a>]</span>) for the
+---
+>       as defined in <span>[<a href="#RFC8402" class="cite xref">RFC8402</a>]</span>) for the
+1332c1503
+<       range is reserved by the label manager, and it is the MPLS-TP <span>[<a href="#RFC5960" class="xref">RFC5960</a>]</span> Network Management System (acting as an MCC) that ensures the unique
+---
+>       range is reserved by the label manager, and it is the MPLS-TP <span>[<a href="#RFC5960" class="cite xref">RFC5960</a>]</span> Network Management System (acting as an MCC) that ensures the unique
+1338c1509
+<         <div class="artwork art-text alignLeft" id="section-2-8.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-2-8.1">
+1353,1354c1524,1525
+< <ul>
+< <li id="section-2-11.1">The operator configures PE1, PE2, PE3, and PE4 with respective loopbacks
+---
+> <ul class="normal">
+> <li class="normal" id="section-2-11.1">The operator configures PE1, PE2, PE3, and PE4 with respective loopbacks
+1359c1530
+<         <li id="section-2-11.2">The operator configures A, B, C with respective loopbacks 192.0.2.1/32,
+---
+>         <li class="normal" id="section-2-11.2">The operator configures A, B, C with respective loopbacks 192.0.2.1/32,
+1362c1533
+<         <li id="section-2-11.3">The operator configures PE2, A, B, C, and PE4 with SRGB [100, 300].<a href="#section-2-11.3" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="section-2-11.3">The operator configures PE2, A, B, C, and PE4 with SRGB [100, 300].<a href="#section-2-11.3" class="pilcrow">¶</a>
+1364,1365c1535,1536
+<         <li id="section-2-11.4">The operator attaches the respective Node Segment Identifiers (Node SIDs,
+< as defined in <span>[<a href="#RFC8402" class="xref">RFC8402</a>]</span>), 202, 101, 102, 103,
+---
+>         <li class="normal" id="section-2-11.4">The operator attaches the respective Node Segment Identifiers (Node SIDs,
+> as defined in <span>[<a href="#RFC8402" class="cite xref">RFC8402</a>]</span>), 202, 101, 102, 103,
+1369c1540
+<         <li id="section-2-11.5">PE1, A, B, C, and PE3 are LDP capable.<a href="#section-2-11.5" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="section-2-11.5">PE1, A, B, C, and PE3 are LDP capable.<a href="#section-2-11.5" class="pilcrow">¶</a>
+1371c1542
+<         <li id="section-2-11.6">PE1 and PE3 are not SR capable.<a href="#section-2-11.6" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="section-2-11.6">PE1 and PE3 are not SR capable.<a href="#section-2-11.6" class="pilcrow">¶</a>
+1397,1398c1568,1569
+< <ul>
+< <li id="section-2-19.1">The ODD service is tunneled from PE1 to PE3 through a continuous LDP LSP
+---
+> <ul class="normal">
+> <li class="normal" id="section-2-19.1">The ODD service is tunneled from PE1 to PE3 through a continuous LDP LSP
+1401c1572
+<         <li id="section-2-19.2">The EVEN service is tunneled from PE2 to PE4 through a continuous SR node
+---
+>         <li class="normal" id="section-2-19.2">The EVEN service is tunneled from PE2 to PE4 through a continuous SR node
+1415,1416c1586,1587
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-2.1-3.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-2.1-3.1">
+1418,1419c1589,1590
+< <ul>
+< <li id="section-2.1-3.1.2.1">Outgoing label: 2048<a href="#section-2.1-3.1.2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-2.1-3.1.2.1">Outgoing label: 2048<a href="#section-2.1-3.1.2.1" class="pilcrow">¶</a>
+1421c1592
+<               <li id="section-2.1-3.1.2.2">Outgoing next hop: B<a href="#section-2.1-3.1.2.2" class="pilcrow">¶</a>
+---
+>               <li class="normal" id="section-2.1-3.1.2.2">Outgoing next hop: B<a href="#section-2.1-3.1.2.2" class="pilcrow">¶</a>
+1427,1428c1598,1599
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-2.1-4.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-2.1-4.1">
+1430,1431c1601,1602
+< <ul>
+< <li id="section-2.1-4.1.2.1">Outgoing label: 203<a href="#section-2.1-4.1.2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-2.1-4.1.2.1">Outgoing label: 203<a href="#section-2.1-4.1.2.1" class="pilcrow">¶</a>
+1433c1604
+<               <li id="section-2.1-4.1.2.2">Outgoing next hop: B<a href="#section-2.1-4.1.2.2" class="pilcrow">¶</a>
+---
+>               <li class="normal" id="section-2.1-4.1.2.2">Outgoing next hop: B<a href="#section-2.1-4.1.2.2" class="pilcrow">¶</a>
+1445c1616
+<         IPv4/IPv6. For IP2MPLS coexistence, refer to <a href="#sec-7.1" class="xref">Section 6.1</a>.<a href="#section-2.1-6" class="pilcrow">¶</a></p>
+---
+>         IPv4/IPv6. For IP2MPLS coexistence, refer to <a href="#sec-7.1" class="auto internal xref">Section 6.1</a>.<a href="#section-2.1-6" class="pilcrow">¶</a></p>
+1460c1631
+<         <div class="artwork art-text alignLeft" id="section-3-2.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-3-2.1">
+1475,1476c1646,1647
+< <ul>
+< <li id="section-3-4.1">P6, P7, P8, PE4, and PE3 are LDP capable.<a href="#section-3-4.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-3-4.1">P6, P7, P8, PE4, and PE3 are LDP capable.<a href="#section-3-4.1" class="pilcrow">¶</a>
+1478c1649
+<         <li id="section-3-4.2">PE1, PE2, P5, and P6 are SR capable. PE1, PE2, P5, and P6 are configured
+---
+>         <li class="normal" id="section-3-4.2">PE1, PE2, P5, and P6 are SR capable. PE1, PE2, P5, and P6 are configured
+1481c1652
+<         <li id="section-3-4.3">A service flow must be tunneled from PE1 to PE3 over a continuous MPLS
+---
+>         <li class="normal" id="section-3-4.3">A service flow must be tunneled from PE1 to PE3 over a continuous MPLS
+1521c1692
+<           distribution control modes as defined in <span>[<a href="#RFC5036" class="xref">RFC5036</a>]</span>.<a href="#section-3.1.1-2" class="pilcrow">¶</a></p>
+---
+>           distribution control modes as defined in <span>[<a href="#RFC5036" class="cite xref">RFC5036</a>]</span>.<a href="#section-3.1.1-2" class="pilcrow">¶</a></p>
+1536c1707
+<         specific and defined in <span>[<a href="#RFC8665" class="xref">RFC8665</a>]</span>, <span>[<a href="#RFC8666" class="xref">RFC8666</a>]</span>, and <span>[<a href="#RFC8667" class="xref">RFC8667</a>]</span>.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+---
+>         specific and defined in <span>[<a href="#RFC8665" class="cite xref">RFC8665</a>]</span>, <span>[<a href="#RFC8666" class="cite xref">RFC8666</a>]</span>, and <span>[<a href="#RFC8667" class="cite xref">RFC8667</a>]</span>.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+1548,1549c1719,1720
+<         from inconsistent advertisements are addressed by <span>[<a href="#RFC8660" class="xref">RFC8660</a>]</span>.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
+< <p id="section-3.2-5">The example depicted in <a href="#ref-sr-and-ldp-interworking" class="xref">Figure 2</a> assumes that the operator
+---
+>         from inconsistent advertisements are addressed by <span>[<a href="#RFC8660" class="cite xref">RFC8660</a>]</span>.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
+> <p id="section-3.2-5">The example depicted in <a href="#ref-sr-and-ldp-interworking" class="auto internal xref">Figure 2</a> assumes that the operator
+1583,1584c1754,1755
+<         mechanisms (<span>[<a href="#RFC8665" class="xref">RFC8665</a>]</span>,
+<         <span>[<a href="#RFC8666" class="xref">RFC8666</a>]</span>, and <span>[<a href="#RFC8667" class="xref">RFC8667</a>]</span>), <span class="bcp14">MAY</span> be
+---
+>         mechanisms (<span>[<a href="#RFC8665" class="cite xref">RFC8665</a>]</span>,
+>         <span>[<a href="#RFC8666" class="cite xref">RFC8666</a>]</span>, and <span>[<a href="#RFC8667" class="cite xref">RFC8667</a>]</span>), <span class="bcp14">MAY</span> be
+1604c1775
+<           Prefix-SID sub-TLVs defined in <span>[<a href="#RFC8665" class="xref">RFC8665</a>]</span>, <span>[<a href="#RFC8666" class="xref">RFC8666</a>]</span>, and <span>[<a href="#RFC8667" class="xref">RFC8667</a>]</span>.<a href="#section-3.2.1-2" class="pilcrow">¶</a></p>
+---
+>           Prefix-SID sub-TLVs defined in <span>[<a href="#RFC8665" class="cite xref">RFC8665</a>]</span>, <span>[<a href="#RFC8666" class="cite xref">RFC8666</a>]</span>, and <span>[<a href="#RFC8667" class="cite xref">RFC8667</a>]</span>.<a href="#section-3.2.1-2" class="pilcrow">¶</a></p>
+1640c1811
+<           prefix. Refer to <span>[<a href="#RFC8667" class="xref">RFC8667</a>]</span> for details
+---
+>           prefix. Refer to <span>[<a href="#RFC8667" class="cite xref">RFC8667</a>]</span> for details
+1660c1831
+<           Control Mode <span>[<a href="#RFC5036" class="xref">RFC5036</a>]</span> where a label is bound to a
+---
+>           Control Mode <span>[<a href="#RFC5036" class="cite xref">RFC5036</a>]</span> where a label is bound to a
+1689c1860
+<           protocol-specific documents, e.g., <span>[<a href="#RFC8665" class="xref">RFC8665</a>]</span>, <span>[<a href="#RFC8666" class="xref">RFC8666</a>]</span>, and <span>[<a href="#RFC8667" class="xref">RFC8667</a>]</span>. The
+---
+>           protocol-specific documents, e.g., <span>[<a href="#RFC8665" class="cite xref">RFC8665</a>]</span>, <span>[<a href="#RFC8666" class="cite xref">RFC8666</a>]</span>, and <span>[<a href="#RFC8667" class="cite xref">RFC8667</a>]</span>. The
+1713,1714c1884,1885
+< <ul>
+< <li id="section-3.2.3-9.1">For any prefix for which it did not receive a Prefix-SID
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.2.3-9.1">For any prefix for which it did not receive a Prefix-SID
+1718,1720c1889,1891
+<               specifications <span>[<a href="#RFC8665" class="xref">RFC8665</a>]</span>,
+<               <span>[<a href="#RFC8666" class="xref">RFC8666</a>]</span>, and
+<               <span>[<a href="#RFC8667" class="xref">RFC8667</a>]</span>.<a href="#section-3.2.3-9.1" class="pilcrow">¶</a>
+---
+>               specifications <span>[<a href="#RFC8665" class="cite xref">RFC8665</a>]</span>,
+>               <span>[<a href="#RFC8666" class="cite xref">RFC8666</a>]</span>, and
+>               <span>[<a href="#RFC8667" class="cite xref">RFC8667</a>]</span>.<a href="#section-3.2.3-9.1" class="pilcrow">¶</a>
+1722,1723c1893,1894
+<             <li id="section-3.2.3-9.2">If there is an incoming label collision as specified in <span>[<a href="#RFC8660" class="xref">RFC8660</a>]</span>, apply the
+<               steps specified in <span>[<a href="#RFC8660" class="xref">RFC8660</a>]</span> to resolve the
+---
+>             <li class="normal" id="section-3.2.3-9.2">If there is an incoming label collision as specified in <span>[<a href="#RFC8660" class="cite xref">RFC8660</a>]</span>, apply the
+>               steps specified in <span>[<a href="#RFC8660" class="cite xref">RFC8660</a>]</span> to resolve the
+1750,1752c1921,1923
+< <p id="section-4.1-1">In <a href="#ref-sr-ldp-interworking-example" class="xref">Figure 3</a>, let us assume:<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-4.1-2.1">
+---
+> <p id="section-4.1-1">In <a href="#ref-sr-ldp-interworking-example" class="auto internal xref">Figure 3</a>, let us assume:<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="section-4.1-2.1">
+1755c1926
+<           <li id="section-4.1-2.2"> All routers are LDP capable.<a href="#section-4.1-2.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-4.1-2.2"> All routers are LDP capable.<a href="#section-4.1-2.2" class="pilcrow">¶</a>
+1757c1928
+<           <li id="section-4.1-2.3"> X, Y, and Z are PEs participating in an important service S.<a href="#section-4.1-2.3" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-4.1-2.3"> X, Y, and Z are PEs participating in an important service S.<a href="#section-4.1-2.3" class="pilcrow">¶</a>
+1759c1930
+<           <li id="section-4.1-2.4"> The operator requires 50 msec link-based Fast Reroute (FRR) for service S.<a href="#section-4.1-2.4" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-4.1-2.4"> The operator requires 50 msec link-based Fast Reroute (FRR) for service S.<a href="#section-4.1-2.4" class="pilcrow">¶</a>
+1761c1932
+<           <li id="section-4.1-2.5"> A, B, C, D, E, F, and G are SR capable.<a href="#section-4.1-2.5" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-4.1-2.5"> A, B, C, D, E, F, and G are SR capable.<a href="#section-4.1-2.5" class="pilcrow">¶</a>
+1763c1934
+<           <li id="section-4.1-2.6"> X, Y, and Z are not SR capable, e.g., as part of a
+---
+>           <li class="normal" id="section-4.1-2.6"> X, Y, and Z are not SR capable, e.g., as part of a
+1770c1941
+<           <div class="artwork art-text alignLeft" id="section-4.1-3.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-4.1-3.1">
+1785,1787c1956,1958
+< <ul>
+< <li id="section-4.1-5.1">To protect the link BA along the shortest-path of the important flow XY,
+< B requires a Remote Loop-Free Alternate (RLFA; see <span>[<a href="#RFC7490" class="xref">RFC7490</a>]</span>) repair tunnel to D and, therefore, a targeted LDP session
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.1-5.1">To protect the link BA along the shortest-path of the important flow XY,
+> B requires a Remote Loop-Free Alternate (RLFA; see <span>[<a href="#RFC7490" class="cite xref">RFC7490</a>]</span>) repair tunnel to D and, therefore, a targeted LDP session
+1792c1963
+<           <li id="section-4.1-5.2">There is no LFA/RLFA solution to protect the link BE along the shortest
+---
+>           <li class="normal" id="section-4.1-5.2">There is no LFA/RLFA solution to protect the link BE along the shortest
+1798,1799c1969,1970
+< <ul>
+< <li id="section-4.1-7.1">The operator configures A, B, C, D, E, F, and G with SRGB [100, 200] and
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.1-7.1">The operator configures A, B, C, D, E, F, and G with SRGB [100, 200] and
+1802c1973
+<           <li id="section-4.1-7.2">The operator configures D as an SR Mapping Server with the following
+---
+>           <li class="normal" id="section-4.1-7.2">The operator configures D as an SR Mapping Server with the following
+1805c1976
+<           <li id="section-4.1-7.3">Each SR node automatically advertises a local adjacency segment for its
+---
+>           <li class="normal" id="section-4.1-7.3">Each SR node automatically advertises a local adjacency segment for its
+1814,1815c1985,1986
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-4.1-10.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-4.1-10.1">
+1817,1818c1988,1989
+< <ul>
+< <li id="section-4.1-10.1.2.1">Outgoing label: LDP label bound by A for FEC Y<a href="#section-4.1-10.1.2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.1-10.1.2.1">Outgoing label: LDP label bound by A for FEC Y<a href="#section-4.1-10.1.2.1" class="pilcrow">¶</a>
+1820c1991
+<               <li id="section-4.1-10.1.2.2">Outgoing next hop: A<a href="#section-4.1-10.1.2.2" class="pilcrow">¶</a>
+---
+>               <li class="normal" id="section-4.1-10.1.2.2">Outgoing next hop: A<a href="#section-4.1-10.1.2.2" class="pilcrow">¶</a>
+1824c1995
+<           <li class="ulEmpty" id="section-4.1-10.2">
+---
+>           <li class="normal ulEmpty" id="section-4.1-10.2">
+1826,1827c1997,1998
+< <ul>
+< <li id="section-4.1-10.2.2.1">Outgoing label: LDP label bound by E for FEC Z<a href="#section-4.1-10.2.2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.1-10.2.2.1">Outgoing label: LDP label bound by E for FEC Z<a href="#section-4.1-10.2.2.1" class="pilcrow">¶</a>
+1829c2000
+<               <li id="section-4.1-10.2.2.2">Outgoing next hop: E<a href="#section-4.1-10.2.2.2" class="pilcrow">¶</a>
+---
+>               <li class="normal" id="section-4.1-10.2.2.2">Outgoing next hop: E<a href="#section-4.1-10.2.2.2" class="pilcrow">¶</a>
+1840c2011
+< <p id="section-4.1-12">The RLFA paths are dynamically precomputed as defined in <span>[<a href="#RFC7490" class="xref">RFC7490</a>]</span>. Typically, implementations allow to enable an RLFA
+---
+> <p id="section-4.1-12">The RLFA paths are dynamically precomputed as defined in <span>[<a href="#RFC7490" class="cite xref">RFC7490</a>]</span>. Typically, implementations allow to enable an RLFA
+1847,1848c2018,2019
+< <ul>
+< <li id="section-4.1-14.1">Eliminate targeted LDP sessions.<a href="#section-4.1-14.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.1-14.1">Eliminate targeted LDP sessions.<a href="#section-4.1-14.1" class="pilcrow">¶</a>
+1850c2021
+<           <li id="section-4.1-14.2">Provide guaranteed FRR coverage.<a href="#section-4.1-14.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-4.1-14.2">Provide guaranteed FRR coverage.<a href="#section-4.1-14.2" class="pilcrow">¶</a>
+1852c2023
+<           <li id="section-4.1-14.3">Keep the traffic over LDP LSP in steady state.<a href="#section-4.1-14.3" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-4.1-14.3">Keep the traffic over LDP LSP in steady state.<a href="#section-4.1-14.3" class="pilcrow">¶</a>
+1854c2025
+<           <li id="section-4.1-14.4">Partially deploy SR only where needed.<a href="#section-4.1-14.4" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-4.1-14.4">Partially deploy SR only where needed.<a href="#section-4.1-14.4" class="pilcrow">¶</a>
+1865,1866c2036,2037
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-4.2-2.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-4.2-2.1">
+1868,1869c2039,2040
+< <ul>
+< <li id="section-4.2-2.1.2.1">Outgoing label: LDP label bound by A for FEC Y<a href="#section-4.2-2.1.2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.2-2.1.2.1">Outgoing label: LDP label bound by A for FEC Y<a href="#section-4.2-2.1.2.1" class="pilcrow">¶</a>
+1871c2042
+<               <li id="section-4.2-2.1.2.2">Backup outgoing label: SR node segment for Y {202}<a href="#section-4.2-2.1.2.2" class="pilcrow">¶</a>
+---
+>               <li class="normal" id="section-4.2-2.1.2.2">Backup outgoing label: SR node segment for Y {202}<a href="#section-4.2-2.1.2.2" class="pilcrow">¶</a>
+1873c2044
+<               <li id="section-4.2-2.1.2.3">Outgoing next hop: A<a href="#section-4.2-2.1.2.3" class="pilcrow">¶</a>
+---
+>               <li class="normal" id="section-4.2-2.1.2.3">Outgoing next hop: A<a href="#section-4.2-2.1.2.3" class="pilcrow">¶</a>
+1875c2046
+<               <li id="section-4.2-2.1.2.4">Backup next hop: repair tunnel: node segment to D {104} with outgoing
+---
+>               <li class="normal" id="section-4.2-2.1.2.4">Backup next hop: repair tunnel: node segment to D {104} with outgoing
+1882c2053
+<         (RLFA) as defined in <span>[<a href="#RFC7490" class="xref">RFC7490</a>]</span>.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+---
+>         (RLFA) as defined in <span>[<a href="#RFC7490" class="cite xref">RFC7490</a>]</span>.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+1895,1896c2066,2067
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-4.2-7.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-4.2-7.1">
+1898,1899c2069,2070
+< <ul>
+< <li id="section-4.2-7.1.2.1">Outgoing label: LDP label bound by C for FEC Y<a href="#section-4.2-7.1.2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.2-7.1.2.1">Outgoing label: LDP label bound by C for FEC Y<a href="#section-4.2-7.1.2.1" class="pilcrow">¶</a>
+1901c2072
+<               <li id="section-4.2-7.1.2.2">Outgoing next hop: C<a href="#section-4.2-7.1.2.2" class="pilcrow">¶</a>
+---
+>               <li class="normal" id="section-4.2-7.1.2.2">Outgoing next hop: C<a href="#section-4.2-7.1.2.2" class="pilcrow">¶</a>
+1922,1923c2093,2094
+< <p id="section-4.3-1">As mentioned in <a href="#sec-5.1" class="xref">Section 4.1</a>, in the example
+<         topology described in <a href="#ref-sr-ldp-interworking-example" class="xref">Figure 3</a>, there is no RLFA-based solution for
+---
+> <p id="section-4.3-1">As mentioned in <a href="#sec-5.1" class="auto internal xref">Section 4.1</a>, in the example
+>         topology described in <a href="#ref-sr-ldp-interworking-example" class="auto internal xref">Figure 3</a>, there is no RLFA-based solution for
+1926,1928c2097,2099
+<         <span>[<a href="#RFC7490" class="xref">RFC7490</a>]</span> for details). However:<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-4.3-2.1">G belongs to the Q space of Z.<a href="#section-4.3-2.1" class="pilcrow">¶</a>
+---
+>         <span>[<a href="#RFC7490" class="cite xref">RFC7490</a>]</span> for details). However:<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="section-4.3-2.1">G belongs to the Q space of Z.<a href="#section-4.3-2.1" class="pilcrow">¶</a>
+1930c2101
+<           <li id="section-4.3-2.2">G can be reached from B via a "repair SR path" {106, 9001} that
+---
+>           <li class="normal" id="section-4.3-2.2">G can be reached from B via a "repair SR path" {106, 9001} that
+1937,1938c2108,2109
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-4.3-4.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-4.3-4.1">
+1940,1941c2111,2112
+< <ul>
+< <li id="section-4.3-4.1.2.1">Outgoing label: LDP label bound by E for FEC Z<a href="#section-4.3-4.1.2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.3-4.1.2.1">Outgoing label: LDP label bound by E for FEC Z<a href="#section-4.3-4.1.2.1" class="pilcrow">¶</a>
+1943c2114
+<               <li id="section-4.3-4.1.2.2">Backup outgoing label: SR node segment for Z {203}<a href="#section-4.3-4.1.2.2" class="pilcrow">¶</a>
+---
+>               <li class="normal" id="section-4.3-4.1.2.2">Backup outgoing label: SR node segment for Z {203}<a href="#section-4.3-4.1.2.2" class="pilcrow">¶</a>
+1945c2116
+<               <li id="section-4.3-4.1.2.3">Outgoing next hop: E<a href="#section-4.3-4.1.2.3" class="pilcrow">¶</a>
+---
+>               <li class="normal" id="section-4.3-4.1.2.3">Outgoing next hop: E<a href="#section-4.3-4.1.2.3" class="pilcrow">¶</a>
+1947c2118
+<               <li id="section-4.3-4.1.2.4">Backup next hop: repair tunnel to G: {106, 9001}<a href="#section-4.3-4.1.2.4" class="pilcrow">¶</a>
+---
+>               <li class="normal" id="section-4.3-4.1.2.4">Backup next hop: repair tunnel to G: {106, 9001}<a href="#section-4.3-4.1.2.4" class="pilcrow">¶</a>
+1952,1953c2123,2124
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-4.3-5.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-4.3-5.1">
+1958c2129
+<           <li class="ulEmpty" id="section-4.3-5.2">
+---
+>           <li class="normal ulEmpty" id="section-4.3-5.2">
+1983,1984c2154,2155
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-4.3-9.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-4.3-9.1">
+1986,1987c2157,2158
+< <ul>
+< <li id="section-4.3-9.1.2.1">Outgoing label: LDP label bound by C for FEC Z<a href="#section-4.3-9.1.2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.3-9.1.2.1">Outgoing label: LDP label bound by C for FEC Z<a href="#section-4.3-9.1.2.1" class="pilcrow">¶</a>
+1989c2160
+<               <li id="section-4.3-9.1.2.2">Outgoing next hop: C<a href="#section-4.3-9.1.2.2" class="pilcrow">¶</a>
+---
+>               <li class="normal" id="section-4.3-9.1.2.2">Outgoing next hop: C<a href="#section-4.3-9.1.2.2" class="pilcrow">¶</a>
+1996,1997c2167,2168
+< <ul>
+< <li id="section-4.3-12.1">the operator has eliminated its second problem: guaranteed FRR
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.3-12.1">the operator has eliminated its second problem: guaranteed FRR
+2002c2173
+<           <li id="section-4.3-12.2">FRR coverage has been achieved without any signaling for
+---
+>           <li class="normal" id="section-4.3-12.2">FRR coverage has been achieved without any signaling for
+2014c2185
+< <p id="section-4.4-1">In inter-AS Option C <span>[<a href="#RFC4364" class="xref">RFC4364</a>]</span>, two interconnected
+---
+> <p id="section-4.4-1">In inter-AS Option C <span>[<a href="#RFC4364" class="cite xref">RFC4364</a>]</span>, two interconnected
+2019c2190
+<           <div class="artwork art-text alignLeft" id="section-4.4-2.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-4.4-2.1">
+2030c2201
+< <p id="section-4.4-3">In Inter-AS Option C, B2 advertises to B1 a labeled BGP route <span>[<a href="#RFC8277" class="xref">RFC8277</a>]</span> for PE2, and B1 reflects it to its
+---
+> <p id="section-4.4-3">In Inter-AS Option C, B2 advertises to B1 a labeled BGP route <span>[<a href="#RFC8277" class="cite xref">RFC8277</a>]</span> for PE2, and B1 reflects it to its
+2064,2065c2235,2236
+< <ul>
+< <li id="section-6.1-2.1">If both SR and LDP propose an IP2MPLS entry for the same IP
+---
+> <ul class="normal">
+> <li class="normal" id="section-6.1-2.1">If both SR and LDP propose an IP2MPLS entry for the same IP
+2072c2243
+<           <li id="section-6.1-2.2">A local policy on a router <span class="bcp14">MUST</span> allow to prefer the SR-provided
+---
+>           <li class="normal" id="section-6.1-2.2">A local policy on a router <span class="bcp14">MUST</span> allow to prefer the SR-provided
+2075c2246
+<           <li id="section-6.1-2.3">Note that this policy <span class="bcp14">MAY</span> be locally defined. There is no
+---
+>           <li class="normal" id="section-6.1-2.3">Note that this policy <span class="bcp14">MAY</span> be locally defined. There is no
+2089c2260
+<         path. These mechanisms are described in <span>[<a href="#RFC8287" class="xref">RFC8287</a>]</span>.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+---
+>         path. These mechanisms are described in <span>[<a href="#RFC8287" class="cite xref">RFC8287</a>]</span>.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+2100c2271
+<       <span>[<a href="#RFC3031" class="xref">RFC3031</a>]</span> and therefore no additional security of the
+---
+>       <span>[<a href="#RFC3031" class="cite xref">RFC3031</a>]</span> and therefore no additional security of the
+2105,2106c2276,2277
+< to routing protocols such as IS-IS <span>[<a href="#RFC5304" class="xref">RFC5304</a>]</span>
+< and OSPF <span>[<a href="#RFC5709" class="xref">RFC5709</a>]</span>, which both optionally make
+---
+> to routing protocols such as IS-IS <span>[<a href="#RFC5304" class="cite xref">RFC5304</a>]</span>
+> and OSPF <span>[<a href="#RFC5709" class="cite xref">RFC5709</a>]</span>, which both optionally make
+2133c2304,2305
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2136c2308,2309
+< <span class="refAuthor">Andersson, L., Ed.</span><span class="refAuthor">, Minei, I., Ed.</span><span class="refAuthor">, and B. Thomas, Ed.</span>, <span class="refTitle">"LDP Specification"</span>, <span class="seriesInfo">RFC 5036</span>, <span class="seriesInfo">DOI 10.17487/RFC5036</span>, <time datetime="2007-10">October 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5036">https://www.rfc-editor.org/info/rfc5036</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Andersson, L., Ed.</span>, <span class="refAuthor">Minei, I., Ed.</span>, and <span class="refAuthor">B. Thomas, Ed.</span>, <span class="refTitle">"LDP Specification"</span>, <span class="seriesInfo">RFC 5036</span>, <span class="seriesInfo">DOI 10.17487/RFC5036</span>, <time datetime="2007-10" class="refDate">October 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5036">https://www.rfc-editor.org/info/rfc5036</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2139c2312,2313
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2142c2316,2317
+< <span class="refAuthor">Filsfils, C., Ed.</span><span class="refAuthor">, Previdi, S., Ed.</span><span class="refAuthor">, Ginsberg, L.</span><span class="refAuthor">, Decraene, B.</span><span class="refAuthor">, Litkowski, S.</span><span class="refAuthor">, and R. Shakir</span>, <span class="refTitle">"Segment Routing Architecture"</span>, <span class="seriesInfo">RFC 8402</span>, <span class="seriesInfo">DOI 10.17487/RFC8402</span>, <time datetime="2018-07">July 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8402">https://www.rfc-editor.org/info/rfc8402</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Filsfils, C., Ed.</span>, <span class="refAuthor">Previdi, S., Ed.</span>, <span class="refAuthor">Ginsberg, L.</span>, <span class="refAuthor">Decraene, B.</span>, <span class="refAuthor">Litkowski, S.</span>, and <span class="refAuthor">R. Shakir</span>, <span class="refTitle">"Segment Routing Architecture"</span>, <span class="seriesInfo">RFC 8402</span>, <span class="seriesInfo">DOI 10.17487/RFC8402</span>, <time datetime="2018-07" class="refDate">July 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8402">https://www.rfc-editor.org/info/rfc8402</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2145c2320,2321
+< <span class="refAuthor">Bashandy, A., Ed.</span><span class="refAuthor">, Filsfils, C., Ed.</span><span class="refAuthor">, Previdi, S.</span><span class="refAuthor">, Decraene, B.</span><span class="refAuthor">, Litkowski, S.</span><span class="refAuthor">, and R. Shakir</span>, <span class="refTitle">"Segment Routing with MPLS Data Plane"</span>, <span class="seriesInfo">RFC 8660</span>, <span class="seriesInfo">DOI 10.17487/RFC8660</span>, <time datetime="2019-12">December 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8660">https://www.rfc-editor.org/info/rfc8660</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bashandy, A., Ed.</span>, <span class="refAuthor">Filsfils, C., Ed.</span>, <span class="refAuthor">Previdi, S.</span>, <span class="refAuthor">Decraene, B.</span>, <span class="refAuthor">Litkowski, S.</span>, and <span class="refAuthor">R. Shakir</span>, <span class="refTitle">"Segment Routing with MPLS Data Plane"</span>, <span class="seriesInfo">RFC 8660</span>, <span class="seriesInfo">DOI 10.17487/RFC8660</span>, <time datetime="2019-12" class="refDate">December 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8660">https://www.rfc-editor.org/info/rfc8660</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2155c2331,2332
+< <span class="refAuthor">Rosen, E.</span><span class="refAuthor">, Viswanathan, A.</span><span class="refAuthor">, and R. Callon</span>, <span class="refTitle">"Multiprotocol Label Switching Architecture"</span>, <span class="seriesInfo">RFC 3031</span>, <span class="seriesInfo">DOI 10.17487/RFC3031</span>, <time datetime="2001-01">January 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3031">https://www.rfc-editor.org/info/rfc3031</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rosen, E.</span>, <span class="refAuthor">Viswanathan, A.</span>, and <span class="refAuthor">R. Callon</span>, <span class="refTitle">"Multiprotocol Label Switching Architecture"</span>, <span class="seriesInfo">RFC 3031</span>, <span class="seriesInfo">DOI 10.17487/RFC3031</span>, <time datetime="2001-01" class="refDate">January 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3031">https://www.rfc-editor.org/info/rfc3031</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2158c2335,2336
+< <span class="refAuthor">Awduche, D.</span><span class="refAuthor">, Berger, L.</span><span class="refAuthor">, Gan, D.</span><span class="refAuthor">, Li, T.</span><span class="refAuthor">, Srinivasan, V.</span><span class="refAuthor">, and G. Swallow</span>, <span class="refTitle">"RSVP-TE: Extensions to RSVP for LSP Tunnels"</span>, <span class="seriesInfo">RFC 3209</span>, <span class="seriesInfo">DOI 10.17487/RFC3209</span>, <time datetime="2001-12">December 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3209">https://www.rfc-editor.org/info/rfc3209</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Awduche, D.</span>, <span class="refAuthor">Berger, L.</span>, <span class="refAuthor">Gan, D.</span>, <span class="refAuthor">Li, T.</span>, <span class="refAuthor">Srinivasan, V.</span>, and <span class="refAuthor">G. Swallow</span>, <span class="refTitle">"RSVP-TE: Extensions to RSVP for LSP Tunnels"</span>, <span class="seriesInfo">RFC 3209</span>, <span class="seriesInfo">DOI 10.17487/RFC3209</span>, <time datetime="2001-12" class="refDate">December 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3209">https://www.rfc-editor.org/info/rfc3209</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2161c2339,2340
+< <span class="refAuthor">Rosen, E.</span><span class="refAuthor"> and Y. Rekhter</span>, <span class="refTitle">"BGP/MPLS IP Virtual Private Networks (VPNs)"</span>, <span class="seriesInfo">RFC 4364</span>, <span class="seriesInfo">DOI 10.17487/RFC4364</span>, <time datetime="2006-02">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4364">https://www.rfc-editor.org/info/rfc4364</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rosen, E.</span> and <span class="refAuthor">Y. Rekhter</span>, <span class="refTitle">"BGP/MPLS IP Virtual Private Networks (VPNs)"</span>, <span class="seriesInfo">RFC 4364</span>, <span class="seriesInfo">DOI 10.17487/RFC4364</span>, <time datetime="2006-02" class="refDate">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4364">https://www.rfc-editor.org/info/rfc4364</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2164c2343,2344
+< <span class="refAuthor">Li, T.</span><span class="refAuthor"> and R. Atkinson</span>, <span class="refTitle">"IS-IS Cryptographic Authentication"</span>, <span class="seriesInfo">RFC 5304</span>, <span class="seriesInfo">DOI 10.17487/RFC5304</span>, <time datetime="2008-10">October 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5304">https://www.rfc-editor.org/info/rfc5304</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Li, T.</span> and <span class="refAuthor">R. Atkinson</span>, <span class="refTitle">"IS-IS Cryptographic Authentication"</span>, <span class="seriesInfo">RFC 5304</span>, <span class="seriesInfo">DOI 10.17487/RFC5304</span>, <time datetime="2008-10" class="refDate">October 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5304">https://www.rfc-editor.org/info/rfc5304</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2167c2347,2348
+< <span class="refAuthor">Bhatia, M.</span><span class="refAuthor">, Manral, V.</span><span class="refAuthor">, Fanto, M.</span><span class="refAuthor">, White, R.</span><span class="refAuthor">, Barnes, M.</span><span class="refAuthor">, Li, T.</span><span class="refAuthor">, and R. Atkinson</span>, <span class="refTitle">"OSPFv2 HMAC-SHA Cryptographic Authentication"</span>, <span class="seriesInfo">RFC 5709</span>, <span class="seriesInfo">DOI 10.17487/RFC5709</span>, <time datetime="2009-10">October 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5709">https://www.rfc-editor.org/info/rfc5709</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bhatia, M.</span>, <span class="refAuthor">Manral, V.</span>, <span class="refAuthor">Fanto, M.</span>, <span class="refAuthor">White, R.</span>, <span class="refAuthor">Barnes, M.</span>, <span class="refAuthor">Li, T.</span>, and <span class="refAuthor">R. Atkinson</span>, <span class="refTitle">"OSPFv2 HMAC-SHA Cryptographic Authentication"</span>, <span class="seriesInfo">RFC 5709</span>, <span class="seriesInfo">DOI 10.17487/RFC5709</span>, <time datetime="2009-10" class="refDate">October 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5709">https://www.rfc-editor.org/info/rfc5709</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2170c2351,2352
+< <span class="refAuthor">Frost, D., Ed.</span><span class="refAuthor">, Bryant, S., Ed.</span><span class="refAuthor">, and M. Bocci, Ed.</span>, <span class="refTitle">"MPLS Transport Profile Data Plane Architecture"</span>, <span class="seriesInfo">RFC 5960</span>, <span class="seriesInfo">DOI 10.17487/RFC5960</span>, <time datetime="2010-08">August 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5960">https://www.rfc-editor.org/info/rfc5960</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Frost, D., Ed.</span>, <span class="refAuthor">Bryant, S., Ed.</span>, and <span class="refAuthor">M. Bocci, Ed.</span>, <span class="refTitle">"MPLS Transport Profile Data Plane Architecture"</span>, <span class="seriesInfo">RFC 5960</span>, <span class="seriesInfo">DOI 10.17487/RFC5960</span>, <time datetime="2010-08" class="refDate">August 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5960">https://www.rfc-editor.org/info/rfc5960</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2173c2355,2356
+< <span class="refAuthor">Bryant, S.</span><span class="refAuthor">, Filsfils, C.</span><span class="refAuthor">, Previdi, S.</span><span class="refAuthor">, Shand, M.</span><span class="refAuthor">, and N. So</span>, <span class="refTitle">"Remote Loop-Free Alternate (LFA) Fast Reroute (FRR)"</span>, <span class="seriesInfo">RFC 7490</span>, <span class="seriesInfo">DOI 10.17487/RFC7490</span>, <time datetime="2015-04">April 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7490">https://www.rfc-editor.org/info/rfc7490</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bryant, S.</span>, <span class="refAuthor">Filsfils, C.</span>, <span class="refAuthor">Previdi, S.</span>, <span class="refAuthor">Shand, M.</span>, and <span class="refAuthor">N. So</span>, <span class="refTitle">"Remote Loop-Free Alternate (LFA) Fast Reroute (FRR)"</span>, <span class="seriesInfo">RFC 7490</span>, <span class="seriesInfo">DOI 10.17487/RFC7490</span>, <time datetime="2015-04" class="refDate">April 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7490">https://www.rfc-editor.org/info/rfc7490</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2176c2359,2360
+< <span class="refAuthor">Rosen, E.</span>, <span class="refTitle">"Using BGP to Bind MPLS Labels to Address Prefixes"</span>, <span class="seriesInfo">RFC 8277</span>, <span class="seriesInfo">DOI 10.17487/RFC8277</span>, <time datetime="2017-10">October 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8277">https://www.rfc-editor.org/info/rfc8277</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rosen, E.</span>, <span class="refTitle">"Using BGP to Bind MPLS Labels to Address Prefixes"</span>, <span class="seriesInfo">RFC 8277</span>, <span class="seriesInfo">DOI 10.17487/RFC8277</span>, <time datetime="2017-10" class="refDate">October 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8277">https://www.rfc-editor.org/info/rfc8277</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2179c2363,2364
+< <span class="refAuthor">Kumar, N., Ed.</span><span class="refAuthor">, Pignataro, C., Ed.</span><span class="refAuthor">, Swallow, G.</span><span class="refAuthor">, Akiya, N.</span><span class="refAuthor">, Kini, S.</span><span class="refAuthor">, and M. Chen</span>, <span class="refTitle">"Label Switched Path (LSP) Ping/Traceroute for Segment Routing (SR) IGP-Prefix and IGP-Adjacency Segment Identifiers (SIDs) with MPLS Data Planes"</span>, <span class="seriesInfo">RFC 8287</span>, <span class="seriesInfo">DOI 10.17487/RFC8287</span>, <time datetime="2017-12">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8287">https://www.rfc-editor.org/info/rfc8287</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Kumar, N., Ed.</span>, <span class="refAuthor">Pignataro, C., Ed.</span>, <span class="refAuthor">Swallow, G.</span>, <span class="refAuthor">Akiya, N.</span>, <span class="refAuthor">Kini, S.</span>, and <span class="refAuthor">M. Chen</span>, <span class="refTitle">"Label Switched Path (LSP) Ping/Traceroute for Segment Routing (SR) IGP-Prefix and IGP-Adjacency Segment Identifiers (SIDs) with MPLS Data Planes"</span>, <span class="seriesInfo">RFC 8287</span>, <span class="seriesInfo">DOI 10.17487/RFC8287</span>, <time datetime="2017-12" class="refDate">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8287">https://www.rfc-editor.org/info/rfc8287</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2182c2367,2368
+< <span class="refAuthor">Filsfils, C., Ed.</span><span class="refAuthor">, Previdi, S., Ed.</span><span class="refAuthor">, Decraene, B.</span><span class="refAuthor">, and R. Shakir</span>, <span class="refTitle">"Resiliency Use Cases in Source Packet Routing in Networking (SPRING) Networks"</span>, <span class="seriesInfo">RFC 8355</span>, <span class="seriesInfo">DOI 10.17487/RFC8355</span>, <time datetime="2018-03">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8355">https://www.rfc-editor.org/info/rfc8355</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Filsfils, C., Ed.</span>, <span class="refAuthor">Previdi, S., Ed.</span>, <span class="refAuthor">Decraene, B.</span>, and <span class="refAuthor">R. Shakir</span>, <span class="refTitle">"Resiliency Use Cases in Source Packet Routing in Networking (SPRING) Networks"</span>, <span class="seriesInfo">RFC 8355</span>, <span class="seriesInfo">DOI 10.17487/RFC8355</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8355">https://www.rfc-editor.org/info/rfc8355</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2185c2371,2372
+< <span class="refAuthor">Psenak, P., Ed.</span><span class="refAuthor">, Previdi, S., Ed.</span><span class="refAuthor">, Filsfils, C.</span><span class="refAuthor">, Gredler, H.</span><span class="refAuthor">, Shakir, R.</span><span class="refAuthor">, Henderickx, W.</span><span class="refAuthor">, and J. Tantsura</span>, <span class="refTitle">"OSPF Extensions for Segment Routing"</span>, <span class="seriesInfo">RFC 8665</span>, <span class="seriesInfo">DOI 10.17487/RFC8665</span>, <time datetime="2019-12">December 2019</time>, <span>&lt;<a href="https://doi.org/10.17487/RFC8665">https://doi.org/10.17487/RFC8665</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Psenak, P., Ed.</span>, <span class="refAuthor">Previdi, S., Ed.</span>, <span class="refAuthor">Filsfils, C.</span>, <span class="refAuthor">Gredler, H.</span>, <span class="refAuthor">Shakir, R.</span>, <span class="refAuthor">Henderickx, W.</span>, and <span class="refAuthor">J. Tantsura</span>, <span class="refTitle">"OSPF Extensions for Segment Routing"</span>, <span class="seriesInfo">RFC 8665</span>, <span class="seriesInfo">DOI 10.17487/RFC8665</span>, <time datetime="2019-12" class="refDate">December 2019</time>, <span>&lt;<a href="https://doi.org/10.17487/RFC8665">https://doi.org/10.17487/RFC8665</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2188c2375,2376
+< <span class="refAuthor">Psenak, P., Ed.</span><span class="refAuthor"> and S. Previdi</span>, <span class="refTitle">"OSPFv3 Extensions for Segment Routing"</span>, <span class="seriesInfo">RFC 8666</span>, <span class="seriesInfo">DOI 10.17487/RFC8666</span>, <time datetime="2019-12">December 2019</time>, <span>&lt;<a href="https://doi.org/10.17487/RFC8666">https://doi.org/10.17487/RFC8666</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Psenak, P., Ed.</span> and <span class="refAuthor">S. Previdi</span>, <span class="refTitle">"OSPFv3 Extensions for Segment Routing"</span>, <span class="seriesInfo">RFC 8666</span>, <span class="seriesInfo">DOI 10.17487/RFC8666</span>, <time datetime="2019-12" class="refDate">December 2019</time>, <span>&lt;<a href="https://doi.org/10.17487/RFC8666">https://doi.org/10.17487/RFC8666</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2191c2379,2380
+< <span class="refAuthor">Previdi, S.</span><span class="refAuthor">, Ginsberg, L.</span><span class="refAuthor">, Filsfils, C.</span><span class="refAuthor">, Bashandy, A.</span><span class="refAuthor">, Gredler, H.</span><span class="refAuthor">, and B. Decraene</span>, <span class="refTitle">"IS-IS Extensions for Segment Routing"</span>, <span class="seriesInfo">RFC 8667</span>, <span class="seriesInfo">DOI 10.17487/RFC8667</span>, <time datetime="2019-12">December 2019</time>, <span>&lt;<a href="https://doi.org/10.17487/RFC8667">https://doi.org/10.17487/RFC8667</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Previdi, S.</span>, <span class="refAuthor">Ginsberg, L.</span>, <span class="refAuthor">Filsfils, C.</span>, <span class="refAuthor">Bashandy, A.</span>, <span class="refAuthor">Gredler, H.</span>, and <span class="refAuthor">B. Decraene</span>, <span class="refTitle">"IS-IS Extensions for Segment Routing"</span>, <span class="seriesInfo">RFC 8667</span>, <span class="seriesInfo">DOI 10.17487/RFC8667</span>, <time datetime="2019-12" class="refDate">December 2019</time>, <span>&lt;<a href="https://doi.org/10.17487/RFC8667">https://doi.org/10.17487/RFC8667</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2196c2385
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2198c2387
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-migration-from-ldp-to-sr" class="section-name selfRef">Migration from LDP to SR</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-migration-from-ldp-to-sr" class="section-name selfRef">Migration from LDP to SR</a>
+2202c2391
+<         <div class="artwork art-text alignLeft" id="section-appendix.a-1.1">
+---
+>         <div class="alignLeft art-text artwork" id="appendix-A-1.1">
+2213c2402
+< <p id="section-appendix.a-2">Several migration techniques are possible. The technique described
+---
+> <p id="appendix-A-2">Several migration techniques are possible. The technique described
+2215,2218c2404,2407
+<       another.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-3">At time T0, all the routers run LDP. Any service is tunneled from an
+<       ingress PE to an egress PE over a continuous LDP LSP.<a href="#section-appendix.a-3" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-4">At time T1, all the routers are upgraded to SR. They are configured
+---
+>       another.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+> <p id="appendix-A-3">At time T0, all the routers run LDP. Any service is tunneled from an
+>       ingress PE to an egress PE over a continuous LDP LSP.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+> <p id="appendix-A-4">At time T1, all the routers are upgraded to SR. They are configured
+2221,2223c2410,2412
+<       106, and 107 (attached to their service-recursing loopback).<a href="#section-appendix.a-4" class="pilcrow">¶</a></p>
+< <aside id="section-appendix.a-5">
+<         <p id="section-appendix.a-5.1">
+---
+>       106, and 107 (attached to their service-recursing loopback).<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+> <aside id="appendix-A-5">
+>         <p id="appendix-A-5.1">
+2230c2419
+<           <span>[<a href="#RFC8355" class="xref">RFC8355</a>]</span>.<a href="#section-appendix.a-5.1" class="pilcrow">¶</a></p>
+---
+>           <span>[<a href="#RFC8355" class="cite xref">RFC8355</a>]</span>.<a href="#appendix-A-5.1" class="pilcrow">¶</a></p>
+2232,2236c2421,2425
+< <p id="section-appendix.a-6">At time T2, the operator enables the local policy at PE1 to prefer SR
+<       IP2MPLS encapsulation over LDP IP2MPLS.<a href="#section-appendix.a-6" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-appendix.a-7.1">The service from PE1 to any other PE is now riding over SR. All
+<           other service traffic is still transported over LDP LSPs.<a href="#section-appendix.a-7.1" class="pilcrow">¶</a>
+---
+> <p id="appendix-A-6">At time T2, the operator enables the local policy at PE1 to prefer SR
+>       IP2MPLS encapsulation over LDP IP2MPLS.<a href="#appendix-A-6" class="pilcrow">¶</a></p>
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="appendix-A-7.1">The service from PE1 to any other PE is now riding over SR. All
+>           other service traffic is still transported over LDP LSPs.<a href="#appendix-A-7.1" class="pilcrow">¶</a>
+2239,2243c2428,2432
+< <p id="section-appendix.a-8">At time T3, gradually, the operator enables the preference for SR
+<       IP2MPLS encapsulation across all the edge routers.<a href="#section-appendix.a-8" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-appendix.a-9.1">All the service traffic is now transported over SR. LDP is still
+<           operational and services could be reverted to LDP.<a href="#section-appendix.a-9.1" class="pilcrow">¶</a>
+---
+> <p id="appendix-A-8">At time T3, gradually, the operator enables the preference for SR
+>       IP2MPLS encapsulation across all the edge routers.<a href="#appendix-A-8" class="pilcrow">¶</a></p>
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="appendix-A-9.1">All the service traffic is now transported over SR. LDP is still
+>           operational and services could be reverted to LDP.<a href="#appendix-A-9.1" class="pilcrow">¶</a>
+2246c2435
+< <p id="section-appendix.a-10">At time T4, LDP is unconfigured from all routers.<a href="#section-appendix.a-10" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A-10">At time T4, LDP is unconfigured from all routers.<a href="#appendix-A-10" class="pilcrow">¶</a></p>
+2250c2439
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+2254c2443
+< <p id="section-appendix.b-1">The authors would like to thank Pierre Francois, Ruediger Geib, and
+---
+> <p id="appendix-B-1">The authors would like to thank Pierre Francois, Ruediger Geib, and
+2256c2445
+<       document.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+---
+>       document.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+2260c2449
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
+2264c2453
+< <div class="artwork art-text alignLeft" id="section-appendix.c-1">
+---
+> <div class="alignLeft art-text artwork" id="appendix-C-1">
+2268c2457
+< Email: edward.crabbe@gmail.com</pre><a href="#section-appendix.c-1" class="pilcrow">¶</a>
+---
+> Email: edward.crabbe@gmail.com</pre><a href="#appendix-C-1" class="pilcrow">¶</a>
+2270c2459
+< <div class="artwork art-text alignLeft" id="section-appendix.c-2">
+---
+> <div class="alignLeft art-text artwork" id="appendix-C-2">
+2273c2462
+< Email: milojevicigor@gmail.com</pre><a href="#section-appendix.c-2" class="pilcrow">¶</a>
+---
+> Email: milojevicigor@gmail.com</pre><a href="#appendix-C-2" class="pilcrow">¶</a>
+2275c2464
+< <div class="artwork art-text alignLeft" id="section-appendix.c-3">
+---
+> <div class="alignLeft art-text artwork" id="appendix-C-3">
+2279c2468
+< Email: saku@ytti.fi</pre><a href="#section-appendix.c-3" class="pilcrow">¶</a>
+---
+> Email: saku@ytti.fi</pre><a href="#appendix-C-3" class="pilcrow">¶</a>
+2281c2470
+< <div class="artwork art-text alignLeft" id="section-appendix.c-4">
+---
+> <div class="alignLeft art-text artwork" id="appendix-C-4">
+2285c2474
+< Email: robjs@google.com</pre><a href="#section-appendix.c-4" class="pilcrow">¶</a>
+---
+> Email: robjs@google.com</pre><a href="#appendix-C-4" class="pilcrow">¶</a>
+2287c2476
+< <div class="artwork art-text alignLeft" id="section-appendix.c-5">
+---
+> <div class="alignLeft art-text artwork" id="appendix-C-5">
+2291c2480
+< Email: Martin.Horneffer@telekom.de</pre><a href="#section-appendix.c-5" class="pilcrow">¶</a>
+---
+> Email: Martin.Horneffer@telekom.de</pre><a href="#appendix-C-5" class="pilcrow">¶</a>
+2293c2482
+< <div class="artwork art-text alignLeft" id="section-appendix.c-6">
+---
+> <div class="alignLeft art-text artwork" id="appendix-C-6">
+2297c2486
+< Email: wim.henderickx@nokia.com</pre><a href="#section-appendix.c-6" class="pilcrow">¶</a>
+---
+> Email: wim.henderickx@nokia.com</pre><a href="#appendix-C-6" class="pilcrow">¶</a>
+2299c2488
+< <div class="artwork art-text alignLeft" id="section-appendix.c-7">
+---
+> <div class="alignLeft art-text artwork" id="appendix-C-7">
+2303c2492
+< Email: jefftant.ietf@gmail.com</pre><a href="#section-appendix.c-7" class="pilcrow">¶</a>
+---
+> Email: jefftant.ietf@gmail.com</pre><a href="#appendix-C-7" class="pilcrow">¶</a>
+2305c2494
+< <div class="artwork art-text alignLeft" id="section-appendix.c-8">
+---
+> <div class="alignLeft art-text artwork" id="appendix-C-8">
+2309c2498
+< Email: ginsberg@cisco.com</pre><a href="#section-appendix.c-8" class="pilcrow">¶</a>
+---
+> Email: ginsberg@cisco.com</pre><a href="#appendix-C-8" class="pilcrow">¶</a>
+2314c2503
+< <section id="section-appendix.d">
+---
+> <section id="appendix-D">
+2321c2510
+< <div dir="auto" class="left"><span class="country-name">United States of America</span></div>
+---
+> <div dir="auto" class="left"><span class="street-address">United States of America</span></div>
+2330,2331c2519
+< <div dir="auto" class="left"><span class="street-address">Brussels</span></div>
+< <div dir="auto" class="left"><span class="country-name">Belgium</span></div>
+---
+> <div dir="auto" class="left"><span class="street-address">Brussels<br>Belgium</span></div>
+2340c2528
+< <div dir="auto" class="left"><span class="country-name">Italy</span></div>
+---
+> <div dir="auto" class="left"><span class="street-address">Italy</span></div>
+2349c2537
+< <div dir="auto" class="left"><span class="country-name">France</span></div>
+---
+> <div dir="auto" class="left"><span class="street-address">France</span></div>
+2358c2546
+< <div dir="auto" class="left"><span class="country-name">France</span></div>
+---
+> <div dir="auto" class="left"><span class="street-address">France</span></div>
+2366,2394c2554,2559
+< <script>var toc = document.getElementById("toc");
+< var tocToggle = toc.querySelector("h2");
+< var tocNav = toc.querySelector("nav");
+< 
+< // mobile menu toggle
+< tocToggle.onclick = function(event) {
+<     if (window.innerWidth < 1024) {
+<  var tocNavDisplay = tocNav.currentStyle ? tocNav.currentStyle.display : getComputedStyle(tocNav, null).display;
+<  if (tocNavDisplay == "none") {
+<      tocNav.style.display = "block";
+<  } else {
+<      tocNav.style.display = "none";
+<  }
+<     }
+< }
+< 
+< // toc anchor scroll to anchor
+< tocNav.addEventListener("click", function (event) {
+<     event.preventDefault();
+<     if (event.target.nodeName == 'A') {
+<  if (window.innerWidth < 1024) {
+<      tocNav.style.display = "none";
+<  }
+<  var href = event.target.getAttribute("href");
+<  var anchorId = href.substr(1);
+<  var anchor =  document.getElementById(anchorId);
+<  anchor.scrollIntoView(true);
+<  window.history.pushState("","",href);
+<     }
+---
+> <script>const toc = document.getElementById("toc");
+> toc.querySelector("h2").addEventListener("click", e => {
+>   toc.classList.toggle("active");
+> });
+> toc.querySelector("nav").addEventListener("click", e => {
+>   toc.classList.remove("active");
+2396,2404d2560
+< 
+< // switch toc mode when window resized
+< window.onresize = function () {
+<     if (window.innerWidth < 1024) {
+<  tocNav.style.display = "none";
+<     } else {
+<  tocNav.style.display = "block";
+<     }
+< }
