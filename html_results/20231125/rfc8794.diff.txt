@@ -1,0 +1,1623 @@
+14c14
+< <meta content="xml2rfc 2.47.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+21c21,37
+< <link href="rfc8794.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.0.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8794.xml" rel="alternate" type="application/rfc+xml">
+31c47
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+40a57,62
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+43d64
+<   width: extend-to-zoom;
+58c79
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+60a82
+>   overflow-wrap: break-word;
+146a169,177
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+161,164d191
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+165a193
+>   border: none;
+188a217,219
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+230c261,262
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+240c272
+< tt, code, pre, code {
+---
+> tt, code, pre {
+242c274
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+281a314,316
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+371a407,412
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+473c514
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+613d653
+< 
+635a676,678
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+703c746
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+803c846
+< tt, code, pre, code {
+---
+> tt, code, pre {
+808c851
+< pre.sourcecode,
+---
+> .sourcecode pre,
+844c887
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1025a1069
+>   .artwork > pre,
+1040c1084
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1046a1091,1093
+> tr {
+>   break-inside: avoid;
+> }
+1066c1113
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1097c1144
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1122c1169
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1124c1171,1172
+< ol.compact, .olCompact {
+---
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+1132c1180,1204
+< }</style>
+---
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+1133a1206
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-cellar-ebml-20" rel="prev">
+1136c1209
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-cellar-ebml-20" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1138,1139c1211,1212
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1232,1246c1305,1319
+< <nav class="toc"><ul class="compact toc ulEmpty">
+< <li class="compact toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-notation-and-conventions" class="xref">Notation and Conventions</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="xref">3</a>.  <a href="#name-structure" class="xref">Structure</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-variable-size-integer" class="xref">Variable-Size Integer</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-vint_width" class="xref">VINT_WIDTH</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-notation-and-conventions" class="internal xref">Notation and Conventions</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-structure" class="internal xref">Structure</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-variable-size-integer" class="internal xref">Variable-Size Integer</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-vint_width" class="internal xref">VINT_WIDTH</a></p>
+1248,1249c1321,1322
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-vint_marker" class="xref">VINT_MARKER</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-vint_marker" class="internal xref">VINT_MARKER</a></p>
+1251,1252c1324,1325
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-vint_data" class="xref">VINT_DATA</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-vint_data" class="internal xref">VINT_DATA</a></p>
+1254,1255c1327,1328
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.4">
+<                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-vint-examples" class="xref">VINT Examples</a><a href="#section-toc.1-1.4.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
+>                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-vint-examples" class="internal xref">VINT Examples</a></p>
+1259,1260c1332,1333
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-element-id" class="xref">Element ID</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-element-id" class="internal xref">Element ID</a></p>
+1262,1266c1335,1339
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-element-data-size" class="xref">Element Data Size</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-data-size-format" class="xref">Data Size Format</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-element-data-size" class="internal xref">Element Data Size</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-data-size-format" class="internal xref">Data Size Format</a></p>
+1268,1269c1341,1342
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.6.2.2">
+<                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-unknown-data-size" class="xref">Unknown Data Size</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+>                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-unknown-data-size" class="internal xref">Unknown Data Size</a></p>
+1271,1272c1344,1345
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.6.2.3">
+<                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="xref">6.3</a>.  <a href="#name-data-size-values" class="xref">Data Size Values</a><a href="#section-toc.1-1.6.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
+>                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-data-size-values" class="internal xref">Data Size Values</a></p>
+1276,1280c1349,1353
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-ebml-element-types" class="xref">EBML Element Types</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-signed-integer-element" class="xref">Signed Integer Element</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-ebml-element-types" class="internal xref">EBML Element Types</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-signed-integer-element" class="internal xref">Signed Integer Element</a></p>
+1282,1283c1355,1356
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-unsigned-integer-element" class="xref">Unsigned Integer Element</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-unsigned-integer-element" class="internal xref">Unsigned Integer Element</a></p>
+1285,1286c1358,1359
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.7.2.3">
+<                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="xref">7.3</a>.  <a href="#name-float-element" class="xref">Float Element</a><a href="#section-toc.1-1.7.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3">
+>                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="auto internal xref">7.3</a>.  <a href="#name-float-element" class="internal xref">Float Element</a></p>
+1288,1289c1361,1362
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.7.2.4">
+<                 <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="xref">7.4</a>.  <a href="#name-string-element" class="xref">String Element</a><a href="#section-toc.1-1.7.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.4">
+>                 <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="auto internal xref">7.4</a>.  <a href="#name-string-element" class="internal xref">String Element</a></p>
+1291,1292c1364,1365
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.7.2.5">
+<                 <p id="section-toc.1-1.7.2.5.1"><a href="#section-7.5" class="xref">7.5</a>.  <a href="#name-utf-8-element" class="xref">UTF-8 Element</a><a href="#section-toc.1-1.7.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.5">
+>                 <p id="section-toc.1-1.7.2.5.1"><a href="#section-7.5" class="auto internal xref">7.5</a>.  <a href="#name-utf-8-element" class="internal xref">UTF-8 Element</a></p>
+1294,1295c1367,1368
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.7.2.6">
+<                 <p id="section-toc.1-1.7.2.6.1"><a href="#section-7.6" class="xref">7.6</a>.  <a href="#name-date-element" class="xref">Date Element</a><a href="#section-toc.1-1.7.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.6">
+>                 <p id="section-toc.1-1.7.2.6.1"><a href="#section-7.6" class="auto internal xref">7.6</a>.  <a href="#name-date-element" class="internal xref">Date Element</a></p>
+1297,1298c1370,1371
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.7.2.7">
+<                 <p id="section-toc.1-1.7.2.7.1"><a href="#section-7.7" class="xref">7.7</a>.  <a href="#name-master-element" class="xref">Master Element</a><a href="#section-toc.1-1.7.2.7.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.7">
+>                 <p id="section-toc.1-1.7.2.7.1"><a href="#section-7.7" class="auto internal xref">7.7</a>.  <a href="#name-master-element" class="internal xref">Master Element</a></p>
+1300,1301c1373,1374
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.7.2.8">
+<                 <p id="section-toc.1-1.7.2.8.1"><a href="#section-7.8" class="xref">7.8</a>.  <a href="#name-binary-element" class="xref">Binary Element</a><a href="#section-toc.1-1.7.2.8.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.8">
+>                 <p id="section-toc.1-1.7.2.8.1"><a href="#section-7.8" class="auto internal xref">7.8</a>.  <a href="#name-binary-element" class="internal xref">Binary Element</a></p>
+1305,1309c1378,1382
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-ebml-document" class="xref">EBML Document</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.8.2.1">
+<                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-ebml-header" class="xref">EBML Header</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-ebml-document" class="internal xref">EBML Document</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+>                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-ebml-header" class="internal xref">EBML Header</a></p>
+1311,1312c1384,1385
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.8.2.2">
+<                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-ebml-body" class="xref">EBML Body</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+>                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-ebml-body" class="internal xref">EBML Body</a></p>
+1316,1317c1389,1390
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-ebml-stream" class="xref">EBML Stream</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-ebml-stream" class="internal xref">EBML Stream</a></p>
+1319,1323c1392,1396
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-ebml-versioning" class="xref">EBML Versioning</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.10.2.1">
+<                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="xref">10.1</a>.  <a href="#name-ebml-header-version" class="xref">EBML Header Version</a><a href="#section-toc.1-1.10.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-ebml-versioning" class="internal xref">EBML Versioning</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
+>                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="auto internal xref">10.1</a>.  <a href="#name-ebml-header-version" class="internal xref">EBML Header Version</a></p>
+1325,1326c1398,1399
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.10.2.2">
+<                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="xref">10.2</a>.  <a href="#name-ebml-document-version" class="xref">EBML Document Version</a><a href="#section-toc.1-1.10.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
+>                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="auto internal xref">10.2</a>.  <a href="#name-ebml-document-version" class="internal xref">EBML Document Version</a></p>
+1330,1337c1403,1410
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-elements-semantics" class="xref">Elements semantics</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1">
+<                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="xref">11.1</a>.  <a href="#name-ebml-schema" class="xref">EBML Schema</a><a href="#section-toc.1-1.11.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.1">
+<                     <p id="section-toc.1-1.11.2.1.2.1.1"><a href="#section-11.1.1" class="xref">11.1.1</a>.  <a href="#name-ebml-schema-example" class="xref">EBML Schema Example</a><a href="#section-toc.1-1.11.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-elements-semantics" class="internal xref">Elements semantics</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
+>                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-ebml-schema" class="internal xref">EBML Schema</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.1">
+>                     <p id="section-toc.1-1.11.2.1.2.1.1"><a href="#section-11.1.1" class="auto internal xref">11.1.1</a>.  <a href="#name-ebml-schema-example" class="internal xref">EBML Schema Example</a></p>
+1339,1340c1412,1413
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.2">
+<                     <p id="section-toc.1-1.11.2.1.2.2.1"><a href="#section-11.1.2" class="xref">11.1.2</a>.  <a href="#name-ebmlschema-element" class="xref"><code>&lt;EBMLSchema&gt;</code> Element</a><a href="#section-toc.1-1.11.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.2">
+>                     <p id="section-toc.1-1.11.2.1.2.2.1"><a href="#section-11.1.2" class="auto internal xref">11.1.2</a>.  <a href="#name-ebmlschema-element" class="internal xref"><code>&lt;EBMLSchema&gt;</code> Element</a></p>
+1342,1343c1415,1416
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.3">
+<                     <p id="section-toc.1-1.11.2.1.2.3.1"><a href="#section-11.1.3" class="xref">11.1.3</a>.  <a href="#name-ebmlschema-namespace" class="xref"><code>&lt;EBMLSchema&gt;</code> Namespace</a><a href="#section-toc.1-1.11.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.3">
+>                     <p id="section-toc.1-1.11.2.1.2.3.1"><a href="#section-11.1.3" class="auto internal xref">11.1.3</a>.  <a href="#name-ebmlschema-namespace" class="internal xref"><code>&lt;EBMLSchema&gt;</code> Namespace</a></p>
+1345,1346c1418,1419
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.4">
+<                     <p id="section-toc.1-1.11.2.1.2.4.1"><a href="#section-11.1.4" class="xref">11.1.4</a>.  <a href="#name-ebmlschema-attributes" class="xref"><code>&lt;EBMLSchema&gt;</code> Attributes</a><a href="#section-toc.1-1.11.2.1.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.4">
+>                     <p id="section-toc.1-1.11.2.1.2.4.1"><a href="#section-11.1.4" class="auto internal xref">11.1.4</a>.  <a href="#name-ebmlschema-attributes" class="internal xref"><code>&lt;EBMLSchema&gt;</code> Attributes</a></p>
+1348,1349c1421,1422
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.5">
+<                     <p id="section-toc.1-1.11.2.1.2.5.1"><a href="#section-11.1.5" class="xref">11.1.5</a>.  <a href="#name-element-element" class="xref"><code>&lt;element&gt;</code> Element</a><a href="#section-toc.1-1.11.2.1.2.5.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.5">
+>                     <p id="section-toc.1-1.11.2.1.2.5.1"><a href="#section-11.1.5" class="auto internal xref">11.1.5</a>.  <a href="#name-element-element" class="internal xref"><code>&lt;element&gt;</code> Element</a></p>
+1351,1352c1424,1425
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.6">
+<                     <p id="section-toc.1-1.11.2.1.2.6.1"><a href="#section-11.1.6" class="xref">11.1.6</a>.  <a href="#name-element-attributes" class="xref"><code>&lt;element&gt;</code> Attributes</a><a href="#section-toc.1-1.11.2.1.2.6.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.6">
+>                     <p id="section-toc.1-1.11.2.1.2.6.1"><a href="#section-11.1.6" class="auto internal xref">11.1.6</a>.  <a href="#name-element-attributes" class="internal xref"><code>&lt;element&gt;</code> Attributes</a></p>
+1354,1355c1427,1428
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.7">
+<                     <p id="section-toc.1-1.11.2.1.2.7.1"><a href="#section-11.1.7" class="xref">11.1.7</a>.  <a href="#name-documentation-element" class="xref"><code>&lt;documentation&gt;</code> Element</a><a href="#section-toc.1-1.11.2.1.2.7.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.7">
+>                     <p id="section-toc.1-1.11.2.1.2.7.1"><a href="#section-11.1.7" class="auto internal xref">11.1.7</a>.  <a href="#name-documentation-element" class="internal xref"><code>&lt;documentation&gt;</code> Element</a></p>
+1357,1358c1430,1431
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.8">
+<                     <p id="section-toc.1-1.11.2.1.2.8.1"><a href="#section-11.1.8" class="xref">11.1.8</a>.  <a href="#name-documentation-attributes" class="xref"><code>&lt;documentation&gt;</code> Attributes</a><a href="#section-toc.1-1.11.2.1.2.8.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.8">
+>                     <p id="section-toc.1-1.11.2.1.2.8.1"><a href="#section-11.1.8" class="auto internal xref">11.1.8</a>.  <a href="#name-documentation-attributes" class="internal xref"><code>&lt;documentation&gt;</code> Attributes</a></p>
+1360,1361c1433,1434
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.9">
+<                     <p id="section-toc.1-1.11.2.1.2.9.1"><a href="#section-11.1.9" class="xref">11.1.9</a>.  <a href="#name-implementation_note-element" class="xref"><code>&lt;implementation_note&gt;</code> Element</a><a href="#section-toc.1-1.11.2.1.2.9.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.9">
+>                     <p id="section-toc.1-1.11.2.1.2.9.1"><a href="#section-11.1.9" class="auto internal xref">11.1.9</a>.  <a href="#name-implementation_note-element" class="internal xref"><code>&lt;implementation_note&gt;</code> Element</a></p>
+1363,1364c1436,1437
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.10">
+<                     <p id="section-toc.1-1.11.2.1.2.10.1"><a href="#section-11.1.10" class="xref">11.1.10</a>. <a href="#name-implementation_note-attribu" class="xref"><code>&lt;implementation_note&gt;</code> Attributes</a><a href="#section-toc.1-1.11.2.1.2.10.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.10">
+>                     <p id="section-toc.1-1.11.2.1.2.10.1"><a href="#section-11.1.10" class="auto internal xref">11.1.10</a>. <a href="#name-implementation_note-attribu" class="internal xref"><code>&lt;implementation_note&gt;</code> Attributes</a></p>
+1366,1367c1439,1440
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.11">
+<                     <p id="section-toc.1-1.11.2.1.2.11.1"><a href="#section-11.1.11" class="xref">11.1.11</a>. <a href="#name-restriction-element" class="xref"><code>&lt;restriction&gt;</code> Element</a><a href="#section-toc.1-1.11.2.1.2.11.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.11">
+>                     <p id="section-toc.1-1.11.2.1.2.11.1"><a href="#section-11.1.11" class="auto internal xref">11.1.11</a>. <a href="#name-restriction-element" class="internal xref"><code>&lt;restriction&gt;</code> Element</a></p>
+1369,1370c1442,1443
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.12">
+<                     <p id="section-toc.1-1.11.2.1.2.12.1"><a href="#section-11.1.12" class="xref">11.1.12</a>. <a href="#name-enum-element" class="xref"><code>&lt;enum&gt;</code> Element</a><a href="#section-toc.1-1.11.2.1.2.12.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.12">
+>                     <p id="section-toc.1-1.11.2.1.2.12.1"><a href="#section-11.1.12" class="auto internal xref">11.1.12</a>. <a href="#name-enum-element" class="internal xref"><code>&lt;enum&gt;</code> Element</a></p>
+1372,1373c1445,1446
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.13">
+<                     <p id="section-toc.1-1.11.2.1.2.13.1"><a href="#section-11.1.13" class="xref">11.1.13</a>. <a href="#name-enum-attributes" class="xref"><code>&lt;enum&gt;</code> Attributes</a><a href="#section-toc.1-1.11.2.1.2.13.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.13">
+>                     <p id="section-toc.1-1.11.2.1.2.13.1"><a href="#section-11.1.13" class="auto internal xref">11.1.13</a>. <a href="#name-enum-attributes" class="internal xref"><code>&lt;enum&gt;</code> Attributes</a></p>
+1375,1376c1448,1449
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.14">
+<                     <p id="section-toc.1-1.11.2.1.2.14.1"><a href="#section-11.1.14" class="xref">11.1.14</a>. <a href="#name-extension-element" class="xref"><code>&lt;extension&gt;</code> Element</a><a href="#section-toc.1-1.11.2.1.2.14.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.14">
+>                     <p id="section-toc.1-1.11.2.1.2.14.1"><a href="#section-11.1.14" class="auto internal xref">11.1.14</a>. <a href="#name-extension-element" class="internal xref"><code>&lt;extension&gt;</code> Element</a></p>
+1378,1379c1451,1452
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.15">
+<                     <p id="section-toc.1-1.11.2.1.2.15.1"><a href="#section-11.1.15" class="xref">11.1.15</a>. <a href="#name-extension-attributes" class="xref"><code>&lt;extension&gt;</code> Attributes</a><a href="#section-toc.1-1.11.2.1.2.15.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.15">
+>                     <p id="section-toc.1-1.11.2.1.2.15.1"><a href="#section-11.1.15" class="auto internal xref">11.1.15</a>. <a href="#name-extension-attributes" class="internal xref"><code>&lt;extension&gt;</code> Attributes</a></p>
+1381,1382c1454,1455
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.16">
+<                     <p id="section-toc.1-1.11.2.1.2.16.1"><a href="#section-11.1.16" class="xref">11.1.16</a>. <a href="#name-xml-schema-for-ebml-schema" class="xref">XML Schema for EBML Schema</a><a href="#section-toc.1-1.11.2.1.2.16.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.16">
+>                     <p id="section-toc.1-1.11.2.1.2.16.1"><a href="#section-11.1.16" class="auto internal xref">11.1.16</a>. <a href="#name-xml-schema-for-ebml-schema" class="internal xref">XML Schema for EBML Schema</a></p>
+1384,1385c1457,1458
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.17">
+<                     <p id="section-toc.1-1.11.2.1.2.17.1"><a href="#section-11.1.17" class="xref">11.1.17</a>. <a href="#name-identically-recurring-eleme" class="xref">Identically Recurring Elements</a><a href="#section-toc.1-1.11.2.1.2.17.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.17">
+>                     <p id="section-toc.1-1.11.2.1.2.17.1"><a href="#section-11.1.17" class="auto internal xref">11.1.17</a>. <a href="#name-identically-recurring-eleme" class="internal xref">Identically Recurring Elements</a></p>
+1387,1388c1460,1461
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.18">
+<                     <p id="section-toc.1-1.11.2.1.2.18.1"><a href="#section-11.1.18" class="xref">11.1.18</a>. <a href="#name-textual-expression-of-float" class="xref">Textual expression of floats</a><a href="#section-toc.1-1.11.2.1.2.18.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.18">
+>                     <p id="section-toc.1-1.11.2.1.2.18.1"><a href="#section-11.1.18" class="auto internal xref">11.1.18</a>. <a href="#name-textual-expression-of-float" class="internal xref">Textual expression of floats</a></p>
+1390,1391c1463,1464
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.1.2.19">
+<                     <p id="section-toc.1-1.11.2.1.2.19.1"><a href="#section-11.1.19" class="xref">11.1.19</a>. <a href="#name-note-on-the-use-of-default-" class="xref">Note on the use of default attributes to define Mandatory EBML Elements</a><a href="#section-toc.1-1.11.2.1.2.19.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.19">
+>                     <p id="section-toc.1-1.11.2.1.2.19.1"><a href="#section-11.1.19" class="auto internal xref">11.1.19</a>. <a href="#name-note-on-the-use-of-default-" class="internal xref">Note on the use of default attributes to define Mandatory EBML Elements</a></p>
+1395,1399c1468,1472
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.2">
+<                 <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="xref">11.2</a>.  <a href="#name-ebml-header-elements" class="xref">EBML Header Elements</a><a href="#section-toc.1-1.11.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.2.2.1">
+<                     <p id="section-toc.1-1.11.2.2.2.1.1"><a href="#section-11.2.1" class="xref">11.2.1</a>.  <a href="#name-ebml-element" class="xref">EBML Element</a><a href="#section-toc.1-1.11.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
+>                 <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="auto internal xref">11.2</a>.  <a href="#name-ebml-header-elements" class="internal xref">EBML Header Elements</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.1">
+>                     <p id="section-toc.1-1.11.2.2.2.1.1"><a href="#section-11.2.1" class="auto internal xref">11.2.1</a>.  <a href="#name-ebml-element" class="internal xref">EBML Element</a></p>
+1401,1402c1474,1475
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.2.2.2">
+<                     <p id="section-toc.1-1.11.2.2.2.2.1"><a href="#section-11.2.2" class="xref">11.2.2</a>.  <a href="#name-ebmlversion-element" class="xref">EBMLVersion Element</a><a href="#section-toc.1-1.11.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.2">
+>                     <p id="section-toc.1-1.11.2.2.2.2.1"><a href="#section-11.2.2" class="auto internal xref">11.2.2</a>.  <a href="#name-ebmlversion-element" class="internal xref">EBMLVersion Element</a></p>
+1404,1405c1477,1478
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.2.2.3">
+<                     <p id="section-toc.1-1.11.2.2.2.3.1"><a href="#section-11.2.3" class="xref">11.2.3</a>.  <a href="#name-ebmlreadversion-element" class="xref">EBMLReadVersion Element</a><a href="#section-toc.1-1.11.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.3">
+>                     <p id="section-toc.1-1.11.2.2.2.3.1"><a href="#section-11.2.3" class="auto internal xref">11.2.3</a>.  <a href="#name-ebmlreadversion-element" class="internal xref">EBMLReadVersion Element</a></p>
+1407,1408c1480,1481
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.2.2.4">
+<                     <p id="section-toc.1-1.11.2.2.2.4.1"><a href="#section-11.2.4" class="xref">11.2.4</a>.  <a href="#name-ebmlmaxidlength-element" class="xref">EBMLMaxIDLength Element</a><a href="#section-toc.1-1.11.2.2.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.4">
+>                     <p id="section-toc.1-1.11.2.2.2.4.1"><a href="#section-11.2.4" class="auto internal xref">11.2.4</a>.  <a href="#name-ebmlmaxidlength-element" class="internal xref">EBMLMaxIDLength Element</a></p>
+1410,1411c1483,1484
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.2.2.5">
+<                     <p id="section-toc.1-1.11.2.2.2.5.1"><a href="#section-11.2.5" class="xref">11.2.5</a>.  <a href="#name-ebmlmaxsizelength-element" class="xref">EBMLMaxSizeLength Element</a><a href="#section-toc.1-1.11.2.2.2.5.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.5">
+>                     <p id="section-toc.1-1.11.2.2.2.5.1"><a href="#section-11.2.5" class="auto internal xref">11.2.5</a>.  <a href="#name-ebmlmaxsizelength-element" class="internal xref">EBMLMaxSizeLength Element</a></p>
+1413,1414c1486,1487
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.2.2.6">
+<                     <p id="section-toc.1-1.11.2.2.2.6.1"><a href="#section-11.2.6" class="xref">11.2.6</a>.  <a href="#name-doctype-element" class="xref">DocType Element</a><a href="#section-toc.1-1.11.2.2.2.6.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.6">
+>                     <p id="section-toc.1-1.11.2.2.2.6.1"><a href="#section-11.2.6" class="auto internal xref">11.2.6</a>.  <a href="#name-doctype-element" class="internal xref">DocType Element</a></p>
+1416,1417c1489,1490
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.2.2.7">
+<                     <p id="section-toc.1-1.11.2.2.2.7.1"><a href="#section-11.2.7" class="xref">11.2.7</a>.  <a href="#name-doctypeversion-element" class="xref">DocTypeVersion Element</a><a href="#section-toc.1-1.11.2.2.2.7.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.7">
+>                     <p id="section-toc.1-1.11.2.2.2.7.1"><a href="#section-11.2.7" class="auto internal xref">11.2.7</a>.  <a href="#name-doctypeversion-element" class="internal xref">DocTypeVersion Element</a></p>
+1419,1420c1492,1493
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.2.2.8">
+<                     <p id="section-toc.1-1.11.2.2.2.8.1"><a href="#section-11.2.8" class="xref">11.2.8</a>.  <a href="#name-doctypereadversion-element" class="xref">DocTypeReadVersion Element</a><a href="#section-toc.1-1.11.2.2.2.8.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.8">
+>                     <p id="section-toc.1-1.11.2.2.2.8.1"><a href="#section-11.2.8" class="auto internal xref">11.2.8</a>.  <a href="#name-doctypereadversion-element" class="internal xref">DocTypeReadVersion Element</a></p>
+1422,1423c1495,1496
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.2.2.9">
+<                     <p id="section-toc.1-1.11.2.2.2.9.1"><a href="#section-11.2.9" class="xref">11.2.9</a>.  <a href="#name-doctypeextension-element" class="xref">DocTypeExtension Element</a><a href="#section-toc.1-1.11.2.2.2.9.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.9">
+>                     <p id="section-toc.1-1.11.2.2.2.9.1"><a href="#section-11.2.9" class="auto internal xref">11.2.9</a>.  <a href="#name-doctypeextension-element" class="internal xref">DocTypeExtension Element</a></p>
+1425,1426c1498,1499
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.2.2.10">
+<                     <p id="section-toc.1-1.11.2.2.2.10.1"><a href="#section-11.2.10" class="xref">11.2.10</a>. <a href="#name-doctypeextensionname-elemen" class="xref">DocTypeExtensionName Element</a><a href="#section-toc.1-1.11.2.2.2.10.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.10">
+>                     <p id="section-toc.1-1.11.2.2.2.10.1"><a href="#section-11.2.10" class="auto internal xref">11.2.10</a>. <a href="#name-doctypeextensionname-elemen" class="internal xref">DocTypeExtensionName Element</a></p>
+1428,1429c1501,1502
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.2.2.11">
+<                     <p id="section-toc.1-1.11.2.2.2.11.1"><a href="#section-11.2.11" class="xref">11.2.11</a>. <a href="#name-doctypeextensionversion-ele" class="xref">DocTypeExtensionVersion Element</a><a href="#section-toc.1-1.11.2.2.2.11.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.11">
+>                     <p id="section-toc.1-1.11.2.2.2.11.1"><a href="#section-11.2.11" class="auto internal xref">11.2.11</a>. <a href="#name-doctypeextensionversion-ele" class="internal xref">DocTypeExtensionVersion Element</a></p>
+1433,1437c1506,1510
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.3">
+<                 <p id="section-toc.1-1.11.2.3.1"><a href="#section-11.3" class="xref">11.3</a>.  <a href="#name-global-elements" class="xref">Global Elements</a><a href="#section-toc.1-1.11.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.3.2.1">
+<                     <p id="section-toc.1-1.11.2.3.2.1.1"><a href="#section-11.3.1" class="xref">11.3.1</a>.  <a href="#name-crc-32-element" class="xref">CRC-32 Element</a><a href="#section-toc.1-1.11.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.3">
+>                 <p id="section-toc.1-1.11.2.3.1"><a href="#section-11.3" class="auto internal xref">11.3</a>.  <a href="#name-global-elements" class="internal xref">Global Elements</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.3.2.1">
+>                     <p id="section-toc.1-1.11.2.3.2.1.1"><a href="#section-11.3.1" class="auto internal xref">11.3.1</a>.  <a href="#name-crc-32-element" class="internal xref">CRC-32 Element</a></p>
+1439,1440c1512,1513
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.11.2.3.2.2">
+<                     <p id="section-toc.1-1.11.2.3.2.2.1"><a href="#section-11.3.2" class="xref">11.3.2</a>.  <a href="#name-void-element" class="xref">Void Element</a><a href="#section-toc.1-1.11.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.3.2.2">
+>                     <p id="section-toc.1-1.11.2.3.2.2.1"><a href="#section-11.3.2" class="auto internal xref">11.3.2</a>.  <a href="#name-void-element" class="internal xref">Void Element</a></p>
+1446,1447c1519,1520
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-12" class="xref">12</a>. <a href="#name-considerations-for-reading-" class="xref">Considerations for Reading EBML Data</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-considerations-for-reading-" class="internal xref">Considerations for Reading EBML Data</a></p>
+1449,1450c1522,1523
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-13" class="xref">13</a>. <a href="#name-terminating-elements" class="xref">Terminating Elements</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1"><a href="#section-13" class="auto internal xref">13</a>. <a href="#name-terminating-elements" class="internal xref">Terminating Elements</a></p>
+1452,1459c1525,1532
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.14">
+<             <p id="section-toc.1-1.14.1"><a href="#section-14" class="xref">14</a>. <a href="#name-guidelines-for-updating-ele" class="xref">Guidelines for Updating Elements</a><a href="#section-toc.1-1.14.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.14.2.1">
+<                 <p id="section-toc.1-1.14.2.1.1"><a href="#section-14.1" class="xref">14.1</a>.  <a href="#name-reducing-element-data-in-si" class="xref">Reducing Element Data in Size</a><a href="#section-toc.1-1.14.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.14.2.1.2.1">
+<                     <p id="section-toc.1-1.14.2.1.2.1.1"><a href="#section-14.1.1" class="xref">14.1.1</a>.  <a href="#name-adding-a-void-element" class="xref">Adding a Void Element</a><a href="#section-toc.1-1.14.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+>             <p id="section-toc.1-1.14.1"><a href="#section-14" class="auto internal xref">14</a>. <a href="#name-guidelines-for-updating-ele" class="internal xref">Guidelines for Updating Elements</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.1">
+>                 <p id="section-toc.1-1.14.2.1.1"><a href="#section-14.1" class="auto internal xref">14.1</a>.  <a href="#name-reducing-element-data-in-si" class="internal xref">Reducing Element Data in Size</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.1.2.1">
+>                     <p id="section-toc.1-1.14.2.1.2.1.1"><a href="#section-14.1.1" class="auto internal xref">14.1.1</a>.  <a href="#name-adding-a-void-element" class="internal xref">Adding a Void Element</a></p>
+1461,1462c1534,1535
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.14.2.1.2.2">
+<                     <p id="section-toc.1-1.14.2.1.2.2.1"><a href="#section-14.1.2" class="xref">14.1.2</a>.  <a href="#name-extending-the-element-data-" class="xref">Extending the Element Data Size</a><a href="#section-toc.1-1.14.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.1.2.2">
+>                     <p id="section-toc.1-1.14.2.1.2.2.1"><a href="#section-14.1.2" class="auto internal xref">14.1.2</a>.  <a href="#name-extending-the-element-data-" class="internal xref">Extending the Element Data Size</a></p>
+1464,1465c1537,1538
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.14.2.1.2.3">
+<                     <p id="section-toc.1-1.14.2.1.2.3.1"><a href="#section-14.1.3" class="xref">14.1.3</a>.  <a href="#name-terminating-element-data" class="xref">Terminating Element Data</a><a href="#section-toc.1-1.14.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.1.2.3">
+>                     <p id="section-toc.1-1.14.2.1.2.3.1"><a href="#section-14.1.3" class="auto internal xref">14.1.3</a>.  <a href="#name-terminating-element-data" class="internal xref">Terminating Element Data</a></p>
+1469,1470c1542,1543
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.14.2.2">
+<                 <p id="section-toc.1-1.14.2.2.1"><a href="#section-14.2" class="xref">14.2</a>.  <a href="#name-considerations-when-updatin" class="xref">Considerations when Updating Elements with Cyclic Redundancy Check (CRC)</a><a href="#section-toc.1-1.14.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.2">
+>                 <p id="section-toc.1-1.14.2.2.1"><a href="#section-14.2" class="auto internal xref">14.2</a>.  <a href="#name-considerations-when-updatin" class="internal xref">Considerations when Updating Elements with Cyclic Redundancy Check (CRC)</a></p>
+1474,1478c1547,1551
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.15">
+<             <p id="section-toc.1-1.15.1"><a href="#section-15" class="xref">15</a>. <a href="#name-backward-and-forward-compat" class="xref">Backward and Forward Compatibility</a><a href="#section-toc.1-1.15.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.15.2.1">
+<                 <p id="section-toc.1-1.15.2.1.1"><a href="#section-15.1" class="xref">15.1</a>.  <a href="#name-backward-compatibility" class="xref">Backward Compatibility</a><a href="#section-toc.1-1.15.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
+>             <p id="section-toc.1-1.15.1"><a href="#section-15" class="auto internal xref">15</a>. <a href="#name-backward-and-forward-compat" class="internal xref">Backward and Forward Compatibility</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.1">
+>                 <p id="section-toc.1-1.15.2.1.1"><a href="#section-15.1" class="auto internal xref">15.1</a>.  <a href="#name-backward-compatibility" class="internal xref">Backward Compatibility</a></p>
+1480,1481c1553,1554
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.15.2.2">
+<                 <p id="section-toc.1-1.15.2.2.1"><a href="#section-15.2" class="xref">15.2</a>.  <a href="#name-forward-compatibility" class="xref">Forward Compatibility</a><a href="#section-toc.1-1.15.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.2">
+>                 <p id="section-toc.1-1.15.2.2.1"><a href="#section-15.2" class="auto internal xref">15.2</a>.  <a href="#name-forward-compatibility" class="internal xref">Forward Compatibility</a></p>
+1485,1486c1558,1559
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.16">
+<             <p id="section-toc.1-1.16.1"><a href="#section-16" class="xref">16</a>. <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.16.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
+>             <p id="section-toc.1-1.16.1"><a href="#section-16" class="auto internal xref">16</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1488,1492c1561,1565
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.17">
+<             <p id="section-toc.1-1.17.1"><a href="#section-17" class="xref">17</a>. <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.17.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.17.2.1">
+<                 <p id="section-toc.1-1.17.2.1.1"><a href="#section-17.1" class="xref">17.1</a>.  <a href="#name-ebml-element-ids-registry" class="xref">EBML Element IDs Registry</a><a href="#section-toc.1-1.17.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17">
+>             <p id="section-toc.1-1.17.1"><a href="#section-17" class="auto internal xref">17</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17.2.1">
+>                 <p id="section-toc.1-1.17.2.1.1"><a href="#section-17.1" class="auto internal xref">17.1</a>.  <a href="#name-ebml-element-ids-registry" class="internal xref">EBML Element IDs Registry</a></p>
+1494,1495c1567,1568
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.17.2.2">
+<                 <p id="section-toc.1-1.17.2.2.1"><a href="#section-17.2" class="xref">17.2</a>.  <a href="#name-ebml-doctypes-registry" class="xref">EBML DocTypes Registry</a><a href="#section-toc.1-1.17.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17.2.2">
+>                 <p id="section-toc.1-1.17.2.2.1"><a href="#section-17.2" class="auto internal xref">17.2</a>.  <a href="#name-ebml-doctypes-registry" class="internal xref">EBML DocTypes Registry</a></p>
+1499,1500c1572,1573
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.18">
+<             <p id="section-toc.1-1.18.1"><a href="#section-18" class="xref">18</a>. <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.18.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.18">
+>             <p id="section-toc.1-1.18.1"><a href="#section-18" class="auto internal xref">18</a>. <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1502,1503c1575,1576
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.19">
+<             <p id="section-toc.1-1.19.1"><a href="#section-19" class="xref">19</a>. <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.19.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.19">
+>             <p id="section-toc.1-1.19.1"><a href="#section-19" class="auto internal xref">19</a>. <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1505,1506c1578,1579
+<           <li class="compact toc ulEmpty" id="section-toc.1-1.20">
+<             <p id="section-toc.1-1.20.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.20.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.20">
+>             <p id="section-toc.1-1.20.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1523c1596
+< <span>[<a href="#I-D.ietf-cellar-matroska" class="xref">Matroska</a>]</span>. The applicability of EBML for other
+---
+> <span>[<a href="#I-D.ietf-cellar-matroska" class="cite xref">Matroska</a>]</span>. The applicability of EBML for other
+1531c1604
+< defined, such as the audio/video container formats Matroska and WebM <span>[<a href="#WebM" class="xref">WebM</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
+---
+> defined, such as the audio/video container formats Matroska and WebM <span>[<a href="#WebM" class="cite xref">WebM</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
+1534c1607
+< <div class="artwork art-text alignLeft" id="section-1-6">
+---
+> <div class="alignLeft art-text artwork" id="section-1-6">
+1558c1631
+< described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span>
+---
+> described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span>
+1565c1638
+<         <dd id="section-2-3.2">Extensible Binary Meta Language<a href="#section-2-3.2" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.2">Extensible Binary Meta Language<a href="#section-2-3.2" class="pilcrow">¶</a>
+1570c1643
+<         <dd id="section-2-3.4">A name provided by an <code>EBML Schema</code> to designate a particular
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.4">A name provided by an <code>EBML Schema</code> to designate a particular
+1576c1649
+<         <dd id="section-2-3.6">A standardized definition for the structure of an <code>EBML Document Type</code>.<a href="#section-2-3.6" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.6">A standardized definition for the structure of an <code>EBML Document Type</code>.<a href="#section-2-3.6" class="pilcrow">¶</a>
+1581c1654
+<         <dd id="section-2-3.8">A datastream comprised of only two components, an <code>EBML Header</code> and
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.8">A datastream comprised of only two components, an <code>EBML Header</code> and
+1587c1660
+<         <dd id="section-2-3.10">A data parser that interprets the semantics of an <code>EBML Document</code>
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.10">A data parser that interprets the semantics of an <code>EBML Document</code>
+1593c1666
+<         <dd id="section-2-3.12">A file that consists of one or more <code>EBML Documents</code> that are
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.12">A file that consists of one or more <code>EBML Documents</code> that are
+1599c1672
+<         <dd id="section-2-3.14">A declaration that provides processing instructions and identification of
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.14">A declaration that provides processing instructions and identification of
+1601c1674
+< <span>[<a href="#XML" class="xref">XML</a>]</span> (see Section 2.8 on "Prolog and Document Type Declaration").<a href="#section-2-3.14" class="pilcrow">¶</a>
+---
+> <span>[<a href="#XML" class="cite xref">XML</a>]</span> (see Section 2.8 on "Prolog and Document Type Declaration").<a href="#section-2-3.14" class="pilcrow">¶</a>
+1606c1679
+<         <dd id="section-2-3.16">All data of an <code>EBML Document</code> following the <code>EBML Header</code>.<a href="#section-2-3.16" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.16">All data of an <code>EBML Document</code> following the <code>EBML Header</code>.<a href="#section-2-3.16" class="pilcrow">¶</a>
+1611c1684
+<         <dd id="section-2-3.18">A compact variable-length binary value that defines its own length.<a href="#section-2-3.18" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.18">A compact variable-length binary value that defines its own length.<a href="#section-2-3.18" class="pilcrow">¶</a>
+1616c1689
+<         <dd id="section-2-3.20">Also known as <code>Variable-Size Integer</code>.<a href="#section-2-3.20" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.20">Also known as <code>Variable-Size Integer</code>.<a href="#section-2-3.20" class="pilcrow">¶</a>
+1621c1694
+<         <dd id="section-2-3.22">A foundation block of data that contains three parts: an <code>Element ID</code>,
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.22">A foundation block of data that contains three parts: an <code>Element ID</code>,
+1627c1700
+<         <dd id="section-2-3.24">A binary value, encoded as a <code>Variable-Size Integer</code>,
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.24">A binary value, encoded as a <code>Variable-Size Integer</code>,
+1634c1707
+<         <dd id="section-2-3.26">An expression, encoded as a <code>Variable-Size Integer</code>, of the length
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.26">An expression, encoded as a <code>Variable-Size Integer</code>, of the length
+1640c1713
+<         <dd id="section-2-3.28">The maximum possible value that can be stored as <code>Element Data Size</code>.<a href="#section-2-3.28" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.28">The maximum possible value that can be stored as <code>Element Data Size</code>.<a href="#section-2-3.28" class="pilcrow">¶</a>
+1645c1718
+<         <dd id="section-2-3.30">An <code>Element</code> with an unknown <code>Element Data Size</code>.<a href="#section-2-3.30" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.30">An <code>Element</code> with an unknown <code>Element Data Size</code>.<a href="#section-2-3.30" class="pilcrow">¶</a>
+1650c1723
+<         <dd id="section-2-3.32">The value(s) of the <code>EBML Element</code>, which is identified by its
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.32">The value(s) of the <code>EBML Element</code>, which is identified by its
+1658c1731
+<         <dd id="section-2-3.34">The starting level in the hierarchy of an <code>EBML Document</code>.<a href="#section-2-3.34" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.34">The starting level in the hierarchy of an <code>EBML Document</code>.<a href="#section-2-3.34" class="pilcrow">¶</a>
+1663c1736
+<         <dd id="section-2-3.36">A mandatory, nonrepeating <code>EBML Element</code> that occurs at the top
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.36">A mandatory, nonrepeating <code>EBML Element</code> that occurs at the top
+1670c1743
+<         <dd id="section-2-3.38">An <code>EBML Element</code> defined to only occur as a <code>Child Element</code>
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.38">An <code>EBML Element</code> defined to only occur as a <code>Child Element</code>
+1676c1749
+<         <dd id="section-2-3.40">The <code>Master Element</code> contains zero, one, or many other <code>EBML Elements</code>.<a href="#section-2-3.40" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.40">The <code>Master Element</code> contains zero, one, or many other <code>EBML Elements</code>.<a href="#section-2-3.40" class="pilcrow">¶</a>
+1681c1754
+<         <dd id="section-2-3.42">A <code>Child Element</code> is a relative term to describe the <code>EBML Elements</code>
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.42">A <code>Child Element</code> is a relative term to describe the <code>EBML Elements</code>
+1687c1760
+<         <dd id="section-2-3.44">A relative term to describe the <code>Master Element</code> that contains a
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.44">A relative term to describe the <code>Master Element</code> that contains a
+1695c1768
+<         <dd id="section-2-3.46">A relative term to describe any <code>EBML Elements</code> contained within a
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.46">A relative term to describe any <code>EBML Elements</code> contained within a
+1702c1775
+<         <dd id="section-2-3.48">An <code>Element</code> used to overwrite data or
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.48">An <code>Element</code> used to overwrite data or
+1708c1781
+<         <dd id="section-2-3.50">The human-readable name of the <code>EBML Element</code>.<a href="#section-2-3.50" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.50">The human-readable name of the <code>EBML Element</code>.<a href="#section-2-3.50" class="pilcrow">¶</a>
+1713c1786
+<         <dd id="section-2-3.52">The hierarchy of <code>Parent Element</code> where the <code>EBML Element</code>
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.52">The hierarchy of <code>Parent Element</code> where the <code>EBML Element</code>
+1719c1792
+<         <dd id="section-2-3.54">An <code>EBML Element</code> that has an <code>Element Data Size</code> with all
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.54">An <code>EBML Element</code> that has an <code>Element Data Size</code> with all
+1795c1868
+< <p id="section-4.4-1"><a href="#tableUsableBits" class="xref">Table 1</a> shows examples of Variable-Size
+---
+> <p id="section-4.4-1"><a href="#tableUsableBits" class="auto internal xref">Table 1</a> shows examples of Variable-Size
+1846c1919
+< <a href="#tableVariousSizes" class="xref">Table 2</a>, an integer <code>2</code> (with a
+---
+> <a href="#tableVariousSizes" class="auto internal xref">Table 2</a>, an integer <code>2</code> (with a
+1907c1980
+< <a href="#ebmlmaxidlength-element" class="xref">Section 11.2.4</a>). The bits of the VINT_DATA component
+---
+> <a href="#ebmlmaxidlength-element" class="auto internal xref">Section 11.2.4</a>). The bits of the VINT_DATA component
+1919c1992
+< <p id="section-5-2"><a href="#tableElementIDValidity" class="xref">Table 3</a> details these specific examples further:<a href="#section-5-2" class="pilcrow">¶</a></p>
+---
+> <p id="section-5-2"><a href="#tableElementIDValidity" class="auto internal xref">Table 3</a> details these specific examples further:<a href="#section-5-2" class="pilcrow">¶</a></p>
+1988c2061
+< <a href="#tableElementIDRanges" class="xref">Table 4</a>.<a href="#section-5-4" class="pilcrow">¶</a></p>
+---
+> <a href="#tableElementIDRanges" class="auto internal xref">Table 4</a>.<a href="#section-5-4" class="pilcrow">¶</a></p>
+2045c2118
+< <a href="#ebmlmaxsizelength-element" class="xref">Section 11.2.5</a>). Unlike the VINT_DATA of the
+---
+> <a href="#ebmlmaxsizelength-element" class="auto internal xref">Section 11.2.5</a>). Unlike the VINT_DATA of the
+2055c2128
+< <a href="#ebml-element-types" class="xref">Section 7</a>). An Element Data Size with all VINT_DATA
+---
+> <a href="#ebml-element-types" class="auto internal xref">Section 7</a>). An Element Data Size with all VINT_DATA
+2076c2149
+< set to true (see <a href="#unknownsizeallowed" class="xref">Section 11.1.6.10</a>).<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+---
+> set to true (see <a href="#unknownsizeallowed" class="auto internal xref">Section 11.1.6.10</a>).<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+2180c2253
+< <a href="#tableVintRangePerLength" class="xref">Table 6</a> depicts the range of possible values
+---
+> <a href="#tableVintRangePerLength" class="auto internal xref">Table 6</a> depicts the range of possible values
+2237c2310
+< value. <a href="#tableVintReservation" class="xref">Table 7</a> clarifies this rule by
+---
+> value. <a href="#tableVintReservation" class="auto internal xref">Table 7</a> clarifies this rule by
+2300c2373
+< <a href="#ebml-schema" class="xref">Section 11.1</a>), which <span class="bcp14">MUST</span> declare one of the
+---
+> <a href="#ebml-schema" class="auto internal xref">Section 11.1</a>), which <span class="bcp14">MUST</span> declare one of the
+2342c2415
+< binary interchange format, as defined in <span>[<a href="#IEEE.754" class="xref">IEEE.754</a>]</span>.<a href="#section-7.3-2" class="pilcrow">¶</a></p>
+---
+> binary interchange format, as defined in <span>[<a href="#IEEE.754" class="cite xref">IEEE.754</a>]</span>.<a href="#section-7.3-2" class="pilcrow">¶</a></p>
+2351c2424
+< <p id="section-7.4-2">A String Element <span class="bcp14">MUST</span> either be empty (zero-length) or contain printable ASCII characters <span>[<a href="#RFC0020" class="xref">RFC0020</a>]</span> in the range of 0x20 to 0x7E, with an exception made for termination (see <a href="#terminating-elements" class="xref">Section 13</a>).<a href="#section-7.4-2" class="pilcrow">¶</a></p>
+---
+> <p id="section-7.4-2">A String Element <span class="bcp14">MUST</span> either be empty (zero-length) or contain printable ASCII characters <span>[<a href="#RFC0020" class="cite xref">RFC0020</a>]</span> in the range of 0x20 to 0x7E, with an exception made for termination (see <a href="#terminating-elements" class="auto internal xref">Section 13</a>).<a href="#section-7.4-2" class="pilcrow">¶</a></p>
+2360c2433
+< <p id="section-7.5-2">A UTF-8 Element contains only a valid Unicode string as defined in <span>[<a href="#RFC3629" class="xref">RFC3629</a>]</span>, with an exception made for termination (see <a href="#terminating-elements" class="xref">Section 13</a>).<a href="#section-7.5-2" class="pilcrow">¶</a></p>
+---
+> <p id="section-7.5-2">A UTF-8 Element contains only a valid Unicode string as defined in <span>[<a href="#RFC3629" class="cite xref">RFC3629</a>]</span>, with an exception made for termination (see <a href="#terminating-elements" class="auto internal xref">Section 13</a>).<a href="#section-7.5-2" class="pilcrow">¶</a></p>
+2368c2441
+< <p id="section-7.6-1">A Date Element <span class="bcp14">MUST</span> declare a length of either zero octets or eight octets. If the EBML Element is not defined to have a default value, then a Date Element with a zero-octet length represents a timestamp of 2001-01-01T00:00:00.000000000 UTC <span>[<a href="#RFC3339" class="xref">RFC3339</a>]</span>.<a href="#section-7.6-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-7.6-1">A Date Element <span class="bcp14">MUST</span> declare a length of either zero octets or eight octets. If the EBML Element is not defined to have a default value, then a Date Element with a zero-octet length represents a timestamp of 2001-01-01T00:00:00.000000000 UTC <span>[<a href="#RFC3339" class="cite xref">RFC3339</a>]</span>.<a href="#section-7.6-1" class="pilcrow">¶</a></p>
+2377,2378c2450,2451
+< <p id="section-7.7-1">A Master Element <span class="bcp14">MUST</span> declare a length in octets from zero to VINTMAX or be of unknown length. See <a href="#element-data-size" class="xref">Section 6</a> for rules that apply to elements of unknown length.<a href="#section-7.7-1" class="pilcrow">¶</a></p>
+< <p id="section-7.7-2">The Master Element contains zero or more other elements. EBML Elements contained within a Master Element <span class="bcp14">MUST</span> have the EBMLParentPath of their Element Path equal to the EBMLFullPath of the Master Element Element Path (see <a href="#path" class="xref">Section 11.1.6.2</a>). Element Data stored within Master Elements <span class="bcp14">SHOULD</span> only consist of EBML Elements and <span class="bcp14">SHOULD NOT</span> contain any data that is not part of an EBML Element. The EBML Schema identifies what Element IDs are valid within the Master Elements for that version of the EBML Document Type. Any data contained within a Master Element that is not part of a Child Element <span class="bcp14">MUST</span> be ignored.<a href="#section-7.7-2" class="pilcrow">¶</a></p>
+---
+> <p id="section-7.7-1">A Master Element <span class="bcp14">MUST</span> declare a length in octets from zero to VINTMAX or be of unknown length. See <a href="#element-data-size" class="auto internal xref">Section 6</a> for rules that apply to elements of unknown length.<a href="#section-7.7-1" class="pilcrow">¶</a></p>
+> <p id="section-7.7-2">The Master Element contains zero or more other elements. EBML Elements contained within a Master Element <span class="bcp14">MUST</span> have the EBMLParentPath of their Element Path equal to the EBMLFullPath of the Master Element Element Path (see <a href="#path" class="auto internal xref">Section 11.1.6.2</a>). Element Data stored within Master Elements <span class="bcp14">SHOULD</span> only consist of EBML Elements and <span class="bcp14">SHOULD NOT</span> contain any data that is not part of an EBML Element. The EBML Schema identifies what Element IDs are valid within the Master Elements for that version of the EBML Document Type. Any data contained within a Master Element that is not part of a Child Element <span class="bcp14">MUST</span> be ignored.<a href="#section-7.7-2" class="pilcrow">¶</a></p>
+2411c2484
+< <a href="#ebml-element" class="xref">Section 11.2.1</a>); the Master Element may have any number of
+---
+> <a href="#ebml-element" class="auto internal xref">Section 11.2.1</a>); the Master Element may have any number of
+2417c2490
+< <code>0x1A45DFA3</code> (see <a href="#ebml-element" class="xref">Section 11.2.1</a>); this Element can be up
+---
+> <code>0x1A45DFA3</code> (see <a href="#ebml-element" class="auto internal xref">Section 11.2.1</a>); this Element can be up
+2478c2551
+< <span>[<a href="#XML" class="xref">XML</a>]</span> that defines the properties,
+---
+> <span>[<a href="#XML" class="cite xref">XML</a>]</span> that defines the properties,
+2481,2482c2554,2555
+< the relationship of an XML Schema <span>[<a href="#XML-SCHEMA" class="xref">XML-SCHEMA</a>]</span> to an XML
+< Document <span>[<a href="#XML" class="xref">XML</a>]</span>. An EBML Schema
+---
+> the relationship of an XML Schema <span>[<a href="#XML-SCHEMA" class="cite xref">XML-SCHEMA</a>]</span> to an XML
+> Document <span>[<a href="#XML" class="cite xref">XML</a>]</span>. An EBML Schema
+2486c2559
+< <a href="#doctype-element" class="xref">Section 11.2.6</a>). The DocType value for an EBML Document Type
+---
+> <a href="#doctype-element" class="auto internal xref">Section 11.2.6</a>). The DocType value for an EBML Document Type
+2488,2489c2561,2562
+< (see <a href="#ebml-doctypes-registry" class="xref">Section 17.2</a>).<a href="#section-11.1-1" class="pilcrow">¶</a></p>
+< <p id="section-11.1-2">An EBML Schema <span class="bcp14">MUST</span> declare exactly one EBML Element at Root Level (referred to as the Root Element) that occurs exactly once within an EBML Document. The Void Element <span class="bcp14">MAY</span> also occur at Root Level but is not a Root Element (see <a href="#void-element" class="xref">Section 11.3.2</a>).<a href="#section-11.1-2" class="pilcrow">¶</a></p>
+---
+> (see <a href="#ebml-doctypes-registry" class="auto internal xref">Section 17.2</a>).<a href="#section-11.1-1" class="pilcrow">¶</a></p>
+> <p id="section-11.1-2">An EBML Schema <span class="bcp14">MUST</span> declare exactly one EBML Element at Root Level (referred to as the Root Element) that occurs exactly once within an EBML Document. The Void Element <span class="bcp14">MAY</span> also occur at Root Level but is not a Root Element (see <a href="#void-element" class="auto internal xref">Section 11.3.2</a>).<a href="#section-11.1-2" class="pilcrow">¶</a></p>
+2497c2570
+< (see <a href="#ebml-header-elements" class="xref">Section 11.2</a>) by adding or constraining
+---
+> (see <a href="#ebml-header-elements" class="auto internal xref">Section 11.2</a>) by adding or constraining
+2506c2579
+< <a href="#ebml-schema-example" class="xref">Section 11.1.1</a>.<a href="#section-11.1-5" class="pilcrow">¶</a></p>
+---
+> <a href="#ebml-schema-example" class="auto internal xref">Section 11.1.1</a>.<a href="#section-11.1-5" class="pilcrow">¶</a></p>
+2512,2513c2585,2586
+< <div id="section-11.1.1-1">
+< <pre class="sourcecode lang-xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+---
+> <div class="breakable lang-xml sourcecode" id="section-11.1.1-1">
+> <pre>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+2573c2646
+< <p id="section-11.1.2-1">Within an EBML Schema, the XPath <span>[<a href="#XPath" class="xref">XPath</a>]</span> of the
+---
+> <p id="section-11.1.2-1">Within an EBML Schema, the XPath <span>[<a href="#XPath" class="cite xref">XPath</a>]</span> of the
+2587,2588c2660,2661
+< <span>[<a href="#RFC8141" class="xref">RFC8141</a>]</span> that uses the namespace identifier 'ietf' defined by <span>[<a href="#RFC2648" class="xref">RFC2648</a>]</span>
+< and extended by <span>[<a href="#RFC3688" class="xref">RFC3688</a>]</span>. This URN is <code>urn:ietf:rfc:8794</code>.<a href="#section-11.1.3-1" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#RFC8141" class="cite xref">RFC8141</a>]</span> that uses the namespace identifier 'ietf' defined by <span>[<a href="#RFC2648" class="cite xref">RFC2648</a>]</span>
+> and extended by <span>[<a href="#RFC3688" class="cite xref">RFC3688</a>]</span>. This URN is <code>urn:ietf:rfc:8794</code>.<a href="#section-11.1.3-1" class="pilcrow">¶</a></p>
+2636c2709
+< version of the EBML Header (see <a href="#ebmlversion-element" class="xref">Section 11.2.2</a>)
+---
+> version of the EBML Header (see <a href="#ebmlversion-element" class="auto internal xref">Section 11.2.2</a>)
+2652c2725
+< <a href="#element-attributes" class="xref">Section 11.1.6</a>. EBML Schemas <span class="bcp14">MAY</span> contain
+---
+> <a href="#element-attributes" class="auto internal xref">Section 11.1.6</a>. EBML Schemas <span class="bcp14">MAY</span> contain
+2694,2695c2767,2768
+< (ABNF) <span>[<a href="#RFC5234" class="xref">RFC5234</a>]</span> with the case-sensitive update
+< <span>[<a href="#RFC7405" class="xref">RFC7405</a>]</span> notation:<a href="#section-11.1.6.2-2" class="pilcrow">¶</a></p>
+---
+> (ABNF) <span>[<a href="#RFC5234" class="cite xref">RFC5234</a>]</span> with the case-sensitive update
+> <span>[<a href="#RFC7405" class="cite xref">RFC7405</a>]</span> notation:<a href="#section-11.1.6.2-2" class="pilcrow">¶</a></p>
+2697,2698c2770,2771
+< <div id="section-11.1.6.2-4">
+< <pre class="sourcecode lang-abnf">EBMLFullPath           = EBMLParentPath EBMLElement
+---
+> <div class="lang-abnf sourcecode" id="section-11.1.6.2-4">
+> <pre>EBMLFullPath           = EBMLParentPath EBMLElement
+2720c2793
+< <p id="section-11.1.6.2-5">The <code>*</code>, <code>(</code>, and <code>)</code> symbols are interpreted as defined in <span>[<a href="#RFC5234" class="xref">RFC5234</a>]</span>.<a href="#section-11.1.6.2-5" class="pilcrow">¶</a></p>
+---
+> <p id="section-11.1.6.2-5">The <code>*</code>, <code>(</code>, and <code>)</code> symbols are interpreted as defined in <span>[<a href="#RFC5234" class="cite xref">RFC5234</a>]</span>.<a href="#section-11.1.6.2-5" class="pilcrow">¶</a></p>
+2722c2795
+< If the EBMLElement part contains an IsRecursive part, the EBML Element can occur within itself recursively (see <a href="#recursive" class="xref">Section 11.1.6.11</a>).<a href="#section-11.1.6.2-6" class="pilcrow">¶</a></p>
+---
+> If the EBMLElement part contains an IsRecursive part, the EBML Element can occur within itself recursively (see <a href="#recursive" class="auto internal xref">Section 11.1.6.11</a>).<a href="#section-11.1.6.2-6" class="pilcrow">¶</a></p>
+2725c2798
+< <p id="section-11.1.6.2-9">A path with a GlobalPlaceholder as the EBMLLastParent defines a Global Element; see <a href="#global-elements" class="xref">Section 11.3</a>.
+---
+> <p id="section-11.1.6.2-9">A path with a GlobalPlaceholder as the EBMLLastParent defines a Global Element; see <a href="#global-elements" class="auto internal xref">Section 11.3</a>.
+2800c2873
+< value (see <a href="#default" class="xref">Section 11.1.6.8</a>) declared are not
+---
+> value (see <a href="#default" class="auto internal xref">Section 11.1.6.8</a>) declared are not
+2803c2876
+< <a href="#note-on-the-use-of-default-attributes-to-define-mandatory-ebml-elements" class="xref">Section 11.1.19</a>.<a href="#section-11.1.6.4-3" class="pilcrow">¶</a></p>
+---
+> <a href="#note-on-the-use-of-default-attributes-to-define-mandatory-ebml-elements" class="auto internal xref">Section 11.1.19</a>.<a href="#section-11.1.6.4-3" class="pilcrow">¶</a></p>
+2824c2897
+< <a href="#note-on-the-use-of-default-attributes-to-define-mandatory-ebml-elements" class="xref">Section 11.1.19</a>.
+---
+> <a href="#note-on-the-use-of-default-attributes-to-define-mandatory-ebml-elements" class="auto internal xref">Section 11.1.19</a>.
+2848c2921
+< <a href="#expression-of-range" class="xref">Section 11.1.6.6.1</a> for rules applied to expression of range
+---
+> <a href="#expression-of-range" class="auto internal xref">Section 11.1.6.6.1</a> for rules applied to expression of range
+2875c2948
+< <a href="#textual-expression-of-floats" class="xref">Section 11.1.18</a>.<a href="#section-11.1.6.6.1-3" class="pilcrow">¶</a></p>
+---
+> <a href="#textual-expression-of-floats" class="auto internal xref">Section 11.1.18</a>.<a href="#section-11.1.6.6.1-3" class="pilcrow">¶</a></p>
+2908c2981
+< <a href="#expression-of-range" class="xref">Section 11.1.6.6.1</a>) that consists of only nonnegative
+---
+> <a href="#expression-of-range" class="auto internal xref">Section 11.1.6.6.1</a>) that consists of only nonnegative
+2941c3014
+< in <a href="#ebml-element-types" class="xref">Section 7</a>.<a href="#section-11.1.6.9-2" class="pilcrow">¶</a></p>
+---
+> in <a href="#ebml-element-types" class="auto internal xref">Section 7</a>.<a href="#section-11.1.6.9-2" class="pilcrow">¶</a></p>
+2997c3070
+< <a href="#identically-recurring-elements" class="xref">Section 11.1.17</a>.<a href="#section-11.1.6.12-2" class="pilcrow">¶</a></p>
+---
+> <a href="#identically-recurring-elements" class="auto internal xref">Section 11.1.17</a>.<a href="#section-11.1.6.12-2" class="pilcrow">¶</a></p>
+3043c3116
+< following XHTML <span>[<a href="#XHTML" class="xref">XHTML</a>]</span> elements <span class="bcp14">MAY</span> be
+---
+> following XHTML <span>[<a href="#XHTML" class="cite xref">XHTML</a>]</span> elements <span class="bcp14">MAY</span> be
+3059c3132
+< <p id="section-11.1.8.1-2">The <code>lang</code> attribute is set to the value from <span>[<a href="#RFC5646" class="xref">RFC5646</a>]</span> of
+---
+> <p id="section-11.1.8.1-2">The <code>lang</code> attribute is set to the value from <span>[<a href="#RFC5646" class="cite xref">RFC5646</a>]</span> of
+3074c3147
+< <a href="#tablePurposeDefinitions" class="xref">Table 8</a>.<a href="#section-11.1.8.2-2" class="pilcrow">¶</a></p>
+---
+> <a href="#tablePurposeDefinitions" class="auto internal xref">Table 8</a>.<a href="#section-11.1.8.2-2" class="pilcrow">¶</a></p>
+3131c3204
+< attribute (see <a href="#note-attribute" class="xref">Section 11.1.10.1</a>).<a href="#section-11.1.9-2" class="pilcrow">¶</a></p>
+---
+> attribute (see <a href="#note-attribute" class="auto internal xref">Section 11.1.10.1</a>).<a href="#section-11.1.9-2" class="pilcrow">¶</a></p>
+3170,3171c3243,3244
+< <div id="section-11.1.10.2-2">
+< <pre class="sourcecode lang-xml">&lt;element name="Items" path="\Items" id="0x4025" type="master"
+---
+> <div class="lang-xml sourcecode" id="section-11.1.10.2-2">
+> <pre>&lt;element name="Items" path="\Items" id="0x4025" type="master"
+3306c3379
+< <p id="section-11.1.16-1">The following provides an XML Schema <span>[<a href="#XML-SCHEMA" class="xref">XML-SCHEMA</a>]</span> for
+---
+> <p id="section-11.1.16-1">The following provides an XML Schema <span>[<a href="#XML-SCHEMA" class="cite xref">XML-SCHEMA</a>]</span> for
+3308,3310c3381,3383
+< <a href="#ebml-schema" class="xref">Section 11.1</a>.<a href="#section-11.1.16-1" class="pilcrow">¶</a></p>
+< <div id="section-11.1.16-2">
+< <pre class="sourcecode lang-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+---
+> <a href="#ebml-schema" class="auto internal xref">Section 11.1</a>.<a href="#section-11.1.16-1" class="pilcrow">¶</a></p>
+> <div class="breakable lang-xml sourcecode" id="section-11.1.16-2">
+> <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+3524,3525c3597,3598
+< standard <span>[<a href="#ISO9899" class="xref">ISO9899</a>]</span> (see Section 6.4.4.2 on Floating
+< Constants). <a href="#tableFloatExamples" class="xref">Table 9</a> provides examples of
+---
+> standard <span>[<a href="#ISO9899" class="cite xref">ISO9899</a>]</span> (see Section 6.4.4.2 on Floating
+> Constants). <a href="#tableFloatExamples" class="auto internal xref">Table 9</a> provides examples of
+3602c3675
+< <p id="section-11.1.19-3"><a href="#tableVintRequirements" class="xref">Table 10</a> clarifies whether a Mandatory
+---
+> <p id="section-11.1.19-3"><a href="#tableVintRequirements" class="auto internal xref">Table 10</a> clarifies whether a Mandatory
+3678c3751
+<             <dd id="section-11.2.1-1.2">EBML<a href="#section-11.2.1-1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.1-1.2">EBML<a href="#section-11.2.1-1.2" class="pilcrow">¶</a>
+3682c3755
+<             <dd id="section-11.2.1-1.4">
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.1-1.4">
+3687c3760
+<             <dd id="section-11.2.1-1.6">0x1A45DFA3<a href="#section-11.2.1-1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.1-1.6">0x1A45DFA3<a href="#section-11.2.1-1.6" class="pilcrow">¶</a>
+3691c3764
+<             <dd id="section-11.2.1-1.8">1<a href="#section-11.2.1-1.8" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.1-1.8">1<a href="#section-11.2.1-1.8" class="pilcrow">¶</a>
+3695c3768
+<             <dd id="section-11.2.1-1.10">1<a href="#section-11.2.1-1.10" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.1-1.10">1<a href="#section-11.2.1-1.10" class="pilcrow">¶</a>
+3699c3772
+<             <dd id="section-11.2.1-1.12">Master Element<a href="#section-11.2.1-1.12" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.1-1.12">Master Element<a href="#section-11.2.1-1.12" class="pilcrow">¶</a>
+3703c3776
+<             <dd id="section-11.2.1-1.14">Set the EBML characteristics of the data to follow. Each EBML Document has
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.1-1.14">Set the EBML characteristics of the data to follow. Each EBML Document has
+3717c3790
+<             <dd id="section-11.2.2-1.2">EBMLVersion<a href="#section-11.2.2-1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.2-1.2">EBMLVersion<a href="#section-11.2.2-1.2" class="pilcrow">¶</a>
+3721c3794
+<             <dd id="section-11.2.2-1.4">
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.2-1.4">
+3726c3799
+<             <dd id="section-11.2.2-1.6">0x4286<a href="#section-11.2.2-1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.2-1.6">0x4286<a href="#section-11.2.2-1.6" class="pilcrow">¶</a>
+3730c3803
+<             <dd id="section-11.2.2-1.8">1<a href="#section-11.2.2-1.8" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.2-1.8">1<a href="#section-11.2.2-1.8" class="pilcrow">¶</a>
+3734c3807
+<             <dd id="section-11.2.2-1.10">1<a href="#section-11.2.2-1.10" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.2-1.10">1<a href="#section-11.2.2-1.10" class="pilcrow">¶</a>
+3738c3811
+<             <dd id="section-11.2.2-1.12">not 0<a href="#section-11.2.2-1.12" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.2-1.12">not 0<a href="#section-11.2.2-1.12" class="pilcrow">¶</a>
+3742c3815
+<             <dd id="section-11.2.2-1.14">1<a href="#section-11.2.2-1.14" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.2-1.14">1<a href="#section-11.2.2-1.14" class="pilcrow">¶</a>
+3746c3819
+<             <dd id="section-11.2.2-1.16">Unsigned Integer<a href="#section-11.2.2-1.16" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.2-1.16">Unsigned Integer<a href="#section-11.2.2-1.16" class="pilcrow">¶</a>
+3750c3823
+<             <dd id="section-11.2.2-1.18">The version of EBML specifications used to create the EBML Document. The
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.2-1.18">The version of EBML specifications used to create the EBML Document. The
+3765c3838
+<             <dd id="section-11.2.3-1.2">EBMLReadVersion<a href="#section-11.2.3-1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.3-1.2">EBMLReadVersion<a href="#section-11.2.3-1.2" class="pilcrow">¶</a>
+3769c3842
+<             <dd id="section-11.2.3-1.4">
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.3-1.4">
+3774c3847
+<             <dd id="section-11.2.3-1.6">0x42F7<a href="#section-11.2.3-1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.3-1.6">0x42F7<a href="#section-11.2.3-1.6" class="pilcrow">¶</a>
+3778c3851
+<             <dd id="section-11.2.3-1.8">1<a href="#section-11.2.3-1.8" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.3-1.8">1<a href="#section-11.2.3-1.8" class="pilcrow">¶</a>
+3782c3855
+<             <dd id="section-11.2.3-1.10">1<a href="#section-11.2.3-1.10" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.3-1.10">1<a href="#section-11.2.3-1.10" class="pilcrow">¶</a>
+3786c3859
+<             <dd id="section-11.2.3-1.12">1<a href="#section-11.2.3-1.12" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.3-1.12">1<a href="#section-11.2.3-1.12" class="pilcrow">¶</a>
+3790c3863
+<             <dd id="section-11.2.3-1.14">1<a href="#section-11.2.3-1.14" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.3-1.14">1<a href="#section-11.2.3-1.14" class="pilcrow">¶</a>
+3794c3867
+<             <dd id="section-11.2.3-1.16">Unsigned Integer<a href="#section-11.2.3-1.16" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.3-1.16">Unsigned Integer<a href="#section-11.2.3-1.16" class="pilcrow">¶</a>
+3798c3871
+<             <dd id="section-11.2.3-1.18">The minimum EBML version an EBML Reader has to support to read this EBML
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.3-1.18">The minimum EBML version an EBML Reader has to support to read this EBML
+3812c3885
+<             <dd id="section-11.2.4-1.2">EBMLMaxIDLength<a href="#section-11.2.4-1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.4-1.2">EBMLMaxIDLength<a href="#section-11.2.4-1.2" class="pilcrow">¶</a>
+3816c3889
+<             <dd id="section-11.2.4-1.4">
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.4-1.4">
+3821c3894
+<             <dd id="section-11.2.4-1.6">0x42F2<a href="#section-11.2.4-1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.4-1.6">0x42F2<a href="#section-11.2.4-1.6" class="pilcrow">¶</a>
+3825c3898
+<             <dd id="section-11.2.4-1.8">1<a href="#section-11.2.4-1.8" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.4-1.8">1<a href="#section-11.2.4-1.8" class="pilcrow">¶</a>
+3829c3902
+<             <dd id="section-11.2.4-1.10">1<a href="#section-11.2.4-1.10" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.4-1.10">1<a href="#section-11.2.4-1.10" class="pilcrow">¶</a>
+3833c3906
+<             <dd id="section-11.2.4-1.12">&gt;=4<a href="#section-11.2.4-1.12" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.4-1.12">&gt;=4<a href="#section-11.2.4-1.12" class="pilcrow">¶</a>
+3837c3910
+<             <dd id="section-11.2.4-1.14">4<a href="#section-11.2.4-1.14" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.4-1.14">4<a href="#section-11.2.4-1.14" class="pilcrow">¶</a>
+3841c3914
+<             <dd id="section-11.2.4-1.16">Unsigned Integer<a href="#section-11.2.4-1.16" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.4-1.16">Unsigned Integer<a href="#section-11.2.4-1.16" class="pilcrow">¶</a>
+3845c3918
+<             <dd id="section-11.2.4-1.18">The EBMLMaxIDLength Element stores the maximum permitted length in octets
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.4-1.18">The EBMLMaxIDLength Element stores the maximum permitted length in octets
+3860c3933
+<             <dd id="section-11.2.5-1.2">EBMLMaxSizeLength<a href="#section-11.2.5-1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.5-1.2">EBMLMaxSizeLength<a href="#section-11.2.5-1.2" class="pilcrow">¶</a>
+3864c3937
+<             <dd id="section-11.2.5-1.4">
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.5-1.4">
+3869c3942
+<             <dd id="section-11.2.5-1.6">0x42F3<a href="#section-11.2.5-1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.5-1.6">0x42F3<a href="#section-11.2.5-1.6" class="pilcrow">¶</a>
+3873c3946
+<             <dd id="section-11.2.5-1.8">1<a href="#section-11.2.5-1.8" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.5-1.8">1<a href="#section-11.2.5-1.8" class="pilcrow">¶</a>
+3877c3950
+<             <dd id="section-11.2.5-1.10">1<a href="#section-11.2.5-1.10" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.5-1.10">1<a href="#section-11.2.5-1.10" class="pilcrow">¶</a>
+3881c3954
+<             <dd id="section-11.2.5-1.12">not 0<a href="#section-11.2.5-1.12" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.5-1.12">not 0<a href="#section-11.2.5-1.12" class="pilcrow">¶</a>
+3885c3958
+<             <dd id="section-11.2.5-1.14">8<a href="#section-11.2.5-1.14" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.5-1.14">8<a href="#section-11.2.5-1.14" class="pilcrow">¶</a>
+3889c3962
+<             <dd id="section-11.2.5-1.16">Unsigned Integer<a href="#section-11.2.5-1.16" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.5-1.16">Unsigned Integer<a href="#section-11.2.5-1.16" class="pilcrow">¶</a>
+3893c3966
+<             <dd id="section-11.2.5-1.18">The EBMLMaxSizeLength Element stores the maximum permitted length in
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.5-1.18">The EBMLMaxSizeLength Element stores the maximum permitted length in
+3912c3985
+<             <dd id="section-11.2.6-1.2">DocType<a href="#section-11.2.6-1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.6-1.2">DocType<a href="#section-11.2.6-1.2" class="pilcrow">¶</a>
+3916c3989
+<             <dd id="section-11.2.6-1.4">
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.6-1.4">
+3921c3994
+<             <dd id="section-11.2.6-1.6">0x4282<a href="#section-11.2.6-1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.6-1.6">0x4282<a href="#section-11.2.6-1.6" class="pilcrow">¶</a>
+3925c3998
+<             <dd id="section-11.2.6-1.8">1<a href="#section-11.2.6-1.8" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.6-1.8">1<a href="#section-11.2.6-1.8" class="pilcrow">¶</a>
+3929c4002
+<             <dd id="section-11.2.6-1.10">1<a href="#section-11.2.6-1.10" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.6-1.10">1<a href="#section-11.2.6-1.10" class="pilcrow">¶</a>
+3933c4006
+<             <dd id="section-11.2.6-1.12">&gt;0<a href="#section-11.2.6-1.12" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.6-1.12">&gt;0<a href="#section-11.2.6-1.12" class="pilcrow">¶</a>
+3937c4010
+<             <dd id="section-11.2.6-1.14">String<a href="#section-11.2.6-1.14" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.6-1.14">String<a href="#section-11.2.6-1.14" class="pilcrow">¶</a>
+3941c4014
+<             <dd id="section-11.2.6-1.16">A string that describes and identifies the content of the EBML Body that
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.6-1.16">A string that describes and identifies the content of the EBML Body that
+3955c4028
+<             <dd id="section-11.2.7-1.2">DocTypeVersion<a href="#section-11.2.7-1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.7-1.2">DocTypeVersion<a href="#section-11.2.7-1.2" class="pilcrow">¶</a>
+3959c4032
+<             <dd id="section-11.2.7-1.4">
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.7-1.4">
+3964c4037
+<             <dd id="section-11.2.7-1.6">0x4287<a href="#section-11.2.7-1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.7-1.6">0x4287<a href="#section-11.2.7-1.6" class="pilcrow">¶</a>
+3968c4041
+<             <dd id="section-11.2.7-1.8">1<a href="#section-11.2.7-1.8" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.7-1.8">1<a href="#section-11.2.7-1.8" class="pilcrow">¶</a>
+3972c4045
+<             <dd id="section-11.2.7-1.10">1<a href="#section-11.2.7-1.10" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.7-1.10">1<a href="#section-11.2.7-1.10" class="pilcrow">¶</a>
+3976c4049
+<             <dd id="section-11.2.7-1.12">not 0<a href="#section-11.2.7-1.12" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.7-1.12">not 0<a href="#section-11.2.7-1.12" class="pilcrow">¶</a>
+3980c4053
+<             <dd id="section-11.2.7-1.14">1<a href="#section-11.2.7-1.14" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.7-1.14">1<a href="#section-11.2.7-1.14" class="pilcrow">¶</a>
+3984c4057
+<             <dd id="section-11.2.7-1.16">Unsigned Integer<a href="#section-11.2.7-1.16" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.7-1.16">Unsigned Integer<a href="#section-11.2.7-1.16" class="pilcrow">¶</a>
+3988c4061
+<             <dd id="section-11.2.7-1.18">The version of DocType interpreter used to create the EBML Document.<a href="#section-11.2.7-1.18" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.7-1.18">The version of DocType interpreter used to create the EBML Document.<a href="#section-11.2.7-1.18" class="pilcrow">¶</a>
+4001c4074
+<             <dd id="section-11.2.8-1.2">DocTypeReadVersion<a href="#section-11.2.8-1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.8-1.2">DocTypeReadVersion<a href="#section-11.2.8-1.2" class="pilcrow">¶</a>
+4005c4078
+<             <dd id="section-11.2.8-1.4">
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.8-1.4">
+4010c4083
+<             <dd id="section-11.2.8-1.6">0x4285<a href="#section-11.2.8-1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.8-1.6">0x4285<a href="#section-11.2.8-1.6" class="pilcrow">¶</a>
+4014c4087
+<             <dd id="section-11.2.8-1.8">1<a href="#section-11.2.8-1.8" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.8-1.8">1<a href="#section-11.2.8-1.8" class="pilcrow">¶</a>
+4018c4091
+<             <dd id="section-11.2.8-1.10">1<a href="#section-11.2.8-1.10" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.8-1.10">1<a href="#section-11.2.8-1.10" class="pilcrow">¶</a>
+4022c4095
+<             <dd id="section-11.2.8-1.12">not 0<a href="#section-11.2.8-1.12" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.8-1.12">not 0<a href="#section-11.2.8-1.12" class="pilcrow">¶</a>
+4026c4099
+<             <dd id="section-11.2.8-1.14">1<a href="#section-11.2.8-1.14" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.8-1.14">1<a href="#section-11.2.8-1.14" class="pilcrow">¶</a>
+4030c4103
+<             <dd id="section-11.2.8-1.16">Unsigned Integer<a href="#section-11.2.8-1.16" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.8-1.16">Unsigned Integer<a href="#section-11.2.8-1.16" class="pilcrow">¶</a>
+4034c4107
+<             <dd id="section-11.2.8-1.18">The minimum DocType version an EBML Reader has to support to read this
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.8-1.18">The minimum DocType version an EBML Reader has to support to read this
+4049c4122
+<             <dd id="section-11.2.9-1.2">DocTypeExtension<a href="#section-11.2.9-1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.9-1.2">DocTypeExtension<a href="#section-11.2.9-1.2" class="pilcrow">¶</a>
+4053c4126
+<             <dd id="section-11.2.9-1.4">
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.9-1.4">
+4058c4131
+<             <dd id="section-11.2.9-1.6">0x4281<a href="#section-11.2.9-1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.9-1.6">0x4281<a href="#section-11.2.9-1.6" class="pilcrow">¶</a>
+4062c4135
+<             <dd id="section-11.2.9-1.8">0<a href="#section-11.2.9-1.8" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.9-1.8">0<a href="#section-11.2.9-1.8" class="pilcrow">¶</a>
+4066c4139
+<             <dd id="section-11.2.9-1.10">Master Element<a href="#section-11.2.9-1.10" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.9-1.10">Master Element<a href="#section-11.2.9-1.10" class="pilcrow">¶</a>
+4070c4143
+<             <dd id="section-11.2.9-1.12">A DocTypeExtension adds extra Elements to the main DocType+DocTypeVersion
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.9-1.12">A DocTypeExtension adds extra Elements to the main DocType+DocTypeVersion
+4089c4162
+<             <dd id="section-11.2.10-1.2">DocTypeExtensionName<a href="#section-11.2.10-1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.10-1.2">DocTypeExtensionName<a href="#section-11.2.10-1.2" class="pilcrow">¶</a>
+4093c4166
+<             <dd id="section-11.2.10-1.4">
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.10-1.4">
+4098c4171
+<             <dd id="section-11.2.10-1.6">0x4283<a href="#section-11.2.10-1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.10-1.6">0x4283<a href="#section-11.2.10-1.6" class="pilcrow">¶</a>
+4102c4175
+<             <dd id="section-11.2.10-1.8">1<a href="#section-11.2.10-1.8" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.10-1.8">1<a href="#section-11.2.10-1.8" class="pilcrow">¶</a>
+4106c4179
+<             <dd id="section-11.2.10-1.10">1<a href="#section-11.2.10-1.10" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.10-1.10">1<a href="#section-11.2.10-1.10" class="pilcrow">¶</a>
+4110c4183
+<             <dd id="section-11.2.10-1.12">&gt;0<a href="#section-11.2.10-1.12" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.10-1.12">&gt;0<a href="#section-11.2.10-1.12" class="pilcrow">¶</a>
+4114c4187
+<             <dd id="section-11.2.10-1.14">String<a href="#section-11.2.10-1.14" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.10-1.14">String<a href="#section-11.2.10-1.14" class="pilcrow">¶</a>
+4118c4191
+<             <dd id="section-11.2.10-1.16">The name of the DocTypeExtension to differentiate it from other
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.10-1.16">The name of the DocTypeExtension to differentiate it from other
+4133c4206
+<             <dd id="section-11.2.11-1.2">DocTypeExtensionVersion<a href="#section-11.2.11-1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.11-1.2">DocTypeExtensionVersion<a href="#section-11.2.11-1.2" class="pilcrow">¶</a>
+4137c4210
+<             <dd id="section-11.2.11-1.4">
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.11-1.4">
+4142c4215
+<             <dd id="section-11.2.11-1.6">0x4284<a href="#section-11.2.11-1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.11-1.6">0x4284<a href="#section-11.2.11-1.6" class="pilcrow">¶</a>
+4146c4219
+<             <dd id="section-11.2.11-1.8">1<a href="#section-11.2.11-1.8" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.11-1.8">1<a href="#section-11.2.11-1.8" class="pilcrow">¶</a>
+4150c4223
+<             <dd id="section-11.2.11-1.10">1<a href="#section-11.2.11-1.10" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.11-1.10">1<a href="#section-11.2.11-1.10" class="pilcrow">¶</a>
+4154c4227
+<             <dd id="section-11.2.11-1.12">not 0<a href="#section-11.2.11-1.12" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.11-1.12">not 0<a href="#section-11.2.11-1.12" class="pilcrow">¶</a>
+4158c4231
+<             <dd id="section-11.2.11-1.14">Unsigned Integer<a href="#section-11.2.11-1.14" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.11-1.14">Unsigned Integer<a href="#section-11.2.11-1.14" class="pilcrow">¶</a>
+4162c4235
+<             <dd id="section-11.2.11-1.16">The version of the DocTypeExtension. Different DocTypeExtensionVersion
+---
+>             <dd style="margin-left: 1.5em" id="section-11.2.11-1.16">The version of the DocTypeExtension. Different DocTypeExtensionVersion
+4199c4272
+<             <dd id="section-11.3.1-1.2">CRC-32<a href="#section-11.3.1-1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.3.1-1.2">CRC-32<a href="#section-11.3.1-1.2" class="pilcrow">¶</a>
+4203c4276
+<             <dd id="section-11.3.1-1.4">
+---
+>             <dd style="margin-left: 1.5em" id="section-11.3.1-1.4">
+4208c4281
+<             <dd id="section-11.3.1-1.6">0xBF<a href="#section-11.3.1-1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.3.1-1.6">0xBF<a href="#section-11.3.1-1.6" class="pilcrow">¶</a>
+4212c4285
+<             <dd id="section-11.3.1-1.8">0<a href="#section-11.3.1-1.8" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.3.1-1.8">0<a href="#section-11.3.1-1.8" class="pilcrow">¶</a>
+4216c4289
+<             <dd id="section-11.3.1-1.10">1<a href="#section-11.3.1-1.10" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.3.1-1.10">1<a href="#section-11.3.1-1.10" class="pilcrow">¶</a>
+4220c4293
+<             <dd id="section-11.3.1-1.12">4<a href="#section-11.3.1-1.12" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.3.1-1.12">4<a href="#section-11.3.1-1.12" class="pilcrow">¶</a>
+4224c4297
+<             <dd id="section-11.3.1-1.14">Binary<a href="#section-11.3.1-1.14" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.3.1-1.14">Binary<a href="#section-11.3.1-1.14" class="pilcrow">¶</a>
+4228c4301
+<             <dd id="section-11.3.1-1.16">The CRC-32 Element contains a 32-bit Cyclic Redundancy Check value of all
+---
+>             <dd style="margin-left: 1.5em" id="section-11.3.1-1.16">The CRC-32 Element contains a 32-bit Cyclic Redundancy Check value of all
+4235,4236c4308,4309
+< <span>[<a href="#ISO3309" class="xref">ISO3309</a>]</span> standard and in Section 8.1.1.6.2 of
+< <span>[<a href="#ITU.V42" class="xref">ITU.V42</a>]</span>, with initial value of 0xFFFFFFFF. The CRC value
+---
+> <span>[<a href="#ISO3309" class="cite xref">ISO3309</a>]</span> standard and in Section 8.1.1.6.2 of
+> <span>[<a href="#ITU.V42" class="cite xref">ITU.V42</a>]</span>, with initial value of 0xFFFFFFFF. The CRC value
+4251c4324
+<             <dd id="section-11.3.2-1.2">Void<a href="#section-11.3.2-1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.3.2-1.2">Void<a href="#section-11.3.2-1.2" class="pilcrow">¶</a>
+4255c4328
+<             <dd id="section-11.3.2-1.4">
+---
+>             <dd style="margin-left: 1.5em" id="section-11.3.2-1.4">
+4260c4333
+<             <dd id="section-11.3.2-1.6">0xEC<a href="#section-11.3.2-1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.3.2-1.6">0xEC<a href="#section-11.3.2-1.6" class="pilcrow">¶</a>
+4264c4337
+<             <dd id="section-11.3.2-1.8">0<a href="#section-11.3.2-1.8" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.3.2-1.8">0<a href="#section-11.3.2-1.8" class="pilcrow">¶</a>
+4268c4341
+<             <dd id="section-11.3.2-1.10">Binary<a href="#section-11.3.2-1.10" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-11.3.2-1.10">Binary<a href="#section-11.3.2-1.10" class="pilcrow">¶</a>
+4272c4345
+<             <dd id="section-11.3.2-1.12">Used to void data or to avoid unexpected behaviors when using damaged
+---
+>             <dd style="margin-left: 1.5em" id="section-11.3.2-1.12">Used to void data or to avoid unexpected behaviors when using damaged
+4303,4304c4376,4377
+< <div id="section-12-4">
+< <pre class="sourcecode lang-xml">&lt;CONTACT&gt;
+---
+> <div class="lang-xml sourcecode" id="section-12-4">
+> <pre>&lt;CONTACT&gt;
+4348c4421
+< <p id="section-13-2"><a href="#tableNullOctetSemantics" class="xref">Table 11</a> shows examples of semantics
+---
+> <p id="section-13-2"><a href="#tableNullOctetSemantics" class="auto internal xref">Table 11</a> shows examples of semantics
+4416c4489
+< <a href="#tableShortenVintOneOctet" class="xref">Table 12</a> depicts a String Element that stores
+---
+> <a href="#tableShortenVintOneOctet" class="auto internal xref">Table 12</a> depicts a String Element that stores
+4463c4536
+< <a href="#tableShortenVintMoreThanOneOctet" class="xref">Table 13</a> depicts a String Element
+---
+> <a href="#tableShortenVintMoreThanOneOctet" class="auto internal xref">Table 13</a> depicts a String Element
+4512,4513c4585,4586
+< <a href="#terminating-elements" class="xref">Section 13</a>).<a href="#section-14.1.3-1" class="pilcrow">¶</a></p>
+< <p id="section-14.1.3-2">In <a href="#tableExampleNullPadding" class="xref">Table 14</a>, Element Data four octets
+---
+> <a href="#terminating-elements" class="auto internal xref">Section 13</a>).<a href="#section-14.1.3-1" class="pilcrow">¶</a></p>
+> <p id="section-14.1.3-2">In <a href="#tableExampleNullPadding" class="auto internal xref">Table 14</a>, Element Data four octets
+4562c4635
+< that contains a CRC-32 Element (see <a href="#crc-32-element" class="xref">Section 11.3.1</a>),
+---
+> that contains a CRC-32 Element (see <a href="#crc-32-element" class="auto internal xref">Section 11.3.1</a>),
+4630c4703
+< <a href="#terminating-elements" class="xref">Section 13</a> rules.<a href="#section-16-6" class="pilcrow">¶</a></p>
+---
+> <a href="#terminating-elements" class="auto internal xref">Section 13</a> rules.<a href="#section-16-6" class="pilcrow">¶</a></p>
+4649c4722
+<           <p id="section-16-8.6.1">The CRC-32 Element (see <a href="#crc-32-element" class="xref">Section 11.3.1</a>) of a Master Element doesn't match the rest of the content of that Master Element.<a href="#section-16-8.6.1" class="pilcrow">¶</a></p>
+---
+>           <p id="section-16-8.6.1">The CRC-32 Element (see <a href="#crc-32-element" class="auto internal xref">Section 11.3.1</a>) of a Master Element doesn't match the rest of the content of that Master Element.<a href="#section-16-8.6.1" class="pilcrow">¶</a></p>
+4687c4760
+< <p id="section-17.1-2">Element IDs are described in <a href="#element-id" class="xref">Section 5</a>. Element
+---
+> <p id="section-17.1-2">Element IDs are described in <a href="#element-id" class="auto internal xref">Section 5</a>. Element
+4689c4762
+< <a href="#variable-size-integer" class="xref">Section 4</a> and can be between one and five
+---
+> <a href="#variable-size-integer" class="auto internal xref">Section 4</a> and can be between one and five
+4700c4773
+< policy <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>.<a href="#section-17.1-4" class="pilcrow">¶</a></p>
+---
+> policy <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>.<a href="#section-17.1-4" class="pilcrow">¶</a></p>
+4708c4781
+< <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>.<a href="#section-17.1-7" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>.<a href="#section-17.1-7" class="pilcrow">¶</a></p>
+4713c4786
+< <p id="section-17.1-10">Three-octet Element IDs <span class="bcp14">MUST</span> be between 0x203FFF and 0x3FFFFE. Element IDs are to be allocated within this range according to the "First Come First Served" policy <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>.<a href="#section-17.1-10" class="pilcrow">¶</a></p>
+---
+> <p id="section-17.1-10">Three-octet Element IDs <span class="bcp14">MUST</span> be between 0x203FFF and 0x3FFFFE. Element IDs are to be allocated within this range according to the "First Come First Served" policy <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>.<a href="#section-17.1-10" class="pilcrow">¶</a></p>
+4737c4810
+< <p id="section-17.1-18">Five-octet Element IDs (values from 0x080FFFFFFF to 0x0FFFFFFFFE) are RESERVED according to the "Experimental Use" policy <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>: they may be used by anyone at any time, but there is no coordination.<a href="#section-17.1-18" class="pilcrow">¶</a></p>
+---
+> <p id="section-17.1-18">Five-octet Element IDs (values from 0x080FFFFFFF to 0x0FFFFFFFFE) are RESERVED according to the "Experimental Use" policy <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>: they may be used by anyone at any time, but there is no coordination.<a href="#section-17.1-18" class="pilcrow">¶</a></p>
+4755c4828
+<               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#ebml-element" class="xref">Section 11.2.1</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#ebml-element" class="auto internal xref">Section 11.2.1</a>
+4761c4834
+<               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#ebmlversion-element" class="xref">Section 11.2.2</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#ebmlversion-element" class="auto internal xref">Section 11.2.2</a>
+4767c4840
+<               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#ebmlreadversion-element" class="xref">Section 11.2.3</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#ebmlreadversion-element" class="auto internal xref">Section 11.2.3</a>
+4773c4846
+<               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#ebmlmaxidlength-element" class="xref">Section 11.2.4</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#ebmlmaxidlength-element" class="auto internal xref">Section 11.2.4</a>
+4779c4852
+<               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#ebmlmaxsizelength-element" class="xref">Section 11.2.5</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#ebmlmaxsizelength-element" class="auto internal xref">Section 11.2.5</a>
+4785c4858
+<               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#doctype-element" class="xref">Section 11.2.6</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#doctype-element" class="auto internal xref">Section 11.2.6</a>
+4791c4864
+<               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#doctypeversion-element" class="xref">Section 11.2.7</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#doctypeversion-element" class="auto internal xref">Section 11.2.7</a>
+4797c4870
+<               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#doctypereadversion-element" class="xref">Section 11.2.8</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#doctypereadversion-element" class="auto internal xref">Section 11.2.8</a>
+4803c4876
+<               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#doctypeextension-element" class="xref">Section 11.2.9</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#doctypeextension-element" class="auto internal xref">Section 11.2.9</a>
+4809c4882
+<               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#doctypeextensionname-element" class="xref">Section 11.2.10</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#doctypeextensionname-element" class="auto internal xref">Section 11.2.10</a>
+4815c4888
+<               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#doctypeextensionversion-element" class="xref">Section 11.2.11</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#doctypeextensionversion-element" class="auto internal xref">Section 11.2.11</a>
+4821c4894
+<               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#crc-32-element" class="xref">Section 11.3.1</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#crc-32-element" class="auto internal xref">Section 11.3.1</a>
+4827c4900
+<               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#void-element" class="xref">Section 11.3.2</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">Described in <a href="#void-element" class="auto internal xref">Section 11.3.2</a>
+4841,4842c4914,4915
+< <p id="section-17.2-3">DocType values are described in <a href="#doctype" class="xref">Section 11.1.4.1</a>. DocTypes
+< are ASCII strings, defined in <a href="#string-element" class="xref">Section 7.4</a>, which
+---
+> <p id="section-17.2-3">DocType values are described in <a href="#doctype" class="auto internal xref">Section 11.1.4.1</a>. DocTypes
+> are ASCII strings, defined in <a href="#string-element" class="auto internal xref">Section 7.4</a>, which
+4848c4921
+< These can be assigned via the "IESG Approval" or "RFC Required" policies <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>.<a href="#section-17.2-5" class="pilcrow">¶</a></p>
+---
+> These can be assigned via the "IESG Approval" or "RFC Required" policies <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>.<a href="#section-17.2-5" class="pilcrow">¶</a></p>
+4888c4961
+< <span class="refAuthor">Klyne, G.</span><span class="refAuthor"> and C. Newman</span>, <span class="refTitle">"Date and Time on the Internet: Timestamps"</span>, <span class="seriesInfo">RFC 3339</span>, <span class="seriesInfo">DOI 10.17487/RFC3339</span>, <time datetime="2002-07" class="refDate">July 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3339">https://www.rfc-editor.org/info/rfc3339</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Klyne, G.</span> and <span class="refAuthor">C. Newman</span>, <span class="refTitle">"Date and Time on the Internet: Timestamps"</span>, <span class="seriesInfo">RFC 3339</span>, <span class="seriesInfo">DOI 10.17487/RFC3339</span>, <time datetime="2002-07" class="refDate">July 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3339">https://www.rfc-editor.org/info/rfc3339</a>&gt;</span>. </dd>
+4900c4973
+< <span class="refAuthor">Crocker, D., Ed.</span><span class="refAuthor"> and P. Overell</span>, <span class="refTitle">"Augmented BNF for Syntax Specifications: ABNF"</span>, <span class="seriesInfo">STD 68</span>, <span class="seriesInfo">RFC 5234</span>, <span class="seriesInfo">DOI 10.17487/RFC5234</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5234">https://www.rfc-editor.org/info/rfc5234</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Crocker, D., Ed.</span> and <span class="refAuthor">P. Overell</span>, <span class="refTitle">"Augmented BNF for Syntax Specifications: ABNF"</span>, <span class="seriesInfo">STD 68</span>, <span class="seriesInfo">RFC 5234</span>, <span class="seriesInfo">DOI 10.17487/RFC5234</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5234">https://www.rfc-editor.org/info/rfc5234</a>&gt;</span>. </dd>
+4904c4977
+< <span class="refAuthor">Phillips, A., Ed.</span><span class="refAuthor"> and M. Davis, Ed.</span>, <span class="refTitle">"Tags for Identifying Languages"</span>, <span class="seriesInfo">BCP 47</span>, <span class="seriesInfo">RFC 5646</span>, <span class="seriesInfo">DOI 10.17487/RFC5646</span>, <time datetime="2009-09" class="refDate">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5646">https://www.rfc-editor.org/info/rfc5646</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Phillips, A., Ed.</span> and <span class="refAuthor">M. Davis, Ed.</span>, <span class="refTitle">"Tags for Identifying Languages"</span>, <span class="seriesInfo">BCP 47</span>, <span class="seriesInfo">RFC 5646</span>, <span class="seriesInfo">DOI 10.17487/RFC5646</span>, <time datetime="2009-09" class="refDate">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5646">https://www.rfc-editor.org/info/rfc5646</a>&gt;</span>. </dd>
+4912c4985
+< <span class="refAuthor">Cotton, M.</span><span class="refAuthor">, Leiba, B.</span><span class="refAuthor">, and T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cotton, M.</span>, <span class="refAuthor">Leiba, B.</span>, and <span class="refAuthor">T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+4916c4989
+< <span class="refAuthor">Saint-Andre, P.</span><span class="refAuthor"> and J. Klensin</span>, <span class="refTitle">"Uniform Resource Names (URNs)"</span>, <span class="seriesInfo">RFC 8141</span>, <span class="seriesInfo">DOI 10.17487/RFC8141</span>, <time datetime="2017-04" class="refDate">April 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8141">https://www.rfc-editor.org/info/rfc8141</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Saint-Andre, P.</span> and <span class="refAuthor">J. Klensin</span>, <span class="refTitle">"Uniform Resource Names (URNs)"</span>, <span class="seriesInfo">RFC 8141</span>, <span class="seriesInfo">DOI 10.17487/RFC8141</span>, <time datetime="2017-04" class="refDate">April 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8141">https://www.rfc-editor.org/info/rfc8141</a>&gt;</span>. </dd>
+4928c5001
+< <span class="refAuthor">Bray, T., Ed.</span><span class="refAuthor">, Paoli, J., Ed.</span><span class="refAuthor">, Sperberg-McQueen, C.M., Ed.</span><span class="refAuthor">, Maler, E., Ed.</span><span class="refAuthor">, and F. Yergeau, Ed.</span>, <span class="refTitle">"Extensible Markup Language (XML) 1.0 (Fifth Edition)"</span>, <span class="seriesInfo">Latest version available at https://www.w3.org/TR/xml/</span>, <time datetime="2008-11-26" class="refDate">26 November 2008</time>, <span>&lt;<a href="https://www.w3.org/TR/2008/REC-xml-20081126/">https://www.w3.org/TR/2008/REC-xml-20081126/</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bray, T., Ed.</span>, <span class="refAuthor">Paoli, J., Ed.</span>, <span class="refAuthor">Sperberg-McQueen, C.M., Ed.</span>, <span class="refAuthor">Maler, E., Ed.</span>, and <span class="refAuthor">F. Yergeau, Ed.</span>, <span class="refTitle">"Extensible Markup Language (XML) 1.0 (Fifth Edition)"</span>, <span class="seriesInfo">Latest version available at https://www.w3.org/TR/xml/</span>, <time datetime="2008-11-26" class="refDate">26 November 2008</time>, <span>&lt;<a href="https://www.w3.org/TR/2008/REC-xml-20081126/">https://www.w3.org/TR/2008/REC-xml-20081126/</a>&gt;</span>. </dd>
+4932c5005
+< <span class="refAuthor">Fallside, D.C.</span><span class="refAuthor"> and P. Walmsley</span>, <span class="refTitle">"XML Schema Part 0: Primer Second Edition"</span>, <span class="seriesInfo">Latest version available at http://www.w3.org/TR/xmlschema-0/</span>, <time datetime="2004-10-28" class="refDate">28 October 2004</time>, <span>&lt;<a href="https://www.w3.org/TR/2004/REC-xmlschema-0-20041028/">https://www.w3.org/TR/2004/REC-xmlschema-0-20041028/</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fallside, D.C.</span> and <span class="refAuthor">P. Walmsley</span>, <span class="refTitle">"XML Schema Part 0: Primer Second Edition"</span>, <span class="seriesInfo">Latest version available at http://www.w3.org/TR/xmlschema-0/</span>, <time datetime="2004-10-28" class="refDate">28 October 2004</time>, <span>&lt;<a href="https://www.w3.org/TR/2004/REC-xmlschema-0-20041028/">https://www.w3.org/TR/2004/REC-xmlschema-0-20041028/</a>&gt;</span>. </dd>
+4943c5016
+< <span class="refAuthor">Lhomme, S.</span><span class="refAuthor">, Bunkus, M.</span><span class="refAuthor">, and D. Rice</span>, <span class="refTitle">"Matroska Media Container Format Specifications"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-cellar-matroska-05</span>, <time datetime="2020-04-17" class="refDate">17 April 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-cellar-matroska-05">https://tools.ietf.org/html/draft-ietf-cellar-matroska-05</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Lhomme, S.</span>, <span class="refAuthor">Bunkus, M.</span>, and <span class="refAuthor">D. Rice</span>, <span class="refTitle">"Matroska Media Container Format Specifications"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-cellar-matroska-05</span>, <time datetime="2020-04-17" class="refDate">17 April 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-cellar-matroska-05">https://tools.ietf.org/html/draft-ietf-cellar-matroska-05</a>&gt;</span>. </dd>
+4951c5024
+< <span class="refAuthor">Clark, J., Ed.</span><span class="refAuthor"> and S. DeRose</span>, <span class="refTitle">"XML Path Language (XPath) Version 1.0"</span>, <span class="seriesInfo">Latest version available at https://www.w3.org/TR/xpath</span>, <time datetime="1999-11-16" class="refDate">16 November 1999</time>, <span>&lt;<a href="https://www.w3.org/TR/1999/REC-xpath-19991116">https://www.w3.org/TR/1999/REC-xpath-19991116</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Clark, J., Ed.</span> and <span class="refAuthor">S. DeRose</span>, <span class="refTitle">"XML Path Language (XPath) Version 1.0"</span>, <span class="seriesInfo">Latest version available at https://www.w3.org/TR/xpath</span>, <time datetime="1999-11-16" class="refDate">16 November 1999</time>, <span>&lt;<a href="https://www.w3.org/TR/1999/REC-xpath-19991116">https://www.w3.org/TR/1999/REC-xpath-19991116</a>&gt;</span>. </dd>
+4956c5029
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
