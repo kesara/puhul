@@ -1,0 +1,842 @@
+26c26
+< <meta content="xml2rfc 2.40.1" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+32c32,48
+< <link href="rfc8747.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.0.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8747.xml" rel="alternate" type="application/rfc+xml">
+42c58
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+51a68,73
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+54d75
+<   width: extend-to-zoom;
+69c90
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+71a93
+>   overflow-wrap: break-word;
+157a180,188
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+172,175d202
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+176a204
+>   border: none;
+199a228,230
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+241c272,273
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+251c283
+< tt, code, pre, code {
+---
+> tt, code, pre {
+253c285
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+292a325,327
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+382a418,423
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+484c525
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+624d664
+< 
+646a687,689
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+714c757
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+814c857
+< tt, code, pre, code {
+---
+> tt, code, pre {
+819c862
+< pre.sourcecode,
+---
+> .sourcecode pre,
+855c898
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+933,938d975
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1009c1046
+<   margin: 0 0 0.25em 0;
+---
+>   margin-bottom: 0.25em;
+1042a1080
+>   .artwork > pre,
+1047,1054d1084
+< /*
+<   The margin-left: 0 on <dd> removes all distinction
+<   between levels from nested <dl>s.  Undo that.
+< */
+< dl.olPercent > dd,
+< dd {
+<   margin-left: revert;
+< }
+1065c1095
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1071a1102,1104
+> tr {
+>   break-inside: avoid;
+> }
+1079a1113,1214
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1081a1217
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-ace-cwt-proof-of-possession-11" rel="prev">
+1084c1220
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-ace-cwt-proof-of-possession-11" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1086,1087c1222,1223
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1200,1214c1336,1350
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-representations-for-proof-o" class="xref">Representations for Proof-of-Possession Keys</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-confirmation-claim" class="xref">Confirmation Claim</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-representation-of-an-asymme" class="xref">Representation of an Asymmetric Proof-of-Possession Key</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-representations-for-proof-o" class="internal xref">Representations for Proof-of-Possession Keys</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-confirmation-claim" class="internal xref">Confirmation Claim</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1" class="keepWithNext"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-representation-of-an-asymme" class="internal xref">Representation of an Asymmetric Proof-of-Possession Key</a></p>
+1216,1217c1352,1353
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.3">
+<                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-representation-of-an-encryp" class="xref">Representation of an Encrypted Symmetric Proof-of-Possession Key</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+>                 <p id="section-toc.1-1.3.2.3.1" class="keepWithNext"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-representation-of-an-encryp" class="internal xref">Representation of an Encrypted Symmetric Proof-of-Possession Key</a></p>
+1219,1220c1355,1356
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.4">
+<                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="xref">3.4</a>.  <a href="#name-representation-of-a-key-id-" class="xref">Representation of a Key ID for a Proof-of-Possession Key</a><a href="#section-toc.1-1.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+>                 <p id="section-toc.1-1.3.2.4.1" class="keepWithNext"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-representation-of-a-key-id-" class="internal xref">Representation of a Key ID for a Proof-of-Possession Key</a></p>
+1222,1223c1358,1359
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.5">
+<                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="xref">3.5</a>.  <a href="#name-specifics-intentionally-not" class="xref">Specifics Intentionally Not Specified</a><a href="#section-toc.1-1.3.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
+>                 <p id="section-toc.1-1.3.2.5.1" class="keepWithNext"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-specifics-intentionally-not" class="internal xref">Specifics Intentionally Not Specified</a></p>
+1227,1228c1363,1364
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1230,1231c1366,1367
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-privacy-considerations" class="xref">Privacy Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-privacy-considerations" class="internal xref">Privacy Considerations</a></p>
+1233,1234c1369,1370
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-operational-considerations" class="xref">Operational Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-operational-considerations" class="internal xref">Operational Considerations</a></p>
+1236,1243c1372,1379
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-cbor-web-token-claims-regis" class="xref">CBOR Web Token Claims Registration</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.1.2.1">
+<                     <p id="section-toc.1-1.7.2.1.2.1.1"><a href="#section-7.1.1" class="xref">7.1.1</a>.  <a href="#name-registry-contents" class="xref">Registry Contents</a><a href="#section-toc.1-1.7.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1" class="keepWithNext"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-cbor-web-token-claims-regis" class="internal xref">CBOR Web Token Claims Registration</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1.2.1">
+>                     <p id="section-toc.1-1.7.2.1.2.1.1" class="keepWithNext"><a href="#section-7.1.1" class="auto internal xref">7.1.1</a>.  <a href="#name-registry-contents" class="internal xref">Registry Contents</a></p>
+1247,1251c1383,1387
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-cwt-confirmation-methods-re" class="xref">CWT Confirmation Methods Registry</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.2.2.1">
+<                     <p id="section-toc.1-1.7.2.2.2.1.1"><a href="#section-7.2.1" class="xref">7.2.1</a>.  <a href="#name-registration-template" class="xref">Registration Template</a><a href="#section-toc.1-1.7.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1" class="keepWithNext"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-cwt-confirmation-methods-re" class="internal xref">CWT Confirmation Methods Registry</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.1">
+>                     <p id="section-toc.1-1.7.2.2.2.1.1" class="keepWithNext"><a href="#section-7.2.1" class="auto internal xref">7.2.1</a>.  <a href="#name-registration-template" class="internal xref">Registration Template</a></p>
+1253,1254c1389,1390
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.2.2.2">
+<                     <p id="section-toc.1-1.7.2.2.2.2.1"><a href="#section-7.2.2" class="xref">7.2.2</a>.  <a href="#name-initial-registry-contents" class="xref">Initial Registry Contents</a><a href="#section-toc.1-1.7.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.2">
+>                     <p id="section-toc.1-1.7.2.2.2.2.1" class="keepWithNext"><a href="#section-7.2.2" class="auto internal xref">7.2.2</a>.  <a href="#name-initial-registry-contents" class="internal xref">Initial Registry Contents</a></p>
+1260,1264c1396,1400
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.8.2.1">
+<                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+>                 <p id="section-toc.1-1.8.2.1.1" class="keepWithNext"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1266,1267c1402,1403
+< <li class="toc ulEmpty" id="section-toc.1-1.8.2.2">
+<                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+>                 <p id="section-toc.1-1.8.2.2.1" class="keepWithNext"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1271,1272c1407,1408
+< <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1274,1275c1410,1411
+< <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1287c1423
+<         This specification describes how a CBOR Web Token (CWT) <span>[<a href="#RFC8392" class="xref">RFC8392</a>]</span> can declare
+---
+>         This specification describes how a CBOR Web Token (CWT) <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span> can declare
+1292,1296c1428,1432
+<  "Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)" <span>[<a href="#RFC7800" class="xref">RFC7800</a>]</span>
+<  but using Concise Binary Object Representation (CBOR) <span>[<a href="#RFC7049" class="xref">RFC7049</a>]</span>
+<  and CWTs <span>[<a href="#RFC8392" class="xref">RFC8392</a>]</span>
+<  rather than JavaScript Object Notation (JSON) <span>[<a href="#RFC8259" class="xref">RFC8259</a>]</span>
+<  and JSON Web Tokens (JWTs) <span>[<a href="#RFC7519" class="xref">JWT</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+---
+>  "Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)" <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>
+>  but using Concise Binary Object Representation (CBOR) <span>[<a href="#RFC7049" class="cite xref">RFC7049</a>]</span>
+>  and CWTs <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>
+>  rather than JavaScript Object Notation (JSON) <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span>
+>  and JSON Web Tokens (JWTs) <span>[<a href="#RFC7519" class="cite xref">JWT</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+1310c1446
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1314,1316c1450,1452
+<  the CBOR Web Token (CWT) <span>[<a href="#RFC8392" class="xref">RFC8392</a>]</span>,
+<  CBOR Object Signing and Encryption (COSE) <span>[<a href="#RFC8152" class="xref">RFC8152</a>]</span>, and
+<  Concise Binary Object Representation (CBOR) <span>[<a href="#RFC7049" class="xref">RFC7049</a>]</span>
+---
+>  the CBOR Web Token (CWT) <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>,
+>  CBOR Object Signing and Encryption (COSE) <span>[<a href="#RFC8152" class="cite xref">RFC8152</a>]</span>, and
+>  Concise Binary Object Representation (CBOR) <span>[<a href="#RFC7049" class="cite xref">RFC7049</a>]</span>
+1320c1456
+< <dl class="dlNewline" id="section-2-4">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-2-4">
+1322c1458
+< <dd id="section-2-4.2">
+---
+>         <dd style="margin-left: 1.5em" id="section-2-4.2">
+1325a1462
+>         <dd class="break"></dd>
+1327c1464
+< <dd id="section-2-4.4">
+---
+>         <dd style="margin-left: 1.5em" id="section-2-4.4">
+1332a1470
+>         <dd class="break"></dd>
+1334c1472
+< <dd id="section-2-4.6">
+---
+>         <dd style="margin-left: 1.5em" id="section-2-4.6">
+1339a1478
+>       <dd class="break"></dd>
+1343c1482
+<  notation, as defined in <span><a href="https://www.rfc-editor.org/rfc/rfc8610#appendix-G" class="relref">Appendix G</a> of [<a href="#RFC8610" class="xref">RFC8610</a>]</span>.
+---
+>  notation, as defined in <span><a href="https://rfc-editor.org/rfc/rfc8610#appendix-G" class="relref">Appendix G</a> of [<a href="#RFC8610" class="cite xref">RFC8610</a>]</span>.
+1358c1497
+<  (which is defined in <span><a href="https://www.rfc-editor.org/rfc/rfc7049#section-2.1" class="relref">Section 2.1</a> of [<a href="#RFC7049" class="xref">RFC7049</a>]</span>)
+---
+>  (which is defined in <span><a href="https://rfc-editor.org/rfc/rfc7049#section-2.1" class="relref">Section 2.1</a> of [<a href="#RFC7049" class="cite xref">RFC7049</a>]</span>)
+1364c1503
+<  the CWT <code>sub</code> (subject) claim <span>[<a href="#RFC8392" class="xref">RFC8392</a>]</span>
+---
+>  the CWT <code>sub</code> (subject) claim <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>
+1367c1506
+<  the <code>iss</code> (issuer) claim <span>[<a href="#RFC8392" class="xref">RFC8392</a>]</span>
+---
+>  the <code>iss</code> (issuer) claim <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>
+1373c1512
+<  Security Assertion Markup Language (SAML) 2.0 <span>[<a href="#OASIS.saml-core-2.0-os" class="xref">OASIS.saml-core-2.0-os</a>]</span> SubjectConfirmation
+---
+>  Security Assertion Markup Language (SAML) 2.0 <span>[<a href="#OASIS.saml-core-2.0-os" class="cite xref">OASIS.saml-core-2.0-os</a>]</span> SubjectConfirmation
+1383c1522
+<  analogous to the SAML 2.0 <span>[<a href="#OASIS.saml-core-2.0-os" class="xref">OASIS.saml-core-2.0-os</a>]</span> SubjectConfirmation
+---
+>  analogous to the SAML 2.0 <span>[<a href="#OASIS.saml-core-2.0-os" class="cite xref">OASIS.saml-core-2.0-os</a>]</span> SubjectConfirmation
+1395c1534
+<   <a href="#CnfReg" class="xref">Section 7.2</a>  establishes the
+---
+>   <a href="#CnfReg" class="auto internal xref">Section 7.2</a>  establishes the
+1406c1545
+<  in <a href="#fig_cborMappings" class="xref">Table 1</a> may be
+---
+>  in <a href="#fig_cborMappings" class="auto internal xref">Table 1</a> may be
+1414c1553
+<  IANA "CBOR Web Token (CWT) Claims" registry <span>[<a href="#IANA.CWT.Claims" class="xref">IANA.CWT.Claims</a>]</span>.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
+---
+>  IANA "CBOR Web Token (CWT) Claims" registry <span>[<a href="#IANA.CWT.Claims" class="cite xref">IANA.CWT.Claims</a>]</span>.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
+1457c1596
+<    is a COSE_Key <span>[<a href="#RFC8152" class="xref">RFC8152</a>]</span>
+---
+>    is a COSE_Key <span>[<a href="#RFC8152" class="cite xref">RFC8152</a>]</span>
+1461,1462c1600,1601
+< <div id="section-3.2-2">
+< <pre class="sourcecode lang-cbor">
+---
+> <div class="lang-cbor sourcecode" id="section-3.2-2">
+> <pre>
+1489c1628
+<    The means of encrypting a CWT is explained in <span>[<a href="#RFC8392" class="xref">RFC8392</a>]</span>.
+---
+>    The means of encrypting a CWT is explained in <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>.
+1491,1492c1630,1631
+<    be encrypted as described in <a href="#SymmetricPoP" class="xref">Section 3.3</a>. This procedure is equivalent to 
+<    the one defined in <span><a href="https://www.rfc-editor.org/rfc/rfc7800#section-3.3" class="relref">Section 3.3</a> of [<a href="#RFC7800" class="xref">RFC7800</a>]</span>.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
+---
+>    be encrypted as described in <a href="#SymmetricPoP" class="auto internal xref">Section 3.3</a>. This procedure is equivalent to 
+>    the one defined in <span><a href="https://rfc-editor.org/rfc/rfc7800#section-3.3" class="relref">Section 3.3</a> of [<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
+1503c1642
+<    is an encrypted COSE_Key <span>[<a href="#RFC8152" class="xref">RFC8152</a>]</span>
+---
+>    is an encrypted COSE_Key <span>[<a href="#RFC8152" class="cite xref">RFC8152</a>]</span>
+1511,1512c1650,1651
+< <div id="section-3.3-3">
+< <pre class="sourcecode lang-cbor">
+---
+> <div class="lang-cbor sourcecode" id="section-3.3-3">
+> <pre>
+1528,1529c1667,1668
+< <div id="section-3.3-6">
+< <pre class="sourcecode lang-cbor">
+---
+> <div class="lang-cbor sourcecode" id="section-3.3-6">
+> <pre>
+1549c1688
+< <div class="artwork art-text alignLeft" id="section-3.3-8">
+---
+> <div class="alignLeft art-text artwork" id="section-3.3-8">
+1577,1578c1716,1717
+< <div id="section-3.4-3">
+< <pre class="sourcecode lang-cbor">
+---
+> <div class="lang-cbor sourcecode" id="section-3.4-3">
+> <pre>
+1596c1735
+<    as described below and in <a href="#Operational" class="xref">Section 6</a>.
+---
+>    as described below and in <a href="#Operational" class="auto internal xref">Section 6</a>.
+1636c1775
+<    established in <a href="#CnfReg" class="xref">Section 7.2</a>.<a href="#section-3.5-3" class="pilcrow">¶</a></p>
+---
+>    established in <a href="#CnfReg" class="auto internal xref">Section 7.2</a>.<a href="#section-3.5-3" class="pilcrow">¶</a></p>
+1648c1787
+<         are discussed in <span>[<a href="#RFC8392" class="xref">RFC8392</a>]</span> also apply here.
+---
+>         are discussed in <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span> also apply here.
+1655c1794
+<  as described in <span><a href="https://www.rfc-editor.org/rfc/rfc8392#section-3.1.3" class="relref">Section 3.1.3</a> of [<a href="#RFC8392" class="xref">RFC8392</a>]</span>,
+---
+>  as described in <span><a href="https://rfc-editor.org/rfc/rfc8392#section-3.1.3" class="relref">Section 3.1.3</a> of [<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>,
+1662c1801
+<  such as the ACE OAuth Framework <span>[<a href="#I-D.ietf-ace-oauth-authz" class="xref">ACE-OAUTH</a>]</span>,
+---
+>  such as the ACE OAuth Framework <span>[<a href="#I-D.ietf-ace-oauth-authz" class="cite xref">ACE-OAUTH</a>]</span>,
+1686,1687c1825,1826
+<  As described in Section <span><a href="https://www.rfc-editor.org/rfc/rfc7515#section-6" class="relref">6</a> (<a href="https://www.rfc-editor.org/rfc/rfc7515#section-6" class="relref">Key
+<  Identification</a>)</span> and Appendix <span><a href="https://www.rfc-editor.org/rfc/rfc7515#appendix-D" class="relref">D</a> (<a href="https://www.rfc-editor.org/rfc/rfc7515#appendix-D" class="relref">Notes on Key Selection</a>)</span> of <span>[<a href="#RFC7515" class="xref">JWS</a>]</span>, it is important to make 
+---
+>  As described in Section <span><a href="https://rfc-editor.org/rfc/rfc7515#section-6" class="relref">6</a> (<a href="https://rfc-editor.org/rfc/rfc7515#section-6" class="relref">Key
+>  Identification</a>)</span> and Appendix <span><a href="https://rfc-editor.org/rfc/rfc7515#appendix-D" class="relref">D</a> (<a href="https://rfc-editor.org/rfc/rfc7515#appendix-D" class="relref">Notes on Key Selection</a>)</span> of <span>[<a href="#RFC7515" class="cite xref">JWS</a>]</span>, it is important to make 
+1715c1854
+<  either the whole CWT or the encrypted parts thereof (see <a href="#SymmetricPoP" class="xref">Section 3.3</a>).
+---
+>  either the whole CWT or the encrypted parts thereof (see <a href="#SymmetricPoP" class="auto internal xref">Section 3.3</a>).
+1747c1886
+<  <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span> basis after a three-week review period on the &lt;cwt-reg-review@ietf.org&gt; mailing
+---
+>  <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span> basis after a three-week review period on the &lt;cwt-reg-review@ietf.org&gt; mailing
+1779,1780c1918,1919
+<    "CBOR Web Token (CWT) Claims" registry <span>[<a href="#IANA.CWT.Claims" class="xref">IANA.CWT.Claims</a>]</span>,
+<    established by <span>[<a href="#RFC8392" class="xref">RFC8392</a>]</span>.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+---
+>    "CBOR Web Token (CWT) Claims" registry <span>[<a href="#IANA.CWT.Claims" class="cite xref">IANA.CWT.Claims</a>]</span>,
+>    established by <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+1786,1787c1925,1926
+< <ul>
+< <li id="section-7.1.1-1.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-7.1.1-1.1">
+1790c1929
+< <li id="section-7.1.1-1.2">
+---
+>             <li class="normal" id="section-7.1.1-1.2">
+1793c1932
+< <li id="section-7.1.1-1.3">
+---
+>             <li class="normal" id="section-7.1.1-1.3">
+1796c1935
+< <li id="section-7.1.1-1.4">
+---
+>             <li class="normal" id="section-7.1.1-1.4">
+1799c1938
+< <li id="section-7.1.1-1.5">
+---
+>             <li class="normal" id="section-7.1.1-1.5">
+1802c1941
+< <li id="section-7.1.1-1.6">
+---
+>             <li class="normal" id="section-7.1.1-1.6">
+1805,1806c1944,1945
+< <li id="section-7.1.1-1.7">
+<  Specification Document(s): <a href="#Confirmation" class="xref">Section 3.1</a> of RFC 8747<a href="#section-7.1.1-1.7" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-7.1.1-1.7">
+>  Specification Document(s): <a href="#Confirmation" class="auto internal xref">Section 3.1</a> of RFC 8747<a href="#section-7.1.1-1.7" class="pilcrow">¶</a>
+1829c1968
+< <dl class="dlNewline" id="section-7.2.1-1">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-7.2.1-1">
+1831c1970
+< <dd id="section-7.2.1-1.2">
+---
+>             <dd style="margin-left: 1.5em" id="section-7.2.1-1.2">
+1833a1973
+>             <dd class="break"></dd>
+1835c1975
+< <dd id="section-7.2.1-1.4">
+---
+>             <dd style="margin-left: 1.5em" id="section-7.2.1-1.4">
+1837a1978
+>             <dd class="break"></dd>
+1839c1980
+< <dd id="section-7.2.1-1.6">
+---
+>             <dd style="margin-left: 1.5em" id="section-7.2.1-1.6">
+1842c1983
+<  the "JSON Web Token (JWT)" registry <span>[<a href="#IANA.JWT" class="xref">IANA.JWT</a>]</span>.
+---
+>  the "JSON Web Token (JWT)" registry <span>[<a href="#IANA.JWT" class="cite xref">IANA.JWT</a>]</span>.
+1847a1989
+>             <dd class="break"></dd>
+1849c1991
+< <dd id="section-7.2.1-1.8">
+---
+>             <dd style="margin-left: 1.5em" id="section-7.2.1-1.8">
+1851a1994
+>             <dd class="break"></dd>
+1853c1996
+< <dd id="section-7.2.1-1.10">
+---
+>             <dd style="margin-left: 1.5em" id="section-7.2.1-1.10">
+1855a1999
+>             <dd class="break"></dd>
+1857c2001
+< <dd id="section-7.2.1-1.12">
+---
+>             <dd style="margin-left: 1.5em" id="section-7.2.1-1.12">
+1860a2005
+>             <dd class="break"></dd>
+1862c2007
+< <dd id="section-7.2.1-1.14">
+---
+>             <dd style="margin-left: 1.5em" id="section-7.2.1-1.14">
+1870a2016
+>           <dd class="break"></dd>
+1879,1880c2025,2026
+< <ul>
+< <li id="section-7.2.2-1.1">
+---
+> <ul class="compact">
+> <li class="compact" id="section-7.2.2-1.1">
+1883c2029
+< <li id="section-7.2.2-1.2">
+---
+>             <li class="compact" id="section-7.2.2-1.2">
+1887c2033
+< <li id="section-7.2.2-1.3">
+---
+>             <li class="compact" id="section-7.2.2-1.3">
+1890c2036
+< <li id="section-7.2.2-1.4">
+---
+>             <li class="compact" id="section-7.2.2-1.4">
+1893c2039
+< <li id="section-7.2.2-1.5">
+---
+>             <li class="compact" id="section-7.2.2-1.5">
+1896c2042
+< <li id="section-7.2.2-1.6">
+---
+>             <li class="compact" id="section-7.2.2-1.6">
+1899,1900c2045,2046
+< <li id="section-7.2.2-1.7">
+<                 Specification Document(s): <a href="#PrivatePoP" class="xref">Section 3.2</a> of RFC 8747<a href="#section-7.2.2-1.7" class="pilcrow">¶</a>
+---
+>             <li class="compact" id="section-7.2.2-1.7">
+>                 Specification Document(s): <a href="#PrivatePoP" class="auto internal xref">Section 3.2</a> of RFC 8747<a href="#section-7.2.2-1.7" class="pilcrow">¶</a>
+1903,1904c2049,2050
+< <ul>
+< <li id="section-7.2.2-2.1">
+---
+> <ul class="compact">
+> <li class="compact" id="section-7.2.2-2.1">
+1907c2053
+< <li id="section-7.2.2-2.2">
+---
+>             <li class="compact" id="section-7.2.2-2.2">
+1910c2056
+< <li id="section-7.2.2-2.3">
+---
+>             <li class="compact" id="section-7.2.2-2.3">
+1913c2059
+< <li id="section-7.2.2-2.4">
+---
+>             <li class="compact" id="section-7.2.2-2.4">
+1916c2062
+< <li id="section-7.2.2-2.5">
+---
+>             <li class="compact" id="section-7.2.2-2.5">
+1921c2067
+< <li id="section-7.2.2-2.6">
+---
+>             <li class="compact" id="section-7.2.2-2.6">
+1924,1925c2070,2071
+< <li id="section-7.2.2-2.7">
+<                 Specification Document(s): <a href="#SymmetricPoP" class="xref">Section 3.3</a> of RFC 8747<a href="#section-7.2.2-2.7" class="pilcrow">¶</a>
+---
+>             <li class="compact" id="section-7.2.2-2.7">
+>                 Specification Document(s): <a href="#SymmetricPoP" class="auto internal xref">Section 3.3</a> of RFC 8747<a href="#section-7.2.2-2.7" class="pilcrow">¶</a>
+1928,1929c2074,2075
+< <ul>
+< <li id="section-7.2.2-3.1">
+---
+> <ul class="compact">
+> <li class="compact" id="section-7.2.2-3.1">
+1932c2078
+< <li id="section-7.2.2-3.2">
+---
+>             <li class="compact" id="section-7.2.2-3.2">
+1935c2081
+< <li id="section-7.2.2-3.3">
+---
+>             <li class="compact" id="section-7.2.2-3.3">
+1938c2084
+< <li id="section-7.2.2-3.4">
+---
+>             <li class="compact" id="section-7.2.2-3.4">
+1941c2087
+< <li id="section-7.2.2-3.5">
+---
+>             <li class="compact" id="section-7.2.2-3.5">
+1944c2090
+< <li id="section-7.2.2-3.6">
+---
+>             <li class="compact" id="section-7.2.2-3.6">
+1947,1948c2093,2094
+< <li id="section-7.2.2-3.7">
+<                 Specification Document(s): <a href="#KidPoP" class="xref">Section 3.4</a> of RFC 8747<a href="#section-7.2.2-3.7" class="pilcrow">¶</a>
+---
+>             <li class="compact" id="section-7.2.2-3.7">
+>                 Specification Document(s): <a href="#KidPoP" class="auto internal xref">Section 3.4</a> of RFC 8747<a href="#section-7.2.2-3.7" class="pilcrow">¶</a>
+1968a2115
+> <dd class="break"></dd>
+1971c2118,2119
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1974c2122,2123
+< <span class="refAuthor">Bormann, C.</span><span class="refAuthor"> and P. Hoffman</span>, <span class="refTitle">"Concise Binary Object Representation (CBOR)"</span>, <span class="seriesInfo">RFC 7049</span>, <span class="seriesInfo">DOI 10.17487/RFC7049</span>, <time datetime="2013-10">October 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7049">https://www.rfc-editor.org/info/rfc7049</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bormann, C.</span> and <span class="refAuthor">P. Hoffman</span>, <span class="refTitle">"Concise Binary Object Representation (CBOR)"</span>, <span class="seriesInfo">RFC 7049</span>, <span class="seriesInfo">DOI 10.17487/RFC7049</span>, <time datetime="2013-10" class="refDate">October 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7049">https://www.rfc-editor.org/info/rfc7049</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1977c2126,2127
+< <span class="refAuthor">Cotton, M.</span><span class="refAuthor">, Leiba, B.</span><span class="refAuthor">, and T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cotton, M.</span>, <span class="refAuthor">Leiba, B.</span>, and <span class="refAuthor">T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1980c2130,2131
+< <span class="refAuthor">Schaad, J.</span>, <span class="refTitle">"CBOR Object Signing and Encryption (COSE)"</span>, <span class="seriesInfo">RFC 8152</span>, <span class="seriesInfo">DOI 10.17487/RFC8152</span>, <time datetime="2017-07">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8152">https://www.rfc-editor.org/info/rfc8152</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schaad, J.</span>, <span class="refTitle">"CBOR Object Signing and Encryption (COSE)"</span>, <span class="seriesInfo">RFC 8152</span>, <span class="seriesInfo">DOI 10.17487/RFC8152</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8152">https://www.rfc-editor.org/info/rfc8152</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1983c2134,2135
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1986c2138,2139
+< <span class="refAuthor">Jones, M.</span><span class="refAuthor">, Wahlstroem, E.</span><span class="refAuthor">, Erdtman, S.</span><span class="refAuthor">, and H. Tschofenig</span>, <span class="refTitle">"CBOR Web Token (CWT)"</span>, <span class="seriesInfo">RFC 8392</span>, <span class="seriesInfo">DOI 10.17487/RFC8392</span>, <time datetime="2018-05">May 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8392">https://www.rfc-editor.org/info/rfc8392</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Wahlstroem, E.</span>, <span class="refAuthor">Erdtman, S.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"CBOR Web Token (CWT)"</span>, <span class="seriesInfo">RFC 8392</span>, <span class="seriesInfo">DOI 10.17487/RFC8392</span>, <time datetime="2018-05" class="refDate">May 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8392">https://www.rfc-editor.org/info/rfc8392</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1996c2149,2150
+< <span class="refAuthor">Seitz, L.</span><span class="refAuthor">, Selander, G.</span><span class="refAuthor">, Wahlstroem, E.</span><span class="refAuthor">, Erdtman, S.</span><span class="refAuthor">, and H. Tschofenig</span>, <span class="refTitle">"Authentication and Authorization for Constrained Environments (ACE) using the OAuth 2.0 Framework (ACE-OAuth)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ace-oauth-authz-21</span>, <time datetime="2019-02-14">14 February 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-ace-oauth-authz-21">https://tools.ietf.org/html/draft-ietf-ace-oauth-authz-21</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Seitz, L.</span>, <span class="refAuthor">Selander, G.</span>, <span class="refAuthor">Wahlstroem, E.</span>, <span class="refAuthor">Erdtman, S.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"Authentication and Authorization for Constrained Environments (ACE) using the OAuth 2.0 Framework (ACE-OAuth)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ace-oauth-authz-21</span>, <time datetime="2019-02-14" class="refDate">14 February 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-ace-oauth-authz-21">https://tools.ietf.org/html/draft-ietf-ace-oauth-authz-21</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1999a2154
+> <dd class="break"></dd>
+2002c2157,2158
+< <span class="refAuthor">Jones, M.</span><span class="refAuthor">, Bradley, J.</span><span class="refAuthor">, and N. Sakimura</span>, <span class="refTitle">"JSON Web Signature (JWS)"</span>, <span class="seriesInfo">RFC 7515</span>, <span class="seriesInfo">DOI 10.17487/RFC7515</span>, <time datetime="2015-05">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7515">https://www.rfc-editor.org/info/rfc7515</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">N. Sakimura</span>, <span class="refTitle">"JSON Web Signature (JWS)"</span>, <span class="seriesInfo">RFC 7515</span>, <span class="seriesInfo">DOI 10.17487/RFC7515</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7515">https://www.rfc-editor.org/info/rfc7515</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2005c2161,2162
+< <span class="refAuthor">Jones, M.</span><span class="refAuthor">, Bradley, J.</span><span class="refAuthor">, and N. Sakimura</span>, <span class="refTitle">"JSON Web Token (JWT)"</span>, <span class="seriesInfo">RFC 7519</span>, <span class="seriesInfo">DOI 10.17487/RFC7519</span>, <time datetime="2015-05">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7519">https://www.rfc-editor.org/info/rfc7519</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">N. Sakimura</span>, <span class="refTitle">"JSON Web Token (JWT)"</span>, <span class="seriesInfo">RFC 7519</span>, <span class="seriesInfo">DOI 10.17487/RFC7519</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7519">https://www.rfc-editor.org/info/rfc7519</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2008c2165,2166
+< <span class="refAuthor">Cantor, S.</span><span class="refAuthor">, Kemp, J.</span><span class="refAuthor">, Philpott, R.</span><span class="refAuthor">, and E. Maler</span>, <span class="refTitle">"Assertions and Protocol for the OASIS Security Assertion Markup Language (SAML) V2.0"</span>, <span class="seriesInfo">OASIS Standard saml-core-2.0-os</span>, <time datetime="2005-03">March 2005</time>, <span>&lt;<a href="https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf">https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cantor, S.</span>, <span class="refAuthor">Kemp, J.</span>, <span class="refAuthor">Philpott, R.</span>, and <span class="refAuthor">E. Maler</span>, <span class="refTitle">"Assertions and Protocol for the OASIS Security Assertion Markup Language (SAML) V2.0"</span>, <span class="seriesInfo">OASIS Standard saml-core-2.0-os</span>, <time datetime="2005-03" class="refDate">March 2005</time>, <span>&lt;<a href="https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf">https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2011c2169,2170
+< <span class="refAuthor">Jones, M.</span><span class="refAuthor">, Bradley, J.</span><span class="refAuthor">, and H. Tschofenig</span>, <span class="refTitle">"Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)"</span>, <span class="seriesInfo">RFC 7800</span>, <span class="seriesInfo">DOI 10.17487/RFC7800</span>, <time datetime="2016-04">April 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7800">https://www.rfc-editor.org/info/rfc7800</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)"</span>, <span class="seriesInfo">RFC 7800</span>, <span class="seriesInfo">DOI 10.17487/RFC7800</span>, <time datetime="2016-04" class="refDate">April 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7800">https://www.rfc-editor.org/info/rfc7800</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2014c2173,2174
+< <span class="refAuthor">Bray, T., Ed.</span>, <span class="refTitle">"The JavaScript Object Notation (JSON) Data Interchange Format"</span>, <span class="seriesInfo">STD 90</span>, <span class="seriesInfo">RFC 8259</span>, <span class="seriesInfo">DOI 10.17487/RFC8259</span>, <time datetime="2017-12">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8259">https://www.rfc-editor.org/info/rfc8259</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bray, T., Ed.</span>, <span class="refTitle">"The JavaScript Object Notation (JSON) Data Interchange Format"</span>, <span class="seriesInfo">STD 90</span>, <span class="seriesInfo">RFC 8259</span>, <span class="seriesInfo">DOI 10.17487/RFC8259</span>, <time datetime="2017-12" class="refDate">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8259">https://www.rfc-editor.org/info/rfc8259</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2017c2177,2178
+< <span class="refAuthor">Birkholz, H.</span><span class="refAuthor">, Vigano, C.</span><span class="refAuthor">, and C. Bormann</span>, <span class="refTitle">"Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures"</span>, <span class="seriesInfo">RFC 8610</span>, <span class="seriesInfo">DOI 10.17487/RFC8610</span>, <time datetime="2019-06">June 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8610">https://www.rfc-editor.org/info/rfc8610</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Vigano, C.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures"</span>, <span class="seriesInfo">RFC 8610</span>, <span class="seriesInfo">DOI 10.17487/RFC8610</span>, <time datetime="2019-06" class="refDate">June 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8610">https://www.rfc-editor.org/info/rfc8610</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2022c2183
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2026c2187
+< <p id="section-appendix.a-1">
+---
+> <p id="appendix-A-1">
+2037,2039c2198,2200
+<  <span class="contact-name">Jim Schaad</span>.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2"><span class="contact-name">Ludwig Seitz</span> and <span class="contact-name">Göran       Selander</span> worked on this document as part of 
+<     the CelticPlus projects CyberWI and CRITISEC, with funding from Vinnova.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+---
+>  <span class="contact-name">Jim Schaad</span>.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2"><span class="contact-name">Ludwig Seitz</span> and <span class="contact-name">Göran       Selander</span> worked on this document as part of 
+>     the CelticPlus projects CyberWI and CRITISEC, with funding from Vinnova.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+2043c2204
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+2063,2064c2224
+< <div dir="auto" class="left">
+< <span class="postal-code">211 35</span> <span class="locality">Malmö</span>
+---
+> <div dir="auto" class="left">SE-<span class="postal-code">211 35</span> <span class="locality">Malmö</span>
+2075,2076c2235
+< <div dir="auto" class="left">
+< <span class="postal-code">164 80</span> <span class="locality">Kista</span>
+---
+> <div dir="auto" class="left">SE-<span class="postal-code">164 80</span> <span class="locality">Kista</span>
