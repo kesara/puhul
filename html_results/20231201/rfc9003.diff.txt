@@ -1,0 +1,391 @@
+20c20
+< <meta content="xml2rfc 3.5.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+26,43c26,39
+<   xml2rfc 3.5.0
+<     Python 3.6.10
+<     appdirs 1.4.4
+<     ConfigArgParse 1.2.3
+<     google-i18n-address 2.3.5
+<     html5lib 1.0.1
+<     intervaltree 3.0.2
+<     Jinja2 2.11.2
+<     kitchen 1.2.6
+<     lxml 4.4.2
+<     pycairo 1.19.0
+<     pycountry 19.8.18
+<     pyflakes 2.1.1
+<     PyYAML 5.3.1
+<     requests 2.22.0
+<     setuptools 40.6.2
+<     six 1.14.0
+<     WeasyPrint 51
+---
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.0.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+45c41
+< <link href="rfc9003.xml" rel="alternate" type="application/rfc+xml">
+---
+> <link href="rfc/rfc9003.xml" rel="alternate" type="application/rfc+xml">
+55c51
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+64a61,66
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+67d68
+<   width: extend-to-zoom;
+82c83
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+84a86
+>   overflow-wrap: break-word;
+170a173,181
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+185,188d195
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+189a197
+>   border: none;
+212a221,223
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+254c265,266
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+264c276
+< tt, code, pre, code {
+---
+> tt, code, pre {
+266c278
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+305a318,320
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+395a411,416
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+497c518
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+637d657
+< 
+659a680,682
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+727c750
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+827c850
+< tt, code, pre, code {
+---
+> tt, code, pre {
+832c855
+< pre.sourcecode,
+---
+> .sourcecode pre,
+868c891
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1049a1073
+>   .artwork > pre,
+1064c1088
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1070a1095,1097
+> tr {
+>   break-inside: avoid;
+> }
+1090c1117
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1121c1148
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1146c1173
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1164c1191
+< dd > div:first-child > pre.sourcecode,
+---
+> dd > div.sourcecode:first-child,
+1172a1200,1207
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1174a1210
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-idr-rfc8203bis-08" rel="prev">
+1177c1213
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-idr-rfc8203bis-08" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1179,1180c1215,1216
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1291,1296c1327,1332
+< <nav class="toc"><ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+1300,1301c1336,1337
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-shutdown-communication" class="xref">Shutdown Communication</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-shutdown-communication" class="internal xref">Shutdown Communication</a></p>
+1303,1304c1339,1340
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-operational-considerations" class="xref">Operational Considerations</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-operational-considerations" class="internal xref">Operational Considerations</a></p>
+1306,1307c1342,1343
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-error-handling" class="xref">Error Handling</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-error-handling" class="internal xref">Error Handling</a></p>
+1309,1310c1345,1346
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1312,1313c1348,1349
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1315,1319c1351,1355
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1321,1322c1357,1358
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1326,1327c1362,1363
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-changes-to-rfc-8203" class="xref">Changes to RFC 8203</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-changes-to-rfc-8203" class="internal xref">Changes to RFC 8203</a></p>
+1329,1330c1365,1366
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1332,1333c1368,1369
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1344c1380
+< <p id="section-1-1">It can be troublesome for an operator to correlate a <span><a href="#RFC4271" class="xref">BGP-4</a> [<a href="#RFC4271" class="xref">RFC4271</a>]</span> session teardown in the network with a notice that 
+---
+> <p id="section-1-1">It can be troublesome for an operator to correlate a <span><a href="#RFC4271" class="internal xref">BGP-4</a> [<a href="#RFC4271" class="cite xref">RFC4271</a>]</span> session teardown in the network with a notice that 
+1346,1351c1382,1387
+<       updates <span>[<a href="#RFC4486" class="xref">RFC4486</a>]</span> by specifying a mechanism to 
+<       transmit a short free-form <span><a href="#RFC3629" class="xref">UTF-8</a> [<a href="#RFC3629" class="xref">RFC3629</a>]</span> 
+<       message as part of a <span><a href="#RFC4271" class="xref">Cease NOTIFICATION 
+<       message</a> [<a href="#RFC4271" class="xref">RFC4271</a>]</span> to inform the peer why the BGP session is being shut down or reset.
+<       This document obsoletes <span>[<a href="#RFC8203" class="xref">RFC8203</a>]</span>; the specific 
+<       differences and rationale are discussed in detail in <a href="#changes_to_8203" class="xref">Appendix A</a>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+---
+>       updates <span>[<a href="#RFC4486" class="cite xref">RFC4486</a>]</span> by specifying a mechanism to 
+>       transmit a short free-form <span><a href="#RFC3629" class="internal xref">UTF-8</a> [<a href="#RFC3629" class="cite xref">RFC3629</a>]</span> 
+>       message as part of a <span><a href="#RFC4271" class="internal xref">Cease NOTIFICATION 
+>       message</a> [<a href="#RFC4271" class="cite xref">RFC4271</a>]</span> to inform the peer why the BGP session is being shut down or reset.
+>       This document obsoletes <span>[<a href="#RFC8203" class="cite xref">RFC8203</a>]</span>; the specific 
+>       differences and rationale are discussed in detail in <a href="#changes_to_8203" class="auto internal xref">Appendix A</a>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+1360c1396
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1373c1409
+<       "Administrative Shutdown" or "Administrative Reset" <span>[<a href="#RFC4486" class="xref">RFC4486</a>]</span>, it <span class="bcp14">MAY</span> include a UTF-8-encoded string. The contents 
+---
+>       "Administrative Shutdown" or "Administrative Reset" <span>[<a href="#RFC4486" class="cite xref">RFC4486</a>]</span>, it <span class="bcp14">MAY</span> include a UTF-8-encoded string. The contents 
+1378c1414
+<         <div class="artwork art-text alignLeft" id="section-2-3.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-2-3.1">
+1414c1450
+<      to guard against the technical issues outlined in <span>[<a href="#UTR36" class="xref">UTR36</a>]</span>.<a href="#section-2-4.6" class="pilcrow">¶</a>
+---
+>      to guard against the technical issues outlined in <span>[<a href="#UTR36" class="cite xref">UTR36</a>]</span>.<a href="#section-2-4.6" class="pilcrow">¶</a>
+1421c1457
+<                 <span class="bcp14">SHOULD</span> include methods such as <span><a href="#RFC5424" class="xref">syslog</a> [<a href="#RFC5424" class="xref">RFC5424</a>]</span>.<a href="#section-2-5" class="pilcrow">¶</a></p>
+---
+>                 <span class="bcp14">SHOULD</span> include methods such as <span><a href="#RFC5424" class="internal xref">syslog</a> [<a href="#RFC5424" class="cite xref">RFC5424</a>]</span>.<a href="#section-2-5" class="pilcrow">¶</a></p>
+1484c1520
+<       <span>[<a href="#RFC4486" class="xref">RFC4486</a>]</span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
+---
+>       <span>[<a href="#RFC4486" class="cite xref">RFC4486</a>]</span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
+1495,1496c1531,1532
+<                 Implementers and operators are advised to review <span><a href="#UTR36" class="xref">Unicode Technical Report #36</a> [<a href="#UTR36" class="xref">UTR36</a>]</span> to learn about these issues.
+<                 UTF-8 "Shortest Form" encoding is <span class="bcp14">REQUIRED</span> to guard against the technical issues outlined in <span>[<a href="#UTR36" class="xref">UTR36</a>]</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
+---
+>                 Implementers and operators are advised to review <span><a href="#UTR36" class="internal xref">Unicode Technical Report #36</a> [<a href="#UTR36" class="cite xref">UTR36</a>]</span> to learn about these issues.
+>                 UTF-8 "Shortest Form" encoding is <span class="bcp14">REQUIRED</span> to guard against the technical issues outlined in <span>[<a href="#UTR36" class="cite xref">UTR36</a>]</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
+1506c1542
+<                 Refer to the related considerations in <span>[<a href="#RFC4271" class="xref">RFC4271</a>]</span> and <span>[<a href="#RFC4272" class="xref">RFC4272</a>]</span>.<a href="#section-6-3" class="pilcrow">¶</a></p>
+---
+>                 Refer to the related considerations in <span>[<a href="#RFC4271" class="cite xref">RFC4271</a>]</span> and <span>[<a href="#RFC4272" class="cite xref">RFC4272</a>]</span>.<a href="#section-6-3" class="pilcrow">¶</a></p>
+1508c1544
+<       as outlined in <span><a href="https://www.rfc-editor.org/rfc/rfc6973#section-6.1" class="relref">Section 6.1</a> of [<a href="#RFC6973" class="xref">RFC6973</a>]</span>
+---
+>       as outlined in <span><a href="https://rfc-editor.org/rfc/rfc6973#section-6.1" class="relref">Section 6.1</a> of [<a href="#RFC6973" class="cite xref">RFC6973</a>]</span>
+1531c1567
+< <span class="refAuthor">Rekhter, Y., Ed.</span><span class="refAuthor">, Li, T., Ed.</span><span class="refAuthor">, and S. Hares, Ed.</span>, <span class="refTitle">"A Border Gateway Protocol 4 (BGP-4)"</span>, <span class="seriesInfo">RFC 4271</span>, <span class="seriesInfo">DOI 10.17487/RFC4271</span>, <time datetime="2006-01" class="refDate">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4271">https://www.rfc-editor.org/info/rfc4271</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rekhter, Y., Ed.</span>, <span class="refAuthor">Li, T., Ed.</span>, and <span class="refAuthor">S. Hares, Ed.</span>, <span class="refTitle">"A Border Gateway Protocol 4 (BGP-4)"</span>, <span class="seriesInfo">RFC 4271</span>, <span class="seriesInfo">DOI 10.17487/RFC4271</span>, <time datetime="2006-01" class="refDate">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4271">https://www.rfc-editor.org/info/rfc4271</a>&gt;</span>. </dd>
+1535c1571
+< <span class="refAuthor">Chen, E.</span><span class="refAuthor"> and V. Gillet</span>, <span class="refTitle">"Subcodes for BGP Cease Notification Message"</span>, <span class="seriesInfo">RFC 4486</span>, <span class="seriesInfo">DOI 10.17487/RFC4486</span>, <time datetime="2006-04" class="refDate">April 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4486">https://www.rfc-editor.org/info/rfc4486</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Chen, E.</span> and <span class="refAuthor">V. Gillet</span>, <span class="refTitle">"Subcodes for BGP Cease Notification Message"</span>, <span class="seriesInfo">RFC 4486</span>, <span class="seriesInfo">DOI 10.17487/RFC4486</span>, <time datetime="2006-04" class="refDate">April 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4486">https://www.rfc-editor.org/info/rfc4486</a>&gt;</span>. </dd>
+1558c1594
+< <span class="refAuthor">Cooper, A.</span><span class="refAuthor">, Tschofenig, H.</span><span class="refAuthor">, Aboba, B.</span><span class="refAuthor">, Peterson, J.</span><span class="refAuthor">, Morris, J.</span><span class="refAuthor">, Hansen, M.</span><span class="refAuthor">, and R. Smith</span>, <span class="refTitle">"Privacy Considerations for Internet Protocols"</span>, <span class="seriesInfo">RFC 6973</span>, <span class="seriesInfo">DOI 10.17487/RFC6973</span>, <time datetime="2013-07" class="refDate">July 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6973">https://www.rfc-editor.org/info/rfc6973</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cooper, A.</span>, <span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Aboba, B.</span>, <span class="refAuthor">Peterson, J.</span>, <span class="refAuthor">Morris, J.</span>, <span class="refAuthor">Hansen, M.</span>, and <span class="refAuthor">R. Smith</span>, <span class="refTitle">"Privacy Considerations for Internet Protocols"</span>, <span class="seriesInfo">RFC 6973</span>, <span class="seriesInfo">DOI 10.17487/RFC6973</span>, <time datetime="2013-07" class="refDate">July 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6973">https://www.rfc-editor.org/info/rfc6973</a>&gt;</span>. </dd>
+1562c1598
+< <span class="refAuthor">Snijders, J.</span><span class="refAuthor">, Heitz, J.</span><span class="refAuthor">, and J. Scudder</span>, <span class="refTitle">"BGP Administrative Shutdown Communication"</span>, <span class="seriesInfo">RFC 8203</span>, <span class="seriesInfo">DOI 10.17487/RFC8203</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8203">https://www.rfc-editor.org/info/rfc8203</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Snijders, J.</span>, <span class="refAuthor">Heitz, J.</span>, and <span class="refAuthor">J. Scudder</span>, <span class="refTitle">"BGP Administrative Shutdown Communication"</span>, <span class="seriesInfo">RFC 8203</span>, <span class="seriesInfo">DOI 10.17487/RFC8203</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8203">https://www.rfc-editor.org/info/rfc8203</a>&gt;</span>. </dd>
+1566c1602
+< <span class="refAuthor">Davis, M., Ed.</span><span class="refAuthor"> and M. Suignard, Ed.</span>, <span class="refTitle">"Unicode Security Considerations"</span>, <span class="seriesInfo">Unicode Technical Report #36</span>, <time datetime="2010-08" class="refDate">August 2010</time>, <span>&lt;<a href="http://unicode.org/reports/tr36/">http://unicode.org/reports/tr36/</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Davis, M., Ed.</span> and <span class="refAuthor">M. Suignard, Ed.</span>, <span class="refTitle">"Unicode Security Considerations"</span>, <span class="seriesInfo">Unicode Technical Report #36</span>, <time datetime="2010-08" class="refDate">August 2010</time>, <span>&lt;<a href="http://unicode.org/reports/tr36/">http://unicode.org/reports/tr36/</a>&gt;</span>. </dd>
+1572c1608
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+1574c1610
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-changes-to-rfc-8203" class="section-name selfRef">Changes to RFC 8203</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-changes-to-rfc-8203" class="section-name selfRef">Changes to RFC 8203</a>
+1576,1577c1612,1613
+< <p id="section-appendix.a-1">The maximum permitted length was changed from 128 to 255.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2">Feedback from operators based in regions that predominantly use multibyte character 
+---
+> <p id="appendix-A-1">The maximum permitted length was changed from 128 to 255.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2">Feedback from operators based in regions that predominantly use multibyte character 
+1580c1616
+<       <span>[<a href="#RFC8203" class="xref">RFC8203</a>]</span>. For example, the phrase "Planned work to add 
+---
+>       <span>[<a href="#RFC8203" class="cite xref">RFC8203</a>]</span>. For example, the phrase "Planned work to add 
+1582,1584c1618,1620
+<       Russian has a length of 139 bytes.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-3">If a Shutdown Communication message longer than 128 octets is sent to a BGP speaker 
+<       that implements <span>[<a href="#RFC8203" class="xref">RFC8203</a>]</span>, then that speaker will bring 
+---
+>       Russian has a length of 139 bytes.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+> <p id="appendix-A-3">If a Shutdown Communication message longer than 128 octets is sent to a BGP speaker 
+>       that implements <span>[<a href="#RFC8203" class="cite xref">RFC8203</a>]</span>, then that speaker will bring 
+1586c1622
+<       as normal.<a href="#section-appendix.a-3" class="pilcrow">¶</a></p>
+---
+>       as normal.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+1590c1626
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+1594c1630
+< <p id="section-appendix.b-1">The authors would like to gratefully acknowledge <span class="contact-name">Tom Scholl</span>, 
+---
+> <p id="appendix-B-1">The authors would like to gratefully acknowledge <span class="contact-name">Tom Scholl</span>, 
+1597,1602c1633,1638
+<       <span class="contact-name">Alvaro Retana</span>, and <span class="contact-name">Adam Roach</span>.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-2">The authors would like to thank <span class="contact-name">Enke Chen</span> and <span class="contact-name">Vincent       Gillet</span> for their work on <span>[<a href="#RFC4486" class="xref">RFC4486</a>]</span> and granting the related BCP 
+<       78 rights to the IETF Trust.<a href="#section-appendix.b-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-3">The authors would like to acknowledge <span class="contact-name">Misha Grishin</span> (MSK-IX) for raising
+<       awareness that the length specification of <span>[<a href="#RFC8203" class="xref">RFC8203</a>]</span> was insufficient 
+<       in context of multibyte character sets.<a href="#section-appendix.b-3" class="pilcrow">¶</a></p>
+---
+>       <span class="contact-name">Alvaro Retana</span>, and <span class="contact-name">Adam Roach</span>.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+> <p id="appendix-B-2">The authors would like to thank <span class="contact-name">Enke Chen</span> and <span class="contact-name">Vincent       Gillet</span> for their work on <span>[<a href="#RFC4486" class="cite xref">RFC4486</a>]</span> and granting the related BCP 
+>       78 rights to the IETF Trust.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+> <p id="appendix-B-3">The authors would like to acknowledge <span class="contact-name">Misha Grishin</span> (MSK-IX) for raising
+>       awareness that the length specification of <span>[<a href="#RFC8203" class="cite xref">RFC8203</a>]</span> was insufficient 
+>       in context of multibyte character sets.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
+1606c1642
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
