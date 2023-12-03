@@ -1,0 +1,1297 @@
+28c28
+< <meta content="xml2rfc 2.43.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+30c30,46
+< <link href="rfc8763.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.0.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8763.xml" rel="alternate" type="application/rfc+xml">
+40c56
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+49a66,71
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+52d73
+<   width: extend-to-zoom;
+67c88
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+69a91
+>   overflow-wrap: break-word;
+155a178,186
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+170,173d200
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+174a202
+>   border: none;
+197a226,228
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+239c270,271
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+249c281
+< tt, code, pre, code {
+---
+> tt, code, pre {
+251c283
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+290a323,325
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+380a416,421
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+482c523
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+622d662
+< 
+644a685,687
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+712c755
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+812c855
+< tt, code, pre, code {
+---
+> tt, code, pre {
+817c860
+< pre.sourcecode,
+---
+> .sourcecode pre,
+853c896
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+931,936d973
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1040a1078
+>   .artwork > pre,
+1055c1093
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1061a1100,1102
+> tr {
+>   break-inside: avoid;
+> }
+1081c1122
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1085a1127
+>   break-before: auto;
+1090d1131
+<   break-inside: avoid-page;
+1095d1135
+<   break-inside: avoid-page;
+1096a1137,1138
+>   orphans: 3;
+>   widows: 3
+1098c1140
+< dd.break {
+---
+> span.break, dd.break {
+1110c1152,1213
+< }</style>
+---
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+1111a1215
+> <link href="https://datatracker.ietf.org/doc/draft-irtf-icnrg-deployment-guidelines-07" rel="prev">
+1114c1218
+<   <link href="https://datatracker.ietf.org/doc/draft-irtf-icnrg-deployment-guidelines-07" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1116,1117c1220,1221
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1229,1252c1333,1356
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="xref">3</a>.  <a href="#name-abbreviations-list" class="xref">Abbreviations List</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-deployment-configurations" class="xref">Deployment Configurations</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-clean-slate-icn" class="xref">Clean-Slate ICN</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-icn-as-an-overlay" class="xref">ICN-as-an-Overlay</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-icn-as-an-underlay" class="xref">ICN-as-an-Underlay</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.3.2.1">
+<                     <p id="section-toc.1-1.4.2.3.2.1.1"><a href="#section-4.3.1" class="xref">4.3.1</a>.  <a href="#name-edge-network" class="xref">Edge Network</a><a href="#section-toc.1-1.4.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-abbreviations-list" class="internal xref">Abbreviations List</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-deployment-configurations" class="internal xref">Deployment Configurations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-clean-slate-icn" class="internal xref">Clean-Slate ICN</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-icn-as-an-overlay" class="internal xref">ICN-as-an-Overlay</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-icn-as-an-underlay" class="internal xref">ICN-as-an-Underlay</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.1">
+>                     <p id="section-toc.1-1.4.2.3.2.1.1"><a href="#section-4.3.1" class="auto internal xref">4.3.1</a>.  <a href="#name-edge-network" class="internal xref">Edge Network</a></p>
+1254,1255c1358,1359
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.3.2.2">
+<                     <p id="section-toc.1-1.4.2.3.2.2.1"><a href="#section-4.3.2" class="xref">4.3.2</a>.  <a href="#name-core-network" class="xref">Core Network</a><a href="#section-toc.1-1.4.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.2">
+>                     <p id="section-toc.1-1.4.2.3.2.2.1"><a href="#section-4.3.2" class="auto internal xref">4.3.2</a>.  <a href="#name-core-network" class="internal xref">Core Network</a></p>
+1259,1260c1363,1364
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.4">
+<                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-icn-as-a-slice" class="xref">ICN-as-a-Slice</a><a href="#section-toc.1-1.4.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
+>                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-icn-as-a-slice" class="internal xref">ICN-as-a-Slice</a></p>
+1262,1263c1366,1367
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.5">
+<                 <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="xref">4.5</a>.  <a href="#name-composite-icn-approach" class="xref">Composite-ICN Approach</a><a href="#section-toc.1-1.4.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5">
+>                 <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="auto internal xref">4.5</a>.  <a href="#name-composite-icn-approach" class="internal xref">Composite-ICN Approach</a></p>
+1267,1271c1371,1375
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-deployment-migration-paths" class="xref">Deployment Migration Paths</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-application-and-service-mig" class="xref">Application and Service Migration</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-deployment-migration-paths" class="internal xref">Deployment Migration Paths</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-application-and-service-mig" class="internal xref">Application and Service Migration</a></p>
+1273,1274c1377,1378
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-content-delivery-network-mi" class="xref">Content Delivery Network Migration</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-content-delivery-network-mi" class="internal xref">Content Delivery Network Migration</a></p>
+1276,1277c1380,1381
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.3">
+<                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-edge-network-migration" class="xref">Edge Network Migration</a><a href="#section-toc.1-1.5.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
+>                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-edge-network-migration" class="internal xref">Edge Network Migration</a></p>
+1279,1280c1383,1384
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.4">
+<                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="xref">5.4</a>.  <a href="#name-core-network-migration" class="xref">Core Network Migration</a><a href="#section-toc.1-1.5.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
+>                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-core-network-migration" class="internal xref">Core Network Migration</a></p>
+1284,1294c1388,1398
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-deployment-trial-experience" class="xref">Deployment Trial Experiences</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-icn-as-an-overlay-2" class="xref">ICN-as-an-Overlay</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.1.2.1">
+<                     <p id="section-toc.1-1.6.2.1.2.1.1"><a href="#section-6.1.1" class="xref">6.1.1</a>.  <a href="#name-fp7-pursuit-efforts" class="xref">FP7 PURSUIT Efforts</a><a href="#section-toc.1-1.6.2.1.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.1.2.2">
+<                     <p id="section-toc.1-1.6.2.1.2.2.1"><a href="#section-6.1.2" class="xref">6.1.2</a>.  <a href="#name-fp7-sail-trial" class="xref">FP7 SAIL Trial</a><a href="#section-toc.1-1.6.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-deployment-trial-experience" class="internal xref">Deployment Trial Experiences</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-icn-as-an-overlay-2" class="internal xref">ICN-as-an-Overlay</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.1">
+>                     <p id="section-toc.1-1.6.2.1.2.1.1"><a href="#section-6.1.1" class="auto internal xref">6.1.1</a>.  <a href="#name-fp7-pursuit-efforts" class="internal xref">FP7 PURSUIT Efforts</a></p>
+> </li>
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.2">
+>                     <p id="section-toc.1-1.6.2.1.2.2.1"><a href="#section-6.1.2" class="auto internal xref">6.1.2</a>.  <a href="#name-fp7-sail-trial" class="internal xref">FP7 SAIL Trial</a></p>
+1296,1297c1400,1401
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.1.2.3">
+<                     <p id="section-toc.1-1.6.2.1.2.3.1"><a href="#section-6.1.3" class="xref">6.1.3</a>.  <a href="#name-ndn-testbed" class="xref">NDN Testbed</a><a href="#section-toc.1-1.6.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.3">
+>                     <p id="section-toc.1-1.6.2.1.2.3.1"><a href="#section-6.1.3" class="auto internal xref">6.1.3</a>.  <a href="#name-ndn-testbed" class="internal xref">NDN Testbed</a></p>
+1299,1300c1403,1404
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.1.2.4">
+<                     <p id="section-toc.1-1.6.2.1.2.4.1"><a href="#section-6.1.4" class="xref">6.1.4</a>.  <a href="#name-icn2020-efforts" class="xref">ICN2020 Efforts</a><a href="#section-toc.1-1.6.2.1.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.4">
+>                     <p id="section-toc.1-1.6.2.1.2.4.1"><a href="#section-6.1.4" class="auto internal xref">6.1.4</a>.  <a href="#name-icn2020-efforts" class="internal xref">ICN2020 Efforts</a></p>
+1302,1303c1406,1407
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.1.2.5">
+<                     <p id="section-toc.1-1.6.2.1.2.5.1"><a href="#section-6.1.5" class="xref">6.1.5</a>.  <a href="#name-umobile-efforts" class="xref">UMOBILE Efforts</a><a href="#section-toc.1-1.6.2.1.2.5.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.5">
+>                     <p id="section-toc.1-1.6.2.1.2.5.1"><a href="#section-6.1.5" class="auto internal xref">6.1.5</a>.  <a href="#name-umobile-efforts" class="internal xref">UMOBILE Efforts</a></p>
+1307,1317c1411,1421
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.2">
+<                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-icn-as-an-underlay-2" class="xref">ICN-as-an-Underlay</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.2.2.1">
+<                     <p id="section-toc.1-1.6.2.2.2.1.1"><a href="#section-6.2.1" class="xref">6.2.1</a>.  <a href="#name-h2020-point-and-rife-effort" class="xref">H2020 POINT and RIFE Efforts</a><a href="#section-toc.1-1.6.2.2.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.2.2.2">
+<                     <p id="section-toc.1-1.6.2.2.2.2.1"><a href="#section-6.2.2" class="xref">6.2.2</a>.  <a href="#name-h2020-flame-efforts" class="xref">H2020 FLAME Efforts</a><a href="#section-toc.1-1.6.2.2.2.2.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.2.2.3">
+<                     <p id="section-toc.1-1.6.2.2.2.3.1"><a href="#section-6.2.3" class="xref">6.2.3</a>.  <a href="#name-cablelabs-content-delivery-" class="xref">CableLabs Content Delivery System</a><a href="#section-toc.1-1.6.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+>                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-icn-as-an-underlay-2" class="internal xref">ICN-as-an-Underlay</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.1">
+>                     <p id="section-toc.1-1.6.2.2.2.1.1"><a href="#section-6.2.1" class="auto internal xref">6.2.1</a>.  <a href="#name-h2020-point-and-rife-effort" class="internal xref">H2020 POINT and RIFE Efforts</a></p>
+> </li>
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.2">
+>                     <p id="section-toc.1-1.6.2.2.2.2.1"><a href="#section-6.2.2" class="auto internal xref">6.2.2</a>.  <a href="#name-h2020-flame-efforts" class="internal xref">H2020 FLAME Efforts</a></p>
+> </li>
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.3">
+>                     <p id="section-toc.1-1.6.2.2.2.3.1"><a href="#section-6.2.3" class="auto internal xref">6.2.3</a>.  <a href="#name-cablelabs-content-delivery-" class="internal xref">CableLabs Content Delivery System</a></p>
+1319,1320c1423,1424
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.2.2.4">
+<                     <p id="section-toc.1-1.6.2.2.2.4.1"><a href="#section-6.2.4" class="xref">6.2.4</a>.  <a href="#name-ndn-iot-trials" class="xref">NDN IoT Trials</a><a href="#section-toc.1-1.6.2.2.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.4">
+>                     <p id="section-toc.1-1.6.2.2.2.4.1"><a href="#section-6.2.4" class="auto internal xref">6.2.4</a>.  <a href="#name-ndn-iot-trials" class="internal xref">NDN IoT Trials</a></p>
+1322,1323c1426,1427
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.2.2.5">
+<                     <p id="section-toc.1-1.6.2.2.2.5.1"><a href="#section-6.2.5" class="xref">6.2.5</a>.  <a href="#name-nren-icn-testbed" class="xref">NREN ICN Testbed</a><a href="#section-toc.1-1.6.2.2.2.5.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.5">
+>                     <p id="section-toc.1-1.6.2.2.2.5.1"><a href="#section-6.2.5" class="auto internal xref">6.2.5</a>.  <a href="#name-nren-icn-testbed" class="internal xref">NREN ICN Testbed</a></p>
+1325,1326c1429,1430
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.2.2.6">
+<                     <p id="section-toc.1-1.6.2.2.2.6.1"><a href="#section-6.2.6" class="xref">6.2.6</a>.  <a href="#name-doctor-testbed" class="xref">DOCTOR Testbed</a><a href="#section-toc.1-1.6.2.2.2.6.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.6">
+>                     <p id="section-toc.1-1.6.2.2.2.6.1"><a href="#section-6.2.6" class="auto internal xref">6.2.6</a>.  <a href="#name-doctor-testbed" class="internal xref">DOCTOR Testbed</a></p>
+1330,1331c1434,1435
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.3">
+<                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="xref">6.3</a>.  <a href="#name-composite-icn-approach-2" class="xref">Composite-ICN Approach</a><a href="#section-toc.1-1.6.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
+>                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-composite-icn-approach-2" class="internal xref">Composite-ICN Approach</a></p>
+1333,1334c1437,1438
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.4">
+<                 <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="xref">6.4</a>.  <a href="#name-summary-of-deployment-trial" class="xref">Summary of Deployment Trials</a><a href="#section-toc.1-1.6.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
+>                 <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="auto internal xref">6.4</a>.  <a href="#name-summary-of-deployment-trial" class="internal xref">Summary of Deployment Trials</a></p>
+1338,1342c1442,1446
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-deployment-issues-requiring" class="xref">Deployment Issues Requiring Further Standardization</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-protocols-for-application-a" class="xref">Protocols for Application and Service Migration</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-deployment-issues-requiring" class="internal xref">Deployment Issues Requiring Further Standardization</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-protocols-for-application-a" class="internal xref">Protocols for Application and Service Migration</a></p>
+1344,1345c1448,1449
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-protocols-for-content-deliv" class="xref">Protocols for Content Delivery Network Migration</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-protocols-for-content-deliv" class="internal xref">Protocols for Content Delivery Network Migration</a></p>
+1347,1348c1451,1452
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.3">
+<                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="xref">7.3</a>.  <a href="#name-protocols-for-edge-and-core" class="xref">Protocols for Edge and Core Network Migration</a><a href="#section-toc.1-1.7.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3">
+>                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="auto internal xref">7.3</a>.  <a href="#name-protocols-for-edge-and-core" class="internal xref">Protocols for Edge and Core Network Migration</a></p>
+1350,1351c1454,1455
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.4">
+<                 <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="xref">7.4</a>.  <a href="#name-summary-of-icn-protocol-gap" class="xref">Summary of ICN Protocol Gaps and Potential Protocol Efforts</a><a href="#section-toc.1-1.7.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.4">
+>                 <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="auto internal xref">7.4</a>.  <a href="#name-summary-of-icn-protocol-gap" class="internal xref">Summary of ICN Protocol Gaps and Potential Protocol Efforts</a></p>
+1355,1356c1459,1460
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-conclusion" class="xref">Conclusion</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-conclusion" class="internal xref">Conclusion</a></p>
+1358,1359c1462,1463
+< <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1361,1362c1465,1466
+< <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1364,1365c1468,1469
+< <li class="toc ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1367,1368c1471,1472
+< <li class="toc ulEmpty" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1370,1371c1474,1475
+< <li class="toc ulEmpty" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1388c1492
+<    require further investigation <span>[<a href="#ICNRGCharter" class="xref">ICNRGCharter</a>]</span>. Also, it is well 
+---
+>    require further investigation <span>[<a href="#ICNRGCharter" class="cite xref">ICNRGCharter</a>]</span>. Also, it is well 
+1392c1496
+< <p id="section-1-2">So far, outside of some preliminary investigations, such as <span>[<a href="#I-D.paik-icn-deployment-considerations" class="xref">ICN-DEP-CON</a>]</span>,
+---
+> <p id="section-1-2">So far, outside of some preliminary investigations, such as <span>[<a href="#I-D.paik-icn-deployment-considerations" class="cite xref">ICN-DEP-CON</a>]</span>,
+1427,1428c1531,1532
+< concepts that are defined in <span>[<a href="#RFC7927" class="xref">RFC7927</a>]</span> and
+< <span>[<a href="#I-D.irtf-icnrg-terminology" class="xref">ICN-TERM</a>]</span>. In addition,
+---
+> concepts that are defined in <span>[<a href="#RFC7927" class="cite xref">RFC7927</a>]</span> and
+> <span>[<a href="#I-D.irtf-icnrg-terminology" class="cite xref">ICN-TERM</a>]</span>. In addition,
+1430c1534
+< <dl class="dlNewline" id="section-2-2">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-2-2">
+1432c1536
+< <dd id="section-2-2.2">The final stage of the process of setting up an ICN network that is 
+---
+>         <dd style="margin-left: 1.5em" id="section-2-2.2">The final stage of the process of setting up an ICN network that is 
+1448c1552
+< <dd id="section-2-2.4">A data-centric network
+---
+>         <dd style="margin-left: 1.5em" id="section-2-2.4">A data-centric network
+1451c1555
+<    See <span>[<a href="#I-D.irtf-icnrg-terminology" class="xref">ICN-TERM</a>]</span> for further information.<a href="#section-2-2.4" class="pilcrow">¶</a>
+---
+>    See <span>[<a href="#I-D.irtf-icnrg-terminology" class="cite xref">ICN-TERM</a>]</span> for further information.<a href="#section-2-2.4" class="pilcrow">¶</a>
+1455c1559
+< <dd id="section-2-2.6">A networking approach
+---
+>         <dd style="margin-left: 1.5em" id="section-2-2.6">A networking approach
+1461c1565
+<    and dedicated hardware. See <span>[<a href="#RFC8568" class="xref">RFC8568</a>]</span> for further information.<a href="#section-2-2.6" class="pilcrow">¶</a>
+---
+>    and dedicated hardware. See <span>[<a href="#RFC8568" class="cite xref">RFC8568</a>]</span> for further information.<a href="#section-2-2.6" class="pilcrow">¶</a>
+1465c1569
+< <dd id="section-2-2.8">A networking approach where the control and data planes for
+---
+>         <dd style="margin-left: 1.5em" id="section-2-2.8">A networking approach where the control and data planes for
+1468c1572
+<  forwarding actions. See <span>[<a href="#RFC7426" class="xref">RFC7426</a>]</span> for
+---
+>  forwarding actions. See <span>[<a href="#RFC7426" class="cite xref">RFC7426</a>]</span> for
+1480c1584
+< <dl class="dlParallel" id="section-3-1">
+---
+> <span class="break"></span><dl class="dlParallel" id="section-3-1">
+1789c1893
+<  these configurations (in <a href="#sec_trial_experiences" class="xref">Section 6</a>), we will 
+---
+>  these configurations (in <a href="#sec_trial_experiences" class="auto internal xref">Section 6</a>), we will 
+1792c1896
+<  <span>[<a href="#Tateson" class="xref">Tateson</a>]</span>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+---
+>  <span>[<a href="#Tateson" class="cite xref">Tateson</a>]</span>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+1806,1807c1910,1911
+<  forwarding and routing elements, such as NFD <span>[<a href="#NFD" class="xref">NFD</a>]</span>, CCNx routers <span>[<a href="#Jacobson" class="xref">Jacobson</a>]</span>, or Publish-Subscribe
+<  Internet Technology (PURSUIT) forwarding nodes <span>[<a href="#IEEE_Communications" class="xref">IEEE_Communications</a>]</span>.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+---
+>  forwarding and routing elements, such as NFD <span>[<a href="#NFD" class="cite xref">NFD</a>]</span>, CCNx routers <span>[<a href="#Jacobson" class="cite xref">Jacobson</a>]</span>, or Publish-Subscribe
+>  Internet Technology (PURSUIT) forwarding nodes <span>[<a href="#IEEE_Communications" class="cite xref">IEEE_Communications</a>]</span>.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+1809c1913
+<  ICN deployments, some ICN approaches (e.g., <span>[<a href="#POINT" class="xref">POINT</a>]</span>) 
+---
+>  ICN deployments, some ICN approaches (e.g., <span>[<a href="#POINT" class="cite xref">POINT</a>]</span>) 
+1814c1918
+<  <span>[<a href="#Reed" class="xref">Reed</a>]</span> <span>[<a href="#CONET" class="xref">CONET</a>]</span> <span>[<a href="#C_FLOW" class="xref">C_FLOW</a>]</span>.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+---
+>  <span>[<a href="#Reed" class="cite xref">Reed</a>]</span> <span>[<a href="#CONET" class="cite xref">CONET</a>]</span> <span>[<a href="#C_FLOW" class="cite xref">C_FLOW</a>]</span>.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+1830,1831c1934,1935
+<  (e.g., ICN-over-UDP), as described in <span>[<a href="#CCNx_UDP" class="xref">CCNx_UDP</a>]</span>. Alternatively, the overlay can be
+<  accomplished via ICN-in-L2-in-IP as in <span>[<a href="#IEEE_Communications" class="xref">IEEE_Communications</a>]</span>, which
+---
+>  (e.g., ICN-over-UDP), as described in <span>[<a href="#CCNx_UDP" class="cite xref">CCNx_UDP</a>]</span>. Alternatively, the overlay can be
+>  accomplished via ICN-in-L2-in-IP as in <span>[<a href="#IEEE_Communications" class="cite xref">IEEE_Communications</a>]</span>, which
+1834,1835c1938,1939
+<  convergence layer to map NetInf semantics to HTTP <span>[<a href="#I-D.kutscher-icnrg-netinf-proto" class="xref">NetInf</a>]</span>.   
+<  Finally, <span>[<a href="#Overlay_ICN" class="xref">Overlay_ICN</a>]</span>
+---
+>  convergence layer to map NetInf semantics to HTTP <span>[<a href="#I-D.kutscher-icnrg-netinf-proto" class="cite xref">NetInf</a>]</span>.   
+>  Finally, <span>[<a href="#Overlay_ICN" class="cite xref">Overlay_ICN</a>]</span>
+1859c1963
+< <p id="section-4.3-1">Proposals, such as <span>[<a href="#POINT" class="xref">POINT</a>]</span> and <span>[<a href="#White" class="xref">White</a>]</span>, outline the deployment option of
+---
+> <p id="section-4.3-1">Proposals, such as <span>[<a href="#POINT" class="cite xref">POINT</a>]</span> and <span>[<a href="#White" class="cite xref">White</a>]</span>, outline the deployment option of
+1889c1993
+<  for scenarios, such as IoT <span>[<a href="#I-D.irtf-icnrg-icniot" class="xref">ICN-IoT</a>]</span>. The integration with the current IP
+---
+>  for scenarios, such as IoT <span>[<a href="#I-D.irtf-icnrg-icniot" class="cite xref">ICN-IoT</a>]</span>. The integration with the current IP
+1893c1997
+<  <span>[<a href="#RFC7252" class="xref">RFC7252</a>]</span> into ICN message
+---
+>  <span>[<a href="#RFC7252" class="cite xref">RFC7252</a>]</span> into ICN message
+1895c1999
+< <p id="section-4.3.1-2">The work in <span>[<a href="#VSER" class="xref">VSER</a>]</span> positions ICN
+---
+> <p id="section-4.3.1-2">The work in <span>[<a href="#VSER" class="cite xref">VSER</a>]</span> positions ICN
+1903c2007
+<  scenario in a use case, the <span>[<a href="#VSER" class="xref">VSER</a>]</span> platform 
+---
+>  scenario in a use case, the <span>[<a href="#VSER" class="cite xref">VSER</a>]</span> platform 
+1907c2011
+<  offer seamless mobility as a service that <span>[<a href="#VSER-Mob" class="xref">VSER-Mob</a>]</span> features.<a href="#section-4.3.1-2" class="pilcrow">¶</a></p>
+---
+>  offer seamless mobility as a service that <span>[<a href="#VSER-Mob" class="cite xref">VSER-Mob</a>]</span> features.<a href="#section-4.3.1-2" class="pilcrow">¶</a></p>
+1916c2020
+<    protocol mapping onto the native ICN underlay. For instance, <span>[<a href="#POINT" class="xref">POINT</a>]</span> proposes 
+---
+>    protocol mapping onto the native ICN underlay. For instance, <span>[<a href="#POINT" class="cite xref">POINT</a>]</span> proposes 
+1925c2029
+< <p id="section-4.3.2-2">The work in <span>[<a href="#White" class="xref">White</a>]</span> proposes a
+---
+> <p id="section-4.3.2-2">The work in <span>[<a href="#White" class="cite xref">White</a>]</span> proposes a
+1942c2046
+< <p id="section-4.4-1"> The objective of network slicing <span>[<a href="#NGMN-5G" class="xref">NGMN-5G</a>]</span> is to multiplex a general pool of compute, storage,
+---
+> <p id="section-4.4-1"> The objective of network slicing <span>[<a href="#NGMN-5G" class="cite xref">NGMN-5G</a>]</span> is to multiplex a general pool of compute, storage,
+1962,1963c2066,2067
+<  services can be delivered <span>[<a href="#NGMN-Network-Slicing" class="xref">NGMN-Network-Slicing</a>]</span>.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
+< <p id="section-4.4-2">The 5G next generation architecture <span>[<a href="#fiveG-23501" class="xref">fiveG-23501</a>]</span> provides the flexibility to deploy the
+---
+>  services can be delivered <span>[<a href="#NGMN-Network-Slicing" class="cite xref">NGMN-Network-Slicing</a>]</span>.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
+> <p id="section-4.4-2">The 5G next generation architecture <span>[<a href="#fiveG-23501" class="cite xref">fiveG-23501</a>]</span> provides the flexibility to deploy the
+1966,1967c2070,2071
+<  extending the architecture presented in <span>[<a href="#fiveG-23501" class="xref">fiveG-23501</a>]</span>  and the corresponding procedures in <span>[<a href="#fiveG-23502" class="xref">fiveG-23502</a>]</span>  to support ICN has been
+<  provided in <span>[<a href="#I-D.ravi-icnrg-5gc-icn" class="xref">ICN-5GC</a>]</span>. 
+---
+>  extending the architecture presented in <span>[<a href="#fiveG-23501" class="cite xref">fiveG-23501</a>]</span>  and the corresponding procedures in <span>[<a href="#fiveG-23502" class="cite xref">fiveG-23502</a>]</span>  to support ICN has been
+>  provided in <span>[<a href="#I-D.ravi-icnrg-5gc-icn" class="cite xref">ICN-5GC</a>]</span>. 
+1991c2095
+<  function chaining" <span>[<a href="#RFC7665" class="xref">RFC7665</a>]</span>, an ICN
+---
+>  function chaining" <span>[<a href="#RFC7665" class="cite xref">RFC7665</a>]</span>, an ICN
+1998c2102
+<  <span>[<a href="#Ravindran" class="xref">Ravindran</a>]</span>.<a href="#section-4.4-2" class="pilcrow">¶</a></p>
+---
+>  <span>[<a href="#Ravindran" class="cite xref">Ravindran</a>]</span>.<a href="#section-4.4-2" class="pilcrow">¶</a></p>
+2000c2104
+<  <span>[<a href="#ONAP" class="xref">ONAP</a>]</span> (which can be used to orchestrate
+---
+>  <span>[<a href="#ONAP" class="cite xref">ONAP</a>]</span> (which can be used to orchestrate
+2009c2113
+<  briefly discussed in <a href="#sec_replacements" class="xref">Section 4.1</a>. Further 
+---
+>  briefly discussed in <a href="#sec_replacements" class="auto internal xref">Section 4.1</a>. Further 
+2011c2115
+<  such as <span>[<a href="#ONAP" class="xref">ONAP</a>]</span>.<a href="#section-4.4-3" class="pilcrow">¶</a></p>
+---
+>  such as <span>[<a href="#ONAP" class="cite xref">ONAP</a>]</span>.<a href="#section-4.4-3" class="pilcrow">¶</a></p>
+2025c2129
+<    <span>[<a href="#H-ICN_1" class="xref">H-ICN_1</a>]</span> approach carries ICN names
+---
+>    <span>[<a href="#H-ICN_1" class="cite xref">H-ICN_1</a>]</span> approach carries ICN names
+2045,2046c2149,2150
+< <ul>
+< <li id="section-5-2.1">application providers<a href="#section-5-2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-5-2.1">application providers<a href="#section-5-2.1" class="pilcrow">¶</a>
+2048c2152
+< <li id="section-5-2.2">ISPs and service providers, both as core and access network
+---
+>         <li class="normal" id="section-5-2.2">ISPs and service providers, both as core and access network
+2051c2155
+< <li id="section-5-2.3">CDN providers (due to the strong relation of the ICN proposition
+---
+>         <li class="normal" id="section-5-2.3">CDN providers (due to the strong relation of the ICN proposition
+2054c2158
+< <li id="section-5-2.4">end-device manufacturers and users<a href="#section-5-2.4" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="section-5-2.4">end-device manufacturers and users<a href="#section-5-2.4" class="pilcrow">¶</a>
+2059,2060c2163,2164
+<  regulatory aspects, such as those studied in <span>[<a href="#Tateson" class="xref">Tateson</a>]</span>, 
+<  <span>[<a href="#Techno_Economic" class="xref">Techno_Economic</a>]</span>, and <span>[<a href="#Internet_Pricing" class="xref">Internet_Pricing</a>]</span>, are left out of our
+---
+>  regulatory aspects, such as those studied in <span>[<a href="#Tateson" class="cite xref">Tateson</a>]</span>, 
+>  <span>[<a href="#Techno_Economic" class="cite xref">Techno_Economic</a>]</span>, and <span>[<a href="#Internet_Pricing" class="cite xref">Internet_Pricing</a>]</span>, are left out of our
+2075c2179
+<  streaming solutions, such as DASH <span>[<a href="#DASH" class="xref">DASH</a>]</span> and others. Nonetheless, many non-HTTP
+---
+>  streaming solutions, such as DASH <span>[<a href="#DASH" class="cite xref">DASH</a>]</span> and others. Nonetheless, many non-HTTP
+2078c2182
+< <p id="section-5.1-2">The underlay deployment configuration option presented in <a href="#sec_underlay" class="xref">Section 4.3</a> aims at providing some level
+---
+> <p id="section-5.1-2">The underlay deployment configuration option presented in <a href="#sec_underlay" class="auto internal xref">Section 4.3</a> aims at providing some level
+2084,2085c2188,2189
+<  to TCP/ICN message flows is described in <span>[<a href="#Moiseenko" class="xref">Moiseenko</a>]</span>. 
+<  Another approach described in <span>[<a href="#Marchal" class="xref">Marchal</a>]</span> uses HTTP/NDN gateways and focuses, in
+---
+>  to TCP/ICN message flows is described in <span>[<a href="#Moiseenko" class="cite xref">Moiseenko</a>]</span>. 
+>  Another approach described in <span>[<a href="#Marchal" class="cite xref">Marchal</a>]</span> uses HTTP/NDN gateways and focuses, in
+2092,2093c2196,2197
+<  described in <span>[<a href="#Moiseenko" class="xref">Moiseenko</a>]</span>
+<  carries the TCP layer into the ICN underlay, while the <span>[<a href="#Marchal" class="xref">Marchal</a>]</span> approach  
+---
+>  described in <span>[<a href="#Moiseenko" class="cite xref">Moiseenko</a>]</span>
+>  carries the TCP layer into the ICN underlay, while the <span>[<a href="#Marchal" class="cite xref">Marchal</a>]</span> approach  
+2097c2201
+< <p id="section-5.1-3">Alternatively, ICN-as-an-Overlay (<a href="#sec_overlay" class="xref">Section 4.2</a>) and ICN-as-a-Slice (<a href="#sec_icn_slice" class="xref">Section 4.4</a>) allow for the 
+---
+> <p id="section-5.1-3">Alternatively, ICN-as-an-Overlay (<a href="#sec_overlay" class="auto internal xref">Section 4.2</a>) and ICN-as-a-Slice (<a href="#sec_icn_slice" class="auto internal xref">Section 4.4</a>) allow for the 
+2105c2209
+< <p id="section-5.1-4">Finally, <span>[<a href="#I-D.irtf-icnrg-icn-lte-4g" class="xref">ICN-LTE-4G</a>]</span> outlines a dual-stack end-user device approach that
+---
+> <p id="section-5.1-4">Finally, <span>[<a href="#I-D.irtf-icnrg-icn-lte-4g" class="cite xref">ICN-LTE-4G</a>]</span> outlines a dual-stack end-user device approach that
+2131c2235
+<  configuration presented in <a href="#sec_underlay" class="xref">Section 4.3</a> aims at providing a migration path for
+---
+>  configuration presented in <a href="#sec_underlay" class="auto internal xref">Section 4.3</a> aims at providing a migration path for
+2134c2238
+<  <span>[<a href="#I-D.ietf-bier-multicast-http-response" class="xref">BIER</a>]</span>, specifically with potential benefits
+---
+>  <span>[<a href="#I-D.ietf-bier-multicast-http-response" class="cite xref">BIER</a>]</span>, specifically with potential benefits
+2139c2243
+<  the trial experiences in <a href="#sec_trial_experiences" class="xref">Section 6</a>.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+---
+>  the trial experiences in <a href="#sec_trial_experiences" class="auto internal xref">Section 6</a>.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+2156c2260
+<  underlay deployment configuration in <a href="#sec_application_gateways" class="xref">Section 4.3.1</a>,
+---
+>  underlay deployment configuration in <a href="#sec_application_gateways" class="auto internal xref">Section 4.3.1</a>,
+2159,2160c2263,2264
+<  into IP-based services, e.g., utilizing CoAP-based <span>[<a href="#RFC7252" class="xref">RFC7252</a>]</span> M2M platforms, such 
+<  as oneM2M <span>[<a href="#oneM2M" class="xref">oneM2M</a>]</span> or others.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+---
+>  into IP-based services, e.g., utilizing CoAP-based <span>[<a href="#RFC7252" class="cite xref">RFC7252</a>]</span> M2M platforms, such 
+>  as oneM2M <span>[<a href="#oneM2M" class="cite xref">oneM2M</a>]</span> or others.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+2169c2273
+<  <a href="#sec_icn_slice" class="xref">Section 4.4</a> provides a
+---
+>  <a href="#sec_icn_slice" class="auto internal xref">Section 4.4</a> provides a
+2192c2296
+<  configuration in <a href="#sec_icn_slice" class="xref">Section 4.4</a>  would allow the introduction 
+---
+>  configuration in <a href="#sec_icn_slice" class="auto internal xref">Section 4.4</a>  would allow the introduction 
+2200c2304
+<  underlay deployment configuration in <a href="#sec_http_ip" class="xref">Section 4.3.2</a> provides an 
+---
+>  underlay deployment configuration in <a href="#sec_http_ip" class="auto internal xref">Section 4.3.2</a> provides an 
+2218c2322
+<  of the various deployment configurations identified in <a href="#sec_configurations" class="xref">Section 4</a>; therefore, we
+---
+>  of the various deployment configurations identified in <a href="#sec_configurations" class="auto internal xref">Section 4</a>; therefore, we
+2235c2339
+< <p id="section-6.1.1-1">Although the FP7 PURSUIT <span>[<a href="#IEEE_Communications" class="xref">IEEE_Communications</a>]</span> efforts were generally positioned as a
+---
+> <p id="section-6.1.1-1">Although the FP7 PURSUIT <span>[<a href="#IEEE_Communications" class="cite xref">IEEE_Communications</a>]</span> efforts were generally positioned as a
+2237c2341
+<  (<a href="#sec_replacements" class="xref">Section 4.1</a>), the
+---
+>  (<a href="#sec_replacements" class="auto internal xref">Section 4.1</a>), the
+2241c2345
+<  configuration presented in <a href="#sec_overlay" class="xref">Section 4.2</a>. Software-based forwarders were 
+---
+>  configuration presented in <a href="#sec_overlay" class="auto internal xref">Section 4.2</a>. Software-based forwarders were 
+2257c2361
+<    (SAIL) project <span>[<a href="#SAIL" class="xref">SAIL</a>]</span>.
+---
+>    (SAIL) project <span>[<a href="#SAIL" class="cite xref">SAIL</a>]</span>.
+2267c2371
+<  <a href="#sec_overlay" class="xref">Section 4.2</a>. <span>[<a href="#SAIL_Prototyping" class="xref">SAIL_Prototyping</a>]</span> describes several
+---
+>  <a href="#sec_overlay" class="auto internal xref">Section 4.2</a>. <span>[<a href="#SAIL_Prototyping" class="cite xref">SAIL_Prototyping</a>]</span> describes several
+2270c2374
+<  approach for routing scalability <span>[<a href="#SAIL_Content_Delivery" class="xref">SAIL_Content_Delivery</a>]</span>.<a href="#section-6.1.2-1" class="pilcrow">¶</a></p>
+---
+>  approach for routing scalability <span>[<a href="#SAIL_Content_Delivery" class="cite xref">SAIL_Content_Delivery</a>]</span>.<a href="#section-6.1.2-1" class="pilcrow">¶</a></p>
+2283c2387
+<  (<a href="#sec_replacements" class="xref">Section 4.1</a>). 
+---
+>  (<a href="#sec_replacements" class="auto internal xref">Section 4.1</a>). 
+2285c2389
+<  deployment configuration of <a href="#sec_overlay" class="xref">Section 4.2</a> to connect institutions over 
+---
+>  deployment configuration of <a href="#sec_overlay" class="auto internal xref">Section 4.2</a> to connect institutions over 
+2290c2394
+<  NDN-enabled nodes <span>[<a href="#NDN-testbed" class="xref">NDN-testbed</a>]</span> <span>[<a href="#Jangam" class="xref">Jangam</a>]</span>.<a href="#section-6.1.3-1" class="pilcrow">¶</a></p>
+---
+>  NDN-enabled nodes <span>[<a href="#NDN-testbed" class="cite xref">NDN-testbed</a>]</span> <span>[<a href="#Jangam" class="cite xref">Jangam</a>]</span>.<a href="#section-6.1.3-1" class="pilcrow">¶</a></p>
+2299c2403
+<    program and NICT <span>[<a href="#ICN2020-overview" class="xref">ICN2020-overview</a>]</span>.
+---
+>    program and NICT <span>[<a href="#ICN2020-overview" class="cite xref">ICN2020-overview</a>]</span>.
+2307c2411
+<  The report <span>[<a href="#ICN2020-Experiments" class="xref">ICN2020-Experiments</a>]</span> contains a detailed description of the
+---
+>  The report <span>[<a href="#ICN2020-Experiments" class="cite xref">ICN2020-Experiments</a>]</span> contains a detailed description of the
+2311,2314c2415,2418
+<  the CUTEi testbed <span>[<a href="#RFC7945" class="xref">RFC7945</a>]</span>
+<             <span>[<a href="#CUTEi" class="xref">CUTEi</a>]</span>, and the GEANT testbed
+<  <span>[<a href="#GEANT" class="xref">GEANT</a>]</span> 
+<  to create an overlay deployment configuration of <a href="#sec_overlay" class="xref">Section 4.2</a> over the public
+---
+>  the CUTEi testbed <span>[<a href="#RFC7945" class="cite xref">RFC7945</a>]</span>
+>             <span>[<a href="#CUTEi" class="cite xref">CUTEi</a>]</span>, and the GEANT testbed
+>  <span>[<a href="#GEANT" class="cite xref">GEANT</a>]</span> 
+>  to create an overlay deployment configuration of <a href="#sec_overlay" class="auto internal xref">Section 4.2</a> over the public
+2327c2431
+<    research program <span>[<a href="#UMOBILE-overview" class="xref">UMOBILE-overview</a>]</span>. 
+---
+>    research program <span>[<a href="#UMOBILE-overview" class="cite xref">UMOBILE-overview</a>]</span>. 
+2333c2437
+<  <span>[<a href="#UMOBILE-2" class="xref">UMOBILE-2</a>]</span> was developed on
+---
+>  <span>[<a href="#UMOBILE-2" class="cite xref">UMOBILE-2</a>]</span> was developed on
+2336c2440
+<  <a href="#sec_overlay" class="xref">Section 4.2</a>. UMOBILE aims to
+---
+>  <a href="#sec_overlay" class="auto internal xref">Section 4.2</a>. UMOBILE aims to
+2347c2451
+<  scenarios <span>[<a href="#UMOBILE-3" class="xref">UMOBILE-3</a>]</span> and
+---
+>  scenarios <span>[<a href="#UMOBILE-3" class="cite xref">UMOBILE-3</a>]</span> and
+2350c2454
+<  new messaging application called Oi! <span>[<a href="#UMOBILE-4" class="xref">UMOBILE-4</a>]</span> <span>[<a href="#UMOBILE-5" class="xref">UMOBILE-5</a>]</span>,
+---
+>  new messaging application called Oi! <span>[<a href="#UMOBILE-4" class="cite xref">UMOBILE-4</a>]</span> <span>[<a href="#UMOBILE-5" class="cite xref">UMOBILE-5</a>]</span>,
+2353,2354c2457,2458
+<  protocol, DABBER <span>[<a href="#UMOBILE-6" class="xref">UMOBILE-6</a>]</span>
+<             <span>[<a href="#I-D.mendes-icnrg-dabber" class="xref">DABBER</a>]</span>,
+---
+>  protocol, DABBER <span>[<a href="#UMOBILE-6" class="cite xref">UMOBILE-6</a>]</span>
+>             <span>[<a href="#I-D.mendes-icnrg-dabber" class="cite xref">DABBER</a>]</span>,
+2360c2464
+<  agent running within the wireless nodes <span>[<a href="#UMOBILE-7" class="xref">UMOBILE-7</a>]</span>.<a href="#section-6.1.5-2" class="pilcrow">¶</a></p>
+---
+>  agent running within the wireless nodes <span>[<a href="#UMOBILE-7" class="cite xref">UMOBILE-7</a>]</span>.<a href="#section-6.1.5-2" class="pilcrow">¶</a></p>
+2362c2466
+<    post-disaster scenario trial <span>[<a href="#UMOBILE-8" class="xref">UMOBILE-8</a>]</span>, 
+---
+>    post-disaster scenario trial <span>[<a href="#UMOBILE-8" class="cite xref">UMOBILE-8</a>]</span>, 
+2369c2473
+<  called PiCasso <span>[<a href="#UMOBILE-9" class="xref">UMOBILE-9</a>]</span>. In
+---
+>  called PiCasso <span>[<a href="#UMOBILE-9" class="cite xref">UMOBILE-9</a>]</span>. In
+2403c2507
+<  <a href="#sec_http_ip" class="xref">Section 4.3.2</a>; edge-based NAPs
+---
+>  <a href="#sec_http_ip" class="auto internal xref">Section 4.3.2</a>; edge-based NAPs
+2413c2517
+<  and public demonstrations were also provided at events <span>[<a href="#MWC_Demo" class="xref">MWC_Demo</a>]</span>. The trial has also been
+---
+>  and public demonstrations were also provided at events <span>[<a href="#MWC_Demo" class="cite xref">MWC_Demo</a>]</span>. The trial has also been
+2442c2546
+<  underlay deployment configuration in <a href="#sec_http_ip" class="xref">Section 4.3.2</a>, as per the POINT/RIFE
+---
+>  underlay deployment configuration in <a href="#sec_http_ip" class="auto internal xref">Section 4.3.2</a>, as per the POINT/RIFE
+2474,2475c2578,2579
+< <p id="section-6.2.3-1">The CableLabs ICN work reported in <span>[<a href="#White" class="xref">White</a>]</span> proposes an underlay deployment configuration
+<    based on <a href="#sec_http_ip" class="xref">Section 4.3.2</a>. 
+---
+> <p id="section-6.2.3-1">The CableLabs ICN work reported in <span>[<a href="#White" class="cite xref">White</a>]</span> proposes an underlay deployment configuration
+>    based on <a href="#sec_http_ip" class="auto internal xref">Section 4.3.2</a>. 
+2483c2587
+<  <a href="#sec_replacements" class="xref">Section 4.1</a>) of
+---
+>  <a href="#sec_replacements" class="auto internal xref">Section 4.1</a>) of
+2486c2590
+<  <span>[<a href="#White" class="xref">White</a>]</span> is clear that the
+---
+>  <span>[<a href="#White" class="cite xref">White</a>]</span> is clear that the
+2497c2601
+< <p id="section-6.2.4-1"><span>[<a href="#Baccelli" class="xref">Baccelli</a>]</span> summarizes the trial
+---
+> <p id="section-6.2.4-1"><span>[<a href="#Baccelli" class="cite xref">Baccelli</a>]</span> summarizes the trial
+2509c2613
+<  for RAM and ROM footprints <span>[<a href="#Baccelli" class="xref">Baccelli</a>]</span> <span>[<a href="#Anastasiades" class="xref">Anastasiades</a>]</span>. For example, the binary file size
+---
+>  for RAM and ROM footprints <span>[<a href="#Baccelli" class="cite xref">Baccelli</a>]</span> <span>[<a href="#Anastasiades" class="cite xref">Anastasiades</a>]</span>. For example, the binary file size
+2527c2631
+<  uses the CCNx approach and is based on the <span>[<a href="#CICN" class="xref">CICN</a>]</span> open-source software. There are
+---
+>  uses the CCNx approach and is based on the <span>[<a href="#CICN" class="cite xref">CICN</a>]</span> open-source software. There are
+2544c2648
+<  infrastructure <span>[<a href="#Doctor" class="xref">Doctor</a>]</span> (based
+---
+>  infrastructure <span>[<a href="#Doctor" class="cite xref">Doctor</a>]</span> (based
+2549c2653
+< <p id="section-6.2.6-2">The data plane relies on an HTTP/NDN gateway <span>[<a href="#Marchal" class="xref">Marchal</a>]</span> that processes HTTP traffic and
+---
+> <p id="section-6.2.6-2">The data plane relies on an HTTP/NDN gateway <span>[<a href="#Marchal" class="cite xref">Marchal</a>]</span> that processes HTTP traffic and
+2559c2663
+<   <span>[<a href="#Mai-1" class="xref">Mai-1</a>]</span> 
+---
+>   <span>[<a href="#Mai-1" class="cite xref">Mai-1</a>]</span> 
+2561,2562c2665,2666
+<   orchestrated countermeasures against NDN attacks <span>[<a href="#Nguyen-1" class="xref">Nguyen-1</a>]</span>
+<             <span>[<a href="#Nguyen-2" class="xref">Nguyen-2</a>]</span> <span>[<a href="#Mai-2" class="xref">Mai-2</a>]</span> or performance issues. A remediation can be,
+---
+>   orchestrated countermeasures against NDN attacks <span>[<a href="#Nguyen-1" class="cite xref">Nguyen-1</a>]</span>
+>             <span>[<a href="#Nguyen-2" class="cite xref">Nguyen-2</a>]</span> <span>[<a href="#Mai-2" class="cite xref">Mai-2</a>]</span> or performance issues. A remediation can be,
+2569c2673
+<   accuracy (with less than 0.01% false positives) <span>[<a href="#Nguyen-3" class="xref">Nguyen-3</a>]</span>.<a href="#section-6.2.6-2" class="pilcrow">¶</a></p>
+---
+>   accuracy (with less than 0.01% false positives) <span>[<a href="#Nguyen-3" class="cite xref">Nguyen-3</a>]</span>.<a href="#section-6.2.6-2" class="pilcrow">¶</a></p>
+2579c2683
+< <p id="section-6.3-1">Hybrid ICN <span>[<a href="#H-ICN_1" class="xref">H-ICN_1</a>]</span> <span>[<a href="#H-ICN_2" class="xref">H-ICN_2</a>]</span> is an approach where the ICN names
+---
+> <p id="section-6.3-1">Hybrid ICN <span>[<a href="#H-ICN_1" class="cite xref">H-ICN_1</a>]</span> <span>[<a href="#H-ICN_2" class="cite xref">H-ICN_2</a>]</span> is an approach where the ICN names
+2587c2691
+<  uses <span>[<a href="#CICN" class="xref">CICN</a>]</span> open-source
+---
+>  uses <span>[<a href="#CICN" class="cite xref">CICN</a>]</span> open-source
+2592c2696
+<  Hybrid ICN transport <span>[<a href="#H-ICN_3" class="xref">H-ICN_3</a>]</span> <span>[<a href="#H-ICN_2" class="xref">H-ICN_2</a>]</span>.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
+---
+>  Hybrid ICN transport <span>[<a href="#H-ICN_3" class="cite xref">H-ICN_3</a>]</span> <span>[<a href="#H-ICN_2" class="cite xref">H-ICN_2</a>]</span>.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
+2613c2717
+<  as the application scenario <span>[<a href="#Chakraborti" class="xref">Chakraborti</a>]</span>; also, this prototype has been extended to
+---
+>  as the application scenario <span>[<a href="#Chakraborti" class="cite xref">Chakraborti</a>]</span>; also, this prototype has been extended to
+2626c2730
+<  DOCTOR testbed (<a href="#sec_Doctor" class="xref">Section 6.2.6</a>),
+---
+>  DOCTOR testbed (<a href="#sec_Doctor" class="auto internal xref">Section 6.2.6</a>),
+2643c2747
+< <p id="section-7-1"><span><a href="#RFC7927" class="xref">"Information-Centric Networking (ICN) Research Challenges"</a> [<a href="#RFC7927" class="xref">RFC7927</a>]</span>
+---
+> <p id="section-7-1"><span><a href="#RFC7927" class="internal xref">"Information-Centric Networking (ICN) Research Challenges"</a> [<a href="#RFC7927" class="cite xref">RFC7927</a>]</span>
+2646c2750
+<  <span>[<a href="#RFC7927" class="xref">RFC7927</a>]</span> is research oriented
+---
+>  <span>[<a href="#RFC7927" class="cite xref">RFC7927</a>]</span> is research oriented
+2656c2760
+<  migration paths in <a href="#sec_migration" class="xref">Section 5</a>. The identified list of potential protocol
+---
+>  migration paths in <a href="#sec_migration" class="auto internal xref">Section 5</a>. The identified list of potential protocol
+2682c2786
+<  typically defined by its name. <span>[<a href="#RFC6920" class="xref">RFC6920</a>]</span> defines a mechanism that is suitable for
+---
+>  typically defined by its name. <span>[<a href="#RFC6920" class="cite xref">RFC6920</a>]</span> defines a mechanism that is suitable for
+2685,2686c2789,2790
+<  described in <span>[<a href="#RFC8609" class="xref">RFC8609</a>]</span> and 
+<  <span>[<a href="#RFC8569" class="xref">RFC8569</a>]</span>. Naming dynamically
+---
+>  described in <span>[<a href="#RFC8609" class="cite xref">RFC8609</a>]</span> and 
+>  <span>[<a href="#RFC8569" class="cite xref">RFC8569</a>]</span>. Naming dynamically
+2694c2798
+<  discussed in <a href="#sec_point_rife" class="xref">Section 6.2.1</a>,
+---
+>  discussed in <a href="#sec_point_rife" class="auto internal xref">Section 6.2.1</a>,
+2726,2727c2830,2831
+<  message formats. For example, <span>[<a href="#RFC8075" class="xref">RFC8075</a>]</span> specifies proxy mapping between CoAP and
+<  HTTP protocols. Also, <span>[<a href="#RFC8613" class="xref">RFC8613</a>]</span> 
+---
+>  message formats. For example, <span>[<a href="#RFC8075" class="cite xref">RFC8075</a>]</span> specifies proxy mapping between CoAP and
+>  HTTP protocols. Also, <span>[<a href="#RFC8613" class="cite xref">RFC8613</a>]</span> 
+2731c2835
+<  to identify if an approach like <span>[<a href="#RFC8613" class="xref">RFC8613</a>]</span>, or some other approach, is
+---
+>  to identify if an approach like <span>[<a href="#RFC8613" class="cite xref">RFC8613</a>]</span>, or some other approach, is
+2748c2852
+<  networks are outlined in <span>[<a href="#I-D.moiseenko-icnrg-flowclass" class="xref">FLOW-CLASS</a>]</span>,
+---
+>  networks are outlined in <span>[<a href="#I-D.moiseenko-icnrg-flowclass" class="cite xref">FLOW-CLASS</a>]</span>,
+2752c2856
+<  rate control and cache control. Also, <span>[<a href="#I-D.anilj-icnrg-icn-qos" class="xref">ICN-QoS</a>]</span> proposes
+---
+>  rate control and cache control. Also, <span>[<a href="#I-D.anilj-icnrg-icn-qos" class="cite xref">ICN-QoS</a>]</span> proposes
+2769c2873
+<    facility with approaches, such as CCNxinfo <span>[<a href="#I-D.irtf-icnrg-ccninfo" class="xref">CNNinfo</a>]</span> <span>[<a href="#Contrace" class="xref">Contrace</a>]</span>.<a href="#section-7.3-4" class="pilcrow">¶</a></p>
+---
+>    facility with approaches, such as CCNxinfo <span>[<a href="#I-D.irtf-icnrg-ccninfo" class="cite xref">CNNinfo</a>]</span> <span>[<a href="#Contrace" class="cite xref">Contrace</a>]</span>.<a href="#section-7.3-4" class="pilcrow">¶</a></p>
+2777c2881
+< <p id="section-7.4-1">Without claiming completeness, <a href="#tab_mapping_protocol_effort" class="xref">Table 1</a> maps the open
+---
+> <p id="section-7.4-1">Without claiming completeness, <a href="#tab_mapping_protocol_effort" class="auto internal xref">Table 1</a> maps the open
+2910c3014
+<    of delivered content and (optional) encryption of the content. <span>[<a href="#RFC7945" class="xref">RFC7945</a>]</span> has an extensive discussion of
+---
+>    of delivered content and (optional) encryption of the content. <span>[<a href="#RFC7945" class="cite xref">RFC7945</a>]</span> has an extensive discussion of
+2913c3017
+<    <span>[<a href="#RFC7945" class="xref">RFC7945</a>]</span> points out that ICN access
+---
+>    <span>[<a href="#RFC7945" class="cite xref">RFC7945</a>]</span> points out that ICN access
+2918c3022
+<    mass of deployments.  <span>[<a href="#RFC7945" class="xref">RFC7945</a>]</span> also
+---
+>    mass of deployments.  <span>[<a href="#RFC7945" class="cite xref">RFC7945</a>]</span> also
+2921c3025
+<    each of the identified security gaps. Lastly, <span>[<a href="#RFC7945" class="xref">RFC7945</a>]</span> points out that as secure
+---
+>    each of the identified security gaps. Lastly, <span>[<a href="#RFC7945" class="cite xref">RFC7945</a>]</span> points out that as secure
+2925c3029
+< <p id="section-10-2">In addition to the security findings of <span>[<a href="#RFC7945" class="xref">RFC7945</a>]</span>, this document has highlighted that all anticipated
+---
+> <p id="section-10-2">In addition to the security findings of <span>[<a href="#RFC7945" class="cite xref">RFC7945</a>]</span>, this document has highlighted that all anticipated
+2933c3037
+<    configuration described in <a href="#sec_application_gateways" class="xref">Section 4.3.1</a>, the gateway/proxy that translates HTTP or CoAP
+---
+>    configuration described in <a href="#sec_application_gateways" class="auto internal xref">Section 4.3.1</a>, the gateway/proxy that translates HTTP or CoAP
+2938c3042
+<    <span>[<a href="#RFC8613" class="xref">RFC8613</a>]</span>, which is used to pass
+---
+>    <span>[<a href="#RFC8613" class="cite xref">RFC8613</a>]</span>, which is used to pass
+2944c3048
+< <p id="section-10-3">Finally, the DOCTOR project discussed in <a href="#sec_Doctor" class="xref">Section 6.2.6</a> is an example of an early deployment that is looking
+---
+> <p id="section-10-3">Finally, the DOCTOR project discussed in <a href="#sec_Doctor" class="auto internal xref">Section 6.2.6</a> is an example of an early deployment that is looking
+2947,2950c3051,3054
+<    Attacks <span>[<a href="#Nguyen-2" class="xref">Nguyen-2</a>]</span> and Content
+<    Poisoning Attacks <span>[<a href="#Nguyen-1" class="xref">Nguyen-1</a>]</span>
+<         <span>[<a href="#Mai-2" class="xref">Mai-2</a>]</span> <span>[<a href="#Nguyen-3" class="xref">Nguyen-3</a>]</span> and evaluating potential countermeasures based
+<  on MANO-orchestrated actions on the virtualized infrastructure <span>[<a href="#Mai-1" class="xref">Mai-1</a>]</span>.<a href="#section-10-3" class="pilcrow">¶</a></p>
+---
+>    Attacks <span>[<a href="#Nguyen-2" class="cite xref">Nguyen-2</a>]</span> and Content
+>    Poisoning Attacks <span>[<a href="#Nguyen-1" class="cite xref">Nguyen-1</a>]</span>
+>         <span>[<a href="#Mai-2" class="cite xref">Mai-2</a>]</span> <span>[<a href="#Nguyen-3" class="cite xref">Nguyen-3</a>]</span> and evaluating potential countermeasures based
+>  on MANO-orchestrated actions on the virtualized infrastructure <span>[<a href="#Mai-1" class="cite xref">Mai-1</a>]</span>.<a href="#section-10-3" class="pilcrow">¶</a></p>
+2960c3064
+< <span class="refAuthor">Anastasiades, C.</span>, <span class="refTitle">"Information-centric communication in mobile and wireless networks"</span>, <span class="refContent">PhD Dissertation</span>, <span class="seriesInfo">DOI 10.7892/boris.83683</span>, <time datetime="2016-06">June 2016</time>, <span>&lt;<a href="http://boris.unibe.ch/83683/1/16anastasiades_c.pdf">http://boris.unibe.ch/83683/1/16anastasiades_c.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Anastasiades, C.</span>, <span class="refTitle">"Information-centric communication in mobile and wireless networks"</span>, <span class="refContent">PhD Dissertation</span>, <span class="seriesInfo">DOI 10.7892/boris.83683</span>, <time datetime="2016-06" class="refDate">June 2016</time>, <span>&lt;<a href="http://boris.unibe.ch/83683/1/16anastasiades_c.pdf">http://boris.unibe.ch/83683/1/16anastasiades_c.pdf</a>&gt;</span>. </dd>
+2965c3069
+<  Information-Centric Networking</span>, <span class="seriesInfo">DOI 10.1145/2660129.2660144</span>, <time datetime="2014-09">September 2014</time>, <span>&lt;<a href="http://conferences2.sigcomm.org/acm-icn/2014/papers/p77.pdf">http://conferences2.sigcomm.org/acm-icn/2014/papers/p77.pdf</a>&gt;</span>. </dd>
+---
+>  Information-Centric Networking</span>, <span class="seriesInfo">DOI 10.1145/2660129.2660144</span>, <time datetime="2014-09" class="refDate">September 2014</time>, <span>&lt;<a href="http://conferences2.sigcomm.org/acm-icn/2014/papers/p77.pdf">http://conferences2.sigcomm.org/acm-icn/2014/papers/p77.pdf</a>&gt;</span>. </dd>
+2969c3073
+< <span class="refAuthor">Trossen, D.</span><span class="refAuthor">, Rahman, A.</span><span class="refAuthor">, Wang, C.</span><span class="refAuthor">, and T. Eckert</span>, <span class="refTitle">"Applicability of BIER Multicast Overlay for Adaptive Streaming Services"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-bier-multicast-http-response-03</span>, <time datetime="2020-02-04">4 February 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-bier-multicast-http-response-03">https://tools.ietf.org/html/draft-ietf-bier-multicast-http-response-03</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Trossen, D.</span>, <span class="refAuthor">Rahman, A.</span>, <span class="refAuthor">Wang, C.</span>, and <span class="refAuthor">T. Eckert</span>, <span class="refTitle">"Applicability of BIER Multicast Overlay for Adaptive Streaming Services"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-bier-multicast-http-response-03</span>, <time datetime="2020-02-04" class="refDate">4 February 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-bier-multicast-http-response-03">https://tools.ietf.org/html/draft-ietf-bier-multicast-http-response-03</a>&gt;</span>. </dd>
+2978c3082
+<    Information-Centric Networking (HotICN)</span>, <span class="seriesInfo">DOI 10.1109/HOTICN.2018.8605980</span>, <time datetime="2018-08">August 2018</time>, <span>&lt;<a href="https://doi.org/10.1109/HOTICN.2018.8605980">https://doi.org/10.1109/HOTICN.2018.8605980</a>&gt;</span>. </dd>
+---
+>    Information-Centric Networking (HotICN)</span>, <span class="seriesInfo">DOI 10.1109/HOTICN.2018.8605980</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://doi.org/10.1109/HOTICN.2018.8605980">https://doi.org/10.1109/HOTICN.2018.8605980</a>&gt;</span>. </dd>
+2986c3090
+< <span class="refAuthor">Asaeda, H.</span><span class="refAuthor">, Ooka, A.</span><span class="refAuthor">, and X. Shao</span>, <span class="refTitle">"CCNinfo: Discovering Content and Network Information in Content-Centric Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-irtf-icnrg-ccninfo-04</span>, <time datetime="2020-03-22">22 March 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-irtf-icnrg-ccninfo-04">https://tools.ietf.org/html/draft-irtf-icnrg-ccninfo-04</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Asaeda, H.</span>, <span class="refAuthor">Ooka, A.</span>, and <span class="refAuthor">X. Shao</span>, <span class="refTitle">"CCNinfo: Discovering Content and Network Information in Content-Centric Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-irtf-icnrg-ccninfo-04</span>, <time datetime="2020-03-22" class="refDate">22 March 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-irtf-icnrg-ccninfo-04">https://tools.ietf.org/html/draft-irtf-icnrg-ccninfo-04</a>&gt;</span>. </dd>
+2990c3094
+< <span class="refAuthor">Veltri, L., et al.</span>, <span class="refTitle">"Supporting Information-Centric Functionality in Software Defined Networks"</span>, <span class="refContent">2012 IEEE International Conference on Communications (ICC)</span>, <span class="seriesInfo">DOI 10.1109/ICC.2012.6364916</span>, <time datetime="2012-11">November 2012</time>, <span>&lt;<a href="http://netgroup.uniroma2.it/Stefano_Salsano/papers/salsano-icc12-wshop-sdn.pdf">http://netgroup.uniroma2.it/Stefano_Salsano/papers/salsano-icc12-wshop-sdn.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Veltri, L., et al.</span>, <span class="refTitle">"Supporting Information-Centric Functionality in Software Defined Networks"</span>, <span class="refContent">2012 IEEE International Conference on Communications (ICC)</span>, <span class="seriesInfo">DOI 10.1109/ICC.2012.6364916</span>, <time datetime="2012-11" class="refDate">November 2012</time>, <span>&lt;<a href="http://netgroup.uniroma2.it/Stefano_Salsano/papers/salsano-icc12-wshop-sdn.pdf">http://netgroup.uniroma2.it/Stefano_Salsano/papers/salsano-icc12-wshop-sdn.pdf</a>&gt;</span>. </dd>
+2994c3098
+< <span class="refAuthor">Asaeda, H., et al.</span>, <span class="refTitle">"Contrace: a tool for measuring and tracing content-centric networks"</span>, <span class="refContent"> IEEE Communications Magazine, Volume 53, Issue 3</span>, <span class="seriesInfo">DOI 10.1109/MCOM.2015.7060502</span>, <time datetime="2015-03">March 2015</time>, <span>&lt;<a href="https://doi.org/10.1109/MCOM.2015.7060502">https://doi.org/10.1109/MCOM.2015.7060502</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Asaeda, H., et al.</span>, <span class="refTitle">"Contrace: a tool for measuring and tracing content-centric networks"</span>, <span class="refContent"> IEEE Communications Magazine, Volume 53, Issue 3</span>, <span class="seriesInfo">DOI 10.1109/MCOM.2015.7060502</span>, <time datetime="2015-03" class="refDate">March 2015</time>, <span>&lt;<a href="https://doi.org/10.1109/MCOM.2015.7060502">https://doi.org/10.1109/MCOM.2015.7060502</a>&gt;</span>. </dd>
+2998c3102
+< <span class="refAuthor">Asaeda, H.</span><span class="refAuthor">, Li, R.</span><span class="refAuthor">, and N. Choi</span>, <span class="refTitle">"Container-Based Unified Testbed for Information Centric Networking"</span>, <span class="refContent">IEEE Network Volume 28, Issue:6</span>, <span class="seriesInfo">DOI 10.1109/MNET.2014.6963806</span>, <time datetime="2014-11">November 2014</time>, <span>&lt;<a href="https://doi.org/10.1109/MNET.2014.6963806">https://doi.org/10.1109/MNET.2014.6963806</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Asaeda, H.</span>, <span class="refAuthor">Li, R.</span>, and <span class="refAuthor">N. Choi</span>, <span class="refTitle">"Container-Based Unified Testbed for Information Centric Networking"</span>, <span class="refContent">IEEE Network Volume 28, Issue:6</span>, <span class="seriesInfo">DOI 10.1109/MNET.2014.6963806</span>, <time datetime="2014-11" class="refDate">November 2014</time>, <span>&lt;<a href="https://doi.org/10.1109/MNET.2014.6963806">https://doi.org/10.1109/MNET.2014.6963806</a>&gt;</span>. </dd>
+3003c3107
+<  Networking 2014 (ICOIN2014)</span>, <span class="refContent">pp. 270-275</span>, <span class="seriesInfo">DOI 10.1109/ICOIN.2014.6799480</span>, <time datetime="2014-02">February 2014</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/6799480">https://ieeexplore.ieee.org/document/6799480</a>&gt;</span>. </dd>
+---
+>  Networking 2014 (ICOIN2014)</span>, <span class="refContent">pp. 270-275</span>, <span class="seriesInfo">DOI 10.1109/ICOIN.2014.6799480</span>, <time datetime="2014-02" class="refDate">February 2014</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/6799480">https://ieeexplore.ieee.org/document/6799480</a>&gt;</span>. </dd>
+3007c3111
+< <span class="refAuthor">Mendes, P.</span><span class="refAuthor">, Sofia, R.</span><span class="refAuthor">, Tsaoussidis, V.</span><span class="refAuthor">, and C. Borrego</span>, <span class="refTitle">"Information-centric Routing for Opportunistic Wireless Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-mendes-icnrg-dabber-04</span>, <time datetime="2020-03-14">14 March 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-mendes-icnrg-dabber-04">https://tools.ietf.org/html/draft-mendes-icnrg-dabber-04</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mendes, P.</span>, <span class="refAuthor">Sofia, R.</span>, <span class="refAuthor">Tsaoussidis, V.</span>, and <span class="refAuthor">C. Borrego</span>, <span class="refTitle">"Information-centric Routing for Opportunistic Wireless Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-mendes-icnrg-dabber-04</span>, <time datetime="2020-03-14" class="refDate">14 March 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-mendes-icnrg-dabber-04">https://tools.ietf.org/html/draft-mendes-icnrg-dabber-04</a>&gt;</span>. </dd>
+3019c3123
+< <span class="refAuthor">3GPP</span>, <span class="refTitle">"System Architecture for the 5G System"</span>, <span class="refContent">Release 15</span>, <span class="seriesInfo">3GPP TS 23.501</span>, <time datetime="2017-12">December 2017</time>. </dd>
+---
+> <span class="refAuthor">3GPP</span>, <span class="refTitle">"System Architecture for the 5G System"</span>, <span class="refContent">Release 15</span>, <span class="seriesInfo">3GPP TS 23.501</span>, <time datetime="2017-12" class="refDate">December 2017</time>. </dd>
+3027c3131
+< <span class="refAuthor">Moiseenko, I.</span><span class="refAuthor"> and D. Oran</span>, <span class="refTitle">"Flow Classification in Information Centric Networking"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-moiseenko-icnrg-flowclass-05</span>, <time datetime="2020-01-20">20 January 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-moiseenko-icnrg-flowclass-05">https://tools.ietf.org/html/draft-moiseenko-icnrg-flowclass-05</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Moiseenko, I.</span> and <span class="refAuthor">D. Oran</span>, <span class="refTitle">"Flow Classification in Information Centric Networking"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-moiseenko-icnrg-flowclass-05</span>, <time datetime="2020-01-20" class="refDate">20 January 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-moiseenko-icnrg-flowclass-05">https://tools.ietf.org/html/draft-moiseenko-icnrg-flowclass-05</a>&gt;</span>. </dd>
+3035c3139
+< <span class="refAuthor">Cisco</span>, <span class="refTitle">"Cisco Announces Important Steps toward Adoption of Information-Centric Networking"</span>, <time datetime="2017-02">February 2017</time>, <span>&lt;<a href="http://blogs.cisco.com/sp/cisco-announces-important-steps-toward-adoption-of-information-centric-networking">http://blogs.cisco.com/sp/cisco-announces-important-steps-toward-adoption-of-information-centric-networking</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cisco</span>, <span class="refTitle">"Cisco Announces Important Steps toward Adoption of Information-Centric Networking"</span>, <time datetime="2017-02" class="refDate">February 2017</time>, <span>&lt;<a href="http://blogs.cisco.com/sp/cisco-announces-important-steps-toward-adoption-of-information-centric-networking">http://blogs.cisco.com/sp/cisco-announces-important-steps-toward-adoption-of-information-centric-networking</a>&gt;</span>. </dd>
+3043c3147
+< <span class="refAuthor">Muscariello, L., et al</span>, <span class="refTitle">"Hybrid Information-Centric Networking: ICN inside the Internet Protocol"</span>, <span class="refContent">ICNRG Interim Meeting</span>, <time datetime="2018-03">March 2018</time>, <span>&lt;<a href="https://datatracker.ietf.org/meeting/interim-2018-icnrg-01/materials/slides-interim-2018-icnrg-01-sessa-hybrid-icn-hicn-luca-muscariello">https://datatracker.ietf.org/meeting/interim-2018-icnrg-01/materials/slides-interim-2018-icnrg-01-sessa-hybrid-icn-hicn-luca-muscariello</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Muscariello, L., et al</span>, <span class="refTitle">"Hybrid Information-Centric Networking: ICN inside the Internet Protocol"</span>, <span class="refContent">ICNRG Interim Meeting</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://datatracker.ietf.org/meeting/interim-2018-icnrg-01/materials/slides-interim-2018-icnrg-01-sessa-hybrid-icn-hicn-luca-muscariello">https://datatracker.ietf.org/meeting/interim-2018-icnrg-01/materials/slides-interim-2018-icnrg-01-sessa-hybrid-icn-hicn-luca-muscariello</a>&gt;</span>. </dd>
+3047c3151
+< <span class="refAuthor">Ravindran, R.</span><span class="refAuthor">, Suthar, P.</span><span class="refAuthor">, Trossen, D.</span><span class="refAuthor">, Wang, C.</span><span class="refAuthor">, and G. White</span>, <span class="refTitle">"Enabling ICN in 3GPP's 5G NextGen Core Architecture"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ravi-icnrg-5gc-icn-04</span>, <time datetime="2019-05-31">31 May 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ravi-icnrg-5gc-icn-04">https://tools.ietf.org/html/draft-ravi-icnrg-5gc-icn-04</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Ravindran, R.</span>, <span class="refAuthor">Suthar, P.</span>, <span class="refAuthor">Trossen, D.</span>, <span class="refAuthor">Wang, C.</span>, and <span class="refAuthor">G. White</span>, <span class="refTitle">"Enabling ICN in 3GPP's 5G NextGen Core Architecture"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ravi-icnrg-5gc-icn-04</span>, <time datetime="2019-05-31" class="refDate">31 May 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ravi-icnrg-5gc-icn-04">https://tools.ietf.org/html/draft-ravi-icnrg-5gc-icn-04</a>&gt;</span>. </dd>
+3051c3155
+< <span class="refAuthor">Paik, E.</span><span class="refAuthor">, Yun, W.</span><span class="refAuthor">, Kwon, T.</span><span class="refAuthor">, and H. Choi</span>, <span class="refTitle">"Deployment Considerations for Information-Centric Networking"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-paik-icn-deployment-considerations-00</span>, <time datetime="2013-07-15">15 July 2013</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-paik-icn-deployment-considerations-00">https://tools.ietf.org/html/draft-paik-icn-deployment-considerations-00</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Paik, E.</span>, <span class="refAuthor">Yun, W.</span>, <span class="refAuthor">Kwon, T.</span>, and <span class="refAuthor">H. Choi</span>, <span class="refTitle">"Deployment Considerations for Information-Centric Networking"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-paik-icn-deployment-considerations-00</span>, <time datetime="2013-07-15" class="refDate">15 July 2013</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-paik-icn-deployment-considerations-00">https://tools.ietf.org/html/draft-paik-icn-deployment-considerations-00</a>&gt;</span>. </dd>
+3055c3159
+< <span class="refAuthor">Ravindran, R.</span><span class="refAuthor">, Zhang, Y.</span><span class="refAuthor">, Grieco, L.</span><span class="refAuthor">, Lindgren, A.</span><span class="refAuthor">, Burke, J.</span><span class="refAuthor">, Ahlgren, B.</span><span class="refAuthor">, and A. Azgin</span>, <span class="refTitle">"Design Considerations for Applying ICN to IoT"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-irtf-icnrg-icniot-03</span>, <time datetime="2019-05-02">2 May 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-irtf-icnrg-icniot-03">https://tools.ietf.org/html/draft-irtf-icnrg-icniot-03</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Ravindran, R.</span>, <span class="refAuthor">Zhang, Y.</span>, <span class="refAuthor">Grieco, L.</span>, <span class="refAuthor">Lindgren, A.</span>, <span class="refAuthor">Burke, J.</span>, <span class="refAuthor">Ahlgren, B.</span>, and <span class="refAuthor">A. Azgin</span>, <span class="refTitle">"Design Considerations for Applying ICN to IoT"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-irtf-icnrg-icniot-03</span>, <time datetime="2019-05-02" class="refDate">2 May 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-irtf-icnrg-icniot-03">https://tools.ietf.org/html/draft-irtf-icnrg-icniot-03</a>&gt;</span>. </dd>
+3059c3163
+< <span class="refAuthor">Suthar, P.</span><span class="refAuthor">, Stolic, M.</span><span class="refAuthor">, Jangam, A., Ed.</span><span class="refAuthor">, Trossen, D.</span><span class="refAuthor">, and R. Ravindran</span>, <span class="refTitle">"Native Deployment of ICN in LTE, 4G Mobile Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-irtf-icnrg-icn-lte-4g-05</span>, <time datetime="2019-11-04">4 November 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-irtf-icnrg-icn-lte-4g-05">https://tools.ietf.org/html/draft-irtf-icnrg-icn-lte-4g-05</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Suthar, P.</span>, <span class="refAuthor">Stolic, M.</span>, <span class="refAuthor">Jangam, A., Ed.</span>, <span class="refAuthor">Trossen, D.</span>, and <span class="refAuthor">R. Ravindran</span>, <span class="refTitle">"Native Deployment of ICN in LTE, 4G Mobile Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-irtf-icnrg-icn-lte-4g-05</span>, <time datetime="2019-11-04" class="refDate">4 November 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-irtf-icnrg-icn-lte-4g-05">https://tools.ietf.org/html/draft-irtf-icnrg-icn-lte-4g-05</a>&gt;</span>. </dd>
+3063c3167
+< <span class="refAuthor">Jangam, A.</span><span class="refAuthor">, Suthar, P.</span><span class="refAuthor">, and M. Stolic</span>, <span class="refTitle">"Supporting QoS aware Data Delivery in Information Centric Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-anilj-icnrg-icn-qos-00</span>, <time datetime="2018-07-14">14 July 2018</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-anilj-icnrg-icn-qos-00">https://tools.ietf.org/html/draft-anilj-icnrg-icn-qos-00</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jangam, A.</span>, <span class="refAuthor">Suthar, P.</span>, and <span class="refAuthor">M. Stolic</span>, <span class="refTitle">"Supporting QoS aware Data Delivery in Information Centric Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-anilj-icnrg-icn-qos-00</span>, <time datetime="2018-07-14" class="refDate">14 July 2018</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-anilj-icnrg-icn-qos-00">https://tools.ietf.org/html/draft-anilj-icnrg-icn-qos-00</a>&gt;</span>. </dd>
+3067c3171
+< <span class="refAuthor">Wissingh, B.</span><span class="refAuthor">, Wood, C.</span><span class="refAuthor">, Afanasyev, A.</span><span class="refAuthor">, Zhang, L.</span><span class="refAuthor">, Oran, D.</span><span class="refAuthor">, and C. Tschudin</span>, <span class="refTitle">"Information-Centric Networking (ICN): CCNx and NDN Terminology"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-irtf-icnrg-terminology-08</span>, <time datetime="2020-01-17">17 January 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-irtf-icnrg-terminology-08">https://tools.ietf.org/html/draft-irtf-icnrg-terminology-08</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Wissingh, B.</span>, <span class="refAuthor">Wood, C.</span>, <span class="refAuthor">Afanasyev, A.</span>, <span class="refAuthor">Zhang, L.</span>, <span class="refAuthor">Oran, D.</span>, and <span class="refAuthor">C. Tschudin</span>, <span class="refTitle">"Information-Centric Networking (ICN): CCNx and NDN Terminology"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-irtf-icnrg-terminology-08</span>, <time datetime="2020-01-17" class="refDate">17 January 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-irtf-icnrg-terminology-08">https://tools.ietf.org/html/draft-irtf-icnrg-terminology-08</a>&gt;</span>. </dd>
+3071c3175
+< <span class="refAuthor">ICN2020</span>, <span class="refTitle">"D4.1: 1st Yearly WP4 Report &amp; Demonstration"</span>, <time datetime="2017-08">August 2017</time>, <span>&lt;<a href="https://projects.gwdg.de/attachments/6840/D4.1-PU.pdf">https://projects.gwdg.de/attachments/6840/D4.1-PU.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">ICN2020</span>, <span class="refTitle">"D4.1: 1st Yearly WP4 Report &amp; Demonstration"</span>, <time datetime="2017-08" class="refDate">August 2017</time>, <span>&lt;<a href="https://projects.gwdg.de/attachments/6840/D4.1-PU.pdf">https://projects.gwdg.de/attachments/6840/D4.1-PU.pdf</a>&gt;</span>. </dd>
+3083c3187
+< <span class="refAuthor">Trossen, D.</span><span class="refAuthor"> and G. Parisis</span>, <span class="refTitle">"Designing and realizing an information-centric internet"</span>, <span class="refContent">IEEE Communications Magazine, Volume 50, Issue 7</span>, <span class="seriesInfo">DOI 10.1109/MCOM.2012.6231280</span>, <time></time>, <span>&lt;<a href="https://doi.org/10.1109/MCOM.2012.6231280">https://doi.org/10.1109/MCOM.2012.6231280</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Trossen, D.</span> and <span class="refAuthor">G. Parisis</span>, <span class="refTitle">"Designing and realizing an information-centric internet"</span>, <span class="refContent">IEEE Communications Magazine, Volume 50, Issue 7</span>, <span class="seriesInfo">DOI 10.1109/MCOM.2012.6231280</span>, <span>&lt;<a href="https://doi.org/10.1109/MCOM.2012.6231280">https://doi.org/10.1109/MCOM.2012.6231280</a>&gt;</span>. </dd>
+3087,3088c3191,3192
+< <span class="refAuthor">Trossen, D.</span><span class="refAuthor"> and G. Biczok</span>, <span class="refTitle">"Not paying the truck driver: differentiated pricing for the future internet"</span>, <span class="refContent">ReARCH '10: Proceedings of the Re-Architecting the
+<  Internet Workshop</span>, <span class="seriesInfo">ReArch '10: Proceedings of the    Re-Architecting the Internet Workshop</span>, <span class="seriesInfo">DOI 10.1145/1921233.1921235</span>, <time datetime="2010-11">November 2010</time>, <span>&lt;<a href="https://doi.org/10.1145/1921233.1921235">https://doi.org/10.1145/1921233.1921235</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Trossen, D.</span> and <span class="refAuthor">G. Biczok</span>, <span class="refTitle">"Not paying the truck driver: differentiated pricing for the future internet"</span>, <span class="refContent">ReARCH '10: Proceedings of the Re-Architecting the
+>  Internet Workshop</span>, <span class="seriesInfo">ReArch '10: Proceedings of the    Re-Architecting the Internet Workshop</span>, <span class="seriesInfo">DOI 10.1145/1921233.1921235</span>, <time datetime="2010-11" class="refDate">November 2010</time>, <span>&lt;<a href="https://doi.org/10.1145/1921233.1921235">https://doi.org/10.1145/1921233.1921235</a>&gt;</span>. </dd>
+3093c3197
+<  conference on Emerging networking experiments and technologies</span>, <span class="seriesInfo">DOI 10.1145/1658939.1658941</span>, <time datetime="2009-12">December 2009</time>, <span>&lt;<a href="https://doi.org/10.1145/1658939.1658941">https://doi.org/10.1145/1658939.1658941</a>&gt;</span>. </dd>
+---
+>  conference on Emerging networking experiments and technologies</span>, <span class="seriesInfo">DOI 10.1145/1658939.1658941</span>, <time datetime="2009-12" class="refDate">December 2009</time>, <span>&lt;<a href="https://doi.org/10.1145/1658939.1658941">https://doi.org/10.1145/1658939.1658941</a>&gt;</span>. </dd>
+3098c3202
+<    Development and Analysis of Intelligent Vehicular Networks and Applications</span>, <span class="seriesInfo">DOI 10.1145/3132340.3132351</span>, <time datetime="2017-11">November 2017</time>, <span>&lt;<a href="https://dl.acm.org/citation.cfm?id=3132351">https://dl.acm.org/citation.cfm?id=3132351</a>&gt;</span>. </dd>
+---
+>    Development and Analysis of Intelligent Vehicular Networks and Applications</span>, <span class="seriesInfo">DOI 10.1145/3132340.3132351</span>, <time datetime="2017-11" class="refDate">November 2017</time>, <span>&lt;<a href="https://dl.acm.org/citation.cfm?id=3132351">https://dl.acm.org/citation.cfm?id=3132351</a>&gt;</span>. </dd>
+3103c3207
+<  Networks and Workshops (ICIN)</span>, <span class="seriesInfo">DOI 10.1109/ICIN.2018.8401591</span>, <time datetime="2018-07">July 2018</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/8401591">https://ieeexplore.ieee.org/document/8401591</a>&gt;</span>. </dd>
+---
+>  Networks and Workshops (ICIN)</span>, <span class="seriesInfo">DOI 10.1109/ICIN.2018.8401591</span>, <time datetime="2018-07" class="refDate">July 2018</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/8401591">https://ieeexplore.ieee.org/document/8401591</a>&gt;</span>. </dd>
+3108c3212
+<  Symposium</span>, <span class="seriesInfo">DOI 10.1109/NOMS.2018.8406246</span>, <time datetime="2018-07">July 2018</time>, <span>&lt;<a href="https://doi.org/10.1109/NOMS.2018.8406246">https://doi.org/10.1109/NOMS.2018.8406246</a>&gt;</span>. </dd>
+---
+>  Symposium</span>, <span class="seriesInfo">DOI 10.1109/NOMS.2018.8406246</span>, <time datetime="2018-07" class="refDate">July 2018</time>, <span>&lt;<a href="https://doi.org/10.1109/NOMS.2018.8406246">https://doi.org/10.1109/NOMS.2018.8406246</a>&gt;</span>. </dd>
+3113c3217
+<  Management Symposium</span>, <span class="seriesInfo">DOI 10.1109/NOMS.2018.8406206</span>, <time datetime="2018-07">July 2018</time>, <span>&lt;<a href="http://www.mallouli.com/recherche/publications/noms2018-1.pdf">http://www.mallouli.com/recherche/publications/noms2018-1.pdf</a>&gt;</span>. </dd>
+---
+>  Management Symposium</span>, <span class="seriesInfo">DOI 10.1109/NOMS.2018.8406206</span>, <time datetime="2018-07" class="refDate">July 2018</time>, <span>&lt;<a href="http://www.mallouli.com/recherche/publications/noms2018-1.pdf">http://www.mallouli.com/recherche/publications/noms2018-1.pdf</a>&gt;</span>. </dd>
+3117,3118c3221,3222
+< <span class="refAuthor">Moiseenko, I.</span><span class="refAuthor"> and D. Oran</span>, <span class="refTitle">"TCP/ICN: Carrying TCP over Content Centric and Named Data Networks"</span>, <span class="refContent">ACM-ICN '16: Proceedings of the 3rd ACM Conference on
+<  Information-Centric Networking</span>, <span class="seriesInfo">DOI 10.1145/2984356.2984357</span>, <time datetime="2016-09">September 2016</time>, <span>&lt;<a href="http://conferences2.sigcomm.org/acm-icn/2016/proceedings/p112-moiseenko.pdf">http://conferences2.sigcomm.org/acm-icn/2016/proceedings/p112-moiseenko.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Moiseenko, I.</span> and <span class="refAuthor">D. Oran</span>, <span class="refTitle">"TCP/ICN: Carrying TCP over Content Centric and Named Data Networks"</span>, <span class="refContent">ACM-ICN '16: Proceedings of the 3rd ACM Conference on
+>  Information-Centric Networking</span>, <span class="seriesInfo">DOI 10.1145/2984356.2984357</span>, <time datetime="2016-09" class="refDate">September 2016</time>, <span>&lt;<a href="http://conferences2.sigcomm.org/acm-icn/2016/proceedings/p112-moiseenko.pdf">http://conferences2.sigcomm.org/acm-icn/2016/proceedings/p112-moiseenko.pdf</a>&gt;</span>. </dd>
+3122c3226
+< <span class="refAuthor">InterDigital</span>, <span class="refTitle">"InterDigital Demo at Mobile World Congress (MWC)"</span>, <time datetime="2016">2016</time>, <span>&lt;<a href="http://www.interdigital.com/download/56d5c71bd616f892ba001861">http://www.interdigital.com/download/56d5c71bd616f892ba001861</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">InterDigital</span>, <span class="refTitle">"InterDigital Demo at Mobile World Congress (MWC)"</span>, <time datetime="2016" class="refDate">2016</time>, <span>&lt;<a href="http://www.interdigital.com/download/56d5c71bd616f892ba001861">http://www.interdigital.com/download/56d5c71bd616f892ba001861</a>&gt;</span>. </dd>
+3130c3234
+< <span class="refAuthor">Kutscher, D.</span><span class="refAuthor">, Farrell, S.</span><span class="refAuthor">, and E. Davies</span>, <span class="refTitle">"The NetInf Protocol"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-kutscher-icnrg-netinf-proto-01</span>, <time datetime="2013-02-10">10 February 2013</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-kutscher-icnrg-netinf-proto-01">https://tools.ietf.org/html/draft-kutscher-icnrg-netinf-proto-01</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Kutscher, D.</span>, <span class="refAuthor">Farrell, S.</span>, and <span class="refAuthor">E. Davies</span>, <span class="refTitle">"The NetInf Protocol"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-kutscher-icnrg-netinf-proto-01</span>, <time datetime="2013-02-10" class="refDate">10 February 2013</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-kutscher-icnrg-netinf-proto-01">https://tools.ietf.org/html/draft-kutscher-icnrg-netinf-proto-01</a>&gt;</span>. </dd>
+3138c3242
+< <span class="refAuthor">NGMN Alliance</span>, <span class="refTitle">"5G White Paper"</span>, <time datetime="2015-02">February 2015</time>, <span>&lt;<a href="https://www.ngmn.org/wp-content/uploads/NGMN_5G_White_Paper_V1_0.pdf">https://www.ngmn.org/wp-content/uploads/NGMN_5G_White_Paper_V1_0.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">NGMN Alliance</span>, <span class="refTitle">"5G White Paper"</span>, <time datetime="2015-02" class="refDate">February 2015</time>, <span>&lt;<a href="https://www.ngmn.org/wp-content/uploads/NGMN_5G_White_Paper_V1_0.pdf">https://www.ngmn.org/wp-content/uploads/NGMN_5G_White_Paper_V1_0.pdf</a>&gt;</span>. </dd>
+3142c3246
+< <span class="refAuthor">NGMN Alliance</span>, <span class="refTitle">"Description of Network Slicing Concept"</span>, <span class="refContent">NGMN 5G P1</span>, <span class="refContent">Requirements &amp; Architecture</span>, <span class="refContent">Work Stream End-to-End Architecture</span>, <span class="refContent">Version 1.0</span>, <time datetime="2016-01">January 2016</time>, <span>&lt;<a href="https://www.ngmn.org/wp-content/uploads/160113_NGMN_Network_Slicing_v1_0.pdf">https://www.ngmn.org/wp-content/uploads/160113_NGMN_Network_Slicing_v1_0.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">NGMN Alliance</span>, <span class="refTitle">"Description of Network Slicing Concept"</span>, <span class="refContent">NGMN 5G P1</span>, <span class="refContent">Requirements &amp; Architecture</span>, <span class="refContent">Work Stream End-to-End Architecture</span>, <span class="refContent">Version 1.0</span>, <time datetime="2016-01" class="refDate">January 2016</time>, <span>&lt;<a href="https://www.ngmn.org/wp-content/uploads/160113_NGMN_Network_Slicing_v1_0.pdf">https://www.ngmn.org/wp-content/uploads/160113_NGMN_Network_Slicing_v1_0.pdf</a>&gt;</span>. </dd>
+3147c3251
+<  Management (IM)</span>, <span class="seriesInfo">DOI 10.23919/INM.2017.7987266</span>, <time datetime="2017-07">July 2017</time>, <span>&lt;<a href="https://doi.org/10.23919/INM.2017.7987266">https://doi.org/10.23919/INM.2017.7987266</a>&gt;</span>. </dd>
+---
+>  Management (IM)</span>, <span class="seriesInfo">DOI 10.23919/INM.2017.7987266</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://doi.org/10.23919/INM.2017.7987266">https://doi.org/10.23919/INM.2017.7987266</a>&gt;</span>. </dd>
+3151,3152c3255,3256
+< <span class="refAuthor">Nguyen, T.</span><span class="refAuthor">, Cogranne, R.</span><span class="refAuthor">, and G. Doyen</span>, <span class="refTitle">"An optimal statistical test for robust detection against interest flooding attacks in CCN"</span>, <span class="refContent">2015 IFIP/IEEE International Symposium on Integrated
+<  Network Management (IM)</span>, <span class="seriesInfo">DOI 10.1109/INM.2015.7140299</span>, <time datetime="2015-07">July 2015</time>, <span>&lt;<a href="https://doi.org/10.1109/INM.2015.7140299">https://doi.org/10.1109/INM.2015.7140299</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Nguyen, T.</span>, <span class="refAuthor">Cogranne, R.</span>, and <span class="refAuthor">G. Doyen</span>, <span class="refTitle">"An optimal statistical test for robust detection against interest flooding attacks in CCN"</span>, <span class="refContent">2015 IFIP/IEEE International Symposium on Integrated
+>  Network Management (IM)</span>, <span class="seriesInfo">DOI 10.1109/INM.2015.7140299</span>, <time datetime="2015-07" class="refDate">July 2015</time>, <span>&lt;<a href="https://doi.org/10.1109/INM.2015.7140299">https://doi.org/10.1109/INM.2015.7140299</a>&gt;</span>. </dd>
+3156c3260
+< <span class="refAuthor">Nguyen, T., et al.</span>, <span class="refTitle">"A Security Monitoring Plane for Named Data Networking Deployment"</span>, <span class="refContent">IEEE Communications Magazine, Volume: 56, Issue 11</span>, <span class="seriesInfo">DOI 10.1109/MCOM.2018.1701135</span>, <time datetime="2018-11">November 2018</time>, <span>&lt;<a href="https://doi.org/10.1109/MCOM.2018.1701135">https://doi.org/10.1109/MCOM.2018.1701135</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Nguyen, T., et al.</span>, <span class="refTitle">"A Security Monitoring Plane for Named Data Networking Deployment"</span>, <span class="refContent">IEEE Communications Magazine, Volume: 56, Issue 11</span>, <span class="seriesInfo">DOI 10.1109/MCOM.2018.1701135</span>, <time datetime="2018-11" class="refDate">November 2018</time>, <span>&lt;<a href="https://doi.org/10.1109/MCOM.2018.1701135">https://doi.org/10.1109/MCOM.2018.1701135</a>&gt;</span>. </dd>
+3164c3268
+< <span class="refAuthor">OneM2M</span>, <span class="refTitle">"oneM2M Service Layer Standards for M2M and IoT"</span>, <time datetime="2017">2017</time>, <span>&lt;<a href="http://www.onem2m.org/">http://www.onem2m.org/</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">OneM2M</span>, <span class="refTitle">"oneM2M Service Layer Standards for M2M and IoT"</span>, <time datetime="2017" class="refDate">2017</time>, <span>&lt;<a href="http://www.onem2m.org/">http://www.onem2m.org/</a>&gt;</span>. </dd>
+3168c3272
+< <span class="refAuthor">Shailendra, S.,et al.</span>, <span class="refTitle">"A novel overlay architecture for Information Centric Networking"</span>, <span class="refContent">2015 21st National Conference on Communications, NCC 2015</span>, <span class="seriesInfo">DOI 10.1109/NCC.2015.7084921</span>, <time datetime="2016-04">April 2016</time>, <span>&lt;<a href="https://www.researchgate.net/publication/282779666_A_novel_overlay_architecture_for_Information_Centric_Networking">https://www.researchgate.net/publication/282779666_A_novel_overlay_architecture_for_Information_Centric_Networking</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Shailendra, S.,et al.</span>, <span class="refTitle">"A novel overlay architecture for Information Centric Networking"</span>, <span class="refContent">2015 21st National Conference on Communications, NCC 2015</span>, <span class="seriesInfo">DOI 10.1109/NCC.2015.7084921</span>, <time datetime="2016-04" class="refDate">April 2016</time>, <span>&lt;<a href="https://www.researchgate.net/publication/282779666_A_novel_overlay_architecture_for_Information_Centric_Networking">https://www.researchgate.net/publication/282779666_A_novel_overlay_architecture_for_Information_Centric_Networking</a>&gt;</span>. </dd>
+3172c3276
+< <span class="refAuthor">Trossen, D., et al.</span>, <span class="refTitle">"IP over ICN - The better IP?"</span>, <span class="refContent">2015 European Conference on Networks and Communications (EuCNC)</span>, <span class="seriesInfo">DOI 10.1109/EuCNC.2015.7194109</span>, <time datetime="2015-06">June 2015</time>, <span>&lt;<a href="https://doi.org/10.1109/EuCNC.2015.7194109">https://doi.org/10.1109/EuCNC.2015.7194109</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Trossen, D., et al.</span>, <span class="refTitle">"IP over ICN - The better IP?"</span>, <span class="refContent">2015 European Conference on Networks and Communications (EuCNC)</span>, <span class="seriesInfo">DOI 10.1109/EuCNC.2015.7194109</span>, <time datetime="2015-06" class="refDate">June 2015</time>, <span>&lt;<a href="https://doi.org/10.1109/EuCNC.2015.7194109">https://doi.org/10.1109/EuCNC.2015.7194109</a>&gt;</span>. </dd>
+3176c3280
+< <span class="refAuthor">Ravindran, R., et al.</span>, <span class="refTitle">"5G-ICN : Delivering ICN Services over 5G using Network Slicing"</span>, <span class="refContent">IEEE Communications Magazine, Volume 55, Issue 5</span>, <span class="seriesInfo">DOI 10.1109/MCOM.2017.1600938</span>, <time datetime="2016-10">October 2016</time>, <span>&lt;<a href="https://arxiv.org/abs/1610.01182">https://arxiv.org/abs/1610.01182</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Ravindran, R., et al.</span>, <span class="refTitle">"5G-ICN : Delivering ICN Services over 5G using Network Slicing"</span>, <span class="refContent">IEEE Communications Magazine, Volume 55, Issue 5</span>, <span class="seriesInfo">DOI 10.1109/MCOM.2017.1600938</span>, <time datetime="2016-10" class="refDate">October 2016</time>, <span>&lt;<a href="https://arxiv.org/abs/1610.01182">https://arxiv.org/abs/1610.01182</a>&gt;</span>. </dd>
+3180c3284
+< <span class="refAuthor">Reed, M., et al.</span>, <span class="refTitle">"Stateless multicast switching in software defined networks"</span>, <span class="refContent">2016 IEEE International Conference on Communications (ICC)</span>, <span class="seriesInfo">DOI 10.1109/ICC.2016.7511036</span>, <time datetime="2016-05">May 2016</time>, <span>&lt;<a href="https://doi.org/10.1109/ICC.2016.7511036">https://doi.org/10.1109/ICC.2016.7511036</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Reed, M., et al.</span>, <span class="refTitle">"Stateless multicast switching in software defined networks"</span>, <span class="refContent">2016 IEEE International Conference on Communications (ICC)</span>, <span class="seriesInfo">DOI 10.1109/ICC.2016.7511036</span>, <time datetime="2016-05" class="refDate">May 2016</time>, <span>&lt;<a href="https://doi.org/10.1109/ICC.2016.7511036">https://doi.org/10.1109/ICC.2016.7511036</a>&gt;</span>. </dd>
+3184c3288
+< <span class="refAuthor">Farrell, S.</span><span class="refAuthor">, Kutscher, D.</span><span class="refAuthor">, Dannewitz, C.</span><span class="refAuthor">, Ohlman, B.</span><span class="refAuthor">, Keranen, A.</span><span class="refAuthor">, and P. Hallam-Baker</span>, <span class="refTitle">"Naming Things with Hashes"</span>, <span class="seriesInfo">RFC 6920</span>, <span class="seriesInfo">DOI 10.17487/RFC6920</span>, <time datetime="2013-04">April 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6920">https://www.rfc-editor.org/info/rfc6920</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Farrell, S.</span>, <span class="refAuthor">Kutscher, D.</span>, <span class="refAuthor">Dannewitz, C.</span>, <span class="refAuthor">Ohlman, B.</span>, <span class="refAuthor">Keranen, A.</span>, and <span class="refAuthor">P. Hallam-Baker</span>, <span class="refTitle">"Naming Things with Hashes"</span>, <span class="seriesInfo">RFC 6920</span>, <span class="seriesInfo">DOI 10.17487/RFC6920</span>, <time datetime="2013-04" class="refDate">April 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6920">https://www.rfc-editor.org/info/rfc6920</a>&gt;</span>. </dd>
+3188c3292
+< <span class="refAuthor">Shelby, Z.</span><span class="refAuthor">, Hartke, K.</span><span class="refAuthor">, and C. Bormann</span>, <span class="refTitle">"The Constrained Application Protocol (CoAP)"</span>, <span class="seriesInfo">RFC 7252</span>, <span class="seriesInfo">DOI 10.17487/RFC7252</span>, <time datetime="2014-06">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7252">https://www.rfc-editor.org/info/rfc7252</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Shelby, Z.</span>, <span class="refAuthor">Hartke, K.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"The Constrained Application Protocol (CoAP)"</span>, <span class="seriesInfo">RFC 7252</span>, <span class="seriesInfo">DOI 10.17487/RFC7252</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7252">https://www.rfc-editor.org/info/rfc7252</a>&gt;</span>. </dd>
+3192c3296
+< <span class="refAuthor">Haleplidis, E., Ed.</span><span class="refAuthor">, Pentikousis, K., Ed.</span><span class="refAuthor">, Denazis, S.</span><span class="refAuthor">, Hadi Salim, J.</span><span class="refAuthor">, Meyer, D.</span><span class="refAuthor">, and O. Koufopavlou</span>, <span class="refTitle">"Software-Defined Networking (SDN): Layers and Architecture Terminology"</span>, <span class="seriesInfo">RFC 7426</span>, <span class="seriesInfo">DOI 10.17487/RFC7426</span>, <time datetime="2015-01">January 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7426">https://www.rfc-editor.org/info/rfc7426</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Haleplidis, E., Ed.</span>, <span class="refAuthor">Pentikousis, K., Ed.</span>, <span class="refAuthor">Denazis, S.</span>, <span class="refAuthor">Hadi Salim, J.</span>, <span class="refAuthor">Meyer, D.</span>, and <span class="refAuthor">O. Koufopavlou</span>, <span class="refTitle">"Software-Defined Networking (SDN): Layers and Architecture Terminology"</span>, <span class="seriesInfo">RFC 7426</span>, <span class="seriesInfo">DOI 10.17487/RFC7426</span>, <time datetime="2015-01" class="refDate">January 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7426">https://www.rfc-editor.org/info/rfc7426</a>&gt;</span>. </dd>
+3196c3300
+< <span class="refAuthor">Halpern, J., Ed.</span><span class="refAuthor"> and C. Pignataro, Ed.</span>, <span class="refTitle">"Service Function Chaining (SFC) Architecture"</span>, <span class="seriesInfo">RFC 7665</span>, <span class="seriesInfo">DOI 10.17487/RFC7665</span>, <time datetime="2015-10">October 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7665">https://www.rfc-editor.org/info/rfc7665</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Halpern, J., Ed.</span> and <span class="refAuthor">C. Pignataro, Ed.</span>, <span class="refTitle">"Service Function Chaining (SFC) Architecture"</span>, <span class="seriesInfo">RFC 7665</span>, <span class="seriesInfo">DOI 10.17487/RFC7665</span>, <time datetime="2015-10" class="refDate">October 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7665">https://www.rfc-editor.org/info/rfc7665</a>&gt;</span>. </dd>
+3200c3304
+< <span class="refAuthor">Kutscher, D., Ed.</span><span class="refAuthor">, Eum, S.</span><span class="refAuthor">, Pentikousis, K.</span><span class="refAuthor">, Psaras, I.</span><span class="refAuthor">, Corujo, D.</span><span class="refAuthor">, Saucez, D.</span><span class="refAuthor">, Schmidt, T.</span><span class="refAuthor">, and M. Waehlisch</span>, <span class="refTitle">"Information-Centric Networking (ICN) Research Challenges"</span>, <span class="seriesInfo">RFC 7927</span>, <span class="seriesInfo">DOI 10.17487/RFC7927</span>, <time datetime="2016-07">July 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7927">https://www.rfc-editor.org/info/rfc7927</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Kutscher, D., Ed.</span>, <span class="refAuthor">Eum, S.</span>, <span class="refAuthor">Pentikousis, K.</span>, <span class="refAuthor">Psaras, I.</span>, <span class="refAuthor">Corujo, D.</span>, <span class="refAuthor">Saucez, D.</span>, <span class="refAuthor">Schmidt, T.</span>, and <span class="refAuthor">M. Waehlisch</span>, <span class="refTitle">"Information-Centric Networking (ICN) Research Challenges"</span>, <span class="seriesInfo">RFC 7927</span>, <span class="seriesInfo">DOI 10.17487/RFC7927</span>, <time datetime="2016-07" class="refDate">July 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7927">https://www.rfc-editor.org/info/rfc7927</a>&gt;</span>. </dd>
+3204c3308
+< <span class="refAuthor">Pentikousis, K., Ed.</span><span class="refAuthor">, Ohlman, B.</span><span class="refAuthor">, Davies, E.</span><span class="refAuthor">, Spirou, S.</span><span class="refAuthor">, and G. Boggia</span>, <span class="refTitle">"Information-Centric Networking: Evaluation and Security Considerations"</span>, <span class="seriesInfo">RFC 7945</span>, <span class="seriesInfo">DOI 10.17487/RFC7945</span>, <time datetime="2016-09">September 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7945">https://www.rfc-editor.org/info/rfc7945</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Pentikousis, K., Ed.</span>, <span class="refAuthor">Ohlman, B.</span>, <span class="refAuthor">Davies, E.</span>, <span class="refAuthor">Spirou, S.</span>, and <span class="refAuthor">G. Boggia</span>, <span class="refTitle">"Information-Centric Networking: Evaluation and Security Considerations"</span>, <span class="seriesInfo">RFC 7945</span>, <span class="seriesInfo">DOI 10.17487/RFC7945</span>, <time datetime="2016-09" class="refDate">September 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7945">https://www.rfc-editor.org/info/rfc7945</a>&gt;</span>. </dd>
+3208c3312
+< <span class="refAuthor">Castellani, A.</span><span class="refAuthor">, Loreto, S.</span><span class="refAuthor">, Rahman, A.</span><span class="refAuthor">, Fossati, T.</span><span class="refAuthor">, and E. Dijk</span>, <span class="refTitle">"Guidelines for Mapping Implementations: HTTP to the Constrained Application Protocol (CoAP)"</span>, <span class="seriesInfo">RFC 8075</span>, <span class="seriesInfo">DOI 10.17487/RFC8075</span>, <time datetime="2017-02">February 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8075">https://www.rfc-editor.org/info/rfc8075</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Castellani, A.</span>, <span class="refAuthor">Loreto, S.</span>, <span class="refAuthor">Rahman, A.</span>, <span class="refAuthor">Fossati, T.</span>, and <span class="refAuthor">E. Dijk</span>, <span class="refTitle">"Guidelines for Mapping Implementations: HTTP to the Constrained Application Protocol (CoAP)"</span>, <span class="seriesInfo">RFC 8075</span>, <span class="seriesInfo">DOI 10.17487/RFC8075</span>, <time datetime="2017-02" class="refDate">February 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8075">https://www.rfc-editor.org/info/rfc8075</a>&gt;</span>. </dd>
+3212c3316
+< <span class="refAuthor">Bernardos, CJ.</span><span class="refAuthor">, Rahman, A.</span><span class="refAuthor">, Zuniga, JC.</span><span class="refAuthor">, Contreras, LM.</span><span class="refAuthor">, Aranda, P.</span><span class="refAuthor">, and P. Lynch</span>, <span class="refTitle">"Network Virtualization Research Challenges"</span>, <span class="seriesInfo">RFC 8568</span>, <span class="seriesInfo">DOI 10.17487/RFC8568</span>, <time datetime="2019-04">April 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8568">https://www.rfc-editor.org/info/rfc8568</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bernardos, CJ.</span>, <span class="refAuthor">Rahman, A.</span>, <span class="refAuthor">Zuniga, JC.</span>, <span class="refAuthor">Contreras, LM.</span>, <span class="refAuthor">Aranda, P.</span>, and <span class="refAuthor">P. Lynch</span>, <span class="refTitle">"Network Virtualization Research Challenges"</span>, <span class="seriesInfo">RFC 8568</span>, <span class="seriesInfo">DOI 10.17487/RFC8568</span>, <time datetime="2019-04" class="refDate">April 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8568">https://www.rfc-editor.org/info/rfc8568</a>&gt;</span>. </dd>
+3216c3320
+< <span class="refAuthor">Mosko, M.</span><span class="refAuthor">, Solis, I.</span><span class="refAuthor">, and C. Wood</span>, <span class="refTitle">"Content-Centric Networking (CCNx) Semantics"</span>, <span class="seriesInfo">RFC 8569</span>, <span class="seriesInfo">DOI 10.17487/RFC8569</span>, <time datetime="2019-07">July 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8569">https://www.rfc-editor.org/info/rfc8569</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mosko, M.</span>, <span class="refAuthor">Solis, I.</span>, and <span class="refAuthor">C. Wood</span>, <span class="refTitle">"Content-Centric Networking (CCNx) Semantics"</span>, <span class="seriesInfo">RFC 8569</span>, <span class="seriesInfo">DOI 10.17487/RFC8569</span>, <time datetime="2019-07" class="refDate">July 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8569">https://www.rfc-editor.org/info/rfc8569</a>&gt;</span>. </dd>
+3220c3324
+< <span class="refAuthor">Mosko, M.</span><span class="refAuthor">, Solis, I.</span><span class="refAuthor">, and C. Wood</span>, <span class="refTitle">"Content-Centric Networking (CCNx) Messages in TLV Format"</span>, <span class="seriesInfo">RFC 8609</span>, <span class="seriesInfo">DOI 10.17487/RFC8609</span>, <time datetime="2019-07">July 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8609">https://www.rfc-editor.org/info/rfc8609</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mosko, M.</span>, <span class="refAuthor">Solis, I.</span>, and <span class="refAuthor">C. Wood</span>, <span class="refTitle">"Content-Centric Networking (CCNx) Messages in TLV Format"</span>, <span class="seriesInfo">RFC 8609</span>, <span class="seriesInfo">DOI 10.17487/RFC8609</span>, <time datetime="2019-07" class="refDate">July 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8609">https://www.rfc-editor.org/info/rfc8609</a>&gt;</span>. </dd>
+3224c3328
+< <span class="refAuthor">Selander, G.</span><span class="refAuthor">, Mattsson, J.</span><span class="refAuthor">, Palombini, F.</span><span class="refAuthor">, and L. Seitz</span>, <span class="refTitle">"Object Security for Constrained RESTful Environments (OSCORE)"</span>, <span class="seriesInfo">RFC 8613</span>, <span class="seriesInfo">DOI 10.17487/RFC8613</span>, <time datetime="2019-07">July 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8613">https://www.rfc-editor.org/info/rfc8613</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Selander, G.</span>, <span class="refAuthor">Mattsson, J.</span>, <span class="refAuthor">Palombini, F.</span>, and <span class="refAuthor">L. Seitz</span>, <span class="refTitle">"Object Security for Constrained RESTful Environments (OSCORE)"</span>, <span class="seriesInfo">RFC 8613</span>, <span class="seriesInfo">DOI 10.17487/RFC8613</span>, <time datetime="2019-07" class="refDate">July 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8613">https://www.rfc-editor.org/info/rfc8613</a>&gt;</span>. </dd>
+3232c3336
+< <span class="refAuthor">FP7</span>, <span class="refTitle">"NetInf Content Delivery and Operations"</span>, <span class="seriesInfo">Objective FP7-ICT-2009-5-257448/D-3.2</span>, <time datetime="2013-01">January 2013</time>, <span>&lt;<a href="https://sail-project.eu/wp-content/uploads/2012/06/SAIL_DB2_v1_0_final-Public.pdf">https://sail-project.eu/wp-content/uploads/2012/06/SAIL_DB2_v1_0_final-Public.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">FP7</span>, <span class="refTitle">"NetInf Content Delivery and Operations"</span>, <span class="seriesInfo">Objective FP7-ICT-2009-5-257448/D-3.2</span>, <time datetime="2013-01" class="refDate">January 2013</time>, <span>&lt;<a href="https://sail-project.eu/wp-content/uploads/2012/06/SAIL_DB2_v1_0_final-Public.pdf">https://sail-project.eu/wp-content/uploads/2012/06/SAIL_DB2_v1_0_final-Public.pdf</a>&gt;</span>. </dd>
+3236c3340
+< <span class="refAuthor">FP7</span>, <span class="refTitle">"Prototyping and Evaluation"</span>, <span class="seriesInfo">Objective FP7-ICT-2009-5-257448/D.B.4</span>, <time datetime="2013-03">March 2013</time>, <span>&lt;<a href="http://www.sail-project.eu/wp-content/uploads/2013/05/SAIL_DB4_v1.1_Final_Public.pdf">http://www.sail-project.eu/wp-content/uploads/2013/05/SAIL_DB4_v1.1_Final_Public.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">FP7</span>, <span class="refTitle">"Prototyping and Evaluation"</span>, <span class="seriesInfo">Objective FP7-ICT-2009-5-257448/D.B.4</span>, <time datetime="2013-03" class="refDate">March 2013</time>, <span>&lt;<a href="http://www.sail-project.eu/wp-content/uploads/2013/05/SAIL_DB4_v1.1_Final_Public.pdf">http://www.sail-project.eu/wp-content/uploads/2013/05/SAIL_DB4_v1.1_Final_Public.pdf</a>&gt;</span>. </dd>
+3240c3344
+< <span class="refAuthor">Tateson, J., et al.</span>, <span class="refTitle">"Final Evaluation Report on Deployment Incentives and Business Models"</span>, <span class="refContent">PSIRP</span>, <span class="seriesInfo">Version 1.0</span>, <time datetime="2010-05">May 2010</time>, <span>&lt;<a href="http://www.psirp.org/files/Deliverables/FP7-INFSO-ICT-216173-PSIRP-D4.6_FinalReportOnDeplIncBusinessModels.pdf">http://www.psirp.org/files/Deliverables/FP7-INFSO-ICT-216173-PSIRP-D4.6_FinalReportOnDeplIncBusinessModels.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Tateson, J., et al.</span>, <span class="refTitle">"Final Evaluation Report on Deployment Incentives and Business Models"</span>, <span class="refContent">PSIRP</span>, <span class="seriesInfo">Version 1.0</span>, <time datetime="2010-05" class="refDate">May 2010</time>, <span>&lt;<a href="http://www.psirp.org/files/Deliverables/FP7-INFSO-ICT-216173-PSIRP-D4.6_FinalReportOnDeplIncBusinessModels.pdf">http://www.psirp.org/files/Deliverables/FP7-INFSO-ICT-216173-PSIRP-D4.6_FinalReportOnDeplIncBusinessModels.pdf</a>&gt;</span>. </dd>
+3244c3348
+< <span class="refAuthor">Trossen, D.</span><span class="refAuthor"> and A. Kostopoulos</span>, <span class="refTitle">"Techno-Economics Aspects of Information-Centric Networking"</span>, <span class="refContent">Volume 2</span>, <span class="seriesInfo">Journal for Information Policy </span>, <span class="seriesInfo">DOI 10.5325/jinfopoli.2.2012.0026</span>, <time datetime="2012-06">June 2012</time>, <span>&lt;<a href="https://doi.org/10.5325/jinfopoli.2.2012.0026">https://doi.org/10.5325/jinfopoli.2.2012.0026</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Trossen, D.</span> and <span class="refAuthor">A. Kostopoulos</span>, <span class="refTitle">"Techno-Economics Aspects of Information-Centric Networking"</span>, <span class="refContent">Volume 2</span>, <span class="seriesInfo">Journal for Information Policy </span>, <span class="seriesInfo">DOI 10.5325/jinfopoli.2.2012.0026</span>, <time datetime="2012-06" class="refDate">June 2012</time>, <span>&lt;<a href="https://doi.org/10.5325/jinfopoli.2.2012.0026">https://doi.org/10.5325/jinfopoli.2.2012.0026</a>&gt;</span>. </dd>
+3248c3352
+< <span class="refAuthor">Sarros, C., et al.</span>, <span class="refTitle">"Connecting the Edges: A Universal, Mobile-Centric, and Opportunistic Communications Architecture"</span>, <span class="refContent">IEEE Communications Magazine, Volume 56, Issue 2</span>, <span class="seriesInfo">DOI 10.1109/MCOM.2018.1700325</span>, <time datetime="2018-02">February 2018</time>, <span>&lt;<a href="https://doi.org/10.1109/MCOM.2018.1700325">https://doi.org/10.1109/MCOM.2018.1700325</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Sarros, C., et al.</span>, <span class="refTitle">"Connecting the Edges: A Universal, Mobile-Centric, and Opportunistic Communications Architecture"</span>, <span class="refContent">IEEE Communications Magazine, Volume 56, Issue 2</span>, <span class="seriesInfo">DOI 10.1109/MCOM.2018.1700325</span>, <time datetime="2018-02" class="refDate">February 2018</time>, <span>&lt;<a href="https://doi.org/10.1109/MCOM.2018.1700325">https://doi.org/10.1109/MCOM.2018.1700325</a>&gt;</span>. </dd>
+3252,3253c3356,3357
+< <span class="refAuthor">Tavares, M.</span><span class="refAuthor">, Aponte, O.</span><span class="refAuthor">, and P. Mendes</span>, <span class="refTitle">"Named-data Emergency Network Services"</span>, <span class="refContent">MobiSys '18: Proceedings of the 16th Annual International
+<  Conference on Mobile Systems, Applications, and Services</span>, <span class="seriesInfo">DOI 10.1145/3210240.3210809</span>, <time datetime="2018-06">June 2018</time>, <span>&lt;<a href="https://doi.org/10.1145/3210240.3210809">https://doi.org/10.1145/3210240.3210809</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Tavares, M.</span>, <span class="refAuthor">Aponte, O.</span>, and <span class="refAuthor">P. Mendes</span>, <span class="refTitle">"Named-data Emergency Network Services"</span>, <span class="refContent">MobiSys '18: Proceedings of the 16th Annual International
+>  Conference on Mobile Systems, Applications, and Services</span>, <span class="seriesInfo">DOI 10.1145/3210240.3210809</span>, <time datetime="2018-06" class="refDate">June 2018</time>, <span>&lt;<a href="https://doi.org/10.1145/3210240.3210809">https://doi.org/10.1145/3210240.3210809</a>&gt;</span>. </dd>
+3258c3362
+<  (INFOCOM WKSHPS)</span>, <span class="seriesInfo">DOI 10.1109/INFCOMW.2016.7562142</span>, <time datetime="2016-04">April 2016</time>, <span>&lt;<a href="https://doi.org/10.1109/INFCOMW.2016.7562142">https://doi.org/10.1109/INFCOMW.2016.7562142</a>&gt;</span>. </dd>
+---
+>  (INFOCOM WKSHPS)</span>, <span class="seriesInfo">DOI 10.1109/INFCOMW.2016.7562142</span>, <time datetime="2016-04" class="refDate">April 2016</time>, <span>&lt;<a href="https://doi.org/10.1109/INFCOMW.2016.7562142">https://doi.org/10.1109/INFCOMW.2016.7562142</a>&gt;</span>. </dd>
+3262,3263c3366,3367
+< <span class="refAuthor">Dynerowicz, S.</span><span class="refAuthor"> and P. Mendes</span>, <span class="refTitle">"Demo: named-data networking in opportunistic network"</span>, <span class="refContent">ICN '17: Proceedings of the 4th ACM Conference on
+<  Information-Centric Networking</span>, <span class="seriesInfo">DOI 10.1145/3125719.3132107</span>, <time datetime="2017-09">September 2017</time>, <span>&lt;<a href="https://doi.org/10.1145/3125719.3132107">https://doi.org/10.1145/3125719.3132107</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Dynerowicz, S.</span> and <span class="refAuthor">P. Mendes</span>, <span class="refTitle">"Demo: named-data networking in opportunistic network"</span>, <span class="refContent">ICN '17: Proceedings of the 4th ACM Conference on
+>  Information-Centric Networking</span>, <span class="seriesInfo">DOI 10.1145/3125719.3132107</span>, <time datetime="2017-09" class="refDate">September 2017</time>, <span>&lt;<a href="https://doi.org/10.1145/3125719.3132107">https://doi.org/10.1145/3125719.3132107</a>&gt;</span>. </dd>
+3268c3372
+<  Information-Centric Networking</span>, <span class="seriesInfo">DOI 10.1145/3267955.3269011</span>, <time datetime="2018-09">September 2018</time>, <span>&lt;<a href="https://doi.org/10.1145/3267955.3269011">https://doi.org/10.1145/3267955.3269011</a>&gt;</span>. </dd>
+---
+>  Information-Centric Networking</span>, <span class="seriesInfo">DOI 10.1145/3267955.3269011</span>, <time datetime="2018-09" class="refDate">September 2018</time>, <span>&lt;<a href="https://doi.org/10.1145/3267955.3269011">https://doi.org/10.1145/3267955.3269011</a>&gt;</span>. </dd>
+3272c3376
+< <span class="refAuthor">Sofia, R.</span>, <span class="refTitle">"D4.5 Report on Data Collection and Inference Models"</span>, <span class="refContent">Deliverable</span>, <time datetime="2017-09">September 2017</time>. </dd>
+---
+> <span class="refAuthor">Sofia, R.</span>, <span class="refTitle">"D4.5 Report on Data Collection and Inference Models"</span>, <span class="refContent">Deliverable</span>, <time datetime="2017-09" class="refDate">September 2017</time>. </dd>
+3277c3381
+<  Information-Centric Networking</span>, <span class="seriesInfo">DOI 10.1145/3125719.3132096</span>, <time datetime="2017-09">September 2017</time>, <span>&lt;<a href="https://doi.org/10.1145/3125719.3132096">https://doi.org/10.1145/3125719.3132096</a>&gt;</span>. </dd>
+---
+>  Information-Centric Networking</span>, <span class="seriesInfo">DOI 10.1145/3125719.3132096</span>, <time datetime="2017-09" class="refDate">September 2017</time>, <span>&lt;<a href="https://doi.org/10.1145/3125719.3132096">https://doi.org/10.1145/3125719.3132096</a>&gt;</span>. </dd>
+3282c3386
+<  on Computing and Sustainable Societies</span>, <span class="seriesInfo">DOI 10.1145/3209811.3209867</span>, <time datetime="2018-06">June 2018</time>, <span>&lt;<a href="https://doi.org/10.1145/3209811.3209867">https://doi.org/10.1145/3209811.3209867</a>&gt;</span>. </dd>
+---
+>  on Computing and Sustainable Societies</span>, <span class="seriesInfo">DOI 10.1145/3209811.3209867</span>, <time datetime="2018-06" class="refDate">June 2018</time>, <span>&lt;<a href="https://doi.org/10.1145/3209811.3209867">https://doi.org/10.1145/3209811.3209867</a>&gt;</span>. </dd>
+3290c3394
+< <span class="refAuthor">Ravindran, R., et al.</span>, <span class="refTitle">"Towards software defined ICN based edge-cloud services"</span>, <span class="refContent">2013 IEEE 2nd International Conference on Cloud Networking (CloudNet)</span>, <span class="seriesInfo">DOI 10.1109/CloudNet.2013.6710583</span>, <time></time>, <span>&lt;<a href="https://doi.org/10.1109/CloudNet.2013.6710583">https://doi.org/10.1109/CloudNet.2013.6710583</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Ravindran, R., et al.</span>, <span class="refTitle">"Towards software defined ICN based edge-cloud services"</span>, <span class="refContent">2013 IEEE 2nd International Conference on Cloud Networking (CloudNet)</span>, <span class="seriesInfo">DOI 10.1109/CloudNet.2013.6710583</span>, <span>&lt;<a href="https://doi.org/10.1109/CloudNet.2013.6710583">https://doi.org/10.1109/CloudNet.2013.6710583</a>&gt;</span>. </dd>
+3295c3399
+<  Information-Centric Networking</span>, <span class="seriesInfo">DOI 10.1145/2984356.2988521</span>, <time datetime="2016-09">September 2016</time>, <span>&lt;<a href="https://doi.org/10.1145/2984356.2988521">https://doi.org/10.1145/2984356.2988521</a>&gt;</span>. </dd>
+---
+>  Information-Centric Networking</span>, <span class="seriesInfo">DOI 10.1145/2984356.2988521</span>, <time datetime="2016-09" class="refDate">September 2016</time>, <span>&lt;<a href="https://doi.org/10.1145/2984356.2988521">https://doi.org/10.1145/2984356.2988521</a>&gt;</span>. </dd>
+3299c3403
+< <span class="refAuthor">White, G.</span><span class="refAuthor"> and G. Rutz</span>, <span class="refTitle">"Content Delivery with Content-Centric Networking"</span>, <time datetime="2016-02">February 2016</time>, <span>&lt;<a href="http://www.cablelabs.com/wp-content/uploads/2016/02/Content-Delivery-with-Content-Centric-Networking-Feb-2016.pdf">http://www.cablelabs.com/wp-content/uploads/2016/02/Content-Delivery-with-Content-Centric-Networking-Feb-2016.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">White, G.</span> and <span class="refAuthor">G. Rutz</span>, <span class="refTitle">"Content Delivery with Content-Centric Networking"</span>, <time datetime="2016-02" class="refDate">February 2016</time>, <span>&lt;<a href="http://www.cablelabs.com/wp-content/uploads/2016/02/Content-Delivery-with-Content-Centric-Networking-Feb-2016.pdf">http://www.cablelabs.com/wp-content/uploads/2016/02/Content-Delivery-with-Content-Centric-Networking-Feb-2016.pdf</a>&gt;</span>. </dd>
+3304c3408
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+3308c3412
+< <p id="section-appendix.a-1">The authors want to thank <span class="contact-name">Alex Afanasyev</span>,
+---
+> <p id="appendix-A-1">The authors want to thank <span class="contact-name">Alex Afanasyev</span>,
+3313,3314c3417,3418
+<       <span class="contact-name">Atsushi Mayutan</span>, and <span class="contact-name">Lixia       Zhang</span> for their very useful reviews and comments to the document.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2">Special thanks to <span class="contact-name">Dave Oran</span> (ICNRG Co-chair)
+---
+>       <span class="contact-name">Atsushi Mayutan</span>, and <span class="contact-name">Lixia       Zhang</span> for their very useful reviews and comments to the document.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2">Special thanks to <span class="contact-name">Dave Oran</span> (ICNRG Co-chair)
+3317c3421
+<       immeasurably improve the document quality.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+---
+>       immeasurably improve the document quality.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+3321c3425
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">

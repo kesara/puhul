@@ -1,0 +1,645 @@
+17c17
+< <meta content="xml2rfc 3.5.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+28,45c28,41
+<   xml2rfc 3.5.0
+<     Python 3.6.10
+<     appdirs 1.4.4
+<     ConfigArgParse 1.2.3
+<     google-i18n-address 2.3.5
+<     html5lib 1.0.1
+<     intervaltree 3.0.2
+<     Jinja2 2.11.2
+<     kitchen 1.2.6
+<     lxml 4.4.2
+<     pycairo 1.19.0
+<     pycountry 19.8.18
+<     pyflakes 2.1.1
+<     PyYAML 5.3.1
+<     requests 2.22.0
+<     setuptools 40.6.2
+<     six 1.14.0
+<     WeasyPrint 51
+---
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.0.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+47c43
+< <link href="rfc8952.xml" rel="alternate" type="application/rfc+xml">
+---
+> <link href="rfc/rfc8952.xml" rel="alternate" type="application/rfc+xml">
+57c53
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+66a63,68
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+69d70
+<   width: extend-to-zoom;
+84c85
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+86a88
+>   overflow-wrap: break-word;
+172a175,183
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+187,190d197
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+191a199
+>   border: none;
+214a223,225
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+256c267,268
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+266c278
+< tt, code, pre, code {
+---
+> tt, code, pre {
+268c280
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+307a320,322
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+397a413,418
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+499c520
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+639d659
+< 
+661a682,684
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+729c752
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+829c852
+< tt, code, pre, code {
+---
+> tt, code, pre {
+834c857
+< pre.sourcecode,
+---
+> .sourcecode pre,
+870c893
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1051a1075
+>   .artwork > pre,
+1066c1090
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1072a1097,1099
+> tr {
+>   break-inside: avoid;
+> }
+1092c1119
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1123c1150
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1148c1175
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1166c1193
+< dd > div:first-child > pre.sourcecode,
+---
+> dd > div.sourcecode:first-child,
+1174a1202,1209
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1176a1212
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-capport-architecture-10" rel="prev">
+1179c1215
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-capport-architecture-10" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1181,1182c1217,1218
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1280,1285c1316,1321
+< <nav class="toc"><ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+1287,1288c1323,1324
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.1.2.2">
+<                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="xref">1.2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+>                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+1292,1302c1328,1338
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-components" class="xref">Components</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.1">
+<                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-user-equipment" class="xref">User Equipment</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.2">
+<                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-provisioning-service" class="xref">Provisioning Service</a><a href="#section-toc.1-1.2.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.2.2.1">
+<                     <p id="section-toc.1-1.2.2.2.2.1.1"><a href="#section-2.2.1" class="xref">2.2.1</a>.  <a href="#name-dhcp-or-router-advertisemen" class="xref">DHCP or Router Advertisements</a><a href="#section-toc.1-1.2.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-components" class="internal xref">Components</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+>                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-user-equipment" class="internal xref">User Equipment</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+>                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-provisioning-service" class="internal xref">Provisioning Service</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2.2.1">
+>                     <p id="section-toc.1-1.2.2.2.2.1.1"><a href="#section-2.2.1" class="auto internal xref">2.2.1</a>.  <a href="#name-dhcp-or-router-advertisemen" class="internal xref">DHCP or Router Advertisements</a></p>
+1304,1305c1340,1341
+<                   <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.2.2.2">
+<                     <p id="section-toc.1-1.2.2.2.2.2.1"><a href="#section-2.2.2" class="xref">2.2.2</a>.  <a href="#name-provisioning-domains" class="xref">Provisioning Domains</a><a href="#section-toc.1-1.2.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2.2.2">
+>                     <p id="section-toc.1-1.2.2.2.2.2.1"><a href="#section-2.2.2" class="auto internal xref">2.2.2</a>.  <a href="#name-provisioning-domains" class="internal xref">Provisioning Domains</a></p>
+1309,1310c1345,1346
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.3">
+<                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-captive-portal-api-server" class="xref">Captive Portal API Server</a><a href="#section-toc.1-1.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
+>                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="auto internal xref">2.3</a>.  <a href="#name-captive-portal-api-server" class="internal xref">Captive Portal API Server</a></p>
+1312,1313c1348,1349
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.4">
+<                 <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="xref">2.4</a>.  <a href="#name-captive-portal-enforcement-" class="xref">Captive Portal Enforcement Device</a><a href="#section-toc.1-1.2.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.4">
+>                 <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="auto internal xref">2.4</a>.  <a href="#name-captive-portal-enforcement-" class="internal xref">Captive Portal Enforcement Device</a></p>
+1315,1316c1351,1352
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.5">
+<                 <p id="section-toc.1-1.2.2.5.1"><a href="#section-2.5" class="xref">2.5</a>.  <a href="#name-captive-portal-signal" class="xref">Captive Portal Signal</a><a href="#section-toc.1-1.2.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.5">
+>                 <p id="section-toc.1-1.2.2.5.1"><a href="#section-2.5" class="auto internal xref">2.5</a>.  <a href="#name-captive-portal-signal" class="internal xref">Captive Portal Signal</a></p>
+1318,1319c1354,1355
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.6">
+<                 <p id="section-toc.1-1.2.2.6.1"><a href="#section-2.6" class="xref">2.6</a>.  <a href="#name-component-diagram" class="xref">Component Diagram</a><a href="#section-toc.1-1.2.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.6">
+>                 <p id="section-toc.1-1.2.2.6.1"><a href="#section-2.6" class="auto internal xref">2.6</a>.  <a href="#name-component-diagram" class="internal xref">Component Diagram</a></p>
+1323,1333c1359,1369
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-user-equipment-identity" class="xref">User Equipment Identity</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-identifiers" class="xref">Identifiers</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-recommended-properties" class="xref">Recommended Properties</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.2.2.1">
+<                     <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="xref">3.2.1</a>.  <a href="#name-uniquely-identify-user-equi" class="xref">Uniquely Identify User Equipment</a><a href="#section-toc.1-1.3.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-user-equipment-identity" class="internal xref">User Equipment Identity</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-identifiers" class="internal xref">Identifiers</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-recommended-properties" class="internal xref">Recommended Properties</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.1">
+>                     <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="auto internal xref">3.2.1</a>.  <a href="#name-uniquely-identify-user-equi" class="internal xref">Uniquely Identify User Equipment</a></p>
+1335,1336c1371,1372
+<                   <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.2.2.2">
+<                     <p id="section-toc.1-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="xref">3.2.2</a>.  <a href="#name-hard-to-spoof" class="xref">Hard to Spoof</a><a href="#section-toc.1-1.3.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.2">
+>                     <p id="section-toc.1-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="auto internal xref">3.2.2</a>.  <a href="#name-hard-to-spoof" class="internal xref">Hard to Spoof</a></p>
+1338,1339c1374,1375
+<                   <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.2.2.3">
+<                     <p id="section-toc.1-1.3.2.2.2.3.1"><a href="#section-3.2.3" class="xref">3.2.3</a>.  <a href="#name-visible-to-the-api-server" class="xref">Visible to the API Server</a><a href="#section-toc.1-1.3.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.3">
+>                     <p id="section-toc.1-1.3.2.2.2.3.1"><a href="#section-3.2.3" class="auto internal xref">3.2.3</a>.  <a href="#name-visible-to-the-api-server" class="internal xref">Visible to the API Server</a></p>
+1341,1342c1377,1378
+<                   <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.2.2.4">
+<                     <p id="section-toc.1-1.3.2.2.2.4.1"><a href="#section-3.2.4" class="xref">3.2.4</a>.  <a href="#name-visible-to-the-enforcement-" class="xref">Visible to the Enforcement Device</a><a href="#section-toc.1-1.3.2.2.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.4">
+>                     <p id="section-toc.1-1.3.2.2.2.4.1"><a href="#section-3.2.4" class="auto internal xref">3.2.4</a>.  <a href="#name-visible-to-the-enforcement-" class="internal xref">Visible to the Enforcement Device</a></p>
+1346,1347c1382,1383
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.3">
+<                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-evaluating-types-of-identif" class="xref">Evaluating Types of Identifiers</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+>                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-evaluating-types-of-identif" class="internal xref">Evaluating Types of Identifiers</a></p>
+1349,1353c1385,1389
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.4">
+<                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="xref">3.4</a>.  <a href="#name-example-identifier-types" class="xref">Example Identifier Types</a><a href="#section-toc.1-1.3.2.4.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.4.2.1">
+<                     <p id="section-toc.1-1.3.2.4.2.1.1"><a href="#section-3.4.1" class="xref">3.4.1</a>.  <a href="#name-physical-interface" class="xref">Physical Interface</a><a href="#section-toc.1-1.3.2.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+>                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-example-identifier-types" class="internal xref">Example Identifier Types</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4.2.1">
+>                     <p id="section-toc.1-1.3.2.4.2.1.1"><a href="#section-3.4.1" class="auto internal xref">3.4.1</a>.  <a href="#name-physical-interface" class="internal xref">Physical Interface</a></p>
+1355,1356c1391,1392
+<                   <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.4.2.2">
+<                     <p id="section-toc.1-1.3.2.4.2.2.1"><a href="#section-3.4.2" class="xref">3.4.2</a>.  <a href="#name-ip-address" class="xref">IP Address</a><a href="#section-toc.1-1.3.2.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4.2.2">
+>                     <p id="section-toc.1-1.3.2.4.2.2.1"><a href="#section-3.4.2" class="auto internal xref">3.4.2</a>.  <a href="#name-ip-address" class="internal xref">IP Address</a></p>
+1358,1359c1394,1395
+<                   <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.4.2.3">
+<                     <p id="section-toc.1-1.3.2.4.2.3.1"><a href="#section-3.4.3" class="xref">3.4.3</a>.  <a href="#name-media-access-control-mac-ad" class="xref">Media Access Control (MAC) Address</a><a href="#section-toc.1-1.3.2.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4.2.3">
+>                     <p id="section-toc.1-1.3.2.4.2.3.1"><a href="#section-3.4.3" class="auto internal xref">3.4.3</a>.  <a href="#name-media-access-control-mac-ad" class="internal xref">Media Access Control (MAC) Address</a></p>
+1363,1364c1399,1400
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.5">
+<                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="xref">3.5</a>.  <a href="#name-context-free-uri" class="xref">Context-Free URI</a><a href="#section-toc.1-1.3.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
+>                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-context-free-uri" class="internal xref">Context-Free URI</a></p>
+1368,1372c1404,1408
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-solution-workflow" class="xref">Solution Workflow</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-initial-connection" class="xref">Initial Connection</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-solution-workflow" class="internal xref">Solution Workflow</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-initial-connection" class="internal xref">Initial Connection</a></p>
+1374,1375c1410,1411
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-conditions-about-to-expire" class="xref">Conditions about to Expire</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-conditions-about-to-expire" class="internal xref">Conditions about to Expire</a></p>
+1377,1378c1413,1414
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-handling-of-changes-in-port" class="xref">Handling of Changes in Portal URI</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-handling-of-changes-in-port" class="internal xref">Handling of Changes in Portal URI</a></p>
+1382,1383c1418,1419
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1385,1389c1421,1425
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-trusting-the-network" class="xref">Trusting the Network</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-trusting-the-network" class="internal xref">Trusting the Network</a></p>
+1391,1392c1427,1428
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.6.2.2">
+<                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-authenticated-apis" class="xref">Authenticated APIs</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+>                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-authenticated-apis" class="internal xref">Authenticated APIs</a></p>
+1394,1395c1430,1431
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.6.2.3">
+<                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="xref">6.3</a>.  <a href="#name-secure-apis" class="xref">Secure APIs</a><a href="#section-toc.1-1.6.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
+>                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-secure-apis" class="internal xref">Secure APIs</a></p>
+1397,1398c1433,1434
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.6.2.4">
+<                 <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="xref">6.4</a>.  <a href="#name-risks-associated-with-the-s" class="xref">Risks Associated with the Signaling Protocol</a><a href="#section-toc.1-1.6.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
+>                 <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="auto internal xref">6.4</a>.  <a href="#name-risks-associated-with-the-s" class="internal xref">Risks Associated with the Signaling Protocol</a></p>
+1400,1401c1436,1437
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.6.2.5">
+<                 <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="xref">6.5</a>.  <a href="#name-user-options" class="xref">User Options</a><a href="#section-toc.1-1.6.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5">
+>                 <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="auto internal xref">6.5</a>.  <a href="#name-user-options" class="internal xref">User Options</a></p>
+1403,1404c1439,1440
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.6.2.6">
+<                 <p id="section-toc.1-1.6.2.6.1"><a href="#section-6.6" class="xref">6.6</a>.  <a href="#name-privacy" class="xref">Privacy</a><a href="#section-toc.1-1.6.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.6">
+>                 <p id="section-toc.1-1.6.2.6.1"><a href="#section-6.6" class="auto internal xref">6.6</a>.  <a href="#name-privacy" class="internal xref">Privacy</a></p>
+1408,1412c1444,1448
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1414,1415c1450,1451
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1419,1420c1455,1456
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-existing-captive-portal-det" class="xref">Existing Captive Portal Detection Implementations</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-existing-captive-portal-det" class="internal xref">Existing Captive Portal Detection Implementations</a></p>
+1422,1423c1458,1459
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1425,1426c1461,1462
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1477c1513
+<         response tampering (see <a href="#app-additional" class="xref">Appendix A</a>). Current
+---
+>         response tampering (see <a href="#app-additional" class="auto internal xref">Appendix A</a>). Current
+1505c1541
+<         Uniform Resource Identifier (URI) <span>[<a href="#RFC3986" class="xref">RFC3986</a>]</span> for the API
+---
+>         Uniform Resource Identifier (URI) <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span> for the API
+1508,1509c1544,1545
+<         this purpose are available in <span>[<a href="#RFC8910" class="xref">RFC8910</a>]</span>. Other
+<         protocols (such as RADIUS), Provisioning Domains <span>[<a href="#I-D.pfister-capport-pvd" class="xref">CAPPORT-PVD</a>]</span>, or static configuration may also
+---
+>         this purpose are available in <span>[<a href="#RFC8910" class="cite xref">RFC8910</a>]</span>. Other
+>         protocols (such as RADIUS), Provisioning Domains <span>[<a href="#I-D.pfister-capport-pvd" class="cite xref">CAPPORT-PVD</a>]</span>, or static configuration may also
+1540,1541c1576,1577
+<     to be interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span>
+<           <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when, and only when, they appear in all capitals,
+---
+>     to be interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span>
+>           <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they appear in all capitals,
+1613c1649
+< particular User Equipment instance using the User Equipment's identifier (see <a href="#ue_identity" class="xref">Section 3</a>).<a href="#section-1.2-1.20" class="pilcrow">¶</a>
+---
+> particular User Equipment instance using the User Equipment's identifier (see <a href="#ue_identity" class="auto internal xref">Section 3</a>).<a href="#section-1.2-1.20" class="pilcrow">¶</a>
+1632c1668
+<        restricted by the Enforcement Device, described in <a href="#section_capport_enforcement" class="xref">Section 2.4</a>,
+---
+>        restricted by the Enforcement Device, described in <a href="#section_capport_enforcement" class="auto internal xref">Section 2.4</a>,
+1648c1684
+<           <span>[<a href="#RFC7556" class="xref">RFC7556</a>]</span>.<a href="#section-2.1-4.2" class="pilcrow">¶</a>
+---
+>           <span>[<a href="#RFC7556" class="cite xref">RFC7556</a>]</span>.<a href="#section-2.1-4.2" class="pilcrow">¶</a>
+1681c1717
+<         <span>[<a href="#RFC2818" class="xref">RFC2818</a>]</span>) according to the procedures in <span>[<a href="#RFC6125" class="xref">RFC6125</a>]</span>.  The API Server's URI is obtained via a network
+---
+>         <span>[<a href="#RFC2818" class="cite xref">RFC2818</a>]</span>) according to the procedures in <span>[<a href="#RFC6125" class="cite xref">RFC6125</a>]</span>.  The API Server's URI is obtained via a network
+1690c1726
+<         servers; see <span><a href="https://www.rfc-editor.org/rfc/rfc8908#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC8908" class="xref">RFC8908</a>]</span>
+---
+>         servers; see <span><a href="https://rfc-editor.org/rfc/rfc8908#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC8908" class="cite xref">RFC8908</a>]</span>
+1726c1762
+<            Advertisements is described in <span>[<a href="#RFC8910" class="xref">RFC8910</a>]</span>.  The
+---
+>            Advertisements is described in <span>[<a href="#RFC8910" class="cite xref">RFC8910</a>]</span>.  The
+1728c1764
+<            in <a href="#section_api" class="xref">Section 2.3</a>.<a href="#section-2.2.1-1" class="pilcrow">¶</a></p>
+---
+>            in <a href="#section_api" class="auto internal xref">Section 2.3</a>.<a href="#section-2.2.1-1" class="pilcrow">¶</a></p>
+1737c1773
+<            <span>[<a href="#I-D.pfister-capport-pvd" class="xref">CAPPORT-PVD</a>]</span>
+---
+>            <span>[<a href="#I-D.pfister-capport-pvd" class="cite xref">CAPPORT-PVD</a>]</span>
+1740c1776
+<            for the API described in <a href="#section_api" class="xref">Section 2.3</a>.<a href="#section-2.2.2-1" class="pilcrow">¶</a></p>
+---
+>            for the API described in <a href="#section_api" class="auto internal xref">Section 2.3</a>.<a href="#section-2.2.2-1" class="pilcrow">¶</a></p>
+1754c1790
+<          (see <a href="#app-additional" class="xref">Appendix A</a>) queries to check for response
+---
+>          (see <a href="#app-additional" class="auto internal xref">Appendix A</a>) queries to check for response
+1758c1794
+<          (Refer to <a href="#section_provisioning" class="xref">Section 2.2</a>.)<a href="#section-2.3-2" class="pilcrow">¶</a></p>
+---
+>          (Refer to <a href="#section_provisioning" class="auto internal xref">Section 2.2</a>.)<a href="#section-2.3-2" class="pilcrow">¶</a></p>
+1773c1809
+<          requirement motivates <a href="#id_recommended_hard" class="xref">Section 3.2.2</a>.<a href="#section-2.3-5" class="pilcrow">¶</a></p>
+---
+>          requirement motivates <a href="#id_recommended_hard" class="auto internal xref">Section 3.2.2</a>.<a href="#section-2.3-5" class="pilcrow">¶</a></p>
+1777c1813
+<          supports. For an HTTP-based interaction, such as in <span>[<a href="#RFC8908" class="xref">RFC8908</a>]</span>, this might be achieved by using a content type
+---
+>          supports. For an HTTP-based interaction, such as in <span>[<a href="#RFC8908" class="cite xref">RFC8908</a>]</span>, this might be achieved by using a content type
+1783c1819
+<          the signal being flooded. (See <a href="#Security" class="xref">Section 6</a>.)<a href="#section-2.3-7" class="pilcrow">¶</a></p>
+---
+>          the signal being flooded. (See <a href="#Security" class="auto internal xref">Section 6</a>.)<a href="#section-2.3-7" class="pilcrow">¶</a></p>
+1843c1879
+<         An Enforcement Device <span class="bcp14">MUST</span> rate-limit any signal generated in response to these conditions.  See <a href="#section_signal_risks" class="xref">Section 6.4</a> for a discussion of
+---
+>         An Enforcement Device <span class="bcp14">MUST</span> rate-limit any signal generated in response to these conditions.  See <a href="#section_signal_risks" class="auto internal xref">Section 6.4</a> for a discussion of
+1858c1894
+<           <div class="artwork art-text alignLeft" id="section-2.6-2.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-2.6-2.1">
+2149c2185
+<                 addresses (either IPv4, IPv6, or a dual-stack <span>[<a href="#RFC4213" class="xref">RFC4213</a>]</span> combination) while still satisfying all of
+---
+>                 addresses (either IPv4, IPv6, or a dual-stack <span>[<a href="#RFC4213" class="cite xref">RFC4213</a>]</span> combination) while still satisfying all of
+2171c2207
+<             as an identifier type, subject to the criteria in <a href="#id_recommended_props" class="xref">Section 3.2</a>.<a href="#section-3.4.3-1" class="pilcrow">¶</a></p>
+---
+>             as an identifier type, subject to the criteria in <a href="#id_recommended_props" class="auto internal xref">Section 3.2</a>.<a href="#section-3.4.3-1" class="pilcrow">¶</a></p>
+2194c2230
+<             <span>[<a href="#RFC8499" class="xref">RFC8499</a>]</span>).<a href="#section-3.5-2" class="pilcrow">¶</a></p>
+---
+>             <span>[<a href="#RFC8499" class="cite xref">RFC8499</a>]</span>).<a href="#section-3.5-2" class="pilcrow">¶</a></p>
+2236c2272
+<          provisioning information (e.g., <span>[<a href="#RFC8910" class="xref">RFC8910</a>]</span>).<a href="#section-4.1-2.2" class="pilcrow">¶</a>
+---
+>          provisioning information (e.g., <span>[<a href="#RFC8910" class="cite xref">RFC8910</a>]</span>).<a href="#section-4.1-2.2" class="pilcrow">¶</a>
+2332c2368
+<          Architecture <span>[<a href="#RFC7556" class="xref">RFC7556</a>]</span> provides some discussion on
+---
+>          Architecture <span>[<a href="#RFC7556" class="cite xref">RFC7556</a>]</span> provides some discussion on
+2360c2396
+<          server; see <a href="#section_client" class="xref">Section 2.1</a>.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+---
+>          server; see <a href="#section_client" class="auto internal xref">Section 2.1</a>.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+2435c2471
+<           <a href="#ue_identity" class="xref">Section 3</a> describes a mechanism by which all components within
+---
+>           <a href="#ue_identity" class="auto internal xref">Section 3</a> describes a mechanism by which all components within
+2473c2509
+< <span class="refAuthor">Saint-Andre, P.</span><span class="refAuthor"> and J. Hodges</span>, <span class="refTitle">"Representation and Verification of Domain-Based Application Service Identity within Internet Public Key Infrastructure Using X.509 (PKIX) Certificates in the Context of Transport Layer Security (TLS)"</span>, <span class="seriesInfo">RFC 6125</span>, <span class="seriesInfo">DOI 10.17487/RFC6125</span>, <time datetime="2011-03" class="refDate">March 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6125">https://www.rfc-editor.org/info/rfc6125</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Saint-Andre, P.</span> and <span class="refAuthor">J. Hodges</span>, <span class="refTitle">"Representation and Verification of Domain-Based Application Service Identity within Internet Public Key Infrastructure Using X.509 (PKIX) Certificates in the Context of Transport Layer Security (TLS)"</span>, <span class="seriesInfo">RFC 6125</span>, <span class="seriesInfo">DOI 10.17487/RFC6125</span>, <time datetime="2011-03" class="refDate">March 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6125">https://www.rfc-editor.org/info/rfc6125</a>&gt;</span>. </dd>
+2485c2521
+< <span class="refAuthor">Kumari, W.</span><span class="refAuthor"> and E. Kline</span>, <span class="refTitle">"Captive-Portal Identification in DHCP and Router Advertisements (RAs)"</span>, <span class="seriesInfo">RFC 8910</span>, <span class="seriesInfo">DOI 10.17487/RFC8910</span>, <time datetime="2020-09" class="refDate">September 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8910">https://www.rfc-editor.org/info/rfc8910</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Kumari, W.</span> and <span class="refAuthor">E. Kline</span>, <span class="refTitle">"Captive-Portal Identification in DHCP and Router Advertisements (RAs)"</span>, <span class="seriesInfo">RFC 8910</span>, <span class="seriesInfo">DOI 10.17487/RFC8910</span>, <time datetime="2020-09" class="refDate">September 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8910">https://www.rfc-editor.org/info/rfc8910</a>&gt;</span>. </dd>
+2496c2532
+< <span class="refAuthor">Pfister, P.</span><span class="refAuthor"> and T. Pauly</span>, <span class="refTitle">"Using Provisioning Domains for Captive Portal Discovery"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-pfister-capport-pvd-00</span>, <time datetime="2018-06-30" class="refDate">30 June 2018</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-pfister-capport-pvd-00">https://tools.ietf.org/html/draft-pfister-capport-pvd-00</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Pfister, P.</span> and <span class="refAuthor">T. Pauly</span>, <span class="refTitle">"Using Provisioning Domains for Captive Portal Discovery"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-pfister-capport-pvd-00</span>, <time datetime="2018-06-30" class="refDate">30 June 2018</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-pfister-capport-pvd-00">https://tools.ietf.org/html/draft-pfister-capport-pvd-00</a>&gt;</span>. </dd>
+2500c2536
+< <span class="refAuthor">Berners-Lee, T.</span><span class="refAuthor">, Fielding, R.</span><span class="refAuthor">, and L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3986">https://www.rfc-editor.org/info/rfc3986</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Berners-Lee, T.</span>, <span class="refAuthor">Fielding, R.</span>, and <span class="refAuthor">L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3986">https://www.rfc-editor.org/info/rfc3986</a>&gt;</span>. </dd>
+2504c2540
+< <span class="refAuthor">Nordmark, E.</span><span class="refAuthor"> and R. Gilligan</span>, <span class="refTitle">"Basic Transition Mechanisms for IPv6 Hosts and Routers"</span>, <span class="seriesInfo">RFC 4213</span>, <span class="seriesInfo">DOI 10.17487/RFC4213</span>, <time datetime="2005-10" class="refDate">October 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4213">https://www.rfc-editor.org/info/rfc4213</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Nordmark, E.</span> and <span class="refAuthor">R. Gilligan</span>, <span class="refTitle">"Basic Transition Mechanisms for IPv6 Hosts and Routers"</span>, <span class="seriesInfo">RFC 4213</span>, <span class="seriesInfo">DOI 10.17487/RFC4213</span>, <time datetime="2005-10" class="refDate">October 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4213">https://www.rfc-editor.org/info/rfc4213</a>&gt;</span>. </dd>
+2508c2544
+< <span class="refAuthor">Hoffman, P.</span><span class="refAuthor">, Sullivan, A.</span><span class="refAuthor">, and K. Fujiwara</span>, <span class="refTitle">"DNS Terminology"</span>, <span class="seriesInfo">BCP 219</span>, <span class="seriesInfo">RFC 8499</span>, <span class="seriesInfo">DOI 10.17487/RFC8499</span>, <time datetime="2019-01" class="refDate">January 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8499">https://www.rfc-editor.org/info/rfc8499</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hoffman, P.</span>, <span class="refAuthor">Sullivan, A.</span>, and <span class="refAuthor">K. Fujiwara</span>, <span class="refTitle">"DNS Terminology"</span>, <span class="seriesInfo">BCP 219</span>, <span class="seriesInfo">RFC 8499</span>, <span class="seriesInfo">DOI 10.17487/RFC8499</span>, <time datetime="2019-01" class="refDate">January 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8499">https://www.rfc-editor.org/info/rfc8499</a>&gt;</span>. </dd>
+2512c2548
+< <span class="refAuthor">Pauly, T., Ed.</span><span class="refAuthor"> and D. Thakore, Ed.</span>, <span class="refTitle">"Captive Portal API"</span>, <span class="seriesInfo">RFC 8908</span>, <span class="seriesInfo">DOI 10.17487/RFC8908</span>, <time datetime="2020-09" class="refDate">September 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8908">https://www.rfc-editor.org/info/rfc8908</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Pauly, T., Ed.</span> and <span class="refAuthor">D. Thakore, Ed.</span>, <span class="refTitle">"Captive Portal API"</span>, <span class="seriesInfo">RFC 8908</span>, <span class="seriesInfo">DOI 10.17487/RFC8908</span>, <time datetime="2020-09" class="refDate">September 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8908">https://www.rfc-editor.org/info/rfc8908</a>&gt;</span>. </dd>
+2518c2554
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2520c2556
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-existing-captive-portal-det" class="section-name selfRef">Existing Captive Portal Detection Implementations</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-existing-captive-portal-det" class="section-name selfRef">Existing Captive Portal Detection Implementations</a>
+2522c2558
+< <p id="section-appendix.a-1">
+---
+> <p id="appendix-A-1">
+2532,2533c2568,2569
+<        that something is wrong.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2">
+---
+>        that something is wrong.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2">
+2538,2539c2574,2575
+<        queries over UDP due to the complexity of implementation.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-3">
+---
+>        queries over UDP due to the complexity of implementation.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+> <p id="appendix-A-3">
+2542,2543c2578,2579
+<        and by which types of DNS are intercepted.<a href="#section-appendix.a-3" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-4">
+---
+>        and by which types of DNS are intercepted.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+> <p id="appendix-A-4">
+2546c2582
+<        impersonate, leading to the device having a false negative.<a href="#section-appendix.a-4" class="pilcrow">¶</a></p>
+---
+>        impersonate, leading to the device having a false negative.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+2550c2586
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+2554c2590
+< <p id="section-appendix.b-1">The authors thank <span class="contact-name">Lorenzo Colitti</span> for providing
+---
+> <p id="appendix-B-1">The authors thank <span class="contact-name">Lorenzo Colitti</span> for providing
+2556,2559c2592,2595
+<       requirements.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-2">The authors thank <span class="contact-name">Benjamin Kaduk</span> for providing
+<       the content related to TLS certificate validation of the API Server.<a href="#section-appendix.b-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-3">The authors thank <span class="contact-name">Michael Richardson</span> for
+---
+>       requirements.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+> <p id="appendix-B-2">The authors thank <span class="contact-name">Benjamin Kaduk</span> for providing
+>       the content related to TLS certificate validation of the API Server.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+> <p id="appendix-B-3">The authors thank <span class="contact-name">Michael Richardson</span> for
+2561,2562c2597,2598
+<       adding exceptions.<a href="#section-appendix.b-3" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-4">The authors thank various individuals for their feedback on
+---
+>       adding exceptions.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
+> <p id="appendix-B-4">The authors thank various individuals for their feedback on
+2569c2605
+<         and <span class="contact-name">Vincent van Dam</span>.<a href="#section-appendix.b-4" class="pilcrow">¶</a></p>
+---
+>         and <span class="contact-name">Vincent van Dam</span>.<a href="#appendix-B-4" class="pilcrow">¶</a></p>
+2573c2609
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
