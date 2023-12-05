@@ -1,0 +1,616 @@
+16c16
+< <meta content="xml2rfc 3.9.1" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+20,37c20,33
+<   xml2rfc 3.9.1
+<     Python 3.6.10
+<     appdirs 1.4.4
+<     ConfigArgParse 1.2.3
+<     google-i18n-address 2.3.5
+<     html5lib 1.0.1
+<     intervaltree 3.0.2
+<     Jinja2 2.11.2
+<     kitchen 1.2.6
+<     lxml 4.4.2
+<     pycairo 1.19.0
+<     pycountry 19.8.18
+<     pyflakes 2.1.1
+<     PyYAML 5.3.1
+<     requests 2.22.0
+<     setuptools 40.6.2
+<     six 1.14.0
+<     WeasyPrint 51
+---
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.1.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+39c35
+< <link href="rfc9076.xml" rel="alternate" type="application/rfc+xml">
+---
+> <link href="rfc/rfc9076.xml" rel="alternate" type="application/rfc+xml">
+49c45
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+58a55,60
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+61d62
+<   width: extend-to-zoom;
+76c77
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+78a80
+>   overflow-wrap: break-word;
+164a167,175
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+179,182d189
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+183a191
+>   border: none;
+251c259,260
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+261c270
+< tt, code, pre, code {
+---
+> tt, code, pre {
+263c272
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+302a312,314
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+392a405,410
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+494c512
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+634d651
+< 
+656a674,676
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+724c744
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+824c844
+< tt, code, pre, code {
+---
+> tt, code, pre {
+829c849
+< pre.sourcecode,
+---
+> .sourcecode pre,
+865c885
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1046a1067
+>   .artwork > pre,
+1061c1082
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1067a1089,1091
+> tr {
+>   break-inside: avoid;
+> }
+1087c1111
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1118c1142
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1143c1167
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1161c1185
+< dd > div:first-child > pre.sourcecode,
+---
+> dd > div.sourcecode:first-child,
+1175c1199
+< li > p:last-of-type {
+---
+> li > p:last-of-type:only-child {
+1179a1204
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-dprive-rfc7626-bis-09" rel="prev">
+1182c1207
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-dprive-rfc7626-bis-09" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1184,1185c1209,1210
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1280,1300c1305,1325
+< <nav class="toc"><ul class="ulEmpty compact ulBare toc">
+< <li class="ulEmpty compact ulBare toc" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a></p>
+< </li>
+<           <li class="ulEmpty compact ulBare toc" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-scope" class="xref">Scope</a></p>
+< </li>
+<           <li class="ulEmpty compact ulBare toc" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="xref">3</a>.  <a href="#name-risks" class="xref">Risks</a></p>
+< </li>
+<           <li class="ulEmpty compact ulBare toc" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-risks-in-the-dns-data" class="xref">Risks in the DNS Data</a></p>
+< <ul class="ulBare compact toc ulEmpty">
+< <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-the-public-nature-of-dns-da" class="xref">The Public Nature of DNS Data</a></p>
+< </li>
+<               <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-data-in-the-dns-request" class="xref">Data in the DNS Request</a></p>
+< <ul class="ulBare compact toc ulEmpty">
+< <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.4.2.2.2.1">
+<                     <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="xref">4.2.1</a>.  <a href="#name-data-in-the-dns-payload" class="xref">Data in the DNS Payload</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-scope" class="internal xref">Scope</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-risks" class="internal xref">Risks</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-risks-in-the-dns-data" class="internal xref">Risks in the DNS Data</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-the-public-nature-of-dns-da" class="internal xref">The Public Nature of DNS Data</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-data-in-the-dns-request" class="internal xref">Data in the DNS Request</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.1">
+>                     <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="auto internal xref">4.2.1</a>.  <a href="#name-data-in-the-dns-payload" class="internal xref">Data in the DNS Payload</a></p>
+1304,1305c1329,1330
+<               <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-cache-snooping" class="xref">Cache Snooping</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-cache-snooping" class="internal xref">Cache Snooping</a></p>
+1309,1313c1334,1338
+<           <li class="ulEmpty compact ulBare toc" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-risks-on-the-wire" class="xref">Risks on the Wire</a></p>
+< <ul class="ulBare compact toc ulEmpty">
+< <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-unencrypted-transports" class="xref">Unencrypted Transports</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-risks-on-the-wire" class="internal xref">Risks on the Wire</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-unencrypted-transports" class="internal xref">Unencrypted Transports</a></p>
+1315,1316c1340,1341
+<               <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-encrypted-transports" class="xref">Encrypted Transports</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-encrypted-transports" class="internal xref">Encrypted Transports</a></p>
+1320,1327c1345,1352
+<           <li class="ulEmpty compact ulBare toc" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-risks-in-the-servers" class="xref">Risks in the Servers</a></p>
+< <ul class="ulBare compact toc ulEmpty">
+< <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-in-the-recursive-resolvers" class="xref">In the Recursive Resolvers</a></p>
+< <ul class="ulBare compact toc ulEmpty">
+< <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.6.2.1.2.1">
+<                     <p id="section-toc.1-1.6.2.1.2.1.1"><a href="#section-6.1.1" class="xref">6.1.1</a>.  <a href="#name-resolver-selection" class="xref">Resolver Selection</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-risks-in-the-servers" class="internal xref">Risks in the Servers</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-in-the-recursive-resolvers" class="internal xref">In the Recursive Resolvers</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.1">
+>                     <p id="section-toc.1-1.6.2.1.2.1.1"><a href="#section-6.1.1" class="auto internal xref">6.1.1</a>.  <a href="#name-resolver-selection" class="internal xref">Resolver Selection</a></p>
+1329,1330c1354,1355
+<                   <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.6.2.1.2.2">
+<                     <p id="section-toc.1-1.6.2.1.2.2.1"><a href="#section-6.1.2" class="xref">6.1.2</a>.  <a href="#name-active-attacks-on-resolver-" class="xref">Active Attacks on Resolver Configuration</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.2">
+>                     <p id="section-toc.1-1.6.2.1.2.2.1"><a href="#section-6.1.2" class="auto internal xref">6.1.2</a>.  <a href="#name-active-attacks-on-resolver-" class="internal xref">Active Attacks on Resolver Configuration</a></p>
+1332,1333c1357,1358
+<                   <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.6.2.1.2.3">
+<                     <p id="section-toc.1-1.6.2.1.2.3.1"><a href="#section-6.1.3" class="xref">6.1.3</a>.  <a href="#name-blocking-of-dns-resolution-" class="xref">Blocking of DNS Resolution Services</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.3">
+>                     <p id="section-toc.1-1.6.2.1.2.3.1"><a href="#section-6.1.3" class="auto internal xref">6.1.3</a>.  <a href="#name-blocking-of-dns-resolution-" class="internal xref">Blocking of DNS Resolution Services</a></p>
+1335,1336c1360,1361
+<                   <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.6.2.1.2.4">
+<                     <p id="section-toc.1-1.6.2.1.2.4.1"><a href="#section-6.1.4" class="xref">6.1.4</a>.  <a href="#name-encrypted-transports-and-re" class="xref">Encrypted Transports and Recursive Resolvers</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.4">
+>                     <p id="section-toc.1-1.6.2.1.2.4.1"><a href="#section-6.1.4" class="auto internal xref">6.1.4</a>.  <a href="#name-encrypted-transports-and-re" class="internal xref">Encrypted Transports and Recursive Resolvers</a></p>
+1340,1341c1365,1366
+<               <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.6.2.2">
+<                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-in-the-authoritative-name-s" class="xref">In the Authoritative Name Servers</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+>                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-in-the-authoritative-name-s" class="internal xref">In the Authoritative Name Servers</a></p>
+1345,1349c1370,1374
+<           <li class="ulEmpty compact ulBare toc" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-other-risks" class="xref">Other Risks</a></p>
+< <ul class="ulBare compact toc ulEmpty">
+< <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-re-identification-and-other" class="xref">Re-identification and Other Inferences</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-other-risks" class="internal xref">Other Risks</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-re-identification-and-other" class="internal xref">Re-identification and Other Inferences</a></p>
+1351,1352c1376,1377
+<               <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-more-information" class="xref">More Information</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-more-information" class="internal xref">More Information</a></p>
+1356,1357c1381,1382
+<           <li class="ulEmpty compact ulBare toc" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-actual-attacks" class="xref">Actual "Attacks"</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-actual-attacks" class="internal xref">Actual "Attacks"</a></p>
+1359,1360c1384,1385
+<           <li class="ulEmpty compact ulBare toc" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-legalities" class="xref">Legalities</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-legalities" class="internal xref">Legalities</a></p>
+1362,1363c1387,1388
+<           <li class="ulEmpty compact ulBare toc" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1365,1372c1390,1397
+<           <li class="ulEmpty compact ulBare toc" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
+< </li>
+<           <li class="ulEmpty compact ulBare toc" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-12" class="xref">12</a>. <a href="#name-references" class="xref">References</a></p>
+< <ul class="ulBare compact toc ulEmpty">
+< <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.12.2.1">
+<                 <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="xref">12.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1">
+>                 <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="auto internal xref">12.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1374,1375c1399,1400
+<               <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.12.2.2">
+<                 <p id="section-toc.1-1.12.2.2.1"><a href="#section-12.2" class="xref">12.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.2">
+>                 <p id="section-toc.1-1.12.2.2.1"><a href="#section-12.2" class="auto internal xref">12.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1379,1380c1404,1405
+<           <li class="ulEmpty compact ulBare toc" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#appendix-A" class="xref">Appendix A</a>.  <a href="#name-updates-since-rfc-7626" class="xref">Updates since RFC 7626</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-updates-since-rfc-7626" class="internal xref">Updates since RFC 7626</a></p>
+1382,1383c1407,1408
+<           <li class="ulEmpty compact ulBare toc" id="section-toc.1-1.14">
+<             <p id="section-toc.1-1.14.1"><a href="#appendix-B" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+>             <p id="section-toc.1-1.14.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1385,1386c1410,1411
+<           <li class="ulEmpty compact ulBare toc" id="section-toc.1-1.15">
+<             <p id="section-toc.1-1.15.1"><a href="#appendix-C" class="xref"></a><a href="#name-contributions" class="xref">Contributions</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
+>             <p id="section-toc.1-1.15.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-contributions" class="internal xref">Contributions</a></p>
+1388,1389c1413,1414
+<           <li class="ulEmpty compact ulBare toc" id="section-toc.1-1.16">
+<             <p id="section-toc.1-1.16.1"><a href="#appendix-D" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
+>             <p id="section-toc.1-1.16.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+1401,1402c1426,1427
+<    of <span><a href="https://www.rfc-editor.org/rfc/rfc6973#section-8" class="relref">Section 8</a> of [<a href="#RFC6973" class="xref">RFC6973</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+< <p id="section-1-2">The Domain Name System (DNS) is specified in <span>[<a href="#RFC1034" class="xref">RFC1034</a>]</span>, <span>[<a href="#RFC1035" class="xref">RFC1035</a>]</span>, and
+---
+>    of <span><a href="https://rfc-editor.org/rfc/rfc6973#section-8" class="relref">Section 8</a> of [<a href="#RFC6973" class="cite xref">RFC6973</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+> <p id="section-1-2">The Domain Name System (DNS) is specified in <span>[<a href="#RFC1034" class="cite xref">RFC1034</a>]</span>, <span>[<a href="#RFC1035" class="cite xref">RFC1035</a>]</span>, and
+1410c1435
+<    <span>[<a href="#RFC8499" class="xref">RFC8499</a>]</span>). A client, the stub resolver, issues a
+---
+>    <span>[<a href="#RFC8499" class="cite xref">RFC8499</a>]</span>). A client, the stub resolver, issues a
+1430c1455
+<    resolvers do not implement QNAME minimization as described in <span>[<a href="#RFC7816" class="xref">RFC7816</a>]</span>,
+---
+>    resolvers do not implement QNAME minimization as described in <span>[<a href="#RFC7816" class="cite xref">RFC7816</a>]</span>,
+1454,1455c1479,1480
+<   of DNS over TLS (DoT) <span>[<a href="#RFC7858" class="xref">RFC7858</a>]</span> and DNS over HTTPS (DoH)
+<   <span>[<a href="#RFC8484" class="xref">RFC8484</a>]</span>, particularly in mobile devices, browsers, and by
+---
+>   of DNS over TLS (DoT) <span>[<a href="#RFC7858" class="cite xref">RFC7858</a>]</span> and DNS over HTTPS (DoH)
+>   <span>[<a href="#RFC8484" class="cite xref">RFC8484</a>]</span>, particularly in mobile devices, browsers, and by
+1460,1461c1485,1486
+<   traffic can be found in <span>[<a href="#dns-over-encryption" class="xref">dns-over-encryption</a>]</span>.<a href="#section-1-6" class="pilcrow">¶</a></p>
+< <p id="section-1-7">Today, almost all DNS queries are sent over UDP <span>[<a href="#thomas-ditl-tcp" class="xref">thomas-ditl-tcp</a>]</span>. This has
+---
+>   traffic can be found in <span>[<a href="#dns-over-encryption" class="cite xref">dns-over-encryption</a>]</span>.<a href="#section-1-6" class="pilcrow">¶</a></p>
+> <p id="section-1-7">Today, almost all DNS queries are sent over UDP <span>[<a href="#thomas-ditl-tcp" class="cite xref">thomas-ditl-tcp</a>]</span>. This has
+1464,1465c1489,1490
+<    TCP, not UDP, although new solutions are still emerging <span>[<a href="#RFC9000" class="xref">RFC9000</a>]</span>
+<         <span>[<a href="#I-D.ietf-dprive-dnsoquic" class="xref">DPRIVE-DNSOQUIC</a>]</span>.<a href="#section-1-7" class="pilcrow">¶</a></p>
+---
+>    TCP, not UDP, although new solutions are still emerging <span>[<a href="#RFC9000" class="cite xref">RFC9000</a>]</span>
+>         <span>[<a href="#I-D.ietf-dprive-dnsoquic" class="cite xref">DPRIVE-DNSOQUIC</a>]</span>.<a href="#section-1-7" class="pilcrow">¶</a></p>
+1508c1533
+<    <span>[<a href="#RFC6973" class="xref">RFC6973</a>]</span>. This document obsoletes <span>[<a href="#RFC7626" class="xref">RFC7626</a>]</span>.<a href="#section-1-11" class="pilcrow">¶</a></p>
+---
+>    <span>[<a href="#RFC6973" class="cite xref">RFC6973</a>]</span>. This document obsoletes <span>[<a href="#RFC7626" class="cite xref">RFC7626</a>]</span>.<a href="#section-1-11" class="pilcrow">¶</a></p>
+1518c1543
+<    pervasive surveillance <span>[<a href="#RFC7258" class="xref">RFC7258</a>]</span> are considered as well as risks coming from a more
+---
+>    pervasive surveillance <span>[<a href="#RFC7258" class="cite xref">RFC7258</a>]</span> are considered as well as risks coming from a more
+1520c1545
+<    as defined in <span>[<a href="#RFC8890" class="xref">RFC8890</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
+---
+>    as defined in <span>[<a href="#RFC8890" class="cite xref">RFC8890</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
+1525c1550
+<    are discussed in <span>[<a href="#RFC5155" class="xref">RFC5155</a>]</span> and <span>[<a href="#RFC5936" class="xref">RFC5936</a>]</span>.<a href="#section-2-3" class="pilcrow">¶</a></p>
+---
+>    are discussed in <span>[<a href="#RFC5155" class="cite xref">RFC5155</a>]</span> and <span>[<a href="#RFC5936" class="cite xref">RFC5936</a>]</span>.<a href="#section-2-3" class="pilcrow">¶</a></p>
+1575,1576c1600,1601
+<    resources currently leak. A few examples are DNSSEC NSEC zone walking <span>[<a href="#RFC4470" class="xref">RFC4470</a>]</span>,
+<    passive DNS services <span>[<a href="#passive-dns" class="xref">passive-dns</a>]</span>, etc. The zone transfer QTYPE <span>[<a href="#RFC5936" class="xref">RFC5936</a>]</span> is
+---
+>    resources currently leak. A few examples are DNSSEC NSEC zone walking <span>[<a href="#RFC4470" class="cite xref">RFC4470</a>]</span>,
+>    passive DNS services <span>[<a href="#passive-dns" class="cite xref">passive-dns</a>]</span>, etc. The zone transfer QTYPE <span>[<a href="#RFC5936" class="cite xref">RFC5936</a>]</span> is
+1603c1628
+<    Carrier-Grade NAT (CGN), for instance <span>[<a href="#RFC6269" class="xref">RFC6269</a>]</span>).<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+---
+>    Carrier-Grade NAT (CGN), for instance <span>[<a href="#RFC6269" class="cite xref">RFC6269</a>]</span>).<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+1623c1648
+<    Pretty Good Privacy (PGP) keys in the DNS <span>[<a href="#RFC7929" class="xref">RFC7929</a>]</span>, then
+---
+>    Pretty Good Privacy (PGP) keys in the DNS <span>[<a href="#RFC7929" class="cite xref">RFC7929</a>]</span>, then
+1633c1658
+<    However, hiding does not always work. The edns-client-subnet (ECS) EDNS0 option <span>[<a href="#RFC7871" class="xref">RFC7871</a>]</span> is sometimes used (see one privacy analysis in <span>[<a href="#denis-edns-client-subnet" class="xref">denis-edns-client-subnet</a>]</span>).
+---
+>    However, hiding does not always work. The edns-client-subnet (ECS) EDNS0 option <span>[<a href="#RFC7871" class="cite xref">RFC7871</a>]</span> is sometimes used (see one privacy analysis in <span>[<a href="#denis-edns-client-subnet" class="cite xref">denis-edns-client-subnet</a>]</span>).
+1637c1662
+<    is as sensitive as it is for HTTP <span>[<a href="#sidn-entrada" class="xref">sidn-entrada</a>]</span>.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
+---
+>    is as sensitive as it is for HTTP <span>[<a href="#sidn-entrada" class="cite xref">sidn-entrada</a>]</span>.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
+1640c1665
+<    <span>[<a href="#RFC7721" class="xref">RFC7721</a>]</span> does discuss privacy considerations for IPv6 address generation
+---
+>    <span>[<a href="#RFC7721" class="cite xref">RFC7721</a>]</span> does discuss privacy considerations for IPv6 address generation
+1656,1657c1681,1682
+< the DNS payload itself (ECS, as described in <span>[<a href="#RFC7871" class="xref">RFC7871</a>]</span>, is widely used; however, <span>[<a href="#RFC7871" class="xref">RFC7871</a>]</span> is only an Informational RFC).<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
+< <p id="section-4.2.1-2">DNS Cookies <span>[<a href="#RFC7873" class="xref">RFC7873</a>]</span> are a lightweight DNS transaction security mechanism that
+---
+> the DNS payload itself (ECS, as described in <span>[<a href="#RFC7871" class="cite xref">RFC7871</a>]</span>, is widely used; however, <span>[<a href="#RFC7871" class="cite xref">RFC7871</a>]</span> is only an Informational RFC).<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
+> <p id="section-4.2.1-2">DNS Cookies <span>[<a href="#RFC7873" class="cite xref">RFC7873</a>]</span> are a lightweight DNS transaction security mechanism that
+1664c1689
+< and even user names being inserted in nonstandard EDNS(0) options <span>[<a href="#RFC6891" class="xref">RFC6891</a>]</span>
+---
+> and even user names being inserted in nonstandard EDNS(0) options <span>[<a href="#RFC6891" class="cite xref">RFC6891</a>]</span>
+1680,1681c1705,1706
+<    TTLs <span>[<a href="#grangeia.snooping" class="xref">grangeia.snooping</a>]</span>.  Since this also is a reconnaissance
+<    technique for subsequent cache poisoning attacks, some countermeasures have already been developed and deployed <span>[<a href="#cache-snooping-defence" class="xref">cache-snooping-defence</a>]</span>.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+---
+>    TTLs <span>[<a href="#grangeia.snooping" class="cite xref">grangeia.snooping</a>]</span>.  Since this also is a reconnaissance
+>    technique for subsequent cache poisoning attacks, some countermeasures have already been developed and deployed <span>[<a href="#cache-snooping-defence" class="cite xref">cache-snooping-defence</a>]</span>.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+1697c1722
+<    any other traffic. (DNSSEC, specified in <span>[<a href="#RFC4033" class="xref">RFC4033</a>]</span>, explicitly excludes
+---
+>    any other traffic. (DNSSEC, specified in <span>[<a href="#RFC4033" class="cite xref">RFC4033</a>]</span>, explicitly excludes
+1701,1702c1726,1727
+<    and more privacy aware and secured against surveillance (e.g., <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span>,
+<    <span>[<a href="#RFC9000" class="xref">RFC9000</a>]</span>), the use of unencrypted transports for DNS may
+---
+>    and more privacy aware and secured against surveillance (e.g., <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>,
+>    <span>[<a href="#RFC9000" class="cite xref">RFC9000</a>]</span>), the use of unencrypted transports for DNS may
+1705c1730
+<    <span>[<a href="#RFC8744" class="xref">RFC8744</a>]</span>, which is one of the
+---
+>    <span>[<a href="#RFC8744" class="cite xref">RFC8744</a>]</span>, which is one of the
+1725c1750
+< resolvers as discussed in <a href="#in-the-authoritative-name-servers" class="xref">Section 6.2</a>.<a href="#section-5.1-5.1" class="pilcrow">¶</a>
+---
+> resolvers as discussed in <a href="#in-the-authoritative-name-servers" class="auto internal xref">Section 6.2</a>.<a href="#section-5.1-5.1" class="pilcrow">¶</a>
+1789c1814
+< used to de-NAT DNS queries <span>[<a href="#dns-de-nat" class="xref">dns-de-nat</a>]</span>.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
+---
+> used to de-NAT DNS queries <span>[<a href="#dns-de-nat" class="cite xref">dns-de-nat</a>]</span>.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
+1792c1817
+< e.g., using TCP Fast Open <span>[<a href="#RFC7413" class="xref">RFC7413</a>]</span>.<a href="#section-5.2-4" class="pilcrow">¶</a></p>
+---
+> e.g., using TCP Fast Open <span>[<a href="#RFC7413" class="cite xref">RFC7413</a>]</span>.<a href="#section-5.2-4" class="pilcrow">¶</a></p>
+1810c1835
+< <span>[<a href="#getdns" class="xref">getdns</a>]</span>), then they could, in principle, help to identify a specific user. Users
+---
+> <span>[<a href="#getdns" class="cite xref">getdns</a>]</span>), then they could, in principle, help to identify a specific user. Users
+1813c1838
+< recommendations <span>[<a href="#RFC7525" class="xref">RFC7525</a>]</span> and the development of TLS 1.3 <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span> largely
+---
+> recommendations <span>[<a href="#RFC7525" class="cite xref">RFC7525</a>]</span> and the development of TLS 1.3 <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span> largely
+1816c1841
+< <span>[<a href="#pitfalls-of-dns-encryption" class="xref">pitfalls-of-dns-encryption</a>]</span> because the sizes and timing of encrypted DNS
+---
+> <span>[<a href="#pitfalls-of-dns-encryption" class="cite xref">pitfalls-of-dns-encryption</a>]</span> because the sizes and timing of encrypted DNS
+1828c1853
+< <p id="section-6-1">Using the terminology of <span>[<a href="#RFC6973" class="xref">RFC6973</a>]</span>, the DNS servers (recursive
+---
+> <p id="section-6-1">Using the terminology of <span>[<a href="#RFC6973" class="cite xref">RFC6973</a>]</span>, the DNS servers (recursive
+1832c1857
+<    forgotten in risk analysis.  But, to quote <span>[<a href="#RFC6973" class="xref">RFC6973</a>]</span> again, "Although
+---
+>    forgotten in risk analysis.  But, to quote <span>[<a href="#RFC6973" class="cite xref">RFC6973</a>]</span> again, "Although
+1836c1861
+<    data".  In <span>[<a href="#RFC6973" class="xref">RFC6973</a>]</span> parlance, enablers become observers when they
+---
+>    data".  In <span>[<a href="#RFC6973" class="cite xref">RFC6973</a>]</span> parlance, enablers become observers when they
+1840c1865
+<    programs like PacketQ <span>[<a href="#packetq" class="xref">packetq</a>]</span> and DNSmezzo <span>[<a href="#dnsmezzo" class="xref">dnsmezzo</a>]</span>. The
+---
+>    programs like PacketQ <span>[<a href="#packetq" class="cite xref">packetq</a>]</span> and DNSmezzo <span>[<a href="#dnsmezzo" class="cite xref">dnsmezzo</a>]</span>. The
+1842c1867
+<    part of a surveillance program like PRISM <span>[<a href="#prism" class="xref">prism</a>]</span> and pass data to an
+---
+>    part of a surveillance program like PRISM <span>[<a href="#prism" class="cite xref">prism</a>]</span> and pass data to an
+1845c1870
+<    third parties for research purposes <span>[<a href="#ditl" class="xref">ditl</a>]</span> <span>[<a href="#day-at-root" class="xref">day-at-root</a>]</span>, security
+---
+>    third parties for research purposes <span>[<a href="#ditl" class="cite xref">ditl</a>]</span> <span>[<a href="#day-at-root" class="cite xref">day-at-root</a>]</span>, security
+1851c1876
+<    ("passive DNS" <span>[<a href="#passive-dns" class="xref">passive-dns</a>]</span>).<a href="#section-6-3" class="pilcrow">¶</a></p>
+---
+>    ("passive DNS" <span>[<a href="#passive-dns" class="cite xref">passive-dns</a>]</span>).<a href="#section-6-3" class="pilcrow">¶</a></p>
+1906c1931
+<             <li class="normal" id="section-6.1.1-6.3">applications directing DNS traffic by default to a limited subset of resolvers (see <a href="#applicationspecific-resolver-selection" class="xref">Section 6.1.1.2</a>)<a href="#section-6.1.1-6.3" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-6.1.1-6.3">applications directing DNS traffic by default to a limited subset of resolvers (see <a href="#applicationspecific-resolver-selection" class="auto internal xref">Section 6.1.1.2</a>)<a href="#section-6.1.1-6.3" class="pilcrow">¶</a>
+1913c1938
+<   <span>[<a href="#centralisation-and-data-sovereignty" class="xref">centralisation-and-data-sovereignty</a>]</span>.<a href="#section-6.1.1-7" class="pilcrow">¶</a></p>
+---
+>   <span>[<a href="#centralisation-and-data-sovereignty" class="cite xref">centralisation-and-data-sovereignty</a>]</span>.<a href="#section-6.1.1-7" class="pilcrow">¶</a></p>
+1926c1951
+< <span>[<a href="#I-D.ietf-dnsop-resolver-information" class="xref">DNSOP-RESOLVER</a>]</span>. Note that an increasing number of ISPs
+---
+> <span>[<a href="#I-D.ietf-dnsop-resolver-information" class="cite xref">DNSOP-RESOLVER</a>]</span>. Note that an increasing number of ISPs
+1928c1953
+< Initiative <span>[<a href="#EDDI" class="xref">EDDI</a>]</span>.<a href="#section-6.1.1.1-2" class="pilcrow">¶</a></p>
+---
+> Initiative <span>[<a href="#EDDI" class="cite xref">EDDI</a>]</span>.<a href="#section-6.1.1.1-2" class="pilcrow">¶</a></p>
+1973c1998
+< <p id="section-6.1.2-2">The Internet Threat model, as described in <span>[<a href="#RFC3552" class="xref">RFC3552</a>]</span>, assumes that the attacker
+---
+> <p id="section-6.1.2-2">The Internet Threat model, as described in <span>[<a href="#RFC3552" class="cite xref">RFC3552</a>]</span>, assumes that the attacker
+2001c2026
+<   rendezvous-based blocking as described in <span><a href="https://www.rfc-editor.org/rfc/rfc7754#section-4.3" class="relref">Section 4.3</a> of [<a href="#RFC7754" class="xref">RFC7754</a>]</span>. Such
+---
+>   rendezvous-based blocking as described in <span><a href="https://rfc-editor.org/rfc/rfc7754#section-4.3" class="relref">Section 4.3</a> of [<a href="#RFC7754" class="cite xref">RFC7754</a>]</span>. Such
+2022c2047
+< operators. As described in <a href="#encrypted-transports" class="xref">Section 5.2</a>, use of session-based encrypted
+---
+> operators. As described in <a href="#encrypted-transports" class="auto internal xref">Section 5.2</a>, use of session-based encrypted
+2033c2058
+< TLS <span>[<a href="#RFC7858" class="xref">RFC7858</a>]</span>. <span><a href="https://www.rfc-editor.org/rfc/rfc8484#section-8.2" class="relref">Section 8.2</a> of [<a href="#RFC8484" class="xref">RFC8484</a>]</span> describes the privacy considerations in
+---
+> TLS <span>[<a href="#RFC7858" class="cite xref">RFC7858</a>]</span>. <span><a href="https://rfc-editor.org/rfc/rfc8484#section-8.2" class="relref">Section 8.2</a> of [<a href="#RFC8484" class="cite xref">RFC8484</a>]</span> describes the privacy considerations in
+2052c2077
+< <p id="section-6.1.4.2-4"><span>[<a href="#RFC8484" class="xref">RFC8484</a>]</span> specifically makes selection of HTTPS functionality vs. privacy an
+---
+> <p id="section-6.1.4.2-4"><span>[<a href="#RFC8484" class="cite xref">RFC8484</a>]</span> specifically makes selection of HTTPS functionality vs. privacy an
+2077c2102
+<    minimization <span>[<a href="#ripe-qname-measurements" class="xref">ripe-qname-measurements</a>]</span> reduces the data visible at the
+---
+>    minimization <span>[<a href="#ripe-qname-measurements" class="cite xref">ripe-qname-measurements</a>]</span> reduces the data visible at the
+2093c2118
+<    no longer present if ECS <span>[<a href="#RFC7871" class="xref">RFC7871</a>]</span> is used because, in this case,
+---
+>    no longer present if ECS <span>[<a href="#RFC7871" class="cite xref">RFC7871</a>]</span> is used because, in this case,
+2111c2136
+< <p id="section-6.2-7">Also, it seems (see the survey described in <span>[<a href="#aeris-dns" class="xref">aeris-dns</a>]</span>) that there is a
+---
+> <p id="section-6.2-7">Also, it seems (see the survey described in <span>[<a href="#aeris-dns" class="cite xref">aeris-dns</a>]</span>) that there is a
+2142c2167
+<    example, one study <span>[<a href="#herrmann-reidentification" class="xref">herrmann-reidentification</a>]</span> found that such re-identification is possible so that "73.1% of all day-to-day links
+---
+>    example, one study <span>[<a href="#herrmann-reidentification" class="cite xref">herrmann-reidentification</a>]</span> found that such re-identification is possible so that "73.1% of all day-to-day links
+2155c2180
+<    <span>[<a href="#RFC7624" class="xref">RFC7624</a>]</span> that considers such inference-based attacks in a more
+---
+>    <span>[<a href="#RFC7624" class="cite xref">RFC7624</a>]</span> that considers such inference-based attacks in a more
+2164,2166c2189,2191
+< <p id="section-7.2-1">Useful background information can also be found in <span>[<a href="#tor-leak" class="xref">tor-leak</a>]</span> (regarding the risk of privacy leaks through DNS) and in a few academic papers:
+<    <span>[<a href="#yanbin-tsudik" class="xref">yanbin-tsudik</a>]</span>, <span>[<a href="#castillo-garcia" class="xref">castillo-garcia</a>]</span>, <span>[<a href="#fangming-hori-sakurai" class="xref">fangming-hori-sakurai</a>]</span>, and
+<    <span>[<a href="#federrath-fuchs-herrmann-piosecny" class="xref">federrath-fuchs-herrmann-piosecny</a>]</span>.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-7.2-1">Useful background information can also be found in <span>[<a href="#tor-leak" class="cite xref">tor-leak</a>]</span> (regarding the risk of privacy leaks through DNS) and in a few academic papers:
+>    <span>[<a href="#yanbin-tsudik" class="cite xref">yanbin-tsudik</a>]</span>, <span>[<a href="#castillo-garcia" class="cite xref">castillo-garcia</a>]</span>, <span>[<a href="#fangming-hori-sakurai" class="cite xref">fangming-hori-sakurai</a>]</span>, and
+>    <span>[<a href="#federrath-fuchs-herrmann-piosecny" class="cite xref">federrath-fuchs-herrmann-piosecny</a>]</span>.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+2179c2204
+<    tertiary requests (see the terminology in <a href="#introduction" class="xref">Section 1</a>). But, in
+---
+>    tertiary requests (see the terminology in <a href="#introduction" class="auto internal xref">Section 1</a>). But, in
+2186,2188c2211,2213
+<    power of the observation of DNS traffic.  See <span>[<a href="#dns-footprint" class="xref">dns-footprint</a>]</span>,
+<    <span>[<a href="#dagon-malware" class="xref">dagon-malware</a>]</span>, and <span>[<a href="#darkreading-dns" class="xref">darkreading-dns</a>]</span>.<a href="#section-8-2" class="pilcrow">¶</a></p>
+< <p id="section-8-3">Passive DNS services <span>[<a href="#passive-dns" class="xref">passive-dns</a>]</span> allow reconstruction of the data of sometimes an entire zone. Well-known passive DNS services keep only the DNS
+---
+>    power of the observation of DNS traffic.  See <span>[<a href="#dns-footprint" class="cite xref">dns-footprint</a>]</span>,
+>    <span>[<a href="#dagon-malware" class="cite xref">dagon-malware</a>]</span>, and <span>[<a href="#darkreading-dns" class="cite xref">darkreading-dns</a>]</span>.<a href="#section-8-2" class="pilcrow">¶</a></p>
+> <p id="section-8-3">Passive DNS services <span>[<a href="#passive-dns" class="cite xref">passive-dns</a>]</span> allow reconstruction of the data of sometimes an entire zone. Well-known passive DNS services keep only the DNS
+2194c2219
+<    surveillance operations <span>[<a href="#morecowbell" class="xref">morecowbell</a>]</span>. For example, the MORECOWBELL
+---
+>    surveillance operations <span>[<a href="#morecowbell" class="cite xref">morecowbell</a>]</span>. For example, the MORECOWBELL
+2209c2234
+<    country. Interpreting general privacy laws, like the European Union's <span>[<a href="#data-protection-directive" class="xref">data-protection-directive</a>]</span>
+---
+>    country. Interpreting general privacy laws, like the European Union's <span>[<a href="#data-protection-directive" class="cite xref">data-protection-directive</a>]</span>
+2212c2237
+<    <span>[<a href="#sidn-entrada" class="xref">sidn-entrada</a>]</span>.<a href="#section-9-1" class="pilcrow">¶</a></p>
+---
+>    <span>[<a href="#sidn-entrada" class="cite xref">sidn-entrada</a>]</span>.<a href="#section-9-1" class="pilcrow">¶</a></p>
+2225c2250
+<    Privacy Operators" <span>[<a href="#RFC8932" class="xref">RFC8932</a>]</span>.<a href="#section-10-1" class="pilcrow">¶</a></p>
+---
+>    Privacy Operators" <span>[<a href="#RFC8932" class="cite xref">RFC8932</a>]</span>.<a href="#section-10-1" class="pilcrow">¶</a></p>
+2508c2533
+< <span>[<a href="#RFC7816" class="xref">RFC7816</a>]</span> on QNAME minimization, text, references, and initial attempts to
+---
+> <span>[<a href="#RFC7816" class="cite xref">RFC7816</a>]</span> on QNAME minimization, text, references, and initial attempts to
