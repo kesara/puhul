@@ -1,0 +1,1167 @@
+17c17
+< <meta content="xml2rfc 2.35.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+20c20,36
+< <link href="rfc8650.xml" type="application/rfc+xml" rel="alternate">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.1.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8650.xml" rel="alternate" type="application/rfc+xml">
+30c46
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+39a56,61
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+42d63
+<   width: extend-to-zoom;
+57c78
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+59a81
+>   overflow-wrap: break-word;
+145a168,176
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+160,163d190
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+164a192
+>   border: none;
+187a216,218
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+229c260,261
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+239c271
+< tt, code, pre, code {
+---
+> tt, code, pre {
+241c273
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+280a313,315
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+370a406,411
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+472c513
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+612d652
+< 
+634a675,677
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+702c745
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+802c845
+< tt, code, pre, code {
+---
+> tt, code, pre {
+807c850
+< pre.sourcecode,
+---
+> .sourcecode pre,
+843c886
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+921,926d963
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+997c1034
+<   margin: 0 0 0.25em 0;
+---
+>   margin-bottom: 0.25em;
+1011c1048
+<   margin-bottom: 0;
+---
+>   margin-bottom: 0.5em;
+1029a1067,1068
+>   .artwork,
+>   .artwork > pre,
+1033,1034c1072,1205
+< }</style>
+< <link href="rfc-local.css" type="text/css" rel="stylesheet">
+---
+> }
+> /* Avoid narrow tables forcing too narrow table captions, which may render badly */
+> table {
+>   min-width: 20em;
+> }
+> /* ol type a */
+> ol.type-a { list-style-type: lower-alpha; }
+> ol.type-A { list-style-type: upper-alpha; }
+> ol.type-i { list-style-type: lower-roman; }
+> ol.type-I { list-style-type: lower-roman; }
+> /* Apply the print table and row borders in general, on request from the RPC,
+> and increase the contrast between border and odd row background slightly */
+> table {
+>   border: 1px solid #ddd;
+> }
+> td {
+>   border-top: 1px solid #ddd;
+> }
+> tr {
+>   break-inside: avoid;
+> }
+> tr:nth-child(2n+1) > td {
+>   background-color: #f8f8f8;
+> }
+> /* Use style rules to govern display of the TOC. */
+> @media screen and (max-width: 1023px) {
+>   #toc nav { display: none; }
+>   #toc.active nav { display: block; }
+> }
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+> <link href="rfc-local.css" rel="stylesheet" type="text/css">
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-netconf-restconf-notif-15" rel="prev">
+1037c1208
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-netconf-restconf-notif-15" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1039,1040c1210,1211
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1044c1215
+< <td class="center">RESTCONF Transport for Event Notifications</td>
+---
+> <td class="center">RESTCONF Transport for Event Notificatio</td>
+1145,1156c1316,1327
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-dynamic-subscriptions" class="xref">Dynamic Subscriptions</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-transport-connectivity" class="xref">Transport Connectivity</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-dynamic-subscriptions" class="internal xref">Dynamic Subscriptions</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-transport-connectivity" class="internal xref">Transport Connectivity</a></p>
+1158,1159c1329,1330
+<               <li class="toc ulEmpty" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-discovery" class="xref">Discovery</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1" class="keepWithNext"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-discovery" class="internal xref">Discovery</a></p>
+1161,1162c1332,1333
+<               <li class="toc ulEmpty" id="section-toc.1-1.3.2.3">
+<                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-restconf-rpcs-and-http-stat" class="xref">RESTCONF RPCs and HTTP Status Codes</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+>                 <p id="section-toc.1-1.3.2.3.1" class="keepWithNext"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-restconf-rpcs-and-http-stat" class="internal xref">RESTCONF RPCs and HTTP Status Codes</a></p>
+1164,1165c1335,1336
+<               <li class="toc ulEmpty" id="section-toc.1-1.3.2.4">
+<                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="xref">3.4</a>.  <a href="#name-call-flow-for-server-sent-e" class="xref">Call Flow for Server-Sent Events</a><a href="#section-toc.1-1.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+>                 <p id="section-toc.1-1.3.2.4.1" class="keepWithNext"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-call-flow-for-server-sent-e" class="internal xref">Call Flow for Server-Sent Events</a></p>
+1169,1170c1340,1341
+<           <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-qos-treatment" class="xref">QoS Treatment</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-qos-treatment" class="internal xref">QoS Treatment</a></p>
+1172,1173c1343,1344
+<           <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-notification-messages" class="xref">Notification Messages</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-notification-messages" class="internal xref">Notification Messages</a></p>
+1175,1176c1346,1347
+<           <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-yang-tree" class="xref">YANG Tree</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-yang-tree" class="internal xref">YANG Tree</a></p>
+1178,1179c1349,1350
+<           <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-yang-module" class="xref">YANG Module</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-yang-module" class="internal xref">YANG Module</a></p>
+1181,1182c1352,1353
+<           <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1184,1185c1355,1356
+<           <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1" class="keepWithNext"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1187,1191c1358,1362
+<           <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.10.2.1">
+<                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="xref">10.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.10.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1" class="keepWithNext"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
+>                 <p id="section-toc.1-1.10.2.1.1" class="keepWithNext"><a href="#section-10.1" class="auto internal xref">10.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1193,1194c1364,1365
+<               <li class="toc ulEmpty" id="section-toc.1-1.10.2.2">
+<                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="xref">10.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.10.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
+>                 <p id="section-toc.1-1.10.2.2.1" class="keepWithNext"><a href="#section-10.2" class="auto internal xref">10.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1198,1205c1369,1376
+<           <li class="toc ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-examples" class="xref">Examples</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.11.2.1">
+<                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-a.1" class="xref">A.1</a>.  <a href="#name-dynamic-subscriptions-2" class="xref">Dynamic Subscriptions</a><a href="#section-toc.1-1.11.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.11.2.1.2.1">
+<                     <p id="section-toc.1-1.11.2.1.2.1.1"><a href="#section-a.1.1" class="xref">A.1.1</a>.  <a href="#name-establishing-dynamic-subscr" class="xref">Establishing Dynamic Subscriptions</a><a href="#section-toc.1-1.11.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-examples" class="internal xref">Examples</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
+>                 <p id="section-toc.1-1.11.2.1.1" class="keepWithNext"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <a href="#name-dynamic-subscriptions-2" class="internal xref">Dynamic Subscriptions</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.1">
+>                     <p id="section-toc.1-1.11.2.1.2.1.1" class="keepWithNext"><a href="#appendix-A.1.1" class="auto internal xref">A.1.1</a>.  <a href="#name-establishing-dynamic-subscr" class="internal xref">Establishing Dynamic Subscriptions</a></p>
+1207,1208c1378,1379
+<                   <li class="toc ulEmpty" id="section-toc.1-1.11.2.1.2.2">
+<                     <p id="section-toc.1-1.11.2.1.2.2.1"><a href="#section-a.1.2" class="xref">A.1.2</a>.  <a href="#name-modifying-dynamic-subscript" class="xref">Modifying Dynamic Subscriptions</a><a href="#section-toc.1-1.11.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.2">
+>                     <p id="section-toc.1-1.11.2.1.2.2.1" class="keepWithNext"><a href="#appendix-A.1.2" class="auto internal xref">A.1.2</a>.  <a href="#name-modifying-dynamic-subscript" class="internal xref">Modifying Dynamic Subscriptions</a></p>
+1210,1211c1381,1382
+<                   <li class="toc ulEmpty" id="section-toc.1-1.11.2.1.2.3">
+<                     <p id="section-toc.1-1.11.2.1.2.3.1"><a href="#section-a.1.3" class="xref">A.1.3</a>.  <a href="#name-deleting-dynamic-subscripti" class="xref">Deleting Dynamic Subscriptions</a><a href="#section-toc.1-1.11.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.3">
+>                     <p id="section-toc.1-1.11.2.1.2.3.1" class="keepWithNext"><a href="#appendix-A.1.3" class="auto internal xref">A.1.3</a>.  <a href="#name-deleting-dynamic-subscripti" class="internal xref">Deleting Dynamic Subscriptions</a></p>
+1215,1219c1386,1390
+<               <li class="toc ulEmpty" id="section-toc.1-1.11.2.2">
+<                 <p id="section-toc.1-1.11.2.2.1"><a href="#section-a.2" class="xref">A.2</a>.  <a href="#name-subscription-state-notifica" class="xref">Subscription State Notifications</a><a href="#section-toc.1-1.11.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.11.2.2.2.1">
+<                     <p id="section-toc.1-1.11.2.2.2.1.1"><a href="#section-a.2.1" class="xref">A.2.1</a>.  <a href="#name-subscription-modified" class="xref">"subscription-modified"</a><a href="#section-toc.1-1.11.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
+>                 <p id="section-toc.1-1.11.2.2.1" class="keepWithNext"><a href="#appendix-A.2" class="auto internal xref">A.2</a>.  <a href="#name-subscription-state-notifica" class="internal xref">Subscription State Notifications</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.1">
+>                     <p id="section-toc.1-1.11.2.2.2.1.1" class="keepWithNext"><a href="#appendix-A.2.1" class="auto internal xref">A.2.1</a>.  <a href="#name-subscription-modified" class="internal xref">"subscription-modified"</a></p>
+1221,1222c1392,1393
+<                   <li class="toc ulEmpty" id="section-toc.1-1.11.2.2.2.2">
+<                     <p id="section-toc.1-1.11.2.2.2.2.1"><a href="#section-a.2.2" class="xref">A.2.2</a>.  <a href="#name-subscription-completed-subs" class="xref">"subscription-completed", "subscription-resumed", and "replay-completed"</a><a href="#section-toc.1-1.11.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.2">
+>                     <p id="section-toc.1-1.11.2.2.2.2.1" class="keepWithNext"><a href="#appendix-A.2.2" class="auto internal xref">A.2.2</a>.  <a href="#name-subscription-completed-subs" class="internal xref">"subscription-completed", "subscription-resumed", and "replay-completed"</a></p>
+1224,1225c1395,1396
+<                   <li class="toc ulEmpty" id="section-toc.1-1.11.2.2.2.3">
+<                     <p id="section-toc.1-1.11.2.2.2.3.1"><a href="#section-a.2.3" class="xref">A.2.3</a>.  <a href="#name-subscription-terminated-and" class="xref">"subscription-terminated" and "subscription-suspended"</a><a href="#section-toc.1-1.11.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.3">
+>                     <p id="section-toc.1-1.11.2.2.2.3.1" class="keepWithNext"><a href="#appendix-A.2.3" class="auto internal xref">A.2.3</a>.  <a href="#name-subscription-terminated-and" class="internal xref">"subscription-terminated" and "subscription-suspended"</a></p>
+1229,1230c1400,1401
+<               <li class="toc ulEmpty" id="section-toc.1-1.11.2.3">
+<                 <p id="section-toc.1-1.11.2.3.1"><a href="#section-a.3" class="xref">A.3</a>.  <a href="#name-filter-example" class="xref">Filter Example</a><a href="#section-toc.1-1.11.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.3">
+>                 <p id="section-toc.1-1.11.2.3.1" class="keepWithNext"><a href="#appendix-A.3" class="auto internal xref">A.3</a>.  <a href="#name-filter-example" class="internal xref">Filter Example</a></p>
+1234,1235c1405,1406
+<           <li class="toc ulEmpty" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1237,1238c1408,1409
+<           <li class="toc ulEmpty" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1" class="keepWithNext"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1248,1250c1419,1421
+< <p id="section-1-1">Mechanisms to support event subscription and YANG-Push are defined in <span>[<a href="#RFC8639" class="xref">RFC8639</a>]</span>. Enhancements to <span>[<a href="#RFC8639" class="xref">RFC8639</a>]</span> that enable YANG datastore subscription and YANG-Push are defined in <span>[<a href="#RFC8641" class="xref">RFC8641</a>]</span>. 
+< This document provides a transport specification for dynamic subscriptions over RESTCONF <span>[<a href="#RFC8040" class="xref">RFC8040</a>]</span>.  Requirements for these mechanisms are captured in <span>[<a href="#RFC7923" class="xref">RFC7923</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+< <p id="section-1-2">The streaming of notifications that encapsulate the resulting information push is done via the mechanism described in <span><a href="https://www.rfc-editor.org/rfc/rfc8040#section-6.3" class="relref">Section 6.3</a> of [<a href="#RFC8040" class="xref">RFC8040</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+---
+> <p id="section-1-1">Mechanisms to support event subscription and YANG-Push are defined in <span>[<a href="#RFC8639" class="cite xref">RFC8639</a>]</span>. Enhancements to <span>[<a href="#RFC8639" class="cite xref">RFC8639</a>]</span> that enable YANG datastore subscription and YANG-Push are defined in <span>[<a href="#RFC8641" class="cite xref">RFC8641</a>]</span>. 
+> This document provides a transport specification for dynamic subscriptions over RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>.  Requirements for these mechanisms are captured in <span>[<a href="#RFC7923" class="cite xref">RFC7923</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+> <p id="section-1-2">The streaming of notifications that encapsulate the resulting information push is done via the mechanism described in <span><a href="https://rfc-editor.org/rfc/rfc8040#section-6.3" class="relref">Section 6.3</a> of [<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+1259c1430
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1261,1262c1432,1433
+< <p id="section-2-2">The following terms use the definitions from <span>[<a href="#RFC8639" class="xref">RFC8639</a>]</span>: dynamic subscription, event stream, notification message, publisher, receiver, subscriber, and subscription.<a href="#section-2-2" class="pilcrow">¶</a></p>
+< <p id="section-2-3">Other terms reused include datastore, which is defined in <span>[<a href="#RFC8342" class="xref">RFC8342</a>]</span>, and HTTP/2 stream, which maps to the definition of "stream" within <span>[<a href="#RFC7540" class="xref">RFC7540</a>], <a href="https://www.rfc-editor.org/rfc/rfc7540#section-2" class="relref">Section 2</a></span>.<a href="#section-2-3" class="pilcrow">¶</a></p>
+---
+> <p id="section-2-2">The following terms use the definitions from <span>[<a href="#RFC8639" class="cite xref">RFC8639</a>]</span>: dynamic subscription, event stream, notification message, publisher, receiver, subscriber, and subscription.<a href="#section-2-2" class="pilcrow">¶</a></p>
+> <p id="section-2-3">Other terms reused include datastore, which is defined in <span>[<a href="#RFC8342" class="cite xref">RFC8342</a>]</span>, and HTTP/2 stream, which maps to the definition of "stream" within <span>[<a href="#RFC7540" class="cite xref">RFC7540</a>], <a href="https://rfc-editor.org/rfc/rfc7540#section-2" class="relref">Section 2</a></span>.<a href="#section-2-3" class="pilcrow">¶</a></p>
+1269,1270c1440,1441
+< <p id="section-3-1">This section provides specifics on how to establish and maintain dynamic subscriptions over RESTCONF <span>[<a href="#RFC8040" class="xref">RFC8040</a>]</span>. Subscribing to event streams is accomplished in this way via RPCs defined within <span>[<a href="#RFC8639" class="xref">RFC8639</a>], <a href="https://www.rfc-editor.org/rfc/rfc8639#section-2.4" class="relref">Section 2.4</a></span>. The RPCs are done via RESTCONF POSTs. YANG datastore subscription is accomplished via augmentations to <span>[<a href="#RFC8639" class="xref">RFC8639</a>]</span> as described within <span>[<a href="#RFC8641" class="xref">RFC8641</a>], <a href="https://www.rfc-editor.org/rfc/rfc8641#section-4.4" class="relref">Section 4.4</a></span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+< <p id="section-3-2">As described in <span><a href="https://www.rfc-editor.org/rfc/rfc8040#section-6.3" class="relref">Section 6.3</a> of [<a href="#RFC8040" class="xref">RFC8040</a>]</span>, a GET needs to be performed on a
+---
+> <p id="section-3-1">This section provides specifics on how to establish and maintain dynamic subscriptions over RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. Subscribing to event streams is accomplished in this way via RPCs defined within <span>[<a href="#RFC8639" class="cite xref">RFC8639</a>], <a href="https://rfc-editor.org/rfc/rfc8639#section-2.4" class="relref">Section 2.4</a></span>. The RPCs are done via RESTCONF POSTs. YANG datastore subscription is accomplished via augmentations to <span>[<a href="#RFC8639" class="cite xref">RFC8639</a>]</span> as described within <span>[<a href="#RFC8641" class="cite xref">RFC8641</a>], <a href="https://rfc-editor.org/rfc/rfc8641#section-4.4" class="relref">Section 4.4</a></span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+> <p id="section-3-2">As described in <span><a href="https://rfc-editor.org/rfc/rfc8040#section-6.3" class="relref">Section 6.3</a> of [<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>, a GET needs to be performed on a
+1275c1446
+<       replaces the GET request for the "location" leaf that is used in <span>[<a href="#RFC8040" class="xref">RFC8040</a>]</span> to obtain the URI. The subscription
+---
+>       replaces the GET request for the "location" leaf that is used in <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span> to obtain the URI. The subscription
+1279c1450
+<       subscriber.  As specified in <span><a href="https://www.rfc-editor.org/rfc/rfc8639#section-2.4.1" class="relref">Section 2.4.1</a> of [<a href="#RFC8639" class="xref">RFC8639</a>]</span>, a subscription does not move to the active state
+---
+>       subscriber.  As specified in <span><a href="https://rfc-editor.org/rfc/rfc8639#section-2.4.1" class="relref">Section 2.4.1</a> of [<a href="#RFC8639" class="cite xref">RFC8639</a>]</span>, a subscription does not move to the active state
+1286c1457
+< <p id="section-3.1-2">As stated in <span><a href="https://www.rfc-editor.org/rfc/rfc8040#section-2.1" class="relref">Section 2.1</a> of [<a href="#RFC8040" class="xref">RFC8040</a>]</span>, a subscriber <span class="bcp14">MUST</span> establish the HTTP session over TLS <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span> in order to secure the content in transit.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
+---
+> <p id="section-3.1-2">As stated in <span><a href="https://rfc-editor.org/rfc/rfc8040#section-2.1" class="relref">Section 2.1</a> of [<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>, a subscriber <span class="bcp14">MUST</span> establish the HTTP session over TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span> in order to secure the content in transit.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
+1289c1460
+<    communication path to the publisher. Where quick recognition of the loss of a publisher is required, a subscriber <span class="bcp14">SHOULD</span> use a TLS heartbeat <span>[<a href="#RFC6520" class="xref">RFC6520</a>]</span>, just from subscriber to publisher, to track HTTP session continuity.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+---
+>    communication path to the publisher. Where quick recognition of the loss of a publisher is required, a subscriber <span class="bcp14">SHOULD</span> use a TLS heartbeat <span>[<a href="#RFC6520" class="cite xref">RFC6520</a>]</span>, just from subscriber to publisher, to track HTTP session continuity.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+1292c1463
+< A subscriber can then attempt to re-establish the dynamic subscription by using the procedure described in <a href="#SSE" class="xref">Section 3.4</a>.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
+---
+> A subscriber can then attempt to re-establish the dynamic subscription by using the procedure described in <a href="#SSE" class="auto internal xref">Section 3.4</a>.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
+1298,1299c1469,1470
+< <p id="section-3.2-1">Subscribers can learn which event streams a RESTCONF server supports by querying the "streams" container of ietf-subscribed-notifications.yang in <span>[<a href="#RFC8639" class="xref">RFC8639</a>]</span>. Support for the "streams" container of ietf-restconf-monitoring.yang in <span>[<a href="#RFC8040" class="xref">RFC8040</a>]</span> is not required. In the case when the RESTCONF binding specified by this document is used to convey the "streams" container from ietf-restconf-monitoring.yang (i.e., that feature is supported), any event streams contained therein are also expected to be present in the "streams" container of ietf-restconf-monitoring.yang.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+< <p id="section-3.2-2">Subscribers can learn which datastores a RESTCONF server supports by following <span><a href="https://www.rfc-editor.org/rfc/rfc8527#section-2" class="relref">Section 2</a> of [<a href="#RFC8527" class="xref">RFC8527</a>]</span>.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+---
+> <p id="section-3.2-1">Subscribers can learn which event streams a RESTCONF server supports by querying the "streams" container of ietf-subscribed-notifications.yang in <span>[<a href="#RFC8639" class="cite xref">RFC8639</a>]</span>. Support for the "streams" container of ietf-restconf-monitoring.yang in <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span> is not required. In the case when the RESTCONF binding specified by this document is used to convey the "streams" container from ietf-restconf-monitoring.yang (i.e., that feature is supported), any event streams contained therein are also expected to be present in the "streams" container of ietf-restconf-monitoring.yang.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+> <p id="section-3.2-2">Subscribers can learn which datastores a RESTCONF server supports by following <span><a href="https://rfc-editor.org/rfc/rfc8527#section-2" class="relref">Section 2</a> of [<a href="#RFC8527" class="cite xref">RFC8527</a>]</span>.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+1305,1306c1476,1477
+< <p id="section-3.3-1">Specific HTTP response codes as defined in <span><a href="https://www.rfc-editor.org/rfc/rfc7231#section-6" class="relref">Section 6</a> of [<a href="#RFC7231" class="xref">RFC7231</a>]</span> will indicate the result of RESTCONF RPC requests with the publisher.  An HTTP status code of 200 is the proper response to any successful RPC defined within <span>[<a href="#RFC8639" class="xref">RFC8639</a>]</span> or <span>[<a href="#RFC8641" class="xref">RFC8641</a>]</span>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+< <p id="section-3.3-2">If a publisher fails to serve the RPC request for one of the reasons indicated in <span><a href="https://www.rfc-editor.org/rfc/rfc8639#section-2.4.6" class="relref">Section 2.4.6</a> of [<a href="#RFC8639" class="xref">RFC8639</a>]</span> or <span><a href="https://www.rfc-editor.org/rfc/rfc8641#appendix-A" class="relref">Appendix A</a> of [<a href="#RFC8641" class="xref">RFC8641</a>]</span>, this will be indicated by an appropriate error code, as shown below, transported in the HTTP response.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+---
+> <p id="section-3.3-1">Specific HTTP response codes as defined in <span><a href="https://rfc-editor.org/rfc/rfc7231#section-6" class="relref">Section 6</a> of [<a href="#RFC7231" class="cite xref">RFC7231</a>]</span> will indicate the result of RESTCONF RPC requests with the publisher.  An HTTP status code of 200 is the proper response to any successful RPC defined within <span>[<a href="#RFC8639" class="cite xref">RFC8639</a>]</span> or <span>[<a href="#RFC8641" class="cite xref">RFC8641</a>]</span>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+> <p id="section-3.3-2">If a publisher fails to serve the RPC request for one of the reasons indicated in <span><a href="https://rfc-editor.org/rfc/rfc8639#section-2.4.6" class="relref">Section 2.4.6</a> of [<a href="#RFC8639" class="cite xref">RFC8639</a>]</span> or <span><a href="https://rfc-editor.org/rfc/rfc8641#appendix-A" class="relref">Appendix A</a> of [<a href="#RFC8641" class="cite xref">RFC8641</a>]</span>, this will be indicated by an appropriate error code, as shown below, transported in the HTTP response.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+1308c1479
+< an &lt;rpc-error&gt; element per <span><a href="https://www.rfc-editor.org/rfc/rfc8040#section-7.1" class="relref">Section 7.1</a> of [<a href="#RFC8040" class="xref">RFC8040</a>]</span> 
+---
+> an &lt;rpc-error&gt; element per <span><a href="https://rfc-editor.org/rfc/rfc8040#section-7.1" class="relref">Section 7.1</a> of [<a href="#RFC8040" class="cite xref">RFC8040</a>]</span> 
+1310,1311c1481,1482
+< <ul>
+< <li id="section-3.3-4.1">an "error-type" node of "application".<a href="#section-3.3-4.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.3-4.1">an "error-type" node of "application".<a href="#section-3.3-4.1" class="pilcrow">¶</a>
+1313c1484
+<           <li id="section-3.3-4.2">an "error-tag" node whose value is a string that corresponds 
+---
+>           <li class="normal" id="section-3.3-4.2">an "error-tag" node whose value is a string that corresponds 
+1317,1320c1488,1491
+<            <span><a href="https://www.rfc-editor.org/rfc/rfc8639#section-2.4.6" class="relref">Section 2.4.6</a> of [<a href="#RFC8639" class="xref">RFC8639</a>]</span> 
+<            for general subscription errors (<a href="#gen-sub-errors" class="xref">Table 1</a>) 
+<            or within <span><a href="https://www.rfc-editor.org/rfc/rfc8641#appendix-A.1" class="relref">Appendix A.1</a> of [<a href="#RFC8641" class="xref">RFC8641</a>]</span>
+<            for subscription errors specific to YANG datastores (<a href="#datastore-specific-errors" class="xref">Table 2</a>).<a href="#section-3.3-4.2" class="pilcrow">¶</a>
+---
+>            <span><a href="https://rfc-editor.org/rfc/rfc8639#section-2.4.6" class="relref">Section 2.4.6</a> of [<a href="#RFC8639" class="cite xref">RFC8639</a>]</span> 
+>            for general subscription errors (<a href="#gen-sub-errors" class="auto internal xref">Table 1</a>) 
+>            or within <span><a href="https://rfc-editor.org/rfc/rfc8641#appendix-A.1" class="relref">Appendix A.1</a> of [<a href="#RFC8641" class="cite xref">RFC8641</a>]</span>
+>            for subscription errors specific to YANG datastores (<a href="#datastore-specific-errors" class="auto internal xref">Table 2</a>).<a href="#section-3.3-4.2" class="pilcrow">¶</a>
+1322c1493
+<           <li id="section-3.3-4.3">an "error-app-tag" node whose value is a string that corresponds to an 
+---
+>           <li class="normal" id="section-3.3-4.3">an "error-app-tag" node whose value is a string that corresponds to an 
+1324c1495
+<            <span><a href="https://www.rfc-editor.org/rfc/rfc8639#section-2.4.6" class="relref">Section 2.4.6</a> of [<a href="#RFC8639" class="xref">RFC8639</a>]</span> 
+---
+>            <span><a href="https://rfc-editor.org/rfc/rfc8639#section-2.4.6" class="relref">Section 2.4.6</a> of [<a href="#RFC8639" class="cite xref">RFC8639</a>]</span> 
+1326c1497
+<            <span><a href="https://www.rfc-editor.org/rfc/rfc8641#appendix-A.1" class="relref">Appendix A.1</a> of [<a href="#RFC8641" class="xref">RFC8641</a>]</span> 
+---
+>            <span><a href="https://rfc-editor.org/rfc/rfc8641#appendix-A.1" class="relref">Appendix A.1</a> of [<a href="#RFC8641" class="cite xref">RFC8641</a>]</span> 
+1328c1499
+<            error occurred.  Viable errors for different RPCs are found in <a href="#rpc-errors" class="xref">Table 3</a>.<a href="#section-3.3-4.3" class="pilcrow">¶</a>
+---
+>            error occurred.  Viable errors for different RPCs are found in <a href="#rpc-errors" class="auto internal xref">Table 3</a>.<a href="#section-3.3-4.3" class="pilcrow">¶</a>
+1480c1651
+<  that might lead to successful RPC requests in the future. Tables <a href="#error-info-estab-sub" class="xref">4</a> and <a href="#error-info-mod-sub" class="xref">5</a> show the yang-data structures that may be returned.<a href="#section-3.3-9" class="pilcrow">¶</a></p>
+---
+>  that might lead to successful RPC requests in the future. Tables <a href="#error-info-estab-sub" class="auto internal xref">4</a> and <a href="#error-info-mod-sub" class="auto internal xref">5</a> show the yang-data structures that may be returned.<a href="#section-3.3-9" class="pilcrow">¶</a></p>
+1538c1709
+< <p id="section-3.3-14">Note that "error-path" <span>[<a href="#RFC8040" class="xref">RFC8040</a>]</span> does not need to be included with the &lt;rpc-error&gt; element, as subscription errors are generally associated with the choice of RPC input parameters.<a href="#section-3.3-14" class="pilcrow">¶</a></p>
+---
+> <p id="section-3.3-14">Note that "error-path" <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span> does not need to be included with the &lt;rpc-error&gt; element, as subscription errors are generally associated with the choice of RPC input parameters.<a href="#section-3.3-14" class="pilcrow">¶</a></p>
+1545c1716
+< <p id="section-3.4-1">The call flow for Server-Sent Events (SSE) is defined in <a href="#dyn-sse" class="xref">Figure 1</a>.  The logical connections denoted
+---
+> <p id="section-3.4-1">The call flow for Server-Sent Events (SSE) is defined in <a href="#dyn-sse" class="auto internal xref">Figure 1</a>.  The logical connections denoted
+1548c1719
+<  connection). Requests to RPCs as defined in <span>[<a href="#RFC8639" class="xref">RFC8639</a>]</span> or <span>[<a href="#RFC8641" class="xref">RFC8641</a>]</span> are
+---
+>  connection). Requests to RPCs as defined in <span>[<a href="#RFC8639" class="cite xref">RFC8639</a>]</span> or <span>[<a href="#RFC8641" class="cite xref">RFC8641</a>]</span> are
+1554,1556c1725,1727
+<  "uri" leaf in the data model in <a href="#YANG-module" class="xref">Section 7</a>.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+< <p id="section-3.4-2">An HTTP GET is then sent on a separate logical connection (b) to the URI on the publisher.  This signals the publisher to initiate the flow of notification messages that are sent in SSE <span>[<a href="#W3C-20150203" class="xref">W3C-20150203</a>]</span> as a response to the GET. There cannot be two or more simultaneous GET requests on a subscription URI: any GET request received while there is a current GET request on the same URI <span class="bcp14">MUST</span> be rejected with HTTP error code 409.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
+< <p id="section-3.4-3">As described in <span><a href="https://www.rfc-editor.org/rfc/rfc8040#section-6.4" class="relref">Section 6.4</a> of [<a href="#RFC8040" class="xref">RFC8040</a>]</span>, RESTCONF servers <span class="bcp14">SHOULD NOT</span> send the "event" or "id" fields in the SSE event notifications.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
+---
+>  "uri" leaf in the data model in <a href="#YANG-module" class="auto internal xref">Section 7</a>.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+> <p id="section-3.4-2">An HTTP GET is then sent on a separate logical connection (b) to the URI on the publisher.  This signals the publisher to initiate the flow of notification messages that are sent in SSE <span>[<a href="#W3C-20150203" class="cite xref">W3C-20150203</a>]</span> as a response to the GET. There cannot be two or more simultaneous GET requests on a subscription URI: any GET request received while there is a current GET request on the same URI <span class="bcp14">MUST</span> be rejected with HTTP error code 409.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
+> <p id="section-3.4-3">As described in <span><a href="https://rfc-editor.org/rfc/rfc8040#section-6.4" class="relref">Section 6.4</a> of [<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>, RESTCONF servers <span class="bcp14">SHOULD NOT</span> send the "event" or "id" fields in the SSE event notifications.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
+1559c1730
+<           <div class="artwork art-text alignLeft" id="section-3.4-4.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-3.4-4.1">
+1599,1600c1770,1771
+< <ul>
+< <li id="section-3.4-6.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.4-6.1">
+1605c1776
+<           <li id="section-3.4-6.2">Subscription RPCs <span class="bcp14">MUST NOT</span> use the connection currently providing notification messages for that subscription.<a href="#section-3.4-6.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.4-6.2">Subscription RPCs <span class="bcp14">MUST NOT</span> use the connection currently providing notification messages for that subscription.<a href="#section-3.4-6.2" class="pilcrow">¶</a>
+1607c1778
+<           <li id="section-3.4-6.3">In addition to an RPC response for a "modify-subscription" RPC traveling over (a), a "subscription-modified" state change notification <span class="bcp14">MUST</span> be sent within (b).  This allows the receiver to know exactly when, within the stream of events, the new terms of the subscription have been applied to the notification messages.  See arrow (c).<a href="#section-3.4-6.3" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.4-6.3">In addition to an RPC response for a "modify-subscription" RPC traveling over (a), a "subscription-modified" state change notification <span class="bcp14">MUST</span> be sent within (b).  This allows the receiver to know exactly when, within the stream of events, the new terms of the subscription have been applied to the notification messages.  See arrow (c).<a href="#section-3.4-6.3" class="pilcrow">¶</a>
+1609,1610c1780,1781
+<           <li id="section-3.4-6.4">In addition to any required access permissions (e.g., Network Configuration Access Control Model (NACM)), the RPCs "modify-subscription", "resync-subscription", and
+< "delete-subscription" <span class="bcp14">SHOULD</span> only be allowed by the same RESTCONF username <span>[<a href="#RFC8040" class="xref">RFC8040</a>]</span> that invoked "establish-subscription". Such a restriction generally serves to preserve users' privacy, but exceptions might be made for administrators that may need to modify or delete other users' subscriptions.<a href="#section-3.4-6.4" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.4-6.4">In addition to any required access permissions (e.g., Network Configuration Access Control Model (NACM)), the RPCs "modify-subscription", "resync-subscription", and
+> "delete-subscription" <span class="bcp14">SHOULD</span> only be allowed by the same RESTCONF username <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span> that invoked "establish-subscription". Such a restriction generally serves to preserve users' privacy, but exceptions might be made for administrators that may need to modify or delete other users' subscriptions.<a href="#section-3.4-6.4" class="pilcrow">¶</a>
+1612c1783
+<           <li id="section-3.4-6.5">The "kill-subscription" RPC can be invoked by any RESTCONF username with the required administrative permissions.<a href="#section-3.4-6.5" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.4-6.5">The "kill-subscription" RPC can be invoked by any RESTCONF username with the required administrative permissions.<a href="#section-3.4-6.5" class="pilcrow">¶</a>
+1616,1617c1787,1788
+< <ul>
+< <li id="section-3.4-8.1">Receipt of a "delete-subscription" or a "kill-subscription" RPC for that subscription<a href="#section-3.4-8.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.4-8.1">Receipt of a "delete-subscription" or a "kill-subscription" RPC for that subscription<a href="#section-3.4-8.1" class="pilcrow">¶</a>
+1619c1790
+<           <li id="section-3.4-8.2">Loss of TLS heartbeat<a href="#section-3.4-8.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.4-8.2">Loss of TLS heartbeat<a href="#section-3.4-8.2" class="pilcrow">¶</a>
+1622c1793
+< <p id="section-3.4-9">A publisher <span class="bcp14">MAY</span> terminate a subscription at any time as stated in <span><a href="https://www.rfc-editor.org/rfc/rfc8639#section-1.3" class="relref">Section 1.3</a> of [<a href="#RFC8639" class="xref">RFC8639</a>]</span>.<a href="#section-3.4-9" class="pilcrow">¶</a></p>
+---
+> <p id="section-3.4-9">A publisher <span class="bcp14">MAY</span> terminate a subscription at any time as stated in <span><a href="https://rfc-editor.org/rfc/rfc8639#section-1.3" class="relref">Section 1.3</a> of [<a href="#RFC8639" class="cite xref">RFC8639</a>]</span>.<a href="#section-3.4-9" class="pilcrow">¶</a></p>
+1631,1633c1802,1804
+< <p id="section-4-1">Qos treatment for event streams is described in <span><a href="https://www.rfc-editor.org/rfc/rfc8639#section-2.3" class="relref">Section 2.3</a> of [<a href="#RFC8639" class="xref">RFC8639</a>]</span>. In addition, if HTTP/2 is used, the publisher <span class="bcp14">MUST</span>:<a href="#section-4-1" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-4-2.1">Take the "weighting" leaf node in <span>[<a href="#RFC8639" class="xref">RFC8639</a>]</span> and copy it into the HTTP/2 stream weight, <span><a href="https://www.rfc-editor.org/rfc/rfc7540#section-5.3" class="relref">Section 5.3</a> of [<a href="#RFC7540" class="xref">RFC7540</a>]</span>, and<a href="#section-4-2.1" class="pilcrow">¶</a>
+---
+> <p id="section-4-1">Qos treatment for event streams is described in <span><a href="https://rfc-editor.org/rfc/rfc8639#section-2.3" class="relref">Section 2.3</a> of [<a href="#RFC8639" class="cite xref">RFC8639</a>]</span>. In addition, if HTTP/2 is used, the publisher <span class="bcp14">MUST</span>:<a href="#section-4-1" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="section-4-2.1">Take the "weighting" leaf node in <span>[<a href="#RFC8639" class="cite xref">RFC8639</a>]</span> and copy it into the HTTP/2 stream weight, <span><a href="https://rfc-editor.org/rfc/rfc7540#section-5.3" class="relref">Section 5.3</a> of [<a href="#RFC7540" class="cite xref">RFC7540</a>]</span>, and<a href="#section-4-2.1" class="pilcrow">¶</a>
+1635,1636c1806,1807
+<         <li id="section-4-2.2">Take any existing subscription "dependency", as specified by the
+<  "dependency" leaf node in <span>[<a href="#RFC8639" class="xref">RFC8639</a>]</span>,
+---
+>         <li class="normal" id="section-4-2.2">Take any existing subscription "dependency", as specified by the
+>  "dependency" leaf node in <span>[<a href="#RFC8639" class="cite xref">RFC8639</a>]</span>,
+1638c1809
+<  stream dependency (as described in <span><a href="https://www.rfc-editor.org/rfc/rfc7540#section-5.3.1" class="relref">Section 5.3.1</a> of [<a href="#RFC7540" class="xref">RFC7540</a>]</span>) of the dependent
+---
+>  stream dependency (as described in <span><a href="https://rfc-editor.org/rfc/rfc7540#section-5.3.1" class="relref">Section 5.3.1</a> of [<a href="#RFC7540" class="cite xref">RFC7540</a>]</span>) of the dependent
+1641c1812
+<         <li id="section-4-2.3">Set the exclusive flag (<span><a href="https://www.rfc-editor.org/rfc/rfc7540#section-5.3.1" class="relref">Section 5.3.1</a> of [<a href="#RFC7540" class="xref">RFC7540</a>]</span>) to 0.<a href="#section-4-2.3" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="section-4-2.3">Set the exclusive flag (<span><a href="https://rfc-editor.org/rfc/rfc7540#section-5.3.1" class="relref">Section 5.3.1</a> of [<a href="#RFC7540" class="cite xref">RFC7540</a>]</span>) to 0.<a href="#section-4-2.3" class="pilcrow">¶</a>
+1650c1821
+< <p id="section-5-1">Notification messages transported over RESTCONF will be encoded according to <span>[<a href="#RFC8040" class="xref">RFC8040</a>], <a href="https://www.rfc-editor.org/rfc/rfc8040#section-6.4" class="relref">Section 6.4</a></span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-5-1">Notification messages transported over RESTCONF will be encoded according to <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>], <a href="https://rfc-editor.org/rfc/rfc8040#section-6.4" class="relref">Section 6.4</a></span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
+1657,1659c1828,1830
+< <p id="section-6-1"> The YANG module defined in <a href="#YANG-module" class="xref">Section 7</a> has one leaf that augments three nodes of <span>[<a href="#RFC8639" class="xref">RFC8639</a>]</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
+< <div id="section-6-2">
+< <pre class="sourcecode lang-yangtree">
+---
+> <p id="section-6-1"> The YANG module defined in <a href="#YANG-module" class="auto internal xref">Section 7</a> has one leaf that augments three nodes of <span>[<a href="#RFC8639" class="cite xref">RFC8639</a>]</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
+> <div class="lang-yangtree sourcecode" id="section-6-2">
+> <pre>
+1675,1677c1846,1848
+< <p id="section-7-1">This module references <span>[<a href="#RFC8639" class="xref">RFC8639</a>]</span>.<a href="#section-7-1" class="pilcrow">¶</a></p>
+< <div id="section-7-2">
+< <pre class="sourcecode lang-yang">&lt;CODE BEGINS&gt; file "ietf-restconf-subscribed-notifications@2019-11-17.yang"
+---
+> <p id="section-7-1">This module references <span>[<a href="#RFC8639" class="cite xref">RFC8639</a>]</span>.<a href="#section-7-1" class="pilcrow">¶</a></p>
+> <div class="breakable lang-yang sourcecode" id="section-7-2">
+> <pre>&lt;CODE BEGINS&gt; file "ietf-restconf-subscribed-notifications@2019-11-17.yang"
+1775,1776c1946,1947
+<       subregistry of the "IETF XML Registry" <span>[<a href="#RFC3688" class="xref">RFC3688</a>]</span>:<a href="#section-8-1" class="pilcrow">¶</a></p>
+< <dl class="dlParallel" id="section-8-2">
+---
+>       subregistry of the "IETF XML Registry" <span>[<a href="#RFC3688" class="cite xref">RFC3688</a>]</span>:<a href="#section-8-1" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlParallel" id="section-8-2">
+1778c1949
+<         <dd id="section-8-2.2">urn:ietf:params:xml:ns:yang:ietf-restconf-subscribed-notifications<a href="#section-8-2.2" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-8-2.2">urn:ietf:params:xml:ns:yang:ietf-restconf-subscribed-notifications<a href="#section-8-2.2" class="pilcrow">¶</a>
+1779a1951
+>         <dd class="break"></dd>
+1781c1953
+<         <dd id="section-8-2.4">The IESG.<a href="#section-8-2.4" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-8-2.4">The IESG.<a href="#section-8-2.4" class="pilcrow">¶</a>
+1782a1955
+>         <dd class="break"></dd>
+1784c1957
+<         <dd id="section-8-2.6">N/A; the requested URI is an XML namespace.<a href="#section-8-2.6" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-8-2.6">N/A; the requested URI is an XML namespace.<a href="#section-8-2.6" class="pilcrow">¶</a>
+1785a1959
+>       <dd class="break"></dd>
+1789,1790c1963,1964
+<       Names" registry <span>[<a href="#RFC6020" class="xref">RFC6020</a>]</span>:<a href="#section-8-3" class="pilcrow">¶</a></p>
+< <dl class="dlParallel" id="section-8-4">
+---
+>       Names" registry <span>[<a href="#RFC6020" class="cite xref">RFC6020</a>]</span>:<a href="#section-8-3" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlParallel" id="section-8-4">
+1792c1966
+<         <dd id="section-8-4.2">ietf-restconf-subscribed-notifications<a href="#section-8-4.2" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-8-4.2">ietf-restconf-subscribed-notifications<a href="#section-8-4.2" class="pilcrow">¶</a>
+1793a1968
+>         <dd class="break"></dd>
+1795c1970
+<         <dd id="section-8-4.4">urn:ietf:params:xml:ns:yang:ietf-restconf-subscribed-notifications<a href="#section-8-4.4" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-8-4.4">urn:ietf:params:xml:ns:yang:ietf-restconf-subscribed-notifications<a href="#section-8-4.4" class="pilcrow">¶</a>
+1796a1972
+>         <dd class="break"></dd>
+1798c1974
+<         <dd id="section-8-4.6">rsn<a href="#section-8-4.6" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-8-4.6">rsn<a href="#section-8-4.6" class="pilcrow">¶</a>
+1799a1976
+>         <dd class="break"></dd>
+1801c1978
+<         <dd id="section-8-4.8">RFC 8650<a href="#section-8-4.8" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-8-4.8">RFC 8650<a href="#section-8-4.8" class="pilcrow">¶</a>
+1802a1980
+>       <dd class="break"></dd>
+1810,1811c1988,1989
+< <p id="section-9-1">The YANG module specified in this document defines a schema for data that is designed to be accessed via network management transports such as NETCONF <span>[<a href="#RFC6241" class="xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="xref">RFC8040</a>]</span>.  The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) <span>[<a href="#RFC6242" class="xref">RFC6242</a>]</span>.  The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span>.<a href="#section-9-1" class="pilcrow">¶</a></p>
+< <p id="section-9-2">The Network Configuration Access Control Model (NACM) <span>[<a href="#RFC8341" class="xref">RFC8341</a>]</span> 
+---
+> <p id="section-9-1">The YANG module specified in this document defines a schema for data that is designed to be accessed via network management transports such as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>.  The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) <span>[<a href="#RFC6242" class="cite xref">RFC6242</a>]</span>.  The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-9-1" class="pilcrow">¶</a></p>
+> <p id="section-9-2">The Network Configuration Access Control Model (NACM) <span>[<a href="#RFC8341" class="cite xref">RFC8341</a>]</span> 
+1817,1818c1995,1996
+< <ul>
+< <li id="section-9-5.1">"uri": leaf will show where subscribed resources might be located on a publisher.  Access control must be set so that only someone with proper access permissions, i.e., the same RESTCONF <span>[<a href="#RFC8040" class="xref">RFC8040</a>]</span> user credentials that invoked the corresponding "establish-subscription", has the ability to access this resource.<a href="#section-9-5.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-9-5.1">"uri": leaf will show where subscribed resources might be located on a publisher.  Access control must be set so that only someone with proper access permissions, i.e., the same RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span> user credentials that invoked the corresponding "establish-subscription", has the ability to access this resource.<a href="#section-9-5.1" class="pilcrow">¶</a>
+1821,1822c1999,2000
+< <p id="section-9-6">The subscription URI is implementation specific and is encrypted via the use of TLS. Therefore, even if an attacker succeeds in guessing the subscription URI, a RESTCONF username <span>[<a href="#RFC8040" class="xref">RFC8040</a>]</span> with the required administrative permissions must be used to be able to access or modify that subscription. It is recommended that the subscription URI values not be easily predictable.<a href="#section-9-6" class="pilcrow">¶</a></p>
+< <p id="section-9-7">The access permission considerations for the RPCs "modify-subscription", "resync-subscription", "delete-subscription", and "kill-subscription" are described in <a href="#SSE" class="xref">Section 3.4</a>.<a href="#section-9-7" class="pilcrow">¶</a></p>
+---
+> <p id="section-9-6">The subscription URI is implementation specific and is encrypted via the use of TLS. Therefore, even if an attacker succeeds in guessing the subscription URI, a RESTCONF username <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span> with the required administrative permissions must be used to be able to access or modify that subscription. It is recommended that the subscription URI values not be easily predictable.<a href="#section-9-6" class="pilcrow">¶</a></p>
+> <p id="section-9-7">The access permission considerations for the RPCs "modify-subscription", "resync-subscription", "delete-subscription", and "kill-subscription" are described in <a href="#SSE" class="auto internal xref">Section 3.4</a>.<a href="#section-9-7" class="pilcrow">¶</a></p>
+1839c2017,2018
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1842c2021,2022
+< <span class="refAuthor">Mealling, M.</span>, <span class="refTitle">"The IETF XML Registry"</span>, <span class="seriesInfo">BCP 81</span>, <span class="seriesInfo">RFC 3688</span>, <span class="seriesInfo">DOI 10.17487/RFC3688</span>, <time datetime="2004-01">January 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3688">https://www.rfc-editor.org/info/rfc3688</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mealling, M.</span>, <span class="refTitle">"The IETF XML Registry"</span>, <span class="seriesInfo">BCP 81</span>, <span class="seriesInfo">RFC 3688</span>, <span class="seriesInfo">DOI 10.17487/RFC3688</span>, <time datetime="2004-01" class="refDate">January 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3688">https://www.rfc-editor.org/info/rfc3688</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1845c2025,2026
+< <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refTitle">"YANG - A Data Modeling Language for the Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6020</span>, <span class="seriesInfo">DOI 10.17487/RFC6020</span>, <time datetime="2010-10">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6020">https://www.rfc-editor.org/info/rfc6020</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refTitle">"YANG - A Data Modeling Language for the Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6020</span>, <span class="seriesInfo">DOI 10.17487/RFC6020</span>, <time datetime="2010-10" class="refDate">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6020">https://www.rfc-editor.org/info/rfc6020</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1848c2029,2030
+< <span class="refAuthor">Enns, R., Ed.</span><span class="refAuthor">, Bjorklund, M., Ed.</span><span class="refAuthor">, Schoenwaelder, J., Ed.</span><span class="refAuthor">, and A. Bierman, Ed.</span>, <span class="refTitle">"Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6241</span>, <span class="seriesInfo">DOI 10.17487/RFC6241</span>, <time datetime="2011-06">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6241">https://www.rfc-editor.org/info/rfc6241</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Enns, R., Ed.</span>, <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refAuthor">Schoenwaelder, J., Ed.</span>, and <span class="refAuthor">A. Bierman, Ed.</span>, <span class="refTitle">"Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6241</span>, <span class="seriesInfo">DOI 10.17487/RFC6241</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6241">https://www.rfc-editor.org/info/rfc6241</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1851c2033,2034
+< <span class="refAuthor">Wasserman, M.</span>, <span class="refTitle">"Using the NETCONF Protocol over Secure Shell (SSH)"</span>, <span class="seriesInfo">RFC 6242</span>, <span class="seriesInfo">DOI 10.17487/RFC6242</span>, <time datetime="2011-06">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6242">https://www.rfc-editor.org/info/rfc6242</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Wasserman, M.</span>, <span class="refTitle">"Using the NETCONF Protocol over Secure Shell (SSH)"</span>, <span class="seriesInfo">RFC 6242</span>, <span class="seriesInfo">DOI 10.17487/RFC6242</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6242">https://www.rfc-editor.org/info/rfc6242</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1854c2037,2038
+< <span class="refAuthor">Seggelmann, R.</span><span class="refAuthor">, Tuexen, M.</span><span class="refAuthor">, and M. Williams</span>, <span class="refTitle">"Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS) Heartbeat Extension"</span>, <span class="seriesInfo">RFC 6520</span>, <span class="seriesInfo">DOI 10.17487/RFC6520</span>, <time datetime="2012-02">February 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6520">https://www.rfc-editor.org/info/rfc6520</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Seggelmann, R.</span>, <span class="refAuthor">Tuexen, M.</span>, and <span class="refAuthor">M. Williams</span>, <span class="refTitle">"Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS) Heartbeat Extension"</span>, <span class="seriesInfo">RFC 6520</span>, <span class="seriesInfo">DOI 10.17487/RFC6520</span>, <time datetime="2012-02" class="refDate">February 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6520">https://www.rfc-editor.org/info/rfc6520</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1857c2041,2042
+< <span class="refAuthor">Belshe, M.</span><span class="refAuthor">, Peon, R.</span><span class="refAuthor">, and M. Thomson, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol Version 2 (HTTP/2)"</span>, <span class="seriesInfo">RFC 7540</span>, <span class="seriesInfo">DOI 10.17487/RFC7540</span>, <time datetime="2015-05">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7540">https://www.rfc-editor.org/info/rfc7540</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Belshe, M.</span>, <span class="refAuthor">Peon, R.</span>, and <span class="refAuthor">M. Thomson, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol Version 2 (HTTP/2)"</span>, <span class="seriesInfo">RFC 7540</span>, <span class="seriesInfo">DOI 10.17487/RFC7540</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7540">https://www.rfc-editor.org/info/rfc7540</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1860c2045,2046
+< <span class="refAuthor">Bierman, A.</span><span class="refAuthor">, Bjorklund, M.</span><span class="refAuthor">, and K. Watsen</span>, <span class="refTitle">"RESTCONF Protocol"</span>, <span class="seriesInfo">RFC 8040</span>, <span class="seriesInfo">DOI 10.17487/RFC8040</span>, <time datetime="2017-01">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8040">https://www.rfc-editor.org/info/rfc8040</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Bjorklund, M.</span>, and <span class="refAuthor">K. Watsen</span>, <span class="refTitle">"RESTCONF Protocol"</span>, <span class="seriesInfo">RFC 8040</span>, <span class="seriesInfo">DOI 10.17487/RFC8040</span>, <time datetime="2017-01" class="refDate">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8040">https://www.rfc-editor.org/info/rfc8040</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1863c2049,2050
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1866c2053,2054
+< <span class="refAuthor">Bierman, A.</span><span class="refAuthor"> and M. Bjorklund</span>, <span class="refTitle">"Network Configuration Access Control Model"</span>, <span class="seriesInfo">STD 91</span>, <span class="seriesInfo">RFC 8341</span>, <span class="seriesInfo">DOI 10.17487/RFC8341</span>, <time datetime="2018-03">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8341">https://www.rfc-editor.org/info/rfc8341</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bierman, A.</span> and <span class="refAuthor">M. Bjorklund</span>, <span class="refTitle">"Network Configuration Access Control Model"</span>, <span class="seriesInfo">STD 91</span>, <span class="seriesInfo">RFC 8341</span>, <span class="seriesInfo">DOI 10.17487/RFC8341</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8341">https://www.rfc-editor.org/info/rfc8341</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1869c2057,2058
+< <span class="refAuthor">Bjorklund, M.</span><span class="refAuthor">, Schoenwaelder, J.</span><span class="refAuthor">, Shafer, P.</span><span class="refAuthor">, Watsen, K.</span><span class="refAuthor">, and R. Wilton</span>, <span class="refTitle">"Network Management Datastore Architecture (NMDA)"</span>, <span class="seriesInfo">RFC 8342</span>, <span class="seriesInfo">DOI 10.17487/RFC8342</span>, <time datetime="2018-03">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8342">https://www.rfc-editor.org/info/rfc8342</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bjorklund, M.</span>, <span class="refAuthor">Schoenwaelder, J.</span>, <span class="refAuthor">Shafer, P.</span>, <span class="refAuthor">Watsen, K.</span>, and <span class="refAuthor">R. Wilton</span>, <span class="refTitle">"Network Management Datastore Architecture (NMDA)"</span>, <span class="seriesInfo">RFC 8342</span>, <span class="seriesInfo">DOI 10.17487/RFC8342</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8342">https://www.rfc-editor.org/info/rfc8342</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1872c2061,2062
+< <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8446">https://www.rfc-editor.org/info/rfc8446</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8446">https://www.rfc-editor.org/info/rfc8446</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1875c2065,2066
+< <span class="refAuthor">Voit, E.</span><span class="refAuthor">, Clemm, A.</span><span class="refAuthor">, Gonzalez Prieto, A.</span><span class="refAuthor">, Nilsen-Nygaard, E.</span><span class="refAuthor">, and A. Tripathy</span>, <span class="refTitle">"Subscription to YANG Notifications"</span>, <span class="seriesInfo">RFC 8639</span>, <span class="seriesInfo">DOI 10.17487/RFC8639</span>, <time datetime="2019-09">September 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8639">https://www.rfc-editor.org/info/rfc8639</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Voit, E.</span>, <span class="refAuthor">Clemm, A.</span>, <span class="refAuthor">Gonzalez Prieto, A.</span>, <span class="refAuthor">Nilsen-Nygaard, E.</span>, and <span class="refAuthor">A. Tripathy</span>, <span class="refTitle">"Subscription to YANG Notifications"</span>, <span class="seriesInfo">RFC 8639</span>, <span class="seriesInfo">DOI 10.17487/RFC8639</span>, <time datetime="2019-09" class="refDate">September 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8639">https://www.rfc-editor.org/info/rfc8639</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1878c2069,2070
+< <span class="refAuthor">Clemm, A.</span><span class="refAuthor"> and E. Voit</span>, <span class="refTitle">"Subscription to YANG Notifications for Datastore Updates"</span>, <span class="seriesInfo">RFC 8641</span>, <span class="seriesInfo">DOI 10.17487/RFC8641</span>, <time datetime="2019-09">September 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8641">https://www.rfc-editor.org/info/rfc8641</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Clemm, A.</span> and <span class="refAuthor">E. Voit</span>, <span class="refTitle">"Subscription to YANG Notifications for Datastore Updates"</span>, <span class="seriesInfo">RFC 8641</span>, <span class="seriesInfo">DOI 10.17487/RFC8641</span>, <time datetime="2019-09" class="refDate">September 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8641">https://www.rfc-editor.org/info/rfc8641</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1881c2073
+< <span class="refAuthor">Hickson, I.</span>, <span class="refTitle">"Server-Sent Events"</span>, <span class="seriesInfo">W3C Recommendation</span>, <time datetime="2015-02-03">3 February 2015</time>, <span>&lt;<a href="https://www.w3.org/TR/2015/REC-eventsource-20150203/">https://www.w3.org/TR/2015/REC-eventsource-20150203/</a>&gt;</span>. <span class="annotation">Latest version available at &lt;<span><a href="https://www.w3.org/TR/eventsource/">https://www.w3.org/TR/eventsource/</a></span>&gt;.</span>
+---
+> <span class="refAuthor">Hickson, I.</span>, <span class="refTitle">"Server-Sent Events"</span>, <span class="seriesInfo">W3C Recommendation</span>, <time datetime="2015-02-03" class="refDate">3 February 2015</time>, <span>&lt;<a href="https://www.w3.org/TR/2015/REC-eventsource-20150203/">https://www.w3.org/TR/2015/REC-eventsource-20150203/</a>&gt;</span>. <span class="annotation">Latest version available at &lt;<span><a href="https://www.w3.org/TR/eventsource/">https://www.w3.org/TR/eventsource/</a></span>&gt;.</span>
+1882a2075
+> <dd class="break"></dd>
+1892c2085,2086
+< <span class="refAuthor">Fielding, R., Ed.</span><span class="refAuthor"> and J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content"</span>, <span class="seriesInfo">RFC 7231</span>, <span class="seriesInfo">DOI 10.17487/RFC7231</span>, <time datetime="2014-06">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7231">https://www.rfc-editor.org/info/rfc7231</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fielding, R., Ed.</span> and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content"</span>, <span class="seriesInfo">RFC 7231</span>, <span class="seriesInfo">DOI 10.17487/RFC7231</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7231">https://www.rfc-editor.org/info/rfc7231</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1895c2089,2090
+< <span class="refAuthor">Voit, E.</span><span class="refAuthor">, Clemm, A.</span><span class="refAuthor">, and A. Gonzalez Prieto</span>, <span class="refTitle">"Requirements for Subscription to YANG Datastores"</span>, <span class="seriesInfo">RFC 7923</span>, <span class="seriesInfo">DOI 10.17487/RFC7923</span>, <time datetime="2016-06">June 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7923">https://www.rfc-editor.org/info/rfc7923</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Voit, E.</span>, <span class="refAuthor">Clemm, A.</span>, and <span class="refAuthor">A. Gonzalez Prieto</span>, <span class="refTitle">"Requirements for Subscription to YANG Datastores"</span>, <span class="seriesInfo">RFC 7923</span>, <span class="seriesInfo">DOI 10.17487/RFC7923</span>, <time datetime="2016-06" class="refDate">June 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7923">https://www.rfc-editor.org/info/rfc7923</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1898c2093,2094
+< <span class="refAuthor">Lhotka, L.</span>, <span class="refTitle">"JSON Encoding of Data Modeled with YANG"</span>, <span class="seriesInfo">RFC 7951</span>, <span class="seriesInfo">DOI 10.17487/RFC7951</span>, <time datetime="2016-08">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7951">https://www.rfc-editor.org/info/rfc7951</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Lhotka, L.</span>, <span class="refTitle">"JSON Encoding of Data Modeled with YANG"</span>, <span class="seriesInfo">RFC 7951</span>, <span class="seriesInfo">DOI 10.17487/RFC7951</span>, <time datetime="2016-08" class="refDate">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7951">https://www.rfc-editor.org/info/rfc7951</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1901c2097,2098
+< <span class="refAuthor">Liu, X., Ed.</span><span class="refAuthor">, Kyparlis, A.</span><span class="refAuthor">, Parikh, R.</span><span class="refAuthor">, Lindem, A.</span><span class="refAuthor">, and M. Zhang</span>, <span class="refTitle">"A YANG Data Model for the Virtual Router Redundancy Protocol (VRRP)"</span>, <span class="seriesInfo">RFC 8347</span>, <span class="seriesInfo">DOI 10.17487/RFC8347</span>, <time datetime="2018-03">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8347">https://www.rfc-editor.org/info/rfc8347</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Liu, X., Ed.</span>, <span class="refAuthor">Kyparlis, A.</span>, <span class="refAuthor">Parikh, R.</span>, <span class="refAuthor">Lindem, A.</span>, and <span class="refAuthor">M. Zhang</span>, <span class="refTitle">"A YANG Data Model for the Virtual Router Redundancy Protocol (VRRP)"</span>, <span class="seriesInfo">RFC 8347</span>, <span class="seriesInfo">DOI 10.17487/RFC8347</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8347">https://www.rfc-editor.org/info/rfc8347</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1904c2101,2102
+< <span class="refAuthor">Bjorklund, M.</span><span class="refAuthor">, Schoenwaelder, J.</span><span class="refAuthor">, Shafer, P.</span><span class="refAuthor">, Watsen, K.</span><span class="refAuthor">, and R. Wilton</span>, <span class="refTitle">"RESTCONF Extensions to Support the Network Management Datastore Architecture"</span>, <span class="seriesInfo">RFC 8527</span>, <span class="seriesInfo">DOI 10.17487/RFC8527</span>, <time datetime="2019-03">March 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8527">https://www.rfc-editor.org/info/rfc8527</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bjorklund, M.</span>, <span class="refAuthor">Schoenwaelder, J.</span>, <span class="refAuthor">Shafer, P.</span>, <span class="refAuthor">Watsen, K.</span>, and <span class="refAuthor">R. Wilton</span>, <span class="refTitle">"RESTCONF Extensions to Support the Network Management Datastore Architecture"</span>, <span class="seriesInfo">RFC 8527</span>, <span class="seriesInfo">DOI 10.17487/RFC8527</span>, <time datetime="2019-03" class="refDate">March 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8527">https://www.rfc-editor.org/info/rfc8527</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1907c2105,2106
+< <span class="refAuthor">Voit, E.</span><span class="refAuthor">, Clemm, A.</span><span class="refAuthor">, Gonzalez Prieto, A.</span><span class="refAuthor">, Nilsen-Nygaard, E.</span><span class="refAuthor">, and A. Tripathy</span>, <span class="refTitle">"Dynamic Subscription to YANG Events and Datastores over NETCONF"</span>, <span class="seriesInfo">RFC 8640</span>, <span class="seriesInfo">DOI 10.17487/RFC8640</span>, <time datetime="2019-09">September 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8640">https://www.rfc-editor.org/info/rfc8640</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Voit, E.</span>, <span class="refAuthor">Clemm, A.</span>, <span class="refAuthor">Gonzalez Prieto, A.</span>, <span class="refAuthor">Nilsen-Nygaard, E.</span>, and <span class="refAuthor">A. Tripathy</span>, <span class="refTitle">"Dynamic Subscription to YANG Events and Datastores over NETCONF"</span>, <span class="seriesInfo">RFC 8640</span>, <span class="seriesInfo">DOI 10.17487/RFC8640</span>, <time datetime="2019-09" class="refDate">September 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8640">https://www.rfc-editor.org/info/rfc8640</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1910c2109
+< <span class="refAuthor">Clark, J.</span><span class="refAuthor"> and S. DeRose</span>, <span class="refTitle">"XML Path Language (XPath) Version 1.0"</span>, <span class="seriesInfo">W3C Recommendation</span>, <time datetime="1999-11-16">16 November 1999</time>, <span>&lt;<a href="http://www.w3.org/TR/1999/REC-xpath-19991116">http://www.w3.org/TR/1999/REC-xpath-19991116</a>&gt;</span>. <span class="annotation">Latest version available at &lt;<span><a href="https://www.w3.org/TR/xpath/">https://www.w3.org/TR/xpath/</a></span>&gt;.</span>
+---
+> <span class="refAuthor">Clark, J.</span> and <span class="refAuthor">S. DeRose</span>, <span class="refTitle">"XML Path Language (XPath) Version 1.0"</span>, <span class="seriesInfo">W3C Recommendation</span>, <time datetime="1999-11-16" class="refDate">16 November 1999</time>, <span>&lt;<a href="http://www.w3.org/TR/1999/REC-xpath-19991116">http://www.w3.org/TR/1999/REC-xpath-19991116</a>&gt;</span>. <span class="annotation">Latest version available at &lt;<span><a href="https://www.w3.org/TR/xpath/">https://www.w3.org/TR/xpath/</a></span>&gt;.</span>
+1911a2111
+> <dd class="break"></dd>
+1915c2115
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+1917c2117
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
+1919,1928c2119,2124
+< <p id="section-appendix.a-1">This section is non-normative.  To allow easy comparison, this section mirrors the functional examples shown with NETCONF over XML within <span>[<a href="#RFC8640" class="xref">RFC8640</a>]</span>.  In addition, HTTP/2 vs HTTP/1.1 headers are not shown as the contents of the JSON encoded objects are identical within.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2">The subscription URI values used in the examples in this section are purely illustrative, and are not indicative of the expected usage that is described in <a href="#security" class="xref">Section 9</a>.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-3">The DSCP values are only for example purposes and are all indicated in decimal since the encoding is JSON <span>[<a href="#RFC7951" class="xref">RFC7951</a>]</span>.<a href="#section-appendix.a-3" class="pilcrow">¶</a></p>
+< <section id="section-a.1">
+<         <h2 id="name-dynamic-subscriptions-2">
+< <a href="#section-a.1" class="section-number selfRef">A.1. </a><a href="#name-dynamic-subscriptions-2" class="section-name selfRef">Dynamic Subscriptions</a>
+<         </h2>
+< <section id="section-a.1.1">
+<           <h3 id="name-establishing-dynamic-subscr">
+< <a href="#section-a.1.1" class="section-number selfRef">A.1.1. </a><a href="#name-establishing-dynamic-subscr" class="section-name selfRef">Establishing Dynamic Subscriptions</a>
+---
+> <p id="appendix-A-1">This section is non-normative.  To allow easy comparison, this section mirrors the functional examples shown with NETCONF over XML within <span>[<a href="#RFC8640" class="cite xref">RFC8640</a>]</span>.  In addition, HTTP/2 vs HTTP/1.1 headers are not shown as the contents of the JSON encoded objects are identical within.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2">The subscription URI values used in the examples in this section are purely illustrative, and are not indicative of the expected usage that is described in <a href="#security" class="auto internal xref">Section 9</a>.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+> <p id="appendix-A-3">The DSCP values are only for example purposes and are all indicated in decimal since the encoding is JSON <span>[<a href="#RFC7951" class="cite xref">RFC7951</a>]</span>.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+> <section id="appendix-A.1">
+>         <h3 id="name-dynamic-subscriptions-2">
+> <a href="#appendix-A.1" class="section-number selfRef">A.1. </a><a href="#name-dynamic-subscriptions-2" class="section-name selfRef">Dynamic Subscriptions</a>
+1930,1932c2126,2132
+< <p id="section-a.1.1-1">The following figure shows two successful
+<    "establish-subscription" RPC requests as per <span>[<a href="#RFC8639" class="xref">RFC8639</a>]</span>.  The first request is given a subscription
+<    identifier of 22, and the second, an identifier of 23.<a href="#section-a.1.1-1" class="pilcrow">¶</a></p>
+---
+> <section id="appendix-A.1.1">
+>           <h4 id="name-establishing-dynamic-subscr">
+> <a href="#appendix-A.1.1" class="section-number selfRef">A.1.1. </a><a href="#name-establishing-dynamic-subscr" class="section-name selfRef">Establishing Dynamic Subscriptions</a>
+>           </h4>
+> <p id="appendix-A.1.1-1">The following figure shows two successful
+>    "establish-subscription" RPC requests as per <span>[<a href="#RFC8639" class="cite xref">RFC8639</a>]</span>.  The first request is given a subscription
+>    identifier of 22, and the second, an identifier of 23.<a href="#appendix-A.1.1-1" class="pilcrow">¶</a></p>
+1935c2135
+<             <div class="artwork art-text alignLeft" id="section-a.1.1-2.1">
+---
+>             <div class="alignLeft art-text artwork" id="appendix-A.1.1-2.1">
+1969c2169
+< <p id="section-a.1.1-3">To provide examples of the information being transported, example messages for interactions in  <a href="#mess-flow-establishment" class="xref">Figure 2</a> are detailed below:<a href="#section-a.1.1-3" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A.1.1-3">To provide examples of the information being transported, example messages for interactions in  <a href="#mess-flow-establishment" class="auto internal xref">Figure 2</a> are detailed below:<a href="#appendix-A.1.1-3" class="pilcrow">¶</a></p>
+1972c2172
+<             <div class="artwork art-text alignLeft" id="section-a.1.1-4.1">
+---
+>             <div class="alignLeft art-text artwork" id="appendix-A.1.1-4.1">
+1989c2189
+< <p id="section-a.1.1-5">As the publisher was able to fully satisfy the request, the publisher sends the subscription identifier of the accepted subscription and the URI:<a href="#section-a.1.1-5" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A.1.1-5">As the publisher was able to fully satisfy the request, the publisher sends the subscription identifier of the accepted subscription and the URI:<a href="#appendix-A.1.1-5" class="pilcrow">¶</a></p>
+1992c2192
+<             <div class="artwork art-text alignLeft" id="section-a.1.1-6.1">
+---
+>             <div class="alignLeft art-text artwork" id="appendix-A.1.1-6.1">
+2005c2205
+< <p id="section-a.1.1-7">Upon receipt of the successful response, the subscriber does a
+---
+> <p id="appendix-A.1.1-7">Upon receipt of the successful response, the subscriber does a
+2008c2208
+<    active state (c).<a href="#section-a.1.1-7" class="pilcrow">¶</a></p>
+---
+>    active state (c).<a href="#appendix-A.1.1-7" class="pilcrow">¶</a></p>
+2011c2211
+<             <div class="artwork art-text alignLeft" id="section-a.1.1-8.1">
+---
+>             <div class="alignLeft art-text artwork" id="appendix-A.1.1-8.1">
+2019c2219
+< <p id="section-a.1.1-9">While not shown in <a href="#mess-flow-establishment" class="xref">Figure 2</a>, if the publisher had not been able to fully satisfy the request, or the subscriber has no authorization to establish the subscription, the publisher would have sent an RPC error response. For instance, if the "dscp" value of 10 asserted by the subscriber in <a href="#establish-subs" class="xref">Figure 3</a> proved unacceptable, the publisher may have returned:<a href="#section-a.1.1-9" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A.1.1-9">While not shown in <a href="#mess-flow-establishment" class="auto internal xref">Figure 2</a>, if the publisher had not been able to fully satisfy the request, or the subscriber has no authorization to establish the subscription, the publisher would have sent an RPC error response. For instance, if the "dscp" value of 10 asserted by the subscriber in <a href="#establish-subs" class="auto internal xref">Figure 3</a> proved unacceptable, the publisher may have returned:<a href="#appendix-A.1.1-9" class="pilcrow">¶</a></p>
+2022c2222
+<             <div class="artwork art-text alignLeft" id="section-a.1.1-10.1">
+---
+>             <div class="alignLeft art-text artwork" id="appendix-A.1.1-10.1">
+2043c2243
+< <p id="section-a.1.1-11">The subscriber can use this information in future attempts to establish a subscription.<a href="#section-a.1.1-11" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A.1.1-11">The subscriber can use this information in future attempts to establish a subscription.<a href="#appendix-A.1.1-11" class="pilcrow">¶</a></p>
+2045,2049c2245,2249
+< <section id="section-a.1.2">
+<           <h3 id="name-modifying-dynamic-subscript">
+< <a href="#section-a.1.2" class="section-number selfRef">A.1.2. </a><a href="#name-modifying-dynamic-subscript" class="section-name selfRef">Modifying Dynamic Subscriptions</a>
+<           </h3>
+< <p id="section-a.1.2-1">An existing subscription may be modified.  The following exchange shows a negotiation of such a modification via several exchanges between a subscriber and a publisher.  This negotiation consists of a failed RPC modification request/response followed by a successful one.<a href="#section-a.1.2-1" class="pilcrow">¶</a></p>
+---
+> <section id="appendix-A.1.2">
+>           <h4 id="name-modifying-dynamic-subscript">
+> <a href="#appendix-A.1.2" class="section-number selfRef">A.1.2. </a><a href="#name-modifying-dynamic-subscript" class="section-name selfRef">Modifying Dynamic Subscriptions</a>
+>           </h4>
+> <p id="appendix-A.1.2-1">An existing subscription may be modified.  The following exchange shows a negotiation of such a modification via several exchanges between a subscriber and a publisher.  This negotiation consists of a failed RPC modification request/response followed by a successful one.<a href="#appendix-A.1.2-1" class="pilcrow">¶</a></p>
+2052c2252
+<             <div class="artwork art-text alignLeft" id="section-a.1.2-2.1">
+---
+>             <div class="alignLeft art-text artwork" id="appendix-A.1.2-2.1">
+2079c2279
+< <p id="section-a.1.2-3">If the subscription being modified in <a href="#mess-flow-subs-modification" class="xref">Figure 7</a> is a datastore subscription as per <span>[<a href="#RFC8641" class="xref">RFC8641</a>]</span>, the modification request made in (d) may look like that shown in <a href="#simple-modify-subs" class="xref">Figure 8</a>.  As can be seen, the modifications being attempted are the application of a new XML Path Language (XPath) filter as well as the setting of a new periodic time interval.<a href="#section-a.1.2-3" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A.1.2-3">If the subscription being modified in <a href="#mess-flow-subs-modification" class="auto internal xref">Figure 7</a> is a datastore subscription as per <span>[<a href="#RFC8641" class="cite xref">RFC8641</a>]</span>, the modification request made in (d) may look like that shown in <a href="#simple-modify-subs" class="auto internal xref">Figure 8</a>.  As can be seen, the modifications being attempted are the application of a new XML Path Language (XPath) filter as well as the setting of a new periodic time interval.<a href="#appendix-A.1.2-3" class="pilcrow">¶</a></p>
+2082c2282
+<             <div class="artwork art-text alignLeft" id="section-a.1.2-4.1">
+---
+>             <div class="alignLeft art-text artwork" id="appendix-A.1.2-4.1">
+2102c2302
+< <p id="section-a.1.2-5">If the publisher can satisfy both changes, the publisher sends a positive result for the RPC. If the publisher cannot satisfy either of the proposed changes, the publisher sends an RPC error response (e).  The following is an example RPC error response for (e) that includes a hint. This hint is an alternative time period value that might have resulted in a successful modification:<a href="#section-a.1.2-5" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A.1.2-5">If the publisher can satisfy both changes, the publisher sends a positive result for the RPC. If the publisher cannot satisfy either of the proposed changes, the publisher sends an RPC error response (e).  The following is an example RPC error response for (e) that includes a hint. This hint is an alternative time period value that might have resulted in a successful modification:<a href="#appendix-A.1.2-5" class="pilcrow">¶</a></p>
+2105c2305
+<             <div class="artwork art-text alignLeft" id="section-a.1.2-6.1">
+---
+>             <div class="alignLeft art-text artwork" id="appendix-A.1.2-6.1">
+2130,2134c2330,2334
+< <section id="section-a.1.3">
+<           <h3 id="name-deleting-dynamic-subscripti">
+< <a href="#section-a.1.3" class="section-number selfRef">A.1.3. </a><a href="#name-deleting-dynamic-subscripti" class="section-name selfRef">Deleting Dynamic Subscriptions</a>
+<           </h3>
+< <p id="section-a.1.3-1">The following demonstrates deleting a subscription.  This subscription may have been to either a stream or a datastore.<a href="#section-a.1.3-1" class="pilcrow">¶</a></p>
+---
+> <section id="appendix-A.1.3">
+>           <h4 id="name-deleting-dynamic-subscripti">
+> <a href="#appendix-A.1.3" class="section-number selfRef">A.1.3. </a><a href="#name-deleting-dynamic-subscripti" class="section-name selfRef">Deleting Dynamic Subscriptions</a>
+>           </h4>
+> <p id="appendix-A.1.3-1">The following demonstrates deleting a subscription.  This subscription may have been to either a stream or a datastore.<a href="#appendix-A.1.3-1" class="pilcrow">¶</a></p>
+2137c2337
+<             <div class="artwork art-text alignLeft" id="section-a.1.3-2.1">
+---
+>             <div class="alignLeft art-text artwork" id="appendix-A.1.3-2.1">
+2152,2155c2352,2355
+< <p id="section-a.1.3-3">If the publisher can satisfy the request, the publisher replies with success to the RPC request.<a href="#section-a.1.3-3" class="pilcrow">¶</a></p>
+< <p id="section-a.1.3-4">If the publisher cannot satisfy the request, the publisher sends
+<    an &lt;rpc-error&gt; element indicating the modification didn't work. <a href="#negative-delete-subs" class="xref">Figure 11</a> shows a valid
+<    response for an existing valid subscription identifier, but that subscription identifier was created on a different transport session:<a href="#section-a.1.3-4" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A.1.3-3">If the publisher can satisfy the request, the publisher replies with success to the RPC request.<a href="#appendix-A.1.3-3" class="pilcrow">¶</a></p>
+> <p id="appendix-A.1.3-4">If the publisher cannot satisfy the request, the publisher sends
+>    an &lt;rpc-error&gt; element indicating the modification didn't work. <a href="#negative-delete-subs" class="auto internal xref">Figure 11</a> shows a valid
+>    response for an existing valid subscription identifier, but that subscription identifier was created on a different transport session:<a href="#appendix-A.1.3-4" class="pilcrow">¶</a></p>
+2158c2358
+<             <div class="artwork art-text alignLeft" id="section-a.1.3-5.1">
+---
+>             <div class="alignLeft art-text artwork" id="appendix-A.1.3-5.1">
+2180,2187c2380,2382
+< <section id="section-a.2">
+<         <h2 id="name-subscription-state-notifica">
+< <a href="#section-a.2" class="section-number selfRef">A.2. </a><a href="#name-subscription-state-notifica" class="section-name selfRef">Subscription State Notifications</a>
+<         </h2>
+< <p id="section-a.2-1">A publisher will send subscription state notifications according to the definitions within <span>[<a href="#RFC8639" class="xref">RFC8639</a>]</span>.<a href="#section-a.2-1" class="pilcrow">¶</a></p>
+< <section id="section-a.2.1">
+<           <h3 id="name-subscription-modified">
+< <a href="#section-a.2.1" class="section-number selfRef">A.2.1. </a><a href="#name-subscription-modified" class="section-name selfRef">"subscription-modified"</a>
+---
+> <section id="appendix-A.2">
+>         <h3 id="name-subscription-state-notifica">
+> <a href="#appendix-A.2" class="section-number selfRef">A.2. </a><a href="#name-subscription-state-notifica" class="section-name selfRef">Subscription State Notifications</a>
+2189c2384,2389
+< <p id="section-a.2.1-1">A "subscription-modified" encoded in JSON would look like:<a href="#section-a.2.1-1" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A.2-1">A publisher will send subscription state notifications according to the definitions within <span>[<a href="#RFC8639" class="cite xref">RFC8639</a>]</span>.<a href="#appendix-A.2-1" class="pilcrow">¶</a></p>
+> <section id="appendix-A.2.1">
+>           <h4 id="name-subscription-modified">
+> <a href="#appendix-A.2.1" class="section-number selfRef">A.2.1. </a><a href="#name-subscription-modified" class="section-name selfRef">"subscription-modified"</a>
+>           </h4>
+> <p id="appendix-A.2.1-1">A "subscription-modified" encoded in JSON would look like:<a href="#appendix-A.2.1-1" class="pilcrow">¶</a></p>
+2192,2193c2392,2393
+<             <div id="section-a.2.1-2.1">
+< <pre class="sourcecode lang-json">
+---
+>             <div class="lang-json sourcecode" id="appendix-A.2.1-2.1">
+> <pre>
+2206c2406
+< } </pre><a href="#section-a.2.1-2.1" class="pilcrow">¶</a>
+---
+> } </pre>
+2213,2217c2413,2417
+< <section id="section-a.2.2">
+<           <h3 id="name-subscription-completed-subs">
+< <a href="#section-a.2.2" class="section-number selfRef">A.2.2. </a><a href="#name-subscription-completed-subs" class="section-name selfRef">"subscription-completed", "subscription-resumed", and "replay-completed"</a>
+<           </h3>
+< <p id="section-a.2.2-1">A "subscription-completed" notification would look like:<a href="#section-a.2.2-1" class="pilcrow">¶</a></p>
+---
+> <section id="appendix-A.2.2">
+>           <h4 id="name-subscription-completed-subs">
+> <a href="#appendix-A.2.2" class="section-number selfRef">A.2.2. </a><a href="#name-subscription-completed-subs" class="section-name selfRef">"subscription-completed", "subscription-resumed", and "replay-completed"</a>
+>           </h4>
+> <p id="appendix-A.2.2-1">A "subscription-completed" notification would look like:<a href="#appendix-A.2.2-1" class="pilcrow">¶</a></p>
+2220,2221c2420,2421
+<             <div id="section-a.2.2-2.1">
+< <pre class="sourcecode lang-json">
+---
+>             <div class="lang-json sourcecode" id="appendix-A.2.2-2.1">
+> <pre>
+2229c2429
+< } </pre><a href="#section-a.2.2-2.1" class="pilcrow">¶</a>
+---
+> } </pre>
+2235c2435
+< <p id="section-a.2.2-3">The "subscription-resumed" and "replay-complete" are virtually identical, with "subscription-completed" simply being replaced by "subscription-resumed" and "replay-complete".<a href="#section-a.2.2-3" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A.2.2-3">The "subscription-resumed" and "replay-complete" are virtually identical, with "subscription-completed" simply being replaced by "subscription-resumed" and "replay-complete".<a href="#appendix-A.2.2-3" class="pilcrow">¶</a></p>
+2237,2241c2437,2441
+< <section id="section-a.2.3">
+<           <h3 id="name-subscription-terminated-and">
+< <a href="#section-a.2.3" class="section-number selfRef">A.2.3. </a><a href="#name-subscription-terminated-and" class="section-name selfRef">"subscription-terminated" and "subscription-suspended"</a>
+<           </h3>
+< <p id="section-a.2.3-1">A "subscription-terminated" would look like:<a href="#section-a.2.3-1" class="pilcrow">¶</a></p>
+---
+> <section id="appendix-A.2.3">
+>           <h4 id="name-subscription-terminated-and">
+> <a href="#appendix-A.2.3" class="section-number selfRef">A.2.3. </a><a href="#name-subscription-terminated-and" class="section-name selfRef">"subscription-terminated" and "subscription-suspended"</a>
+>           </h4>
+> <p id="appendix-A.2.3-1">A "subscription-terminated" would look like:<a href="#appendix-A.2.3-1" class="pilcrow">¶</a></p>
+2244,2245c2444,2445
+<             <div id="section-a.2.3-2.1">
+< <pre class="sourcecode lang-json">
+---
+>             <div class="lang-json sourcecode" id="appendix-A.2.3-2.1">
+> <pre>
+2254c2454
+< } </pre><a href="#section-a.2.3-2.1" class="pilcrow">¶</a>
+---
+> } </pre>
+2260c2460
+< <p id="section-a.2.3-3">The "subscription-suspended" is virtually identical, with "subscription-terminated" simply being replaced by "subscription-suspended".<a href="#section-a.2.3-3" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A.2.3-3">The "subscription-suspended" is virtually identical, with "subscription-terminated" simply being replaced by "subscription-suspended".<a href="#appendix-A.2.3-3" class="pilcrow">¶</a></p>
+2263,2267c2463,2467
+< <section id="section-a.3">
+<         <h2 id="name-filter-example">
+< <a href="#section-a.3" class="section-number selfRef">A.3. </a><a href="#name-filter-example" class="section-name selfRef">Filter Example</a>
+<         </h2>
+< <p id="section-a.3-1">This section provides an example that illustrates the method of filtering event record contents.  The example is based on the YANG notification "vrrp-protocol-error-event" as defined per the ietf-vrrp.yang module within <span>[<a href="#RFC8347" class="xref">RFC8347</a>]</span>.  Event records based on this specification that are generated by the publisher might appear as:<a href="#section-a.3-1" class="pilcrow">¶</a></p>
+---
+> <section id="appendix-A.3">
+>         <h3 id="name-filter-example">
+> <a href="#appendix-A.3" class="section-number selfRef">A.3. </a><a href="#name-filter-example" class="section-name selfRef">Filter Example</a>
+>         </h3>
+> <p id="appendix-A.3-1">This section provides an example that illustrates the method of filtering event record contents.  The example is based on the YANG notification "vrrp-protocol-error-event" as defined per the ietf-vrrp.yang module within <span>[<a href="#RFC8347" class="cite xref">RFC8347</a>]</span>.  Event records based on this specification that are generated by the publisher might appear as:<a href="#appendix-A.3-1" class="pilcrow">¶</a></p>
+2270c2470
+<           <div class="artwork art-text alignLeft" id="section-a.3-2.1">
+---
+>           <div class="alignLeft art-text artwork" id="appendix-A.3-2.1">
+2285c2485
+< <p id="section-a.3-3">Suppose a subscriber wanted to establish a subscription that only passes instances of event records where there is a "checksum-error" as part of a Virtual Router Redundancy Protocol (VRRP) protocol event.  Also assume the publisher places such event records into the NETCONF stream.  To get a continuous series of matching event records, the subscriber might request the application of an XPath filter against the NETCONF stream.  An "establish-subscription" RPC to meet this objective might be:<a href="#section-a.3-3" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A.3-3">Suppose a subscriber wanted to establish a subscription that only passes instances of event records where there is a "checksum-error" as part of a Virtual Router Redundancy Protocol (VRRP) protocol event.  Also assume the publisher places such event records into the NETCONF stream.  To get a continuous series of matching event records, the subscriber might request the application of an XPath filter against the NETCONF stream.  An "establish-subscription" RPC to meet this objective might be:<a href="#appendix-A.3-3" class="pilcrow">¶</a></p>
+2288c2488
+<           <div class="artwork art-text alignLeft" id="section-a.3-4.1">
+---
+>           <div class="alignLeft art-text artwork" id="appendix-A.3-4.1">
+2305,2306c2505,2506
+< <p id="section-a.3-5">For more examples of XPath filters, see <span>[<a href="#XPATH" class="xref">XPATH</a>]</span>.<a href="#section-a.3-5" class="pilcrow">¶</a></p>
+< <p id="section-a.3-6">Suppose the "establish-subscription" in <a href="#VRRP-XPATH" class="xref">Figure 16</a> was accepted. And suppose later a subscriber decided they wanted to broaden this subscription cover to all VRRP protocol events (i.e., not just those with a "checksum error").  The subscriber might attempt to modify the subscription in a way that replaces the XPath filter with a subtree filter that sends all VRRP protocol events to a subscriber. Such a "modify-subscription" RPC might look like:<a href="#section-a.3-6" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A.3-5">For more examples of XPath filters, see <span>[<a href="#XPATH" class="cite xref">XPATH</a>]</span>.<a href="#appendix-A.3-5" class="pilcrow">¶</a></p>
+> <p id="appendix-A.3-6">Suppose the "establish-subscription" in <a href="#VRRP-XPATH" class="auto internal xref">Figure 16</a> was accepted. And suppose later a subscriber decided they wanted to broaden this subscription cover to all VRRP protocol events (i.e., not just those with a "checksum error").  The subscriber might attempt to modify the subscription in a way that replaces the XPath filter with a subtree filter that sends all VRRP protocol events to a subscriber. Such a "modify-subscription" RPC might look like:<a href="#appendix-A.3-6" class="pilcrow">¶</a></p>
+2309c2509
+<           <div class="artwork art-text alignLeft" id="section-a.3-7.1">
+---
+>           <div class="alignLeft art-text artwork" id="appendix-A.3-7.1">
+2326c2526
+< <p id="section-a.3-8">For more examples of subtree filters, see <span>[<a href="#RFC6241" class="xref">RFC6241</a>], <a href="https://www.rfc-editor.org/rfc/rfc6241#section-6.4" class="relref">Section 6.4</a></span>.<a href="#section-a.3-8" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A.3-8">For more examples of subtree filters, see <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>], <a href="https://rfc-editor.org/rfc/rfc6241#section-6.4" class="relref">Section 6.4</a></span>.<a href="#appendix-A.3-8" class="pilcrow">¶</a></p>
+2329c2529
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+2333c2533
+< <p id="section-appendix.b-1">We wish to acknowledge the helpful contributions, comments, and suggestions that were received from Ambika Prasad Tripathy, Alberto Gonzalez Prieto, Susan Hares, Tim Jenkins, Balazs Lengyel, Kent Watsen, Michael Scharf, Guangying Zheng, Martin Bjorklund, Qin Wu, and Robert Wilton.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-B-1">We wish to acknowledge the helpful contributions, comments, and suggestions that were received from Ambika Prasad Tripathy, Alberto Gonzalez Prieto, Susan Hares, Tim Jenkins, Balazs Lengyel, Kent Watsen, Michael Scharf, Guangying Zheng, Martin Bjorklund, Qin Wu, and Robert Wilton.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+2336c2536
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
+2382,2410c2582,2587
+< <script>var toc = document.getElementById("toc");
+< var tocToggle = toc.querySelector("h2");
+< var tocNav = toc.querySelector("nav");
+< 
+< // mobile menu toggle
+< tocToggle.onclick = function(event) {
+<     if (window.innerWidth < 1024) {
+<  var tocNavDisplay = tocNav.currentStyle ? tocNav.currentStyle.display : getComputedStyle(tocNav, null).display;
+<  if (tocNavDisplay == "none") {
+<      tocNav.style.display = "block";
+<  } else {
+<      tocNav.style.display = "none";
+<  }
+<     }
+< }
+< 
+< // toc anchor scroll to anchor
+< tocNav.addEventListener("click", function (event) {
+<     event.preventDefault();
+<     if (event.target.nodeName == 'A') {
+<  if (window.innerWidth < 1024) {
+<      tocNav.style.display = "none";
+<  }
+<  var href = event.target.getAttribute("href");
+<  var anchorId = href.substr(1);
+<  var anchor =  document.getElementById(anchorId);
+<  anchor.scrollIntoView(true);
+<  window.history.pushState("","",href);
+<     }
+---
+> <script>const toc = document.getElementById("toc");
+> toc.querySelector("h2").addEventListener("click", e => {
+>   toc.classList.toggle("active");
+> });
+> toc.querySelector("nav").addEventListener("click", e => {
+>   toc.classList.remove("active");
+2412,2420d2588
+< 
+< // switch toc mode when window resized
+< window.onresize = function () {
+<     if (window.innerWidth < 1024) {
+<  tocNav.style.display = "none";
+<     } else {
+<  tocNav.style.display = "block";
+<     }
+< }

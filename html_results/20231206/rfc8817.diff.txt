@@ -1,0 +1,761 @@
+24c24
+< <meta content="xml2rfc 2.47.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+38c38,54
+< <link href="rfc8817.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.1.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8817.xml" rel="alternate" type="application/rfc+xml">
+48c64
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+57a74,79
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+60d81
+<   width: extend-to-zoom;
+75c96
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+77a99
+>   overflow-wrap: break-word;
+163a186,194
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+178,181d208
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+182a210
+>   border: none;
+205a234,236
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+247c278,279
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+257c289
+< tt, code, pre, code {
+---
+> tt, code, pre {
+259c291
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+298a331,333
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+388a424,429
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+490c531
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+630d670
+< 
+652a693,695
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+720c763
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+820c863
+< tt, code, pre, code {
+---
+> tt, code, pre {
+825c868
+< pre.sourcecode,
+---
+> .sourcecode pre,
+861c904
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1042a1086
+>   .artwork > pre,
+1057c1101
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1063a1108,1110
+> tr {
+>   break-inside: avoid;
+> }
+1083c1130
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1114c1161
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1139c1186
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1141c1188,1189
+< ol.compact, .olCompact {
+---
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+1149c1197,1221
+< }</style>
+---
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+1150a1223
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-payload-tsvcis-05" rel="prev">
+1153c1226
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-payload-tsvcis-05" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1155,1156c1228,1229
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1262,1267c1335,1340
+< <nav class="toc"><ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-conventions" class="xref">Conventions</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-conventions" class="internal xref">Conventions</a></p>
+1269,1270c1342,1343
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.1.2.2">
+<                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="xref">1.2</a>.  <a href="#name-abbreviations" class="xref">Abbreviations</a><a href="#section-toc.1-1.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+>                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-abbreviations" class="internal xref">Abbreviations</a></p>
+1274,1275c1347,1348
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-background" class="xref">Background</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-background" class="internal xref">Background</a></p>
+1277,1284c1350,1357
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-payload-format" class="xref">Payload Format</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-melpe-bitstream-definitions" class="xref">MELPe Bitstream Definitions</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.3.2.1.2.1">
+<                     <p id="section-toc.1-1.3.2.1.2.1.1"><a href="#section-3.1.1" class="xref">3.1.1</a>.  <a href="#name-2400-bps-bitstream-structur" class="xref">2400 bps Bitstream Structure</a><a href="#section-toc.1-1.3.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-payload-format" class="internal xref">Payload Format</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-melpe-bitstream-definitions" class="internal xref">MELPe Bitstream Definitions</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1.2.1">
+>                     <p id="section-toc.1-1.3.2.1.2.1.1"><a href="#section-3.1.1" class="auto internal xref">3.1.1</a>.  <a href="#name-2400-bps-bitstream-structur" class="internal xref">2400 bps Bitstream Structure</a></p>
+1286,1287c1359,1360
+<                   <li class="compact ulEmpty toc" id="section-toc.1-1.3.2.1.2.2">
+<                     <p id="section-toc.1-1.3.2.1.2.2.1"><a href="#section-3.1.2" class="xref">3.1.2</a>.  <a href="#name-1200-bps-bitstream-structur" class="xref">1200 bps Bitstream Structure</a><a href="#section-toc.1-1.3.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1.2.2">
+>                     <p id="section-toc.1-1.3.2.1.2.2.1"><a href="#section-3.1.2" class="auto internal xref">3.1.2</a>.  <a href="#name-1200-bps-bitstream-structur" class="internal xref">1200 bps Bitstream Structure</a></p>
+1289,1290c1362,1363
+<                   <li class="compact ulEmpty toc" id="section-toc.1-1.3.2.1.2.3">
+<                     <p id="section-toc.1-1.3.2.1.2.3.1"><a href="#section-3.1.3" class="xref">3.1.3</a>.  <a href="#name-600-bps-bitstream-structure" class="xref">600 bps Bitstream Structure</a><a href="#section-toc.1-1.3.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1.2.3">
+>                     <p id="section-toc.1-1.3.2.1.2.3.1"><a href="#section-3.1.3" class="auto internal xref">3.1.3</a>.  <a href="#name-600-bps-bitstream-structure" class="internal xref">600 bps Bitstream Structure</a></p>
+1292,1293c1365,1366
+<                   <li class="compact ulEmpty toc" id="section-toc.1-1.3.2.1.2.4">
+<                     <p id="section-toc.1-1.3.2.1.2.4.1"><a href="#section-3.1.4" class="xref">3.1.4</a>.  <a href="#name-comfort-noise-bitstream-def" class="xref">Comfort Noise Bitstream Definition</a><a href="#section-toc.1-1.3.2.1.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1.2.4">
+>                     <p id="section-toc.1-1.3.2.1.2.4.1"><a href="#section-3.1.4" class="auto internal xref">3.1.4</a>.  <a href="#name-comfort-noise-bitstream-def" class="internal xref">Comfort Noise Bitstream Definition</a></p>
+1297,1298c1370,1371
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-tsvcis-bitstream-definition" class="xref">TSVCIS Bitstream Definition</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-tsvcis-bitstream-definition" class="internal xref">TSVCIS Bitstream Definition</a></p>
+1300,1301c1373,1374
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.3">
+<                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-multiple-tsvcis-frames-in-a" class="xref">Multiple TSVCIS Frames in an RTP Packet</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+>                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-multiple-tsvcis-frames-in-a" class="internal xref">Multiple TSVCIS Frames in an RTP Packet</a></p>
+1303,1304c1376,1377
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.4">
+<                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="xref">3.4</a>.  <a href="#name-congestion-control-consider" class="xref">Congestion Control Considerations</a><a href="#section-toc.1-1.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+>                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-congestion-control-consider" class="internal xref">Congestion Control Considerations</a></p>
+1308,1312c1381,1385
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-payload-format-parameters" class="xref">Payload Format Parameters</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-media-type-definitions" class="xref">Media Type Definitions</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-payload-format-parameters" class="internal xref">Payload Format Parameters</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-media-type-definitions" class="internal xref">Media Type Definitions</a></p>
+1314,1315c1387,1388
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-mapping-to-sdp" class="xref">Mapping to SDP</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-mapping-to-sdp" class="internal xref">Mapping to SDP</a></p>
+1317,1318c1390,1391
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-declarative-sdp-considerati" class="xref">Declarative SDP Considerations</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-declarative-sdp-considerati" class="internal xref">Declarative SDP Considerations</a></p>
+1320,1321c1393,1394
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.4.2.4">
+<                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-offer-answer-sdp-considerat" class="xref">Offer/Answer SDP Considerations</a><a href="#section-toc.1-1.4.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
+>                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-offer-answer-sdp-considerat" class="internal xref">Offer/Answer SDP Considerations</a></p>
+1325,1326c1398,1399
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-discontinuous-transmissions" class="xref">Discontinuous Transmissions</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-discontinuous-transmissions" class="internal xref">Discontinuous Transmissions</a></p>
+1328,1329c1401,1402
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-packet-loss-concealment" class="xref">Packet Loss Concealment</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-packet-loss-concealment" class="internal xref">Packet Loss Concealment</a></p>
+1331,1332c1404,1405
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1334,1341c1407,1414
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.9.2.1">
+<                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="xref">9.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.9.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
+>                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="auto internal xref">9.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1343,1344c1416,1417
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.9.2.2">
+<                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="xref">9.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.9.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
+>                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1348,1349c1421,1422
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1363c1436
+<    produced by the TSVCIS codec <span>[<a href="#TSVCIS" class="xref">TSVCIS</a>]</span> <span>[<a href="#NRLVDR" class="xref">NRLVDR</a>]</span> may be formatted for
+---
+>    produced by the TSVCIS codec <span>[<a href="#TSVCIS" class="cite xref">TSVCIS</a>]</span> <span>[<a href="#NRLVDR" class="cite xref">NRLVDR</a>]</span> may be formatted for
+1386c1459
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1390c1463
+<    specification were followed <span>[<a href="#RFC2736" class="xref">RFC2736</a>]</span> <span>[<a href="#RFC8088" class="xref">RFC8088</a>]</span>.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
+---
+>    specification were followed <span>[<a href="#RFC2736" class="cite xref">RFC2736</a>]</span> <span>[<a href="#RFC8088" class="cite xref">RFC8088</a>]</span>.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
+1497c1570
+<    communications <span>[<a href="#MELP" class="xref">MELP</a>]</span>.  ("LPC" stands for "Linear-Predictive Coding",
+---
+>    communications <span>[<a href="#MELP" class="cite xref">MELP</a>]</span>.  ("LPC" stands for "Linear-Predictive Coding",
+1502c1575
+<    STANAG 4591 <span>[<a href="#MELPE" class="xref">MELPE</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
+---
+>    STANAG 4591 <span>[<a href="#MELPE" class="cite xref">MELPE</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
+1508c1581
+<    Defense <span>[<a href="#TSVCIS" class="xref">TSVCIS</a>]</span>.  One of the most important aspects is that the
+---
+>    Defense <span>[<a href="#TSVCIS" class="cite xref">TSVCIS</a>]</span>.  One of the most important aspects is that the
+1510c1583
+<    uses the MELPe standard as its base <span>[<a href="#NRLVDR" class="xref">NRLVDR</a>]</span>.  A complete TSVCIS
+---
+>    uses the MELPe standard as its base <span>[<a href="#NRLVDR" class="cite xref">NRLVDR</a>]</span>.  A complete TSVCIS
+1536c1609
+<         <dd id="section-2-6.2">Bits A, B, and C (A is MSB; C is LSB)<a href="#section-2-6.2" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-2-6.2">Bits A, B, and C (A is MSB; C is LSB)<a href="#section-2-6.2" class="pilcrow">¶</a>
+1540c1613
+<         <dd id="section-2-6.4">Bits D, E, F, G, and H (D is MSB; H is LSB)<a href="#section-2-6.4" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-2-6.4">Bits D, E, F, G, and H (D is MSB; H is LSB)<a href="#section-2-6.4" class="pilcrow">¶</a>
+1544c1617
+< <div class="artwork art-text alignLeft" id="section-2-7">
+---
+> <div class="alignLeft art-text artwork" id="section-2-7">
+1563c1636
+<    <a href="#sect-3.2" class="xref">Section 3.2</a>.  TSVCIS specifically uses the NRL VDR in two
+---
+>    <a href="#sect-3.2" class="auto internal xref">Section 3.2</a>.  TSVCIS specifically uses the NRL VDR in two
+1565c1638
+<    parameters in a standardized order <span>[<a href="#TSVCIS" class="xref">TSVCIS</a>]</span>.<a href="#section-2-9" class="pilcrow">¶</a></p>
+---
+>    parameters in a standardized order <span>[<a href="#TSVCIS" class="cite xref">TSVCIS</a>]</span>.<a href="#section-2-9" class="pilcrow">¶</a></p>
+1579c1652
+<    The RTP payload for TSVCIS has the format shown in <a href="#fig-1" class="xref">Figure 1</a>.  No
+---
+>    The RTP payload for TSVCIS has the format shown in <a href="#fig-1" class="auto internal xref">Figure 1</a>.  No
+1585c1658
+<         <div class="artwork art-text alignLeft" id="section-3-3.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-3-3.1">
+1604c1677
+<    expected values as described in <span>[<a href="#RFC3550" class="xref">RFC3550</a>]</span>.  The usage of the M bit
+---
+>    expected values as described in <span>[<a href="#RFC3550" class="cite xref">RFC3550</a>]</span>.  The usage of the M bit
+1606c1679
+<    <span>[<a href="#RFC3551" class="xref">RFC3551</a>]</span> specifies that if the sender does not
+---
+>    <span>[<a href="#RFC3551" class="cite xref">RFC3551</a>]</span> specifies that if the sender does not
+1626,1627c1699,1700
+<    links.  RTP packetization of MELPe follows <span>[<a href="#RFC8130" class="xref">RFC8130</a>]</span> and is repeated
+<    here for all three MELPe rates <span>[<a href="#RFC8130" class="xref">RFC8130</a>]</span>, with its recommendations now
+---
+>    links.  RTP packetization of MELPe follows <span>[<a href="#RFC8130" class="cite xref">RFC8130</a>]</span> and is repeated
+>    here for all three MELPe rates <span>[<a href="#RFC8130" class="cite xref">RFC8130</a>]</span>, with its recommendations now
+1629c1702
+<    and RSVC in <span>[<a href="#RFC8130" class="xref">RFC8130</a>]</span> <span class="bcp14">SHOULD</span> be filled with
+---
+>    and RSVC in <span>[<a href="#RFC8130" class="cite xref">RFC8130</a>]</span> <span class="bcp14">SHOULD</span> be filled with
+1631c1704
+<    and CODC, as shown in <a href="#tab-1" class="xref">Table 1</a> (compatible with Table 7 in <span><a href="https://www.rfc-editor.org/rfc/rfc8130#section-3.3" class="relref">Section 3.3</a> of [<a href="#RFC8130" class="xref">RFC8130</a>]</span>).<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+---
+>    and CODC, as shown in <a href="#tab-1" class="auto internal xref">Table 1</a> (compatible with Table 7 in <span><a href="https://rfc-editor.org/rfc/rfc8130#section-3.3" class="relref">Section 3.3</a> of [<a href="#RFC8130" class="cite xref">RFC8130</a>]</span>).<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+1695c1768
+<    in a trailing byte as discussed in <a href="#sect-3.2" class="xref">Section 3.2</a>.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+---
+>    in a trailing byte as discussed in <a href="#sect-3.2" class="auto internal xref">Section 3.2</a>.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+1698c1771
+<    the value in <a href="#tab-1" class="xref">Table 1</a> when bit 55 is used as an alternating 1/0
+---
+>    the value in <a href="#tab-1" class="auto internal xref">Table 1</a> when bit 55 is used as an alternating 1/0
+1710c1783
+<    The 2400 bps MELPe RTP payload is constructed as per <a href="#fig-2" class="xref">Figure 2</a>.  Note
+---
+>    The 2400 bps MELPe RTP payload is constructed as per <a href="#fig-2" class="auto internal xref">Figure 2</a>.  Note
+1712c1785
+<    per <a href="#sect-3.1" class="xref">Section 3.1</a>.  CODB <span class="bcp14">MAY</span> contain an end-to-end framing bit if
+---
+>    per <a href="#sect-3.1" class="auto internal xref">Section 3.1</a>.  CODB <span class="bcp14">MAY</span> contain an end-to-end framing bit if
+1716c1789
+<             <div class="artwork art-text alignLeft" id="section-3.1.1-2.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-3.1.1-2.1">
+1749c1822
+<    The 1200 bps MELPe RTP payload is constructed as per <a href="#fig-3" class="xref">Figure 3</a>.  Note
+---
+>    The 1200 bps MELPe RTP payload is constructed as per <a href="#fig-3" class="auto internal xref">Figure 3</a>.  Note
+1751c1824
+<    respectively, as per <a href="#sect-3.1" class="xref">Section 3.1</a>.  RSV0 <span class="bcp14">MUST</span> be coded as 0.<a href="#section-3.1.2-1" class="pilcrow">¶</a></p>
+---
+>    respectively, as per <a href="#sect-3.1" class="auto internal xref">Section 3.1</a>.  RSV0 <span class="bcp14">MUST</span> be coded as 0.<a href="#section-3.1.2-1" class="pilcrow">¶</a></p>
+1754c1827
+<             <div class="artwork art-text alignLeft" id="section-3.1.2-2.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-3.1.2-2.1">
+1795c1868
+<    The 600 bps MELPe RTP payload is constructed as per <a href="#fig-4" class="xref">Figure 4</a>.  Note
+---
+>    The 600 bps MELPe RTP payload is constructed as per <a href="#fig-4" class="auto internal xref">Figure 4</a>.  Note
+1797c1870
+<    <a href="#sect-3.1" class="xref">Section 3.1</a>.  CODB <span class="bcp14">MAY</span> contain an end-to-end framing bit if required
+---
+>    <a href="#sect-3.1" class="auto internal xref">Section 3.1</a>.  CODB <span class="bcp14">MAY</span> contain an end-to-end framing bit if required
+1801c1874
+<             <div class="artwork art-text alignLeft" id="section-3.1.3-2.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-3.1.3-2.1">
+1834c1907
+<    The comfort noise MELPe RTP payload is constructed as per <a href="#fig-5" class="xref">Figure 5</a>.
+---
+>    The comfort noise MELPe RTP payload is constructed as per <a href="#fig-5" class="auto internal xref">Figure 5</a>.
+1836c1909
+<    respectively, as per <a href="#sect-3.1" class="xref">Section 3.1</a>.<a href="#section-3.1.4-1" class="pilcrow">¶</a></p>
+---
+>    respectively, as per <a href="#sect-3.1" class="auto internal xref">Section 3.1</a>.<a href="#section-3.1.4-1" class="pilcrow">¶</a></p>
+1839c1912
+<             <div class="artwork art-text alignLeft" id="section-3.1.4-2.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-3.1.4-2.1">
+1868c1941
+<    than or equal to 77 octets; this is shown in <a href="#fig-6" class="xref">Figure 6</a>.  In the
+---
+>    than or equal to 77 octets; this is shown in <a href="#fig-6" class="auto internal xref">Figure 6</a>.  In the
+1882c1955
+<           <div class="artwork art-text alignLeft" id="section-3.2-2.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-3.2-2.1">
+1930c2003
+<    <a href="#fig-7" class="xref">Figure 7</a>.  The last trailing byte <span class="bcp14">MUST</span> be filled with a two-bit rate
+---
+>    <a href="#fig-7" class="auto internal xref">Figure 7</a>.  The last trailing byte <span class="bcp14">MUST</span> be filled with a two-bit rate
+1937c2010
+<           <div class="artwork art-text alignLeft" id="section-3.2-4.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-3.2-4.1">
+1986c2059
+<    contents and length as per <a href="#tab-1" class="xref">Table 1</a>.<a href="#section-3.3-4" class="pilcrow">¶</a></p>
+---
+>    contents and length as per <a href="#tab-1" class="auto internal xref">Table 1</a>.<a href="#section-3.3-4" class="pilcrow">¶</a></p>
+2030,2031c2103,2104
+<    UDP layer <span>[<a href="#RFC8085" class="xref">RFC8085</a>]</span> and <span class="bcp14">MAY</span> also implement a transport circuit
+<    breaker <span>[<a href="#RFC8083" class="xref">RFC8083</a>]</span>.  Work in the RMCAT Working Group <span>[<a href="#RMCAT" class="xref">RMCAT</a>]</span> describes
+---
+>    UDP layer <span>[<a href="#RFC8085" class="cite xref">RFC8085</a>]</span> and <span class="bcp14">MAY</span> also implement a transport circuit
+>    breaker <span>[<a href="#RFC8083" class="cite xref">RFC8083</a>]</span>.  Work in the RMCAT Working Group <span>[<a href="#RMCAT" class="cite xref">RMCAT</a>]</span> describes
+2048,2049c2121,2122
+<    which is registered in accordance with <span>[<a href="#RFC4855" class="xref">RFC4855</a>]</span> and per the
+<    media type registration template from <span>[<a href="#RFC6838" class="xref">RFC6838</a>]</span>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+---
+>    which is registered in accordance with <span>[<a href="#RFC4855" class="cite xref">RFC4855</a>]</span> and per the
+>    media type registration template from <span>[<a href="#RFC6838" class="cite xref">RFC6838</a>]</span>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+2057c2130
+<           <dd id="section-4.1-1.2"> audio<a href="#section-4.1-1.2" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-4.1-1.2"> audio<a href="#section-4.1-1.2" class="pilcrow">¶</a>
+2061c2134
+<           <dd id="section-4.1-1.4"> TSVCIS<a href="#section-4.1-1.4" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-4.1-1.4"> TSVCIS<a href="#section-4.1-1.4" class="pilcrow">¶</a>
+2065c2138
+<           <dd id="section-4.1-1.6">Clock Rate (Hz): 8000<a href="#section-4.1-1.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-4.1-1.6">Clock Rate (Hz): 8000<a href="#section-4.1-1.6" class="pilcrow">¶</a>
+2071c2144
+<           <dd id="section-4.1-2.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-4.1-2.2">
+2074c2147
+<               <dd id="section-4.1-2.2.1.2"> the recommended length of time (in milliseconds)
+---
+>               <dd style="margin-left: 1.5em" id="section-4.1-2.2.1.2"> the recommended length of time (in milliseconds)
+2079c2152
+<               as they are properly rounded.  See <span><a href="https://www.rfc-editor.org/rfc/rfc4566#section-6" class="relref">Section 6</a> of [<a href="#RFC4566" class="xref">RFC4566</a>]</span>.<a href="#section-4.1-2.2.1.2" class="pilcrow">¶</a>
+---
+>               as they are properly rounded.  See <span><a href="https://rfc-editor.org/rfc/rfc4566#section-6" class="relref">Section 6</a> of [<a href="#RFC4566" class="cite xref">RFC4566</a>]</span>.<a href="#section-4.1-2.2.1.2" class="pilcrow">¶</a>
+2083c2156
+<               <dd id="section-4.1-2.2.1.4"> the maximum length of time (in milliseconds) that can be
+---
+>               <dd style="margin-left: 1.5em" id="section-4.1-2.2.1.4"> the maximum length of time (in milliseconds) that can be
+2088c2161
+<               properly rounded.  See <span><a href="https://www.rfc-editor.org/rfc/rfc4566#section-6" class="relref">Section 6</a> of [<a href="#RFC4566" class="xref">RFC4566</a>]</span>.<a href="#section-4.1-2.2.1.4" class="pilcrow">¶</a>
+---
+>               properly rounded.  See <span><a href="https://rfc-editor.org/rfc/rfc4566#section-6" class="relref">Section 6</a> of [<a href="#RFC4566" class="cite xref">RFC4566</a>]</span>.<a href="#section-4.1-2.2.1.4" class="pilcrow">¶</a>
+2092c2165
+<               <dd id="section-4.1-2.2.1.6"> specifies the MELPe coder bitrates supported.  Possible
+---
+>               <dd style="margin-left: 1.5em" id="section-4.1-2.2.1.6"> specifies the MELPe coder bitrates supported.  Possible
+2101c2174
+<               <dd id="section-4.1-2.2.1.8"> specifies the TSVCIS maximum value for the TC supported or
+---
+>               <dd style="margin-left: 1.5em" id="section-4.1-2.2.1.8"> specifies the TSVCIS maximum value for the TC supported or
+2107c2180
+<               <dd id="section-4.1-2.2.1.10">1<a href="#section-4.1-2.2.1.10" class="pilcrow">¶</a>
+---
+>               <dd style="margin-left: 1.5em" id="section-4.1-2.2.1.10">1<a href="#section-4.1-2.2.1.10" class="pilcrow">¶</a>
+2116c2189
+<           <dd id="section-4.1-3.2"> This media subtype is framed and binary; see <span><a href="https://www.rfc-editor.org/rfc/rfc6838#section-4.8" class="relref">Section 4.8</a> of [<a href="#RFC6838" class="xref">RFC6838</a>]</span>.<a href="#section-4.1-3.2" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-4.1-3.2"> This media subtype is framed and binary; see <span><a href="https://rfc-editor.org/rfc/rfc6838#section-4.8" class="relref">Section 4.8</a> of [<a href="#RFC6838" class="cite xref">RFC6838</a>]</span>.<a href="#section-4.1-3.2" class="pilcrow">¶</a>
+2120c2193
+<           <dd id="section-4.1-3.4"> Please see <a href="#sect-8" class="xref">Section 8</a> of RFC 8817.<a href="#section-4.1-3.4" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-4.1-3.4"> Please see <a href="#sect-8" class="auto internal xref">Section 8</a> of RFC 8817.<a href="#section-4.1-3.4" class="pilcrow">¶</a>
+2124c2197
+<           <dd id="section-4.1-3.6">N/A<a href="#section-4.1-3.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-4.1-3.6">N/A<a href="#section-4.1-3.6" class="pilcrow">¶</a>
+2128,2129c2201,2202
+<           <dd id="section-4.1-3.8">
+<             <span>[<a href="#TSVCIS" class="xref">TSVCIS</a>]</span><a href="#section-4.1-3.8" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-4.1-3.8">
+>             <span>[<a href="#TSVCIS" class="cite xref">TSVCIS</a>]</span><a href="#section-4.1-3.8" class="pilcrow">¶</a>
+2133c2206
+<           <dd id="section-4.1-3.10">N/A<a href="#section-4.1-3.10" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-4.1-3.10">N/A<a href="#section-4.1-3.10" class="pilcrow">¶</a>
+2137c2210
+<           <dd id="section-4.1-3.12">N/A<a href="#section-4.1-3.12" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-4.1-3.12">N/A<a href="#section-4.1-3.12" class="pilcrow">¶</a>
+2141c2214
+<           <dd id="section-4.1-3.14">
+---
+>           <dd style="margin-left: 1.5em" id="section-4.1-3.14">
+2143c2216
+< <span class="break"></span><dl class="dlParallel dlCompact" id="section-4.1-3.14.2">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-4.1-3.14.2">
+2145c2218
+<               <dd id="section-4.1-3.14.2.2">N/A<a href="#section-4.1-3.14.2.2" class="pilcrow">¶</a>
+---
+>               <dd style="margin-left: 1.5em" id="section-4.1-3.14.2.2">N/A<a href="#section-4.1-3.14.2.2" class="pilcrow">¶</a>
+2149c2222
+<               <dd id="section-4.1-3.14.2.4">N/A<a href="#section-4.1-3.14.2.4" class="pilcrow">¶</a>
+---
+>               <dd style="margin-left: 1.5em" id="section-4.1-3.14.2.4">N/A<a href="#section-4.1-3.14.2.4" class="pilcrow">¶</a>
+2153c2226
+<               <dd id="section-4.1-3.14.2.6">N/A<a href="#section-4.1-3.14.2.6" class="pilcrow">¶</a>
+---
+>               <dd style="margin-left: 1.5em" id="section-4.1-3.14.2.6">N/A<a href="#section-4.1-3.14.2.6" class="pilcrow">¶</a>
+2157c2230
+<               <dd id="section-4.1-3.14.2.8">N/A<a href="#section-4.1-3.14.2.8" class="pilcrow">¶</a>
+---
+>               <dd style="margin-left: 1.5em" id="section-4.1-3.14.2.8">N/A<a href="#section-4.1-3.14.2.8" class="pilcrow">¶</a>
+2164c2237
+<           <dd id="section-4.1-3.16">
+---
+>           <dd style="margin-left: 1.5em" id="section-4.1-3.16">
+2170c2243
+<           <dd id="section-4.1-3.18">COMMON<a href="#section-4.1-3.18" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-4.1-3.18">COMMON<a href="#section-4.1-3.18" class="pilcrow">¶</a>
+2174,2175c2247,2248
+<           <dd id="section-4.1-3.20"> The media subtype depends on RTP
+<       framing and hence is only defined for transfer via RTP <span>[<a href="#RFC3550" class="xref">RFC3550</a>]</span>.  Transport within other framing protocols is not
+---
+>           <dd style="margin-left: 1.5em" id="section-4.1-3.20"> The media subtype depends on RTP
+>       framing and hence is only defined for transfer via RTP <span>[<a href="#RFC3550" class="cite xref">RFC3550</a>]</span>.  Transport within other framing protocols is not
+2180c2253
+<           <dd id="section-4.1-3.22">
+---
+>           <dd style="margin-left: 1.5em" id="section-4.1-3.22">
+2185c2258
+<           <dd id="section-4.1-3.24"> IETF; contact &lt;avt@ietf.org&gt;<a href="#section-4.1-3.24" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-4.1-3.24"> IETF; contact &lt;avt@ietf.org&gt;<a href="#section-4.1-3.24" class="pilcrow">¶</a>
+2189c2262
+<           <dd id="section-4.1-3.26"> No<a href="#section-4.1-3.26" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-4.1-3.26"> No<a href="#section-4.1-3.26" class="pilcrow">¶</a>
+2202c2275
+<    parameters <span class="bcp14">SHALL</span> be done according to <span><a href="https://www.rfc-editor.org/rfc/rfc4855#section-3" class="relref">Section 3</a> of [<a href="#RFC4855" class="xref">RFC4855</a>]</span>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+---
+>    parameters <span class="bcp14">SHALL</span> be done according to <span><a href="https://rfc-editor.org/rfc/rfc4855#section-3" class="relref">Section 3</a> of [<a href="#RFC4855" class="cite xref">RFC4855</a>]</span>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+2206c2279
+<    <span>[<a href="#RFC4566" class="xref">RFC4566</a>]</span>, which is commonly used to describe RTP sessions.  When SDP
+---
+>    <span>[<a href="#RFC4566" class="cite xref">RFC4566</a>]</span>, which is commonly used to describe RTP sessions.  When SDP
+2231,2232c2304,2305
+< <div id="section-4.2-6">
+< <pre class="sourcecode lang-sdp">
+---
+> <div class="lang-sdp sourcecode" id="section-4.2-6">
+> <pre>
+2246,2247c2319,2320
+< <div id="section-4.2-8">
+< <pre class="sourcecode lang-sdp">
+---
+> <div class="lang-sdp sourcecode" id="section-4.2-8">
+> <pre>
+2262,2263c2335,2336
+< <div id="section-4.2-10">
+< <pre class="sourcecode lang-sdp">
+---
+> <div class="lang-sdp sourcecode" id="section-4.2-10">
+> <pre>
+2294,2295c2367,2368
+< <div id="section-4.3-2">
+< <pre class="sourcecode lang-sdp">
+---
+> <div class="lang-sdp sourcecode" id="section-4.3-2">
+> <pre>
+2317c2390
+<    In the Offer/Answer model <span>[<a href="#RFC3264" class="xref">RFC3264</a>]</span>, "bitrate" is a bidirectional
+---
+>    In the Offer/Answer model <span>[<a href="#RFC3264" class="cite xref">RFC3264</a>]</span>, "bitrate" is a bidirectional
+2336c2409
+<    In the Offer/Answer model <span>[<a href="#RFC3264" class="xref">RFC3264</a>]</span>, "tcmax" is a bidirectional
+---
+>    In the Offer/Answer model <span>[<a href="#RFC3264" class="cite xref">RFC3264</a>]</span>, "tcmax" is a bidirectional
+2362c2435
+<    per Appendix B of <span>[<a href="#SCIP210" class="xref">SCIP210</a>]</span> prior to ceasing transmission. A
+---
+>    per Appendix B of <span>[<a href="#SCIP210" class="cite xref">SCIP210</a>]</span> prior to ceasing transmission. A
+2376c2449
+<    non-voiced frame as identified in Table 1 of <span>[<a href="#MELPE" class="xref">MELPE</a>]</span>. For the sake of
+---
+>    non-voiced frame as identified in Table 1 of <span>[<a href="#MELPE" class="cite xref">MELPE</a>]</span>. For the sake of
+2392c2465
+<    IANA has registered TSVCIS as specified in <a href="#sect-4.1" class="xref">Section 4.1</a>.  The media type has been added to the IANA
+---
+>    IANA has registered TSVCIS as specified in <a href="#sect-4.1" class="auto internal xref">Section 4.1</a>.  The media type has been added to the IANA
+2405,2407c2478,2480
+<    specification <span>[<a href="#RFC3550" class="xref">RFC3550</a>]</span> and in any applicable RTP profile such as
+<    RTP/AVP <span>[<a href="#RFC3551" class="xref">RFC3551</a>]</span>, RTP/AVPF <span>[<a href="#RFC4585" class="xref">RFC4585</a>]</span>, RTP/SAVP <span>[<a href="#RFC3711" class="xref">RFC3711</a>]</span>, or
+<    RTP/SAVPF <span>[<a href="#RFC5124" class="xref">RFC5124</a>]</span>.  However, as discussed in <span>[<a href="#RFC7202" class="xref">RFC7202</a>]</span>, it is not
+---
+>    specification <span>[<a href="#RFC3550" class="cite xref">RFC3550</a>]</span> and in any applicable RTP profile such as
+>    RTP/AVP <span>[<a href="#RFC3551" class="cite xref">RFC3551</a>]</span>, RTP/AVPF <span>[<a href="#RFC4585" class="cite xref">RFC4585</a>]</span>, RTP/SAVP <span>[<a href="#RFC3711" class="cite xref">RFC3711</a>]</span>, or
+>    RTP/SAVPF <span>[<a href="#RFC5124" class="cite xref">RFC5124</a>]</span>.  However, as discussed in <span>[<a href="#RFC7202" class="cite xref">RFC7202</a>]</span>, it is not
+2413c2486
+<    and important considerations in <span>[<a href="#RFC7201" class="xref">RFC7201</a>]</span>.  Applications <span class="bcp14">SHOULD</span> use
+---
+>    and important considerations in <span>[<a href="#RFC7201" class="cite xref">RFC7201</a>]</span>.  Applications <span class="bcp14">SHOULD</span> use
+2425c2498
+<    Please see the security considerations discussed in <span>[<a href="#RFC6562" class="xref">RFC6562</a>]</span>
+---
+>    Please see the security considerations discussed in <span>[<a href="#RFC6562" class="cite xref">RFC6562</a>]</span>
+2448c2521
+< <span class="refAuthor">Heide, D.</span><span class="refAuthor">, Cohen, A.</span><span class="refAuthor">, Lee, Y.</span><span class="refAuthor">, and T. Moran</span>, <span class="refTitle">"Universal Vocoder Using Variable Data Rate Vocoding"</span>, <span class="seriesInfo">DOI 10.21236/ada588068</span>, <span class="seriesInfo">Naval Research Lab NRL/FR/5555--13-10, 239</span>, <time datetime="2013-06" class="refDate">June 2013</time>, <span>&lt;<a href="https://doi.org/10.21236/ada588068">https://doi.org/10.21236/ada588068</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Heide, D.</span>, <span class="refAuthor">Cohen, A.</span>, <span class="refAuthor">Lee, Y.</span>, and <span class="refAuthor">T. Moran</span>, <span class="refTitle">"Universal Vocoder Using Variable Data Rate Vocoding"</span>, <span class="seriesInfo">DOI 10.21236/ada588068</span>, <span class="seriesInfo">Naval Research Lab NRL/FR/5555--13-10, 239</span>, <time datetime="2013-06" class="refDate">June 2013</time>, <span>&lt;<a href="https://doi.org/10.21236/ada588068">https://doi.org/10.21236/ada588068</a>&gt;</span>. </dd>
+2456c2529
+< <span class="refAuthor">Handley, M.</span><span class="refAuthor"> and C. Perkins</span>, <span class="refTitle">"Guidelines for Writers of RTP Payload Format Specifications"</span>, <span class="seriesInfo">BCP 36</span>, <span class="seriesInfo">RFC 2736</span>, <span class="seriesInfo">DOI 10.17487/RFC2736</span>, <time datetime="1999-12" class="refDate">December 1999</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2736">https://www.rfc-editor.org/info/rfc2736</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Handley, M.</span> and <span class="refAuthor">C. Perkins</span>, <span class="refTitle">"Guidelines for Writers of RTP Payload Format Specifications"</span>, <span class="seriesInfo">BCP 36</span>, <span class="seriesInfo">RFC 2736</span>, <span class="seriesInfo">DOI 10.17487/RFC2736</span>, <time datetime="1999-12" class="refDate">December 1999</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2736">https://www.rfc-editor.org/info/rfc2736</a>&gt;</span>. </dd>
+2460c2533
+< <span class="refAuthor">Rosenberg, J.</span><span class="refAuthor"> and H. Schulzrinne</span>, <span class="refTitle">"An Offer/Answer Model with Session Description Protocol (SDP)"</span>, <span class="seriesInfo">RFC 3264</span>, <span class="seriesInfo">DOI 10.17487/RFC3264</span>, <time datetime="2002-06" class="refDate">June 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3264">https://www.rfc-editor.org/info/rfc3264</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rosenberg, J.</span> and <span class="refAuthor">H. Schulzrinne</span>, <span class="refTitle">"An Offer/Answer Model with Session Description Protocol (SDP)"</span>, <span class="seriesInfo">RFC 3264</span>, <span class="seriesInfo">DOI 10.17487/RFC3264</span>, <time datetime="2002-06" class="refDate">June 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3264">https://www.rfc-editor.org/info/rfc3264</a>&gt;</span>. </dd>
+2464c2537
+< <span class="refAuthor">Schulzrinne, H.</span><span class="refAuthor">, Casner, S.</span><span class="refAuthor">, Frederick, R.</span><span class="refAuthor">, and V. Jacobson</span>, <span class="refTitle">"RTP: A Transport Protocol for Real-Time Applications"</span>, <span class="seriesInfo">STD 64</span>, <span class="seriesInfo">RFC 3550</span>, <span class="seriesInfo">DOI 10.17487/RFC3550</span>, <time datetime="2003-07" class="refDate">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3550">https://www.rfc-editor.org/info/rfc3550</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schulzrinne, H.</span>, <span class="refAuthor">Casner, S.</span>, <span class="refAuthor">Frederick, R.</span>, and <span class="refAuthor">V. Jacobson</span>, <span class="refTitle">"RTP: A Transport Protocol for Real-Time Applications"</span>, <span class="seriesInfo">STD 64</span>, <span class="seriesInfo">RFC 3550</span>, <span class="seriesInfo">DOI 10.17487/RFC3550</span>, <time datetime="2003-07" class="refDate">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3550">https://www.rfc-editor.org/info/rfc3550</a>&gt;</span>. </dd>
+2468c2541
+< <span class="refAuthor">Schulzrinne, H.</span><span class="refAuthor"> and S. Casner</span>, <span class="refTitle">"RTP Profile for Audio and Video Conferences with Minimal Control"</span>, <span class="seriesInfo">STD 65</span>, <span class="seriesInfo">RFC 3551</span>, <span class="seriesInfo">DOI 10.17487/RFC3551</span>, <time datetime="2003-07" class="refDate">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3551">https://www.rfc-editor.org/info/rfc3551</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schulzrinne, H.</span> and <span class="refAuthor">S. Casner</span>, <span class="refTitle">"RTP Profile for Audio and Video Conferences with Minimal Control"</span>, <span class="seriesInfo">STD 65</span>, <span class="seriesInfo">RFC 3551</span>, <span class="seriesInfo">DOI 10.17487/RFC3551</span>, <time datetime="2003-07" class="refDate">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3551">https://www.rfc-editor.org/info/rfc3551</a>&gt;</span>. </dd>
+2472c2545
+< <span class="refAuthor">Baugher, M.</span><span class="refAuthor">, McGrew, D.</span><span class="refAuthor">, Naslund, M.</span><span class="refAuthor">, Carrara, E.</span><span class="refAuthor">, and K. Norrman</span>, <span class="refTitle">"The Secure Real-time Transport Protocol (SRTP)"</span>, <span class="seriesInfo">RFC 3711</span>, <span class="seriesInfo">DOI 10.17487/RFC3711</span>, <time datetime="2004-03" class="refDate">March 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3711">https://www.rfc-editor.org/info/rfc3711</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Baugher, M.</span>, <span class="refAuthor">McGrew, D.</span>, <span class="refAuthor">Naslund, M.</span>, <span class="refAuthor">Carrara, E.</span>, and <span class="refAuthor">K. Norrman</span>, <span class="refTitle">"The Secure Real-time Transport Protocol (SRTP)"</span>, <span class="seriesInfo">RFC 3711</span>, <span class="seriesInfo">DOI 10.17487/RFC3711</span>, <time datetime="2004-03" class="refDate">March 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3711">https://www.rfc-editor.org/info/rfc3711</a>&gt;</span>. </dd>
+2476c2549
+< <span class="refAuthor">Handley, M.</span><span class="refAuthor">, Jacobson, V.</span><span class="refAuthor">, and C. Perkins</span>, <span class="refTitle">"SDP: Session Description Protocol"</span>, <span class="seriesInfo">RFC 4566</span>, <span class="seriesInfo">DOI 10.17487/RFC4566</span>, <time datetime="2006-07" class="refDate">July 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4566">https://www.rfc-editor.org/info/rfc4566</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Handley, M.</span>, <span class="refAuthor">Jacobson, V.</span>, and <span class="refAuthor">C. Perkins</span>, <span class="refTitle">"SDP: Session Description Protocol"</span>, <span class="seriesInfo">RFC 4566</span>, <span class="seriesInfo">DOI 10.17487/RFC4566</span>, <time datetime="2006-07" class="refDate">July 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4566">https://www.rfc-editor.org/info/rfc4566</a>&gt;</span>. </dd>
+2484c2557
+< <span class="refAuthor">Ott, J.</span><span class="refAuthor"> and E. Carrara</span>, <span class="refTitle">"Extended Secure RTP Profile for Real-time Transport Control Protocol (RTCP)-Based Feedback (RTP/SAVPF)"</span>, <span class="seriesInfo">RFC 5124</span>, <span class="seriesInfo">DOI 10.17487/RFC5124</span>, <time datetime="2008-02" class="refDate">February 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5124">https://www.rfc-editor.org/info/rfc5124</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Ott, J.</span> and <span class="refAuthor">E. Carrara</span>, <span class="refTitle">"Extended Secure RTP Profile for Real-time Transport Control Protocol (RTCP)-Based Feedback (RTP/SAVPF)"</span>, <span class="seriesInfo">RFC 5124</span>, <span class="seriesInfo">DOI 10.17487/RFC5124</span>, <time datetime="2008-02" class="refDate">February 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5124">https://www.rfc-editor.org/info/rfc5124</a>&gt;</span>. </dd>
+2488c2561
+< <span class="refAuthor">Perkins, C.</span><span class="refAuthor"> and JM. Valin</span>, <span class="refTitle">"Guidelines for the Use of Variable Bit Rate Audio with Secure RTP"</span>, <span class="seriesInfo">RFC 6562</span>, <span class="seriesInfo">DOI 10.17487/RFC6562</span>, <time datetime="2012-03" class="refDate">March 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6562">https://www.rfc-editor.org/info/rfc6562</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Perkins, C.</span> and <span class="refAuthor">JM. Valin</span>, <span class="refTitle">"Guidelines for the Use of Variable Bit Rate Audio with Secure RTP"</span>, <span class="seriesInfo">RFC 6562</span>, <span class="seriesInfo">DOI 10.17487/RFC6562</span>, <time datetime="2012-03" class="refDate">March 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6562">https://www.rfc-editor.org/info/rfc6562</a>&gt;</span>. </dd>
+2492c2565
+< <span class="refAuthor">Freed, N.</span><span class="refAuthor">, Klensin, J.</span><span class="refAuthor">, and T. Hansen</span>, <span class="refTitle">"Media Type Specifications and Registration Procedures"</span>, <span class="seriesInfo">BCP 13</span>, <span class="seriesInfo">RFC 6838</span>, <span class="seriesInfo">DOI 10.17487/RFC6838</span>, <time datetime="2013-01" class="refDate">January 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6838">https://www.rfc-editor.org/info/rfc6838</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Freed, N.</span>, <span class="refAuthor">Klensin, J.</span>, and <span class="refAuthor">T. Hansen</span>, <span class="refTitle">"Media Type Specifications and Registration Procedures"</span>, <span class="seriesInfo">BCP 13</span>, <span class="seriesInfo">RFC 6838</span>, <span class="seriesInfo">DOI 10.17487/RFC6838</span>, <time datetime="2013-01" class="refDate">January 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6838">https://www.rfc-editor.org/info/rfc6838</a>&gt;</span>. </dd>
+2496c2569
+< <span class="refAuthor">Perkins, C.</span><span class="refAuthor"> and V. Singh</span>, <span class="refTitle">"Multimedia Congestion Control: Circuit Breakers for Unicast RTP Sessions"</span>, <span class="seriesInfo">RFC 8083</span>, <span class="seriesInfo">DOI 10.17487/RFC8083</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8083">https://www.rfc-editor.org/info/rfc8083</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Perkins, C.</span> and <span class="refAuthor">V. Singh</span>, <span class="refTitle">"Multimedia Congestion Control: Circuit Breakers for Unicast RTP Sessions"</span>, <span class="seriesInfo">RFC 8083</span>, <span class="seriesInfo">DOI 10.17487/RFC8083</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8083">https://www.rfc-editor.org/info/rfc8083</a>&gt;</span>. </dd>
+2500c2573
+< <span class="refAuthor">Eggert, L.</span><span class="refAuthor">, Fairhurst, G.</span><span class="refAuthor">, and G. Shepherd</span>, <span class="refTitle">"UDP Usage Guidelines"</span>, <span class="seriesInfo">BCP 145</span>, <span class="seriesInfo">RFC 8085</span>, <span class="seriesInfo">DOI 10.17487/RFC8085</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8085">https://www.rfc-editor.org/info/rfc8085</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Eggert, L.</span>, <span class="refAuthor">Fairhurst, G.</span>, and <span class="refAuthor">G. Shepherd</span>, <span class="refTitle">"UDP Usage Guidelines"</span>, <span class="seriesInfo">BCP 145</span>, <span class="seriesInfo">RFC 8085</span>, <span class="seriesInfo">DOI 10.17487/RFC8085</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8085">https://www.rfc-editor.org/info/rfc8085</a>&gt;</span>. </dd>
+2508c2581
+< <span class="refAuthor">Demjanenko, V.</span><span class="refAuthor"> and D. Satterlee</span>, <span class="refTitle">"RTP Payload Format for the Mixed Excitation Linear Prediction Enhanced (MELPe) Codec"</span>, <span class="seriesInfo">RFC 8130</span>, <span class="seriesInfo">DOI 10.17487/RFC8130</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8130">https://www.rfc-editor.org/info/rfc8130</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Demjanenko, V.</span> and <span class="refAuthor">D. Satterlee</span>, <span class="refTitle">"RTP Payload Format for the Mixed Excitation Linear Prediction Enhanced (MELPe) Codec"</span>, <span class="seriesInfo">RFC 8130</span>, <span class="seriesInfo">DOI 10.17487/RFC8130</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8130">https://www.rfc-editor.org/info/rfc8130</a>&gt;</span>. </dd>
+2527c2600
+< <span class="refAuthor">Ott, J.</span><span class="refAuthor">, Wenger, S.</span><span class="refAuthor">, Sato, N.</span><span class="refAuthor">, Burmeister, C.</span><span class="refAuthor">, and J. Rey</span>, <span class="refTitle">"Extended RTP Profile for Real-time Transport Control Protocol (RTCP)-Based Feedback (RTP/AVPF)"</span>, <span class="seriesInfo">RFC 4585</span>, <span class="seriesInfo">DOI 10.17487/RFC4585</span>, <time datetime="2006-07" class="refDate">July 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4585">https://www.rfc-editor.org/info/rfc4585</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Ott, J.</span>, <span class="refAuthor">Wenger, S.</span>, <span class="refAuthor">Sato, N.</span>, <span class="refAuthor">Burmeister, C.</span>, and <span class="refAuthor">J. Rey</span>, <span class="refTitle">"Extended RTP Profile for Real-time Transport Control Protocol (RTCP)-Based Feedback (RTP/AVPF)"</span>, <span class="seriesInfo">RFC 4585</span>, <span class="seriesInfo">DOI 10.17487/RFC4585</span>, <time datetime="2006-07" class="refDate">July 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4585">https://www.rfc-editor.org/info/rfc4585</a>&gt;</span>. </dd>
+2531c2604
+< <span class="refAuthor">Westerlund, M.</span><span class="refAuthor"> and C. Perkins</span>, <span class="refTitle">"Options for Securing RTP Sessions"</span>, <span class="seriesInfo">RFC 7201</span>, <span class="seriesInfo">DOI 10.17487/RFC7201</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7201">https://www.rfc-editor.org/info/rfc7201</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Westerlund, M.</span> and <span class="refAuthor">C. Perkins</span>, <span class="refTitle">"Options for Securing RTP Sessions"</span>, <span class="seriesInfo">RFC 7201</span>, <span class="seriesInfo">DOI 10.17487/RFC7201</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7201">https://www.rfc-editor.org/info/rfc7201</a>&gt;</span>. </dd>
+2535c2608
+< <span class="refAuthor">Perkins, C.</span><span class="refAuthor"> and M. Westerlund</span>, <span class="refTitle">"Securing the RTP Framework: Why RTP Does Not Mandate a Single Media Security Solution"</span>, <span class="seriesInfo">RFC 7202</span>, <span class="seriesInfo">DOI 10.17487/RFC7202</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7202">https://www.rfc-editor.org/info/rfc7202</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Perkins, C.</span> and <span class="refAuthor">M. Westerlund</span>, <span class="refTitle">"Securing the RTP Framework: Why RTP Does Not Mandate a Single Media Security Solution"</span>, <span class="seriesInfo">RFC 7202</span>, <span class="seriesInfo">DOI 10.17487/RFC7202</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7202">https://www.rfc-editor.org/info/rfc7202</a>&gt;</span>. </dd>
+2549c2622
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">

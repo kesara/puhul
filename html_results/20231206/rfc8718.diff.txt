@@ -1,0 +1,730 @@
+2c2
+< <html lang="en" class="RFC BCP">
+---
+> <html lang="en" class="BCP RFC">
+19c19
+< <meta content="xml2rfc 2.40.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+24c24,40
+< <link href="rfc8718.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.18.2
+>     Python 3.11.6
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.1.0
+>     pycountry 22.3.5
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8718.xml" rel="alternate" type="application/rfc+xml">
+34c50
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+43a60,65
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+46d67
+<   width: extend-to-zoom;
+61c82
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+63a85
+>   overflow-wrap: break-word;
+149a172,180
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+164,167d194
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+168a196
+>   border: none;
+191a220,222
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+233c264,265
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+243c275
+< tt, code, pre, code {
+---
+> tt, code, pre {
+245c277
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+284a317,319
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+374a410,415
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+476c517
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+616d656
+< 
+638a679,681
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+706c749
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+806c849
+< tt, code, pre, code {
+---
+> tt, code, pre {
+811c854
+< pre.sourcecode,
+---
+> .sourcecode pre,
+847c890
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+925,930d967
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1001c1038
+<   margin: 0 0 0.25em 0;
+---
+>   margin-bottom: 0.25em;
+1034a1072
+>   .artwork > pre,
+1039,1046d1076
+< /*
+<   The margin-left: 0 on <dd> removes all distinction
+<   between levels from nested <dl>s.  Undo that.
+< */
+< dl.olPercent > dd,
+< dd {
+<   margin-left: revert;
+< }
+1055a1086,1206
+> /* Apply the print table and row borders in general, on request from the RPC,
+> and increase the contrast between border and odd row background slightly */
+> table {
+>   border: 1px solid #ddd;
+> }
+> td {
+>   border-top: 1px solid #ddd;
+> }
+> tr {
+>   break-inside: avoid;
+> }
+> tr:nth-child(2n+1) > td {
+>   background-color: #f8f8f8;
+> }
+> /* Use style rules to govern display of the TOC. */
+> @media screen and (max-width: 1023px) {
+>   #toc nav { display: none; }
+>   #toc.active nav { display: block; }
+> }
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1057a1209
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-mtgvenue-iaoc-venue-selection-process-16" rel="prev">
+1060c1212
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-mtgvenue-iaoc-venue-selection-process-16" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1062,1063c1214,1215
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1160,1168c1312,1320
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-venue-selection-objectives" class="xref">Venue Selection Objectives</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.1">
+<                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-core-values" class="xref">Core Values</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-venue-selection-objectives" class="internal xref">Venue Selection Objectives</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+>                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-core-values" class="internal xref">Core Values</a></p>
+1170,1171c1322,1323
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.2">
+<                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-venue-selection-non-objecti" class="xref">Venue Selection Non-objectives</a><a href="#section-toc.1-1.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+>                 <p id="section-toc.1-1.2.2.2.1" class="keepWithNext"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-venue-selection-non-objecti" class="internal xref">Venue Selection Non-objectives</a></p>
+1175,1179c1327,1331
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-meeting-criteria" class="xref">Meeting Criteria</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-mandatory-criteria" class="xref">Mandatory Criteria</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-meeting-criteria" class="internal xref">Meeting Criteria</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-mandatory-criteria" class="internal xref">Mandatory Criteria</a></p>
+1181,1182c1333,1334
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-important-criteria" class="xref">Important Criteria</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1" class="keepWithNext"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-important-criteria" class="internal xref">Important Criteria</a></p>
+1184,1185c1336,1337
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.3">
+<                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-other-considerations" class="xref">Other Considerations</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+>                 <p id="section-toc.1-1.3.2.3.1" class="keepWithNext"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-other-considerations" class="internal xref">Other Considerations</a></p>
+1189,1190c1341,1342
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-documentation-requirements" class="xref">Documentation Requirements</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-documentation-requirements" class="internal xref">Documentation Requirements</a></p>
+1192,1193c1344,1345
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1195,1196c1347,1348
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1198,1199c1350,1351
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-privacy-considerations" class="xref">Privacy Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-privacy-considerations" class="internal xref">Privacy Considerations</a></p>
+1201,1202c1353,1354
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1204,1205c1356,1357
+< <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1" class="keepWithNext"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1207,1208c1359,1360
+< <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1210,1211c1362,1363
+< <li class="toc ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+1213,1214c1365,1366
+< <li class="toc ulEmpty" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1" class="keepWithNext"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+1225c1377
+< <p id="section-1-1">The IETF Administrative Support Activity (IASA) <span>[<a href="#RFC8711" class="xref">RFC8711</a>]</span> is
+---
+> <p id="section-1-1">The IETF Administrative Support Activity (IASA) <span>[<a href="#RFC8711" class="cite xref">RFC8711</a>]</span> is
+1240c1392
+< decisions remain subject to the provisions of <span><a href="https://www.rfc-editor.org/rfc/rfc8711#section-4.7" class="relref">Section 4.7</a> of [<a href="#RFC8711" class="xref">RFC8711</a>]</span> (BCP 101).<a href="#section-1-2" class="pilcrow">¶</a></p>
+---
+> decisions remain subject to the provisions of <span><a href="https://rfc-editor.org/rfc/rfc8711#section-4.7" class="relref">Section 4.7</a> of [<a href="#RFC8711" class="cite xref">RFC8711</a>]</span> (BCP 101).<a href="#section-1-2" class="pilcrow">¶</a></p>
+1243c1395
+< <dl class="dlNewline" id="section-1-4">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-1-4">
+1245c1397
+< <dd id="section-1-4.2">An umbrella term for the
+---
+>         <dd style="margin-left: 1.5em" id="section-1-4.2">An umbrella term for the
+1247a1400
+>         <dd class="break"></dd>
+1249c1402
+< <dd id="section-1-4.4">The building that houses
+---
+>         <dd style="margin-left: 1.5em" id="section-1-4.4">The building that houses
+1252a1406
+>         <dd class="break"></dd>
+1254c1408
+< <dd id="section-1-4.6">One or more hotels, in close
+---
+>         <dd style="margin-left: 1.5em" id="section-1-4.6">One or more hotels, in close
+1259a1414
+>         <dd class="break"></dd>
+1261c1416
+< <dd id="section-1-4.8">One or more
+---
+>         <dd style="margin-left: 1.5em" id="section-1-4.8">One or more
+1267a1423
+>       <dd class="break"></dd>
+1272c1428
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1289c1445
+< <dl class="dlNewline" id="section-2.1-2">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-2.1-2">
+1291,1292c1447,1448
+< <dd id="section-2.1-2.2">We meet to pursue the IETF's
+<               mission <span>[<a href="#RFC3935" class="xref">RFC3935</a>]</span>. This is partly done by
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.2">We meet to pursue the IETF's
+>               mission <span>[<a href="#RFC3935" class="cite xref">RFC3935</a>]</span>. This is partly done by
+1296a1453
+>           <dd class="break"></dd>
+1298c1455
+< <dd id="section-2.1-2.4">
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.4">
+1320a1478
+>           <dd class="break"></dd>
+1322c1480
+< <dd id="section-2.1-2.6">We meet in different
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.6">We meet in different
+1327c1485
+<               <span>[<a href="#RFC8719" class="xref">RFC8719</a>]</span>.<a href="#section-2.1-2.6" class="pilcrow">¶</a>
+---
+>               <span>[<a href="#RFC8719" class="cite xref">RFC8719</a>]</span>.<a href="#section-2.1-2.6" class="pilcrow">¶</a>
+1328a1487
+>           <dd class="break"></dd>
+1330c1489
+< <dd id="section-2.1-2.8">As an organization, we
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.8">As an organization, we
+1349a1509
+>           <dd class="break"></dd>
+1351c1511
+< <dd id="section-2.1-2.10">We meet to have focused
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.10">We meet to have focused
+1359c1519
+<               meeting Facility <span>[<a href="#RFC6771" class="xref">RFC6771</a>]</span>.<a href="#section-2.1-2.10" class="pilcrow">¶</a>
+---
+>               meeting Facility <span>[<a href="#RFC6771" class="cite xref">RFC6771</a>]</span>.<a href="#section-2.1-2.10" class="pilcrow">¶</a>
+1360a1521
+>           <dd class="break"></dd>
+1362c1523
+< <dd id="section-2.1-2.12">Meeting attendees participate as
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.12">Meeting attendees participate as
+1369a1531
+>           <dd class="break"></dd>
+1371c1533
+< <dd id="section-2.1-2.14">Regular participants
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.14">Regular participants
+1380a1543
+>         <dd class="break"></dd>
+1391c1554
+< <dl class="dlNewline" id="section-2.2-2">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-2.2-2">
+1393c1556
+< <dd id="section-2.2-2.2">Endorsing or condemning
+---
+>           <dd style="margin-left: 1.5em" id="section-2.2-2.2">Endorsing or condemning
+1396a1560
+>           <dd class="break"></dd>
+1398c1562
+< <dd id="section-2.2-2.4">While the IETF strives to be as inclusive as possible,
+---
+>           <dd style="margin-left: 1.5em" id="section-2.2-2.4">While the IETF strives to be as inclusive as possible,
+1405a1570
+>           <dd class="break"></dd>
+1407c1572
+< <dd id="section-2.2-2.6">Variety in site-seeing
+---
+>           <dd style="margin-left: 1.5em" id="section-2.2-2.6">Variety in site-seeing
+1409a1575
+>         <dd class="break"></dd>
+1421,1422c1587,1588
+<       broken down into three subsections: <span><a href="#mandatories" class="xref">mandatory criteria</a> (<a href="#mandatories" class="xref">Section 3.1</a>)</span>,
+<       <span><a href="#importants" class="xref">important criteria</a> (<a href="#importants" class="xref">Section 3.2</a>)</span>, and <span><a href="#otherconsiderations" class="xref">other considerations</a> (<a href="#otherconsiderations" class="xref">Section 3.3</a>)</span>, each as explained
+---
+>       broken down into three subsections: <span><a href="#mandatories" class="internal xref">mandatory criteria</a> (<a href="#mandatories" class="auto internal xref">Section 3.1</a>)</span>,
+>       <span><a href="#importants" class="internal xref">important criteria</a> (<a href="#importants" class="auto internal xref">Section 3.2</a>)</span>, and <span><a href="#otherconsiderations" class="internal xref">other considerations</a> (<a href="#otherconsiderations" class="auto internal xref">Section 3.3</a>)</span>, each as explained
+1435,1436c1601,1602
+< <ul>
+< <li id="section-3.1-2.1">The Facility <span class="bcp14">MUST</span> provide sufficient
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.1-2.1">The Facility <span class="bcp14">MUST</span> provide sufficient
+1441c1607
+< <li id="section-3.1-2.2">The Facility and IETF Hotels <span class="bcp14">MUST</span> provide wheelchair access
+---
+>           <li class="normal" id="section-3.1-2.2">The Facility and IETF Hotels <span class="bcp14">MUST</span> provide wheelchair access
+1445c1611
+< <li id="section-3.1-2.3">It <span class="bcp14">MUST</span> be possible to provision
+---
+>           <li class="normal" id="section-3.1-2.3">It <span class="bcp14">MUST</span> be possible to provision
+1482,1483c1648,1649
+< <ul>
+< <li id="section-3.2.1-2.1">Travel to the Venue is acceptable based on cost, time, and burden
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.2.1-2.1">Travel to the Venue is acceptable based on cost, time, and burden
+1488c1654
+< <li id="section-3.2.1-2.2">The Venue is assessed as favorable for obtaining a host and
+---
+>             <li class="normal" id="section-3.2.1-2.2">The Venue is assessed as favorable for obtaining a host and
+1492c1658
+< <li id="section-3.2.1-2.3">Travel barriers to entry, including visa requirements, are
+---
+>             <li class="normal" id="section-3.2.1-2.3">Travel barriers to entry, including visa requirements, are
+1499c1665
+< <li id="section-3.2.1-2.4">Economic, safety, and health risks associated with this Venue are
+---
+>             <li class="normal" id="section-3.2.1-2.4">Economic, safety, and health risks associated with this Venue are
+1502,1503c1668,1669
+< <li id="section-3.2.1-2.5">The selection of the venue comports with the practices described in
+<               <span>[<a href="#RFC8719" class="xref">RFC8719</a>]</span>.<a href="#section-3.2.1-2.5" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-3.2.1-2.5">The selection of the venue comports with the practices described in
+>               <span>[<a href="#RFC8719" class="cite xref">RFC8719</a>]</span>.<a href="#section-3.2.1-2.5" class="pilcrow">¶</a>
+1518,1519c1684,1685
+< <ul>
+< <li id="section-3.2.2-4.1">There are sufficient places (e.g., a mix of hallways, bars, meeting
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.2.2-4.1">There are sufficient places (e.g., a mix of hallways, bars, meeting
+1526c1692
+< <li id="section-3.2.2-4.2">The cost of guest rooms, meeting space, meeting food and beverage
+---
+>             <li class="normal" id="section-3.2.2-4.2">The cost of guest rooms, meeting space, meeting food and beverage
+1529c1695
+< <li id="section-3.2.2-4.3">The Facility is accessible, or
+---
+>             <li class="normal" id="section-3.2.2-4.3">The Facility is accessible, or
+1540,1541c1706,1707
+< <ul>
+< <li id="section-3.2.3-2.1">The Facility's support technologies and services -- network,
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.2.3-2.1">The Facility's support technologies and services -- network,
+1548c1714
+< <li id="section-3.2.3-2.2">The IETF Hotels directly provide, or else permit and facilitate,
+---
+>             <li class="normal" id="section-3.2.3-2.2">The IETF Hotels directly provide, or else permit and facilitate,
+1561,1562c1727,1728
+< <ul>
+< <li id="section-3.2.4-2.1">The IETF Hotels are within close proximity to each other and the
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.2.4-2.1">The IETF Hotels are within close proximity to each other and the
+1565c1731
+< <li id="section-3.2.4-2.2">The guest rooms at the IETF Hotels are sufficient in number to
+---
+>             <li class="normal" id="section-3.2.4-2.2">The guest rooms at the IETF Hotels are sufficient in number to
+1568c1734
+< <li id="section-3.2.4-2.3">Overflow Hotels can be placed under contract, within convenient
+---
+>             <li class="normal" id="section-3.2.4-2.3">Overflow Hotels can be placed under contract, within convenient
+1572c1738
+< <li id="section-3.2.4-2.4">The Facility environs include budget hotels within convenient travel
+---
+>             <li class="normal" id="section-3.2.4-2.4">The Facility environs include budget hotels within convenient travel
+1575c1741
+< <li id="section-3.2.4-2.5">The IETF Hotels are accessible by people with disabilities.
+---
+>             <li class="normal" id="section-3.2.4-2.5">The IETF Hotels are accessible by people with disabilities.
+1580c1746
+< <li id="section-3.2.4-2.6">At least one IETF Hotel or the Facility has a space for use as a
+---
+>             <li class="normal" id="section-3.2.4-2.6">At least one IETF Hotel or the Facility has a space for use as a
+1595,1596c1761,1762
+< <ul>
+< <li id="section-3.2.5-2.1">The Facility environs, which include both on-site as well as areas
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.2.5-2.1">The Facility environs, which include both on-site as well as areas
+1603c1769
+< <li id="section-3.2.5-2.2">A range of attendees' health-related and religion-related dietary
+---
+>             <li class="normal" id="section-3.2.5-2.2">A range of attendees' health-related and religion-related dietary
+1607c1773
+< <li id="section-3.2.5-2.3">The Facility environs include grocery shopping that will accommodate a
+---
+>             <li class="normal" id="section-3.2.5-2.3">The Facility environs include grocery shopping that will accommodate a
+1624,1625c1790,1791
+< <ul>
+< <li id="section-3.3-2.1">We have something of a preference for an IETF meeting to
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.3-2.1">We have something of a preference for an IETF meeting to
+1629c1795
+< <li id="section-3.3-2.2">It is desirable for Overflow Hotels to provide reasonable,
+---
+>           <li class="normal" id="section-3.3-2.2">It is desirable for Overflow Hotels to provide reasonable,
+1634c1800
+< <li id="section-3.3-2.3">It is desirable to enter into a multi-event contract with the
+---
+>           <li class="normal" id="section-3.3-2.3">It is desirable to enter into a multi-event contract with the
+1639c1805
+< <li id="section-3.3-2.4">When we are considering a city for the first
+---
+>           <li class="normal" id="section-3.3-2.4">When we are considering a city for the first
+1704c1870,1871
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1707c1874,1875
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1710c1878,1879
+< <span class="refAuthor">Krishnan, S.</span>, <span class="refTitle">"High-Level Guidance for the Meeting Policy of the IETF"</span>, <span class="seriesInfo">BCP 226</span>, <span class="seriesInfo">RFC 8719</span>, <span class="seriesInfo">DOI 10.17487/RFC8719</span>, <time datetime="2020-02">February 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8719">https://www.rfc-editor.org/info/rfc8719</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Krishnan, S.</span>, <span class="refTitle">"High-Level Guidance for the Meeting Policy of the IETF"</span>, <span class="seriesInfo">BCP 226</span>, <span class="seriesInfo">RFC 8719</span>, <span class="seriesInfo">DOI 10.17487/RFC8719</span>, <time datetime="2020-02" class="refDate">February 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8719">https://www.rfc-editor.org/info/rfc8719</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1720c1889,1890
+< <span class="refAuthor">Alvestrand, H.</span>, <span class="refTitle">"A Mission Statement for the IETF"</span>, <span class="seriesInfo">BCP 95</span>, <span class="seriesInfo">RFC 3935</span>, <span class="seriesInfo">DOI 10.17487/RFC3935</span>, <time datetime="2004-10">October 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3935">https://www.rfc-editor.org/info/rfc3935</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Alvestrand, H.</span>, <span class="refTitle">"A Mission Statement for the IETF"</span>, <span class="seriesInfo">BCP 95</span>, <span class="seriesInfo">RFC 3935</span>, <span class="seriesInfo">DOI 10.17487/RFC3935</span>, <time datetime="2004-10" class="refDate">October 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3935">https://www.rfc-editor.org/info/rfc3935</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1723c1893,1894
+< <span class="refAuthor">Eggert, L.</span><span class="refAuthor"> and G. Camarillo</span>, <span class="refTitle">"Considerations for Having a Successful "Bar BOF" Side Meeting"</span>, <span class="seriesInfo">RFC 6771</span>, <span class="seriesInfo">DOI 10.17487/RFC6771</span>, <time datetime="2012-10">October 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6771">https://www.rfc-editor.org/info/rfc6771</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Eggert, L.</span> and <span class="refAuthor">G. Camarillo</span>, <span class="refTitle">"Considerations for Having a Successful "Bar BOF" Side Meeting"</span>, <span class="seriesInfo">RFC 6771</span>, <span class="seriesInfo">DOI 10.17487/RFC6771</span>, <time datetime="2012-10" class="refDate">October 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6771">https://www.rfc-editor.org/info/rfc6771</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1726c1897,1898
+< <span class="refAuthor">Haberman, B.</span><span class="refAuthor">, Hall, J.</span><span class="refAuthor">, and J. Livingood</span>, <span class="refTitle">"Structure of the IETF Administrative Support Activity, Version 2.0"</span>, <span class="seriesInfo">BCP 101</span>, <span class="seriesInfo">RFC 8711</span>, <span class="seriesInfo">DOI 10.17487/RFC8711</span>, <time datetime="2020-02">February 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8711">https://www.rfc-editor.org/info/rfc8711</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Haberman, B.</span>, <span class="refAuthor">Hall, J.</span>, and <span class="refAuthor">J. Livingood</span>, <span class="refTitle">"Structure of the IETF Administrative Support Activity, Version 2.0"</span>, <span class="seriesInfo">BCP 101</span>, <span class="seriesInfo">RFC 8711</span>, <span class="seriesInfo">DOI 10.17487/RFC8711</span>, <time datetime="2020-02" class="refDate">February 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8711">https://www.rfc-editor.org/info/rfc8711</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1730c1902
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+1734c1906
+< <p id="section-appendix.a-1">Contributions came from <span class="contact-name">Jari Arkko</span>, <span class="contact-name">Scott Bradner</span>,
+---
+> <p id="appendix-A-1">Contributions came from <span class="contact-name">Jari Arkko</span>, <span class="contact-name">Scott Bradner</span>,
+1737c1909
+<         may not agree with the content of this memo.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+>         may not agree with the content of this memo.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+1741c1913
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+1745,1746c1917,1918
+< <p id="section-appendix.b-1">The following people provided substantial text contributions
+<  to this memo. Specifically, Fred Baker originated this work.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-B-1">The following people provided substantial text contributions
+>  to this memo. Specifically, Fred Baker originated this work.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+1796c1968
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
+1804,1805c1976
+< <div dir="auto" class="left">
+< <span class="postal-code">CH-8304</span> <span class="locality">Wallisellen</span>
+---
+> <div dir="auto" class="left">CH-<span class="postal-code">CH-8304</span> <span class="locality">Wallisellen</span>
+1819,1847c1990,1995
+< <script>var toc = document.getElementById("toc");
+< var tocToggle = toc.querySelector("h2");
+< var tocNav = toc.querySelector("nav");
+< 
+< // mobile menu toggle
+< tocToggle.onclick = function(event) {
+<     if (window.innerWidth < 1024) {
+<  var tocNavDisplay = tocNav.currentStyle ? tocNav.currentStyle.display : getComputedStyle(tocNav, null).display;
+<  if (tocNavDisplay == "none") {
+<      tocNav.style.display = "block";
+<  } else {
+<      tocNav.style.display = "none";
+<  }
+<     }
+< }
+< 
+< // toc anchor scroll to anchor
+< tocNav.addEventListener("click", function (event) {
+<     event.preventDefault();
+<     if (event.target.nodeName == 'A') {
+<  if (window.innerWidth < 1024) {
+<      tocNav.style.display = "none";
+<  }
+<  var href = event.target.getAttribute("href");
+<  var anchorId = href.substr(1);
+<  var anchor =  document.getElementById(anchorId);
+<  anchor.scrollIntoView(true);
+<  window.history.pushState("","",href);
+<     }
+---
+> <script>const toc = document.getElementById("toc");
+> toc.querySelector("h2").addEventListener("click", e => {
+>   toc.classList.toggle("active");
+> });
+> toc.querySelector("nav").addEventListener("click", e => {
+>   toc.classList.remove("active");
+1849,1857d1996
+< 
+< // switch toc mode when window resized
+< window.onresize = function () {
+<     if (window.innerWidth < 1024) {
+<  tocNav.style.display = "none";
+<     } else {
+<  tocNav.style.display = "block";
+<     }
+< }
