@@ -1,0 +1,1283 @@
+29c29
+< <meta content="xml2rfc 2.34.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+32c32,48
+< <link href="rfc8672.xml" type="application/rfc+xml" rel="alternate">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.18.2
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.1.0
+>     pycountry 23.12.7
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8672.xml" rel="alternate" type="application/rfc+xml">
+42c58
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+51a68,73
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+54d75
+<   width: extend-to-zoom;
+69c90
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+71a93
+>   overflow-wrap: break-word;
+157a180,188
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+172,175d202
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+176a204
+>   border: none;
+199a228,230
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+241c272,273
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+251c283
+< tt, code, pre, code {
+---
+> tt, code, pre {
+253c285
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+292a325,327
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+382a418,423
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+484c525
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+624d664
+< 
+646a687,689
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+714c757
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+814c857
+< tt, code, pre, code {
+---
+> tt, code, pre {
+819c862
+< pre.sourcecode,
+---
+> .sourcecode pre,
+855c898
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+933,938d975
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1009c1046
+<   margin: 0 0 0.25em 0;
+---
+>   margin-bottom: 0.25em;
+1023c1060
+<   margin-bottom: 0;
+---
+>   margin-bottom: 0.5em;
+1039a1077,1214
+> /* Sourcecode margin in print, when there's no pilcrow */
+> @media print {
+>   .artwork,
+>   .artwork > pre,
+>   .sourcecode {
+>     margin-bottom: 1em;
+>   }
+> }
+> /* Avoid narrow tables forcing too narrow table captions, which may render badly */
+> table {
+>   min-width: 20em;
+> }
+> /* ol type a */
+> ol.type-a { list-style-type: lower-alpha; }
+> ol.type-A { list-style-type: upper-alpha; }
+> ol.type-i { list-style-type: lower-roman; }
+> ol.type-I { list-style-type: lower-roman; }
+> /* Apply the print table and row borders in general, on request from the RPC,
+> and increase the contrast between border and odd row background slightly */
+> table {
+>   border: 1px solid #ddd;
+> }
+> td {
+>   border-top: 1px solid #ddd;
+> }
+> tr {
+>   break-inside: avoid;
+> }
+> tr:nth-child(2n+1) > td {
+>   background-color: #f8f8f8;
+> }
+> /* Use style rules to govern display of the TOC. */
+> @media screen and (max-width: 1023px) {
+>   #toc nav { display: none; }
+>   #toc.active nav { display: block; }
+> }
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1041c1216,1217
+< <link href="rfc-local.css" type="text/css" rel="stylesheet">
+---
+> <link href="rfc-local.css" rel="stylesheet" type="text/css">
+> <link href="https://datatracker.ietf.org/doc/draft-sheffer-tls-pinning-ticket-12" rel="prev">
+1044c1220
+<   <link href="https://datatracker.ietf.org/doc/draft-sheffer-tls-pinning-ticket-12" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1046,1047c1222,1223
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1155,1160c1331,1336
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.1">
+<             <p id="section-boilerplate.3-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-boilerplate.3-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.1.2.1">
+<                 <p id="section-boilerplate.3-1.1.2.1.1"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-conventions-used-in-this-do" class="xref">Conventions Used in This Document</a><a href="#section-boilerplate.3-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.1">
+>             <p id="section-boilerplate.3-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <span><a href="#name-introduction" class="internal xref">Introduction</a> (<a href="#name-introduction" class="internal xref">Introduction</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.1.2.1">
+>                 <p id="section-boilerplate.3-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <span><a href="#name-conventions-used-in-this-do" class="internal xref">Conventions Used in This Document</a> (<a href="#name-conventions-used-in-this-do" class="internal xref">Conventions Used in This Document</a>)</span></p>
+1162,1163c1338,1339
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.1.2.2">
+<                 <p id="section-boilerplate.3-1.1.2.2.1"><a href="#section-1.2" class="xref">1.2</a>.  <a href="#name-scope-of-experimentation" class="xref">Scope of Experimentation</a><a href="#section-boilerplate.3-1.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.1.2.2">
+>                 <p id="section-boilerplate.3-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <span><a href="#name-scope-of-experimentation" class="internal xref">Scope of Experimentation</a> (<a href="#name-scope-of-experimentation" class="internal xref">Scope of Experimentation</a>)</span></p>
+1167,1171c1343,1347
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.2">
+<             <p id="section-boilerplate.3-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-protocol-overview" class="xref">Protocol Overview</a><a href="#section-boilerplate.3-1.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.2.2.1">
+<                 <p id="section-boilerplate.3-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-initial-connection" class="xref">Initial Connection</a><a href="#section-boilerplate.3-1.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.2">
+>             <p id="section-boilerplate.3-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <span><a href="#name-protocol-overview" class="internal xref">Protocol Overview</a> (<a href="#name-protocol-overview" class="internal xref">Protocol Overview</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.2.2.1">
+>                 <p id="section-boilerplate.3-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <span><a href="#name-initial-connection" class="internal xref">Initial Connection</a> (<a href="#name-initial-connection" class="internal xref">Initial Connection</a>)</span></p>
+1173,1174c1349,1350
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.2.2.2">
+<                 <p id="section-boilerplate.3-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-subsequent-connections" class="xref">Subsequent Connections</a><a href="#section-boilerplate.3-1.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.2.2.2">
+>                 <p id="section-boilerplate.3-1.2.2.2.1" class="keepWithNext"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <span><a href="#name-subsequent-connections" class="internal xref">Subsequent Connections</a> (<a href="#name-subsequent-connections" class="internal xref">Subsequent Connections</a>)</span></p>
+1176,1177c1352,1353
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.2.2.3">
+<                 <p id="section-boilerplate.3-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-indexing-the-pins" class="xref">Indexing the Pins</a><a href="#section-boilerplate.3-1.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.2.2.3">
+>                 <p id="section-boilerplate.3-1.2.2.3.1" class="keepWithNext"><a href="#section-2.3" class="auto internal xref">2.3</a>.  <span><a href="#name-indexing-the-pins" class="internal xref">Indexing the Pins</a> (<a href="#name-indexing-the-pins" class="internal xref">Indexing the Pins</a>)</span></p>
+1181,1182c1357,1358
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.3">
+<             <p id="section-boilerplate.3-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-message-definitions" class="xref">Message Definitions</a><a href="#section-boilerplate.3-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.3">
+>             <p id="section-boilerplate.3-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <span><a href="#name-message-definitions" class="internal xref">Message Definitions</a> (<a href="#name-message-definitions" class="internal xref">Message Definitions</a>)</span></p>
+1184,1188c1360,1364
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.4">
+<             <p id="section-boilerplate.3-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-cryptographic-operations" class="xref">Cryptographic Operations</a><a href="#section-boilerplate.3-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.1">
+<                 <p id="section-boilerplate.3-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-pinning-secret" class="xref">Pinning Secret</a><a href="#section-boilerplate.3-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4">
+>             <p id="section-boilerplate.3-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <span><a href="#name-cryptographic-operations" class="internal xref">Cryptographic Operations</a> (<a href="#name-cryptographic-operations" class="internal xref">Cryptographic Operations</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.1">
+>                 <p id="section-boilerplate.3-1.4.2.1.1" class="keepWithNext"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <span><a href="#name-pinning-secret" class="internal xref">Pinning Secret</a> (<a href="#name-pinning-secret" class="internal xref">Pinning Secret</a>)</span></p>
+1190,1191c1366,1367
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.2">
+<                 <p id="section-boilerplate.3-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-pinning-ticket" class="xref">Pinning Ticket</a><a href="#section-boilerplate.3-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.2">
+>                 <p id="section-boilerplate.3-1.4.2.2.1" class="keepWithNext"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <span><a href="#name-pinning-ticket" class="internal xref">Pinning Ticket</a> (<a href="#name-pinning-ticket" class="internal xref">Pinning Ticket</a>)</span></p>
+1193,1194c1369,1370
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.3">
+<                 <p id="section-boilerplate.3-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-pinning-protection-key" class="xref">Pinning Protection Key</a><a href="#section-boilerplate.3-1.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.3">
+>                 <p id="section-boilerplate.3-1.4.2.3.1" class="keepWithNext"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <span><a href="#name-pinning-protection-key" class="internal xref">Pinning Protection Key</a> (<a href="#name-pinning-protection-key" class="internal xref">Pinning Protection Key</a>)</span></p>
+1196,1197c1372,1373
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.4">
+<                 <p id="section-boilerplate.3-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-pinning-proof" class="xref">Pinning Proof</a><a href="#section-boilerplate.3-1.4.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.4">
+>                 <p id="section-boilerplate.3-1.4.2.4.1" class="keepWithNext"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <span><a href="#name-pinning-proof" class="internal xref">Pinning Proof</a> (<a href="#name-pinning-proof" class="internal xref">Pinning Proof</a>)</span></p>
+1201,1205c1377,1381
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.5">
+<             <p id="section-boilerplate.3-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-operational-considerations" class="xref">Operational Considerations</a><a href="#section-boilerplate.3-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.5.2.1">
+<                 <p id="section-boilerplate.3-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-protection-key-synchronizat" class="xref">Protection Key Synchronization</a><a href="#section-boilerplate.3-1.5.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.5">
+>             <p id="section-boilerplate.3-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <span><a href="#name-operational-considerations" class="internal xref">Operational Considerations</a> (<a href="#name-operational-considerations" class="internal xref">Operational Considerations</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.5.2.1">
+>                 <p id="section-boilerplate.3-1.5.2.1.1" class="keepWithNext"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <span><a href="#name-protection-key-synchronizat" class="internal xref">Protection Key Synchronization</a> (<a href="#name-protection-key-synchronizat" class="internal xref">Protection Key Synchronization</a>)</span></p>
+1207,1208c1383,1384
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.5.2.2">
+<                 <p id="section-boilerplate.3-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-ticket-lifetime" class="xref">Ticket Lifetime</a><a href="#section-boilerplate.3-1.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.5.2.2">
+>                 <p id="section-boilerplate.3-1.5.2.2.1" class="keepWithNext"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <span><a href="#name-ticket-lifetime" class="internal xref">Ticket Lifetime</a> (<a href="#name-ticket-lifetime" class="internal xref">Ticket Lifetime</a>)</span></p>
+1210,1211c1386,1387
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.5.2.3">
+<                 <p id="section-boilerplate.3-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-certificate-renewal" class="xref">Certificate Renewal</a><a href="#section-boilerplate.3-1.5.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.5.2.3">
+>                 <p id="section-boilerplate.3-1.5.2.3.1" class="keepWithNext"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <span><a href="#name-certificate-renewal" class="internal xref">Certificate Renewal</a> (<a href="#name-certificate-renewal" class="internal xref">Certificate Renewal</a>)</span></p>
+1213,1214c1389,1390
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.5.2.4">
+<                 <p id="section-boilerplate.3-1.5.2.4.1"><a href="#section-5.4" class="xref">5.4</a>.  <a href="#name-certificate-revocation" class="xref">Certificate Revocation</a><a href="#section-boilerplate.3-1.5.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.5.2.4">
+>                 <p id="section-boilerplate.3-1.5.2.4.1" class="keepWithNext"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <span><a href="#name-certificate-revocation" class="internal xref">Certificate Revocation</a> (<a href="#name-certificate-revocation" class="internal xref">Certificate Revocation</a>)</span></p>
+1216,1217c1392,1393
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.5.2.5">
+<                 <p id="section-boilerplate.3-1.5.2.5.1"><a href="#section-5.5" class="xref">5.5</a>.  <a href="#name-disabling-pinning" class="xref">Disabling Pinning</a><a href="#section-boilerplate.3-1.5.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.5.2.5">
+>                 <p id="section-boilerplate.3-1.5.2.5.1" class="keepWithNext"><a href="#section-5.5" class="auto internal xref">5.5</a>.  <span><a href="#name-disabling-pinning" class="internal xref">Disabling Pinning</a> (<a href="#name-disabling-pinning" class="internal xref">Disabling Pinning</a>)</span></p>
+1219,1220c1395,1396
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.5.2.6">
+<                 <p id="section-boilerplate.3-1.5.2.6.1"><a href="#section-5.6" class="xref">5.6</a>.  <a href="#name-server-compromise" class="xref">Server Compromise</a><a href="#section-boilerplate.3-1.5.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.5.2.6">
+>                 <p id="section-boilerplate.3-1.5.2.6.1" class="keepWithNext"><a href="#section-5.6" class="auto internal xref">5.6</a>.  <span><a href="#name-server-compromise" class="internal xref">Server Compromise</a> (<a href="#name-server-compromise" class="internal xref">Server Compromise</a>)</span></p>
+1222,1223c1398,1399
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.5.2.7">
+<                 <p id="section-boilerplate.3-1.5.2.7.1"><a href="#section-5.7" class="xref">5.7</a>.  <a href="#name-disaster-recovery" class="xref">Disaster Recovery</a><a href="#section-boilerplate.3-1.5.2.7.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.5.2.7">
+>                 <p id="section-boilerplate.3-1.5.2.7.1" class="keepWithNext"><a href="#section-5.7" class="auto internal xref">5.7</a>.  <span><a href="#name-disaster-recovery" class="internal xref">Disaster Recovery</a> (<a href="#name-disaster-recovery" class="internal xref">Disaster Recovery</a>)</span></p>
+1227,1231c1403,1407
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.6">
+<             <p id="section-boilerplate.3-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-boilerplate.3-1.6.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.6.2.1">
+<                 <p id="section-boilerplate.3-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-trust-on-first-use-tofu-and" class="xref">Trust-on-First-Use (TOFU) and MITM Attacks</a><a href="#section-boilerplate.3-1.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.6">
+>             <p id="section-boilerplate.3-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <span><a href="#name-security-considerations" class="internal xref">Security Considerations</a> (<a href="#name-security-considerations" class="internal xref">Security Considerations</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.6.2.1">
+>                 <p id="section-boilerplate.3-1.6.2.1.1" class="keepWithNext"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <span><a href="#name-trust-on-first-use-tofu-and" class="internal xref">Trust-on-First-Use (TOFU) and MITM Attacks</a> (<a href="#name-trust-on-first-use-tofu-and" class="internal xref">Trust-on-First-Use (TOFU) and MITM Attacks</a>)</span></p>
+1233,1234c1409,1410
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.6.2.2">
+<                 <p id="section-boilerplate.3-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-pervasive-monitoring" class="xref">Pervasive Monitoring</a><a href="#section-boilerplate.3-1.6.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.6.2.2">
+>                 <p id="section-boilerplate.3-1.6.2.2.1" class="keepWithNext"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <span><a href="#name-pervasive-monitoring" class="internal xref">Pervasive Monitoring</a> (<a href="#name-pervasive-monitoring" class="internal xref">Pervasive Monitoring</a>)</span></p>
+1236,1237c1412,1413
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.6.2.3">
+<                 <p id="section-boilerplate.3-1.6.2.3.1"><a href="#section-6.3" class="xref">6.3</a>.  <a href="#name-server-side-error-detection" class="xref">Server-Side Error Detection</a><a href="#section-boilerplate.3-1.6.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.6.2.3">
+>                 <p id="section-boilerplate.3-1.6.2.3.1" class="keepWithNext"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <span><a href="#name-server-side-error-detection" class="internal xref">Server-Side Error Detection</a> (<a href="#name-server-side-error-detection" class="internal xref">Server-Side Error Detection</a>)</span></p>
+1239,1240c1415,1416
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.6.2.4">
+<                 <p id="section-boilerplate.3-1.6.2.4.1"><a href="#section-6.4" class="xref">6.4</a>.  <a href="#name-client-policy-and-ssl-proxi" class="xref">Client Policy and SSL Proxies</a><a href="#section-boilerplate.3-1.6.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.6.2.4">
+>                 <p id="section-boilerplate.3-1.6.2.4.1" class="keepWithNext"><a href="#section-6.4" class="auto internal xref">6.4</a>.  <span><a href="#name-client-policy-and-ssl-proxi" class="internal xref">Client Policy and SSL Proxies</a> (<a href="#name-client-policy-and-ssl-proxi" class="internal xref">Client Policy and SSL Proxies</a>)</span></p>
+1242,1243c1418,1419
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.6.2.5">
+<                 <p id="section-boilerplate.3-1.6.2.5.1"><a href="#section-6.5" class="xref">6.5</a>.  <a href="#name-client-side-error-behavior" class="xref">Client-Side Error Behavior</a><a href="#section-boilerplate.3-1.6.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.6.2.5">
+>                 <p id="section-boilerplate.3-1.6.2.5.1" class="keepWithNext"><a href="#section-6.5" class="auto internal xref">6.5</a>.  <span><a href="#name-client-side-error-behavior" class="internal xref">Client-Side Error Behavior</a> (<a href="#name-client-side-error-behavior" class="internal xref">Client-Side Error Behavior</a>)</span></p>
+1245,1246c1421,1422
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.6.2.6">
+<                 <p id="section-boilerplate.3-1.6.2.6.1"><a href="#section-6.6" class="xref">6.6</a>.  <a href="#name-stolen-and-forged-tickets" class="xref">Stolen and Forged Tickets</a><a href="#section-boilerplate.3-1.6.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.6.2.6">
+>                 <p id="section-boilerplate.3-1.6.2.6.1" class="keepWithNext"><a href="#section-6.6" class="auto internal xref">6.6</a>.  <span><a href="#name-stolen-and-forged-tickets" class="internal xref">Stolen and Forged Tickets</a> (<a href="#name-stolen-and-forged-tickets" class="internal xref">Stolen and Forged Tickets</a>)</span></p>
+1248,1249c1424,1425
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.6.2.7">
+<                 <p id="section-boilerplate.3-1.6.2.7.1"><a href="#section-6.7" class="xref">6.7</a>.  <a href="#name-client-privacy" class="xref">Client Privacy</a><a href="#section-boilerplate.3-1.6.2.7.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.6.2.7">
+>                 <p id="section-boilerplate.3-1.6.2.7.1" class="keepWithNext"><a href="#section-6.7" class="auto internal xref">6.7</a>.  <span><a href="#name-client-privacy" class="internal xref">Client Privacy</a> (<a href="#name-client-privacy" class="internal xref">Client Privacy</a>)</span></p>
+1251,1252c1427,1428
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.6.2.8">
+<                 <p id="section-boilerplate.3-1.6.2.8.1"><a href="#section-6.8" class="xref">6.8</a>.  <a href="#name-ticket-protection-key-manag" class="xref">Ticket Protection Key Management</a><a href="#section-boilerplate.3-1.6.2.8.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.6.2.8">
+>                 <p id="section-boilerplate.3-1.6.2.8.1" class="keepWithNext"><a href="#section-6.8" class="auto internal xref">6.8</a>.  <span><a href="#name-ticket-protection-key-manag" class="internal xref">Ticket Protection Key Management</a> (<a href="#name-ticket-protection-key-manag" class="internal xref">Ticket Protection Key Management</a>)</span></p>
+1256,1257c1432,1433
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.7">
+<             <p id="section-boilerplate.3-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-boilerplate.3-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.7">
+>             <p id="section-boilerplate.3-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <span><a href="#name-iana-considerations" class="internal xref">IANA Considerations</a> (<a href="#name-iana-considerations" class="internal xref">IANA Considerations</a>)</span></p>
+1259,1263c1435,1439
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.8">
+<             <p id="section-boilerplate.3-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-references" class="xref">References</a><a href="#section-boilerplate.3-1.8.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.8.2.1">
+<                 <p id="section-boilerplate.3-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-boilerplate.3-1.8.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.8">
+>             <p id="section-boilerplate.3-1.8.1" class="keepWithNext"><a href="#section-8" class="auto internal xref">8</a>.  <span><a href="#name-references" class="internal xref">References</a> (<a href="#name-references" class="internal xref">References</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.8.2.1">
+>                 <p id="section-boilerplate.3-1.8.2.1.1" class="keepWithNext"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <span><a href="#name-normative-references" class="internal xref">Normative References</a> (<a href="#name-normative-references" class="internal xref">Normative References</a>)</span></p>
+1265,1266c1441,1442
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.8.2.2">
+<                 <p id="section-boilerplate.3-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-boilerplate.3-1.8.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.8.2.2">
+>                 <p id="section-boilerplate.3-1.8.2.2.1" class="keepWithNext"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <span><a href="#name-informative-references" class="internal xref">Informative References</a> (<a href="#name-informative-references" class="internal xref">Informative References</a>)</span></p>
+1270,1274c1446,1450
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.9">
+<             <p id="section-boilerplate.3-1.9.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-previous-work" class="xref">Previous Work</a><a href="#section-boilerplate.3-1.9.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.9.2.1">
+<                 <p id="section-boilerplate.3-1.9.2.1.1"><a href="#section-a.1" class="xref">A.1</a>.  <a href="#name-comparison-hpkp" class="xref">Comparison: HPKP</a><a href="#section-boilerplate.3-1.9.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.9">
+>             <p id="section-boilerplate.3-1.9.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <span><a href="#name-previous-work" class="internal xref">Previous Work</a> (<a href="#name-previous-work" class="internal xref">Previous Work</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.9.2.1">
+>                 <p id="section-boilerplate.3-1.9.2.1.1" class="keepWithNext"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <span><a href="#name-comparison-hpkp" class="internal xref">Comparison: HPKP</a> (<a href="#name-comparison-hpkp" class="internal xref">Comparison: HPKP</a>)</span></p>
+1276,1277c1452,1453
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.9.2.2">
+<                 <p id="section-boilerplate.3-1.9.2.2.1"><a href="#section-a.2" class="xref">A.2</a>.  <a href="#name-comparison-tack" class="xref">Comparison: TACK</a><a href="#section-boilerplate.3-1.9.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.9.2.2">
+>                 <p id="section-boilerplate.3-1.9.2.2.1" class="keepWithNext"><a href="#appendix-A.2" class="auto internal xref">A.2</a>.  <span><a href="#name-comparison-tack" class="internal xref">Comparison: TACK</a> (<a href="#name-comparison-tack" class="internal xref">Comparison: TACK</a>)</span></p>
+1281,1282c1457,1458
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.10">
+<             <p id="section-boilerplate.3-1.10.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-boilerplate.3-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.10">
+>             <p id="section-boilerplate.3-1.10.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref"></a><span><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a> (<a href="#name-acknowledgments" class="internal xref">Acknowledgments</a>)</span></p>
+1284,1285c1460,1461
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.11">
+<             <p id="section-boilerplate.3-1.11.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-boilerplate.3-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.11">
+>             <p id="section-boilerplate.3-1.11.1" class="keepWithNext"><a href="#appendix-C" class="auto internal xref"></a><span><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a> (<a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a>)</span></p>
+1296c1472
+< <p id="section-1-1">Misissued public-key certificates can prevent TLS <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span> clients from
+---
+> <p id="section-1-1">Misissued public-key certificates can prevent TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span> clients from
+1304c1480
+< the ideas behind TLS session resumption <span>[<a href="#RFC5077" class="xref">RFC5077</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+---
+> the ideas behind TLS session resumption <span>[<a href="#RFC5077" class="cite xref">RFC5077</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+1348c1524
+< One example is that TLS 1.2 <span>[<a href="#RFC5246" class="xref">RFC5246</a>]</span> and
+---
+> One example is that TLS 1.2 <span>[<a href="#RFC5246" class="cite xref">RFC5246</a>]</span> and
+1353,1354c1529,1530
+< <ul>
+< <li id="section-1-11.1">The protocol is at the TLS level, and as a result is not restricted to
+---
+> <ul class="normal">
+> <li class="normal" id="section-1-11.1">The protocol is at the TLS level, and as a result is not restricted to
+1357c1533
+<         <li id="section-1-11.2">The protocol is robust to changes in server IP address, 
+---
+>         <li class="normal" id="section-1-11.2">The protocol is robust to changes in server IP address, 
+1364c1540
+<         <li id="section-1-11.3">Once a single parameter is configured (the ticket's lifetime), operation
+---
+>         <li class="normal" id="section-1-11.3">Once a single parameter is configured (the ticket's lifetime), operation
+1368c1544
+<         <li id="section-1-11.4">For server clusters, we reuse the existing infrastructure <span>[<a href="#RFC5077" class="xref">RFC5077</a>]</span>
+---
+>         <li class="normal" id="section-1-11.4">For server clusters, we reuse the existing infrastructure <span>[<a href="#RFC5077" class="cite xref">RFC5077</a>]</span>
+1371c1547
+<         <li id="section-1-11.5">Pinning errors, presumably resulting from man-in-the-middle (MITM) attacks,
+---
+>         <li class="normal" id="section-1-11.5">Pinning errors, presumably resulting from man-in-the-middle (MITM) attacks,
+1395c1571
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1413,1414c1589,1590
+< <ul>
+< <li id="section-1.2-4.1">Non-supporting clients and servers are unaffected.<a href="#section-1.2-4.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-1.2-4.1">Non-supporting clients and servers are unaffected.<a href="#section-1.2-4.1" class="pilcrow">¶</a>
+1416c1592
+<           <li id="section-1.2-4.2">Connectivity between supporting clients and servers is retained under normal circumstances,
+---
+>           <li class="normal" id="section-1.2-4.2">Connectivity between supporting clients and servers is retained under normal circumstances,
+1419c1595
+<           <li id="section-1.2-4.3">Enterprise middleboxes do not interrupt such connectivity.<a href="#section-1.2-4.3" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-1.2-4.3">Enterprise middleboxes do not interrupt such connectivity.<a href="#section-1.2-4.3" class="pilcrow">¶</a>
+1421c1597
+<           <li id="section-1.2-4.4">Misissued certificates and rogue TLS-aware middleboxes do result in broken connectivity,
+---
+>           <li class="normal" id="section-1.2-4.4">Misissued certificates and rogue TLS-aware middleboxes do result in broken connectivity,
+1444,1445c1620,1621
+< mechanism described in <span>[<a href="#RFC5077" class="xref">RFC5077</a>]</span>. However the scope of this document
+< differs from session resumption mechanisms implemented with <span>[<a href="#RFC5077" class="xref">RFC5077</a>]</span>
+---
+> mechanism described in <span>[<a href="#RFC5077" class="cite xref">RFC5077</a>]</span>. However the scope of this document
+> differs from session resumption mechanisms implemented with <span>[<a href="#RFC5077" class="cite xref">RFC5077</a>]</span>
+1453,1456c1629,1632
+< <p id="section-2-4"><span>[<a href="#RFC5077" class="xref">RFC5077</a>]</span> has been obsoleted 
+< by <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span>, and ticket resumption is
+< now defined by <span><a href="https://www.rfc-editor.org/rfc/rfc8446#section-2.2" class="relref">Section 2.2</a> of [<a href="#RFC8446" class="xref">RFC8446</a>]</span>. This document references
+< <span>[<a href="#RFC5077" class="xref">RFC5077</a>]</span> as an informational document since it contains a more
+---
+> <p id="section-2-4"><span>[<a href="#RFC5077" class="cite xref">RFC5077</a>]</span> has been obsoleted 
+> by <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>, and ticket resumption is
+> now defined by <span><a href="https://rfc-editor.org/rfc/rfc8446#section-2.2" class="relref">Section 2.2</a> of [<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>. This document references
+> <span>[<a href="#RFC5077" class="cite xref">RFC5077</a>]</span> as an informational document since it contains a more
+1477c1653
+< <div class="artwork art-text alignLeft art-ascii-art" id="section-2.1-2">
+---
+> <div class="alignLeft art-ascii-art art-text artwork" id="section-2.1-2">
+1514,1516c1690,1692
+< pinning secret (<a href="#pinning-secret" class="xref">Section 4.1</a>) and sends the pinning ticket
+< (<a href="#pinning-ticket" class="xref">Section 4.2</a>) encrypted with the pinning protection key
+< (<a href="#pinning-ticket-key" class="xref">Section 4.3</a>).  The pinning ticket is associated with a
+---
+> pinning secret (<a href="#pinning-secret" class="auto internal xref">Section 4.1</a>) and sends the pinning ticket
+> (<a href="#pinning-ticket" class="auto internal xref">Section 4.2</a>) encrypted with the pinning protection key
+> (<a href="#pinning-ticket-key" class="auto internal xref">Section 4.3</a>).  The pinning ticket is associated with a
+1539c1715
+< seen (see <a href="#indexing" class="xref">Section 2.3</a> on identifying servers), it <span class="bcp14">SHOULD</span> send the
+---
+> seen (see <a href="#indexing" class="auto internal xref">Section 2.3</a> on identifying servers), it <span class="bcp14">SHOULD</span> send the
+1547,1548c1723,1724
+< <ul>
+< <li id="section-2.2-3.1">A proof that the server can understand the ticket that was sent by the
+---
+> <ul class="normal">
+> <li class="normal" id="section-2.2-3.1">A proof that the server can understand the ticket that was sent by the
+1553c1729
+<           <li id="section-2.2-3.2">A fresh pinning ticket. The main reason for refreshing the ticket on
+---
+>           <li class="normal" id="section-2.2-3.2">A fresh pinning ticket. The main reason for refreshing the ticket on
+1566c1742
+< <a href="#client_error" class="xref">Section 6.5</a>).  It is important that the client does not attempt to
+---
+> <a href="#client_error" class="auto internal xref">Section 6.5</a>).  It is important that the client does not attempt to
+1575c1751
+< in this case.  See also <a href="#ramp_down" class="xref">Section 5.5</a> on ramping down support for this
+---
+> in this case.  See also <a href="#ramp_down" class="auto internal xref">Section 5.5</a> on ramping down support for this
+1591c1767
+< definition is similar to the concept of a Web Origin <span>[<a href="#RFC6454" class="xref">RFC6454</a>]</span>, but does not assume
+---
+> definition is similar to the concept of a Web Origin <span>[<a href="#RFC6454" class="cite xref">RFC6454</a>]</span>, but does not assume
+1609,1611c1785,1787
+< We follow the message notation of <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+< <div id="section-3-2">
+< <pre class="sourcecode lang-c">
+---
+> We follow the message notation of <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+> <div class="lang-c sourcecode" id="section-3-2">
+> <pre>
+1629c1805
+< <dl class="dlParallel" id="section-3-3">
+---
+> <span class="break"></span><dl class="dlParallel" id="section-3-3">
+1635a1812
+>         <dd class="break"></dd>
+1642a1820
+>         <dd class="break"></dd>
+1647a1826
+>       <dd class="break"></dd>
+1670,1672c1849,1851
+< by TLS 1.3, described in <span><a href="https://www.rfc-editor.org/rfc/rfc8446#section-7.1" class="relref">Section 7.1</a> of [<a href="#RFC8446" class="xref">RFC8446</a>]</span>.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+< <div id="section-4.1-3">
+< <pre class="sourcecode lang-c">
+---
+> by TLS 1.3, described in <span><a href="https://rfc-editor.org/rfc/rfc8446#section-7.1" class="relref">Section 7.1</a> of [<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+> <div class="lang-c sourcecode" id="section-4.1-3">
+> <pre>
+1688,1689c1867,1868
+< <ul>
+< <li id="section-4.2-2.1">Pinning tickets <span class="bcp14">MUST</span> be encrypted and integrity-protected using strong
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.2-2.1">Pinning tickets <span class="bcp14">MUST</span> be encrypted and integrity-protected using strong
+1692c1871
+<           <li id="section-4.2-2.2">Pinning tickets <span class="bcp14">MUST</span> be protected with a long-term pinning protection
+---
+>           <li class="normal" id="section-4.2-2.2">Pinning tickets <span class="bcp14">MUST</span> be protected with a long-term pinning protection
+1695c1874
+<           <li id="section-4.2-2.3">Pinning tickets <span class="bcp14">MUST</span> include a pinning protection key ID or serial
+---
+>           <li class="normal" id="section-4.2-2.3">Pinning tickets <span class="bcp14">MUST</span> include a pinning protection key ID or serial
+1698c1877
+<           <li id="section-4.2-2.4">The pinning ticket <span class="bcp14">MAY</span> include other information, in addition to the
+---
+>           <li class="normal" id="section-4.2-2.4">The pinning ticket <span class="bcp14">MAY</span> include other information, in addition to the
+1704c1883
+< a format similar to the one proposed by <span>[<a href="#RFC5077" class="xref">RFC5077</a>]</span>
+---
+> a format similar to the one proposed by <span>[<a href="#RFC5077" class="cite xref">RFC5077</a>]</span>
+1714c1893
+< server implementation specific. <span>[<a href="#RFC5077" class="xref">RFC5077</a>]</span> recommends the use of two
+---
+> server implementation specific. <span>[<a href="#RFC5077" class="cite xref">RFC5077</a>]</span> recommends the use of two
+1722c1901
+< <p id="section-4.3-3">As noted in <a href="#cluster" class="xref">Section 5.1</a>, if the server is actually a cluster of
+---
+> <p id="section-4.3-3">As noted in <a href="#cluster" class="auto internal xref">Section 5.1</a>, if the server is actually a cluster of
+1724c1903
+< that accept TLS connections to the same server name.  When <span>[<a href="#RFC5077" class="xref">RFC5077</a>]</span>
+---
+> that accept TLS connections to the same server name.  When <span>[<a href="#RFC5077" class="cite xref">RFC5077</a>]</span>
+1728,1729c1907,1908
+< <div id="section-4.3-4">
+< <pre class="sourcecode lang-c">
+---
+> <div class="lang-c sourcecode" id="section-4.3-4">
+> <pre>
+1735c1914
+< <span>[<a href="#RFC5077" class="xref">RFC5077</a>]</span>. Both resumption_protection_key and pinning_protection_key
+---
+> <span>[<a href="#RFC5077" class="cite xref">RFC5077</a>]</span>. Both resumption_protection_key and pinning_protection_key
+1759,1760c1938,1939
+< <div id="section-4.4-3">
+< <pre class="sourcecode lang-c">
+---
+> <div class="lang-c sourcecode" id="section-4.4-3">
+> <pre>
+1768c1947
+< <p id="section-4.4-4">where HMAC <span>[<a href="#RFC2104" class="xref">RFC2104</a>]</span> uses the Hash algorithm that was negotiated in
+---
+> <p id="section-4.4-4">where HMAC <span>[<a href="#RFC2104" class="cite xref">RFC2104</a>]</span> uses the Hash algorithm that was negotiated in
+1803c1982
+< <span>[<a href="#RFC5077" class="xref">RFC5077</a>]</span> are already synchronized between cluster members, nothing
+---
+> <span>[<a href="#RFC5077" class="cite xref">RFC5077</a>]</span> are already synchronized between cluster members, nothing
+1872,1873c2051,2052
+< <ul>
+< <li id="section-5.5-2.1">The server continues to accept valid pinning tickets and responds
+---
+> <ul class="normal">
+> <li class="normal" id="section-5.5-2.1">The server continues to accept valid pinning tickets and responds
+1876c2055
+<           <li id="section-5.5-2.2">The server does not send back a new pinning ticket.<a href="#section-5.5-2.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-5.5-2.2">The server does not send back a new pinning ticket.<a href="#section-5.5-2.2" class="pilcrow">¶</a>
+1883c2062
+< expires. However, as detailed in <a href="#privacy" class="xref">Section 6.7</a>, re-use of a
+---
+> expires. However, as detailed in <a href="#privacy" class="auto internal xref">Section 6.7</a>, re-use of a
+1920c2099
+< <p id="section-5.7-2">Readers should note that <span>[<a href="#RFC5077" class="xref">RFC5077</a>]</span> session resumption keys are more
+---
+> <p id="section-5.7-2">Readers should note that <span>[<a href="#RFC5077" class="cite xref">RFC5077</a>]</span> session resumption keys are more
+1923c2102
+< resumption keys (<a href="#pinning-secret" class="xref">Section 4.1</a>), they <span class="bcp14">MUST NOT</span> back up resumption
+---
+> resumption keys (<a href="#pinning-secret" class="auto internal xref">Section 4.1</a>), they <span class="bcp14">MUST NOT</span> back up resumption
+1963c2142
+< on their constituents <span>[<a href="#RFC7258" class="xref">RFC7258</a>]</span>. This often takes the form of
+---
+> on their constituents <span>[<a href="#RFC7258" class="cite xref">RFC7258</a>]</span>. This often takes the form of
+1967c2146
+< <a href="#privacy" class="xref">Section 6.7</a>.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
+---
+> <a href="#privacy" class="auto internal xref">Section 6.7</a>.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
+1988c2167
+< Similar to <span>[<a href="#RFC7469" class="xref">RFC7469</a>]</span>, it is acceptable to allow pinning to be
+---
+> Similar to <span>[<a href="#RFC7469" class="cite xref">RFC7469</a>]</span>, it is acceptable to allow pinning to be
+2006c2185
+< trivial fallback attacks, similar to those described in <span>[<a href="#RFC7507" class="xref">RFC7507</a>]</span>.<a href="#section-6.5-1" class="pilcrow">¶</a></p>
+---
+> trivial fallback attacks, similar to those described in <span>[<a href="#RFC7507" class="cite xref">RFC7507</a>]</span>.<a href="#section-6.5-1" class="pilcrow">¶</a></p>
+2009c2188
+< in <a href="#client_policy" class="xref">Section 6.4</a> is not followed.  Therefore, 
+---
+> in <a href="#client_policy" class="auto internal xref">Section 6.4</a> is not followed.  Therefore, 
+2063,2064c2242,2243
+< <ul>
+< <li id="section-6.8-2.1">Partition the nonce namespace between cluster members and use monotonic
+---
+> <ul class="normal">
+> <li class="normal" id="section-6.8-2.1">Partition the nonce namespace between cluster members and use monotonic
+2068c2247
+<           <li id="section-6.8-2.2">Generate random nonces but avoid the so-called birthday bound, i.e.,
+---
+>           <li class="normal" id="section-6.8-2.2">Generate random nonces but avoid the so-called birthday bound, i.e.,
+2073c2252
+<           <li id="section-6.8-2.3">An alternative design that has been attributed to Karthik Bhargavan is
+---
+>           <li class="normal" id="section-6.8-2.3">An alternative design that has been attributed to Karthik Bhargavan is
+2093c2272
+< <p id="section-7-2"><span>[<a href="#RFC8447" class="xref">RFC8447</a>]</span> defines the procedure, requirements, and the necessary
+---
+> <p id="section-7-2"><span>[<a href="#RFC8447" class="cite xref">RFC8447</a>]</span> defines the procedure, requirements, and the necessary
+2095,2096c2274,2275
+< registry <span>[<a href="#TLS-EXT" class="xref">TLS-EXT</a>]</span>. The registration procedure
+<       is "Specification Required" <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>.<a href="#section-7-2" class="pilcrow">¶</a></p>
+---
+> registry <span>[<a href="#TLS-EXT" class="cite xref">TLS-EXT</a>]</span>. The registration procedure
+>       is "Specification Required" <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>.<a href="#section-7-2" class="pilcrow">¶</a></p>
+2100c2279
+< <dl class="dlParallel" id="section-7-4">
+---
+> <span class="break"></span><dl class="dlParallel" id="section-7-4">
+2102c2281
+<         <dd id="section-7-4.2">32<a href="#section-7-4.2" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-7-4.2">32<a href="#section-7-4.2" class="pilcrow">¶</a>
+2103a2283
+>         <dd class="break"></dd>
+2105c2285
+<         <dd id="section-7-4.4">ticket_pinning<a href="#section-7-4.4" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-7-4.4">ticket_pinning<a href="#section-7-4.4" class="pilcrow">¶</a>
+2106a2287
+>         <dd class="break"></dd>
+2108c2289
+<         <dd id="section-7-4.6">No<a href="#section-7-4.6" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-7-4.6">No<a href="#section-7-4.6" class="pilcrow">¶</a>
+2109a2291
+>         <dd class="break"></dd>
+2111c2293
+<         <dd id="section-7-4.8">CH, EE (to indicate that the extension is present
+---
+>         <dd style="margin-left: 1.5em" id="section-7-4.8">CH, EE (to indicate that the extension is present
+2113a2296
+>       <dd class="break"></dd>
+2128c2311,2312
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2131c2315,2316
+< <span class="refAuthor">Cotton, M.</span><span class="refAuthor">, Leiba, B.</span><span class="refAuthor">, and T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cotton, M.</span>, <span class="refAuthor">Leiba, B.</span>, and <span class="refAuthor">T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2134c2319,2320
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2137c2323,2324
+< <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8446">https://www.rfc-editor.org/info/rfc8446</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8446">https://www.rfc-editor.org/info/rfc8446</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2140c2327,2328
+< <span class="refAuthor">Salowey, J.</span><span class="refAuthor"> and S. Turner</span>, <span class="refTitle">"IANA Registry Updates for TLS and DTLS"</span>, <span class="seriesInfo">RFC 8447</span>, <span class="seriesInfo">DOI 10.17487/RFC8447</span>, <time datetime="2018-08">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8447">https://www.rfc-editor.org/info/rfc8447</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Salowey, J.</span> and <span class="refAuthor">S. Turner</span>, <span class="refTitle">"IANA Registry Updates for TLS and DTLS"</span>, <span class="seriesInfo">RFC 8447</span>, <span class="seriesInfo">DOI 10.17487/RFC8447</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8447">https://www.rfc-editor.org/info/rfc8447</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2150c2338,2339
+< <span class="refAuthor">Mutton, P.</span>, <span class="refTitle">"HTTP Public Key Pinning: You're doing it wrong!"</span>, <time datetime="2016-03">March 2016</time>, <span>&lt;<a href="https://news.netcraft.com/archives/2016/03/30/http-public-key-pinning-youre-doing-it-wrong.html">https://news.netcraft.com/archives/2016/03/30/http-public-key-pinning-youre-doing-it-wrong.html</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mutton, P.</span>, <span class="refTitle">"HTTP Public Key Pinning: You're doing it wrong!"</span>, <time datetime="2016-03" class="refDate">March 2016</time>, <span>&lt;<a href="https://news.netcraft.com/archives/2016/03/30/http-public-key-pinning-youre-doing-it-wrong.html">https://news.netcraft.com/archives/2016/03/30/http-public-key-pinning-youre-doing-it-wrong.html</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2153c2342,2343
+< <span class="refAuthor">Berkman, O.</span><span class="refAuthor">, Pinkas, B.</span><span class="refAuthor">, and M. Yung</span>, <span class="refTitle">"Firm Grip Handshakes: A Tool for Bidirectional Vouching"</span>, <span class="seriesInfo">Cryptology and Network Security pp. 142-157</span>, <time datetime="2012">2012</time>. </dd>
+---
+> <span class="refAuthor">Berkman, O.</span>, <span class="refAuthor">Pinkas, B.</span>, and <span class="refAuthor">M. Yung</span>, <span class="refTitle">"Firm Grip Handshakes: A Tool for Bidirectional Vouching"</span>, <span class="seriesInfo">Cryptology and Network Security pp. 142-157</span>, <time datetime="2012" class="refDate">2012</time>. </dd>
+> <dd class="break"></dd>
+2156c2346,2347
+< <span class="refAuthor">Krawczyk, H.</span><span class="refAuthor">, Bellare, M.</span><span class="refAuthor">, and R. Canetti</span>, <span class="refTitle">"HMAC: Keyed-Hashing for Message Authentication"</span>, <span class="seriesInfo">RFC 2104</span>, <span class="seriesInfo">DOI 10.17487/RFC2104</span>, <time datetime="1997-02">February 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2104">https://www.rfc-editor.org/info/rfc2104</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Krawczyk, H.</span>, <span class="refAuthor">Bellare, M.</span>, and <span class="refAuthor">R. Canetti</span>, <span class="refTitle">"HMAC: Keyed-Hashing for Message Authentication"</span>, <span class="seriesInfo">RFC 2104</span>, <span class="seriesInfo">DOI 10.17487/RFC2104</span>, <time datetime="1997-02" class="refDate">February 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2104">https://www.rfc-editor.org/info/rfc2104</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2159c2350,2351
+< <span class="refAuthor">Salowey, J.</span><span class="refAuthor">, Zhou, H.</span><span class="refAuthor">, Eronen, P.</span><span class="refAuthor">, and H. Tschofenig</span>, <span class="refTitle">"Transport Layer Security (TLS) Session Resumption without Server-Side State"</span>, <span class="seriesInfo">RFC 5077</span>, <span class="seriesInfo">DOI 10.17487/RFC5077</span>, <time datetime="2008-01">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5077">https://www.rfc-editor.org/info/rfc5077</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Salowey, J.</span>, <span class="refAuthor">Zhou, H.</span>, <span class="refAuthor">Eronen, P.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"Transport Layer Security (TLS) Session Resumption without Server-Side State"</span>, <span class="seriesInfo">RFC 5077</span>, <span class="seriesInfo">DOI 10.17487/RFC5077</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5077">https://www.rfc-editor.org/info/rfc5077</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2162c2354,2355
+< <span class="refAuthor">Dierks, T.</span><span class="refAuthor"> and E. Rescorla</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.2"</span>, <span class="seriesInfo">RFC 5246</span>, <span class="seriesInfo">DOI 10.17487/RFC5246</span>, <time datetime="2008-08">August 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5246">https://www.rfc-editor.org/info/rfc5246</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Dierks, T.</span> and <span class="refAuthor">E. Rescorla</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.2"</span>, <span class="seriesInfo">RFC 5246</span>, <span class="seriesInfo">DOI 10.17487/RFC5246</span>, <time datetime="2008-08" class="refDate">August 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5246">https://www.rfc-editor.org/info/rfc5246</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2165c2358,2359
+< <span class="refAuthor">Barth, A.</span>, <span class="refTitle">"The Web Origin Concept"</span>, <span class="seriesInfo">RFC 6454</span>, <span class="seriesInfo">DOI 10.17487/RFC6454</span>, <time datetime="2011-12">December 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6454">https://www.rfc-editor.org/info/rfc6454</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Barth, A.</span>, <span class="refTitle">"The Web Origin Concept"</span>, <span class="seriesInfo">RFC 6454</span>, <span class="seriesInfo">DOI 10.17487/RFC6454</span>, <time datetime="2011-12" class="refDate">December 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6454">https://www.rfc-editor.org/info/rfc6454</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2168c2362,2363
+< <span class="refAuthor">Laurie, B.</span><span class="refAuthor">, Langley, A.</span><span class="refAuthor">, and E. Kasper</span>, <span class="refTitle">"Certificate Transparency"</span>, <span class="seriesInfo">RFC 6962</span>, <span class="seriesInfo">DOI 10.17487/RFC6962</span>, <time datetime="2013-06">June 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6962">https://www.rfc-editor.org/info/rfc6962</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Laurie, B.</span>, <span class="refAuthor">Langley, A.</span>, and <span class="refAuthor">E. Kasper</span>, <span class="refTitle">"Certificate Transparency"</span>, <span class="seriesInfo">RFC 6962</span>, <span class="seriesInfo">DOI 10.17487/RFC6962</span>, <time datetime="2013-06" class="refDate">June 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6962">https://www.rfc-editor.org/info/rfc6962</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2171c2366,2367
+< <span class="refAuthor">Farrell, S.</span><span class="refAuthor"> and H. Tschofenig</span>, <span class="refTitle">"Pervasive Monitoring Is an Attack"</span>, <span class="seriesInfo">BCP 188</span>, <span class="seriesInfo">RFC 7258</span>, <span class="seriesInfo">DOI 10.17487/RFC7258</span>, <time datetime="2014-05">May 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7258">https://www.rfc-editor.org/info/rfc7258</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Farrell, S.</span> and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"Pervasive Monitoring Is an Attack"</span>, <span class="seriesInfo">BCP 188</span>, <span class="seriesInfo">RFC 7258</span>, <span class="seriesInfo">DOI 10.17487/RFC7258</span>, <time datetime="2014-05" class="refDate">May 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7258">https://www.rfc-editor.org/info/rfc7258</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2174c2370,2371
+< <span class="refAuthor">Evans, C.</span><span class="refAuthor">, Palmer, C.</span><span class="refAuthor">, and R. Sleevi</span>, <span class="refTitle">"Public Key Pinning Extension for HTTP"</span>, <span class="seriesInfo">RFC 7469</span>, <span class="seriesInfo">DOI 10.17487/RFC7469</span>, <time datetime="2015-04">April 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7469">https://www.rfc-editor.org/info/rfc7469</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Evans, C.</span>, <span class="refAuthor">Palmer, C.</span>, and <span class="refAuthor">R. Sleevi</span>, <span class="refTitle">"Public Key Pinning Extension for HTTP"</span>, <span class="seriesInfo">RFC 7469</span>, <span class="seriesInfo">DOI 10.17487/RFC7469</span>, <time datetime="2015-04" class="refDate">April 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7469">https://www.rfc-editor.org/info/rfc7469</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2177c2374,2375
+< <span class="refAuthor">Moeller, B.</span><span class="refAuthor"> and A. Langley</span>, <span class="refTitle">"TLS Fallback Signaling Cipher Suite Value (SCSV) for Preventing Protocol Downgrade Attacks"</span>, <span class="seriesInfo">RFC 7507</span>, <span class="seriesInfo">DOI 10.17487/RFC7507</span>, <time datetime="2015-04">April 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7507">https://www.rfc-editor.org/info/rfc7507</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Moeller, B.</span> and <span class="refAuthor">A. Langley</span>, <span class="refTitle">"TLS Fallback Signaling Cipher Suite Value (SCSV) for Preventing Protocol Downgrade Attacks"</span>, <span class="seriesInfo">RFC 7507</span>, <span class="seriesInfo">DOI 10.17487/RFC7507</span>, <time datetime="2015-04" class="refDate">April 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7507">https://www.rfc-editor.org/info/rfc7507</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2180c2378,2379
+< <span class="refAuthor">Barnes, R.</span><span class="refAuthor">, Hoffman-Andrews, J.</span><span class="refAuthor">, McCarney, D.</span><span class="refAuthor">, and J. Kasten</span>, <span class="refTitle">"Automatic Certificate Management Environment (ACME)"</span>, <span class="seriesInfo">RFC 8555</span>, <span class="seriesInfo">DOI 10.17487/RFC8555</span>, <time datetime="2019-03">March 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8555">https://www.rfc-editor.org/info/rfc8555</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Barnes, R.</span>, <span class="refAuthor">Hoffman-Andrews, J.</span>, <span class="refAuthor">McCarney, D.</span>, and <span class="refAuthor">J. Kasten</span>, <span class="refTitle">"Automatic Certificate Management Environment (ACME)"</span>, <span class="seriesInfo">RFC 8555</span>, <span class="seriesInfo">DOI 10.17487/RFC8555</span>, <time datetime="2019-03" class="refDate">March 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8555">https://www.rfc-editor.org/info/rfc8555</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2183a2383
+> <dd class="break"></dd>
+2186c2386,2387
+< <span class="refAuthor">Marlinspike, M.</span>, <span class="refTitle">"Trust Assertions for Certificate Keys"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-perrin-tls-tack-02</span>, <time datetime="2013-01-07">7 January 2013</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-perrin-tls-tack-02">https://tools.ietf.org/html/draft-perrin-tls-tack-02</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Marlinspike, M.</span>, <span class="refTitle">"Trust Assertions for Certificate Keys"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-perrin-tls-tack-02</span>, <time datetime="2013-01-07" class="refDate">7 January 2013</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-perrin-tls-tack-02">https://tools.ietf.org/html/draft-perrin-tls-tack-02</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2191c2392
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2193c2394
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-previous-work" class="section-name selfRef">Previous Work</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-previous-work" class="section-name selfRef">Previous Work</a>
+2195c2396
+< <p id="section-appendix.a-1">The global PKI system relies on the trust of a CA issuing certificates.
+---
+> <p id="appendix-A-1">The global PKI system relies on the trust of a CA issuing certificates.
+2200,2203c2401,2404
+< Certificate Transparency (CT) protocol <span>[<a href="#RFC6962" class="xref">RFC6962</a>]</span>, 
+< HTTP Public Key Pinning (HPKP) <span>[<a href="#RFC7469" class="xref">RFC7469</a>]</span>, 
+< and Trust Assertions for Certificate Keys (TACK) <span>[<a href="#I-D.perrin-tls-tack" class="xref">TLS-TACK</a>]</span>.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2">CT requires
+---
+> Certificate Transparency (CT) protocol <span>[<a href="#RFC6962" class="cite xref">RFC6962</a>]</span>, 
+> HTTP Public Key Pinning (HPKP) <span>[<a href="#RFC7469" class="cite xref">RFC7469</a>]</span>, 
+> and Trust Assertions for Certificate Keys (TACK) <span>[<a href="#I-D.perrin-tls-tack" class="cite xref">TLS-TACK</a>]</span>.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2">CT requires
+2209,2213c2410,2414
+< are not willing to expose their internal infrastructure publicly.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-3">TACK has some similarities
+< to the current proposal, but work on it seems to have stalled.  <a href="#tack" class="xref">Appendix A.2</a>
+< compares our proposal to TACK.<a href="#section-appendix.a-3" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-4">HPKP is an IETF standard, but so far has proven hard to deploy. HPKP
+---
+> are not willing to expose their internal infrastructure publicly.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+> <p id="appendix-A-3">TACK has some similarities
+> to the current proposal, but work on it seems to have stalled.  <a href="#tack" class="auto internal xref">Appendix A.2</a>
+> compares our proposal to TACK.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+> <p id="appendix-A-4">HPKP is an IETF standard, but so far has proven hard to deploy. HPKP
+2227,2229c2428,2430
+< management, and that can be entirely and easily automated. <a href="#hpkp" class="xref">Appendix A.1</a>
+< compares HPKP to the current document in more detail.<a href="#section-appendix.a-4" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-5">The ticket pinning proposal augments these mechanisms with a much easier
+---
+> management, and that can be entirely and easily automated. <a href="#hpkp" class="auto internal xref">Appendix A.1</a>
+> compares HPKP to the current document in more detail.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+> <p id="appendix-A-5">The ticket pinning proposal augments these mechanisms with a much easier
+2231,2232c2432,2433
+< some of the ideas behind TLS session resumption.<a href="#section-appendix.a-5" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-6">This section compares ticket pinning to two earlier proposals, HPKP and TACK.<a href="#section-appendix.a-6" class="pilcrow">¶</a></p>
+---
+> some of the ideas behind TLS session resumption.<a href="#appendix-A-5" class="pilcrow">¶</a></p>
+> <p id="appendix-A-6">This section compares ticket pinning to two earlier proposals, HPKP and TACK.<a href="#appendix-A-6" class="pilcrow">¶</a></p>
+2234,2244c2435,2445
+< <section id="section-a.1">
+<         <h2 id="name-comparison-hpkp">
+< <a href="#section-a.1" class="section-number selfRef">A.1. </a><a href="#name-comparison-hpkp" class="section-name selfRef">Comparison: HPKP</a>
+<         </h2>
+< <p id="section-a.1-1">The current IETF standard for pinning the identity of web servers is 
+< HPKP <span>[<a href="#RFC7469" class="xref">RFC7469</a>]</span>.<a href="#section-a.1-1" class="pilcrow">¶</a></p>
+< <p id="section-a.1-2">The main differences between HPKP and the current document are the
+< following:<a href="#section-a.1-2" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-a.1-3.1">HPKP limits its scope to HTTPS, while the current document considers all
+< application above TLS.<a href="#section-a.1-3.1" class="pilcrow">¶</a>
+---
+> <section id="appendix-A.1">
+>         <h3 id="name-comparison-hpkp">
+> <a href="#appendix-A.1" class="section-number selfRef">A.1. </a><a href="#name-comparison-hpkp" class="section-name selfRef">Comparison: HPKP</a>
+>         </h3>
+> <p id="appendix-A.1-1">The current IETF standard for pinning the identity of web servers is 
+> HPKP <span>[<a href="#RFC7469" class="cite xref">RFC7469</a>]</span>.<a href="#appendix-A.1-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A.1-2">The main differences between HPKP and the current document are the
+> following:<a href="#appendix-A.1-2" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="appendix-A.1-3.1">HPKP limits its scope to HTTPS, while the current document considers all
+> application above TLS.<a href="#appendix-A.1-3.1" class="pilcrow">¶</a>
+2246c2447
+<           <li id="section-a.1-3.2">HPKP pins the public key of the server (or another public key along the
+---
+>           <li class="normal" id="appendix-A.1-3.2">HPKP pins the public key of the server (or another public key along the
+2251c2452
+< management.<a href="#section-a.1-3.2" class="pilcrow">¶</a>
+---
+> management.<a href="#appendix-A.1-3.2" class="pilcrow">¶</a>
+2253c2454
+<           <li id="section-a.1-3.3">HPKP pins public keys that are public and used for the standard TLS
+---
+>           <li class="normal" id="appendix-A.1-3.3">HPKP pins public keys that are public and used for the standard TLS
+2257c2458
+< completely independent, second-factor authentication mechanism.<a href="#section-a.1-3.3" class="pilcrow">¶</a>
+---
+> completely independent, second-factor authentication mechanism.<a href="#appendix-A.1-3.3" class="pilcrow">¶</a>
+2259c2460
+<           <li id="section-a.1-3.4">HPKP relies on a backup key to recover the misissuance of a key.  We
+---
+>           <li class="normal" id="appendix-A.1-3.4">HPKP relies on a backup key to recover the misissuance of a key.  We
+2262c2463
+< highly automated.<a href="#section-a.1-3.4" class="pilcrow">¶</a>
+---
+> highly automated.<a href="#appendix-A.1-3.4" class="pilcrow">¶</a>
+2264c2465
+<           <li id="section-a.1-3.5">HPKP relies on the client to report errors to the report-uri.  The
+---
+>           <li class="normal" id="appendix-A.1-3.5">HPKP relies on the client to report errors to the report-uri.  The
+2267c2468
+< monitoring.<a href="#section-a.1-3.5" class="pilcrow">¶</a>
+---
+> monitoring.<a href="#appendix-A.1-3.5" class="pilcrow">¶</a>
+2270,2272c2471,2473
+< <p id="section-a.1-4">On the other hand, HPKP shares the following aspects with identity pinning:<a href="#section-a.1-4" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-a.1-5.1">Both mechanisms provide hard failure.  With HPKP, only the client is
+---
+> <p id="appendix-A.1-4">On the other hand, HPKP shares the following aspects with identity pinning:<a href="#appendix-A.1-4" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="appendix-A.1-5.1">Both mechanisms provide hard failure.  With HPKP, only the client is
+2275c2476
+< mechanisms to automatically recover from such failures.<a href="#section-a.1-5.1" class="pilcrow">¶</a>
+---
+> mechanisms to automatically recover from such failures.<a href="#appendix-A.1-5.1" class="pilcrow">¶</a>
+2277c2478
+<           <li id="section-a.1-5.2">Both mechanisms are subject to a server compromise in which users are
+---
+>           <li class="normal" id="appendix-A.1-5.2">Both mechanisms are subject to a server compromise in which users are
+2284c2485
+< compromise is typically more difficult for the attacker.<a href="#section-a.1-5.2" class="pilcrow">¶</a>
+---
+> compromise is typically more difficult for the attacker.<a href="#appendix-A.1-5.2" class="pilcrow">¶</a>
+2287,2288c2488,2489
+< <p id="section-a.1-6">Unfortunately HPKP has not seen wide deployment yet.  As of March 2016,
+< the number of servers using HPKP was less than 3000 <span>[<a href="#Netcraft" class="xref">Netcraft</a>]</span>.  This
+---
+> <p id="appendix-A.1-6">Unfortunately HPKP has not seen wide deployment yet.  As of March 2016,
+> the number of servers using HPKP was less than 3000 <span>[<a href="#Netcraft" class="cite xref">Netcraft</a>]</span>.  This
+2293,2301c2494,2502
+< the server becomes unusable for some of the clients.<a href="#section-a.1-6" class="pilcrow">¶</a></p>
+< <p id="section-a.1-7">To demonstrate this point, we present a list of the steps involved in
+< deploying HPKP on a security-sensitive web server.<a href="#section-a.1-7" class="pilcrow">¶</a></p>
+< <ol start="1" type="1" class="normal" id="section-a.1-8">
+<           <li id="section-a.1-8.1">
+<             <p id="section-a.1-8.1.1">Generate two public/private key pairs on a computer that is not the
+< live server. The second one is the "backup1" key pair.<a href="#section-a.1-8.1.1" class="pilcrow">¶</a></p>
+< <div id="section-a.1-8.1.2">
+< <pre class="sourcecode lang-bash">
+---
+> the server becomes unusable for some of the clients.<a href="#appendix-A.1-6" class="pilcrow">¶</a></p>
+> <p id="appendix-A.1-7">To demonstrate this point, we present a list of the steps involved in
+> deploying HPKP on a security-sensitive web server.<a href="#appendix-A.1-7" class="pilcrow">¶</a></p>
+> <ol start="1" type="1" class="normal type-1" id="appendix-A.1-8">
+>           <li id="appendix-A.1-8.1">
+>             <p id="appendix-A.1-8.1.1">Generate two public/private key pairs on a computer that is not the
+> live server. The second one is the "backup1" key pair.<a href="#appendix-A.1-8.1.1" class="pilcrow">¶</a></p>
+> <div class="lang-bash sourcecode" id="appendix-A.1-8.1.2">
+> <pre>
+2305c2506
+< </pre><a href="#section-a.1-8.1.2" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.1-8.1.2" class="pilcrow">¶</a>
+2308,2312c2509,2513
+<           <li id="section-a.1-8.2">
+<             <p id="section-a.1-8.2.1">Generate hashes for both of the public keys. These will be used in
+< the HPKP header:<a href="#section-a.1-8.2.1" class="pilcrow">¶</a></p>
+< <div id="section-a.1-8.2.2">
+< <pre class="sourcecode lang-bash">
+---
+>           <li id="appendix-A.1-8.2">
+>             <p id="appendix-A.1-8.2.1">Generate hashes for both of the public keys. These will be used in
+> the HPKP header:<a href="#appendix-A.1-8.2.1" class="pilcrow">¶</a></p>
+> <div class="lang-bash sourcecode" id="appendix-A.1-8.2.2">
+> <pre>
+2318c2519
+< </pre><a href="#section-a.1-8.2.2" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.1-8.2.2" class="pilcrow">¶</a>
+2321,2322c2522,2523
+<           <li id="section-a.1-8.3">
+<             <p id="section-a.1-8.3.1">Generate a single CSR (Certificate Signing Request) for the first
+---
+>           <li id="appendix-A.1-8.3">
+>             <p id="appendix-A.1-8.3.1">Generate a single CSR (Certificate Signing Request) for the first
+2324,2326c2525,2527
+< field:<a href="#section-a.1-8.3.1" class="pilcrow">¶</a></p>
+< <div id="section-a.1-8.3.2">
+< <pre class="sourcecode lang-bash">
+---
+> field:<a href="#appendix-A.1-8.3.1" class="pilcrow">¶</a></p>
+> <div class="lang-bash sourcecode" id="appendix-A.1-8.3.2">
+> <pre>
+2329c2530
+< </pre><a href="#section-a.1-8.3.2" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A.1-8.3.2" class="pilcrow">¶</a>
+2332c2533
+<           <li id="section-a.1-8.4">Send this CSR to the CA and go though the
+---
+>           <li id="appendix-A.1-8.4">Send this CSR to the CA and go though the
+2334c2535
+< certificate that will typically expire within a year or two.<a href="#section-a.1-8.4" class="pilcrow">¶</a>
+---
+> certificate that will typically expire within a year or two.<a href="#appendix-A.1-8.4" class="pilcrow">¶</a>
+2336,2337c2537,2538
+<           <li id="section-a.1-8.5">
+<             <p id="section-a.1-8.5.1">On the live server, upload and set up the first key pair and its
+---
+>           <li id="appendix-A.1-8.5">
+>             <p id="appendix-A.1-8.5.1">On the live server, upload and set up the first key pair and its
+2339,2341c2540,2542
+< using the two hashes you created in step 2.<a href="#section-a.1-8.5.1" class="pilcrow">¶</a></p>
+< <p id="section-a.1-8.5.2">
+< Note that only the first key pair has been uploaded to the server so far.<a href="#section-a.1-8.5.2" class="pilcrow">¶</a></p>
+---
+> using the two hashes you created in step 2.<a href="#appendix-A.1-8.5.1" class="pilcrow">¶</a></p>
+> <p id="appendix-A.1-8.5.2">
+> Note that only the first key pair has been uploaded to the server so far.<a href="#appendix-A.1-8.5.2" class="pilcrow">¶</a></p>
+2343c2544
+<           <li id="section-a.1-8.6">Store the second (backup1) key pair somewhere safe, probably
+---
+>           <li id="appendix-A.1-8.6">Store the second (backup1) key pair somewhere safe, probably
+2346c2547
+< next certificate.<a href="#section-a.1-8.6" class="pilcrow">¶</a>
+---
+> next certificate.<a href="#appendix-A.1-8.6" class="pilcrow">¶</a>
+2348c2549
+<           <li id="section-a.1-8.7">Time passes -- probably just under a year (if waiting for a
+---
+>           <li id="appendix-A.1-8.7">Time passes -- probably just under a year (if waiting for a
+2350c2551
+< been compromised, and you need to replace the key pair and certificate.<a href="#section-a.1-8.7" class="pilcrow">¶</a>
+---
+> been compromised, and you need to replace the key pair and certificate.<a href="#appendix-A.1-8.7" class="pilcrow">¶</a>
+2352,2353c2553,2554
+<           <li id="section-a.1-8.8">Create a new CSR using the "backup1"
+< key pair, and get a new certificate from your CA.<a href="#section-a.1-8.8" class="pilcrow">¶</a>
+---
+>           <li id="appendix-A.1-8.8">Create a new CSR using the "backup1"
+> key pair, and get a new certificate from your CA.<a href="#appendix-A.1-8.8" class="pilcrow">¶</a>
+2355,2356c2556,2557
+<           <li id="section-a.1-8.9">Generate a new backup key pair (backup2), get its hash, and store it
+< in a safe place (again, not on the live server).<a href="#section-a.1-8.9" class="pilcrow">¶</a>
+---
+>           <li id="appendix-A.1-8.9">Generate a new backup key pair (backup2), get its hash, and store it
+> in a safe place (again, not on the live server).<a href="#appendix-A.1-8.9" class="pilcrow">¶</a>
+2358c2559
+<           <li id="section-a.1-8.10">Replace your old certificate and old key pair, update the
+---
+>           <li id="appendix-A.1-8.10">Replace your old certificate and old key pair, update the
+2360c2561
+< "backup2" key pair.<a href="#section-a.1-8.10" class="pilcrow">¶</a>
+---
+> "backup2" key pair.<a href="#appendix-A.1-8.10" class="pilcrow">¶</a>
+2363c2564
+< <p id="section-a.1-9">Note that in the above steps, both the certificate issuance as well as
+---
+> <p id="appendix-A.1-9">Note that in the above steps, both the certificate issuance as well as
+2365,2366c2566,2567
+< automated CA that runs the ACME protocol <span>[<a href="#RFC8555" class="xref">RFC8555</a>]</span>, key backup would be a
+< challenge to automate.<a href="#section-a.1-9" class="pilcrow">¶</a></p>
+---
+> automated CA that runs the ACME protocol <span>[<a href="#RFC8555" class="cite xref">RFC8555</a>]</span>, key backup would be a
+> challenge to automate.<a href="#appendix-A.1-9" class="pilcrow">¶</a></p>
+2370,2374c2571,2575
+< <section id="section-a.2">
+<         <h2 id="name-comparison-tack">
+< <a href="#section-a.2" class="section-number selfRef">A.2. </a><a href="#name-comparison-tack" class="section-name selfRef">Comparison: TACK</a>
+<         </h2>
+< <p id="section-a.2-1">Compared with HPKP, TACK <span>[<a href="#I-D.perrin-tls-tack" class="xref">TLS-TACK</a>]</span> is more similar
+---
+> <section id="appendix-A.2">
+>         <h3 id="name-comparison-tack">
+> <a href="#appendix-A.2" class="section-number selfRef">A.2. </a><a href="#name-comparison-tack" class="section-name selfRef">Comparison: TACK</a>
+>         </h3>
+> <p id="appendix-A.2-1">Compared with HPKP, TACK <span>[<a href="#I-D.perrin-tls-tack" class="cite xref">TLS-TACK</a>]</span> is more similar
+2377,2379c2578,2580
+< few significant differences:<a href="#section-a.2-1" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-a.2-2.1">Probably the most important difference is that with TACK, validation of
+---
+> few significant differences:<a href="#appendix-A.2-1" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="appendix-A.2-2.1">Probably the most important difference is that with TACK, validation of
+2381c2582
+< it as a "<span class="bcp14">MAY</span>" requirement (<span>[<a href="#I-D.perrin-tls-tack" class="xref">TLS-TACK</a>], <a href="https://tools.ietf.org/html/draft-perrin-tls-tack-02#section-5.3" class="relref">Section 5.3</a></span>).  With ticket pinning, certificate
+---
+> it as a "<span class="bcp14">MAY</span>" requirement (<span>[<a href="#I-D.perrin-tls-tack" class="cite xref">TLS-TACK</a>], <a href="https://tools.ietf.org/html/draft-perrin-tls-tack-02#section-5.3" class="relref">Section 5.3</a></span>).  With ticket pinning, certificate
+2384c2585
+< server's security is not immediately at risk.<a href="#section-a.2-2.1" class="pilcrow">¶</a>
+---
+> server's security is not immediately at risk.<a href="#appendix-A.2-2.1" class="pilcrow">¶</a>
+2386c2587
+<           <li id="section-a.2-2.2">Both TACK and the current document are mostly orthogonal to the server
+---
+>           <li class="normal" id="appendix-A.2-2.2">Both TACK and the current document are mostly orthogonal to the server
+2388c2589
+< no manual steps.<a href="#section-a.2-2.2" class="pilcrow">¶</a>
+---
+> no manual steps.<a href="#appendix-A.2-2.2" class="pilcrow">¶</a>
+2390c2591
+<           <li id="section-a.2-2.3">TACK uses Elliptic Curve Digital Signature Algorithm 
+---
+>           <li class="normal" id="appendix-A.2-2.3">TACK uses Elliptic Curve Digital Signature Algorithm 
+2394c2595
+< tickets.<a href="#section-a.2-2.3" class="pilcrow">¶</a>
+---
+> tickets.<a href="#appendix-A.2-2.3" class="pilcrow">¶</a>
+2396,2397c2597,2598
+<           <li id="section-a.2-2.4">TACK allows multiple servers to share its public keys. Such sharing is
+< disallowed by the current document.<a href="#section-a.2-2.4" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="appendix-A.2-2.4">TACK allows multiple servers to share its public keys. Such sharing is
+> disallowed by the current document.<a href="#appendix-A.2-2.4" class="pilcrow">¶</a>
+2399,2400c2600,2601
+<           <li id="section-a.2-2.5">TACK does not allow the server to track a particular client, and so
+< has better privacy properties than the current document.<a href="#section-a.2-2.5" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="appendix-A.2-2.5">TACK does not allow the server to track a particular client, and so
+> has better privacy properties than the current document.<a href="#appendix-A.2-2.5" class="pilcrow">¶</a>
+2402c2603
+<           <li id="section-a.2-2.6">TACK has an interesting way to determine the pin's lifetime, setting
+---
+>           <li class="normal" id="appendix-A.2-2.6">TACK has an interesting way to determine the pin's lifetime, setting
+2407c2608
+< sites that expect users to visit on a daily basis.<a href="#section-a.2-2.6" class="pilcrow">¶</a>
+---
+> sites that expect users to visit on a daily basis.<a href="#appendix-A.2-2.6" class="pilcrow">¶</a>
+2415c2616
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+2419c2620
+< <p id="section-appendix.b-1">The original idea behind this proposal was published in <span>[<a href="#Oreo" class="xref">Oreo</a>]</span> by
+---
+> <p id="appendix-B-1">The original idea behind this proposal was published in <span>[<a href="#Oreo" class="cite xref">Oreo</a>]</span> by
+2422,2423c2623,2624
+< are the responsibility of the authors of this document alone.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-2">We would like to thank Adrian Farrel, Dave Garrett,
+---
+> are the responsibility of the authors of this document alone.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+> <p id="appendix-B-2">We would like to thank Adrian Farrel, Dave Garrett,
+2429c2630
+< script, and to Ralph Holz for several fruitful discussions.<a href="#section-appendix.b-2" class="pilcrow">¶</a></p>
+---
+> script, and to Ralph Holz for several fruitful discussions.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+2433c2634
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
+2455,2483c2656,2661
+< <script>var toc = document.getElementById("toc");
+< var tocToggle = toc.querySelector("h2");
+< var tocNav = toc.querySelector("nav");
+< 
+< // mobile menu toggle
+< tocToggle.onclick = function(event) {
+<     if (window.innerWidth < 1024) {
+<  var tocNavDisplay = tocNav.currentStyle ? tocNav.currentStyle.display : getComputedStyle(tocNav, null).display;
+<  if (tocNavDisplay == "none") {
+<      tocNav.style.display = "block";
+<  } else {
+<      tocNav.style.display = "none";
+<  }
+<     }
+< }
+< 
+< // toc anchor scroll to anchor
+< tocNav.addEventListener("click", function (event) {
+<     event.preventDefault();
+<     if (event.target.nodeName == 'A') {
+<  if (window.innerWidth < 1024) {
+<      tocNav.style.display = "none";
+<  }
+<  var href = event.target.getAttribute("href");
+<  var anchorId = href.substr(1);
+<  var anchor =  document.getElementById(anchorId);
+<  anchor.scrollIntoView(true);
+<  window.history.pushState("","",href);
+<     }
+---
+> <script>const toc = document.getElementById("toc");
+> toc.querySelector("h2").addEventListener("click", e => {
+>   toc.classList.toggle("active");
+> });
+> toc.querySelector("nav").addEventListener("click", e => {
+>   toc.classList.remove("active");
+2485,2493d2662
+< 
+< // switch toc mode when window resized
+< window.onresize = function () {
+<     if (window.innerWidth < 1024) {
+<  tocNav.style.display = "none";
+<     } else {
+<  tocNav.style.display = "block";
+<     }
+< }

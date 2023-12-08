@@ -1,0 +1,851 @@
+24c24
+< <meta content="xml2rfc 3.5.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+27,44c27,40
+<   xml2rfc 3.5.0
+<     Python 3.6.10
+<     appdirs 1.4.4
+<     ConfigArgParse 1.2.3
+<     google-i18n-address 2.3.5
+<     html5lib 1.0.1
+<     intervaltree 3.0.2
+<     Jinja2 2.11.2
+<     kitchen 1.2.6
+<     lxml 4.4.2
+<     pycairo 1.19.0
+<     pycountry 19.8.18
+<     pyflakes 2.1.1
+<     PyYAML 5.3.1
+<     requests 2.22.0
+<     setuptools 40.6.2
+<     six 1.14.0
+<     WeasyPrint 51
+---
+>   xml2rfc 3.18.2
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.1.0
+>     pycountry 23.12.7
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+46c42
+< <link href="rfc8945.xml" rel="alternate" type="application/rfc+xml">
+---
+> <link href="rfc/rfc8945.xml" rel="alternate" type="application/rfc+xml">
+56c52
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+65a62,67
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+68d69
+<   width: extend-to-zoom;
+83c84
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+85a87
+>   overflow-wrap: break-word;
+171a174,182
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+186,189d196
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+190a198
+>   border: none;
+213a222,224
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+255c266,267
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+265c277
+< tt, code, pre, code {
+---
+> tt, code, pre {
+267c279
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+306a319,321
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+396a412,417
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+498c519
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+638d658
+< 
+660a681,683
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+728c751
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+828c851
+< tt, code, pre, code {
+---
+> tt, code, pre {
+833c856
+< pre.sourcecode,
+---
+> .sourcecode pre,
+869c892
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1050a1074
+>   .artwork > pre,
+1065c1089
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1071a1096,1098
+> tr {
+>   break-inside: avoid;
+> }
+1091c1118
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1122c1149
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1147c1174
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1165c1192
+< dd > div:first-child > pre.sourcecode,
+---
+> dd > div.sourcecode:first-child,
+1173a1201,1208
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1175a1211
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-dnsop-rfc2845bis-09" rel="prev">
+1178c1214
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-dnsop-rfc2845bis-09" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1180,1181c1216,1217
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1313,1318c1349,1354
+< <nav class="toc"><ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-background" class="xref">Background</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-background" class="internal xref">Background</a></p>
+1320,1321c1356,1357
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.1.2.2">
+<                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="xref">1.2</a>.  <a href="#name-protocol-overview" class="xref">Protocol Overview</a><a href="#section-toc.1-1.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+>                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-protocol-overview" class="internal xref">Protocol Overview</a></p>
+1323,1324c1359,1360
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.1.2.3">
+<                 <p id="section-toc.1-1.1.2.3.1" class="keepWithNext"><a href="#section-1.3" class="xref">1.3</a>.  <a href="#name-document-history" class="xref">Document History</a><a href="#section-toc.1-1.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.3">
+>                 <p id="section-toc.1-1.1.2.3.1" class="keepWithNext"><a href="#section-1.3" class="auto internal xref">1.3</a>.  <a href="#name-document-history" class="internal xref">Document History</a></p>
+1328,1329c1364,1365
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-key-words" class="xref">Key Words</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-key-words" class="internal xref">Key Words</a></p>
+1331,1332c1367,1368
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-assigned-numbers" class="xref">Assigned Numbers</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-assigned-numbers" class="internal xref">Assigned Numbers</a></p>
+1334,1347c1370,1383
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-tsig-rr-format" class="xref">TSIG RR Format</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-tsig-rr-type" class="xref">TSIG RR Type</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-tsig-record-format" class="xref">TSIG Record Format</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-mac-computation" class="xref">MAC Computation</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.4.2.3.2.1">
+<                     <p id="section-toc.1-1.4.2.3.2.1.1"><a href="#section-4.3.1" class="xref">4.3.1</a>.  <a href="#name-request-mac" class="xref">Request MAC</a><a href="#section-toc.1-1.4.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-tsig-rr-format" class="internal xref">TSIG RR Format</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-tsig-rr-type" class="internal xref">TSIG RR Type</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-tsig-record-format" class="internal xref">TSIG Record Format</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-mac-computation" class="internal xref">MAC Computation</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.1">
+>                     <p id="section-toc.1-1.4.2.3.2.1.1"><a href="#section-4.3.1" class="auto internal xref">4.3.1</a>.  <a href="#name-request-mac" class="internal xref">Request MAC</a></p>
+1349,1350c1385,1386
+<                   <li class="ulEmpty toc compact" id="section-toc.1-1.4.2.3.2.2">
+<                     <p id="section-toc.1-1.4.2.3.2.2.1"><a href="#section-4.3.2" class="xref">4.3.2</a>.  <a href="#name-dns-message" class="xref">DNS Message</a><a href="#section-toc.1-1.4.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.2">
+>                     <p id="section-toc.1-1.4.2.3.2.2.1"><a href="#section-4.3.2" class="auto internal xref">4.3.2</a>.  <a href="#name-dns-message" class="internal xref">DNS Message</a></p>
+1352,1353c1388,1389
+<                   <li class="ulEmpty toc compact" id="section-toc.1-1.4.2.3.2.3">
+<                     <p id="section-toc.1-1.4.2.3.2.3.1"><a href="#section-4.3.3" class="xref">4.3.3</a>.  <a href="#name-tsig-variables" class="xref">TSIG Variables</a><a href="#section-toc.1-1.4.2.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.3">
+>                     <p id="section-toc.1-1.4.2.3.2.3.1"><a href="#section-4.3.3" class="auto internal xref">4.3.3</a>.  <a href="#name-tsig-variables" class="internal xref">TSIG Variables</a></p>
+1359,1369c1395,1405
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-protocol-details" class="xref">Protocol Details</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-generation-of-tsig-on-reque" class="xref">Generation of TSIG on Requests</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-server-processing-of-reques" class="xref">Server Processing of Request</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.2.2.1">
+<                     <p id="section-toc.1-1.5.2.2.2.1.1"><a href="#section-5.2.1" class="xref">5.2.1</a>.  <a href="#name-key-check-and-error-handlin" class="xref">Key Check and Error Handling</a><a href="#section-toc.1-1.5.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-protocol-details" class="internal xref">Protocol Details</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-generation-of-tsig-on-reque" class="internal xref">Generation of TSIG on Requests</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-server-processing-of-reques" class="internal xref">Server Processing of Request</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.1">
+>                     <p id="section-toc.1-1.5.2.2.2.1.1"><a href="#section-5.2.1" class="auto internal xref">5.2.1</a>.  <a href="#name-key-check-and-error-handlin" class="internal xref">Key Check and Error Handling</a></p>
+1371,1372c1407,1408
+<                   <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.2.2.2">
+<                     <p id="section-toc.1-1.5.2.2.2.2.1"><a href="#section-5.2.2" class="xref">5.2.2</a>.  <a href="#name-mac-check-and-error-handlin" class="xref">MAC Check and Error Handling</a><a href="#section-toc.1-1.5.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.2">
+>                     <p id="section-toc.1-1.5.2.2.2.2.1"><a href="#section-5.2.2" class="auto internal xref">5.2.2</a>.  <a href="#name-mac-check-and-error-handlin" class="internal xref">MAC Check and Error Handling</a></p>
+1374,1375c1410,1411
+<                   <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.2.2.3">
+<                     <p id="section-toc.1-1.5.2.2.2.3.1"><a href="#section-5.2.3" class="xref">5.2.3</a>.  <a href="#name-time-check-and-error-handli" class="xref">Time Check and Error Handling</a><a href="#section-toc.1-1.5.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.3">
+>                     <p id="section-toc.1-1.5.2.2.2.3.1"><a href="#section-5.2.3" class="auto internal xref">5.2.3</a>.  <a href="#name-time-check-and-error-handli" class="internal xref">Time Check and Error Handling</a></p>
+1377,1378c1413,1414
+<                   <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.2.2.4">
+<                     <p id="section-toc.1-1.5.2.2.2.4.1"><a href="#section-5.2.4" class="xref">5.2.4</a>.  <a href="#name-truncation-check-and-error-" class="xref">Truncation Check and Error Handling</a><a href="#section-toc.1-1.5.2.2.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.4">
+>                     <p id="section-toc.1-1.5.2.2.2.4.1"><a href="#section-5.2.4" class="auto internal xref">5.2.4</a>.  <a href="#name-truncation-check-and-error-" class="internal xref">Truncation Check and Error Handling</a></p>
+1382,1386c1418,1422
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.3">
+<                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-generation-of-tsig-on-answe" class="xref">Generation of TSIG on Answers</a><a href="#section-toc.1-1.5.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.3.2.1">
+<                     <p id="section-toc.1-1.5.2.3.2.1.1"><a href="#section-5.3.1" class="xref">5.3.1</a>.  <a href="#name-tsig-on-tcp-connections" class="xref">TSIG on TCP Connections</a><a href="#section-toc.1-1.5.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
+>                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-generation-of-tsig-on-answe" class="internal xref">Generation of TSIG on Answers</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.1">
+>                     <p id="section-toc.1-1.5.2.3.2.1.1"><a href="#section-5.3.1" class="auto internal xref">5.3.1</a>.  <a href="#name-tsig-on-tcp-connections" class="internal xref">TSIG on TCP Connections</a></p>
+1388,1389c1424,1425
+<                   <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.3.2.2">
+<                     <p id="section-toc.1-1.5.2.3.2.2.1"><a href="#section-5.3.2" class="xref">5.3.2</a>.  <a href="#name-generation-of-tsig-on-error" class="xref">Generation of TSIG on Error Returns</a><a href="#section-toc.1-1.5.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.2">
+>                     <p id="section-toc.1-1.5.2.3.2.2.1"><a href="#section-5.3.2" class="auto internal xref">5.3.2</a>.  <a href="#name-generation-of-tsig-on-error" class="internal xref">Generation of TSIG on Error Returns</a></p>
+1393,1397c1429,1433
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.4">
+<                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="xref">5.4</a>.  <a href="#name-client-processing-of-answer" class="xref">Client Processing of Answer</a><a href="#section-toc.1-1.5.2.4.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.4.2.1">
+<                     <p id="section-toc.1-1.5.2.4.2.1.1"><a href="#section-5.4.1" class="xref">5.4.1</a>.  <a href="#name-key-error-handling" class="xref">Key Error Handling</a><a href="#section-toc.1-1.5.2.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
+>                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-client-processing-of-answer" class="internal xref">Client Processing of Answer</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4.2.1">
+>                     <p id="section-toc.1-1.5.2.4.2.1.1"><a href="#section-5.4.1" class="auto internal xref">5.4.1</a>.  <a href="#name-key-error-handling" class="internal xref">Key Error Handling</a></p>
+1399,1400c1435,1436
+<                   <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.4.2.2">
+<                     <p id="section-toc.1-1.5.2.4.2.2.1"><a href="#section-5.4.2" class="xref">5.4.2</a>.  <a href="#name-mac-error-handling" class="xref">MAC Error Handling</a><a href="#section-toc.1-1.5.2.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4.2.2">
+>                     <p id="section-toc.1-1.5.2.4.2.2.1"><a href="#section-5.4.2" class="auto internal xref">5.4.2</a>.  <a href="#name-mac-error-handling" class="internal xref">MAC Error Handling</a></p>
+1402,1403c1438,1439
+<                   <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.4.2.3">
+<                     <p id="section-toc.1-1.5.2.4.2.3.1"><a href="#section-5.4.3" class="xref">5.4.3</a>.  <a href="#name-time-error-handling" class="xref">Time Error Handling</a><a href="#section-toc.1-1.5.2.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4.2.3">
+>                     <p id="section-toc.1-1.5.2.4.2.3.1"><a href="#section-5.4.3" class="auto internal xref">5.4.3</a>.  <a href="#name-time-error-handling" class="internal xref">Time Error Handling</a></p>
+1405,1406c1441,1442
+<                   <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.4.2.4">
+<                     <p id="section-toc.1-1.5.2.4.2.4.1"><a href="#section-5.4.4" class="xref">5.4.4</a>.  <a href="#name-truncation-error-handling" class="xref">Truncation Error Handling</a><a href="#section-toc.1-1.5.2.4.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4.2.4">
+>                     <p id="section-toc.1-1.5.2.4.2.4.1"><a href="#section-5.4.4" class="auto internal xref">5.4.4</a>.  <a href="#name-truncation-error-handling" class="internal xref">Truncation Error Handling</a></p>
+1410,1411c1446,1447
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.5">
+<                 <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="xref">5.5</a>.  <a href="#name-special-considerations-for-" class="xref">Special Considerations for Forwarding Servers</a><a href="#section-toc.1-1.5.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5">
+>                 <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="auto internal xref">5.5</a>.  <a href="#name-special-considerations-for-" class="internal xref">Special Considerations for Forwarding Servers</a></p>
+1415,1416c1451,1452
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-algorithms-and-identifiers" class="xref">Algorithms and Identifiers</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-algorithms-and-identifiers" class="internal xref">Algorithms and Identifiers</a></p>
+1418,1419c1454,1455
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-tsig-truncation-policy" class="xref">TSIG Truncation Policy</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-tsig-truncation-policy" class="internal xref">TSIG Truncation Policy</a></p>
+1421,1422c1457,1458
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-shared-secrets" class="xref">Shared Secrets</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-shared-secrets" class="internal xref">Shared Secrets</a></p>
+1424,1431c1460,1467
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.10.2.1">
+<                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="xref">10.1</a>.  <a href="#name-issue-fixed-in-this-documen" class="xref">Issue Fixed in This Document</a><a href="#section-toc.1-1.10.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
+>                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="auto internal xref">10.1</a>.  <a href="#name-issue-fixed-in-this-documen" class="internal xref">Issue Fixed in This Document</a></p>
+1433,1434c1469,1470
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.10.2.2">
+<                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="xref">10.2</a>.  <a href="#name-why-not-dnssec" class="xref">Why Not DNSSEC?</a><a href="#section-toc.1-1.10.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
+>                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="auto internal xref">10.2</a>.  <a href="#name-why-not-dnssec" class="internal xref">Why Not DNSSEC?</a></p>
+1438,1442c1474,1478
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty toc compact">
+< <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.1">
+<                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="xref">11.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.11.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
+>                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1444,1445c1480,1481
+<               <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.2">
+<                 <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="xref">11.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.11.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
+>                 <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="auto internal xref">11.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1449,1450c1485,1486
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1452,1453c1488,1489
+<           <li class="ulEmpty toc compact" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1467c1503
+< <p id="section-1.1-1">The Domain Name System (DNS) (<span>[<a href="#RFC1034" class="xref">RFC1034</a>]</span> <span>[<a href="#RFC1035" class="xref">RFC1035</a>]</span>) is a
+---
+> <p id="section-1.1-1">The Domain Name System (DNS) (<span>[<a href="#RFC1034" class="cite xref">RFC1034</a>]</span> <span>[<a href="#RFC1035" class="cite xref">RFC1035</a>]</span>) is a
+1478c1514
+<  <span>[<a href="#RFC3007" class="xref">RFC3007</a>]</span>.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
+---
+>  <span>[<a href="#RFC3007" class="cite xref">RFC3007</a>]</span>.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
+1482,1483c1518,1519
+<         (<span>[<a href="#RFC4033" class="xref">RFC4033</a>]</span>, <span>[<a href="#RFC4034" class="xref">RFC4034</a>]</span>,
+<         <span>[<a href="#RFC4035" class="xref">RFC4035</a>]</span>) does not protect glue records and unsigned
+---
+>         (<span>[<a href="#RFC4033" class="cite xref">RFC4033</a>]</span>, <span>[<a href="#RFC4034" class="cite xref">RFC4034</a>]</span>,
+>         <span>[<a href="#RFC4035" class="cite xref">RFC4035</a>]</span>) does not protect glue records and unsigned
+1526c1562
+< <p id="section-1.3-1">TSIG was originally specified by <span>[<a href="#RFC2845" class="xref">RFC2845</a>]</span>.
+---
+> <p id="section-1.3-1">TSIG was originally specified by <span>[<a href="#RFC2845" class="cite xref">RFC2845</a>]</span>.
+1528,1530c1564,1566
+<          the related  <span>[<a href="#RFC4635" class="xref">RFC4635</a>]</span>) were discovered to have
+<          security problems related to this feature (<span>[<a href="#CVE-2017-3142" class="xref">CVE-2017-3142</a>]</span>, 
+<          <span>[<a href="#CVE-2017-3143" class="xref">CVE-2017-3143</a>]</span>, <span>[<a href="#CVE-2017-11104" class="xref">CVE-2017-11104</a>]</span>).  The implementations 
+---
+>          the related  <span>[<a href="#RFC4635" class="cite xref">RFC4635</a>]</span>) were discovered to have
+>          security problems related to this feature (<span>[<a href="#CVE-2017-3142" class="cite xref">CVE-2017-3142</a>]</span>, 
+>          <span>[<a href="#CVE-2017-3143" class="cite xref">CVE-2017-3143</a>]</span>, <span>[<a href="#CVE-2017-11104" class="cite xref">CVE-2017-11104</a>]</span>).  The implementations 
+1536c1572
+<          is still the same mechanism described in <span>[<a href="#RFC2845" class="xref">RFC2845</a>]</span>; only the checking semantics have been
+---
+>          is still the same mechanism described in <span>[<a href="#RFC2845" class="cite xref">RFC2845</a>]</span>; only the checking semantics have been
+1539c1575
+<   See <a href="#issuesfixed" class="xref">Section 10.1</a> for
+---
+>   See <a href="#issuesfixed" class="auto internal xref">Section 10.1</a> for
+1554c1590
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1565,1566c1601,1602
+< <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3-2.1">TSIG (250)<a href="#section-3-2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3-2.1">TSIG (250)<a href="#section-3-2.1" class="pilcrow">¶</a>
+1571,1572c1607,1608
+< <ul class="ulEmpty compact">
+< <li class="ulEmpty compact" id="section-3-4.1">16 (BADSIG)<a href="#section-3-4.1" class="pilcrow">¶</a>
+---
+> <ul class="compact ulEmpty">
+> <li class="compact ulEmpty" id="section-3-4.1">16 (BADSIG)<a href="#section-3-4.1" class="pilcrow">¶</a>
+1574c1610
+<         <li class="ulEmpty compact" id="section-3-4.2">17 (BADKEY)<a href="#section-3-4.2" class="pilcrow">¶</a>
+---
+>         <li class="compact ulEmpty" id="section-3-4.2">17 (BADKEY)<a href="#section-3-4.2" class="pilcrow">¶</a>
+1576c1612
+<         <li class="ulEmpty compact" id="section-3-4.3">18 (BADTIME)<a href="#section-3-4.3" class="pilcrow">¶</a>
+---
+>         <li class="compact ulEmpty" id="section-3-4.3">18 (BADTIME)<a href="#section-3-4.3" class="pilcrow">¶</a>
+1578c1614
+<         <li class="ulEmpty compact" id="section-3-4.4">22 (BADTRUNC)<a href="#section-3-4.4" class="pilcrow">¶</a>
+---
+>         <li class="compact ulEmpty" id="section-3-4.4">22 (BADTRUNC)<a href="#section-3-4.4" class="pilcrow">¶</a>
+1581c1617
+< <p id="section-3-5">(See <span><a href="https://www.rfc-editor.org/rfc/rfc6895#section-2.3" class="relref">Section 2.3</a> of [<a href="#RFC6895" class="xref">RFC6895</a>]</span>
+---
+> <p id="section-3-5">(See <span><a href="https://rfc-editor.org/rfc/rfc6895#section-2.3" class="relref">Section 2.3</a> of [<a href="#RFC6895" class="cite xref">RFC6895</a>]</span>
+1612c1648
+<         order (see <span><a href="https://www.rfc-editor.org/rfc/rfc1035#section-2.3.2" class="relref">Section 2.3.2</a> of [<a href="#RFC1035" class="xref">RFC1035</a>]</span>).<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+---
+>         order (see <span><a href="https://rfc-editor.org/rfc/rfc1035#section-2.3.2" class="relref">Section 2.3.2</a> of [<a href="#RFC1035" class="cite xref">RFC1035</a>]</span>).<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+1628c1664
+<           algorithm agility as indicated by <span>[<a href="#RFC7696" class="xref">RFC7696</a>]</span>.<a href="#section-4.2-2.2.1" class="pilcrow">¶</a></p>
+---
+>           algorithm agility as indicated by <span>[<a href="#RFC7696" class="cite xref">RFC7696</a>]</span>.<a href="#section-4.2-2.2.1" class="pilcrow">¶</a></p>
+1660c1696
+< <div class="artwork art-text alignLeft" id="section-4.2-3">
+---
+> <div class="alignLeft art-text artwork" id="section-4.2-3">
+1687,1688c1723,1724
+<    domain name syntax. (Allowed names are listed in <a href="#allowed-algorithms" class="xref">Table 3</a>.) The name is stored
+<    in the DNS name wire format as described in <span>[<a href="#RFC1034" class="xref">RFC1034</a>]</span>. As per <span>[<a href="#RFC3597" class="xref">RFC3597</a>]</span>, this name <span class="bcp14">MUST NOT</span> be
+---
+>    domain name syntax. (Allowed names are listed in <a href="#allowed-algorithms" class="auto internal xref">Table 3</a>.) The name is stored
+>    in the DNS name wire format as described in <span>[<a href="#RFC1034" class="cite xref">RFC1034</a>]</span>. As per <span>[<a href="#RFC3597" class="cite xref">RFC3597</a>]</span>, this name <span class="bcp14">MUST NOT</span> be
+1714c1750
+<    MAC is detailed in <a href="#mac_computation" class="xref">Section 4.3</a>.<a href="#section-4.2-5.10" class="pilcrow">¶</a>
+---
+>    MAC is detailed in <a href="#mac_computation" class="auto internal xref">Section 4.3</a>.<a href="#section-4.2-5.10" class="pilcrow">¶</a>
+1742c1778
+<    <a href="#time_check" class="xref">Section 5.2.3</a>). This document assigns
+---
+>    <a href="#time_check" class="auto internal xref">Section 5.2.3</a>). This document assigns
+1769c1805
+<           error message <span class="bcp14">MUST</span> be returned instead (<a href="#on_error" class="xref">Section 5.3.2</a>).<a href="#section-4.3.1-1" class="pilcrow">¶</a></p>
+---
+>           error message <span class="bcp14">MUST</span> be returned instead (<a href="#on_error" class="auto internal xref">Section 5.3.2</a>).<a href="#section-4.3.1-1" class="pilcrow">¶</a></p>
+1803c1839
+<    These are described in <a href="#tcp" class="xref">Section 5.3.1</a>.<a href="#section-4.3.1-4" class="pilcrow">¶</a></p>
+---
+>    These are described in <a href="#tcp" class="auto internal xref">Section 5.3.1</a>.<a href="#section-4.3.1-4" class="pilcrow">¶</a></p>
+1902c1938
+<           unambiguous way.  For label type 00, this is defined in <span><a href="https://www.rfc-editor.org/rfc/rfc4034#section-6.2" class="relref">Section 6.2</a> of [<a href="#RFC4034" class="xref">RFC4034</a>]</span>.  The use of
+---
+>           unambiguous way.  For label type 00, this is defined in <span><a href="https://rfc-editor.org/rfc/rfc4034#section-6.2" class="relref">Section 6.2</a> of [<a href="#RFC4034" class="cite xref">RFC4034</a>]</span>.  The use of
+1940,1941c1976,1977
+< <ul class="ulEmpty compact">
+< <li class="ulEmpty compact" id="section-5.1-3.1">DNS Message (request)<a href="#section-5.1-3.1" class="pilcrow">¶</a>
+---
+> <ul class="compact ulEmpty">
+> <li class="compact ulEmpty" id="section-5.1-3.1">DNS Message (request)<a href="#section-5.1-3.1" class="pilcrow">¶</a>
+1943c1979
+<           <li class="ulEmpty compact" id="section-5.1-3.2">TSIG Variables (request)<a href="#section-5.1-3.2" class="pilcrow">¶</a>
+---
+>           <li class="compact ulEmpty" id="section-5.1-3.2">TSIG Variables (request)<a href="#section-5.1-3.2" class="pilcrow">¶</a>
+1985c2021
+<    response <span class="bcp14">MUST</span> be unsigned as specified in <a href="#on_error" class="xref">Section 5.3.2</a>. The server
+---
+>    response <span class="bcp14">MUST</span> be unsigned as specified in <a href="#on_error" class="auto internal xref">Section 5.3.2</a>. The server
+1987c2023
+<    to forwarding servers; see <a href="#forwarding" class="xref">Section 5.5</a>.)<a href="#section-5.2.1-1" class="pilcrow">¶</a></p>
+---
+>    to forwarding servers; see <a href="#forwarding" class="auto internal xref">Section 5.5</a>.)<a href="#section-5.2.1-1" class="pilcrow">¶</a></p>
+1997c2033
+<           error response as specified in <a href="#on_error" class="xref">Section 5.3.2</a> with
+---
+>           error response as specified in <a href="#on_error" class="auto internal xref">Section 5.3.2</a> with
+1999c2035
+<           <span class="bcp14">MUST</span> be unsigned, as specified in <a href="#on_error" class="xref">Section 5.3.2</a>. 
+---
+>           <span class="bcp14">MUST</span> be unsigned, as specified in <a href="#on_error" class="auto internal xref">Section 5.3.2</a>. 
+2015c2051
+<           SHA-512-256 <span>[<a href="#RFC4868" class="xref">RFC4868</a>]</span>.<a href="#section-5.2.2.1-1" class="pilcrow">¶</a></p>
+---
+>           SHA-512-256 <span>[<a href="#RFC4868" class="cite xref">RFC4868</a>]</span>.<a href="#section-5.2.2.1-1" class="pilcrow">¶</a></p>
+2034c2070
+<  in <a href="#on_error" class="xref">Section 5.3.2</a>, where it is
+---
+>  in <a href="#on_error" class="auto internal xref">Section 5.3.2</a>, where it is
+2042c2078
+<  output to an allowable length, as described in <span>[<a href="#RFC2104" class="xref">RFC2104</a>]</span>, taking initial octets and
+---
+>  output to an allowable length, as described in <span>[<a href="#RFC2104" class="cite xref">RFC2104</a>]</span>, taking initial octets and
+2077c2113
+<           <a href="#on_error" class="xref">Section 5.3.2</a>.  The server
+---
+>           <a href="#on_error" class="auto internal xref">Section 5.3.2</a>.  The server
+2098c2134
+<           per <a href="#trunc" class="xref">Section 5.2.2.1</a> but the MAC is too short
+---
+>           per <a href="#trunc" class="auto internal xref">Section 5.2.2.1</a> but the MAC is too short
+2115c2151
+<         or the MAC fails validation; see <a href="#on_error" class="xref">Section 5.3.2</a> for
+---
+>         or the MAC fails validation; see <a href="#on_error" class="auto internal xref">Section 5.3.2</a> for
+2123c2159
+<         secret key establishment algorithm <span>[<a href="#RFC3645" class="xref">RFC3645</a>]</span>.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
+---
+>         secret key establishment algorithm <span>[<a href="#RFC3645" class="cite xref">RFC3645</a>]</span>.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
+2125,2126c2161,2162
+< <ul class="ulEmpty compact">
+< <li class="ulEmpty compact" id="section-5.3-4.1">Request MAC<a href="#section-5.3-4.1" class="pilcrow">¶</a>
+---
+> <ul class="compact ulEmpty">
+> <li class="compact ulEmpty" id="section-5.3-4.1">Request MAC<a href="#section-5.3-4.1" class="pilcrow">¶</a>
+2128c2164
+<           <li class="ulEmpty compact" id="section-5.3-4.2">DNS Message (response)<a href="#section-5.3-4.2" class="pilcrow">¶</a>
+---
+>           <li class="compact ulEmpty" id="section-5.3-4.2">DNS Message (response)<a href="#section-5.3-4.2" class="pilcrow">¶</a>
+2130c2166
+<           <li class="ulEmpty compact" id="section-5.3-4.3">TSIG Variables (response)<a href="#section-5.3-4.3" class="pilcrow">¶</a>
+---
+>           <li class="compact ulEmpty" id="section-5.3-4.3">TSIG Variables (response)<a href="#section-5.3-4.3" class="pilcrow">¶</a>
+2141c2177
+<         (as per <span><a href="https://www.rfc-editor.org/rfc/rfc1035#section-4.2.2" class="relref">Section 4.2.2</a> of [<a href="#RFC1035" class="xref">RFC1035</a>]</span>).<a href="#section-5.3-6" class="pilcrow">¶</a></p>
+---
+>         (as per <span><a href="https://rfc-editor.org/rfc/rfc1035#section-4.2.2" class="relref">Section 4.2.2</a> of [<a href="#RFC1035" class="cite xref">RFC1035</a>]</span>).<a href="#section-5.3-6" class="pilcrow">¶</a></p>
+2154c2190
+< <p id="section-5.3.1-2">The first message is processed as a standard answer (see <a href="#answers" class="xref">Section 5.3</a>), but subsequent messages have
+---
+> <p id="section-5.3.1-2">The first message is processed as a standard answer (see <a href="#answers" class="auto internal xref">Section 5.3</a>), but subsequent messages have
+2156,2157c2192,2193
+< <ul class="ulEmpty compact">
+< <li class="ulEmpty compact" id="section-5.3.1-3.1">Prior MAC (running)<a href="#section-5.3.1-3.1" class="pilcrow">¶</a>
+---
+> <ul class="compact ulEmpty">
+> <li class="compact ulEmpty" id="section-5.3.1-3.1">Prior MAC (running)<a href="#section-5.3.1-3.1" class="pilcrow">¶</a>
+2159c2195
+<             <li class="ulEmpty compact" id="section-5.3.1-3.2">DNS Messages (any unsigned messages since the last TSIG)<a href="#section-5.3.1-3.2" class="pilcrow">¶</a>
+---
+>             <li class="compact ulEmpty" id="section-5.3.1-3.2">DNS Messages (any unsigned messages since the last TSIG)<a href="#section-5.3.1-3.2" class="pilcrow">¶</a>
+2161c2197
+<             <li class="ulEmpty compact" id="section-5.3.1-3.3">TSIG Timers (current message)<a href="#section-5.3.1-3.3" class="pilcrow">¶</a>
+---
+>             <li class="compact ulEmpty" id="section-5.3.1-3.3">TSIG Timers (current message)<a href="#section-5.3.1-3.3" class="pilcrow">¶</a>
+2198,2199c2234,2235
+< <ul class="ulEmpty compact">
+< <li class="ulEmpty compact" id="section-5.3.2-3.1">Request MAC (if the request MAC validated)<a href="#section-5.3.2-3.1" class="pilcrow">¶</a>
+---
+> <ul class="compact ulEmpty">
+> <li class="compact ulEmpty" id="section-5.3.2-3.1">Request MAC (if the request MAC validated)<a href="#section-5.3.2-3.1" class="pilcrow">¶</a>
+2201c2237
+<             <li class="ulEmpty compact" id="section-5.3.2-3.2">DNS Message (response)<a href="#section-5.3.2-3.2" class="pilcrow">¶</a>
+---
+>             <li class="compact ulEmpty" id="section-5.3.2-3.2">DNS Message (response)<a href="#section-5.3.2-3.2" class="pilcrow">¶</a>
+2203c2239
+<             <li class="ulEmpty compact" id="section-5.3.2-3.3">TSIG Variables (response)<a href="#section-5.3.2-3.3" class="pilcrow">¶</a>
+---
+>             <li class="compact ulEmpty" id="section-5.3.2-3.3">TSIG Variables (response)<a href="#section-5.3.2-3.3" class="pilcrow">¶</a>
+2209c2245
+<         generated as specified in <a href="#answers" class="xref">Section 5.3</a>.<a href="#section-5.3.2-4" class="pilcrow">¶</a></p>
+---
+>         generated as specified in <a href="#answers" class="auto internal xref">Section 5.3</a>.<a href="#section-5.3.2-4" class="pilcrow">¶</a></p>
+2224,2225c2260,2261
+<         described in <a href="#request_processing" class="xref">Section 5.2</a>.  If the TSIG RR is
+<         unsigned as specified in <a href="#on_error" class="xref">Section 5.3.2</a> or does not
+---
+>         described in <a href="#request_processing" class="auto internal xref">Section 5.2</a>.  If the TSIG RR is
+>         unsigned as specified in <a href="#on_error" class="auto internal xref">Section 5.3.2</a> or does not
+2230c2266
+<         unsigned as specified in <a href="#on_error" class="xref">Section 5.3.2</a> or that fails
+---
+>         unsigned as specified in <a href="#on_error" class="auto internal xref">Section 5.3.2</a> or that fails
+2280c2316
+<    response as a hint for what the server policy allowed (<a href="#trunc_pol" class="xref">Section 7</a>). Clients
+---
+>    response as a hint for what the server policy allowed (<a href="#trunc_pol" class="auto internal xref">Section 7</a>). Clients
+2301c2337
+<         corresponding response has the AD flag (see <span>[<a href="#RFC4035" class="xref">RFC4035</a>]</span>) set, the forwarder <span class="bcp14">MUST</span> clear the
+---
+>         corresponding response has the AD flag (see <span>[<a href="#RFC4035" class="cite xref">RFC4035</a>]</span>) set, the forwarder <span class="bcp14">MUST</span> clear the
+2315,2317c2351,2353
+<       version of these specifications <span>[<a href="#RFC2845" class="xref">RFC2845</a>]</span> was
+<       "HMAC-MD5" (see <span>[<a href="#RFC1321" class="xref">RFC1321</a>]</span> and <span>[<a href="#RFC2104" class="xref">RFC2104</a>]</span>). 
+<       Although a review of its security some years ago <span>[<a href="#RFC6151" class="xref">RFC6151</a>]</span> concluded 
+---
+>       version of these specifications <span>[<a href="#RFC2845" class="cite xref">RFC2845</a>]</span> was
+>       "HMAC-MD5" (see <span>[<a href="#RFC1321" class="cite xref">RFC1321</a>]</span> and <span>[<a href="#RFC2104" class="cite xref">RFC2104</a>]</span>). 
+>       Although a review of its security some years ago <span>[<a href="#RFC6151" class="cite xref">RFC6151</a>]</span> concluded 
+2322,2325c2358,2361
+< <p id="section-6-2"><span>[<a href="#RFC4635" class="xref">RFC4635</a>]</span> added mandatory support in
+<       TSIG for SHA-1 <span>[<a href="#FIPS180-4" class="xref">FIPS180-4</a>]</span> <span>[<a href="#RFC3174" class="xref">RFC3174</a>]</span>. SHA-1 collisions have been
+<       demonstrated <span>[<a href="#SHA1SHAMBLES" class="xref">SHA1SHAMBLES</a>]</span>, so the MD5
+<       security considerations described in <span><a href="https://www.rfc-editor.org/rfc/rfc6151#section-2" class="relref">Section 2</a> of [<a href="#RFC6151" class="xref">RFC6151</a>]</span> apply to SHA-1 in a similar manner.
+---
+> <p id="section-6-2"><span>[<a href="#RFC4635" class="cite xref">RFC4635</a>]</span> added mandatory support in
+>       TSIG for SHA-1 <span>[<a href="#FIPS180-4" class="cite xref">FIPS180-4</a>]</span> <span>[<a href="#RFC3174" class="cite xref">RFC3174</a>]</span>. SHA-1 collisions have been
+>       demonstrated <span>[<a href="#SHA1SHAMBLES" class="cite xref">SHA1SHAMBLES</a>]</span>, so the MD5
+>       security considerations described in <span><a href="https://rfc-editor.org/rfc/rfc6151#section-2" class="relref">Section 2</a> of [<a href="#RFC6151" class="cite xref">RFC6151</a>]</span> apply to SHA-1 in a similar manner.
+2328c2364
+<       with hmac-sha256 or other SHA-2 digest algorithms (<span>[<a href="#FIPS180-4" class="xref">FIPS180-4</a>]</span>, <span>[<a href="#RFC3874" class="xref">RFC3874</a>]</span>, <span>[<a href="#RFC6234" class="xref">RFC6234</a>]</span>).<a href="#section-6-2" class="pilcrow">¶</a></p>
+---
+>       with hmac-sha256 or other SHA-2 digest algorithms (<span>[<a href="#FIPS180-4" class="cite xref">FIPS180-4</a>]</span>, <span>[<a href="#RFC3874" class="cite xref">RFC3874</a>]</span>, <span>[<a href="#RFC6234" class="cite xref">RFC6234</a>]</span>).<a href="#section-6-2" class="pilcrow">¶</a></p>
+2333,2334c2369,2370
+<       <a href="#trunc" class="xref">Section 5.2.2.1</a>.
+<       Key agreement can be by the TKEY mechanism <span>[<a href="#RFC2930" class="xref">RFC2930</a>]</span>
+---
+>       <a href="#trunc" class="auto internal xref">Section 5.2.2.1</a>.
+>       Key agreement can be by the TKEY mechanism <span>[<a href="#RFC2930" class="cite xref">RFC2930</a>]</span>
+2468c2504
+<       processing rules (<a href="#trunc" class="xref">Section 5.2.2.1</a>, case 1).<a href="#section-7-3" class="pilcrow">¶</a></p>
+---
+>       processing rules (<a href="#trunc" class="auto internal xref">Section 5.2.2.1</a>, case 1).<a href="#section-7-3" class="pilcrow">¶</a></p>
+2493c2529
+<       presents a special problem for <span>[<a href="#RFC2136" class="xref">RFC2136</a>]</span>, which
+---
+>       presents a special problem for <span>[<a href="#RFC2136" class="cite xref">RFC2136</a>]</span>, which
+2497c2533
+<       security of TSIG.  See <span>[<a href="#RFC4086" class="xref">RFC4086</a>]</span> for a discussion
+---
+>       security of TSIG.  See <span>[<a href="#RFC4086" class="cite xref">RFC4086</a>]</span> for a discussion
+2499c2535
+<       output <span>[<a href="#RFC2104" class="xref">RFC2104</a>]</span>.<a href="#section-8-3" class="pilcrow">¶</a></p>
+---
+>       output <span>[<a href="#RFC2104" class="cite xref">RFC2104</a>]</span>.<a href="#section-8-3" class="pilcrow">¶</a></p>
+2506c2542
+<       "Algorithm Names", as defined in <a href="#format" class="xref">Section 4.2</a> <span>[<a href="#IANA-TSIG" class="xref">IANA-TSIG</a>]</span>. Algorithm
+---
+>       "Algorithm Names", as defined in <a href="#format" class="auto internal xref">Section 4.2</a> <span>[<a href="#IANA-TSIG" class="cite xref">IANA-TSIG</a>]</span>. Algorithm
+2510c2546
+<       insensitive. Previous specifications (<span>[<a href="#RFC2845" class="xref">RFC2845</a>]</span> and <span>[<a href="#RFC4635" class="xref">RFC4635</a>]</span>)
+---
+>       insensitive. Previous specifications (<span>[<a href="#RFC2845" class="cite xref">RFC2845</a>]</span> and <span>[<a href="#RFC4635" class="cite xref">RFC4635</a>]</span>)
+2514c2550
+<       Generic Security Service (GSS) <span>[<a href="#RFC3645" class="xref">RFC3645</a>]</span>.  This document
+---
+>       Generic Security Service (GSS) <span>[<a href="#RFC3645" class="cite xref">RFC3645</a>]</span>.  This document
+2516c2552
+<       names listed in <a href="#allowed-algorithms" class="xref">Table 3</a>.<a href="#section-9-1" class="pilcrow">¶</a></p>
+---
+>       names listed in <a href="#allowed-algorithms" class="auto internal xref">Table 3</a>.<a href="#section-9-1" class="pilcrow">¶</a></p>
+2518c2554
+<       the IETF Review policy defined in <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>.
+---
+>       the IETF Review policy defined in <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>.
+2523c2559
+< <p id="section-9-3">IANA maintains a registry of RCODEs (error codes) (see <span>[<a href="#IANA-RCODEs" class="xref">IANA-RCODEs</a>]</span>, including
+---
+> <p id="section-9-3">IANA maintains a registry of RCODEs (error codes) (see <span>[<a href="#IANA-RCODEs" class="cite xref">IANA-RCODEs</a>]</span>, including
+2525,2527c2561,2563
+<       <a href="#format" class="xref">Section 4.2</a>.  This document defines the RCODEs as
+<       described in <a href="#numbers" class="xref">Section 3</a>.  New error codes are assigned and
+<       specified as in <span>[<a href="#RFC6895" class="xref">RFC6895</a>]</span>.<a href="#section-9-3" class="pilcrow">¶</a></p>
+---
+>       <a href="#format" class="auto internal xref">Section 4.2</a>.  This document defines the RCODEs as
+>       described in <a href="#numbers" class="auto internal xref">Section 3</a>.  New error codes are assigned and
+>       specified as in <span>[<a href="#RFC6895" class="cite xref">RFC6895</a>]</span>.<a href="#section-9-3" class="pilcrow">¶</a></p>
+2540c2576
+<       in <span>[<a href="#RFC2104" class="xref">RFC2104</a>]</span>.  If the client host has been compromised,
+---
+>       in <span>[<a href="#RFC2104" class="cite xref">RFC2104</a>]</span>.  If the client host has been compromised,
+2546c2582
+<       <span>[<a href="#RFC2930" class="xref">RFC2930</a>]</span>.  Secrets <span class="bcp14">SHOULD NOT</span> be shared by more than two 
+---
+>       <span>[<a href="#RFC2930" class="cite xref">RFC2930</a>]</span>.  Secrets <span class="bcp14">SHOULD NOT</span> be shared by more than two 
+2565c2601
+<       or manipulate these responses.  <a href="#client_proc_answer" class="xref">Section 5.4</a>
+---
+>       or manipulate these responses.  <a href="#client_proc_answer" class="auto internal xref">Section 5.4</a>
+2573c2609
+<       authentication by brute force <span>[<a href="#RFC2104" class="xref">RFC2104</a>]</span>.<a href="#section-10-7" class="pilcrow">¶</a></p>
+---
+>       authentication by brute force <span>[<a href="#RFC2104" class="cite xref">RFC2104</a>]</span>.<a href="#section-10-7" class="pilcrow">¶</a></p>
+2578c2614
+< <p id="section-10-9">See also the Security Considerations section of <span>[<a href="#RFC2104" class="xref">RFC2104</a>]</span> from which the limits on truncation
+---
+> <p id="section-10-9">See also the Security Considerations section of <span>[<a href="#RFC2104" class="cite xref">RFC2104</a>]</span> from which the limits on truncation
+2588c2624
+<          original TSIG specification <span>[<a href="#RFC2845" class="xref">RFC2845</a>]</span> required
+---
+>          original TSIG specification <span>[<a href="#RFC2845" class="cite xref">RFC2845</a>]</span> required
+2604,2605c2640,2641
+<            (<span>[<a href="#RFC4033" class="xref">RFC4033</a>]</span>, <span>[<a href="#RFC4034" class="xref">RFC4034</a>]</span>, and 
+<            <span>[<a href="#RFC4035" class="xref">RFC4035</a>]</span>) to provide for data origin
+---
+>            (<span>[<a href="#RFC4033" class="cite xref">RFC4033</a>]</span>, <span>[<a href="#RFC4034" class="cite xref">RFC4034</a>]</span>, and 
+>            <span>[<a href="#RFC4035" class="cite xref">RFC4035</a>]</span>) to provide for data origin
+2625c2661
+<    mechanisms may be impractical is authenticating dynamic update <span>[<a href="#RFC2136" class="xref">RFC2136</a>]</span> requests. DNSSEC provides for
+---
+>    mechanisms may be impractical is authenticating dynamic update <span>[<a href="#RFC2136" class="cite xref">RFC2136</a>]</span> requests. DNSSEC provides for
+2629c2665
+<    System Dynamic Update (<span>[<a href="#RFC3007" class="xref">RFC3007</a>]</span>)
+---
+>    System Dynamic Update (<span>[<a href="#RFC3007" class="cite xref">RFC3007</a>]</span>)
+2661c2697
+< <span class="refAuthor">Vixie, P.</span><span class="refAuthor">, Gudmundsson, O.</span><span class="refAuthor">, Eastlake 3rd, D.</span><span class="refAuthor">, and B. Wellington</span>, <span class="refTitle">"Secret Key Transaction Authentication for DNS (TSIG)"</span>, <span class="seriesInfo">RFC 2845</span>, <span class="seriesInfo">DOI 10.17487/RFC2845</span>, <time datetime="2000-05" class="refDate">May 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2845">https://www.rfc-editor.org/info/rfc2845</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Vixie, P.</span>, <span class="refAuthor">Gudmundsson, O.</span>, <span class="refAuthor">Eastlake 3rd, D.</span>, and <span class="refAuthor">B. Wellington</span>, <span class="refTitle">"Secret Key Transaction Authentication for DNS (TSIG)"</span>, <span class="seriesInfo">RFC 2845</span>, <span class="seriesInfo">DOI 10.17487/RFC2845</span>, <time datetime="2000-05" class="refDate">May 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2845">https://www.rfc-editor.org/info/rfc2845</a>&gt;</span>. </dd>
+2708c2744
+< <span class="refAuthor">Krawczyk, H.</span><span class="refAuthor">, Bellare, M.</span><span class="refAuthor">, and R. Canetti</span>, <span class="refTitle">"HMAC: Keyed-Hashing for Message Authentication"</span>, <span class="seriesInfo">RFC 2104</span>, <span class="seriesInfo">DOI 10.17487/RFC2104</span>, <time datetime="1997-02" class="refDate">February 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2104">https://www.rfc-editor.org/info/rfc2104</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Krawczyk, H.</span>, <span class="refAuthor">Bellare, M.</span>, and <span class="refAuthor">R. Canetti</span>, <span class="refTitle">"HMAC: Keyed-Hashing for Message Authentication"</span>, <span class="seriesInfo">RFC 2104</span>, <span class="seriesInfo">DOI 10.17487/RFC2104</span>, <time datetime="1997-02" class="refDate">February 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2104">https://www.rfc-editor.org/info/rfc2104</a>&gt;</span>. </dd>
+2712c2748
+< <span class="refAuthor">Vixie, P., Ed.</span><span class="refAuthor">, Thomson, S.</span><span class="refAuthor">, Rekhter, Y.</span><span class="refAuthor">, and J. Bound</span>, <span class="refTitle">"Dynamic Updates in the Domain Name System (DNS UPDATE)"</span>, <span class="seriesInfo">RFC 2136</span>, <span class="seriesInfo">DOI 10.17487/RFC2136</span>, <time datetime="1997-04" class="refDate">April 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2136">https://www.rfc-editor.org/info/rfc2136</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Vixie, P., Ed.</span>, <span class="refAuthor">Thomson, S.</span>, <span class="refAuthor">Rekhter, Y.</span>, and <span class="refAuthor">J. Bound</span>, <span class="refTitle">"Dynamic Updates in the Domain Name System (DNS UPDATE)"</span>, <span class="seriesInfo">RFC 2136</span>, <span class="seriesInfo">DOI 10.17487/RFC2136</span>, <time datetime="1997-04" class="refDate">April 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2136">https://www.rfc-editor.org/info/rfc2136</a>&gt;</span>. </dd>
+2724c2760
+< <span class="refAuthor">Eastlake 3rd, D.</span><span class="refAuthor"> and P. Jones</span>, <span class="refTitle">"US Secure Hash Algorithm 1 (SHA1)"</span>, <span class="seriesInfo">RFC 3174</span>, <span class="seriesInfo">DOI 10.17487/RFC3174</span>, <time datetime="2001-09" class="refDate">September 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3174">https://www.rfc-editor.org/info/rfc3174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Eastlake 3rd, D.</span> and <span class="refAuthor">P. Jones</span>, <span class="refTitle">"US Secure Hash Algorithm 1 (SHA1)"</span>, <span class="seriesInfo">RFC 3174</span>, <span class="seriesInfo">DOI 10.17487/RFC3174</span>, <time datetime="2001-09" class="refDate">September 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3174">https://www.rfc-editor.org/info/rfc3174</a>&gt;</span>. </dd>
+2728c2764
+< <span class="refAuthor">Kwan, S.</span><span class="refAuthor">, Garg, P.</span><span class="refAuthor">, Gilroy, J.</span><span class="refAuthor">, Esibov, L.</span><span class="refAuthor">, Westhead, J.</span><span class="refAuthor">, and R. Hall</span>, <span class="refTitle">"Generic Security Service Algorithm for Secret Key Transaction Authentication for DNS (GSS-TSIG)"</span>, <span class="seriesInfo">RFC 3645</span>, <span class="seriesInfo">DOI 10.17487/RFC3645</span>, <time datetime="2003-10" class="refDate">October 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3645">https://www.rfc-editor.org/info/rfc3645</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Kwan, S.</span>, <span class="refAuthor">Garg, P.</span>, <span class="refAuthor">Gilroy, J.</span>, <span class="refAuthor">Esibov, L.</span>, <span class="refAuthor">Westhead, J.</span>, and <span class="refAuthor">R. Hall</span>, <span class="refTitle">"Generic Security Service Algorithm for Secret Key Transaction Authentication for DNS (GSS-TSIG)"</span>, <span class="seriesInfo">RFC 3645</span>, <span class="seriesInfo">DOI 10.17487/RFC3645</span>, <time datetime="2003-10" class="refDate">October 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3645">https://www.rfc-editor.org/info/rfc3645</a>&gt;</span>. </dd>
+2736c2772
+< <span class="refAuthor">Arends, R.</span><span class="refAuthor">, Austein, R.</span><span class="refAuthor">, Larson, M.</span><span class="refAuthor">, Massey, D.</span><span class="refAuthor">, and S. Rose</span>, <span class="refTitle">"DNS Security Introduction and Requirements"</span>, <span class="seriesInfo">RFC 4033</span>, <span class="seriesInfo">DOI 10.17487/RFC4033</span>, <time datetime="2005-03" class="refDate">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4033">https://www.rfc-editor.org/info/rfc4033</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Arends, R.</span>, <span class="refAuthor">Austein, R.</span>, <span class="refAuthor">Larson, M.</span>, <span class="refAuthor">Massey, D.</span>, and <span class="refAuthor">S. Rose</span>, <span class="refTitle">"DNS Security Introduction and Requirements"</span>, <span class="seriesInfo">RFC 4033</span>, <span class="seriesInfo">DOI 10.17487/RFC4033</span>, <time datetime="2005-03" class="refDate">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4033">https://www.rfc-editor.org/info/rfc4033</a>&gt;</span>. </dd>
+2740c2776
+< <span class="refAuthor">Arends, R.</span><span class="refAuthor">, Austein, R.</span><span class="refAuthor">, Larson, M.</span><span class="refAuthor">, Massey, D.</span><span class="refAuthor">, and S. Rose</span>, <span class="refTitle">"Resource Records for the DNS Security Extensions"</span>, <span class="seriesInfo">RFC 4034</span>, <span class="seriesInfo">DOI 10.17487/RFC4034</span>, <time datetime="2005-03" class="refDate">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4034">https://www.rfc-editor.org/info/rfc4034</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Arends, R.</span>, <span class="refAuthor">Austein, R.</span>, <span class="refAuthor">Larson, M.</span>, <span class="refAuthor">Massey, D.</span>, and <span class="refAuthor">S. Rose</span>, <span class="refTitle">"Resource Records for the DNS Security Extensions"</span>, <span class="seriesInfo">RFC 4034</span>, <span class="seriesInfo">DOI 10.17487/RFC4034</span>, <time datetime="2005-03" class="refDate">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4034">https://www.rfc-editor.org/info/rfc4034</a>&gt;</span>. </dd>
+2744c2780
+< <span class="refAuthor">Arends, R.</span><span class="refAuthor">, Austein, R.</span><span class="refAuthor">, Larson, M.</span><span class="refAuthor">, Massey, D.</span><span class="refAuthor">, and S. Rose</span>, <span class="refTitle">"Protocol Modifications for the DNS Security Extensions"</span>, <span class="seriesInfo">RFC 4035</span>, <span class="seriesInfo">DOI 10.17487/RFC4035</span>, <time datetime="2005-03" class="refDate">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4035">https://www.rfc-editor.org/info/rfc4035</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Arends, R.</span>, <span class="refAuthor">Austein, R.</span>, <span class="refAuthor">Larson, M.</span>, <span class="refAuthor">Massey, D.</span>, and <span class="refAuthor">S. Rose</span>, <span class="refTitle">"Protocol Modifications for the DNS Security Extensions"</span>, <span class="seriesInfo">RFC 4035</span>, <span class="seriesInfo">DOI 10.17487/RFC4035</span>, <time datetime="2005-03" class="refDate">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4035">https://www.rfc-editor.org/info/rfc4035</a>&gt;</span>. </dd>
+2748c2784
+< <span class="refAuthor">Eastlake 3rd, D.</span><span class="refAuthor">, Schiller, J.</span><span class="refAuthor">, and S. Crocker</span>, <span class="refTitle">"Randomness Requirements for Security"</span>, <span class="seriesInfo">BCP 106</span>, <span class="seriesInfo">RFC 4086</span>, <span class="seriesInfo">DOI 10.17487/RFC4086</span>, <time datetime="2005-06" class="refDate">June 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4086">https://www.rfc-editor.org/info/rfc4086</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Eastlake 3rd, D.</span>, <span class="refAuthor">Schiller, J.</span>, and <span class="refAuthor">S. Crocker</span>, <span class="refTitle">"Randomness Requirements for Security"</span>, <span class="seriesInfo">BCP 106</span>, <span class="seriesInfo">RFC 4086</span>, <span class="seriesInfo">DOI 10.17487/RFC4086</span>, <time datetime="2005-06" class="refDate">June 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4086">https://www.rfc-editor.org/info/rfc4086</a>&gt;</span>. </dd>
+2752c2788
+< <span class="refAuthor">Kelly, S.</span><span class="refAuthor"> and S. Frankel</span>, <span class="refTitle">"Using HMAC-SHA-256, HMAC-SHA-384, and HMAC-SHA-512 with IPsec"</span>, <span class="seriesInfo">RFC 4868</span>, <span class="seriesInfo">DOI 10.17487/RFC4868</span>, <time datetime="2007-05" class="refDate">May 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4868">https://www.rfc-editor.org/info/rfc4868</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Kelly, S.</span> and <span class="refAuthor">S. Frankel</span>, <span class="refTitle">"Using HMAC-SHA-256, HMAC-SHA-384, and HMAC-SHA-512 with IPsec"</span>, <span class="seriesInfo">RFC 4868</span>, <span class="seriesInfo">DOI 10.17487/RFC4868</span>, <time datetime="2007-05" class="refDate">May 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4868">https://www.rfc-editor.org/info/rfc4868</a>&gt;</span>. </dd>
+2756c2792
+< <span class="refAuthor">Turner, S.</span><span class="refAuthor"> and L. Chen</span>, <span class="refTitle">"Updated Security Considerations for the MD5 Message-Digest and the HMAC-MD5 Algorithms"</span>, <span class="seriesInfo">RFC 6151</span>, <span class="seriesInfo">DOI 10.17487/RFC6151</span>, <time datetime="2011-03" class="refDate">March 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6151">https://www.rfc-editor.org/info/rfc6151</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Turner, S.</span> and <span class="refAuthor">L. Chen</span>, <span class="refTitle">"Updated Security Considerations for the MD5 Message-Digest and the HMAC-MD5 Algorithms"</span>, <span class="seriesInfo">RFC 6151</span>, <span class="seriesInfo">DOI 10.17487/RFC6151</span>, <time datetime="2011-03" class="refDate">March 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6151">https://www.rfc-editor.org/info/rfc6151</a>&gt;</span>. </dd>
+2760c2796
+< <span class="refAuthor">Eastlake 3rd, D.</span><span class="refAuthor"> and T. Hansen</span>, <span class="refTitle">"US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)"</span>, <span class="seriesInfo">RFC 6234</span>, <span class="seriesInfo">DOI 10.17487/RFC6234</span>, <time datetime="2011-05" class="refDate">May 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6234">https://www.rfc-editor.org/info/rfc6234</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Eastlake 3rd, D.</span> and <span class="refAuthor">T. Hansen</span>, <span class="refTitle">"US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)"</span>, <span class="seriesInfo">RFC 6234</span>, <span class="seriesInfo">DOI 10.17487/RFC6234</span>, <time datetime="2011-05" class="refDate">May 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6234">https://www.rfc-editor.org/info/rfc6234</a>&gt;</span>. </dd>
+2772c2808
+< <span class="refAuthor">Cotton, M.</span><span class="refAuthor">, Leiba, B.</span><span class="refAuthor">, and T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cotton, M.</span>, <span class="refAuthor">Leiba, B.</span>, and <span class="refAuthor">T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+2776c2812
+< <span class="refAuthor">Leurent, G.</span><span class="refAuthor"> and T. Peyrin</span>, <span class="refTitle">"SHA-1 is a Shambles"</span>, <time datetime="2020-01" class="refDate">January 2020</time>, <span>&lt;<a href="https://eprint.iacr.org/2020/014.pdf">https://eprint.iacr.org/2020/014.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leurent, G.</span> and <span class="refAuthor">T. Peyrin</span>, <span class="refTitle">"SHA-1 is a Shambles"</span>, <time datetime="2020-01" class="refDate">January 2020</time>, <span>&lt;<a href="https://eprint.iacr.org/2020/014.pdf">https://eprint.iacr.org/2020/014.pdf</a>&gt;</span>. </dd>
+2782c2818
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2786,2788c2822,2824
+< <p id="section-appendix.a-1">The security problem addressed by this document was reported by
+<       <span class="contact-name">Clément Berthaux</span> from Synacktiv.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2"><span class="contact-name">Peter van Dijk</span>, <span class="contact-name">Benno       Overeinder</span>, <span class="contact-name">Willem Toroop</span>, <span class="contact-name">Ondrej Sury</span>, <span class="contact-name">Mukund Sivaraman</span>, and
+---
+> <p id="appendix-A-1">The security problem addressed by this document was reported by
+>       <span class="contact-name">Clément Berthaux</span> from Synacktiv.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2"><span class="contact-name">Peter van Dijk</span>, <span class="contact-name">Benno       Overeinder</span>, <span class="contact-name">Willem Toroop</span>, <span class="contact-name">Ondrej Sury</span>, <span class="contact-name">Mukund Sivaraman</span>, and
+2792,2794c2828,2830
+<       wording of the updated document.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-3">Stephen Morris would like to thank Internet Systems Consortium for its
+<   support of his participation in the creation of this document.<a href="#section-appendix.a-3" class="pilcrow">¶</a></p>
+---
+>       wording of the updated document.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+> <p id="appendix-A-3">Stephen Morris would like to thank Internet Systems Consortium for its
+>   support of his participation in the creation of this document.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+2798c2834
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
