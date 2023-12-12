@@ -1,0 +1,1575 @@
+17c17
+< <meta content="xml2rfc 2.35.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+30c30,46
+< <link href="rfc8676.xml" type="application/rfc+xml" rel="alternate">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.18.2
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8676.xml" rel="alternate" type="application/rfc+xml">
+40c56
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+49a66,71
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+52d73
+<   width: extend-to-zoom;
+67c88
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+69a91
+>   overflow-wrap: break-word;
+155a178,186
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+170,173d200
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+174a202
+>   border: none;
+197a226,228
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+239c270,271
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+249c281
+< tt, code, pre, code {
+---
+> tt, code, pre {
+251c283
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+290a323,325
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+380a416,421
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+482c523
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+622d662
+< 
+644a685,687
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+712c755
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+812c855
+< tt, code, pre, code {
+---
+> tt, code, pre {
+817c860
+< pre.sourcecode,
+---
+> .sourcecode pre,
+853c896
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+931,936d973
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1007c1044
+<   margin: 0 0 0.25em 0;
+---
+>   margin-bottom: 0.25em;
+1021c1058
+<   margin-bottom: 0;
+---
+>   margin-bottom: 0.5em;
+1039a1077,1078
+>   .artwork,
+>   .artwork > pre,
+1043,1044c1082,1215
+< }</style>
+< <link href="rfc-local.css" type="text/css" rel="stylesheet">
+---
+> }
+> /* Avoid narrow tables forcing too narrow table captions, which may render badly */
+> table {
+>   min-width: 20em;
+> }
+> /* ol type a */
+> ol.type-a { list-style-type: lower-alpha; }
+> ol.type-A { list-style-type: upper-alpha; }
+> ol.type-i { list-style-type: lower-roman; }
+> ol.type-I { list-style-type: lower-roman; }
+> /* Apply the print table and row borders in general, on request from the RPC,
+> and increase the contrast between border and odd row background slightly */
+> table {
+>   border: 1px solid #ddd;
+> }
+> td {
+>   border-top: 1px solid #ddd;
+> }
+> tr {
+>   break-inside: avoid;
+> }
+> tr:nth-child(2n+1) > td {
+>   background-color: #f8f8f8;
+> }
+> /* Use style rules to govern display of the TOC. */
+> @media screen and (max-width: 1023px) {
+>   #toc nav { display: none; }
+>   #toc.active nav { display: block; }
+> }
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+> <link href="rfc-local.css" rel="stylesheet" type="text/css">
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-softwire-yang-16" rel="prev">
+1047c1218
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-softwire-yang-16" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1049,1050c1220,1221
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1148,1153c1319,1330
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-overview-of-the-modules" class="internal xref">Overview of the Modules</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-overall-structure" class="internal xref">Overall Structure</a></p>
+1155,1162c1332,1333
+<           <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-overview-of-the-modules" class="xref">Overview of the Modules</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-overall-structure" class="xref">Overall Structure</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="toc ulEmpty" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-configuration-for-additiona" class="xref">Configuration for Additional Components</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1" class="keepWithNext"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-configuration-for-additiona" class="internal xref">Configuration for Additional Components</a></p>
+1166,1170c1337,1341
+<           <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-softwire-ce-yang-tree-diagr" class="xref">Softwire CE YANG Tree Diagram</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-ce-tree-diagram" class="xref">CE Tree Diagram</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-softwire-ce-yang-tree-diagr" class="internal xref">Softwire CE YANG Tree Diagram</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1" class="keepWithNext"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-ce-tree-diagram" class="internal xref">CE Tree Diagram</a></p>
+1172,1173c1343,1344
+<               <li class="toc ulEmpty" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-softwire-ce-tree-diagram-de" class="xref">Softwire CE Tree Diagram Description</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1" class="keepWithNext"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-softwire-ce-tree-diagram-de" class="internal xref">Softwire CE Tree Diagram Description</a></p>
+1177,1181c1348,1352
+<           <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-softwire-br-yang-tree-diagr" class="xref">Softwire BR YANG Tree Diagram</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-br-tree-diagram" class="xref">BR Tree Diagram</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-softwire-br-yang-tree-diagr" class="internal xref">Softwire BR YANG Tree Diagram</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1" class="keepWithNext"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-br-tree-diagram" class="internal xref">BR Tree Diagram</a></p>
+1183,1184c1354,1355
+<               <li class="toc ulEmpty" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-softwire-br-tree-diagram-de" class="xref">Softwire BR Tree Diagram Description</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1" class="keepWithNext"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-softwire-br-tree-diagram-de" class="internal xref">Softwire BR Tree Diagram Description</a></p>
+1188,1189c1359,1360
+<           <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-softwire-ce-yang-module" class="xref">Softwire CE YANG Module</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-softwire-ce-yang-module" class="internal xref">Softwire CE YANG Module</a></p>
+1191,1192c1362,1363
+<           <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-br-softwire-yang-module" class="xref">BR Softwire YANG Module</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-br-softwire-yang-module" class="internal xref">BR Softwire YANG Module</a></p>
+1194,1195c1365,1366
+<           <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-common-softwire-element-gro" class="xref">Common Softwire Element Groups YANG Module</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-common-softwire-element-gro" class="internal xref">Common Softwire Element Groups YANG Module</a></p>
+1197,1198c1368,1369
+<           <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1" class="keepWithNext"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1200,1201c1371,1372
+<           <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1" class="keepWithNext"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1203,1207c1374,1378
+<           <li class="toc ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.11.2.1">
+<                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="xref">11.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.11.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1" class="keepWithNext"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
+>                 <p id="section-toc.1-1.11.2.1.1" class="keepWithNext"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1209,1210c1380,1381
+<               <li class="toc ulEmpty" id="section-toc.1-1.11.2.2">
+<                 <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="xref">11.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.11.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
+>                 <p id="section-toc.1-1.11.2.2.1" class="keepWithNext"><a href="#section-11.2" class="auto internal xref">11.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1214,1218c1385,1389
+<           <li class="toc ulEmpty" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-configuration-examples" class="xref">Configuration Examples</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.12.2.1">
+<                 <p id="section-toc.1-1.12.2.1.1"><a href="#section-a.1" class="xref">A.1</a>.  <a href="#name-configuration-example-for-a" class="xref">Configuration Example for a lw4o6 BR Binding-Table</a><a href="#section-toc.1-1.12.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-configuration-examples" class="internal xref">Configuration Examples</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1">
+>                 <p id="section-toc.1-1.12.2.1.1" class="keepWithNext"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <a href="#name-configuration-example-for-a" class="internal xref">Configuration Example for a lw4o6 BR Binding-Table</a></p>
+1220,1221c1391,1392
+<               <li class="toc ulEmpty" id="section-toc.1-1.12.2.2">
+<                 <p id="section-toc.1-1.12.2.2.1"><a href="#section-a.2" class="xref">A.2</a>.  <a href="#name-configuration-example-for-a-" class="xref">Configuration Example for a MAP-E BR</a><a href="#section-toc.1-1.12.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.2">
+>                 <p id="section-toc.1-1.12.2.2.1" class="keepWithNext"><a href="#appendix-A.2" class="auto internal xref">A.2</a>.  <a href="#name-configuration-example-for-a-" class="internal xref">Configuration Example for a MAP-E BR</a></p>
+1223,1224c1394,1395
+<               <li class="toc ulEmpty" id="section-toc.1-1.12.2.3">
+<                 <p id="section-toc.1-1.12.2.3.1"><a href="#section-a.3" class="xref">A.3</a>.  <a href="#name-lw4o6-ce-configuration-exam" class="xref">lw4o6 CE Configuration Example</a><a href="#section-toc.1-1.12.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.3">
+>                 <p id="section-toc.1-1.12.2.3.1" class="keepWithNext"><a href="#appendix-A.3" class="auto internal xref">A.3</a>.  <a href="#name-lw4o6-ce-configuration-exam" class="internal xref">lw4o6 CE Configuration Example</a></p>
+1228,1229c1399,1400
+<           <li class="toc ulEmpty" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1231,1232c1402,1403
+<           <li class="toc ulEmpty" id="section-toc.1-1.14">
+<             <p id="section-toc.1-1.14.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a><a href="#section-toc.1-1.14.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+>             <p id="section-toc.1-1.14.1" class="keepWithNext"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+1234,1235c1405,1406
+<           <li class="toc ulEmpty" id="section-toc.1-1.15">
+<             <p id="section-toc.1-1.15.1"><a href="#section-appendix.d" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.15.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
+>             <p id="section-toc.1-1.15.1" class="keepWithNext"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1252,1257c1423,1428
+<       in <span>[<a href="#RFC7596" class="xref">RFC7596</a>]</span>). The softwire mechanisms
+<       covered in this document are Lightweight 4over6 (lw4o6) <span>[<a href="#RFC7596" class="xref">RFC7596</a>]</span>, Mapping of Address and Port with Encapsulation
+<       (MAP-E) <span>[<a href="#RFC7597" class="xref">RFC7597</a>]</span>, and Mapping of Address and Port
+<       using Translation (MAP-T) <span>[<a href="#RFC7599" class="xref">RFC7599</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+< <p id="section-1-2">This document focuses on A+P mechanisms <span>[<a href="#RFC6346" class="xref">RFC6346</a>]</span>; the reader can refer to <span>[<a href="#RFC8513" class="xref">RFC8513</a>]</span> for a YANG module for Dual-Stack Lite (DS-Lite) <span>[<a href="#RFC6333" class="xref">RFC6333</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+< <p id="section-1-3">This document defines YANG modules <span>[<a href="#RFC7950" class="xref">RFC7950</a>]</span>
+---
+>       in <span>[<a href="#RFC7596" class="cite xref">RFC7596</a>]</span>). The softwire mechanisms
+>       covered in this document are Lightweight 4over6 (lw4o6) <span>[<a href="#RFC7596" class="cite xref">RFC7596</a>]</span>, Mapping of Address and Port with Encapsulation
+>       (MAP-E) <span>[<a href="#RFC7597" class="cite xref">RFC7597</a>]</span>, and Mapping of Address and Port
+>       using Translation (MAP-T) <span>[<a href="#RFC7599" class="cite xref">RFC7599</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+> <p id="section-1-2">This document focuses on A+P mechanisms <span>[<a href="#RFC6346" class="cite xref">RFC6346</a>]</span>; the reader can refer to <span>[<a href="#RFC8513" class="cite xref">RFC8513</a>]</span> for a YANG module for Dual-Stack Lite (DS-Lite) <span>[<a href="#RFC6333" class="cite xref">RFC6333</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+> <p id="section-1-3">This document defines YANG modules <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span>
+1259,1261c1430,1432
+<       NETCONF <span>[<a href="#RFC6241" class="xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="xref">RFC8040</a>]</span> protocols for:<a href="#section-1-3" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-1-4.1">Configuration<a href="#section-1-4.1" class="pilcrow">¶</a>
+---
+>       NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span> protocols for:<a href="#section-1-3" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="section-1-4.1">Configuration<a href="#section-1-4.1" class="pilcrow">¶</a>
+1263c1434
+<         <li id="section-1-4.2">Operational State<a href="#section-1-4.2" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="section-1-4.2">Operational State<a href="#section-1-4.2" class="pilcrow">¶</a>
+1265c1436
+<         <li id="section-1-4.3">Notifications<a href="#section-1-4.3" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="section-1-4.3">Notifications<a href="#section-1-4.3" class="pilcrow">¶</a>
+1276,1277c1447,1448
+<       <span>[<a href="#RFC7596" class="xref">RFC7596</a>]</span>, <span>[<a href="#RFC7597" class="xref">RFC7597</a>]</span>, <span>[<a href="#RFC7599" class="xref">RFC7599</a>]</span>, and the YANG data modeling language defined
+<       in <span>[<a href="#RFC7950" class="xref">RFC7950</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
+---
+>       <span>[<a href="#RFC7596" class="cite xref">RFC7596</a>]</span>, <span>[<a href="#RFC7597" class="cite xref">RFC7597</a>]</span>, <span>[<a href="#RFC7599" class="cite xref">RFC7599</a>]</span>, and the YANG data modeling language defined
+>       in <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
+1279,1280c1450,1451
+<       Datastore Architecture (NMDA) <span>[<a href="#RFC8342" class="xref">RFC8342</a>]</span>. The
+<       meanings of the symbols used in tree diagrams are defined in <span>[<a href="#RFC8340" class="xref">RFC8340</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+---
+>       Datastore Architecture (NMDA) <span>[<a href="#RFC8342" class="cite xref">RFC8342</a>]</span>. The
+>       meanings of the symbols used in tree diagrams are defined in <span>[<a href="#RFC8340" class="cite xref">RFC8340</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+1282c1453
+<       softwire tunnel concentrators, including both MAP Border Routers <span>[<a href="#RFC7597" class="xref">RFC7597</a>]</span> and Lightweight 4over6 lwAFTRs <span>[<a href="#RFC7596" class="xref">RFC7596</a>]</span>.<a href="#section-2-3" class="pilcrow">¶</a></p>
+---
+>       softwire tunnel concentrators, including both MAP Border Routers <span>[<a href="#RFC7597" class="cite xref">RFC7597</a>]</span> and Lightweight 4over6 lwAFTRs <span>[<a href="#RFC7596" class="cite xref">RFC7596</a>]</span>.<a href="#section-2-3" class="pilcrow">¶</a></p>
+1284c1455
+<       defined in <span>[<a href="#RFC7597" class="xref">RFC7597</a>]</span>.<a href="#section-2-4" class="pilcrow">¶</a></p>
+---
+>       defined in <span>[<a href="#RFC7597" class="cite xref">RFC7597</a>]</span>.<a href="#section-2-4" class="pilcrow">¶</a></p>
+1303,1305c1474,1476
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-3.1-2.1">
+<             <dl class="dlNewline" id="section-3.1-2.1.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.1-2.1">
+>             <span class="break"></span><dl class="dlNewline" id="section-3.1-2.1.1">
+1309c1480
+<             augments to the interface YANG module <span>[<a href="#RFC8343" class="xref">RFC8343</a>]</span>.<a href="#section-3.1-2.1.1.2" class="pilcrow">¶</a>
+---
+>             augments to the interface YANG module <span>[<a href="#RFC8343" class="cite xref">RFC8343</a>]</span>.<a href="#section-3.1-2.1.1.2" class="pilcrow">¶</a>
+1310a1482
+>               <dd class="break"></dd>
+1314a1487
+>             <dd class="break"></dd>
+1319,1321c1492,1494
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-3.1-4.1">
+<             <dl class="dlNewline" id="section-3.1-4.1.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.1-4.1">
+>             <span class="break"></span><dl class="dlNewline" id="section-3.1-4.1.1">
+1325a1499
+>             <dd class="break"></dd>
+1340c1514
+<         <a href="#table_s46_mechanism_choices" class="xref">Table 1</a> shows how these
+---
+>         <a href="#table_s46_mechanism_choices" class="auto internal xref">Table 1</a> shows how these
+1392,1393c1566,1567
+< <ul>
+< <li id="section-3.2-2.1">IPv6 forwarding and routing configuration, to enable the CE to
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.2-2.1">IPv6 forwarding and routing configuration, to enable the CE to
+1395c1569
+<             for routing management is described in <span>[<a href="#RFC8349" class="xref">RFC8349</a>]</span>.<a href="#section-3.2-2.1" class="pilcrow">¶</a>
+---
+>             for routing management is described in <span>[<a href="#RFC8349" class="cite xref">RFC8349</a>]</span>.<a href="#section-3.2-2.1" class="pilcrow">¶</a>
+1397c1571
+<           <li id="section-3.2-2.2">IPv4 routing configuration, to add one or more IPv4 destination
+---
+>           <li class="normal" id="section-3.2-2.2">IPv4 routing configuration, to add one or more IPv4 destination
+1399c1573
+<             for routing management is described in <span>[<a href="#RFC8349" class="xref">RFC8349</a>]</span>.<a href="#section-3.2-2.2" class="pilcrow">¶</a>
+---
+>             for routing management is described in <span>[<a href="#RFC8349" class="cite xref">RFC8349</a>]</span>.<a href="#section-3.2-2.2" class="pilcrow">¶</a>
+1401c1575
+<           <li id="section-3.2-2.3">Stateful NAT44/NAPT management, to optionally specify a port
+---
+>           <li class="normal" id="section-3.2-2.3">Stateful NAT44/NAPT management, to optionally specify a port
+1403c1577
+<             module for NAT management is described in <span>[<a href="#RFC8512" class="xref">RFC8512</a>]</span>.<a href="#section-3.2-2.3" class="pilcrow">¶</a>
+---
+>             module for NAT management is described in <span>[<a href="#RFC8512" class="cite xref">RFC8512</a>]</span>.<a href="#section-3.2-2.3" class="pilcrow">¶</a>
+1405c1579
+<           <li id="section-3.2-2.4">Stateless NAT46 management, which is required by
+---
+>           <li class="normal" id="section-3.2-2.4">Stateless NAT46 management, which is required by
+1408c1582
+<             management is described in <span>[<a href="#RFC8512" class="xref">RFC8512</a>]</span>.<a href="#section-3.2-2.4" class="pilcrow">¶</a>
+---
+>             management is described in <span>[<a href="#RFC8512" class="cite xref">RFC8512</a>]</span>.<a href="#section-3.2-2.4" class="pilcrow">¶</a>
+1413c1587
+<         should be referred to, as needed. <a href="#lw4o6-ce-example" class="xref">Appendix A.3</a> provides XML examples of how these
+---
+>         should be referred to, as needed. <a href="#lw4o6-ce-example" class="auto internal xref">Appendix A.3</a> provides XML examples of how these
+1418c1592
+<         modules defined in <span>[<a href="#RFC8344" class="xref">RFC8344</a>]</span> and <span>[<a href="#RFC8349" class="xref">RFC8349</a>]</span> may be used.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
+---
+>         modules defined in <span>[<a href="#RFC8344" class="cite xref">RFC8344</a>]</span> and <span>[<a href="#RFC8349" class="cite xref">RFC8349</a>]</span> may be used.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
+1434c1608
+< <p id="section-4.1-2">This module augments "ietf-interfaces", defined in <span>[<a href="#RFC8343" class="xref">RFC8343</a>]</span> with an entry for the softwire. This entry
+---
+> <p id="section-4.1-2">This module augments "ietf-interfaces", defined in <span>[<a href="#RFC8343" class="cite xref">RFC8343</a>]</span> with an entry for the softwire. This entry
+1436,1437c1610,1611
+<         element. This entry is added only if tunnel type (<a href="#iana" class="xref">Section 10</a>) is set to 'aplusp'.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+< <p id="section-4.1-3"><a href="#tree-diagram-ce" class="xref">Figure 1</a> shows the tree structure of
+---
+>         element. This entry is added only if tunnel type (<a href="#iana" class="auto internal xref">Section 10</a>) is set to 'aplusp'.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+> <p id="section-4.1-3"><a href="#tree-diagram-ce" class="auto internal xref">Figure 1</a> shows the tree structure of
+1441,1442c1615,1616
+<           <div id="section-4.1-4.1">
+< <pre class="sourcecode lang-yangtree">          
+---
+>           <div class="breakable lang-yangtree sourcecode" id="section-4.1-4.1">
+> <pre>          
+1513c1687
+<      </pre><a href="#section-4.1-4.1" class="pilcrow">¶</a>
+---
+>      </pre>
+1527,1529c1701,1703
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-4.2-2.1">
+<             <dl class="dlNewline" id="section-4.2-2.1.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-4.2-2.1">
+>             <span class="break"></span><dl class="dlNewline" id="section-4.2-2.1.1">
+1535a1710
+>               <dd class="break"></dd>
+1541c1716
+<             payload Maximum Receive Unit (MRU) size automatically (see <span><a href="https://www.rfc-editor.org/rfc/rfc4213#section-3.2" class="relref">Section 3.2</a> of [<a href="#RFC4213" class="xref">RFC4213</a>]</span>).<a href="#section-4.2-2.1.1.4" class="pilcrow">¶</a>
+---
+>             payload Maximum Receive Unit (MRU) size automatically (see <span><a href="https://rfc-editor.org/rfc/rfc4213#section-3.2" class="relref">Section 3.2</a> of [<a href="#RFC4213" class="cite xref">RFC4213</a>]</span>).<a href="#section-4.2-2.1.1.4" class="pilcrow">¶</a>
+1542a1718
+>               <dd class="break"></dd>
+1546a1723
+>             <dd class="break"></dd>
+1551,1553c1728,1730
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-4.2-4.1">
+<             <dl class="dlNewline" id="section-4.2-4.1.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-4.2-4.1">
+>             <span class="break"></span><dl class="dlNewline" id="section-4.2-4.1.1">
+1555c1732
+<               <dd id="section-4.2-4.1.1.2">used to set the IPv6 binding prefix type to
+---
+>               <dd style="margin-left: 1.5em" id="section-4.2-4.1.1.2">used to set the IPv6 binding prefix type to
+1558a1736
+>               <dd class="break"></dd>
+1560c1738
+<               <dd id="section-4.2-4.1.1.4">sets the IPv6 address of the remote BR.<a href="#section-4.2-4.1.1.4" class="pilcrow">¶</a>
+---
+>               <dd style="margin-left: 1.5em" id="section-4.2-4.1.1.4">sets the IPv6 address of the remote BR.<a href="#section-4.2-4.1.1.4" class="pilcrow">¶</a>
+1561a1740
+>             <dd class="break"></dd>
+1567,1569c1746,1748
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-4.2-6.1">
+<             <dl class="dlNewline" id="section-4.2-6.1.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-4.2-6.1">
+>             <span class="break"></span><dl class="dlNewline" id="section-4.2-6.1.1">
+1571c1750
+<               <dd id="section-4.2-6.1.1.2">optionally used to associate a version number
+---
+>               <dd style="margin-left: 1.5em" id="section-4.2-6.1.1.2">optionally used to associate a version number
+1573c1752
+<             logging/data retention purposes <span>[<a href="#RFC7422" class="xref">RFC7422</a>]</span>.
+---
+>             logging/data retention purposes <span>[<a href="#RFC7422" class="cite xref">RFC7422</a>]</span>.
+1577a1757
+>               <dd class="break"></dd>
+1579c1759
+<               <dd id="section-4.2-6.1.1.4">specifies whether the rule can be used as a Forwarding
+---
+>               <dd style="margin-left: 1.5em" id="section-4.2-6.1.1.4">specifies whether the rule can be used as a Forwarding
+1581c1761
+<             (BMR) only and must not be used for forwarding. Refer to <span><a href="https://www.rfc-editor.org/rfc/rfc7598#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC7598" class="xref">RFC7598</a>]</span>.<a href="#section-4.2-6.1.1.4" class="pilcrow">¶</a>
+---
+>             (BMR) only and must not be used for forwarding. Refer to <span><a href="https://rfc-editor.org/rfc/rfc7598#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC7598" class="cite xref">RFC7598</a>]</span>.<a href="#section-4.2-6.1.1.4" class="pilcrow">¶</a>
+1582a1763
+>               <dd class="break"></dd>
+1584c1765
+<               <dd id="section-4.2-6.1.1.6">used to set the length of the Embedded-Address (EA),
+---
+>               <dd style="margin-left: 1.5em" id="section-4.2-6.1.1.6">used to set the length of the Embedded-Address (EA),
+1586a1768
+>               <dd class="break"></dd>
+1588c1770
+<               <dd id="section-4.2-6.1.1.8">provides a choice statement for either
+---
+>               <dd style="margin-left: 1.5em" id="section-4.2-6.1.1.8">provides a choice statement for either
+1590a1773
+>               <dd class="break"></dd>
+1592c1775
+<               <dd id="section-4.2-6.1.1.10">defines the IPv6 address of the BR. This
+---
+>               <dd style="margin-left: 1.5em" id="section-4.2-6.1.1.10">defines the IPv6 address of the BR. This
+1594a1778
+>               <dd class="break"></dd>
+1596c1780
+<               <dd id="section-4.2-6.1.1.12">defines the Default Mapping Rule (DMR) IPv6
+---
+>               <dd style="margin-left: 1.5em" id="section-4.2-6.1.1.12">defines the Default Mapping Rule (DMR) IPv6
+1598a1783
+>             <dd class="break"></dd>
+1604,1606c1789,1791
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-4.2-8.1">
+<             <dl class="dlNewline" id="section-4.2-8.1.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-4.2-8.1">
+>             <span class="break"></span><dl class="dlNewline" id="section-4.2-8.1.1">
+1608c1793
+<               <dd id="section-4.2-8.1.1.2">if the CE's binding IPv6 address
+---
+>               <dd style="margin-left: 1.5em" id="section-4.2-8.1.1.2">if the CE's binding IPv6 address
+1610a1796
+>             <dd class="break"></dd>
+1631c1817
+< <p id="section-5.1-2"><a href="#br-structure" class="xref">Figure 2</a> provides the tree structure of
+---
+> <p id="section-5.1-2"><a href="#br-structure" class="auto internal xref">Figure 2</a> provides the tree structure of
+1635,1636c1821,1822
+<           <div id="section-5.1-3.1">
+< <pre class="sourcecode lang-yangtree">
+---
+>           <div class="breakable lang-yangtree sourcecode" id="section-5.1-3.1">
+> <pre>
+1803c1989
+< </pre><a href="#section-5.1-3.1" class="pilcrow">¶</a>
+---
+> </pre>
+1817c2003
+<         provided in <a href="#tree-diagram-ce-desc" class="xref">Section 4.2</a>. Descriptions
+---
+>         provided in <a href="#tree-diagram-ce-desc" class="auto internal xref">Section 4.2</a>. Descriptions
+1819,1821c2005,2007
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-5.2-2.1">
+<             <dl class="dlNewline" id="section-5.2-2.1.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-5.2-2.1">
+>             <span class="break"></span><dl class="dlNewline" id="section-5.2-2.1.1">
+1825c2011
+<             used for logging or data retention purposes <span>[<a href="#RFC7422" class="xref">RFC7422</a>]</span>. The version number is selected to
+---
+>             used for logging or data retention purposes <span>[<a href="#RFC7422" class="cite xref">RFC7422</a>]</span>. The version number is selected to
+1829a2016
+>               <dd class="break"></dd>
+1834c2021
+<             <span>[<a href="#RFC7596" class="xref">RFC7596</a>]</span>.<a href="#section-5.2-2.1.1.4" class="pilcrow">¶</a>
+---
+>             <span>[<a href="#RFC7596" class="cite xref">RFC7596</a>]</span>.<a href="#section-5.2-2.1.1.4" class="pilcrow">¶</a>
+1835a2023
+>               <dd class="break"></dd>
+1841a2030
+>               <dd class="break"></dd>
+1845a2035
+>             <dd class="break"></dd>
+1851,1853c2041,2043
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-5.2-4.1">
+<             <dl class="dlNewline" id="section-5.2-4.1.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-5.2-4.1">
+>             <span class="break"></span><dl class="dlNewline" id="section-5.2-4.1.1">
+1858a2049
+>             <dd class="break"></dd>
+1871,1874c2062,2065
+< <p id="section-6-1">This module imports the modules defined in <span>[<a href="#RFC6991" class="xref">RFC6991</a>]</span>, <span>[<a href="#RFC8343" class="xref">RFC8343</a>]</span>, and <span>[<a href="#RFC7224" class="xref">RFC7224</a>]</span>. It also imports the
+<       'ietf-softwire-common' and 'iana-tunnel-type' modules <span>[<a href="#RFC8675" class="xref">RFC8675</a>]</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
+< <div id="section-6-2">
+< <pre class="sourcecode lang-yang">&lt;CODE BEGINS&gt; file "ietf-softwire-ce@2019-11-16.yang"
+---
+> <p id="section-6-1">This module imports the modules defined in <span>[<a href="#RFC6991" class="cite xref">RFC6991</a>]</span>, <span>[<a href="#RFC8343" class="cite xref">RFC8343</a>]</span>, and <span>[<a href="#RFC7224" class="cite xref">RFC7224</a>]</span>. It also imports the
+>       'ietf-softwire-common' and 'iana-tunnel-type' modules <span>[<a href="#RFC8675" class="cite xref">RFC8675</a>]</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
+> <div class="breakable lang-yang sourcecode" id="section-6-2">
+> <pre>&lt;CODE BEGINS&gt; file "ietf-softwire-ce@2019-11-16.yang"
+2145c2336
+< <p id="section-7-1">This module imports typedefs from <span>[<a href="#RFC6991" class="xref">RFC6991</a>]</span>. It
+---
+> <p id="section-7-1">This module imports typedefs from <span>[<a href="#RFC6991" class="cite xref">RFC6991</a>]</span>. It
+2147,2148c2338,2339
+< <div id="section-7-2">
+< <pre class="sourcecode lang-yang">&lt;CODE BEGINS&gt; file "ietf-softwire-br@2019-11-16.yang"
+---
+> <div class="breakable lang-yang sourcecode" id="section-7-2">
+> <pre>&lt;CODE BEGINS&gt; file "ietf-softwire-br@2019-11-16.yang"
+2757c2948
+< <p id="section-8-1">This module imports typedefs from <span>[<a href="#RFC6991" class="xref">RFC6991</a>]</span>.<a href="#section-8-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-8-1">This module imports typedefs from <span>[<a href="#RFC6991" class="cite xref">RFC6991</a>]</span>.<a href="#section-8-1" class="pilcrow">¶</a></p>
+2760,2761c2951,2952
+< <div id="section-8-3">
+< <pre class="sourcecode lang-yang">&lt;CODE BEGINS&gt; file "ietf-softwire-common@2019-11-16.yang"
+---
+> <div class="breakable lang-yang sourcecode" id="section-8-3">
+> <pre>&lt;CODE BEGINS&gt; file "ietf-softwire-common@2019-11-16.yang"
+3180c3371
+<       via network management protocols such as NETCONF <span>[<a href="#RFC6241" class="xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="xref">RFC8040</a>]</span>. The
+---
+>       via network management protocols such as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. The
+3182,3184c3373,3375
+<       mandatory-to-implement secure transport is Secure Shell (SSH) <span>[<a href="#RFC6242" class="xref">RFC6242</a>]</span>. The lowest RESTCONF layer is HTTPS, and the
+<       mandatory-to-implement secure transport is TLS <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span>.<a href="#section-9-1" class="pilcrow">¶</a></p>
+< <p id="section-9-2">The Network Configuration Access Control Model (NACM) <span>[<a href="#RFC8341" class="xref">RFC8341</a>]</span>
+---
+>       mandatory-to-implement secure transport is Secure Shell (SSH) <span>[<a href="#RFC6242" class="cite xref">RFC6242</a>]</span>. The lowest RESTCONF layer is HTTPS, and the
+>       mandatory-to-implement secure transport is TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-9-1" class="pilcrow">¶</a></p>
+> <p id="section-9-2">The Network Configuration Access Control Model (NACM) <span>[<a href="#RFC8341" class="cite xref">RFC8341</a>]</span>
+3195,3196c3386,3387
+< <ul>
+< <li id="section-9-4.1">Setting the value of 'br-ipv6-addr' on the CE to point to an
+---
+> <ul class="normal">
+> <li class="normal" id="section-9-4.1">Setting the value of 'br-ipv6-addr' on the CE to point to an
+3201c3392
+<         <li id="section-9-4.2">Setting the MTU to a low value, which may increase the number of
+---
+>         <li class="normal" id="section-9-4.2">Setting the MTU to a low value, which may increase the number of
+3204c3395
+<         <li id="section-9-4.3">Disabling hairpinning (i.e., setting 'enable-hairpinning' to
+---
+>         <li class="normal" id="section-9-4.3">Disabling hairpinning (i.e., setting 'enable-hairpinning' to
+3207c3398
+<         <li id="section-9-4.4">Setting 'softwire-num-max' to an arbitrary high value, which may
+---
+>         <li class="normal" id="section-9-4.4">Setting 'softwire-num-max' to an arbitrary high value, which may
+3211c3402
+<         <li id="section-9-4.5">Setting 'icmpv4-rate' or 'icmpv6-rate' to a low value, which may
+---
+>         <li class="normal" id="section-9-4.5">Setting 'icmpv4-rate' or 'icmpv6-rate' to a low value, which may
+3214c3405
+<         <li id="section-9-4.6">Instructing the BR to install entries, which, in turn, will induce a
+---
+>         <li class="normal" id="section-9-4.6">Instructing the BR to install entries, which, in turn, will induce a
+3226,3227c3417,3418
+< <ul>
+< <li id="section-9-6.1">the binding Table
+---
+> <ul class="normal">
+> <li class="normal" id="section-9-6.1">the binding Table
+3230c3421
+<         <li id="section-9-6.2">the algorithm configuration (/br-instances/algorithm/algo-instance/)<a href="#section-9-6.2" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="section-9-6.2">the algorithm configuration (/br-instances/algorithm/algo-instance/)<a href="#section-9-6.2" class="pilcrow">¶</a>
+3234,3235c3425,3426
+<       discussed in <span>[<a href="#RFC7596" class="xref">RFC7596</a>]</span>, <span>[<a href="#RFC7597" class="xref">RFC7597</a>]</span>, and <span>[<a href="#RFC7599" class="xref">RFC7599</a>]</span> respectively.<a href="#section-9-7" class="pilcrow">¶</a></p>
+< <p id="section-9-8">Security considerations given in <span>[<a href="#RFC7950" class="xref">RFC7950</a>]</span> are
+---
+>       discussed in <span>[<a href="#RFC7596" class="cite xref">RFC7596</a>]</span>, <span>[<a href="#RFC7597" class="cite xref">RFC7597</a>]</span>, and <span>[<a href="#RFC7599" class="cite xref">RFC7599</a>]</span> respectively.<a href="#section-9-7" class="pilcrow">¶</a></p>
+> <p id="section-9-8">Security considerations given in <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span> are
+3246,3249c3437,3440
+<       maintained in the SMI Numbers registry <span>[<a href="#TUNNELTYPE-IANA-REGISTRY" class="xref">TUNNELTYPE-IANA-REGISTRY</a>]</span>:<a href="#section-10-1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-10-2.1">
+<           <dl class="dlParallel dlCompact" id="section-10-2.1.1">
+---
+>       maintained in the SMI Numbers registry <span>[<a href="#TUNNELTYPE-IANA-REGISTRY" class="cite xref">TUNNELTYPE-IANA-REGISTRY</a>]</span>:<a href="#section-10-1" class="pilcrow">¶</a></p>
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-10-2.1">
+>           <span class="break"></span><dl class="dlCompact dlParallel" id="section-10-2.1.1">
+3252a3444
+>             <dd class="break"></dd>
+3255a3448
+>             <dd class="break"></dd>
+3258a3452
+>             <dd class="break"></dd>
+3261a3456
+>           <dd class="break"></dd>
+3266,3269c3461,3464
+<       subregistry within the "IETF XML Registry" <span>[<a href="#RFC3688" class="xref">RFC3688</a>]</span>:<a href="#section-10-3" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-10-4.1">
+<           <dl class="dlParallel dlCompact" id="section-10-4.1.1">
+---
+>       subregistry within the "IETF XML Registry" <span>[<a href="#RFC3688" class="cite xref">RFC3688</a>]</span>:<a href="#section-10-3" class="pilcrow">¶</a></p>
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-10-4.1">
+>           <span class="break"></span><dl class="dlCompact dlParallel" id="section-10-4.1.1">
+3271c3466
+<             <dd id="section-10-4.1.1.2">urn:ietf:params:xml:ns:yang:ietf-softwire-ce<a href="#section-10-4.1.1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-4.1.1.2">urn:ietf:params:xml:ns:yang:ietf-softwire-ce<a href="#section-10-4.1.1.2" class="pilcrow">¶</a>
+3272a3468
+>             <dd class="break"></dd>
+3274c3470
+<             <dd id="section-10-4.1.1.4">The IESG.<a href="#section-10-4.1.1.4" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-4.1.1.4">The IESG.<a href="#section-10-4.1.1.4" class="pilcrow">¶</a>
+3275a3472
+>             <dd class="break"></dd>
+3277c3474
+<             <dd id="section-10-4.1.1.6">N/A; the requested URI is an XML namespace.<a href="#section-10-4.1.1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-4.1.1.6">N/A; the requested URI is an XML namespace.<a href="#section-10-4.1.1.6" class="pilcrow">¶</a>
+3278a3476
+>           <dd class="break"></dd>
+3282,3284c3480,3482
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-10-5.1">
+<           <dl class="dlParallel dlCompact" id="section-10-5.1.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-10-5.1">
+>           <span class="break"></span><dl class="dlCompact dlParallel" id="section-10-5.1.1">
+3286c3484
+<             <dd id="section-10-5.1.1.2">urn:ietf:params:xml:ns:yang:ietf-softwire-br<a href="#section-10-5.1.1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-5.1.1.2">urn:ietf:params:xml:ns:yang:ietf-softwire-br<a href="#section-10-5.1.1.2" class="pilcrow">¶</a>
+3287a3486
+>             <dd class="break"></dd>
+3289c3488
+<             <dd id="section-10-5.1.1.4">The IESG.<a href="#section-10-5.1.1.4" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-5.1.1.4">The IESG.<a href="#section-10-5.1.1.4" class="pilcrow">¶</a>
+3290a3490
+>             <dd class="break"></dd>
+3292c3492
+<             <dd id="section-10-5.1.1.6">N/A; the requested URI is an XML namespace.<a href="#section-10-5.1.1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-5.1.1.6">N/A; the requested URI is an XML namespace.<a href="#section-10-5.1.1.6" class="pilcrow">¶</a>
+3293a3494
+>           <dd class="break"></dd>
+3297,3299c3498,3500
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-10-6.1">
+<           <dl class="dlParallel dlCompact" id="section-10-6.1.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-10-6.1">
+>           <span class="break"></span><dl class="dlCompact dlParallel" id="section-10-6.1.1">
+3301c3502
+<             <dd id="section-10-6.1.1.2">urn:ietf:params:xml:ns:yang:ietf-softwire-common<a href="#section-10-6.1.1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-6.1.1.2">urn:ietf:params:xml:ns:yang:ietf-softwire-common<a href="#section-10-6.1.1.2" class="pilcrow">¶</a>
+3302a3504
+>             <dd class="break"></dd>
+3304c3506
+<             <dd id="section-10-6.1.1.4">The IESG.<a href="#section-10-6.1.1.4" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-6.1.1.4">The IESG.<a href="#section-10-6.1.1.4" class="pilcrow">¶</a>
+3305a3508
+>             <dd class="break"></dd>
+3307c3510
+<             <dd id="section-10-6.1.1.6">N/A; the requested URI is an XML namespace.<a href="#section-10-6.1.1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-6.1.1.6">N/A; the requested URI is an XML namespace.<a href="#section-10-6.1.1.6" class="pilcrow">¶</a>
+3308a3512
+>           <dd class="break"></dd>
+3313c3517
+<       in the "YANG Module Names" subregistry <span>[<a href="#RFC6020" class="xref">RFC6020</a>]</span>
+---
+>       in the "YANG Module Names" subregistry <span>[<a href="#RFC6020" class="cite xref">RFC6020</a>]</span>
+3315,3317c3519,3521
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-10-8.1">
+<           <dl class="dlParallel dlCompact" id="section-10-8.1.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-10-8.1">
+>           <span class="break"></span><dl class="dlCompact dlParallel" id="section-10-8.1.1">
+3319c3523
+<             <dd id="section-10-8.1.1.2">ietf-softwire-ce<a href="#section-10-8.1.1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-8.1.1.2">ietf-softwire-ce<a href="#section-10-8.1.1.2" class="pilcrow">¶</a>
+3320a3525
+>             <dd class="break"></dd>
+3322c3527
+<             <dd id="section-10-8.1.1.4">urn:ietf:params:xml:ns:yang:ietf-softwire-ce<a href="#section-10-8.1.1.4" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-8.1.1.4">urn:ietf:params:xml:ns:yang:ietf-softwire-ce<a href="#section-10-8.1.1.4" class="pilcrow">¶</a>
+3323a3529
+>             <dd class="break"></dd>
+3325c3531
+<             <dd id="section-10-8.1.1.6">softwire-ce<a href="#section-10-8.1.1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-8.1.1.6">softwire-ce<a href="#section-10-8.1.1.6" class="pilcrow">¶</a>
+3326a3533
+>             <dd class="break"></dd>
+3328c3535
+<             <dd id="section-10-8.1.1.8">RFC 8676<a href="#section-10-8.1.1.8" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-8.1.1.8">RFC 8676<a href="#section-10-8.1.1.8" class="pilcrow">¶</a>
+3329a3537
+>           <dd class="break"></dd>
+3333,3335c3541,3543
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-10-9.1">
+<           <dl class="dlParallel dlCompact" id="section-10-9.1.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-10-9.1">
+>           <span class="break"></span><dl class="dlCompact dlParallel" id="section-10-9.1.1">
+3337c3545
+<             <dd id="section-10-9.1.1.2">ietf-softwire-br<a href="#section-10-9.1.1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-9.1.1.2">ietf-softwire-br<a href="#section-10-9.1.1.2" class="pilcrow">¶</a>
+3338a3547
+>             <dd class="break"></dd>
+3340c3549
+<             <dd id="section-10-9.1.1.4">urn:ietf:params:xml:ns:yang:ietf-softwire-br<a href="#section-10-9.1.1.4" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-9.1.1.4">urn:ietf:params:xml:ns:yang:ietf-softwire-br<a href="#section-10-9.1.1.4" class="pilcrow">¶</a>
+3341a3551
+>             <dd class="break"></dd>
+3343c3553
+<             <dd id="section-10-9.1.1.6">softwire-br<a href="#section-10-9.1.1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-9.1.1.6">softwire-br<a href="#section-10-9.1.1.6" class="pilcrow">¶</a>
+3344a3555
+>             <dd class="break"></dd>
+3346c3557
+<             <dd id="section-10-9.1.1.8">RFC 8676<a href="#section-10-9.1.1.8" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-9.1.1.8">RFC 8676<a href="#section-10-9.1.1.8" class="pilcrow">¶</a>
+3347a3559
+>           <dd class="break"></dd>
+3351,3353c3563,3565
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-10-10.1">
+<           <dl class="dlParallel dlCompact" id="section-10-10.1.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-10-10.1">
+>           <span class="break"></span><dl class="dlCompact dlParallel" id="section-10-10.1.1">
+3355c3567
+<             <dd id="section-10-10.1.1.2">ietf-softwire-common<a href="#section-10-10.1.1.2" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-10.1.1.2">ietf-softwire-common<a href="#section-10-10.1.1.2" class="pilcrow">¶</a>
+3356a3569
+>             <dd class="break"></dd>
+3358c3571
+<             <dd id="section-10-10.1.1.4">urn:ietf:params:xml:ns:yang:ietf-softwire-common<a href="#section-10-10.1.1.4" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-10.1.1.4">urn:ietf:params:xml:ns:yang:ietf-softwire-common<a href="#section-10-10.1.1.4" class="pilcrow">¶</a>
+3359a3573
+>             <dd class="break"></dd>
+3361c3575
+<             <dd id="section-10-10.1.1.6">softwire-common<a href="#section-10-10.1.1.6" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-10.1.1.6">softwire-common<a href="#section-10-10.1.1.6" class="pilcrow">¶</a>
+3362a3577
+>             <dd class="break"></dd>
+3364c3579
+<             <dd id="section-10-10.1.1.8">RFC 8676<a href="#section-10-10.1.1.8" class="pilcrow">¶</a>
+---
+>             <dd style="margin-left: 1.5em" id="section-10-10.1.1.8">RFC 8676<a href="#section-10-10.1.1.8" class="pilcrow">¶</a>
+3365a3581
+>           <dd class="break"></dd>
+3382c3598,3599
+< <span class="refAuthor">Mealling, M.</span>, <span class="refTitle">"The IETF XML Registry"</span>, <span class="seriesInfo">BCP 81</span>, <span class="seriesInfo">RFC 3688</span>, <span class="seriesInfo">DOI 10.17487/RFC3688</span>, <time datetime="2004-01">January 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3688">https://www.rfc-editor.org/info/rfc3688</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mealling, M.</span>, <span class="refTitle">"The IETF XML Registry"</span>, <span class="seriesInfo">BCP 81</span>, <span class="seriesInfo">RFC 3688</span>, <span class="seriesInfo">DOI 10.17487/RFC3688</span>, <time datetime="2004-01" class="refDate">January 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3688">https://www.rfc-editor.org/info/rfc3688</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3385c3602,3603
+< <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refTitle">"YANG - A Data Modeling Language for the Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6020</span>, <span class="seriesInfo">DOI 10.17487/RFC6020</span>, <time datetime="2010-10">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6020">https://www.rfc-editor.org/info/rfc6020</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refTitle">"YANG - A Data Modeling Language for the Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6020</span>, <span class="seriesInfo">DOI 10.17487/RFC6020</span>, <time datetime="2010-10" class="refDate">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6020">https://www.rfc-editor.org/info/rfc6020</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3388c3606,3607
+< <span class="refAuthor">Enns, R., Ed.</span><span class="refAuthor">, Bjorklund, M., Ed.</span><span class="refAuthor">, Schoenwaelder, J., Ed.</span><span class="refAuthor">, and A. Bierman, Ed.</span>, <span class="refTitle">"Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6241</span>, <span class="seriesInfo">DOI 10.17487/RFC6241</span>, <time datetime="2011-06">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6241">https://www.rfc-editor.org/info/rfc6241</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Enns, R., Ed.</span>, <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refAuthor">Schoenwaelder, J., Ed.</span>, and <span class="refAuthor">A. Bierman, Ed.</span>, <span class="refTitle">"Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6241</span>, <span class="seriesInfo">DOI 10.17487/RFC6241</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6241">https://www.rfc-editor.org/info/rfc6241</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3391c3610,3611
+< <span class="refAuthor">Wasserman, M.</span>, <span class="refTitle">"Using the NETCONF Protocol over Secure Shell (SSH)"</span>, <span class="seriesInfo">RFC 6242</span>, <span class="seriesInfo">DOI 10.17487/RFC6242</span>, <time datetime="2011-06">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6242">https://www.rfc-editor.org/info/rfc6242</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Wasserman, M.</span>, <span class="refTitle">"Using the NETCONF Protocol over Secure Shell (SSH)"</span>, <span class="seriesInfo">RFC 6242</span>, <span class="seriesInfo">DOI 10.17487/RFC6242</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6242">https://www.rfc-editor.org/info/rfc6242</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3394c3614,3615
+< <span class="refAuthor">Schoenwaelder, J., Ed.</span>, <span class="refTitle">"Common YANG Data Types"</span>, <span class="seriesInfo">RFC 6991</span>, <span class="seriesInfo">DOI 10.17487/RFC6991</span>, <time datetime="2013-07">July 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6991">https://www.rfc-editor.org/info/rfc6991</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schoenwaelder, J., Ed.</span>, <span class="refTitle">"Common YANG Data Types"</span>, <span class="seriesInfo">RFC 6991</span>, <span class="seriesInfo">DOI 10.17487/RFC6991</span>, <time datetime="2013-07" class="refDate">July 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6991">https://www.rfc-editor.org/info/rfc6991</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3397c3618,3619
+< <span class="refAuthor">Bjorklund, M.</span>, <span class="refTitle">"IANA Interface Type YANG Module"</span>, <span class="seriesInfo">RFC 7224</span>, <span class="seriesInfo">DOI 10.17487/RFC7224</span>, <time datetime="2014-05">May 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7224">https://www.rfc-editor.org/info/rfc7224</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bjorklund, M.</span>, <span class="refTitle">"IANA Interface Type YANG Module"</span>, <span class="seriesInfo">RFC 7224</span>, <span class="seriesInfo">DOI 10.17487/RFC7224</span>, <time datetime="2014-05" class="refDate">May 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7224">https://www.rfc-editor.org/info/rfc7224</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3400c3622,3623
+< <span class="refAuthor">Cui, Y.</span><span class="refAuthor">, Sun, Q.</span><span class="refAuthor">, Boucadair, M.</span><span class="refAuthor">, Tsou, T.</span><span class="refAuthor">, Lee, Y.</span><span class="refAuthor">, and I. Farrer</span>, <span class="refTitle">"Lightweight 4over6: An Extension to the Dual-Stack Lite Architecture"</span>, <span class="seriesInfo">RFC 7596</span>, <span class="seriesInfo">DOI 10.17487/RFC7596</span>, <time datetime="2015-07">July 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7596">https://www.rfc-editor.org/info/rfc7596</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cui, Y.</span>, <span class="refAuthor">Sun, Q.</span>, <span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Tsou, T.</span>, <span class="refAuthor">Lee, Y.</span>, and <span class="refAuthor">I. Farrer</span>, <span class="refTitle">"Lightweight 4over6: An Extension to the Dual-Stack Lite Architecture"</span>, <span class="seriesInfo">RFC 7596</span>, <span class="seriesInfo">DOI 10.17487/RFC7596</span>, <time datetime="2015-07" class="refDate">July 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7596">https://www.rfc-editor.org/info/rfc7596</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3403c3626,3627
+< <span class="refAuthor">Troan, O., Ed.</span><span class="refAuthor">, Dec, W.</span><span class="refAuthor">, Li, X.</span><span class="refAuthor">, Bao, C.</span><span class="refAuthor">, Matsushima, S.</span><span class="refAuthor">, Murakami, T.</span><span class="refAuthor">, and T. Taylor, Ed.</span>, <span class="refTitle">"Mapping of Address and Port with Encapsulation (MAP-E)"</span>, <span class="seriesInfo">RFC 7597</span>, <span class="seriesInfo">DOI 10.17487/RFC7597</span>, <time datetime="2015-07">July 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7597">https://www.rfc-editor.org/info/rfc7597</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Troan, O., Ed.</span>, <span class="refAuthor">Dec, W.</span>, <span class="refAuthor">Li, X.</span>, <span class="refAuthor">Bao, C.</span>, <span class="refAuthor">Matsushima, S.</span>, <span class="refAuthor">Murakami, T.</span>, and <span class="refAuthor">T. Taylor, Ed.</span>, <span class="refTitle">"Mapping of Address and Port with Encapsulation (MAP-E)"</span>, <span class="seriesInfo">RFC 7597</span>, <span class="seriesInfo">DOI 10.17487/RFC7597</span>, <time datetime="2015-07" class="refDate">July 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7597">https://www.rfc-editor.org/info/rfc7597</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3406c3630,3631
+< <span class="refAuthor">Mrugalski, T.</span><span class="refAuthor">, Troan, O.</span><span class="refAuthor">, Farrer, I.</span><span class="refAuthor">, Perreault, S.</span><span class="refAuthor">, Dec, W.</span><span class="refAuthor">, Bao, C.</span><span class="refAuthor">, Yeh, L.</span><span class="refAuthor">, and X. Deng</span>, <span class="refTitle">"DHCPv6 Options for Configuration of Softwire Address and Port-Mapped Clients"</span>, <span class="seriesInfo">RFC 7598</span>, <span class="seriesInfo">DOI 10.17487/RFC7598</span>, <time datetime="2015-07">July 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7598">https://www.rfc-editor.org/info/rfc7598</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mrugalski, T.</span>, <span class="refAuthor">Troan, O.</span>, <span class="refAuthor">Farrer, I.</span>, <span class="refAuthor">Perreault, S.</span>, <span class="refAuthor">Dec, W.</span>, <span class="refAuthor">Bao, C.</span>, <span class="refAuthor">Yeh, L.</span>, and <span class="refAuthor">X. Deng</span>, <span class="refTitle">"DHCPv6 Options for Configuration of Softwire Address and Port-Mapped Clients"</span>, <span class="seriesInfo">RFC 7598</span>, <span class="seriesInfo">DOI 10.17487/RFC7598</span>, <time datetime="2015-07" class="refDate">July 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7598">https://www.rfc-editor.org/info/rfc7598</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3409c3634,3635
+< <span class="refAuthor">Li, X.</span><span class="refAuthor">, Bao, C.</span><span class="refAuthor">, Dec, W., Ed.</span><span class="refAuthor">, Troan, O.</span><span class="refAuthor">, Matsushima, S.</span><span class="refAuthor">, and T. Murakami</span>, <span class="refTitle">"Mapping of Address and Port using Translation (MAP-T)"</span>, <span class="seriesInfo">RFC 7599</span>, <span class="seriesInfo">DOI 10.17487/RFC7599</span>, <time datetime="2015-07">July 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7599">https://www.rfc-editor.org/info/rfc7599</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Li, X.</span>, <span class="refAuthor">Bao, C.</span>, <span class="refAuthor">Dec, W., Ed.</span>, <span class="refAuthor">Troan, O.</span>, <span class="refAuthor">Matsushima, S.</span>, and <span class="refAuthor">T. Murakami</span>, <span class="refTitle">"Mapping of Address and Port using Translation (MAP-T)"</span>, <span class="seriesInfo">RFC 7599</span>, <span class="seriesInfo">DOI 10.17487/RFC7599</span>, <time datetime="2015-07" class="refDate">July 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7599">https://www.rfc-editor.org/info/rfc7599</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3412c3638,3639
+< <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refTitle">"The YANG 1.1 Data Modeling Language"</span>, <span class="seriesInfo">RFC 7950</span>, <span class="seriesInfo">DOI 10.17487/RFC7950</span>, <time datetime="2016-08">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7950">https://www.rfc-editor.org/info/rfc7950</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refTitle">"The YANG 1.1 Data Modeling Language"</span>, <span class="seriesInfo">RFC 7950</span>, <span class="seriesInfo">DOI 10.17487/RFC7950</span>, <time datetime="2016-08" class="refDate">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7950">https://www.rfc-editor.org/info/rfc7950</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3415c3642,3643
+< <span class="refAuthor">Bierman, A.</span><span class="refAuthor">, Bjorklund, M.</span><span class="refAuthor">, and K. Watsen</span>, <span class="refTitle">"RESTCONF Protocol"</span>, <span class="seriesInfo">RFC 8040</span>, <span class="seriesInfo">DOI 10.17487/RFC8040</span>, <time datetime="2017-01">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8040">https://www.rfc-editor.org/info/rfc8040</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Bjorklund, M.</span>, and <span class="refAuthor">K. Watsen</span>, <span class="refTitle">"RESTCONF Protocol"</span>, <span class="seriesInfo">RFC 8040</span>, <span class="seriesInfo">DOI 10.17487/RFC8040</span>, <time datetime="2017-01" class="refDate">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8040">https://www.rfc-editor.org/info/rfc8040</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3418c3646,3647
+< <span class="refAuthor">Bierman, A.</span><span class="refAuthor"> and M. Bjorklund</span>, <span class="refTitle">"Network Configuration Access Control Model"</span>, <span class="seriesInfo">STD 91</span>, <span class="seriesInfo">RFC 8341</span>, <span class="seriesInfo">DOI 10.17487/RFC8341</span>, <time datetime="2018-03">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8341">https://www.rfc-editor.org/info/rfc8341</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bierman, A.</span> and <span class="refAuthor">M. Bjorklund</span>, <span class="refTitle">"Network Configuration Access Control Model"</span>, <span class="seriesInfo">STD 91</span>, <span class="seriesInfo">RFC 8341</span>, <span class="seriesInfo">DOI 10.17487/RFC8341</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8341">https://www.rfc-editor.org/info/rfc8341</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3421c3650,3651
+< <span class="refAuthor">Bjorklund, M.</span>, <span class="refTitle">"A YANG Data Model for Interface Management"</span>, <span class="seriesInfo">RFC 8343</span>, <span class="seriesInfo">DOI 10.17487/RFC8343</span>, <time datetime="2018-03">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8343">https://www.rfc-editor.org/info/rfc8343</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bjorklund, M.</span>, <span class="refTitle">"A YANG Data Model for Interface Management"</span>, <span class="seriesInfo">RFC 8343</span>, <span class="seriesInfo">DOI 10.17487/RFC8343</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8343">https://www.rfc-editor.org/info/rfc8343</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3424c3654,3655
+< <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8446">https://www.rfc-editor.org/info/rfc8446</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8446">https://www.rfc-editor.org/info/rfc8446</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3427c3658,3659
+< <span class="refAuthor">Boucadair, M.</span><span class="refAuthor">, Farrer, I.</span><span class="refAuthor">, and R. Asati</span>, <span class="refTitle">"A YANG Data Model for Tunnel Interface Types"</span>, <span class="seriesInfo">RFC 8675</span>, <span class="seriesInfo">DOI 10.17487/RFC8675</span>, <time datetime="2019-11">November 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8675">https://www.rfc-editor.org/info/rfc8675</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Farrer, I.</span>, and <span class="refAuthor">R. Asati</span>, <span class="refTitle">"A YANG Data Model for Tunnel Interface Types"</span>, <span class="seriesInfo">RFC 8675</span>, <span class="seriesInfo">DOI 10.17487/RFC8675</span>, <time datetime="2019-11" class="refDate">November 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8675">https://www.rfc-editor.org/info/rfc8675</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3430a3663
+> <dd class="break"></dd>
+3440c3673,3674
+< <span class="refAuthor">Nordmark, E.</span><span class="refAuthor"> and R. Gilligan</span>, <span class="refTitle">"Basic Transition Mechanisms for IPv6 Hosts and Routers"</span>, <span class="seriesInfo">RFC 4213</span>, <span class="seriesInfo">DOI 10.17487/RFC4213</span>, <time datetime="2005-10">October 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4213">https://www.rfc-editor.org/info/rfc4213</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Nordmark, E.</span> and <span class="refAuthor">R. Gilligan</span>, <span class="refTitle">"Basic Transition Mechanisms for IPv6 Hosts and Routers"</span>, <span class="seriesInfo">RFC 4213</span>, <span class="seriesInfo">DOI 10.17487/RFC4213</span>, <time datetime="2005-10" class="refDate">October 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4213">https://www.rfc-editor.org/info/rfc4213</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3443c3677,3678
+< <span class="refAuthor">Durand, A.</span><span class="refAuthor">, Droms, R.</span><span class="refAuthor">, Woodyatt, J.</span><span class="refAuthor">, and Y. Lee</span>, <span class="refTitle">"Dual-Stack Lite Broadband Deployments Following IPv4 Exhaustion"</span>, <span class="seriesInfo">RFC 6333</span>, <span class="seriesInfo">DOI 10.17487/RFC6333</span>, <time datetime="2011-08">August 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6333">https://www.rfc-editor.org/info/rfc6333</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Durand, A.</span>, <span class="refAuthor">Droms, R.</span>, <span class="refAuthor">Woodyatt, J.</span>, and <span class="refAuthor">Y. Lee</span>, <span class="refTitle">"Dual-Stack Lite Broadband Deployments Following IPv4 Exhaustion"</span>, <span class="seriesInfo">RFC 6333</span>, <span class="seriesInfo">DOI 10.17487/RFC6333</span>, <time datetime="2011-08" class="refDate">August 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6333">https://www.rfc-editor.org/info/rfc6333</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3446c3681,3682
+< <span class="refAuthor">Bush, R., Ed.</span>, <span class="refTitle">"The Address plus Port (A+P) Approach to the IPv4 Address Shortage"</span>, <span class="seriesInfo">RFC 6346</span>, <span class="seriesInfo">DOI 10.17487/RFC6346</span>, <time datetime="2011-08">August 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6346">https://www.rfc-editor.org/info/rfc6346</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bush, R., Ed.</span>, <span class="refTitle">"The Address plus Port (A+P) Approach to the IPv4 Address Shortage"</span>, <span class="seriesInfo">RFC 6346</span>, <span class="seriesInfo">DOI 10.17487/RFC6346</span>, <time datetime="2011-08" class="refDate">August 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6346">https://www.rfc-editor.org/info/rfc6346</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3449c3685,3686
+< <span class="refAuthor">Donley, C.</span><span class="refAuthor">, Grundemann, C.</span><span class="refAuthor">, Sarawat, V.</span><span class="refAuthor">, Sundaresan, K.</span><span class="refAuthor">, and O. Vautrin</span>, <span class="refTitle">"Deterministic Address Mapping to Reduce Logging in Carrier-Grade NAT Deployments"</span>, <span class="seriesInfo">RFC 7422</span>, <span class="seriesInfo">DOI 10.17487/RFC7422</span>, <time datetime="2014-12">December 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7422">https://www.rfc-editor.org/info/rfc7422</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Donley, C.</span>, <span class="refAuthor">Grundemann, C.</span>, <span class="refAuthor">Sarawat, V.</span>, <span class="refAuthor">Sundaresan, K.</span>, and <span class="refAuthor">O. Vautrin</span>, <span class="refTitle">"Deterministic Address Mapping to Reduce Logging in Carrier-Grade NAT Deployments"</span>, <span class="seriesInfo">RFC 7422</span>, <span class="seriesInfo">DOI 10.17487/RFC7422</span>, <time datetime="2014-12" class="refDate">December 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7422">https://www.rfc-editor.org/info/rfc7422</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3452c3689,3690
+< <span class="refAuthor">Bjorklund, M.</span><span class="refAuthor"> and L. Berger, Ed.</span>, <span class="refTitle">"YANG Tree Diagrams"</span>, <span class="seriesInfo">BCP 215</span>, <span class="seriesInfo">RFC 8340</span>, <span class="seriesInfo">DOI 10.17487/RFC8340</span>, <time datetime="2018-03">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8340">https://www.rfc-editor.org/info/rfc8340</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bjorklund, M.</span> and <span class="refAuthor">L. Berger, Ed.</span>, <span class="refTitle">"YANG Tree Diagrams"</span>, <span class="seriesInfo">BCP 215</span>, <span class="seriesInfo">RFC 8340</span>, <span class="seriesInfo">DOI 10.17487/RFC8340</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8340">https://www.rfc-editor.org/info/rfc8340</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3455c3693,3694
+< <span class="refAuthor">Bjorklund, M.</span><span class="refAuthor">, Schoenwaelder, J.</span><span class="refAuthor">, Shafer, P.</span><span class="refAuthor">, Watsen, K.</span><span class="refAuthor">, and R. Wilton</span>, <span class="refTitle">"Network Management Datastore Architecture (NMDA)"</span>, <span class="seriesInfo">RFC 8342</span>, <span class="seriesInfo">DOI 10.17487/RFC8342</span>, <time datetime="2018-03">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8342">https://www.rfc-editor.org/info/rfc8342</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bjorklund, M.</span>, <span class="refAuthor">Schoenwaelder, J.</span>, <span class="refAuthor">Shafer, P.</span>, <span class="refAuthor">Watsen, K.</span>, and <span class="refAuthor">R. Wilton</span>, <span class="refTitle">"Network Management Datastore Architecture (NMDA)"</span>, <span class="seriesInfo">RFC 8342</span>, <span class="seriesInfo">DOI 10.17487/RFC8342</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8342">https://www.rfc-editor.org/info/rfc8342</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3458c3697,3698
+< <span class="refAuthor">Bjorklund, M.</span>, <span class="refTitle">"A YANG Data Model for IP Management"</span>, <span class="seriesInfo">RFC 8344</span>, <span class="seriesInfo">DOI 10.17487/RFC8344</span>, <time datetime="2018-03">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8344">https://www.rfc-editor.org/info/rfc8344</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bjorklund, M.</span>, <span class="refTitle">"A YANG Data Model for IP Management"</span>, <span class="seriesInfo">RFC 8344</span>, <span class="seriesInfo">DOI 10.17487/RFC8344</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8344">https://www.rfc-editor.org/info/rfc8344</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3461c3701,3702
+< <span class="refAuthor">Lhotka, L.</span><span class="refAuthor">, Lindem, A.</span><span class="refAuthor">, and Y. Qu</span>, <span class="refTitle">"A YANG Data Model for Routing Management (NMDA Version)"</span>, <span class="seriesInfo">RFC 8349</span>, <span class="seriesInfo">DOI 10.17487/RFC8349</span>, <time datetime="2018-03">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8349">https://www.rfc-editor.org/info/rfc8349</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Lhotka, L.</span>, <span class="refAuthor">Lindem, A.</span>, and <span class="refAuthor">Y. Qu</span>, <span class="refTitle">"A YANG Data Model for Routing Management (NMDA Version)"</span>, <span class="seriesInfo">RFC 8349</span>, <span class="seriesInfo">DOI 10.17487/RFC8349</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8349">https://www.rfc-editor.org/info/rfc8349</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3464c3705,3706
+< <span class="refAuthor">Boucadair, M., Ed.</span><span class="refAuthor">, Sivakumar, S.</span><span class="refAuthor">, Jacquenet, C.</span><span class="refAuthor">, Vinapamula, S.</span><span class="refAuthor">, and Q. Wu</span>, <span class="refTitle">"A YANG Module for Network Address Translation (NAT) and Network Prefix Translation (NPT)"</span>, <span class="seriesInfo">RFC 8512</span>, <span class="seriesInfo">DOI 10.17487/RFC8512</span>, <time datetime="2019-01">January 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8512">https://www.rfc-editor.org/info/rfc8512</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Boucadair, M., Ed.</span>, <span class="refAuthor">Sivakumar, S.</span>, <span class="refAuthor">Jacquenet, C.</span>, <span class="refAuthor">Vinapamula, S.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"A YANG Module for Network Address Translation (NAT) and Network Prefix Translation (NPT)"</span>, <span class="seriesInfo">RFC 8512</span>, <span class="seriesInfo">DOI 10.17487/RFC8512</span>, <time datetime="2019-01" class="refDate">January 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8512">https://www.rfc-editor.org/info/rfc8512</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3467c3709,3710
+< <span class="refAuthor">Boucadair, M.</span><span class="refAuthor">, Jacquenet, C.</span><span class="refAuthor">, and S. Sivakumar</span>, <span class="refTitle">"A YANG Data Model for Dual-Stack Lite (DS-Lite)"</span>, <span class="seriesInfo">RFC 8513</span>, <span class="seriesInfo">DOI 10.17487/RFC8513</span>, <time datetime="2019-01">January 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8513">https://www.rfc-editor.org/info/rfc8513</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Jacquenet, C.</span>, and <span class="refAuthor">S. Sivakumar</span>, <span class="refTitle">"A YANG Data Model for Dual-Stack Lite (DS-Lite)"</span>, <span class="seriesInfo">RFC 8513</span>, <span class="seriesInfo">DOI 10.17487/RFC8513</span>, <time datetime="2019-01" class="refDate">January 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8513">https://www.rfc-editor.org/info/rfc8513</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3472c3715
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+3474c3717
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-configuration-examples" class="section-name selfRef">Configuration Examples</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-configuration-examples" class="section-name selfRef">Configuration Examples</a>
+3476,3477c3719,3720
+< <p id="section-appendix.a-1">The following sections provide examples of how the softwire YANG
+<       modules can be used for configuring softwire elements.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A-1">The following sections provide examples of how the softwire YANG
+>       modules can be used for configuring softwire elements.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+3479,3486c3722,3729
+< <section id="section-a.1">
+<         <h2 id="name-configuration-example-for-a">
+< <a href="#section-a.1" class="section-number selfRef">A.1. </a><a href="#name-configuration-example-for-a" class="section-name selfRef">Configuration Example for a lw4o6 BR Binding-Table</a>
+<         </h2>
+< <p id="section-a.1-1">The lwAFTR maintains an address binding table that contains the
+<         following 3-tuples:<a href="#section-a.1-1" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-a.1-2.1">IPv6 Address for a single lwB4<a href="#section-a.1-2.1" class="pilcrow">¶</a>
+---
+> <section id="appendix-A.1">
+>         <h3 id="name-configuration-example-for-a">
+> <a href="#appendix-A.1" class="section-number selfRef">A.1. </a><a href="#name-configuration-example-for-a" class="section-name selfRef">Configuration Example for a lw4o6 BR Binding-Table</a>
+>         </h3>
+> <p id="appendix-A.1-1">The lwAFTR maintains an address binding table that contains the
+>         following 3-tuples:<a href="#appendix-A.1-1" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="appendix-A.1-2.1">IPv6 Address for a single lwB4<a href="#appendix-A.1-2.1" class="pilcrow">¶</a>
+3488c3731
+<           <li id="section-a.1-2.2">Public IPv4 Address<a href="#section-a.1-2.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="appendix-A.1-2.2">Public IPv4 Address<a href="#appendix-A.1-2.2" class="pilcrow">¶</a>
+3490c3733
+<           <li id="section-a.1-2.3">Restricted port-set<a href="#section-a.1-2.3" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="appendix-A.1-2.3">Restricted port-set<a href="#appendix-A.1-2.3" class="pilcrow">¶</a>
+3493c3736
+< <p id="section-a.1-3">The entry has two functions: the IPv6 encapsulation of inbound IPv4
+---
+> <p id="appendix-A.1-3">The entry has two functions: the IPv6 encapsulation of inbound IPv4
+3495,3512c3738,3759
+<         IPv4-in-IPv6 packets received from the lwB4 for decapsulation.<a href="#section-a.1-3" class="pilcrow">¶</a></p>
+< <p id="section-a.1-4">Consider an example for the following lw4o6 binding table
+<         entry:<a href="#section-a.1-4" class="pilcrow">¶</a></p>
+< <dl class="dlParallel" id="section-a.1-5">
+<           <dt id="section-a.1-5.1">lwB4 Binding IPv6 Address:</dt>
+<           <dd style="margin-left: 14.0em" id="section-a.1-5.2">2001:db8::1<a href="#section-a.1-5.2" class="pilcrow">¶</a>
+< </dd>
+< <dt id="section-a.1-5.3">lwB4 Binding IPv4 Address:</dt>
+<           <dd style="margin-left: 14.0em" id="section-a.1-5.4">192.0.2.1<a href="#section-a.1-5.4" class="pilcrow">¶</a>
+< </dd>
+< <dt id="section-a.1-5.5">lwB4 PSID:</dt>
+<           <dd style="margin-left: 14.0em" id="section-a.1-5.6">0x34<a href="#section-a.1-5.6" class="pilcrow">¶</a>
+< </dd>
+< <dt id="section-a.1-5.7">lwB4 PSID Length</dt>
+<           <dd style="margin-left: 14.0em" id="section-a.1-5.8">8<a href="#section-a.1-5.8" class="pilcrow">¶</a>
+< </dd>
+< <dt id="section-a.1-5.9">BR IPv6 Address:</dt>
+<           <dd style="margin-left: 14.0em" id="section-a.1-5.10">2001:db8:1::2<a href="#section-a.1-5.10" class="pilcrow">¶</a>
+---
+>         IPv4-in-IPv6 packets received from the lwB4 for decapsulation.<a href="#appendix-A.1-3" class="pilcrow">¶</a></p>
+> <p id="appendix-A.1-4">Consider an example for the following lw4o6 binding table
+>         entry:<a href="#appendix-A.1-4" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlParallel" id="appendix-A.1-5">
+>           <dt id="appendix-A.1-5.1">lwB4 Binding IPv6 Address:</dt>
+>           <dd style="margin-left: 14.0em" id="appendix-A.1-5.2">2001:db8::1<a href="#appendix-A.1-5.2" class="pilcrow">¶</a>
+> </dd>
+>           <dd class="break"></dd>
+> <dt id="appendix-A.1-5.3">lwB4 Binding IPv4 Address:</dt>
+>           <dd style="margin-left: 14.0em" id="appendix-A.1-5.4">192.0.2.1<a href="#appendix-A.1-5.4" class="pilcrow">¶</a>
+> </dd>
+>           <dd class="break"></dd>
+> <dt id="appendix-A.1-5.5">lwB4 PSID:</dt>
+>           <dd style="margin-left: 14.0em" id="appendix-A.1-5.6">0x34<a href="#appendix-A.1-5.6" class="pilcrow">¶</a>
+> </dd>
+>           <dd class="break"></dd>
+> <dt id="appendix-A.1-5.7">lwB4 PSID Length</dt>
+>           <dd style="margin-left: 14.0em" id="appendix-A.1-5.8">8<a href="#appendix-A.1-5.8" class="pilcrow">¶</a>
+> </dd>
+>           <dd class="break"></dd>
+> <dt id="appendix-A.1-5.9">BR IPv6 Address:</dt>
+>           <dd style="margin-left: 14.0em" id="appendix-A.1-5.10">2001:db8:1::2<a href="#appendix-A.1-5.10" class="pilcrow">¶</a>
+3513a3761
+>         <dd class="break"></dd>
+3517,3518c3765,3766
+<           <div id="section-a.1-6.1">
+< <pre class="sourcecode lang-xml">    &lt;br-instances&gt;
+---
+>           <div class="lang-xml sourcecode" id="appendix-A.1-6.1">
+> <pre>    &lt;br-instances&gt;
+3538c3786
+<     &lt;/br-instances&gt; </pre><a href="#section-a.1-6.1" class="pilcrow">¶</a>
+---
+>     &lt;/br-instances&gt; </pre>
+3547,3555c3795,3803
+< <section id="section-a.2">
+<         <h2 id="name-configuration-example-for-a-">
+< <a href="#section-a.2" class="section-number selfRef">A.2. </a><a href="#name-configuration-example-for-a-" class="section-name selfRef">Configuration Example for a MAP-E BR</a>
+<         </h2>
+< <p id="section-a.2-1">A MAP-E BR is configured with forward mapping rules for the CEs it
+<         is serving. In this example (taken from <span>[<a href="#RFC7597" class="xref">RFC7597</a>]</span>, Appendix A, Example 2), the following
+<         parameters are required:<a href="#section-a.2-1" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-a.2-2.1">Rule IPv6 Prefix<a href="#section-a.2-2.1" class="pilcrow">¶</a>
+---
+> <section id="appendix-A.2">
+>         <h3 id="name-configuration-example-for-a-">
+> <a href="#appendix-A.2" class="section-number selfRef">A.2. </a><a href="#name-configuration-example-for-a-" class="section-name selfRef">Configuration Example for a MAP-E BR</a>
+>         </h3>
+> <p id="appendix-A.2-1">A MAP-E BR is configured with forward mapping rules for the CEs it
+>         is serving. In this example (taken from <span>[<a href="#RFC7597" class="cite xref">RFC7597</a>]</span>, Appendix A, Example 2), the following
+>         parameters are required:<a href="#appendix-A.2-1" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="appendix-A.2-2.1">Rule IPv6 Prefix<a href="#appendix-A.2-2.1" class="pilcrow">¶</a>
+3557c3805
+<           <li id="section-a.2-2.2">Rule IPv4 Prefix<a href="#section-a.2-2.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="appendix-A.2-2.2">Rule IPv4 Prefix<a href="#appendix-A.2-2.2" class="pilcrow">¶</a>
+3559c3807
+<           <li id="section-a.2-2.3">Rule EA-bit bit length<a href="#section-a.2-2.3" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="appendix-A.2-2.3">Rule EA-bit bit length<a href="#appendix-A.2-2.3" class="pilcrow">¶</a>
+3561c3809
+<           <li id="section-a.2-2.4">IPv6 Address of MAP-BR<a href="#section-a.2-2.4" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="appendix-A.2-2.4">IPv6 Address of MAP-BR<a href="#appendix-A.2-2.4" class="pilcrow">¶</a>
+3564c3812
+< <p id="section-a.2-3">The mapping rule has two functions: identifying the destination CE
+---
+> <p id="appendix-A.2-3">The mapping rule has two functions: identifying the destination CE
+3567,3568c3815,3816
+<         de-capsulation.<a href="#section-a.2-3" class="pilcrow">¶</a></p>
+< <p id="section-a.2-4">The transport type for the data plane also needs to be configured
+---
+>         de-capsulation.<a href="#appendix-A.2-3" class="pilcrow">¶</a></p>
+> <p id="appendix-A.2-4">The transport type for the data plane also needs to be configured
+3570,3587c3818,3839
+<         enabled.<a href="#section-a.2-4" class="pilcrow">¶</a></p>
+< <p id="section-a.2-5">Consider an example for the following MAP-E Forwarding Mapping
+<         Rule:<a href="#section-a.2-5" class="pilcrow">¶</a></p>
+< <dl class="dlParallel" id="section-a.2-6">
+<           <dt id="section-a.2-6.1">Data plane:</dt>
+<           <dd style="margin-left: 10.0em" id="section-a.2-6.2">encapsulation<a href="#section-a.2-6.2" class="pilcrow">¶</a>
+< </dd>
+< <dt id="section-a.2-6.3">Rule IPv6 Prefix:</dt>
+<           <dd style="margin-left: 10.0em" id="section-a.2-6.4">2001:db8::/40<a href="#section-a.2-6.4" class="pilcrow">¶</a>
+< </dd>
+< <dt id="section-a.2-6.5">Rule IPv4 Prefix:</dt>
+<           <dd style="margin-left: 10.0em" id="section-a.2-6.6">192.0.2.0/24<a href="#section-a.2-6.6" class="pilcrow">¶</a>
+< </dd>
+< <dt id="section-a.2-6.7">Rule EA-bit Length:</dt>
+<           <dd style="margin-left: 10.0em" id="section-a.2-6.8">16<a href="#section-a.2-6.8" class="pilcrow">¶</a>
+< </dd>
+< <dt id="section-a.2-6.9">BR IPv6 Address:</dt>
+<           <dd style="margin-left: 10.0em" id="section-a.2-6.10">2001:db8:ffff::1<a href="#section-a.2-6.10" class="pilcrow">¶</a>
+---
+>         enabled.<a href="#appendix-A.2-4" class="pilcrow">¶</a></p>
+> <p id="appendix-A.2-5">Consider an example for the following MAP-E Forwarding Mapping
+>         Rule:<a href="#appendix-A.2-5" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlParallel" id="appendix-A.2-6">
+>           <dt id="appendix-A.2-6.1">Data plane:</dt>
+>           <dd style="margin-left: 10.0em" id="appendix-A.2-6.2">encapsulation<a href="#appendix-A.2-6.2" class="pilcrow">¶</a>
+> </dd>
+>           <dd class="break"></dd>
+> <dt id="appendix-A.2-6.3">Rule IPv6 Prefix:</dt>
+>           <dd style="margin-left: 10.0em" id="appendix-A.2-6.4">2001:db8::/40<a href="#appendix-A.2-6.4" class="pilcrow">¶</a>
+> </dd>
+>           <dd class="break"></dd>
+> <dt id="appendix-A.2-6.5">Rule IPv4 Prefix:</dt>
+>           <dd style="margin-left: 10.0em" id="appendix-A.2-6.6">192.0.2.0/24<a href="#appendix-A.2-6.6" class="pilcrow">¶</a>
+> </dd>
+>           <dd class="break"></dd>
+> <dt id="appendix-A.2-6.7">Rule EA-bit Length:</dt>
+>           <dd style="margin-left: 10.0em" id="appendix-A.2-6.8">16<a href="#appendix-A.2-6.8" class="pilcrow">¶</a>
+> </dd>
+>           <dd class="break"></dd>
+> <dt id="appendix-A.2-6.9">BR IPv6 Address:</dt>
+>           <dd style="margin-left: 10.0em" id="appendix-A.2-6.10">2001:db8:ffff::1<a href="#appendix-A.2-6.10" class="pilcrow">¶</a>
+3588a3841
+>         <dd class="break"></dd>
+3590,3591c3843,3844
+< <p id="section-a.2-7"><a href="#map-e-example-xml" class="xref">Figure 4</a> provides the example MAP-E
+<         BR configuration xml.<a href="#section-a.2-7" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A.2-7"><a href="#map-e-example-xml" class="auto internal xref">Figure 4</a> provides the example MAP-E
+>         BR configuration xml.<a href="#appendix-A.2-7" class="pilcrow">¶</a></p>
+3594,3595c3847,3848
+<           <div id="section-a.2-8.1">
+< <pre class="sourcecode lang-xml">    &lt;br-instances&gt;
+---
+>           <div class="lang-xml sourcecode" id="appendix-A.2-8.1">
+> <pre>    &lt;br-instances&gt;
+3612c3865
+<     &lt;/br-instances&gt;       </pre><a href="#section-a.2-8.1" class="pilcrow">¶</a>
+---
+>     &lt;/br-instances&gt;       </pre>
+3621,3642c3874,3899
+< <section id="section-a.3">
+<         <h2 id="name-lw4o6-ce-configuration-exam">
+< <a href="#section-a.3" class="section-number selfRef">A.3. </a><a href="#name-lw4o6-ce-configuration-exam" class="section-name selfRef">lw4o6 CE Configuration Example</a>
+<         </h2>
+< <p id="section-a.3-1">This section provides XML examples for configuring a lw4o6 CE.
+<         Examples for routing and NAT44 are also provided for convenience.<a href="#section-a.3-1" class="pilcrow">¶</a></p>
+< <p id="section-a.3-2">Consider an example for the following lw4o6 CE configuration:<a href="#section-a.3-2" class="pilcrow">¶</a></p>
+< <dl class="dlParallel" id="section-a.3-3">
+<           <dt id="section-a.3-3.1">lwB4 Binding IPv6 Address:</dt>
+<           <dd style="margin-left: 14.0em" id="section-a.3-3.2">2001:db8::1<a href="#section-a.3-3.2" class="pilcrow">¶</a>
+< </dd>
+< <dt id="section-a.3-3.3">lwB4 Binding IPv4 Address:</dt>
+<           <dd style="margin-left: 14.0em" id="section-a.3-3.4">192.0.2.1<a href="#section-a.3-3.4" class="pilcrow">¶</a>
+< </dd>
+< <dt id="section-a.3-3.5">lwB4 PSID:</dt>
+<           <dd style="margin-left: 14.0em" id="section-a.3-3.6">0x34<a href="#section-a.3-3.6" class="pilcrow">¶</a>
+< </dd>
+< <dt id="section-a.3-3.7">lwB4 PSID Length</dt>
+<           <dd style="margin-left: 14.0em" id="section-a.3-3.8">8<a href="#section-a.3-3.8" class="pilcrow">¶</a>
+< </dd>
+< <dt id="section-a.3-3.9">BR IPv6 Address:</dt>
+<           <dd style="margin-left: 14.0em" id="section-a.3-3.10">2001:db8:1::2<a href="#section-a.3-3.10" class="pilcrow">¶</a>
+---
+> <section id="appendix-A.3">
+>         <h3 id="name-lw4o6-ce-configuration-exam">
+> <a href="#appendix-A.3" class="section-number selfRef">A.3. </a><a href="#name-lw4o6-ce-configuration-exam" class="section-name selfRef">lw4o6 CE Configuration Example</a>
+>         </h3>
+> <p id="appendix-A.3-1">This section provides XML examples for configuring a lw4o6 CE.
+>         Examples for routing and NAT44 are also provided for convenience.<a href="#appendix-A.3-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A.3-2">Consider an example for the following lw4o6 CE configuration:<a href="#appendix-A.3-2" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlParallel" id="appendix-A.3-3">
+>           <dt id="appendix-A.3-3.1">lwB4 Binding IPv6 Address:</dt>
+>           <dd style="margin-left: 14.0em" id="appendix-A.3-3.2">2001:db8::1<a href="#appendix-A.3-3.2" class="pilcrow">¶</a>
+> </dd>
+>           <dd class="break"></dd>
+> <dt id="appendix-A.3-3.3">lwB4 Binding IPv4 Address:</dt>
+>           <dd style="margin-left: 14.0em" id="appendix-A.3-3.4">192.0.2.1<a href="#appendix-A.3-3.4" class="pilcrow">¶</a>
+> </dd>
+>           <dd class="break"></dd>
+> <dt id="appendix-A.3-3.5">lwB4 PSID:</dt>
+>           <dd style="margin-left: 14.0em" id="appendix-A.3-3.6">0x34<a href="#appendix-A.3-3.6" class="pilcrow">¶</a>
+> </dd>
+>           <dd class="break"></dd>
+> <dt id="appendix-A.3-3.7">lwB4 PSID Length</dt>
+>           <dd style="margin-left: 14.0em" id="appendix-A.3-3.8">8<a href="#appendix-A.3-3.8" class="pilcrow">¶</a>
+> </dd>
+>           <dd class="break"></dd>
+> <dt id="appendix-A.3-3.9">BR IPv6 Address:</dt>
+>           <dd style="margin-left: 14.0em" id="appendix-A.3-3.10">2001:db8:1::2<a href="#appendix-A.3-3.10" class="pilcrow">¶</a>
+3643a3901
+>         <dd class="break"></dd>
+3647,3648c3905,3906
+<           <div id="section-a.3-4.1">
+< <pre class="sourcecode lang-xml">
+---
+>           <div class="lang-xml sourcecode" id="appendix-A.3-4.1">
+> <pre>
+3665c3923
+<     </pre><a href="#section-a.3-4.1" class="pilcrow">¶</a>
+---
+>     </pre>
+3671c3929
+< <p id="section-a.3-5">In the example depicted in <a href="#lw4o6-ce-example-xml" class="xref">Figure 5</a>, the interface name is defined
+---
+> <p id="appendix-A.3-5">In the example depicted in <a href="#lw4o6-ce-example-xml" class="auto internal xref">Figure 5</a>, the interface name is defined
+3673c3931
+<         configuration for the IPv4 route. <a href="#lw4o6-ce-routing-example-xml" class="xref">Figure 6</a> provides an example
+---
+>         configuration for the IPv4 route. <a href="#lw4o6-ce-routing-example-xml" class="auto internal xref">Figure 6</a> provides an example
+3675c3933
+<         described in <span>[<a href="#RFC8349" class="xref">RFC8349</a>]</span>.<a href="#section-a.3-5" class="pilcrow">¶</a></p>
+---
+>         described in <span>[<a href="#RFC8349" class="cite xref">RFC8349</a>]</span>.<a href="#appendix-A.3-5" class="pilcrow">¶</a></p>
+3678,3679c3936,3937
+<           <div id="section-a.3-6.1">
+< <pre class="sourcecode lang-xml">
+---
+>           <div class="lang-xml sourcecode" id="appendix-A.3-6.1">
+> <pre>
+3702c3960
+<     </pre><a href="#section-a.3-6.1" class="pilcrow">¶</a>
+---
+>     </pre>
+3708c3966
+< <p id="section-a.3-7"><a href="#lw4o6-ce-nat-example-xml" class="xref">Figure 7</a> provides an example
+---
+> <p id="appendix-A.3-7"><a href="#lw4o6-ce-nat-example-xml" class="auto internal xref">Figure 7</a> provides an example
+3710c3968
+<         described in <span>[<a href="#RFC8512" class="xref">RFC8512</a>]</span>.<a href="#section-a.3-7" class="pilcrow">¶</a></p>
+---
+>         described in <span>[<a href="#RFC8512" class="cite xref">RFC8512</a>]</span>.<a href="#appendix-A.3-7" class="pilcrow">¶</a></p>
+3713,3714c3971,3972
+<           <div id="section-a.3-8.1">
+< <pre class="sourcecode lang-xml">
+---
+>           <div class="breakable lang-xml sourcecode" id="appendix-A.3-8.1">
+> <pre>
+3788c4046
+< </pre><a href="#section-a.3-8.1" class="pilcrow">¶</a>
+---
+> </pre>
+3799c4057
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+3803c4061
+< <p id="section-appendix.b-1">The authors would like to thank Lishan Li, Bert Wijnen, Giles Heron,
+---
+> <p id="appendix-B-1">The authors would like to thank Lishan Li, Bert Wijnen, Giles Heron,
+3805,3808c4063,4066
+<       work.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-2">Thanks to Sheng Jiang for the review.<a href="#section-appendix.b-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-3">Special thanks to Tom Petch and Martin Bjorklund for the detailed
+<       review and suggestions.<a href="#section-appendix.b-3" class="pilcrow">¶</a></p>
+---
+>       work.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+> <p id="appendix-B-2">Thanks to Sheng Jiang for the review.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+> <p id="appendix-B-3">Special thanks to Tom Petch and Martin Bjorklund for the detailed
+>       review and suggestions.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
+3811c4069
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
+3815,3816c4073,4074
+< <p id="section-appendix.c-1">The following individuals are co-authors:<a href="#section-appendix.c-1" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-appendix.c-2">
+---
+> <p id="appendix-C-1">The following individuals are co-authors:<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-C-2">
+3822c4080
+< </pre><a href="#section-appendix.c-2" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-C-2" class="pilcrow">¶</a>
+3824c4082
+< <div class="artwork art-text alignLeft" id="section-appendix.c-3">
+---
+> <div class="alignLeft art-text artwork" id="appendix-C-3">
+3831c4089
+< </pre><a href="#section-appendix.c-3" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-C-3" class="pilcrow">¶</a>
+3833c4091
+< <div class="artwork art-text alignLeft" id="section-appendix.c-4">
+---
+> <div class="alignLeft art-text artwork" id="appendix-C-4">
+3840c4098
+< </pre><a href="#section-appendix.c-4" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-C-4" class="pilcrow">¶</a>
+3842c4100
+< <div class="artwork art-text alignLeft" id="section-appendix.c-5">
+---
+> <div class="alignLeft art-text artwork" id="appendix-C-5">
+3848c4106
+< </pre><a href="#section-appendix.c-5" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-C-5" class="pilcrow">¶</a>
+3850c4108
+< <div class="artwork art-text alignLeft" id="section-appendix.c-6">
+---
+> <div class="alignLeft art-text artwork" id="appendix-C-6">
+3855c4113
+<    Email: Rajiva@cisco.com</pre><a href="#section-appendix.c-6" class="pilcrow">¶</a>
+---
+>    Email: Rajiva@cisco.com</pre><a href="#appendix-C-6" class="pilcrow">¶</a>
+3857c4115
+< <div class="artwork art-text alignLeft" id="section-appendix.c-7">
+---
+> <div class="alignLeft art-text artwork" id="appendix-C-7">
+3863c4121
+<    Email: wangh13@mails.tsinghua.edu.cn</pre><a href="#section-appendix.c-7" class="pilcrow">¶</a>
+---
+>    Email: wangh13@mails.tsinghua.edu.cn</pre><a href="#appendix-C-7" class="pilcrow">¶</a>
+3867c4125
+< <section id="section-appendix.d">
+---
+> <section id="appendix-D">
+3898,3926c4156,4161
+< <script>var toc = document.getElementById("toc");
+< var tocToggle = toc.querySelector("h2");
+< var tocNav = toc.querySelector("nav");
+< 
+< // mobile menu toggle
+< tocToggle.onclick = function(event) {
+<     if (window.innerWidth < 1024) {
+<  var tocNavDisplay = tocNav.currentStyle ? tocNav.currentStyle.display : getComputedStyle(tocNav, null).display;
+<  if (tocNavDisplay == "none") {
+<      tocNav.style.display = "block";
+<  } else {
+<      tocNav.style.display = "none";
+<  }
+<     }
+< }
+< 
+< // toc anchor scroll to anchor
+< tocNav.addEventListener("click", function (event) {
+<     event.preventDefault();
+<     if (event.target.nodeName == 'A') {
+<  if (window.innerWidth < 1024) {
+<      tocNav.style.display = "none";
+<  }
+<  var href = event.target.getAttribute("href");
+<  var anchorId = href.substr(1);
+<  var anchor =  document.getElementById(anchorId);
+<  anchor.scrollIntoView(true);
+<  window.history.pushState("","",href);
+<     }
+---
+> <script>const toc = document.getElementById("toc");
+> toc.querySelector("h2").addEventListener("click", e => {
+>   toc.classList.toggle("active");
+> });
+> toc.querySelector("nav").addEventListener("click", e => {
+>   toc.classList.remove("active");
+3928,3936d4162
+< 
+< // switch toc mode when window resized
+< window.onresize = function () {
+<     if (window.innerWidth < 1024) {
+<  tocNav.style.display = "none";
+<     } else {
+<  tocNav.style.display = "block";
+<     }
+< }
