@@ -1,0 +1,569 @@
+19c19
+< <meta content="xml2rfc 3.5.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+22,39c22,35
+<   xml2rfc 3.5.0
+<     Python 3.6.10
+<     appdirs 1.4.4
+<     ConfigArgParse 1.2.3
+<     google-i18n-address 2.3.5
+<     html5lib 1.0.1
+<     intervaltree 3.0.2
+<     Jinja2 2.11.2
+<     kitchen 1.2.6
+<     lxml 4.4.2
+<     pycairo 1.19.0
+<     pycountry 19.8.18
+<     pyflakes 2.1.1
+<     PyYAML 5.3.1
+<     requests 2.22.0
+<     setuptools 40.6.2
+<     six 1.14.0
+<     WeasyPrint 51
+---
+>   xml2rfc 3.18.2
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+41c37
+< <link href="rfc8849.xml" rel="alternate" type="application/rfc+xml">
+---
+> <link href="rfc/rfc8849.xml" rel="alternate" type="application/rfc+xml">
+51c47
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+60a57,62
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+63d64
+<   width: extend-to-zoom;
+78c79
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+80a82
+>   overflow-wrap: break-word;
+166a169,177
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+181,184d191
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+185a193
+>   border: none;
+208a217,219
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+250c261,262
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+260c272
+< tt, code, pre, code {
+---
+> tt, code, pre {
+262c274
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+301a314,316
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+391a407,412
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+493c514
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+633d653
+< 
+655a676,678
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+723c746
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+823c846
+< tt, code, pre, code {
+---
+> tt, code, pre {
+828c851
+< pre.sourcecode,
+---
+> .sourcecode pre,
+864c887
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1045a1069
+>   .artwork > pre,
+1060c1084
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1066a1091,1093
+> tr {
+>   break-inside: avoid;
+> }
+1086c1113
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1117c1144
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1142c1169
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1160c1187
+< dd > div:first-child > pre.sourcecode,
+---
+> dd > div.sourcecode:first-child,
+1168a1196,1203
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1170a1206
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-clue-rtp-mapping-14" rel="prev">
+1173c1209
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-clue-rtp-mapping-14" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1175,1176c1211,1212
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1273,1290c1309,1326
+< <nav class="toc"><ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="xref">3</a>.  <a href="#name-rtp-topologies-for-clue" class="xref">RTP Topologies for CLUE</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-mapping-clue-capture-encodi" class="xref">Mapping CLUE Capture Encodings to RTP Streams</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-mcc-constituent-captureid-d" class="xref">MCC Constituent CaptureID Definition</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-rtcp-captureid-sdes-item" class="xref">RTCP CaptureID SDES Item</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-rtp-topologies-for-clue" class="internal xref">RTP Topologies for CLUE</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-mapping-clue-capture-encodi" class="internal xref">Mapping CLUE Capture Encodings to RTP Streams</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-mcc-constituent-captureid-d" class="internal xref">MCC Constituent CaptureID Definition</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-rtcp-captureid-sdes-item" class="internal xref">RTCP CaptureID SDES Item</a></p>
+1292,1293c1328,1329
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-rtp-header-extension" class="xref">RTP Header Extension</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-rtp-header-extension" class="internal xref">RTP Header Extension</a></p>
+1297,1298c1333,1334
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-examples" class="xref">Examples</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-examples" class="internal xref">Examples</a></p>
+1300,1301c1336,1337
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-communication-security" class="xref">Communication Security</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-communication-security" class="internal xref">Communication Security</a></p>
+1303,1304c1339,1340
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1306,1313c1342,1349
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.10.2.1">
+<                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="xref">10.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.10.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
+>                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="auto internal xref">10.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1315,1316c1351,1352
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.10.2.2">
+<                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="xref">10.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.10.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
+>                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="auto internal xref">10.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1320,1321c1356,1357
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1323,1324c1359,1360
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1337c1373
+<    The CLUE Framework <span>[<a href="#RFC8845" class="xref">RFC8845</a>]</span> defines Media Captures
+---
+>    The CLUE Framework <span>[<a href="#RFC8845" class="cite xref">RFC8845</a>]</span> defines Media Captures
+1343,1345c1379,1381
+< <p id="section-1-2">SIP Offer/Answer <span>[<a href="#RFC3264" class="xref">RFC3264</a>]</span> uses SDP
+<       <span>[<a href="#RFC4566" class="xref">RFC4566</a>]</span> to describe the RTP media
+<  streams <span>[<a href="#RFC3550" class="xref">RFC3550</a>]</span>.  Each RTP stream 
+---
+> <p id="section-1-2">SIP Offer/Answer <span>[<a href="#RFC3264" class="cite xref">RFC3264</a>]</span> uses SDP
+>       <span>[<a href="#RFC4566" class="cite xref">RFC4566</a>]</span> to describe the RTP media
+>  streams <span>[<a href="#RFC3550" class="cite xref">RFC3550</a>]</span>.  Each RTP stream 
+1354c1390
+<    proposed solution supports multiple RTP topologies <span>[<a href="#RFC7667" class="xref">RFC7667</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
+---
+>    proposed solution supports multiple RTP topologies <span>[<a href="#RFC7667" class="cite xref">RFC7667</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
+1383,1384c1419,1420
+<     to be interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span>
+<         <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when, and only when, they appear in all capitals,
+---
+>     to be interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span>
+>         <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they appear in all capitals,
+1388c1424
+<    (see <span><a href="https://www.rfc-editor.org/rfc/rfc8845#section-3" class="relref">Section 3</a> of [<a href="#RFC8845" class="xref">RFC8845</a>]</span>) are used by this document as
+---
+>    (see <span><a href="https://rfc-editor.org/rfc/rfc8845#section-3" class="relref">Section 3</a> of [<a href="#RFC8845" class="cite xref">RFC8845</a>]</span>) are used by this document as
+1400c1436
+<    topologies are described in <span>[<a href="#RFC7667" class="xref">RFC7667</a>]</span>.  For CLUE telepresence, the
+---
+>    topologies are described in <span>[<a href="#RFC7667" class="cite xref">RFC7667</a>]</span>.  For CLUE telepresence, the
+1412c1448
+<    <span>[<a href="#RFC7205" class="xref">RFC7205</a>]</span>.  In some cases, a CLUE session that, at a high level, is
+---
+>    <span>[<a href="#RFC7205" class="cite xref">RFC7205</a>]</span>.  In some cases, a CLUE session that, at a high level, is
+1419c1455
+<    For the media mixer topology <span>[<a href="#RFC7667" class="xref">RFC7667</a>]</span>, the peers communicate only
+---
+>    For the media mixer topology <span>[<a href="#RFC7667" class="cite xref">RFC7667</a>]</span>, the peers communicate only
+1424c1460
+<    using the conference event package <span>[<a href="#RFC4575" class="xref">RFC4575</a>]</span> element.<a href="#section-3-3" class="pilcrow">¶</a></p>
+---
+>    using the conference event package <span>[<a href="#RFC4575" class="cite xref">RFC4575</a>]</span> element.<a href="#section-3-3" class="pilcrow">¶</a></p>
+1427c1463
+<    described in <span>[<a href="#RFC7667" class="xref">RFC7667</a>]</span>.<a href="#section-3-4" class="pilcrow">¶</a></p>
+---
+>    described in <span>[<a href="#RFC7667" class="cite xref">RFC7667</a>]</span>.<a href="#section-3-4" class="pilcrow">¶</a></p>
+1436c1472
+<    The different topologies described in <a href="#sect-3" class="xref">Section 3</a> create different SSRC
+---
+>    The different topologies described in <a href="#sect-3" class="auto internal xref">Section 3</a> create different SSRC
+1445c1481
+<    content attribute <span>[<a href="#RFC4796" class="xref">RFC4796</a>]</span>, enabling different application behavior
+---
+>    content attribute <span>[<a href="#RFC4796" class="cite xref">RFC4796</a>]</span>, enabling different application behavior
+1461c1497
+<    mechanism described in <span>[<a href="#RFC8843" class="xref">RFC8843</a>]</span> to
+---
+>    mechanism described in <span>[<a href="#RFC8843" class="cite xref">RFC8843</a>]</span> to
+1471c1507
+<    "CLUE Signaling" <span>[<a href="#RFC8848" class="xref">RFC8848</a>]</span>.  It is important, for
+---
+>    "CLUE Signaling" <span>[<a href="#RFC8848" class="cite xref">RFC8848</a>]</span>.  It is important, for
+1503c1539
+<    extension and as an RTCP CaptureID SDES item as specified in <span>[<a href="#RFC7941" class="xref">RFC7941</a>]</span>.<a href="#section-5-3" class="pilcrow">¶</a></p>
+---
+>    extension and as an RTCP CaptureID SDES item as specified in <span>[<a href="#RFC7941" class="cite xref">RFC7941</a>]</span>.<a href="#section-5-3" class="pilcrow">¶</a></p>
+1520c1556
+<    <span>[<a href="#RFC8846" class="xref">RFC8846</a>]</span> defines the captureID syntax as
+---
+>    <span>[<a href="#RFC8846" class="cite xref">RFC8846</a>]</span> defines the captureID syntax as
+1529c1565
+< <div class="artwork art-text alignLeft" id="section-5.1-2">
+---
+> <div class="alignLeft art-text artwork" id="section-5.1-2">
+1547c1583
+<    specified in RFC 5506 <span>[<a href="#RFC5506" class="xref">RFC5506</a>]</span>, in which case it can be sent as an
+---
+>    specified in RFC 5506 <span>[<a href="#RFC5506" class="cite xref">RFC5506</a>]</span>, in which case it can be sent as an
+1557,1558c1593,1594
+<    The CaptureID is also carried in an RTP header extension <span>[<a href="#RFC8285" class="xref">RFC8285</a>]</span>,
+<    using the mechanism defined in <span>[<a href="#RFC7941" class="xref">RFC7941</a>]</span>.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+---
+>    The CaptureID is also carried in an RTP header extension <span>[<a href="#RFC8285" class="cite xref">RFC8285</a>]</span>,
+>    using the mechanism defined in <span>[<a href="#RFC7941" class="cite xref">RFC7941</a>]</span>.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+1567c1603
+<    As discussed in <span>[<a href="#RFC7941" class="xref">RFC7941</a>]</span>, there is no need to send the CaptId Header
+---
+>    As discussed in <span>[<a href="#RFC7941" class="cite xref">RFC7941</a>]</span>, there is no need to send the CaptId Header
+1571c1607
+<    risk of losing it due to packet loss.  See <span>[<a href="#RFC7941" class="xref">RFC7941</a>]</span> for further discussion.<a href="#section-5.2-4" class="pilcrow">¶</a></p>
+---
+>    risk of losing it due to packet loss.  See <span>[<a href="#RFC7941" class="cite xref">RFC7941</a>]</span> for further discussion.<a href="#section-5.2-4" class="pilcrow">¶</a></p>
+1586,1587c1622,1623
+< <div id="section-6-2">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-6-2">
+> <pre>
+1616c1652
+<    the CLUE data model example <span>[<a href="#RFC8846" class="xref">RFC8846</a>]</span> and is not a
+---
+>    the CLUE data model example <span>[<a href="#RFC8846" class="cite xref">RFC8846</a>]</span> and is not a
+1626,1628c1662,1664
+<    CLUE endpoints <span class="bcp14">MUST</span> support RTP/SAVPF profiles and the Secure Real-time Transport Protocol (SRTP) <span>[<a href="#RFC3711" class="xref">RFC3711</a>]</span>.
+<    CLUE endpoints <span class="bcp14">MUST</span> support DTLS <span>[<a href="#RFC6347" class="xref">RFC6347</a>]</span> and DTLS-SRTP <span>[<a href="#RFC5763" class="xref">RFC5763</a>]</span>
+<         <span>[<a href="#RFC5764" class="xref">RFC5764</a>]</span> for SRTP keying.<a href="#section-7-1" class="pilcrow">¶</a></p>
+---
+>    CLUE endpoints <span class="bcp14">MUST</span> support RTP/SAVPF profiles and the Secure Real-time Transport Protocol (SRTP) <span>[<a href="#RFC3711" class="cite xref">RFC3711</a>]</span>.
+>    CLUE endpoints <span class="bcp14">MUST</span> support DTLS <span>[<a href="#RFC6347" class="cite xref">RFC6347</a>]</span> and DTLS-SRTP <span>[<a href="#RFC5763" class="cite xref">RFC5763</a>]</span>
+>         <span>[<a href="#RFC5764" class="cite xref">RFC5764</a>]</span> for SRTP keying.<a href="#section-7-1" class="pilcrow">¶</a></p>
+1632c1668
+<    other means (see <span>[<a href="#RFC7201" class="xref">RFC7201</a>]</span> and <span>[<a href="#RFC7202" class="xref">RFC7202</a>]</span>).<a href="#section-7-2" class="pilcrow">¶</a></p>
+---
+>    other means (see <span>[<a href="#RFC7201" class="cite xref">RFC7201</a>]</span> and <span>[<a href="#RFC7202" class="cite xref">RFC7202</a>]</span>).<a href="#section-7-2" class="pilcrow">¶</a></p>
+1636c1672
+<    curve <span>[<a href="#FIPS186" class="xref">FIPS186</a>]</span>.  The DTLS-SRTP protection profile
+---
+>    curve <span>[<a href="#FIPS186" class="cite xref">FIPS186</a>]</span>.  The DTLS-SRTP protection profile
+1641c1677
+<    cipher suites.  Encrypted SRTP Header extensions <span>[<a href="#RFC6904" class="xref">RFC6904</a>]</span> MUST be supported.<a href="#section-7-3" class="pilcrow">¶</a></p>
+---
+>    cipher suites.  Encrypted SRTP Header extensions <span>[<a href="#RFC6904" class="cite xref">RFC6904</a>]</span> MUST be supported.<a href="#section-7-3" class="pilcrow">¶</a></p>
+1652c1688
+<    specified in <span>[<a href="#RFC7022" class="xref">RFC7022</a>]</span>, and thus can't be used for long-term tracking
+---
+>    specified in <span>[<a href="#RFC7022" class="cite xref">RFC7022</a>]</span>, and thus can't be used for long-term tracking
+1720c1756
+<    Protocol (RTCP)-Based Feedback (RTP/SAVPF)" document <span>[<a href="#RFC5124" class="xref">RFC5124</a>]</span> provides
+---
+>    Protocol (RTCP)-Based Feedback (RTP/SAVPF)" document <span>[<a href="#RFC5124" class="cite xref">RFC5124</a>]</span> provides
+1724,1725c1760,1761
+<    profile and DTLS-SRTP keying <span>[<a href="#RFC5764" class="xref">RFC5764</a>]</span> as defined in the
+<    communication security section of this memo (<a href="#sect-7" class="xref">Section 7</a>).<a href="#section-9-2" class="pilcrow">¶</a></p>
+---
+>    profile and DTLS-SRTP keying <span>[<a href="#RFC5764" class="cite xref">RFC5764</a>]</span> as defined in the
+>    communication security section of this memo (<a href="#sect-7" class="auto internal xref">Section 7</a>).<a href="#section-9-2" class="pilcrow">¶</a></p>
+1732,1733c1768,1769
+<    security section of this memo (<a href="#sect-7" class="xref">Section 7</a>) mandates the generation of short-
+<    term persistent RTCP CNAMEs, as specified in <span>[<a href="#RFC7022" class="xref">RFC7022</a>]</span>, so they can't
+---
+>    security section of this memo (<a href="#sect-7" class="auto internal xref">Section 7</a>) mandates the generation of short-
+>    term persistent RTCP CNAMEs, as specified in <span>[<a href="#RFC7022" class="cite xref">RFC7022</a>]</span>, so they can't
+1741c1777
+<    small value using the SDP "b=RR:" or "b=RS:" lines <span>[<a href="#RFC3556" class="xref">RFC3556</a>]</span>, or some
+---
+>    small value using the SDP "b=RR:" or "b=RS:" lines <span>[<a href="#RFC3556" class="cite xref">RFC3556</a>]</span>, or some
+1744c1780
+<    is the "a=rtcp-fb:... trr-int" parameter) <span>[<a href="#RFC4585" class="xref">RFC4585</a>]</span>. The risks are as
+---
+>    is the "a=rtcp-fb:... trr-int" parameter) <span>[<a href="#RFC4585" class="cite xref">RFC4585</a>]</span>. The risks are as
+1764c1800
+<        <span>[<a href="#RFC4585" class="xref">RFC4585</a>]</span>, as discussed in <span>[<a href="#RFC8108" class="xref">RFC8108</a>]</span>).<a href="#section-9-5.3" class="pilcrow">¶</a>
+---
+>        <span>[<a href="#RFC4585" class="cite xref">RFC4585</a>]</span>, as discussed in <span>[<a href="#RFC8108" class="cite xref">RFC8108</a>]</span>).<a href="#section-9-5.3" class="pilcrow">¶</a>
+1770c1806
+<    <span>[<a href="#RFC8108" class="xref">RFC8108</a>]</span>.  To address the other
+---
+>    <span>[<a href="#RFC8108" class="cite xref">RFC8108</a>]</span>.  To address the other
+1773c1809
+<    interval specified in <span>[<a href="#RFC3550" class="xref">RFC3550</a>]</span> (unless the media data rate is
+---
+>    interval specified in <span>[<a href="#RFC3550" class="cite xref">RFC3550</a>]</span> (unless the media data rate is
+1779c1815
+<    The guidelines in <span>[<a href="#RFC6562" class="xref">RFC6562</a>]</span> apply when using variable bit rate (VBR)
+---
+>    The guidelines in <span>[<a href="#RFC6562" class="cite xref">RFC6562</a>]</span> apply when using variable bit rate (VBR)
+1797c1833
+<    <span>[<a href="#RFC7667" class="xref">RFC7667</a>]</span>.<a href="#section-9-9" class="pilcrow">¶</a></p>
+---
+>    <span>[<a href="#RFC7667" class="cite xref">RFC7667</a>]</span>.<a href="#section-9-9" class="pilcrow">¶</a></p>
+1802,1803c1838,1839
+<    specified in <span><a href="https://www.rfc-editor.org/rfc/rfc7941#section-6" class="relref">Section 6</a> of [<a href="#RFC7941" class="xref">RFC7941</a>]</span> and in the
+<    communication security section of this memo (see <a href="#sect-7" class="xref">Section 7</a>) are applicable.
+---
+>    specified in <span><a href="https://rfc-editor.org/rfc/rfc7941#section-6" class="relref">Section 6</a> of [<a href="#RFC7941" class="cite xref">RFC7941</a>]</span> and in the
+>    communication security section of this memo (see <a href="#sect-7" class="auto internal xref">Section 7</a>) are applicable.
+1825c1861
+< <span class="refAuthor">Baugher, M.</span><span class="refAuthor">, McGrew, D.</span><span class="refAuthor">, Naslund, M.</span><span class="refAuthor">, Carrara, E.</span><span class="refAuthor">, and K. Norrman</span>, <span class="refTitle">"The Secure Real-time Transport Protocol (SRTP)"</span>, <span class="seriesInfo">RFC 3711</span>, <span class="seriesInfo">DOI 10.17487/RFC3711</span>, <time datetime="2004-03" class="refDate">March 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3711">https://www.rfc-editor.org/info/rfc3711</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Baugher, M.</span>, <span class="refAuthor">McGrew, D.</span>, <span class="refAuthor">Naslund, M.</span>, <span class="refAuthor">Carrara, E.</span>, and <span class="refAuthor">K. Norrman</span>, <span class="refTitle">"The Secure Real-time Transport Protocol (SRTP)"</span>, <span class="seriesInfo">RFC 3711</span>, <span class="seriesInfo">DOI 10.17487/RFC3711</span>, <time datetime="2004-03" class="refDate">March 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3711">https://www.rfc-editor.org/info/rfc3711</a>&gt;</span>. </dd>
+1829c1865
+< <span class="refAuthor">Fischl, J.</span><span class="refAuthor">, Tschofenig, H.</span><span class="refAuthor">, and E. Rescorla</span>, <span class="refTitle">"Framework for Establishing a Secure Real-time Transport Protocol (SRTP) Security Context Using Datagram Transport Layer Security (DTLS)"</span>, <span class="seriesInfo">RFC 5763</span>, <span class="seriesInfo">DOI 10.17487/RFC5763</span>, <time datetime="2010-05" class="refDate">May 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5763">https://www.rfc-editor.org/info/rfc5763</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fischl, J.</span>, <span class="refAuthor">Tschofenig, H.</span>, and <span class="refAuthor">E. Rescorla</span>, <span class="refTitle">"Framework for Establishing a Secure Real-time Transport Protocol (SRTP) Security Context Using Datagram Transport Layer Security (DTLS)"</span>, <span class="seriesInfo">RFC 5763</span>, <span class="seriesInfo">DOI 10.17487/RFC5763</span>, <time datetime="2010-05" class="refDate">May 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5763">https://www.rfc-editor.org/info/rfc5763</a>&gt;</span>. </dd>
+1833c1869
+< <span class="refAuthor">McGrew, D.</span><span class="refAuthor"> and E. Rescorla</span>, <span class="refTitle">"Datagram Transport Layer Security (DTLS) Extension to Establish Keys for the Secure Real-time Transport Protocol (SRTP)"</span>, <span class="seriesInfo">RFC 5764</span>, <span class="seriesInfo">DOI 10.17487/RFC5764</span>, <time datetime="2010-05" class="refDate">May 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5764">https://www.rfc-editor.org/info/rfc5764</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">McGrew, D.</span> and <span class="refAuthor">E. Rescorla</span>, <span class="refTitle">"Datagram Transport Layer Security (DTLS) Extension to Establish Keys for the Secure Real-time Transport Protocol (SRTP)"</span>, <span class="seriesInfo">RFC 5764</span>, <span class="seriesInfo">DOI 10.17487/RFC5764</span>, <time datetime="2010-05" class="refDate">May 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5764">https://www.rfc-editor.org/info/rfc5764</a>&gt;</span>. </dd>
+1837c1873
+< <span class="refAuthor">Rescorla, E.</span><span class="refAuthor"> and N. Modadugu</span>, <span class="refTitle">"Datagram Transport Layer Security Version 1.2"</span>, <span class="seriesInfo">RFC 6347</span>, <span class="seriesInfo">DOI 10.17487/RFC6347</span>, <time datetime="2012-01" class="refDate">January 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6347">https://www.rfc-editor.org/info/rfc6347</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rescorla, E.</span> and <span class="refAuthor">N. Modadugu</span>, <span class="refTitle">"Datagram Transport Layer Security Version 1.2"</span>, <span class="seriesInfo">RFC 6347</span>, <span class="seriesInfo">DOI 10.17487/RFC6347</span>, <time datetime="2012-01" class="refDate">January 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6347">https://www.rfc-editor.org/info/rfc6347</a>&gt;</span>. </dd>
+1845c1881
+< <span class="refAuthor">Westerlund, M.</span><span class="refAuthor">, Burman, B.</span><span class="refAuthor">, Even, R.</span><span class="refAuthor">, and M. Zanaty</span>, <span class="refTitle">"RTP Header Extension for the RTP Control Protocol (RTCP) Source Description Items"</span>, <span class="seriesInfo">RFC 7941</span>, <span class="seriesInfo">DOI 10.17487/RFC7941</span>, <time datetime="2016-08" class="refDate">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7941">https://www.rfc-editor.org/info/rfc7941</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Westerlund, M.</span>, <span class="refAuthor">Burman, B.</span>, <span class="refAuthor">Even, R.</span>, and <span class="refAuthor">M. Zanaty</span>, <span class="refTitle">"RTP Header Extension for the RTP Control Protocol (RTCP) Source Description Items"</span>, <span class="seriesInfo">RFC 7941</span>, <span class="seriesInfo">DOI 10.17487/RFC7941</span>, <time datetime="2016-08" class="refDate">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7941">https://www.rfc-editor.org/info/rfc7941</a>&gt;</span>. </dd>
+1853c1889
+< <span class="refAuthor">Holmberg, C.</span><span class="refAuthor">, Alvestrand, H.</span><span class="refAuthor">, and C. Jennings</span>, <span class="refTitle">"Negotiating Media Multiplexing Using the Session Description Protocol (SDP)"</span>, <span class="seriesInfo">RFC 8843</span>, <span class="seriesInfo">DOI 10.17487/RFC8843</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8843">https://www.rfc-editor.org/info/rfc8843</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Holmberg, C.</span>, <span class="refAuthor">Alvestrand, H.</span>, and <span class="refAuthor">C. Jennings</span>, <span class="refTitle">"Negotiating Media Multiplexing Using the Session Description Protocol (SDP)"</span>, <span class="seriesInfo">RFC 8843</span>, <span class="seriesInfo">DOI 10.17487/RFC8843</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8843">https://www.rfc-editor.org/info/rfc8843</a>&gt;</span>. </dd>
+1857c1893
+< <span class="refAuthor">Duckworth, M., Ed.</span><span class="refAuthor">, Pepperell, A.</span><span class="refAuthor">, and S. Wenger</span>, <span class="refTitle">"Framework for Telepresence Multi-Streams"</span>, <span class="seriesInfo">RFC 8845</span>, <span class="seriesInfo">DOI 10.17487/RFC8845</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8845">https://www.rfc-editor.org/info/rfc8845</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Duckworth, M., Ed.</span>, <span class="refAuthor">Pepperell, A.</span>, and <span class="refAuthor">S. Wenger</span>, <span class="refTitle">"Framework for Telepresence Multi-Streams"</span>, <span class="seriesInfo">RFC 8845</span>, <span class="seriesInfo">DOI 10.17487/RFC8845</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8845">https://www.rfc-editor.org/info/rfc8845</a>&gt;</span>. </dd>
+1861c1897
+< <span class="refAuthor">Presta, R.</span><span class="refAuthor"> and S P. Romano</span>, <span class="refTitle">"An XML Schema for the Controlling Multiple Streams for Telepresence (CLUE) Data Model"</span>, <span class="seriesInfo">RFC 8846</span>, <span class="seriesInfo">DOI 10.17487/RFC8846</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="http://www.rfc-editor.org/info/rfc8846">http://www.rfc-editor.org/info/rfc8846</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Presta, R.</span> and <span class="refAuthor">S P. Romano</span>, <span class="refTitle">"An XML Schema for the Controlling Multiple Streams for Telepresence (CLUE) Data Model"</span>, <span class="seriesInfo">RFC 8846</span>, <span class="seriesInfo">DOI 10.17487/RFC8846</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="http://www.rfc-editor.org/info/rfc8846">http://www.rfc-editor.org/info/rfc8846</a>&gt;</span>. </dd>
+1876c1912
+< <span class="refAuthor">Rosenberg, J.</span><span class="refAuthor"> and H. Schulzrinne</span>, <span class="refTitle">"An Offer/Answer Model with Session Description Protocol (SDP)"</span>, <span class="seriesInfo">RFC 3264</span>, <span class="seriesInfo">DOI 10.17487/RFC3264</span>, <time datetime="2002-06" class="refDate">June 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3264">https://www.rfc-editor.org/info/rfc3264</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rosenberg, J.</span> and <span class="refAuthor">H. Schulzrinne</span>, <span class="refTitle">"An Offer/Answer Model with Session Description Protocol (SDP)"</span>, <span class="seriesInfo">RFC 3264</span>, <span class="seriesInfo">DOI 10.17487/RFC3264</span>, <time datetime="2002-06" class="refDate">June 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3264">https://www.rfc-editor.org/info/rfc3264</a>&gt;</span>. </dd>
+1880c1916
+< <span class="refAuthor">Schulzrinne, H.</span><span class="refAuthor">, Casner, S.</span><span class="refAuthor">, Frederick, R.</span><span class="refAuthor">, and V. Jacobson</span>, <span class="refTitle">"RTP: A Transport Protocol for Real-Time Applications"</span>, <span class="seriesInfo">STD 64</span>, <span class="seriesInfo">RFC 3550</span>, <span class="seriesInfo">DOI 10.17487/RFC3550</span>, <time datetime="2003-07" class="refDate">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3550">https://www.rfc-editor.org/info/rfc3550</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schulzrinne, H.</span>, <span class="refAuthor">Casner, S.</span>, <span class="refAuthor">Frederick, R.</span>, and <span class="refAuthor">V. Jacobson</span>, <span class="refTitle">"RTP: A Transport Protocol for Real-Time Applications"</span>, <span class="seriesInfo">STD 64</span>, <span class="seriesInfo">RFC 3550</span>, <span class="seriesInfo">DOI 10.17487/RFC3550</span>, <time datetime="2003-07" class="refDate">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3550">https://www.rfc-editor.org/info/rfc3550</a>&gt;</span>. </dd>
+1888c1924
+< <span class="refAuthor">Handley, M.</span><span class="refAuthor">, Jacobson, V.</span><span class="refAuthor">, and C. Perkins</span>, <span class="refTitle">"SDP: Session Description Protocol"</span>, <span class="seriesInfo">RFC 4566</span>, <span class="seriesInfo">DOI 10.17487/RFC4566</span>, <time datetime="2006-07" class="refDate">July 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4566">https://www.rfc-editor.org/info/rfc4566</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Handley, M.</span>, <span class="refAuthor">Jacobson, V.</span>, and <span class="refAuthor">C. Perkins</span>, <span class="refTitle">"SDP: Session Description Protocol"</span>, <span class="seriesInfo">RFC 4566</span>, <span class="seriesInfo">DOI 10.17487/RFC4566</span>, <time datetime="2006-07" class="refDate">July 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4566">https://www.rfc-editor.org/info/rfc4566</a>&gt;</span>. </dd>
+1892c1928
+< <span class="refAuthor">Rosenberg, J.</span><span class="refAuthor">, Schulzrinne, H.</span><span class="refAuthor">, and O. Levin, Ed.</span>, <span class="refTitle">"A Session Initiation Protocol (SIP) Event Package for Conference State"</span>, <span class="seriesInfo">RFC 4575</span>, <span class="seriesInfo">DOI 10.17487/RFC4575</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4575">https://www.rfc-editor.org/info/rfc4575</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rosenberg, J.</span>, <span class="refAuthor">Schulzrinne, H.</span>, and <span class="refAuthor">O. Levin, Ed.</span>, <span class="refTitle">"A Session Initiation Protocol (SIP) Event Package for Conference State"</span>, <span class="seriesInfo">RFC 4575</span>, <span class="seriesInfo">DOI 10.17487/RFC4575</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4575">https://www.rfc-editor.org/info/rfc4575</a>&gt;</span>. </dd>
+1896c1932
+< <span class="refAuthor">Ott, J.</span><span class="refAuthor">, Wenger, S.</span><span class="refAuthor">, Sato, N.</span><span class="refAuthor">, Burmeister, C.</span><span class="refAuthor">, and J. Rey</span>, <span class="refTitle">"Extended RTP Profile for Real-time Transport Control Protocol (RTCP)-Based Feedback (RTP/AVPF)"</span>, <span class="seriesInfo">RFC 4585</span>, <span class="seriesInfo">DOI 10.17487/RFC4585</span>, <time datetime="2006-07" class="refDate">July 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4585">https://www.rfc-editor.org/info/rfc4585</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Ott, J.</span>, <span class="refAuthor">Wenger, S.</span>, <span class="refAuthor">Sato, N.</span>, <span class="refAuthor">Burmeister, C.</span>, and <span class="refAuthor">J. Rey</span>, <span class="refTitle">"Extended RTP Profile for Real-time Transport Control Protocol (RTCP)-Based Feedback (RTP/AVPF)"</span>, <span class="seriesInfo">RFC 4585</span>, <span class="seriesInfo">DOI 10.17487/RFC4585</span>, <time datetime="2006-07" class="refDate">July 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4585">https://www.rfc-editor.org/info/rfc4585</a>&gt;</span>. </dd>
+1900c1936
+< <span class="refAuthor">Hautakorpi, J.</span><span class="refAuthor"> and G. Camarillo</span>, <span class="refTitle">"The Session Description Protocol (SDP) Content Attribute"</span>, <span class="seriesInfo">RFC 4796</span>, <span class="seriesInfo">DOI 10.17487/RFC4796</span>, <time datetime="2007-02" class="refDate">February 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4796">https://www.rfc-editor.org/info/rfc4796</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hautakorpi, J.</span> and <span class="refAuthor">G. Camarillo</span>, <span class="refTitle">"The Session Description Protocol (SDP) Content Attribute"</span>, <span class="seriesInfo">RFC 4796</span>, <span class="seriesInfo">DOI 10.17487/RFC4796</span>, <time datetime="2007-02" class="refDate">February 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4796">https://www.rfc-editor.org/info/rfc4796</a>&gt;</span>. </dd>
+1904c1940
+< <span class="refAuthor">Ott, J.</span><span class="refAuthor"> and E. Carrara</span>, <span class="refTitle">"Extended Secure RTP Profile for Real-time Transport Control Protocol (RTCP)-Based Feedback (RTP/SAVPF)"</span>, <span class="seriesInfo">RFC 5124</span>, <span class="seriesInfo">DOI 10.17487/RFC5124</span>, <time datetime="2008-02" class="refDate">February 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5124">https://www.rfc-editor.org/info/rfc5124</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Ott, J.</span> and <span class="refAuthor">E. Carrara</span>, <span class="refTitle">"Extended Secure RTP Profile for Real-time Transport Control Protocol (RTCP)-Based Feedback (RTP/SAVPF)"</span>, <span class="seriesInfo">RFC 5124</span>, <span class="seriesInfo">DOI 10.17487/RFC5124</span>, <time datetime="2008-02" class="refDate">February 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5124">https://www.rfc-editor.org/info/rfc5124</a>&gt;</span>. </dd>
+1908c1944
+< <span class="refAuthor">Johansson, I.</span><span class="refAuthor"> and M. Westerlund</span>, <span class="refTitle">"Support for Reduced-Size Real-Time Transport Control Protocol (RTCP): Opportunities and Consequences"</span>, <span class="seriesInfo">RFC 5506</span>, <span class="seriesInfo">DOI 10.17487/RFC5506</span>, <time datetime="2009-04" class="refDate">April 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5506">https://www.rfc-editor.org/info/rfc5506</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Johansson, I.</span> and <span class="refAuthor">M. Westerlund</span>, <span class="refTitle">"Support for Reduced-Size Real-Time Transport Control Protocol (RTCP): Opportunities and Consequences"</span>, <span class="seriesInfo">RFC 5506</span>, <span class="seriesInfo">DOI 10.17487/RFC5506</span>, <time datetime="2009-04" class="refDate">April 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5506">https://www.rfc-editor.org/info/rfc5506</a>&gt;</span>. </dd>
+1912c1948
+< <span class="refAuthor">Perkins, C.</span><span class="refAuthor"> and JM. Valin</span>, <span class="refTitle">"Guidelines for the Use of Variable Bit Rate Audio with Secure RTP"</span>, <span class="seriesInfo">RFC 6562</span>, <span class="seriesInfo">DOI 10.17487/RFC6562</span>, <time datetime="2012-03" class="refDate">March 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6562">https://www.rfc-editor.org/info/rfc6562</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Perkins, C.</span> and <span class="refAuthor">JM. Valin</span>, <span class="refTitle">"Guidelines for the Use of Variable Bit Rate Audio with Secure RTP"</span>, <span class="seriesInfo">RFC 6562</span>, <span class="seriesInfo">DOI 10.17487/RFC6562</span>, <time datetime="2012-03" class="refDate">March 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6562">https://www.rfc-editor.org/info/rfc6562</a>&gt;</span>. </dd>
+1916c1952
+< <span class="refAuthor">Begen, A.</span><span class="refAuthor">, Perkins, C.</span><span class="refAuthor">, Wing, D.</span><span class="refAuthor">, and E. Rescorla</span>, <span class="refTitle">"Guidelines for Choosing RTP Control Protocol (RTCP) Canonical Names (CNAMEs)"</span>, <span class="seriesInfo">RFC 7022</span>, <span class="seriesInfo">DOI 10.17487/RFC7022</span>, <time datetime="2013-09" class="refDate">September 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7022">https://www.rfc-editor.org/info/rfc7022</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Begen, A.</span>, <span class="refAuthor">Perkins, C.</span>, <span class="refAuthor">Wing, D.</span>, and <span class="refAuthor">E. Rescorla</span>, <span class="refTitle">"Guidelines for Choosing RTP Control Protocol (RTCP) Canonical Names (CNAMEs)"</span>, <span class="seriesInfo">RFC 7022</span>, <span class="seriesInfo">DOI 10.17487/RFC7022</span>, <time datetime="2013-09" class="refDate">September 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7022">https://www.rfc-editor.org/info/rfc7022</a>&gt;</span>. </dd>
+1920c1956
+< <span class="refAuthor">Westerlund, M.</span><span class="refAuthor"> and C. Perkins</span>, <span class="refTitle">"Options for Securing RTP Sessions"</span>, <span class="seriesInfo">RFC 7201</span>, <span class="seriesInfo">DOI 10.17487/RFC7201</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7201">https://www.rfc-editor.org/info/rfc7201</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Westerlund, M.</span> and <span class="refAuthor">C. Perkins</span>, <span class="refTitle">"Options for Securing RTP Sessions"</span>, <span class="seriesInfo">RFC 7201</span>, <span class="seriesInfo">DOI 10.17487/RFC7201</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7201">https://www.rfc-editor.org/info/rfc7201</a>&gt;</span>. </dd>
+1924c1960
+< <span class="refAuthor">Perkins, C.</span><span class="refAuthor"> and M. Westerlund</span>, <span class="refTitle">"Securing the RTP Framework: Why RTP Does Not Mandate a Single Media Security Solution"</span>, <span class="seriesInfo">RFC 7202</span>, <span class="seriesInfo">DOI 10.17487/RFC7202</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7202">https://www.rfc-editor.org/info/rfc7202</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Perkins, C.</span> and <span class="refAuthor">M. Westerlund</span>, <span class="refTitle">"Securing the RTP Framework: Why RTP Does Not Mandate a Single Media Security Solution"</span>, <span class="seriesInfo">RFC 7202</span>, <span class="seriesInfo">DOI 10.17487/RFC7202</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7202">https://www.rfc-editor.org/info/rfc7202</a>&gt;</span>. </dd>
+1928c1964
+< <span class="refAuthor">Romanow, A.</span><span class="refAuthor">, Botzko, S.</span><span class="refAuthor">, Duckworth, M.</span><span class="refAuthor">, and R. Even, Ed.</span>, <span class="refTitle">"Use Cases for Telepresence Multistreams"</span>, <span class="seriesInfo">RFC 7205</span>, <span class="seriesInfo">DOI 10.17487/RFC7205</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7205">https://www.rfc-editor.org/info/rfc7205</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Romanow, A.</span>, <span class="refAuthor">Botzko, S.</span>, <span class="refAuthor">Duckworth, M.</span>, and <span class="refAuthor">R. Even, Ed.</span>, <span class="refTitle">"Use Cases for Telepresence Multistreams"</span>, <span class="seriesInfo">RFC 7205</span>, <span class="seriesInfo">DOI 10.17487/RFC7205</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7205">https://www.rfc-editor.org/info/rfc7205</a>&gt;</span>. </dd>
+1932c1968
+< <span class="refAuthor">Westerlund, M.</span><span class="refAuthor"> and S. Wenger</span>, <span class="refTitle">"RTP Topologies"</span>, <span class="seriesInfo">RFC 7667</span>, <span class="seriesInfo">DOI 10.17487/RFC7667</span>, <time datetime="2015-11" class="refDate">November 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7667">https://www.rfc-editor.org/info/rfc7667</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Westerlund, M.</span> and <span class="refAuthor">S. Wenger</span>, <span class="refTitle">"RTP Topologies"</span>, <span class="seriesInfo">RFC 7667</span>, <span class="seriesInfo">DOI 10.17487/RFC7667</span>, <time datetime="2015-11" class="refDate">November 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7667">https://www.rfc-editor.org/info/rfc7667</a>&gt;</span>. </dd>
+1936c1972
+< <span class="refAuthor">Lennox, J.</span><span class="refAuthor">, Westerlund, M.</span><span class="refAuthor">, Wu, Q.</span><span class="refAuthor">, and C. Perkins</span>, <span class="refTitle">"Sending Multiple RTP Streams in a Single RTP Session"</span>, <span class="seriesInfo">RFC 8108</span>, <span class="seriesInfo">DOI 10.17487/RFC8108</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8108">https://www.rfc-editor.org/info/rfc8108</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Lennox, J.</span>, <span class="refAuthor">Westerlund, M.</span>, <span class="refAuthor">Wu, Q.</span>, and <span class="refAuthor">C. Perkins</span>, <span class="refTitle">"Sending Multiple RTP Streams in a Single RTP Session"</span>, <span class="seriesInfo">RFC 8108</span>, <span class="seriesInfo">DOI 10.17487/RFC8108</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8108">https://www.rfc-editor.org/info/rfc8108</a>&gt;</span>. </dd>
+1940c1976
+< <span class="refAuthor">Singer, D.</span><span class="refAuthor">, Desineni, H.</span><span class="refAuthor">, and R. Even, Ed.</span>, <span class="refTitle">"A General Mechanism for RTP Header Extensions"</span>, <span class="seriesInfo">RFC 8285</span>, <span class="seriesInfo">DOI 10.17487/RFC8285</span>, <time datetime="2017-10" class="refDate">October 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8285">https://www.rfc-editor.org/info/rfc8285</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Singer, D.</span>, <span class="refAuthor">Desineni, H.</span>, and <span class="refAuthor">R. Even, Ed.</span>, <span class="refTitle">"A General Mechanism for RTP Header Extensions"</span>, <span class="seriesInfo">RFC 8285</span>, <span class="seriesInfo">DOI 10.17487/RFC8285</span>, <time datetime="2017-10" class="refDate">October 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8285">https://www.rfc-editor.org/info/rfc8285</a>&gt;</span>. </dd>
+1944c1980
+< <span class="refAuthor">Hanton, R.</span><span class="refAuthor">, Kyzivat, P.</span><span class="refAuthor">, Xiao, L.</span><span class="refAuthor">, and C. Groves</span>, <span class="refTitle">"Session Signaling for Controlling Multiple Streams for Telepresence (CLUE)"</span>, <span class="seriesInfo">RFC 8848</span>, <span class="seriesInfo">DOI 10.17487/RFC8848</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8848">https://www.rfc-editor.org/info/rfc8848</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hanton, R.</span>, <span class="refAuthor">Kyzivat, P.</span>, <span class="refAuthor">Xiao, L.</span>, and <span class="refAuthor">C. Groves</span>, <span class="refTitle">"Session Signaling for Controlling Multiple Streams for Telepresence (CLUE)"</span>, <span class="seriesInfo">RFC 8848</span>, <span class="seriesInfo">DOI 10.17487/RFC8848</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8848">https://www.rfc-editor.org/info/rfc8848</a>&gt;</span>. </dd>
+1950c1986
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+1954c1990
+< <p id="section-appendix.a-1">
+---
+> <p id="appendix-A-1">
+1958c1994
+<    the security section.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+>    the security section.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+1962c1998
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
