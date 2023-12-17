@@ -1,0 +1,612 @@
+25c25
+< <meta content="xml2rfc 3.7.0" name="generator">
+---
+> <meta content="xml2rfc 3.18.2" name="generator">
+35,52c35,48
+<   xml2rfc 3.7.0
+<     Python 3.6.10
+<     appdirs 1.4.4
+<     ConfigArgParse 1.2.3
+<     google-i18n-address 2.3.5
+<     html5lib 1.0.1
+<     intervaltree 3.0.2
+<     Jinja2 2.11.2
+<     kitchen 1.2.6
+<     lxml 4.4.2
+<     pycairo 1.19.0
+<     pycountry 19.8.18
+<     pyflakes 2.1.1
+<     PyYAML 5.3.1
+<     requests 2.22.0
+<     setuptools 40.6.2
+<     six 1.14.0
+<     WeasyPrint 51
+---
+>   xml2rfc 3.18.2
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+54c50
+< <link href="rfc9019.xml" rel="alternate" type="application/rfc+xml">
+---
+> <link href="rfc/rfc9019.xml" rel="alternate" type="application/rfc+xml">
+64c60
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+73a70,75
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+76d77
+<   width: extend-to-zoom;
+91c92
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+93a95
+>   overflow-wrap: break-word;
+179a182,190
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+194,197d204
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+198a206
+>   border: none;
+221a230,232
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+263c274,275
+< a[href].selfRef {
+---
+> a[href].selfRef,
+> .iref + a[href].internal {
+273c285
+< tt, code, pre, code {
+---
+> tt, code, pre {
+275c287
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+314a327,329
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+404a420,425
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+506c527
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+646d666
+< 
+668a689,691
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+736c759
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+836c859
+< tt, code, pre, code {
+---
+> tt, code, pre {
+841c864
+< pre.sourcecode,
+---
+> .sourcecode pre,
+877c900
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1058a1082
+>   .artwork > pre,
+1073c1097
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1079a1104,1106
+> tr {
+>   break-inside: avoid;
+> }
+1099c1126
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1130c1157
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1155c1182
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1173c1200
+< dd > div:first-child > pre.sourcecode,
+---
+> dd > div.sourcecode:first-child,
+1187c1214
+< li > p:last-of-type {
+---
+> li > p:last-of-type:only-child {
+1191a1219
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-suit-architecture-16" rel="prev">
+1194c1222
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-suit-architecture-16" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1196,1197c1224,1225
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1308,1316c1336,1344
+< <nav class="toc"><ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a></p>
+< </li>
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-conventions-and-terminology" class="xref">Conventions and Terminology</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.2.2.1">
+<                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-terms" class="xref">Terms</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-conventions-and-terminology" class="internal xref">Conventions and Terminology</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+>                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-terms" class="internal xref">Terms</a></p>
+1318,1319c1346,1347
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.2.2.2">
+<                 <p id="section-toc.1-1.2.2.2.1" class="keepWithNext"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-stakeholders" class="xref">Stakeholders</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+>                 <p id="section-toc.1-1.2.2.2.1" class="keepWithNext"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-stakeholders" class="internal xref">Stakeholders</a></p>
+1321,1322c1349,1350
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.2.2.3">
+<                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-functions" class="xref">Functions</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
+>                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="auto internal xref">2.3</a>.  <a href="#name-functions" class="internal xref">Functions</a></p>
+1326,1327c1354,1355
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-architecture" class="xref">Architecture</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-architecture" class="internal xref">Architecture</a></p>
+1329,1333c1357,1361
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-invoking-the-firmware" class="xref">Invoking the Firmware</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-the-bootloader" class="xref">The Bootloader</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-invoking-the-firmware" class="internal xref">Invoking the Firmware</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-the-bootloader" class="internal xref">The Bootloader</a></p>
+1337,1344c1365,1372
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-types-of-iot-devices" class="xref">Types of IoT Devices</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-single-mcu" class="xref">Single MCU</a></p>
+< </li>
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-single-cpu-with-partitionin" class="xref">Single CPU with Partitioning between Secure Mode and Normal Mode</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-types-of-iot-devices" class="internal xref">Types of IoT Devices</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-single-mcu" class="internal xref">Single MCU</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-single-cpu-with-partitionin" class="internal xref">Single CPU with Partitioning between Secure Mode and Normal Mode</a></p>
+1346,1347c1374,1375
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.3">
+<                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-symmetric-multiple-cpus" class="xref">Symmetric Multiple CPUs</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
+>                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-symmetric-multiple-cpus" class="internal xref">Symmetric Multiple CPUs</a></p>
+1349,1350c1377,1378
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.4">
+<                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="xref">5.4</a>.  <a href="#name-dual-cpu-shared-memory" class="xref">Dual CPU, Shared Memory</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
+>                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-dual-cpu-shared-memory" class="internal xref">Dual CPU, Shared Memory</a></p>
+1352,1353c1380,1381
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.5">
+<                 <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="xref">5.5</a>.  <a href="#name-dual-cpu-other-bus" class="xref">Dual CPU, Other Bus</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5">
+>                 <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="auto internal xref">5.5</a>.  <a href="#name-dual-cpu-other-bus" class="internal xref">Dual CPU, Other Bus</a></p>
+1357,1358c1385,1386
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-manifests" class="xref">Manifests</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-manifests" class="internal xref">Manifests</a></p>
+1360,1361c1388,1389
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-securing-firmware-updates" class="xref">Securing Firmware Updates</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-securing-firmware-updates" class="internal xref">Securing Firmware Updates</a></p>
+1363,1364c1391,1392
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-example" class="xref">Example</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-example" class="internal xref">Example</a></p>
+1366,1367c1394,1395
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1369,1370c1397,1398
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1372,1373c1400,1401
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-informative-references" class="xref">Informative References</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1375,1376c1403,1404
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1378,1379c1406,1407
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1393c1421
+<  Architecture Board (IAB) organized the Internet of Things Software Update (IoTSU) Workshop <span>[<a href="#RFC8240" class="xref">RFC8240</a>]</span> to take a look at
+---
+>  Architecture Board (IAB) organized the Internet of Things Software Update (IoTSU) Workshop <span>[<a href="#RFC8240" class="cite xref">RFC8240</a>]</span> to take a look at
+1433c1461
+<  definitions in RFC 7228 <span>[<a href="#RFC7228" class="xref">RFC7228</a>]</span>), there is nothing in
+---
+>  definitions in RFC 7228 <span>[<a href="#RFC7228" class="cite xref">RFC7228</a>]</span>), there is nothing in
+1454c1482
+<  or DNS-based Service Discovery (DNS-SD) <span>[<a href="#RFC6763" class="xref">RFC6763</a>]</span>.
+---
+>  or DNS-based Service Discovery (DNS-SD) <span>[<a href="#RFC6763" class="cite xref">RFC6763</a>]</span>.
+1456c1484
+<  under the umbrella of an IoT device management solution. The Lightweight Machine-to-Machine (LwM2M) protocol <span>[<a href="#LwM2M" class="xref">LwM2M</a>]</span> is one
+---
+>  under the umbrella of an IoT device management solution. The Lightweight Machine-to-Machine (LwM2M) protocol <span>[<a href="#LwM2M" class="cite xref">LwM2M</a>]</span> is one
+1560c1588
+<           <dd style="margin-left: 1.5em" id="section-2.1-2.14"> A trust anchor, as defined in RFC 6024 <span>[<a href="#RFC6024" class="xref">RFC6024</a>]</span>, represents
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.14"> A trust anchor, as defined in RFC 6024 <span>[<a href="#RFC6024" class="cite xref">RFC6024</a>]</span>, represents
+1568c1596
+<           <dd style="margin-left: 1.5em" id="section-2.1-2.16"> A trust anchor store, as defined in <span>[<a href="#RFC6024" class="xref">RFC6024</a>]</span>,
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.16"> A trust anchor store, as defined in <span>[<a href="#RFC6024" class="cite xref">RFC6024</a>]</span>,
+1583c1611
+<  information about TEEs, see <span>[<a href="#I-D.ietf-teep-architecture" class="xref">TEEP-ARCH</a>]</span>.<a href="#section-2.1-2.20" class="pilcrow">¶</a>
+---
+>  information about TEEs, see <span>[<a href="#I-D.ietf-teep-architecture" class="cite xref">TEEP-ARCH</a>]</span>.<a href="#section-2.1-2.20" class="pilcrow">¶</a>
+1599c1627
+<  on an IoT device. <a href="#device" class="xref">Section 5</a> talks about those IoT device deployment cases.<a href="#section-2.2-2.2" class="pilcrow">¶</a>
+---
+>  on an IoT device. <a href="#device" class="auto internal xref">Section 5</a> talks about those IoT device deployment cases.<a href="#section-2.2-2.2" class="pilcrow">¶</a>
+1756c1784
+< <p id="section-3-5"><a href="#arch-figure" class="xref">Figure 1</a> shows the architecture where a
+---
+> <p id="section-3-5"><a href="#arch-figure" class="auto internal xref">Figure 1</a> shows the architecture where a
+1811c1839
+<         <div class="artwork art-text alignCenter" id="section-3-11.1">
+---
+>         <div class="alignCenter art-text artwork" id="section-3-11.1">
+1880c1908
+< Firmware Update Object <span>[<a href="#LwM2M" class="xref">LwM2M</a>]</span> is a server-initiated update.<a href="#section-3-17" class="pilcrow">¶</a></p>
+---
+> Firmware Update Object <span>[<a href="#LwM2M" class="cite xref">LwM2M</a>]</span> is a server-initiated update.<a href="#section-3-17" class="pilcrow">¶</a></p>
+1909c1937
+< <p id="section-4-1"><a href="#architecture" class="xref">Section 3</a> describes the steps for getting the firmware image and the manifest
+---
+> <p id="section-4-1"><a href="#architecture" class="auto internal xref">Section 3</a> describes the steps for getting the firmware image and the manifest
+1959c1987
+< implements the robustness requirements identified by the IoTSU workshop <span>[<a href="#RFC8240" class="xref">RFC8240</a>]</span>.<a href="#section-4-8" class="pilcrow">¶</a></p>
+---
+> implements the robustness requirements identified by the IoTSU workshop <span>[<a href="#RFC8240" class="cite xref">RFC8240</a>]</span>.<a href="#section-4-8" class="pilcrow">¶</a></p>
+2018c2046
+< <span>[<a href="#I-D.ietf-rats-architecture" class="xref">RATS-ARCH</a>]</span> for more information (optional).<a href="#section-4.1-8.5" class="pilcrow">¶</a>
+---
+> <span>[<a href="#I-D.ietf-rats-architecture" class="cite xref">RATS-ARCH</a>]</span> for more information (optional).<a href="#section-4.1-8.5" class="pilcrow">¶</a>
+2129,2130c2157,2158
+< information model specification <span>[<a href="#I-D.ietf-suit-information-model" class="xref">SUIT-INFO-MODEL</a>]</span>, which offers justifications
+< for each element, and the manifest specification <span>[<a href="#I-D.ietf-suit-manifest" class="xref">SUIT-MANIFEST</a>]</span> for details about how this
+---
+> information model specification <span>[<a href="#I-D.ietf-suit-information-model" class="cite xref">SUIT-INFO-MODEL</a>]</span>, which offers justifications
+> for each element, and the manifest specification <span>[<a href="#I-D.ietf-suit-manifest" class="cite xref">SUIT-MANIFEST</a>]</span> for details about how this
+2262c2290
+< secure signature schemes such as hash-based signatures <span>[<a href="#RFC8778" class="xref">RFC8778</a>]</span>. A
+---
+> secure signature schemes such as hash-based signatures <span>[<a href="#RFC8778" class="cite xref">RFC8778</a>]</span>. A
+2267c2295
+< current research <span>[<a href="#quantum-factorization" class="xref">quantum-factorization</a>]</span>.<a href="#section-7-4" class="pilcrow">¶</a></p>
+---
+> current research <span>[<a href="#quantum-factorization" class="cite xref">quantum-factorization</a>]</span>.<a href="#section-7-4" class="pilcrow">¶</a></p>
+2291c2319
+< <p id="section-8-1"><a href="#firmware-update" class="xref">Figure 2</a> illustrates an example message flow
+---
+> <p id="section-8-1"><a href="#firmware-update" class="auto internal xref">Figure 2</a> illustrates an example message flow
+2297c2325
+<         <div class="artwork art-text alignCenter" id="section-8-2.1">
+---
+>         <div class="alignCenter art-text artwork" id="section-8-2.1">
+2414c2442
+< <p id="section-8-3"><a href="#firmware-update2" class="xref">Figure 3</a> shows an exchange that starts with the
+---
+> <p id="section-8-3"><a href="#firmware-update2" class="auto internal xref">Figure 3</a> shows an exchange that starts with the
+2428c2456
+<         <div class="artwork art-text alignCenter" id="section-8-5.1">
+---
+>         <div class="alignCenter art-text artwork" id="section-8-5.1">
+2523c2551
+< architecture is presented in <span>[<a href="#I-D.ietf-suit-information-model" class="xref">SUIT-INFO-MODEL</a>]</span>.<a href="#section-10-2" class="pilcrow">¶</a></p>
+---
+> architecture is presented in <span>[<a href="#I-D.ietf-suit-information-model" class="cite xref">SUIT-INFO-MODEL</a>]</span>.<a href="#section-10-2" class="pilcrow">¶</a></p>
+2578c2606
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2582c2610
+< <p id="section-appendix.a-1">We would like to thank the following individuals for their feedback:<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A-1">We would like to thank the following individuals for their feedback:<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+2584,2585c2612,2613
+< <li class="compact" id="section-appendix.a-2.1">
+<           <p id="section-appendix.a-2.1.1"><span class="contact-name">Geraint Luff</span><a href="#section-appendix.a-2.1.1" class="pilcrow">¶</a></p>
+---
+> <li class="compact" id="appendix-A-2.1">
+>           <p id="appendix-A-2.1.1"><span class="contact-name">Geraint Luff</span><a href="#appendix-A-2.1.1" class="pilcrow">¶</a></p>
+2587,2588c2615,2616
+<         <li class="compact" id="section-appendix.a-2.2">
+<           <p id="section-appendix.a-2.2.1"><span class="contact-name">Amyas Phillips</span><a href="#section-appendix.a-2.2.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.2">
+>           <p id="appendix-A-2.2.1"><span class="contact-name">Amyas Phillips</span><a href="#appendix-A-2.2.1" class="pilcrow">¶</a></p>
+2590,2591c2618,2619
+<         <li class="compact" id="section-appendix.a-2.3">
+<           <p id="section-appendix.a-2.3.1"><span class="contact-name">Dan Ros</span><a href="#section-appendix.a-2.3.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.3">
+>           <p id="appendix-A-2.3.1"><span class="contact-name">Dan Ros</span><a href="#appendix-A-2.3.1" class="pilcrow">¶</a></p>
+2593,2594c2621,2622
+<         <li class="compact" id="section-appendix.a-2.4">
+<           <p id="section-appendix.a-2.4.1"><span class="contact-name">Thomas Eichinger</span><a href="#section-appendix.a-2.4.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.4">
+>           <p id="appendix-A-2.4.1"><span class="contact-name">Thomas Eichinger</span><a href="#appendix-A-2.4.1" class="pilcrow">¶</a></p>
+2596,2597c2624,2625
+<         <li class="compact" id="section-appendix.a-2.5">
+<           <p id="section-appendix.a-2.5.1"><span class="contact-name">Michael Richardson</span><a href="#section-appendix.a-2.5.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.5">
+>           <p id="appendix-A-2.5.1"><span class="contact-name">Michael Richardson</span><a href="#appendix-A-2.5.1" class="pilcrow">¶</a></p>
+2599,2600c2627,2628
+<         <li class="compact" id="section-appendix.a-2.6">
+<           <p id="section-appendix.a-2.6.1"><span class="contact-name">Emmanuel Baccelli</span><a href="#section-appendix.a-2.6.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.6">
+>           <p id="appendix-A-2.6.1"><span class="contact-name">Emmanuel Baccelli</span><a href="#appendix-A-2.6.1" class="pilcrow">¶</a></p>
+2602,2603c2630,2631
+<         <li class="compact" id="section-appendix.a-2.7">
+<           <p id="section-appendix.a-2.7.1"><span class="contact-name">Ned Smith</span><a href="#section-appendix.a-2.7.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.7">
+>           <p id="appendix-A-2.7.1"><span class="contact-name">Ned Smith</span><a href="#appendix-A-2.7.1" class="pilcrow">¶</a></p>
+2605,2606c2633,2634
+<         <li class="compact" id="section-appendix.a-2.8">
+<           <p id="section-appendix.a-2.8.1"><span class="contact-name">Jim Schaad</span><a href="#section-appendix.a-2.8.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.8">
+>           <p id="appendix-A-2.8.1"><span class="contact-name">Jim Schaad</span><a href="#appendix-A-2.8.1" class="pilcrow">¶</a></p>
+2608,2609c2636,2637
+<         <li class="compact" id="section-appendix.a-2.9">
+<           <p id="section-appendix.a-2.9.1"><span class="contact-name">Carsten Bormann</span><a href="#section-appendix.a-2.9.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.9">
+>           <p id="appendix-A-2.9.1"><span class="contact-name">Carsten Bormann</span><a href="#appendix-A-2.9.1" class="pilcrow">¶</a></p>
+2611,2612c2639,2640
+<         <li class="compact" id="section-appendix.a-2.10">
+<           <p id="section-appendix.a-2.10.1"><span class="contact-name">Cullen Jennings</span><a href="#section-appendix.a-2.10.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.10">
+>           <p id="appendix-A-2.10.1"><span class="contact-name">Cullen Jennings</span><a href="#appendix-A-2.10.1" class="pilcrow">¶</a></p>
+2614,2615c2642,2643
+<         <li class="compact" id="section-appendix.a-2.11">
+<           <p id="section-appendix.a-2.11.1"><span class="contact-name">Olaf Bergmann</span><a href="#section-appendix.a-2.11.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.11">
+>           <p id="appendix-A-2.11.1"><span class="contact-name">Olaf Bergmann</span><a href="#appendix-A-2.11.1" class="pilcrow">¶</a></p>
+2617,2618c2645,2646
+<         <li class="compact" id="section-appendix.a-2.12">
+<           <p id="section-appendix.a-2.12.1"><span class="contact-name">Suhas Nandakumar</span><a href="#section-appendix.a-2.12.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.12">
+>           <p id="appendix-A-2.12.1"><span class="contact-name">Suhas Nandakumar</span><a href="#appendix-A-2.12.1" class="pilcrow">¶</a></p>
+2620,2621c2648,2649
+<         <li class="compact" id="section-appendix.a-2.13">
+<           <p id="section-appendix.a-2.13.1"><span class="contact-name">Phillip Hallam-Baker</span><a href="#section-appendix.a-2.13.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.13">
+>           <p id="appendix-A-2.13.1"><span class="contact-name">Phillip Hallam-Baker</span><a href="#appendix-A-2.13.1" class="pilcrow">¶</a></p>
+2623,2624c2651,2652
+<         <li class="compact" id="section-appendix.a-2.14">
+<           <p id="section-appendix.a-2.14.1"><span class="contact-name">Marti Bolivar</span><a href="#section-appendix.a-2.14.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.14">
+>           <p id="appendix-A-2.14.1"><span class="contact-name">Marti Bolivar</span><a href="#appendix-A-2.14.1" class="pilcrow">¶</a></p>
+2626,2627c2654,2655
+<         <li class="compact" id="section-appendix.a-2.15">
+<           <p id="section-appendix.a-2.15.1"><span class="contact-name">Andrzej Puzdrowski</span><a href="#section-appendix.a-2.15.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.15">
+>           <p id="appendix-A-2.15.1"><span class="contact-name">Andrzej Puzdrowski</span><a href="#appendix-A-2.15.1" class="pilcrow">¶</a></p>
+2629,2630c2657,2658
+<         <li class="compact" id="section-appendix.a-2.16">
+<           <p id="section-appendix.a-2.16.1"><span class="contact-name">Markus Gueller</span><a href="#section-appendix.a-2.16.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.16">
+>           <p id="appendix-A-2.16.1"><span class="contact-name">Markus Gueller</span><a href="#appendix-A-2.16.1" class="pilcrow">¶</a></p>
+2632,2633c2660,2661
+<         <li class="compact" id="section-appendix.a-2.17">
+<           <p id="section-appendix.a-2.17.1"><span class="contact-name">Henk Birkholz</span><a href="#section-appendix.a-2.17.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.17">
+>           <p id="appendix-A-2.17.1"><span class="contact-name">Henk Birkholz</span><a href="#appendix-A-2.17.1" class="pilcrow">¶</a></p>
+2635,2636c2663,2664
+<         <li class="compact" id="section-appendix.a-2.18">
+<           <p id="section-appendix.a-2.18.1"><span class="contact-name">Jintao Zhu</span><a href="#section-appendix.a-2.18.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.18">
+>           <p id="appendix-A-2.18.1"><span class="contact-name">Jintao Zhu</span><a href="#appendix-A-2.18.1" class="pilcrow">¶</a></p>
+2638,2639c2666,2667
+<         <li class="compact" id="section-appendix.a-2.19">
+<           <p id="section-appendix.a-2.19.1"><span class="contact-name">Takeshi Takahashi</span><a href="#section-appendix.a-2.19.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.19">
+>           <p id="appendix-A-2.19.1"><span class="contact-name">Takeshi Takahashi</span><a href="#appendix-A-2.19.1" class="pilcrow">¶</a></p>
+2641,2642c2669,2670
+<         <li class="compact" id="section-appendix.a-2.20">
+<           <p id="section-appendix.a-2.20.1"><span class="contact-name">Jacob Beningo</span><a href="#section-appendix.a-2.20.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.20">
+>           <p id="appendix-A-2.20.1"><span class="contact-name">Jacob Beningo</span><a href="#appendix-A-2.20.1" class="pilcrow">¶</a></p>
+2644,2645c2672,2673
+<         <li class="compact" id="section-appendix.a-2.21">
+<           <p id="section-appendix.a-2.21.1"><span class="contact-name">Kathleen Moriarty</span><a href="#section-appendix.a-2.21.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.21">
+>           <p id="appendix-A-2.21.1"><span class="contact-name">Kathleen Moriarty</span><a href="#appendix-A-2.21.1" class="pilcrow">¶</a></p>
+2647,2648c2675,2676
+<         <li class="compact" id="section-appendix.a-2.22">
+<           <p id="section-appendix.a-2.22.1"><span class="contact-name">Bob Briscoe</span><a href="#section-appendix.a-2.22.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.22">
+>           <p id="appendix-A-2.22.1"><span class="contact-name">Bob Briscoe</span><a href="#appendix-A-2.22.1" class="pilcrow">¶</a></p>
+2650,2651c2678,2679
+<         <li class="compact" id="section-appendix.a-2.23">
+<           <p id="section-appendix.a-2.23.1"><span class="contact-name">Roman Danyliw</span><a href="#section-appendix.a-2.23.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.23">
+>           <p id="appendix-A-2.23.1"><span class="contact-name">Roman Danyliw</span><a href="#appendix-A-2.23.1" class="pilcrow">¶</a></p>
+2653,2654c2681,2682
+<         <li class="compact" id="section-appendix.a-2.24">
+<           <p id="section-appendix.a-2.24.1"><span class="contact-name">Brian Carpenter</span><a href="#section-appendix.a-2.24.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.24">
+>           <p id="appendix-A-2.24.1"><span class="contact-name">Brian Carpenter</span><a href="#appendix-A-2.24.1" class="pilcrow">¶</a></p>
+2656,2657c2684,2685
+<         <li class="compact" id="section-appendix.a-2.25">
+<           <p id="section-appendix.a-2.25.1"><span class="contact-name">Theresa Enghardt</span><a href="#section-appendix.a-2.25.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.25">
+>           <p id="appendix-A-2.25.1"><span class="contact-name">Theresa Enghardt</span><a href="#appendix-A-2.25.1" class="pilcrow">¶</a></p>
+2659,2660c2687,2688
+<         <li class="compact" id="section-appendix.a-2.26">
+<           <p id="section-appendix.a-2.26.1"><span class="contact-name">Rich Salz</span><a href="#section-appendix.a-2.26.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.26">
+>           <p id="appendix-A-2.26.1"><span class="contact-name">Rich Salz</span><a href="#appendix-A-2.26.1" class="pilcrow">¶</a></p>
+2662,2663c2690,2691
+<         <li class="compact" id="section-appendix.a-2.27">
+<           <p id="section-appendix.a-2.27.1"><span class="contact-name">Mohit Sethi</span><a href="#section-appendix.a-2.27.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.27">
+>           <p id="appendix-A-2.27.1"><span class="contact-name">Mohit Sethi</span><a href="#appendix-A-2.27.1" class="pilcrow">¶</a></p>
+2665,2666c2693,2694
+<         <li class="compact" id="section-appendix.a-2.28">
+<           <p id="section-appendix.a-2.28.1"><span class="contact-name">Éric Vyncke</span><a href="#section-appendix.a-2.28.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.28">
+>           <p id="appendix-A-2.28.1"><span class="contact-name">Éric Vyncke</span><a href="#appendix-A-2.28.1" class="pilcrow">¶</a></p>
+2668,2669c2696,2697
+<         <li class="compact" id="section-appendix.a-2.29">
+<           <p id="section-appendix.a-2.29.1"><span class="contact-name">Alvaro Retana</span><a href="#section-appendix.a-2.29.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.29">
+>           <p id="appendix-A-2.29.1"><span class="contact-name">Alvaro Retana</span><a href="#appendix-A-2.29.1" class="pilcrow">¶</a></p>
+2671,2672c2699,2700
+<         <li class="compact" id="section-appendix.a-2.30">
+<           <p id="section-appendix.a-2.30.1"><span class="contact-name">Barry Leiba</span><a href="#section-appendix.a-2.30.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.30">
+>           <p id="appendix-A-2.30.1"><span class="contact-name">Barry Leiba</span><a href="#appendix-A-2.30.1" class="pilcrow">¶</a></p>
+2674,2675c2702,2703
+<         <li class="compact" id="section-appendix.a-2.31">
+<           <p id="section-appendix.a-2.31.1"><span class="contact-name">Benjamin Kaduk</span><a href="#section-appendix.a-2.31.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.31">
+>           <p id="appendix-A-2.31.1"><span class="contact-name">Benjamin Kaduk</span><a href="#appendix-A-2.31.1" class="pilcrow">¶</a></p>
+2677,2678c2705,2706
+<         <li class="compact" id="section-appendix.a-2.32">
+<           <p id="section-appendix.a-2.32.1"><span class="contact-name">Martin Duke</span><a href="#section-appendix.a-2.32.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.32">
+>           <p id="appendix-A-2.32.1"><span class="contact-name">Martin Duke</span><a href="#appendix-A-2.32.1" class="pilcrow">¶</a></p>
+2680,2681c2708,2709
+<         <li class="compact" id="section-appendix.a-2.33">
+<           <p id="section-appendix.a-2.33.1"><span class="contact-name">Robert Wilton</span><a href="#section-appendix.a-2.33.1" class="pilcrow">¶</a></p>
+---
+>         <li class="compact" id="appendix-A-2.33">
+>           <p id="appendix-A-2.33.1"><span class="contact-name">Robert Wilton</span><a href="#appendix-A-2.33.1" class="pilcrow">¶</a></p>
+2684c2712
+< <p id="section-appendix.a-3">We would also like to thank the WG chairs, <span class="contact-name">Russ Housley</span>, <span class="contact-name">David Waltermire</span>, and <span class="contact-name">Dave Thaler</span> for their support and review.<a href="#section-appendix.a-3" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A-3">We would also like to thank the WG chairs, <span class="contact-name">Russ Housley</span>, <span class="contact-name">David Waltermire</span>, and <span class="contact-name">Dave Thaler</span> for their support and review.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+2688c2716
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
