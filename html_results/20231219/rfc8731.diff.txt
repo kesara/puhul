@@ -1,0 +1,511 @@
+18c18
+< <meta content="xml2rfc 2.40.1" name="generator">
+---
+> <meta content="xml2rfc 3.19.0" name="generator">
+25c25,41
+< <link href="rfc8731.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.0
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8731.xml" rel="alternate" type="application/rfc+xml">
+35c51
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+44a61,66
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+47d68
+<   width: extend-to-zoom;
+62c83
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+64a86
+>   overflow-wrap: break-word;
+150a173,181
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+165,168d195
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+169a197
+>   border: none;
+192a221,223
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+244c275
+< tt, code, pre, code {
+---
+> tt, code, pre {
+246c277
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+285a317,319
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+375a410,415
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+477c517
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+617d656
+< 
+639a679,681
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+707c749
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+807c849
+< tt, code, pre, code {
+---
+> tt, code, pre {
+812c854
+< pre.sourcecode,
+---
+> .sourcecode pre,
+848c890
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+926,931d967
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1002c1038
+<   margin: 0 0 0.25em 0;
+---
+>   margin-bottom: 0.25em;
+1035a1072
+>   .artwork > pre,
+1040,1047d1076
+< /*
+<   The margin-left: 0 on <dd> removes all distinction
+<   between levels from nested <dl>s.  Undo that.
+< */
+< dl.olPercent > dd,
+< dd {
+<   margin-left: revert;
+< }
+1058c1087
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1064a1094,1096
+> tr {
+>   break-inside: avoid;
+> }
+1072a1105,1206
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1074a1209
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-curdle-ssh-curves-12" rel="prev">
+1077c1212
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-curdle-ssh-curves-12" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1079,1080c1214,1215
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1179,1181c1314,1316
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+1183,1184c1318,1319
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+1186,1190c1321,1325
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-key-exchange-methods" class="xref">Key Exchange Methods</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-shared-secret-encoding" class="xref">Shared Secret Encoding</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-key-exchange-methods" class="internal xref">Key Exchange Methods</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-shared-secret-encoding" class="internal xref">Shared Secret Encoding</a></p>
+1194,1195c1329,1330
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1197,1198c1332,1333
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1200,1204c1335,1339
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1" class="keepWithNext"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1206,1207c1341,1342
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.2">
+<                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+>                 <p id="section-toc.1-1.6.2.2.1" class="keepWithNext"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1211,1212c1346,1347
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1214,1215c1349,1350
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1226,1227c1361,1362
+<         Secure Shell (SSH) <span>[<a href="#RFC4251" class="xref">RFC4251</a>]</span> is a secure remote
+<         login protocol. The key exchange protocol described in <span>[<a href="#RFC4253" class="xref">RFC4253</a>]</span> supports an extensible set of
+---
+>         Secure Shell (SSH) <span>[<a href="#RFC4251" class="cite xref">RFC4251</a>]</span> is a secure remote
+>         login protocol. The key exchange protocol described in <span>[<a href="#RFC4253" class="cite xref">RFC4253</a>]</span> supports an extensible set of
+1229c1364
+<         <span>[<a href="#RFC5656" class="xref">RFC5656</a>]</span> defines how elliptic curves are
+---
+>         <span>[<a href="#RFC5656" class="cite xref">RFC5656</a>]</span> defines how elliptic curves are
+1233,1235c1368,1370
+<         <span><a href="https://www.rfc-editor.org/rfc/rfc5656#section-7.1" class="relref">7.1</a> (<a href="https://www.rfc-editor.org/rfc/rfc5656#section-7.1" class="relref">ECDH Message
+<  Numbers</a>)</span> of <span>[<a href="#RFC5656" class="xref">RFC5656</a>]</span>. Other parts of
+<         <span>[<a href="#RFC5656" class="xref">RFC5656</a>]</span>, such as Elliptic Curve
+---
+>         <span><a href="https://rfc-editor.org/rfc/rfc5656#section-7.1" class="relref">7.1</a> (<a href="https://rfc-editor.org/rfc/rfc5656#section-7.1" class="relref">ECDH Message
+>  Numbers</a>)</span> of <span>[<a href="#RFC5656" class="cite xref">RFC5656</a>]</span>. Other parts of
+>         <span>[<a href="#RFC5656" class="cite xref">RFC5656</a>]</span>, such as Elliptic Curve
+1241,1242c1376,1377
+<         Curve25519 and Curve448 <span>[<a href="#RFC7748" class="xref">RFC7748</a>]</span> in SSH. For
+<         Curve25519 with SHA-256 <span>[<a href="#RFC6234" class="xref">RFC6234</a>]</span><span>[<a href="#SHS" class="xref">SHS</a>]</span>, the algorithm described is equivalent
+---
+>         Curve25519 and Curve448 <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span> in SSH. For
+>         Curve25519 with SHA-256 <span>[<a href="#RFC6234" class="cite xref">RFC6234</a>]</span><span>[<a href="#SHS" class="cite xref">SHS</a>]</span>, the algorithm described is equivalent
+1246,1247c1381,1382
+<         deployed in libssh <span>[<a href="#libssh" class="xref">libssh</a>]</span> and
+<  OpenSSH <span>[<a href="#OpenSSH" class="xref">OpenSSH</a>]</span>. The Curve448 key
+---
+>         deployed in libssh <span>[<a href="#libssh" class="cite xref">libssh</a>]</span> and
+>  OpenSSH <span>[<a href="#OpenSSH" class="cite xref">OpenSSH</a>]</span>. The Curve448 key
+1249c1384
+<         similar but uses SHA-512 <span>[<a href="#RFC6234" class="xref">RFC6234</a>]</span><span>[<a href="#SHS" class="xref">SHS</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+---
+>         similar but uses SHA-512 <span>[<a href="#RFC6234" class="cite xref">RFC6234</a>]</span><span>[<a href="#SHS" class="cite xref">SHS</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+1260c1395
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1269c1404
+<         described in <span><a href="https://www.rfc-editor.org/rfc/rfc5656#section-4" class="relref">Section 4</a> of [<a href="#RFC5656" class="xref">RFC5656</a>]</span>, though
+---
+>         described in <span><a href="https://rfc-editor.org/rfc/rfc5656#section-4" class="relref">Section 4</a> of [<a href="#RFC5656" class="cite xref">RFC5656</a>]</span>, though
+1276c1411
+<         exchange hash are identical to <span><a href="https://www.rfc-editor.org/rfc/rfc5656#section-4" class="relref">Section 4</a> of [<a href="#RFC5656" class="xref">RFC5656</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
+---
+>         exchange hash are identical to <span><a href="https://rfc-editor.org/rfc/rfc5656#section-4" class="relref">Section 4</a> of [<a href="#RFC5656" class="cite xref">RFC5656</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
+1282c1417
+<         multiplication, as described in <span>[<a href="#RFC7748" class="xref">RFC7748</a>]</span>.
+---
+>         multiplication, as described in <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span>.
+1291c1426
+<         in <span>[<a href="#RFC7748" class="xref">RFC7748</a>]</span>. When they do so,
+---
+>         in <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span>. When they do so,
+1294c1429
+<         all-zero value and abort if so, as described in <span><a href="https://www.rfc-editor.org/rfc/rfc7748#section-6" class="relref">Section 6</a> of [<a href="#RFC7748" class="xref">RFC7748</a>]</span>.
+---
+>         all-zero value and abort if so, as described in <span><a href="https://rfc-editor.org/rfc/rfc7748#section-6" class="relref">Section 6</a> of [<a href="#RFC7748" class="cite xref">RFC7748</a>]</span>.
+1298c1433
+<    described in Sections <a href="https://www.rfc-editor.org/rfc/rfc7748#section-6" class="relref">6</a> and <a href="https://www.rfc-editor.org/rfc/rfc7748#section-7" class="relref">7</a> of <span>[<a href="#RFC7748" class="xref">RFC7748</a>]</span>. Clients and servers <span class="bcp14">MUST</span> also abort if
+---
+>    described in Sections <a href="https://rfc-editor.org/rfc/rfc7748#section-6" class="relref">6</a> and <a href="https://rfc-editor.org/rfc/rfc7748#section-7" class="relref">7</a> of <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span>. Clients and servers <span class="bcp14">MUST</span> also abort if
+1303c1438
+<         <span>[<a href="#IANA-REASON" class="xref">IANA-REASON</a>]</span>.
+---
+>         <span>[<a href="#IANA-REASON" class="cite xref">IANA-REASON</a>]</span>.
+1305c1440
+<         <span>[<a href="#RFC7748" class="xref">RFC7748</a>]</span>. The derived shared secret is 32
+---
+>         <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span>. The derived shared secret is 32
+1308c1443
+<         defined in <span>[<a href="#RFC7748" class="xref">RFC7748</a>]</span>. The hash used is SHA-256
+---
+>         defined in <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span>. The hash used is SHA-256
+1315c1450
+<           The following step differs from <span>[<a href="#RFC5656" class="xref">RFC5656</a>]</span>,
+---
+>           The following step differs from <span>[<a href="#RFC5656" class="cite xref">RFC5656</a>]</span>,
+1320,1321c1455,1456
+<           The shared secret, K, is defined in <span>[<a href="#RFC4253" class="xref">RFC4253</a>]</span>
+<           and <span>[<a href="#RFC5656" class="xref">RFC5656</a>]</span> as an integer encoded
+---
+>           The shared secret, K, is defined in <span>[<a href="#RFC4253" class="cite xref">RFC4253</a>]</span>
+>           and <span>[<a href="#RFC5656" class="cite xref">RFC5656</a>]</span> as an integer encoded
+1330,1331c1465,1466
+<           described in <span><a href="https://www.rfc-editor.org/rfc/rfc4251#section-5" class="relref">Section 5</a> of [<a href="#RFC4251" class="xref">RFC4251</a>]</span>, and the
+<           resulting bytes are fed as described in <span>[<a href="#RFC4253" class="xref">RFC4253</a>]</span> to the key exchange method's hash
+---
+>           described in <span><a href="https://rfc-editor.org/rfc/rfc4251#section-5" class="relref">Section 5</a> of [<a href="#RFC4251" class="cite xref">RFC4251</a>]</span>, and the
+>           resulting bytes are fed as described in <span>[<a href="#RFC4253" class="cite xref">RFC4253</a>]</span> to the key exchange method's hash
+1336c1471
+<           fixed-length unsigned little-endian conversion, per <span>[<a href="#RFC7748" class="xref">RFC7748</a>]</span>. It is only later when these
+---
+>           fixed-length unsigned little-endian conversion, per <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span>. It is only later when these
+1352c1487
+<         The security considerations of <span>[<a href="#RFC4251" class="xref">RFC4251</a>]</span>, <span>[<a href="#RFC5656" class="xref">RFC5656</a>]</span>, and <span>[<a href="#RFC7748" class="xref">RFC7748</a>]</span> are
+---
+>         The security considerations of <span>[<a href="#RFC4251" class="cite xref">RFC4251</a>]</span>, <span>[<a href="#RFC5656" class="cite xref">RFC5656</a>]</span>, and <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span> are
+1389,1390c1524,1525
+<         for SSH <span>[<a href="#IANA-KEX" class="xref">IANA-KEX</a>]</span> that was created in
+<  <span><a href="https://www.rfc-editor.org/rfc/rfc4250#section-4.10" class="relref">Section 4.10</a> of [<a href="#RFC4250" class="xref">RFC4250</a>]</span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
+---
+>         for SSH <span>[<a href="#IANA-KEX" class="cite xref">IANA-KEX</a>]</span> that was created in
+>  <span><a href="https://rfc-editor.org/rfc/rfc4250#section-4.10" class="relref">Section 4.10</a> of [<a href="#RFC4250" class="cite xref">RFC4250</a>]</span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
+1404c1539,1540
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1407c1543,1544
+< <span class="refAuthor">Lehtinen, S.</span><span class="refAuthor"> and C. Lonvick, Ed.</span>, <span class="refTitle">"The Secure Shell (SSH) Protocol Assigned Numbers"</span>, <span class="seriesInfo">RFC 4250</span>, <span class="seriesInfo">DOI 10.17487/RFC4250</span>, <time datetime="2006-01">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4250">https://www.rfc-editor.org/info/rfc4250</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Lehtinen, S.</span> and <span class="refAuthor">C. Lonvick, Ed.</span>, <span class="refTitle">"The Secure Shell (SSH) Protocol Assigned Numbers"</span>, <span class="seriesInfo">RFC 4250</span>, <span class="seriesInfo">DOI 10.17487/RFC4250</span>, <time datetime="2006-01" class="refDate">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4250">https://www.rfc-editor.org/info/rfc4250</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1410c1547,1548
+< <span class="refAuthor">Ylonen, T.</span><span class="refAuthor"> and C. Lonvick, Ed.</span>, <span class="refTitle">"The Secure Shell (SSH) Protocol Architecture"</span>, <span class="seriesInfo">RFC 4251</span>, <span class="seriesInfo">DOI 10.17487/RFC4251</span>, <time datetime="2006-01">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4251">https://www.rfc-editor.org/info/rfc4251</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Ylonen, T.</span> and <span class="refAuthor">C. Lonvick, Ed.</span>, <span class="refTitle">"The Secure Shell (SSH) Protocol Architecture"</span>, <span class="seriesInfo">RFC 4251</span>, <span class="seriesInfo">DOI 10.17487/RFC4251</span>, <time datetime="2006-01" class="refDate">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4251">https://www.rfc-editor.org/info/rfc4251</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1413c1551,1552
+< <span class="refAuthor">Ylonen, T.</span><span class="refAuthor"> and C. Lonvick, Ed.</span>, <span class="refTitle">"The Secure Shell (SSH) Transport Layer Protocol"</span>, <span class="seriesInfo">RFC 4253</span>, <span class="seriesInfo">DOI 10.17487/RFC4253</span>, <time datetime="2006-01">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4253">https://www.rfc-editor.org/info/rfc4253</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Ylonen, T.</span> and <span class="refAuthor">C. Lonvick, Ed.</span>, <span class="refTitle">"The Secure Shell (SSH) Transport Layer Protocol"</span>, <span class="seriesInfo">RFC 4253</span>, <span class="seriesInfo">DOI 10.17487/RFC4253</span>, <time datetime="2006-01" class="refDate">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4253">https://www.rfc-editor.org/info/rfc4253</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1416c1555,1556
+< <span class="refAuthor">Stebila, D.</span><span class="refAuthor"> and J. Green</span>, <span class="refTitle">"Elliptic Curve Algorithm Integration in the Secure Shell Transport Layer"</span>, <span class="seriesInfo">RFC 5656</span>, <span class="seriesInfo">DOI 10.17487/RFC5656</span>, <time datetime="2009-12">December 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5656">https://www.rfc-editor.org/info/rfc5656</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Stebila, D.</span> and <span class="refAuthor">J. Green</span>, <span class="refTitle">"Elliptic Curve Algorithm Integration in the Secure Shell Transport Layer"</span>, <span class="seriesInfo">RFC 5656</span>, <span class="seriesInfo">DOI 10.17487/RFC5656</span>, <time datetime="2009-12" class="refDate">December 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5656">https://www.rfc-editor.org/info/rfc5656</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1419c1559,1560
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1422c1563,1564
+< <span class="refAuthor">National Institute of Standards and Technology</span>, <span class="refTitle">"Secure Hash Standard (SHS)"</span>, <span class="seriesInfo">FIPS PUB 180-4</span>, <span class="seriesInfo">DOI 10.6028/NIST.FIPS.180-4</span>, <time datetime="2015-08">August 2015</time>, <span>&lt;<a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf">https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">National Institute of Standards and Technology</span>, <span class="refTitle">"Secure Hash Standard (SHS)"</span>, <span class="seriesInfo">FIPS PUB 180-4</span>, <span class="seriesInfo">DOI 10.6028/NIST.FIPS.180-4</span>, <time datetime="2015-08" class="refDate">August 2015</time>, <span>&lt;<a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf">https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1432c1574,1575
+< <span class="refAuthor">IANA</span>, <span class="refTitle">"Secure Shell (SSH) Protocol Parameters: Key Exchange Method Names"</span>, <time></time>, <span>&lt;<a href="https://www.iana.org/assignments/ssh-parameters/">https://www.iana.org/assignments/ssh-parameters/</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">IANA</span>, <span class="refTitle">"Secure Shell (SSH) Protocol Parameters: Key Exchange Method Names"</span>, <span>&lt;<a href="https://www.iana.org/assignments/ssh-parameters/">https://www.iana.org/assignments/ssh-parameters/</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1435c1578,1579
+< <span class="refAuthor">IANA</span>, <span class="refTitle">"Secure Shell (SSH) Protocol Parameters: Disconnection Messages Reason Codes and Descriptions"</span>, <time></time>, <span>&lt;<a href="https://www.iana.org/assignments/ssh-parameters/">https://www.iana.org/assignments/ssh-parameters/</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">IANA</span>, <span class="refTitle">"Secure Shell (SSH) Protocol Parameters: Disconnection Messages Reason Codes and Descriptions"</span>, <span>&lt;<a href="https://www.iana.org/assignments/ssh-parameters/">https://www.iana.org/assignments/ssh-parameters/</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1438c1582,1583
+< <span class="refAuthor">libssh</span>, <span class="refTitle">"The SSH Library"</span>, <time></time>, <span>&lt;<a href="https://www.libssh.org/">https://www.libssh.org/</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">libssh</span>, <span class="refTitle">"The SSH Library"</span>, <span>&lt;<a href="https://www.libssh.org/">https://www.libssh.org/</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1441c1586,1587
+< <span class="refAuthor">OpenSSH group of OpenBSD</span>, <span class="refTitle">"The OpenSSH Project"</span>, <time></time>, <span>&lt;<a href="https://www.openssh.com/">https://www.openssh.com/</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">OpenSSH group of OpenBSD</span>, <span class="refTitle">"The OpenSSH Project"</span>, <span>&lt;<a href="https://www.openssh.com/">https://www.openssh.com/</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1444c1590,1591
+< <span class="refAuthor">Eastlake 3rd, D.</span><span class="refAuthor"> and T. Hansen</span>, <span class="refTitle">"US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)"</span>, <span class="seriesInfo">RFC 6234</span>, <span class="seriesInfo">DOI 10.17487/RFC6234</span>, <time datetime="2011-05">May 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6234">https://www.rfc-editor.org/info/rfc6234</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Eastlake 3rd, D.</span> and <span class="refAuthor">T. Hansen</span>, <span class="refTitle">"US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)"</span>, <span class="seriesInfo">RFC 6234</span>, <span class="seriesInfo">DOI 10.17487/RFC6234</span>, <time datetime="2011-05" class="refDate">May 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6234">https://www.rfc-editor.org/info/rfc6234</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1447c1594,1595
+< <span class="refAuthor">Langley, A.</span><span class="refAuthor">, Hamburg, M.</span><span class="refAuthor">, and S. Turner</span>, <span class="refTitle">"Elliptic Curves for Security"</span>, <span class="seriesInfo">RFC 7748</span>, <span class="seriesInfo">DOI 10.17487/RFC7748</span>, <time datetime="2016-01">January 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7748">https://www.rfc-editor.org/info/rfc7748</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Langley, A.</span>, <span class="refAuthor">Hamburg, M.</span>, and <span class="refAuthor">S. Turner</span>, <span class="refTitle">"Elliptic Curves for Security"</span>, <span class="seriesInfo">RFC 7748</span>, <span class="seriesInfo">DOI 10.17487/RFC7748</span>, <time datetime="2016-01" class="refDate">January 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7748">https://www.rfc-editor.org/info/rfc7748</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1451c1599
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+1455c1603
+< <p id="section-appendix.a-1">
+---
+> <p id="appendix-A-1">
+1458,1460c1606,1608
+<         by <span class="contact-name">Aris Adamantiadis</span> and implemented in libssh and OpenSSH.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2">
+<         Thanks to the following people for review and comments: <span class="contact-name">Denis         Bider</span>, <span class="contact-name">Damien Miller</span>, <span class="contact-name">Niels Moeller</span>, <span class="contact-name">Matt Johnston</span>, <span class="contact-name">Eric         Rescorla</span>, <span class="contact-name">Ron Frederick</span>, and <span class="contact-name">Stefan Buehler</span>.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+---
+>         by <span class="contact-name">Aris Adamantiadis</span> and implemented in libssh and OpenSSH.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2">
+>         Thanks to the following people for review and comments: <span class="contact-name">Denis         Bider</span>, <span class="contact-name">Damien Miller</span>, <span class="contact-name">Niels Moeller</span>, <span class="contact-name">Matt Johnston</span>, <span class="contact-name">Eric         Rescorla</span>, <span class="contact-name">Ron Frederick</span>, and <span class="contact-name">Stefan Buehler</span>.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+1463c1611
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">

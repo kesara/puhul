@@ -1,0 +1,729 @@
+15c15
+< <meta content="xml2rfc 2.38.1" name="generator">
+---
+> <meta content="xml2rfc 3.19.0" name="generator">
+19c19,35
+< <link href="rfc8701.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.0
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.3
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8701.xml" rel="alternate" type="application/rfc+xml">
+29c45
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+38a55,60
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+41d62
+<   width: extend-to-zoom;
+56c77
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+58a80
+>   overflow-wrap: break-word;
+144a167,175
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+159,162d189
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+163a191
+>   border: none;
+186a215,217
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+238c269
+< tt, code, pre, code {
+---
+> tt, code, pre {
+240c271
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+279a311,313
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+369a404,409
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+471c511
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+611d650
+< 
+633a673,675
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+701c743
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+801c843
+< tt, code, pre, code {
+---
+> tt, code, pre {
+806c848
+< pre.sourcecode,
+---
+> .sourcecode pre,
+842c884
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+920,925d961
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+996c1032
+<   margin: 0 0 0.25em 0;
+---
+>   margin-bottom: 0.25em;
+1029a1066
+>   .artwork > pre,
+1034,1041d1070
+< /*
+<   The margin-left: 0 on <dd> removes all distinction
+<   between levels from nested <dl>s.  Undo that.
+< */
+< dl.olPercent > dd,
+< dd {
+<   margin-left: revert;
+< }
+1045c1074,1201
+< }</style>
+---
+> }
+> /* ol type a */
+> ol.type-a { list-style-type: lower-alpha; }
+> ol.type-A { list-style-type: upper-alpha; }
+> ol.type-i { list-style-type: lower-roman; }
+> ol.type-I { list-style-type: lower-roman; }
+> /* Apply the print table and row borders in general, on request from the RPC,
+> and increase the contrast between border and odd row background slightly */
+> table {
+>   border: 1px solid #ddd;
+> }
+> td {
+>   border-top: 1px solid #ddd;
+> }
+> tr {
+>   break-inside: avoid;
+> }
+> tr:nth-child(2n+1) > td {
+>   background-color: #f8f8f8;
+> }
+> /* Use style rules to govern display of the TOC. */
+> @media screen and (max-width: 1023px) {
+>   #toc nav { display: none; }
+>   #toc.active nav { display: block; }
+> }
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+1046a1203
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-tls-grease-04" rel="prev">
+1049c1206
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-tls-grease-04" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1051,1052c1208,1209
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1056c1213
+< <td class="center">Applying Generate Random Extensions And Sustain Extensibility (GREASE) to TLS Extensibility</td>
+---
+> <td class="center">Applying Generate Random Extensions And </td>
+1144,1149c1301,1306
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+1153,1154c1310,1311
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-grease-values" class="xref">GREASE Values</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-grease-values" class="internal xref">GREASE Values</a></p>
+1156,1160c1313,1317
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-client-initiated-extension-" class="xref">Client-Initiated Extension Points</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-client-behavior" class="xref">Client Behavior</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-client-initiated-extension-" class="internal xref">Client-Initiated Extension Points</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-client-behavior" class="internal xref">Client Behavior</a></p>
+1162,1163c1319,1320
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-server-behavior" class="xref">Server Behavior</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1" class="keepWithNext"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-server-behavior" class="internal xref">Server Behavior</a></p>
+1167,1171c1324,1328
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-server-initiated-extension-" class="xref">Server-Initiated Extension Points</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-server-behavior-2" class="xref">Server Behavior</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-server-initiated-extension-" class="internal xref">Server-Initiated Extension Points</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1" class="keepWithNext"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-server-behavior-2" class="internal xref">Server Behavior</a></p>
+1173,1174c1330,1331
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-client-behavior-2" class="xref">Client Behavior</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1" class="keepWithNext"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-client-behavior-2" class="internal xref">Client Behavior</a></p>
+1178,1179c1335,1336
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-sending-grease-values" class="xref">Sending GREASE Values</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-sending-grease-values" class="internal xref">Sending GREASE Values</a></p>
+1181,1182c1338,1339
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1184,1185c1341,1342
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1187,1188c1344,1345
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1190,1191c1347,1348
+< <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1193,1194c1350,1351
+< <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+1204c1361
+< <p id="section-1-1">The TLS protocol <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span> includes several points of
+---
+> <p id="section-1-1">The TLS protocol <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span> includes several points of
+1231c1388
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1245,1247c1402,1404
+<      and Application-Layer Protocol Negotiation (ALPN) <span>[<a href="#RFC7301" class="xref">RFC7301</a>]</span> identifiers:<a href="#section-2-2" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-2-3.1">{0x0A,0x0A}<a href="#section-2-3.1" class="pilcrow">¶</a>
+---
+>      and Application-Layer Protocol Negotiation (ALPN) <span>[<a href="#RFC7301" class="cite xref">RFC7301</a>]</span> identifiers:<a href="#section-2-2" class="pilcrow">¶</a></p>
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-2-3.1">{0x0A,0x0A}<a href="#section-2-3.1" class="pilcrow">¶</a>
+1249c1406
+< <li class="ulEmpty" id="section-2-3.2">{0x1A,0x1A}<a href="#section-2-3.2" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-3.2">{0x1A,0x1A}<a href="#section-2-3.2" class="pilcrow">¶</a>
+1251c1408
+< <li class="ulEmpty" id="section-2-3.3">{0x2A,0x2A}<a href="#section-2-3.3" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-3.3">{0x2A,0x2A}<a href="#section-2-3.3" class="pilcrow">¶</a>
+1253c1410
+< <li class="ulEmpty" id="section-2-3.4">{0x3A,0x3A}<a href="#section-2-3.4" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-3.4">{0x3A,0x3A}<a href="#section-2-3.4" class="pilcrow">¶</a>
+1255c1412
+< <li class="ulEmpty" id="section-2-3.5">{0x4A,0x4A}<a href="#section-2-3.5" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-3.5">{0x4A,0x4A}<a href="#section-2-3.5" class="pilcrow">¶</a>
+1257c1414
+< <li class="ulEmpty" id="section-2-3.6">{0x5A,0x5A}<a href="#section-2-3.6" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-3.6">{0x5A,0x5A}<a href="#section-2-3.6" class="pilcrow">¶</a>
+1259c1416
+< <li class="ulEmpty" id="section-2-3.7">{0x6A,0x6A}<a href="#section-2-3.7" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-3.7">{0x6A,0x6A}<a href="#section-2-3.7" class="pilcrow">¶</a>
+1261c1418
+< <li class="ulEmpty" id="section-2-3.8">{0x7A,0x7A}<a href="#section-2-3.8" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-3.8">{0x7A,0x7A}<a href="#section-2-3.8" class="pilcrow">¶</a>
+1263c1420
+< <li class="ulEmpty" id="section-2-3.9">{0x8A,0x8A}<a href="#section-2-3.9" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-3.9">{0x8A,0x8A}<a href="#section-2-3.9" class="pilcrow">¶</a>
+1265c1422
+< <li class="ulEmpty" id="section-2-3.10">{0x9A,0x9A}<a href="#section-2-3.10" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-3.10">{0x9A,0x9A}<a href="#section-2-3.10" class="pilcrow">¶</a>
+1267c1424
+< <li class="ulEmpty" id="section-2-3.11">{0xAA,0xAA}<a href="#section-2-3.11" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-3.11">{0xAA,0xAA}<a href="#section-2-3.11" class="pilcrow">¶</a>
+1269c1426
+< <li class="ulEmpty" id="section-2-3.12">{0xBA,0xBA}<a href="#section-2-3.12" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-3.12">{0xBA,0xBA}<a href="#section-2-3.12" class="pilcrow">¶</a>
+1271c1428
+< <li class="ulEmpty" id="section-2-3.13">{0xCA,0xCA}<a href="#section-2-3.13" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-3.13">{0xCA,0xCA}<a href="#section-2-3.13" class="pilcrow">¶</a>
+1273c1430
+< <li class="ulEmpty" id="section-2-3.14">{0xDA,0xDA}<a href="#section-2-3.14" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-3.14">{0xDA,0xDA}<a href="#section-2-3.14" class="pilcrow">¶</a>
+1275c1432
+< <li class="ulEmpty" id="section-2-3.15">{0xEA,0xEA}<a href="#section-2-3.15" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-3.15">{0xEA,0xEA}<a href="#section-2-3.15" class="pilcrow">¶</a>
+1277c1434
+< <li class="ulEmpty" id="section-2-3.16">{0xFA,0xFA}<a href="#section-2-3.16" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-3.16">{0xFA,0xFA}<a href="#section-2-3.16" class="pilcrow">¶</a>
+1282,1283c1439,1440
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-2-5.1">0x0A0A<a href="#section-2-5.1" class="pilcrow">¶</a>
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-2-5.1">0x0A0A<a href="#section-2-5.1" class="pilcrow">¶</a>
+1285c1442
+< <li class="ulEmpty" id="section-2-5.2">0x1A1A<a href="#section-2-5.2" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-5.2">0x1A1A<a href="#section-2-5.2" class="pilcrow">¶</a>
+1287c1444
+< <li class="ulEmpty" id="section-2-5.3">0x2A2A<a href="#section-2-5.3" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-5.3">0x2A2A<a href="#section-2-5.3" class="pilcrow">¶</a>
+1289c1446
+< <li class="ulEmpty" id="section-2-5.4">0x3A3A<a href="#section-2-5.4" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-5.4">0x3A3A<a href="#section-2-5.4" class="pilcrow">¶</a>
+1291c1448
+< <li class="ulEmpty" id="section-2-5.5">0x4A4A<a href="#section-2-5.5" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-5.5">0x4A4A<a href="#section-2-5.5" class="pilcrow">¶</a>
+1293c1450
+< <li class="ulEmpty" id="section-2-5.6">0x5A5A<a href="#section-2-5.6" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-5.6">0x5A5A<a href="#section-2-5.6" class="pilcrow">¶</a>
+1295c1452
+< <li class="ulEmpty" id="section-2-5.7">0x6A6A<a href="#section-2-5.7" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-5.7">0x6A6A<a href="#section-2-5.7" class="pilcrow">¶</a>
+1297c1454
+< <li class="ulEmpty" id="section-2-5.8">0x7A7A<a href="#section-2-5.8" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-5.8">0x7A7A<a href="#section-2-5.8" class="pilcrow">¶</a>
+1299c1456
+< <li class="ulEmpty" id="section-2-5.9">0x8A8A<a href="#section-2-5.9" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-5.9">0x8A8A<a href="#section-2-5.9" class="pilcrow">¶</a>
+1301c1458
+< <li class="ulEmpty" id="section-2-5.10">0x9A9A<a href="#section-2-5.10" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-5.10">0x9A9A<a href="#section-2-5.10" class="pilcrow">¶</a>
+1303c1460
+< <li class="ulEmpty" id="section-2-5.11">0xAAAA<a href="#section-2-5.11" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-5.11">0xAAAA<a href="#section-2-5.11" class="pilcrow">¶</a>
+1305c1462
+< <li class="ulEmpty" id="section-2-5.12">0xBABA<a href="#section-2-5.12" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-5.12">0xBABA<a href="#section-2-5.12" class="pilcrow">¶</a>
+1307c1464
+< <li class="ulEmpty" id="section-2-5.13">0xCACA<a href="#section-2-5.13" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-5.13">0xCACA<a href="#section-2-5.13" class="pilcrow">¶</a>
+1309c1466
+< <li class="ulEmpty" id="section-2-5.14">0xDADA<a href="#section-2-5.14" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-5.14">0xDADA<a href="#section-2-5.14" class="pilcrow">¶</a>
+1311c1468
+< <li class="ulEmpty" id="section-2-5.15">0xEAEA<a href="#section-2-5.15" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-5.15">0xEAEA<a href="#section-2-5.15" class="pilcrow">¶</a>
+1313c1470
+< <li class="ulEmpty" id="section-2-5.16">0xFAFA<a href="#section-2-5.16" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-5.16">0xFAFA<a href="#section-2-5.16" class="pilcrow">¶</a>
+1317c1474
+<         DTLS <span>[<a href="#RFC6347" class="xref">RFC6347</a>]</span> version numbers.<a href="#section-2-6" class="pilcrow">¶</a></p>
+---
+>         DTLS <span>[<a href="#RFC6347" class="cite xref">RFC6347</a>]</span> version numbers.<a href="#section-2-6" class="pilcrow">¶</a></p>
+1319,1320c1476,1477
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-2-8.1">0x0B<a href="#section-2-8.1" class="pilcrow">¶</a>
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-2-8.1">0x0B<a href="#section-2-8.1" class="pilcrow">¶</a>
+1322c1479
+< <li class="ulEmpty" id="section-2-8.2">0x2A<a href="#section-2-8.2" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-8.2">0x2A<a href="#section-2-8.2" class="pilcrow">¶</a>
+1324c1481
+< <li class="ulEmpty" id="section-2-8.3">0x49<a href="#section-2-8.3" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-8.3">0x49<a href="#section-2-8.3" class="pilcrow">¶</a>
+1326c1483
+< <li class="ulEmpty" id="section-2-8.4">0x68<a href="#section-2-8.4" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-8.4">0x68<a href="#section-2-8.4" class="pilcrow">¶</a>
+1328c1485
+< <li class="ulEmpty" id="section-2-8.5">0x87<a href="#section-2-8.5" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-8.5">0x87<a href="#section-2-8.5" class="pilcrow">¶</a>
+1330c1487
+< <li class="ulEmpty" id="section-2-8.6">0xA6<a href="#section-2-8.6" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-8.6">0xA6<a href="#section-2-8.6" class="pilcrow">¶</a>
+1332c1489
+< <li class="ulEmpty" id="section-2-8.7">0xC5<a href="#section-2-8.7" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-8.7">0xC5<a href="#section-2-8.7" class="pilcrow">¶</a>
+1334c1491
+< <li class="ulEmpty" id="section-2-8.8">0xE4<a href="#section-2-8.8" class="pilcrow">¶</a>
+---
+>         <li class="normal ulEmpty" id="section-2-8.8">0xE4<a href="#section-2-8.8" class="pilcrow">¶</a>
+1350,1351c1507,1508
+< <ul>
+< <li id="section-3.1-2.1">A client <span class="bcp14">MAY</span> select one or more GREASE cipher suite values and advertise them in the "cipher_suites" field.<a href="#section-3.1-2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.1-2.1">A client <span class="bcp14">MAY</span> select one or more GREASE cipher suite values and advertise them in the "cipher_suites" field.<a href="#section-3.1-2.1" class="pilcrow">¶</a>
+1353c1510
+< <li id="section-3.1-2.2">A client <span class="bcp14">MAY</span> select one or more GREASE extension values and advertise them as extensions with varying length and contents.<a href="#section-3.1-2.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-2.2">A client <span class="bcp14">MAY</span> select one or more GREASE extension values and advertise them as extensions with varying length and contents.<a href="#section-3.1-2.2" class="pilcrow">¶</a>
+1355c1512
+< <li id="section-3.1-2.3">A client <span class="bcp14">MAY</span> select one or more GREASE named group values and advertise them in the "supported_groups" extension, if sent. It <span class="bcp14">MAY</span> also send KeyShareEntry values for a subset of those selected in the "key_share" extension. For each of these, the "key_exchange" field <span class="bcp14">MAY</span> be any value.<a href="#section-3.1-2.3" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-2.3">A client <span class="bcp14">MAY</span> select one or more GREASE named group values and advertise them in the "supported_groups" extension, if sent. It <span class="bcp14">MAY</span> also send KeyShareEntry values for a subset of those selected in the "key_share" extension. For each of these, the "key_exchange" field <span class="bcp14">MAY</span> be any value.<a href="#section-3.1-2.3" class="pilcrow">¶</a>
+1357c1514
+< <li id="section-3.1-2.4">A client <span class="bcp14">MAY</span> select one or more GREASE signature algorithm values and advertise them in the "signature_algorithms" or "signature_algorithms_cert" extensions, if sent.<a href="#section-3.1-2.4" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-2.4">A client <span class="bcp14">MAY</span> select one or more GREASE signature algorithm values and advertise them in the "signature_algorithms" or "signature_algorithms_cert" extensions, if sent.<a href="#section-3.1-2.4" class="pilcrow">¶</a>
+1359c1516
+< <li id="section-3.1-2.5">A client <span class="bcp14">MAY</span> select one or more GREASE version values and advertise them in the "supported_versions" extension, if sent.<a href="#section-3.1-2.5" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-2.5">A client <span class="bcp14">MAY</span> select one or more GREASE version values and advertise them in the "supported_versions" extension, if sent.<a href="#section-3.1-2.5" class="pilcrow">¶</a>
+1361c1518
+< <li id="section-3.1-2.6">A client <span class="bcp14">MAY</span> select one or more GREASE PskKeyExchangeMode values and advertise them in the "psk_key_exchange_modes" extension, if sent.<a href="#section-3.1-2.6" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-2.6">A client <span class="bcp14">MAY</span> select one or more GREASE PskKeyExchangeMode values and advertise them in the "psk_key_exchange_modes" extension, if sent.<a href="#section-3.1-2.6" class="pilcrow">¶</a>
+1363c1520
+< <li id="section-3.1-2.7">A client <span class="bcp14">MAY</span> select one or more GREASE ALPN identifiers and advertise them in the "application_layer_protocol_negotiation" extension, if sent.<a href="#section-3.1-2.7" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-2.7">A client <span class="bcp14">MAY</span> select one or more GREASE ALPN identifiers and advertise them in the "application_layer_protocol_negotiation" extension, if sent.<a href="#section-3.1-2.7" class="pilcrow">¶</a>
+1369,1370c1526,1527
+< <ul>
+< <li id="section-3.1-4.1">The "version" value in a ServerHello or HelloRetryRequest<a href="#section-3.1-4.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.1-4.1">The "version" value in a ServerHello or HelloRetryRequest<a href="#section-3.1-4.1" class="pilcrow">¶</a>
+1372c1529
+< <li id="section-3.1-4.2">The "cipher_suite" value in a ServerHello<a href="#section-3.1-4.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-4.2">The "cipher_suite" value in a ServerHello<a href="#section-3.1-4.2" class="pilcrow">¶</a>
+1374c1531
+< <li id="section-3.1-4.3">Any ServerHello extension<a href="#section-3.1-4.3" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-4.3">Any ServerHello extension<a href="#section-3.1-4.3" class="pilcrow">¶</a>
+1376c1533
+< <li id="section-3.1-4.4">Any HelloRetryRequest, EncryptedExtensions, or Certificate extension in TLS 1.3<a href="#section-3.1-4.4" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-4.4">Any HelloRetryRequest, EncryptedExtensions, or Certificate extension in TLS 1.3<a href="#section-3.1-4.4" class="pilcrow">¶</a>
+1378,1379c1535,1536
+< <li id="section-3.1-4.5">The "namedcurve" value in a ServerKeyExchange for an Ephemeral
+<    Elliptic Curve Diffie-Hellman (ECDHE) cipher in TLS 1.2 <span>[<a href="#RFC5246" class="xref">RFC5246</a>]</span> or earlier<a href="#section-3.1-4.5" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-4.5">The "namedcurve" value in a ServerKeyExchange for an Ephemeral
+>    Elliptic Curve Diffie-Hellman (ECDHE) cipher in TLS 1.2 <span>[<a href="#RFC5246" class="cite xref">RFC5246</a>]</span> or earlier<a href="#section-3.1-4.5" class="pilcrow">¶</a>
+1381c1538
+< <li id="section-3.1-4.6">The signature algorithm in a ServerKeyExchange signature in TLS 1.2 or earlier<a href="#section-3.1-4.6" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-4.6">The signature algorithm in a ServerKeyExchange signature in TLS 1.2 or earlier<a href="#section-3.1-4.6" class="pilcrow">¶</a>
+1383c1540
+< <li id="section-3.1-4.7">The signature algorithm in a server CertificateVerify signature in TLS 1.3<a href="#section-3.1-4.7" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-4.7">The signature algorithm in a server CertificateVerify signature in TLS 1.3<a href="#section-3.1-4.7" class="pilcrow">¶</a>
+1415,1416c1572,1573
+< <ul>
+< <li id="section-4.1-2.1">A server <span class="bcp14">MAY</span> select one or more GREASE extension values and advertise them as extensions with varying length and contents.<a href="#section-4.1-2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.1-2.1">A server <span class="bcp14">MAY</span> select one or more GREASE extension values and advertise them as extensions with varying length and contents.<a href="#section-4.1-2.1" class="pilcrow">¶</a>
+1418c1575
+< <li id="section-4.1-2.2">A server <span class="bcp14">MAY</span> select one or more GREASE signature algorithm values and advertise them in the "signature_algorithms" or "signature_algorithms_cert" extensions, if present.<a href="#section-4.1-2.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-4.1-2.2">A server <span class="bcp14">MAY</span> select one or more GREASE signature algorithm values and advertise them in the "signature_algorithms" or "signature_algorithms_cert" extensions, if present.<a href="#section-4.1-2.2" class="pilcrow">¶</a>
+1425,1426c1582,1583
+< <ul>
+< <li id="section-4.1-5.1">Any Certificate extension in TLS 1.3<a href="#section-4.1-5.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.1-5.1">Any Certificate extension in TLS 1.3<a href="#section-4.1-5.1" class="pilcrow">¶</a>
+1428c1585
+< <li id="section-4.1-5.2">The signature algorithm in a client CertificateVerify signature<a href="#section-4.1-5.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-4.1-5.2">The signature algorithm in a client CertificateVerify signature<a href="#section-4.1-5.2" class="pilcrow">¶</a>
+1455c1612
+< specifications when sending GREASE values. For instance, <span><a href="https://www.rfc-editor.org/rfc/rfc8446#section-4.2" class="relref">Section 4.2</a> of [<a href="#RFC8446" class="xref">RFC8446</a>]</span> forbids duplicate extension types within a single
+---
+> specifications when sending GREASE values. For instance, <span><a href="https://rfc-editor.org/rfc/rfc8446#section-4.2" class="relref">Section 4.2</a> of [<a href="#RFC8446" class="cite xref">RFC8446</a>]</span> forbids duplicate extension types within a single
+1993c2150,2151
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1996c2154,2155
+< <span class="refAuthor">Dierks, T.</span><span class="refAuthor"> and E. Rescorla</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.2"</span>, <span class="seriesInfo">RFC 5246</span>, <span class="seriesInfo">DOI 10.17487/RFC5246</span>, <time datetime="2008-08">August 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5246">https://www.rfc-editor.org/info/rfc5246</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Dierks, T.</span> and <span class="refAuthor">E. Rescorla</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.2"</span>, <span class="seriesInfo">RFC 5246</span>, <span class="seriesInfo">DOI 10.17487/RFC5246</span>, <time datetime="2008-08" class="refDate">August 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5246">https://www.rfc-editor.org/info/rfc5246</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1999c2158,2159
+< <span class="refAuthor">Rescorla, E.</span><span class="refAuthor"> and N. Modadugu</span>, <span class="refTitle">"Datagram Transport Layer Security Version 1.2"</span>, <span class="seriesInfo">RFC 6347</span>, <span class="seriesInfo">DOI 10.17487/RFC6347</span>, <time datetime="2012-01">January 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6347">https://www.rfc-editor.org/info/rfc6347</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rescorla, E.</span> and <span class="refAuthor">N. Modadugu</span>, <span class="refTitle">"Datagram Transport Layer Security Version 1.2"</span>, <span class="seriesInfo">RFC 6347</span>, <span class="seriesInfo">DOI 10.17487/RFC6347</span>, <time datetime="2012-01" class="refDate">January 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6347">https://www.rfc-editor.org/info/rfc6347</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2002c2162,2163
+< <span class="refAuthor">Friedl, S.</span><span class="refAuthor">, Popov, A.</span><span class="refAuthor">, Langley, A.</span><span class="refAuthor">, and E. Stephan</span>, <span class="refTitle">"Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension"</span>, <span class="seriesInfo">RFC 7301</span>, <span class="seriesInfo">DOI 10.17487/RFC7301</span>, <time datetime="2014-07">July 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7301">https://www.rfc-editor.org/info/rfc7301</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Friedl, S.</span>, <span class="refAuthor">Popov, A.</span>, <span class="refAuthor">Langley, A.</span>, and <span class="refAuthor">E. Stephan</span>, <span class="refTitle">"Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension"</span>, <span class="seriesInfo">RFC 7301</span>, <span class="seriesInfo">DOI 10.17487/RFC7301</span>, <time datetime="2014-07" class="refDate">July 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7301">https://www.rfc-editor.org/info/rfc7301</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2005c2166,2167
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2008c2170,2171
+< <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8446">https://www.rfc-editor.org/info/rfc8446</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8446">https://www.rfc-editor.org/info/rfc8446</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2012c2175
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2016c2179
+< <p id="section-appendix.a-1">
+---
+> <p id="appendix-A-1">
+2019c2182
+< due to <span class="contact-name">Adam Langley</span>.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+> due to <span class="contact-name">Adam Langley</span>.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+2023c2186
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+2037,2065c2200,2205
+< <script>var toc = document.getElementById("toc");
+< var tocToggle = toc.querySelector("h2");
+< var tocNav = toc.querySelector("nav");
+< 
+< // mobile menu toggle
+< tocToggle.onclick = function(event) {
+<     if (window.innerWidth < 1024) {
+<  var tocNavDisplay = tocNav.currentStyle ? tocNav.currentStyle.display : getComputedStyle(tocNav, null).display;
+<  if (tocNavDisplay == "none") {
+<      tocNav.style.display = "block";
+<  } else {
+<      tocNav.style.display = "none";
+<  }
+<     }
+< }
+< 
+< // toc anchor scroll to anchor
+< tocNav.addEventListener("click", function (event) {
+<     event.preventDefault();
+<     if (event.target.nodeName == 'A') {
+<  if (window.innerWidth < 1024) {
+<      tocNav.style.display = "none";
+<  }
+<  var href = event.target.getAttribute("href");
+<  var anchorId = href.substr(1);
+<  var anchor =  document.getElementById(anchorId);
+<  anchor.scrollIntoView(true);
+<  window.history.pushState("","",href);
+<     }
+---
+> <script>const toc = document.getElementById("toc");
+> toc.querySelector("h2").addEventListener("click", e => {
+>   toc.classList.toggle("active");
+> });
+> toc.querySelector("nav").addEventListener("click", e => {
+>   toc.classList.remove("active");
+2067,2075d2206
+< 
+< // switch toc mode when window resized
+< window.onresize = function () {
+<     if (window.innerWidth < 1024) {
+<  tocNav.style.display = "none";
+<     } else {
+<  tocNav.style.display = "block";
+<     }
+< }
