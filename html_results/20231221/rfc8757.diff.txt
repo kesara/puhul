@@ -1,0 +1,441 @@
+16c16
+< <meta content="xml2rfc 2.41.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.0" name="generator">
+19c19,35
+< <link href="rfc8757.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.0
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.4
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8757.xml" rel="alternate" type="application/rfc+xml">
+29c45
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+38a55,60
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+41d62
+<   width: extend-to-zoom;
+56c77
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+58a80
+>   overflow-wrap: break-word;
+144a167,175
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+159,162d189
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+163a191
+>   border: none;
+186a215,217
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+238c269
+< tt, code, pre, code {
+---
+> tt, code, pre {
+240c271
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+279a311,313
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+369a404,409
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+471c511
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+611d650
+< 
+633a673,675
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+701c743
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+801c843
+< tt, code, pre, code {
+---
+> tt, code, pre {
+806c848
+< pre.sourcecode,
+---
+> .sourcecode pre,
+842c884
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+920,925d961
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1029a1066
+>   .artwork > pre,
+1044c1081
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1050a1088,1090
+> tr {
+>   break-inside: avoid;
+> }
+1058a1099,1200
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1060a1203
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-manet-dlep-latency-extension-05" rel="prev">
+1063c1206
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-manet-dlep-latency-extension-05" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1065,1066c1208,1209
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1161,1166c1304,1309
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-key-words" class="xref">Key Words</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-key-words" class="internal xref">Key Words</a></p>
+1170,1171c1313,1314
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-extension-usage-and-identif" class="xref">Extension Usage and Identification</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-extension-usage-and-identif" class="internal xref">Extension Usage and Identification</a></p>
+1173,1174c1316,1317
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-latency-range-data-item" class="xref">Latency Range Data Item</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-latency-range-data-item" class="internal xref">Latency Range Data Item</a></p>
+1176,1177c1319,1320
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1179,1183c1322,1326
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-extension-type-value" class="xref">Extension Type Value</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1" class="keepWithNext"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-extension-type-value" class="internal xref">Extension Type Value</a></p>
+1185,1186c1328,1329
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-data-item-value" class="xref">Data Item Value</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1" class="keepWithNext"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-data-item-value" class="internal xref">Data Item Value</a></p>
+1190,1194c1333,1337
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1" class="keepWithNext"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1196,1197c1339,1340
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.2">
+<                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+>                 <p id="section-toc.1-1.6.2.2.1" class="keepWithNext"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1201,1202c1344,1345
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1204,1205c1347,1348
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1217c1360
+<   The Dynamic Link Exchange Protocol (DLEP) is defined in <span>[<a href="#RFC8175" class="xref">RFC8175</a>]</span>. 
+---
+>   The Dynamic Link Exchange Protocol (DLEP) is defined in <span>[<a href="#RFC8175" class="cite xref">RFC8175</a>]</span>. 
+1230c1373
+<   indicate the use of the extension; see <a href="#sec-ext-type" class="xref">Section 2</a>. A new DLEP Data Item is defined in <a href="#sec-data-items" class="xref">Section 3</a>.<a href="#section-1-3" class="pilcrow">¶</a></p>
+---
+>   indicate the use of the extension; see <a href="#sec-ext-type" class="auto internal xref">Section 2</a>. A new DLEP Data Item is defined in <a href="#sec-data-items" class="auto internal xref">Section 3</a>.<a href="#section-1-3" class="pilcrow">¶</a></p>
+1239c1382
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1255c1398
+<    Item is sent and processed according to <span>[<a href="#RFC8175" class="xref">RFC8175</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
+---
+>    Item is sent and processed according to <span>[<a href="#RFC8175" class="cite xref">RFC8175</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
+1259c1402
+<   <span>[<a href="#RFC8175" class="xref">RFC8175</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+---
+>   <span>[<a href="#RFC8175" class="cite xref">RFC8175</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+1261c1404
+<   The Latency Range Extension Type Value is 4; see <a href="#sec-iana" class="xref">Section 5</a>.<a href="#section-2-3" class="pilcrow">¶</a></p>
+---
+>   The Latency Range Extension Type Value is 4; see <a href="#sec-iana" class="auto internal xref">Section 5</a>.<a href="#section-2-3" class="pilcrow">¶</a></p>
+1271c1414
+<   Latency Data Item defined in <span>[<a href="#RFC8175" class="xref">RFC8175</a>]</span> with
+---
+>   Latency Data Item defined in <span>[<a href="#RFC8175" class="cite xref">RFC8175</a>]</span> with
+1277c1420
+<   carried in any message where the Latency Data Item <span>[<a href="#RFC8175" class="xref">RFC8175</a>]</span> is
+---
+>   carried in any message where the Latency Data Item <span>[<a href="#RFC8175" class="cite xref">RFC8175</a>]</span> is
+1280c1423
+<   as the Latency Data Item defined in <span>[<a href="#RFC8175" class="xref">RFC8175</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+---
+>   as the Latency Data Item defined in <span>[<a href="#RFC8175" class="cite xref">RFC8175</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+1283c1426
+< <div class="artwork art-text alignLeft" id="section-3-3">
+---
+> <div class="alignLeft art-text artwork" id="section-3-3">
+1300c1443
+< <dl class="dlNewline" id="section-3-4">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-3-4">
+1302c1445
+< <dd id="section-3-4.2">28<a href="#section-3-4.2" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-3-4.2">28<a href="#section-3-4.2" class="pilcrow">¶</a>
+1303a1447
+>         <dd class="break"></dd>
+1305c1449
+< <dd id="section-3-4.4">16<a href="#section-3-4.4" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-3-4.4">16<a href="#section-3-4.4" class="pilcrow">¶</a>
+1306a1451
+>         <dd class="break"></dd>
+1308c1453
+< <dd id="section-3-4.6">
+---
+>         <dd style="margin-left: 1.5em" id="section-3-4.6">
+1312a1458
+>         <dd class="break"></dd>
+1314c1460
+< <dd id="section-3-4.8">
+---
+>         <dd style="margin-left: 1.5em" id="section-3-4.8">
+1318a1465
+>       <dd class="break"></dd>
+1331c1478
+<    above those documented in <span>[<a href="#RFC8175" class="xref">RFC8175</a>]</span>.
+---
+>    above those documented in <span>[<a href="#RFC8175" class="cite xref">RFC8175</a>]</span>.
+1343c1490
+<   registries defined by <span>[<a href="#RFC8175" class="xref">RFC8175</a>]</span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
+---
+>   registries defined by <span>[<a href="#RFC8175" class="cite xref">RFC8175</a>]</span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
+1353c1500
+<   "Specification Required" <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span> policy:<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+---
+>   "Specification Required" <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span> policy:<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+1384c1531
+<   value is in the range with the "Specification Required" <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span> policy:<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+---
+>   value is in the range with the "Specification Required" <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span> policy:<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+1420c1567,1568
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1423c1571,1572
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1426c1575,1576
+< <span class="refAuthor">Ratliff, S.</span><span class="refAuthor">, Jury, S.</span><span class="refAuthor">, Satterwhite, D.</span><span class="refAuthor">, Taylor, R.</span><span class="refAuthor">, and B. Berry</span>, <span class="refTitle">"Dynamic Link Exchange Protocol (DLEP)"</span>, <span class="seriesInfo">RFC 8175</span>, <span class="seriesInfo">DOI 10.17487/RFC8175</span>, <time datetime="2017-06">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8175">https://www.rfc-editor.org/info/rfc8175</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Ratliff, S.</span>, <span class="refAuthor">Jury, S.</span>, <span class="refAuthor">Satterwhite, D.</span>, <span class="refAuthor">Taylor, R.</span>, and <span class="refAuthor">B. Berry</span>, <span class="refTitle">"Dynamic Link Exchange Protocol (DLEP)"</span>, <span class="seriesInfo">RFC 8175</span>, <span class="seriesInfo">DOI 10.17487/RFC8175</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8175">https://www.rfc-editor.org/info/rfc8175</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1436c1586,1587
+< <span class="refAuthor">Cotton, M.</span><span class="refAuthor">, Leiba, B.</span><span class="refAuthor">, and T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cotton, M.</span>, <span class="refAuthor">Leiba, B.</span>, and <span class="refAuthor">T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1440c1591
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+1444c1595
+< <p id="section-appendix.a-1">
+---
+> <p id="appendix-A-1">
+1446c1597
+<     group, including <span class="contact-name">Ronald in 't Velt</span>, <span class="contact-name">Henning Rogge</span>, and <span class="contact-name">Victoria     Pritchard</span>.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+>     group, including <span class="contact-name">Ronald in 't Velt</span>, <span class="contact-name">Henning Rogge</span>, and <span class="contact-name">Victoria     Pritchard</span>.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+1449c1600
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
