@@ -1,0 +1,856 @@
+18c18
+< <meta content="xml2rfc 2.45.3" name="generator">
+---
+> <meta content="xml2rfc 3.19.0" name="generator">
+24c24,40
+< <link href="rfc8793.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.0
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.4
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8793.xml" rel="alternate" type="application/rfc+xml">
+34c50
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+43a60,65
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+46d67
+<   width: extend-to-zoom;
+61c82
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+63a85
+>   overflow-wrap: break-word;
+149a172,180
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+164,167d194
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+168a196
+>   border: none;
+191a220,222
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+243c274
+< tt, code, pre, code {
+---
+> tt, code, pre {
+245c276
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+284a316,318
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+374a409,414
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+476c516
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+616d655
+< 
+638a678,680
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+706c748
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+806c848
+< tt, code, pre, code {
+---
+> tt, code, pre {
+811c853
+< pre.sourcecode,
+---
+> .sourcecode pre,
+847c889
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+925,930d966
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1034a1071
+>   .artwork > pre,
+1049c1086
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1055a1093,1095
+> tr {
+>   break-inside: avoid;
+> }
+1075c1115
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1079a1120
+>   break-before: auto;
+1092c1133
+< dd.break {
+---
+> span.break, dd.break {
+1105c1146
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1117a1159,1205
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1119a1208
+> <link href="https://datatracker.ietf.org/doc/draft-irtf-icnrg-terminology-08" rel="prev">
+1122c1211
+<   <link href="https://datatracker.ietf.org/doc/draft-irtf-icnrg-terminology-08" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1124,1125c1213,1214
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1233,1235c1322,1324
+< <nav class="toc"><ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+1237,1238c1326,1327
+< <li class="toc compact ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-a-sketch-of-the-big-picture" class="xref">A Sketch of the Big Picture of ICN</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-a-sketch-of-the-big-picture" class="internal xref">A Sketch of the Big Picture of ICN</a></p>
+1240,1244c1329,1333
+< <li class="toc compact ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-terms-by-category" class="xref">Terms by Category</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-generic-terms" class="xref">Generic Terms</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-terms-by-category" class="internal xref">Terms by Category</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-generic-terms" class="internal xref">Generic Terms</a></p>
+1246,1247c1335,1336
+< <li class="toc compact ulEmpty" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-terms-related-to-icn-nodes" class="xref">Terms Related to ICN Nodes</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-terms-related-to-icn-nodes" class="internal xref">Terms Related to ICN Nodes</a></p>
+1249,1250c1338,1339
+< <li class="toc compact ulEmpty" id="section-toc.1-1.3.2.3">
+<                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-terms-related-to-the-forwar" class="xref">Terms Related to the Forwarding Plane</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+>                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-terms-related-to-the-forwar" class="internal xref">Terms Related to the Forwarding Plane</a></p>
+1252,1253c1341,1342
+< <li class="toc compact ulEmpty" id="section-toc.1-1.3.2.4">
+<                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="xref">3.4</a>.  <a href="#name-terms-related-to-packet-typ" class="xref">Terms Related to Packet Types</a><a href="#section-toc.1-1.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+>                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-terms-related-to-packet-typ" class="internal xref">Terms Related to Packet Types</a></p>
+1255,1256c1344,1345
+< <li class="toc compact ulEmpty" id="section-toc.1-1.3.2.5">
+<                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="xref">3.5</a>.  <a href="#name-terms-related-to-name-types" class="xref">Terms Related to Name Types</a><a href="#section-toc.1-1.3.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
+>                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-terms-related-to-name-types" class="internal xref">Terms Related to Name Types</a></p>
+1258,1259c1347,1348
+< <li class="toc compact ulEmpty" id="section-toc.1-1.3.2.6">
+<                 <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="xref">3.6</a>.  <a href="#name-terms-related-to-name-usage" class="xref">Terms Related to Name Usage</a><a href="#section-toc.1-1.3.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.6">
+>                 <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="auto internal xref">3.6</a>.  <a href="#name-terms-related-to-name-usage" class="internal xref">Terms Related to Name Usage</a></p>
+1261,1262c1350,1351
+< <li class="toc compact ulEmpty" id="section-toc.1-1.3.2.7">
+<                 <p id="section-toc.1-1.3.2.7.1"><a href="#section-3.7" class="xref">3.7</a>.  <a href="#name-terms-related-to-data-centr" class="xref">Terms Related to Data-Centric Security</a><a href="#section-toc.1-1.3.2.7.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.7">
+>                 <p id="section-toc.1-1.3.2.7.1"><a href="#section-3.7" class="auto internal xref">3.7</a>.  <a href="#name-terms-related-to-data-centr" class="internal xref">Terms Related to Data-Centric Security</a></p>
+1266,1270c1355,1359
+< <li class="toc compact ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-semantics-and-usage" class="xref">Semantics and Usage</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-data-transfer" class="xref">Data Transfer</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-semantics-and-usage" class="internal xref">Semantics and Usage</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-data-transfer" class="internal xref">Data Transfer</a></p>
+1272,1273c1361,1362
+< <li class="toc compact ulEmpty" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-data-transport" class="xref">Data Transport</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-data-transport" class="internal xref">Data Transport</a></p>
+1275,1276c1364,1365
+< <li class="toc compact ulEmpty" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-lookup-service" class="xref">Lookup Service</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-lookup-service" class="internal xref">Lookup Service</a></p>
+1278,1279c1367,1368
+< <li class="toc compact ulEmpty" id="section-toc.1-1.4.2.4">
+<                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-database-access" class="xref">Database Access</a><a href="#section-toc.1-1.4.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
+>                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-database-access" class="internal xref">Database Access</a></p>
+1281,1282c1370,1371
+< <li class="toc compact ulEmpty" id="section-toc.1-1.4.2.5">
+<                 <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="xref">4.5</a>.  <a href="#name-remote-procedure-call" class="xref">Remote Procedure Call</a><a href="#section-toc.1-1.4.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5">
+>                 <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="auto internal xref">4.5</a>.  <a href="#name-remote-procedure-call" class="internal xref">Remote Procedure Call</a></p>
+1284,1285c1373,1374
+< <li class="toc compact ulEmpty" id="section-toc.1-1.4.2.6">
+<                 <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="xref">4.6</a>.  <a href="#name-publish-subscribe" class="xref">Publish/Subscribe</a><a href="#section-toc.1-1.4.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.6">
+>                 <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="auto internal xref">4.6</a>.  <a href="#name-publish-subscribe" class="internal xref">Publish/Subscribe</a></p>
+1289,1290c1378,1379
+< <li class="toc compact ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1292,1293c1381,1382
+< <li class="toc compact ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1295,1299c1384,1388
+< <li class="toc compact ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1301,1302c1390,1391
+< <li class="toc compact ulEmpty" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1306,1307c1395,1396
+< <li class="toc compact ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1309,1310c1398,1399
+< <li class="toc compact ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1331c1420
+<       projects. Among the important documents for these projects are <span>[<a href="#RFC8569" class="xref">RFC8569</a>]</span>, <span>[<a href="#RFC8609" class="xref">RFC8609</a>]</span>, and <span>[<a href="#NDNTLV" class="xref">NDNTLV</a>]</span>. Other ICN projects such as <span>[<a href="#NETINF" class="xref">NETINF</a>]</span>, <span>[<a href="#PSIRP" class="xref">PSIRP</a>]</span>, or <span>[<a href="#MOBILITY-FIRST" class="xref">MOBILITY-FIRST</a>]</span> are not covered and may be
+---
+>       projects. Among the important documents for these projects are <span>[<a href="#RFC8569" class="cite xref">RFC8569</a>]</span>, <span>[<a href="#RFC8609" class="cite xref">RFC8609</a>]</span>, and <span>[<a href="#NDNTLV" class="cite xref">NDNTLV</a>]</span>. Other ICN projects such as <span>[<a href="#NETINF" class="cite xref">NETINF</a>]</span>, <span>[<a href="#PSIRP" class="cite xref">PSIRP</a>]</span>, or <span>[<a href="#MOBILITY-FIRST" class="cite xref">MOBILITY-FIRST</a>]</span> are not covered and may be
+1335c1424
+<       the architecture in <a href="#a-sketch-of-the-big-picture-of-icn" class="xref">Section 2</a>; after which, in <a href="#terms-by-category" class="xref">Section 3</a>, ICN-related terms are listed by different
+---
+>       the architecture in <a href="#a-sketch-of-the-big-picture-of-icn" class="auto internal xref">Section 2</a>; after which, in <a href="#terms-by-category" class="auto internal xref">Section 3</a>, ICN-related terms are listed by different
+1355c1444
+<       data. For other complementing views, see <a href="#semantics-and-usage" class="xref">Section 4</a>.<a href="#section-2-1" class="pilcrow">¶</a></p>
+---
+>       data. For other complementing views, see <a href="#semantics-and-usage" class="auto internal xref">Section 4</a>.<a href="#section-2-1" class="pilcrow">¶</a></p>
+1358c1447
+<         <div class="artwork art-text alignCenter" id="section-2-2.1">
+---
+>         <div class="alignCenter art-text artwork" id="section-2-2.1">
+1385,1386c1474,1475
+<         network packet formats: <a href="#interest_packet" class="xref">Interest packets</a> that request content by name and
+<         <a href="#data_packet" class="xref">Data packets</a> that
+---
+>         network packet formats: <a href="#interest_packet" class="internal xref">Interest packets</a> that request content by name and
+>         <a href="#data_packet" class="internal xref">Data packets</a> that
+1397c1486
+< <li class="normal ulEmpty" id="section-2-7.1">Without a strong cryptographic binding between the name of a <a href="#data_packet" class="xref">Data packet</a> and its content, Data
+---
+> <li class="normal ulEmpty" id="section-2-7.1">Without a strong cryptographic binding between the name of a <a href="#data_packet" class="internal xref">Data packet</a> and its content, Data
+1410c1499
+<         the authenticity of a <a href="#data_packet" class="xref">Data
+---
+>         the authenticity of a <a href="#data_packet" class="internal xref">Data
+1426c1515
+<         content. <a href="#security-considerations" class="xref">Section 6</a>
+---
+>         content. <a href="#security-considerations" class="auto internal xref">Section 6</a>
+1434c1523
+<         objects must be segmented into multiple <a href="#data_packet" class="xref">Data packets</a>. The names for these Data packets
+---
+>         objects must be segmented into multiple <a href="#data_packet" class="internal xref">Data packets</a>. The names for these Data packets
+1456c1545
+<         producer, a data consumer, and/or a forwarder for <a href="#interest_packet" class="xref">Interest</a> and <a href="#data_packet" class="xref">Data packets</a>. When a
+---
+>         producer, a data consumer, and/or a forwarder for <a href="#interest_packet" class="internal xref">Interest</a> and <a href="#data_packet" class="internal xref">Data packets</a>. When a
+1469c1558
+<         <a href="#content_store" class="xref">Content Store</a>
+---
+>         <a href="#content_store" class="internal xref">Content Store</a>
+1472c1561
+<         decisions. When a node receives an <a href="#interest_packet" class="xref">Interest packet</a>, it checks its CS and PIT to find
+---
+>         decisions. When a node receives an <a href="#interest_packet" class="internal xref">Interest packet</a>, it checks its CS and PIT to find
+1492,1493c1581,1582
+< <li class="normal ulEmpty" id="section-3.1-2.1">A networking architecture that retrieves <a href="#data_packet" class="xref">Data packets</a> in
+<           response to <a href="#interest_packet" class="xref">Interest packets</a>. Content-Centric Networking (CCNx 1.x)
+---
+> <li class="normal ulEmpty" id="section-3.1-2.1">A networking architecture that retrieves <a href="#data_packet" class="internal xref">Data packets</a> in
+>           response to <a href="#interest_packet" class="internal xref">Interest packets</a>. Content-Centric Networking (CCNx 1.x)
+1500c1589
+< <li class="normal ulEmpty" id="section-3.1-4.1">After a <a href="#data_packet" class="xref">Data
+---
+> <li class="normal ulEmpty" id="section-3.1-4.1">After a <a href="#data_packet" class="internal xref">Data
+1530,1531c1619,1620
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.2-3.1.1.1">Common aliases include: face.<a href="#section-3.2-3.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.2-3.1.1.1">Common aliases include: face.<a href="#section-3.2-3.1.1.1" class="pilcrow">¶</a>
+1538,1539c1627,1628
+< <li class="normal ulEmpty" id="section-3.2-5.1">An ICN entity that requests <a href="#data_packet" class="xref">Data packets</a> by generating and sending out
+<           <a href="#interest_packet" class="xref">Interest packets</a>
+---
+> <li class="normal ulEmpty" id="section-3.2-5.1">An ICN entity that requests <a href="#data_packet" class="internal xref">Data packets</a> by generating and sending out
+>           <a href="#interest_packet" class="internal xref">Interest packets</a>
+1546,1547c1635,1636
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.2-6.1.1.1">Common aliases include: consumer, information consumer, data consumer, consumer of the content.<a href="#section-3.2-6.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.2-6.1.1.1">Common aliases include: consumer, information consumer, data consumer, consumer of the content.<a href="#section-3.2-6.1.1.1" class="pilcrow">¶</a>
+1554c1643
+< <li class="normal ulEmpty" id="section-3.2-8.1">An ICN entity that creates <a href="#data_packet" class="xref">Data packets</a> and makes them available for
+---
+> <li class="normal ulEmpty" id="section-3.2-8.1">An ICN entity that creates <a href="#data_packet" class="internal xref">Data packets</a> and makes them available for
+1560,1561c1649,1650
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.2-9.1.1.1">Common aliases include: producer, publisher, information publisher, data publisher, data producer.<a href="#section-3.2-9.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.2-9.1.1.1">Common aliases include: producer, publisher, information publisher, data publisher, data producer.<a href="#section-3.2-9.1.1.1" class="pilcrow">¶</a>
+1573,1574c1662,1663
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.2-12.1.1.1">Common aliases include: ICN router.<a href="#section-3.2-12.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.2-12.1.1.1">Common aliases include: ICN router.<a href="#section-3.2-12.1.1.1" class="pilcrow">¶</a>
+1582c1671
+<           Interest or <a href="#data_packet" class="xref">Data
+---
+>           Interest or <a href="#data_packet" class="internal xref">Data
+1585c1674
+<           employed in the Delay Tolerant Networking (DTN) <span>[<a href="#RFC4838" class="xref">RFC4838</a>]</span> specifications.<a href="#section-3.2-14.1" class="pilcrow">¶</a>
+---
+>           employed in the Delay Tolerant Networking (DTN) <span>[<a href="#RFC4838" class="cite xref">RFC4838</a>]</span> specifications.<a href="#section-3.2-14.1" class="pilcrow">¶</a>
+1597c1686
+< <li class="normal ulEmpty" id="section-3.3-2.1">A forwarding process that records incoming <a href="#interest_packet" class="xref">Interest packets</a> in
+---
+> <li class="normal ulEmpty" id="section-3.3-2.1">A forwarding process that records incoming <a href="#interest_packet" class="internal xref">Interest packets</a> in
+1599c1688
+<           <a href="#data_packet" class="xref">Data packets</a> back to
+---
+>           <a href="#data_packet" class="internal xref">Data packets</a> back to
+1607,1608c1696,1697
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.3-3.1.1.1">Common aliases include: ICN Data plane, ICN Forwarding.<a href="#section-3.3-3.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.3-3.1.1.1">Common aliases include: ICN Data plane, ICN Forwarding.<a href="#section-3.3-3.1.1.1" class="pilcrow">¶</a>
+1618c1707
+<           implements a decision on where/how to forward the incoming <a href="#interest_packet" class="xref">Interest packet</a>. The forwarding strategy
+---
+>           implements a decision on where/how to forward the incoming <a href="#interest_packet" class="internal xref">Interest packet</a>. The forwarding strategy
+1626,1627c1715,1716
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.3-6.1.1.1">Common aliases include: Interest forwarding strategy.<a href="#section-3.3-6.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.3-6.1.1.1">Common aliases include: Interest forwarding strategy.<a href="#section-3.3-6.1.1.1" class="pilcrow">¶</a>
+1640c1729
+<           forwarding (i.e., Data and <a href="#interest_nack" class="xref">Interest Nacks</a> are forwarded downstream):
+---
+>           forwarding (i.e., Data and <a href="#interest_nack" class="internal xref">Interest Nacks</a> are forwarded downstream):
+1646c1735
+< <li class="normal ulEmpty" id="section-3.3-12.1">A process of forwarding <a href="#interest_packet" class="xref">Interest packets</a> using the <a href="#name" class="xref">Names</a> carried in the Interests. In case of
+---
+> <li class="normal ulEmpty" id="section-3.3-12.1">A process of forwarding <a href="#interest_packet" class="internal xref">Interest packets</a> using the <a href="#name" class="internal xref">Names</a> carried in the Interests. In case of
+1648c1737
+<           PIT. The forwarding decision is made by the <a href="#forwarding_strategy" class="xref">Forwarding
+---
+>           PIT. The forwarding decision is made by the <a href="#forwarding_strategy" class="internal xref">Forwarding
+1654c1743
+< <li class="normal ulEmpty" id="section-3.3-14.1">A process of combining multiple <a href="#interest_packet" class="xref">Interest packets</a> with the same <a href="#name" class="xref">Name</a> and additional restrictions
+---
+> <li class="normal ulEmpty" id="section-3.3-14.1">A process of combining multiple <a href="#interest_packet" class="internal xref">Interest packets</a> with the same <a href="#name" class="internal xref">Name</a> and additional restrictions
+1660,1661c1749,1750
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.3-15.1.1.1">Common aliases include: Interest collapsing.<a href="#section-3.3-15.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.3-15.1.1.1">Common aliases include: Interest collapsing.<a href="#section-3.3-15.1.1.1" class="pilcrow">¶</a>
+1668c1757
+< <li class="normal ulEmpty" id="section-3.3-17.1">A process of forwarding the incoming <a href="#data_packet" class="xref">Data packet</a> to the
+---
+> <li class="normal ulEmpty" id="section-3.3-17.1">A process of forwarding the incoming <a href="#data_packet" class="internal xref">Data packet</a> to the
+1677c1766
+<           provided <a href="#name" class="xref">Name</a>.<a href="#section-3.3-19.1" class="pilcrow">¶</a>
+---
+>           provided <a href="#name" class="internal xref">Name</a>.<a href="#section-3.3-19.1" class="pilcrow">¶</a>
+1682,1684c1771,1773
+< <li class="normal ulEmpty" id="section-3.3-21.1">A process of finding a FIB entry with the longest <a href="#name" class="xref">Name</a> (in terms
+<           of <a href="#name_component" class="xref">Name components</a>) that is a prefix of the specified Name. See
+<           <a href="#terms-related-to-name-types" class="xref">Section 3.5</a> for
+---
+> <li class="normal ulEmpty" id="section-3.3-21.1">A process of finding a FIB entry with the longest <a href="#name" class="internal xref">Name</a> (in terms
+>           of <a href="#name_component" class="internal xref">Name components</a>) that is a prefix of the specified Name. See
+>           <a href="#terms-related-to-name-types" class="auto internal xref">Section 3.5</a> for
+1690c1779
+< <li class="normal ulEmpty" id="section-3.3-23.1">A process of finding a PIT entry that stores the same <a href="#name" class="xref">Name</a> as
+---
+> <li class="normal ulEmpty" id="section-3.3-23.1">A process of finding a PIT entry that stores the same <a href="#name" class="internal xref">Name</a> as
+1698c1787
+<    satisfied with the specified <a href="#data_packet" class="xref">Data packet</a>.<a href="#section-3.3-25.1" class="pilcrow">¶</a>
+---
+>    satisfied with the specified <a href="#data_packet" class="internal xref">Data packet</a>.<a href="#section-3.3-25.1" class="pilcrow">¶</a>
+1703c1792
+< <li class="normal ulEmpty" id="section-3.3-27.1">A process of finding an entry in a router's <a href="#content_store" class="xref">Content Store</a> that
+---
+> <li class="normal ulEmpty" id="section-3.3-27.1">A process of finding an entry in a router's <a href="#content_store" class="internal xref">Content Store</a> that
+1719c1808
+<           associated with one or more faces that can be used to retrieve <a href="#data_packet" class="xref">Data packets</a> with <a href="#name" class="xref">Names</a> under the corresponding prefix. The list
+---
+>           associated with one or more faces that can be used to retrieve <a href="#data_packet" class="internal xref">Data packets</a> with <a href="#name" class="internal xref">Names</a> under the corresponding prefix. The list
+1734c1823
+< <li class="normal ulEmpty" id="section-3.3-35.1">An optional process of storing a <a href="#data_packet" class="xref">Data packet</a> within the network (opportunistic
+---
+> <li class="normal ulEmpty" id="section-3.3-35.1">An optional process of storing a <a href="#data_packet" class="internal xref">Data packet</a> within the network (opportunistic
+1743c1832
+< <li class="normal ulEmpty" id="section-3.3-37.1">A process of temporarily storing a forwarded <a href="#data_packet" class="xref">Data packet</a> in the
+---
+> <li class="normal ulEmpty" id="section-3.3-37.1">A process of temporarily storing a forwarded <a href="#data_packet" class="internal xref">Data packet</a> in the
+1750,1751c1839,1840
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.3-38.1.1.1">Common aliases include: on-path in-network caching.<a href="#section-3.3-38.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.3-38.1.1.1">Common aliases include: on-path in-network caching.<a href="#section-3.3-38.1.1.1" class="pilcrow">¶</a>
+1759c1848
+<       storage of a selected (set of) <a href="#data_packet" class="xref">Data packet(s)</a>.<a href="#section-3.3-40.1" class="pilcrow">¶</a>
+---
+>       storage of a selected (set of) <a href="#data_packet" class="internal xref">Data packet(s)</a>.<a href="#section-3.3-40.1" class="pilcrow">¶</a>
+1764,1765c1853,1854
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.3-41.1.1.1">Common aliases include: off-path in-network storage.<a href="#section-3.3-41.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.3-41.1.1.1">Common aliases include: off-path in-network storage.<a href="#section-3.3-41.1.1.1" class="pilcrow">¶</a>
+1777,1778c1866,1867
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.3-44.1.1.1">Common aliases include: repository, repo.<a href="#section-3.3-44.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.3-44.1.1.1">Common aliases include: repository, repo.<a href="#section-3.3-44.1.1.1" class="pilcrow">¶</a>
+1786c1875
+<           information about <a href="#name" class="xref">Name</a> space reachability.<a href="#section-3.3-46.1" class="pilcrow">¶</a>
+---
+>           information about <a href="#name" class="internal xref">Name</a> space reachability.<a href="#section-3.3-46.1" class="pilcrow">¶</a>
+1805c1894
+< <li class="normal ulEmpty" id="section-3.4-2.1">A network-level packet that expresses the request for a <a href="#data_packet" class="xref">Data packet</a> using either
+---
+> <li class="normal ulEmpty" id="section-3.4-2.1">A network-level packet that expresses the request for a <a href="#data_packet" class="internal xref">Data packet</a> using either
+1816,1817c1905,1906
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.4-3.1.1.1">Common aliases include: Interest, Interest message, information request.<a href="#section-3.4-3.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.4-3.1.1.1">Common aliases include: Interest, Interest message, information request.<a href="#section-3.4-3.1.1.1" class="pilcrow">¶</a>
+1826c1915
+< <li class="normal ulEmpty" id="section-3.4-5.1">A packet that contains the <a href="#interest_packet" class="xref">Interest packet</a> and optional annotation, which is sent
+---
+> <li class="normal ulEmpty" id="section-3.4-5.1">A packet that contains the <a href="#interest_packet" class="internal xref">Interest packet</a> and optional annotation, which is sent
+1835,1836c1924,1925
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.4-6.1.1.1">Common aliases include: network NACK, Interest return.<a href="#section-3.4-6.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.4-6.1.1.1">Common aliases include: network NACK, Interest return.<a href="#section-3.4-6.1.1.1" class="pilcrow">¶</a>
+1852,1853c1941,1942
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.4-9.1.1.1">Common aliases include: data, data object, content object, content object packet, data message, named data object, named data.<a href="#section-3.4-9.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.4-9.1.1.1">Common aliases include: data, data object, content object, content object packet, data message, named data object, named data.<a href="#section-3.4-9.1.1.1" class="pilcrow">¶</a>
+1862,1864c1951,1953
+< <li class="normal ulEmpty" id="section-3.4-11.1">A type of <a href="#data_packet" class="xref">Data
+<           packet</a> whose body contains the <a href="#name" class="xref">Name</a> of another Data packet. This inner Name is
+<           often a <a href="#full_name" class="xref">Full Name</a>,
+---
+> <li class="normal ulEmpty" id="section-3.4-11.1">A type of <a href="#data_packet" class="internal xref">Data
+>           packet</a> whose body contains the <a href="#name" class="internal xref">Name</a> of another Data packet. This inner Name is
+>           often a <a href="#full_name" class="internal xref">Full Name</a>,
+1871,1872c1960,1961
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.4-12.1.1.1">Common aliases include: pointer.<a href="#section-3.4-12.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.4-12.1.1.1">Common aliases include: pointer.<a href="#section-3.4-12.1.1.1" class="pilcrow">¶</a>
+1879c1968
+< <li class="normal ulEmpty" id="section-3.4-14.1">A type of <a href="#data_packet" class="xref">Data packet</a> that contains <a href="#full_name" class="xref">Full Name</a> <a href="#link" class="xref">Links</a> to one or
+---
+> <li class="normal ulEmpty" id="section-3.4-14.1">A type of <a href="#data_packet" class="internal xref">Data packet</a> that contains <a href="#full_name" class="internal xref">Full Name</a> <a href="#link" class="internal xref">Links</a> to one or
+1886c1975
+<           inner <a href="#link" class="xref">Links</a>. Manifests typically contain additional metadata, e.g.,
+---
+>           inner <a href="#link" class="internal xref">Links</a>. Manifests typically contain additional metadata, e.g.,
+1902c1991
+< <li class="normal ulEmpty" id="section-3.5-2.1">A <a href="#data_packet" class="xref">Data packet</a>
+---
+> <li class="normal ulEmpty" id="section-3.5-2.1">A <a href="#data_packet" class="internal xref">Data packet</a>
+1913,1914c2002,2003
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.5-3.1.1.1">Common aliases include: data name, interest name, content name.<a href="#section-3.5-3.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.5-3.1.1.1">Common aliases include: data name, interest name, content name.<a href="#section-3.5-3.1.1.1" class="pilcrow">¶</a>
+1928,1929c2017,2018
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.5-6.1.1.1">Common aliases include: name segment (as in CCNx).<a href="#section-3.5-6.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.5-6.1.1.1">Common aliases include: name segment (as in CCNx).<a href="#section-3.5-6.1.1.1" class="pilcrow">¶</a>
+1936c2025
+< <li class="normal ulEmpty" id="section-3.5-8.1">A unique cryptographic identifier for a <a href="#data_packet" class="xref">Data packet</a>. Typically,
+---
+> <li class="normal ulEmpty" id="section-3.5-8.1">A unique cryptographic identifier for a <a href="#data_packet" class="internal xref">Data packet</a>. Typically,
+1938c2027
+<           <span>[<a href="#RFC6234" class="xref">RFC6234</a>]</span>), including
+---
+>           <span>[<a href="#RFC6234" class="cite xref">RFC6234</a>]</span>), including
+1944,1945c2033,2034
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.5-9.1.1.1">Common aliases include: implicit digest.<a href="#section-3.5-9.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.5-9.1.1.1">Common aliases include: implicit digest.<a href="#section-3.5-9.1.1.1" class="pilcrow">¶</a>
+1952c2041
+< <li class="normal ulEmpty" id="section-3.5-11.1">A mechanism (condition) to select an individual <a href="#data_packet" class="xref">Data packet</a> from
+---
+> <li class="normal ulEmpty" id="section-3.5-11.1">A mechanism (condition) to select an individual <a href="#data_packet" class="internal xref">Data packet</a> from
+1954c2043
+<    requests data using a prefix or exact <a href="#name" class="xref">Name.</a><a href="#section-3.5-11.1" class="pilcrow">¶</a>
+---
+>    requests data using a prefix or exact <a href="#name" class="internal xref">Name.</a><a href="#section-3.5-11.1" class="pilcrow">¶</a>
+1959,1960c2048,2049
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.5-12.1.1.1">Common aliases include: interest selector, restrictor, interest restrictor.<a href="#section-3.5-12.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.5-12.1.1.1">Common aliases include: interest selector, restrictor, interest restrictor.<a href="#section-3.5-12.1.1.1" class="pilcrow">¶</a>
+1967c2056
+< <li class="normal ulEmpty" id="section-3.5-14.1">A field of an <a href="#interest_packet" class="xref">Interest packet</a> that transiently names an
+---
+> <li class="normal ulEmpty" id="section-3.5-14.1">A field of an <a href="#interest_packet" class="internal xref">Interest packet</a> that transiently names an
+1970c2059
+<           the properties of nonces as discussed in <span>[<a href="#RFC4949" class="xref">RFC4949</a>]</span>.<a href="#section-3.5-14.1" class="pilcrow">¶</a>
+---
+>           the properties of nonces as discussed in <span>[<a href="#RFC4949" class="cite xref">RFC4949</a>]</span>.<a href="#section-3.5-14.1" class="pilcrow">¶</a>
+1975c2064
+< <li class="normal ulEmpty" id="section-3.5-16.1">A <a href="#name" class="xref">Name</a> that is encoded inside a <a href="#data_packet" class="xref">Data packet</a> and that typically uniquely
+---
+> <li class="normal ulEmpty" id="section-3.5-16.1">A <a href="#name" class="internal xref">Name</a> that is encoded inside a <a href="#data_packet" class="internal xref">Data packet</a> and that typically uniquely
+1983c2072
+< <li class="normal ulEmpty" id="section-3.5-18.1">An exact <a href="#name" class="xref">Name</a> with the Packet ID of the corresponding <a href="#data_packet" class="xref">Data packet</a>.<a href="#section-3.5-18.1" class="pilcrow">¶</a>
+---
+> <li class="normal ulEmpty" id="section-3.5-18.1">An exact <a href="#name" class="internal xref">Name</a> with the Packet ID of the corresponding <a href="#data_packet" class="internal xref">Data packet</a>.<a href="#section-3.5-18.1" class="pilcrow">¶</a>
+1988,1989c2077,2078
+< <li class="normal ulEmpty" id="section-3.5-20.1">A <a href="#name" class="xref">Name</a> that includes a partial sequence of Name components
+<    (starting from the first one) of a Name encoded inside a <a href="#data_packet" class="xref">Data packet</a>.<a href="#section-3.5-20.1" class="pilcrow">¶</a>
+---
+> <li class="normal ulEmpty" id="section-3.5-20.1">A <a href="#name" class="internal xref">Name</a> that includes a partial sequence of Name components
+>    (starting from the first one) of a Name encoded inside a <a href="#data_packet" class="internal xref">Data packet</a>.<a href="#section-3.5-20.1" class="pilcrow">¶</a>
+1994,1995c2083,2084
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.5-21.1.1.1">Common aliases include: prefix.<a href="#section-3.5-21.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.5-21.1.1.1">Common aliases include: prefix.<a href="#section-3.5-21.1.1.1" class="pilcrow">¶</a>
+2009c2098
+< <li class="normal ulEmpty" id="section-3.6-2.1">A convention, agreement, or specification for the <a href="#data_packet" class="xref">Data packet</a> naming. a Naming convention structures a namespace.<a href="#section-3.6-2.1" class="pilcrow">¶</a>
+---
+> <li class="normal ulEmpty" id="section-3.6-2.1">A convention, agreement, or specification for the <a href="#data_packet" class="internal xref">Data packet</a> naming. a Naming convention structures a namespace.<a href="#section-3.6-2.1" class="pilcrow">¶</a>
+2014,2015c2103,2104
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.6-3.1.1.1">Common aliases include: Naming scheme, ICN naming scheme, namespace convention.<a href="#section-3.6-3.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.6-3.1.1.1">Common aliases include: Naming scheme, ICN naming scheme, namespace convention.<a href="#section-3.6-3.1.1.1" class="pilcrow">¶</a>
+2022c2111
+< <li class="normal ulEmpty" id="section-3.6-5.1">The naming scheme that assigns and interprets a <a href="#name" class="xref">Name</a> as a sequence of labels (Name components) with hierarchical structure without an assumption of a single administrative root. A structure provides useful context information for the Name.<a href="#section-3.6-5.1" class="pilcrow">¶</a>
+---
+> <li class="normal ulEmpty" id="section-3.6-5.1">The naming scheme that assigns and interprets a <a href="#name" class="internal xref">Name</a> as a sequence of labels (Name components) with hierarchical structure without an assumption of a single administrative root. A structure provides useful context information for the Name.<a href="#section-3.6-5.1" class="pilcrow">¶</a>
+2027,2028c2116,2117
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.6-6.1.1.1">Common aliases include: hierarchical naming, structured naming.<a href="#section-3.6-6.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.6-6.1.1.1">Common aliases include: hierarchical naming, structured naming.<a href="#section-3.6-6.1.1.1" class="pilcrow">¶</a>
+2035c2124
+< <li class="normal ulEmpty" id="section-3.6-8.1">The naming scheme that assigns and interprets a <a href="#name" class="xref">Name</a> as a single label (Name component) without any internal structure. This can be considered a special (or degenerate) case of structured names.<a href="#section-3.6-8.1" class="pilcrow">¶</a>
+---
+> <li class="normal ulEmpty" id="section-3.6-8.1">The naming scheme that assigns and interprets a <a href="#name" class="internal xref">Name</a> as a single label (Name component) without any internal structure. This can be considered a special (or degenerate) case of structured names.<a href="#section-3.6-8.1" class="pilcrow">¶</a>
+2041c2130
+<           uniquely named <a href="#data_packet" class="xref">Data packets</a>. When using hierarchically structured
+---
+>           uniquely named <a href="#data_packet" class="internal xref">Data packets</a>. When using hierarchically structured
+2048,2049c2137,2138
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.6-11.1.1.1">Common aliases include: chunking.<a href="#section-3.6-11.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.6-11.1.1.1">Common aliases include: chunking.<a href="#section-3.6-11.1.1.1" class="pilcrow">¶</a>
+2056,2057c2145,2146
+< <li class="normal ulEmpty" id="section-3.6-13.1">A process of assigning a unique <a href="#name" class="xref">Name</a> to the revision of the content carried in
+<           the <a href="#data_packet" class="xref">Data
+---
+> <li class="normal ulEmpty" id="section-3.6-13.1">A process of assigning a unique <a href="#name" class="internal xref">Name</a> to the revision of the content carried in
+>           the <a href="#data_packet" class="internal xref">Data
+2078c2167
+< <li class="normal ulEmpty" id="section-3.7-2.1">A security property associated with the <a href="#data_packet" class="xref">Data packet</a>, including
+---
+> <li class="normal ulEmpty" id="section-3.7-2.1">A security property associated with the <a href="#data_packet" class="internal xref">Data packet</a>, including
+2086,2087c2175,2176
+<             <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-3.7-3.1.1.1">Common aliases include: directly securing Data packet.<a href="#section-3.7-3.1.1.1" class="pilcrow">¶</a>
+---
+>             <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-3.7-3.1.1.1">Common aliases include: directly securing Data packet.<a href="#section-3.7-3.1.1.1" class="pilcrow">¶</a>
+2094c2183
+< <li class="normal ulEmpty" id="section-3.7-5.1">A cryptographic mechanism to ensure the consistency of the <a href="#data_packet" class="xref">Data
+---
+> <li class="normal ulEmpty" id="section-3.7-5.1">A cryptographic mechanism to ensure the consistency of the <a href="#data_packet" class="internal xref">Data
+2103c2192
+< <li class="normal ulEmpty" id="section-3.7-7.1">A cryptographic mechanism to ensure trustworthiness of a <a href="#data_packet" class="xref">Data
+---
+> <li class="normal ulEmpty" id="section-3.7-7.1">A cryptographic mechanism to ensure trustworthiness of a <a href="#data_packet" class="internal xref">Data
+2114,2116c2203,2205
+< <li class="normal ulEmpty" id="section-3.7-9.1">A cryptographic mechanism to ensure secrecy of a <a href="#data_packet" class="xref">Data packet</a>. Data
+<           confidentiality includes separate mechanisms: <a href="#content_confidentiality" class="xref">Content
+<           confidentiality</a> and <a href="#name_confidentiality" class="xref">Name confidentiality</a>.<a href="#section-3.7-9.1" class="pilcrow">¶</a>
+---
+> <li class="normal ulEmpty" id="section-3.7-9.1">A cryptographic mechanism to ensure secrecy of a <a href="#data_packet" class="internal xref">Data packet</a>. Data
+>           confidentiality includes separate mechanisms: <a href="#content_confidentiality" class="internal xref">Content
+>           confidentiality</a> and <a href="#name_confidentiality" class="internal xref">Name confidentiality</a>.<a href="#section-3.7-9.1" class="pilcrow">¶</a>
+2124c2213
+<           get access to the plain-text payload of a <a href="#data_packet" class="xref">Data packet</a>. Can be
+---
+>           get access to the plain-text payload of a <a href="#data_packet" class="internal xref">Data packet</a>. Can be
+2136c2225
+<           detailed meta information about the <a href="#data_packet" class="xref">Data packet</a>. This mechanism can
+---
+>           detailed meta information about the <a href="#data_packet" class="internal xref">Data packet</a>. This mechanism can
+2208c2297
+<  Machinery (ACM) ICN paper on <span>[<a href="#RICE" class="xref">RICE</a>]</span>. These capabilities can be further
+---
+>  Machinery (ACM) ICN paper on <span>[<a href="#RICE" class="cite xref">RICE</a>]</span>. These capabilities can be further
+2210c2299
+<         that proposed in the ACM ICN paper <span>[<a href="#CFN" class="xref">CFN</a>]</span>.<a href="#section-4.5-1" class="pilcrow">¶</a></p>
+---
+>         that proposed in the ACM ICN paper <span>[<a href="#CFN" class="cite xref">CFN</a>]</span>.<a href="#section-4.5-1" class="pilcrow">¶</a></p>
+2222c2311
+<         see the ACM ICN paper <span>[<a href="#LESSONS-LEARNED" class="xref">LESSONS-LEARNED</a>]</span>.<a href="#section-4.6-1" class="pilcrow">¶</a></p>
+---
+>         see the ACM ICN paper <span>[<a href="#LESSONS-LEARNED" class="cite xref">LESSONS-LEARNED</a>]</span>.<a href="#section-4.6-1" class="pilcrow">¶</a></p>
+2243c2332
+<       specifications (e.g., <span>[<a href="#RFC8569" class="xref">RFC8569</a>]</span> and <span>[<a href="#NDN" class="xref">NDN</a>]</span>) where various security considerations
+---
+>       specifications (e.g., <span>[<a href="#RFC8569" class="cite xref">RFC8569</a>]</span> and <span>[<a href="#NDN" class="cite xref">NDN</a>]</span>) where various security considerations
+2249c2338
+<       years. For example, it is useful to look at <span>[<a href="#SCHEMATIZING-TRUST" class="xref">SCHEMATIZING-TRUST</a>]</span> for more information on
+---
+>       years. For example, it is useful to look at <span>[<a href="#SCHEMATIZING-TRUST" class="cite xref">SCHEMATIZING-TRUST</a>]</span> for more information on
+2265,2266c2354,2355
+< <span class="refAuthor">Krol, M.</span><span class="refAuthor">, Mastorakis, S.</span><span class="refAuthor">, Kutscher, D.</span><span class="refAuthor">, and D. Oran</span>, <span class="refTitle">"Compute First Networking: Distributed Computing meets ICN"</span>, <span class="refContent">ACM ICN
+< </span>, <span class="seriesInfo">DOI 10.1145/3357150.3357395</span>, <time datetime="2019-09">September 2019</time>, <span>&lt;<a href="https://dl.acm.org/citation.cfm?id=3357395">https://dl.acm.org/citation.cfm?id=3357395</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Krol, M.</span>, <span class="refAuthor">Mastorakis, S.</span>, <span class="refAuthor">Kutscher, D.</span>, and <span class="refAuthor">D. Oran</span>, <span class="refTitle">"Compute First Networking: Distributed Computing meets ICN"</span>, <span class="refContent">ACM ICN
+> </span>, <span class="seriesInfo">DOI 10.1145/3357150.3357395</span>, <time datetime="2019-09" class="refDate">September 2019</time>, <span>&lt;<a href="https://dl.acm.org/citation.cfm?id=3357395">https://dl.acm.org/citation.cfm?id=3357395</a>&gt;</span>. </dd>
+2271c2360
+< </span>, <span class="seriesInfo">DOI 10.1145/3357150.3357397</span>, <time datetime="2019-09">September 2019</time>, <span>&lt;<a href="https://dl.acm.org/citation.cfm?id=3357397">https://dl.acm.org/citation.cfm?id=3357397</a>&gt;</span>. </dd>
+---
+> </span>, <span class="seriesInfo">DOI 10.1145/3357150.3357397</span>, <time datetime="2019-09" class="refDate">September 2019</time>, <span>&lt;<a href="https://dl.acm.org/citation.cfm?id=3357397">https://dl.acm.org/citation.cfm?id=3357397</a>&gt;</span>. </dd>
+2275c2364
+< <span class="refAuthor">Raychaudhuri, D.</span><span class="refAuthor">, Nagaraja, K.</span><span class="refAuthor">, and A. Venkataramani</span>, <span class="refTitle">"MobilityFirst: a robust and trustworthy mobility-centric architecture for the future internet"</span>, <span class="refContent">ACM SIGMOBILE
+---
+> <span class="refAuthor">Raychaudhuri, D.</span>, <span class="refAuthor">Nagaraja, K.</span>, and <span class="refAuthor">A. Venkataramani</span>, <span class="refTitle">"MobilityFirst: a robust and trustworthy mobility-centric architecture for the future internet"</span>, <span class="refContent">ACM SIGMOBILE
+2277c2366
+< </span>, <span class="seriesInfo">DOI 10.1145/2412096.2412098</span>, <time datetime="2012-07">July 2012</time>, <span>&lt;<a href="https://dl.acm.org/citation.cfm?id=2412098">https://dl.acm.org/citation.cfm?id=2412098</a>&gt;</span>. </dd>
+---
+> </span>, <span class="seriesInfo">DOI 10.1145/2412096.2412098</span>, <time datetime="2012-07" class="refDate">July 2012</time>, <span>&lt;<a href="https://dl.acm.org/citation.cfm?id=2412098">https://dl.acm.org/citation.cfm?id=2412098</a>&gt;</span>. </dd>
+2285c2374
+< <span class="refAuthor">Dannewitz, C.</span><span class="refAuthor">, Kutscher, D.</span><span class="refAuthor">, Ohlman, B.</span><span class="refAuthor">, Farrell, S.</span><span class="refAuthor">, Ahlgren, B.</span><span class="refAuthor">, and K. Holger</span>, <span class="refTitle">"Network of Information (NetInf) - An information-centric networking architecture"</span>, <span class="refContent">Computer Communications
+---
+> <span class="refAuthor">Dannewitz, C.</span>, <span class="refAuthor">Kutscher, D.</span>, <span class="refAuthor">Ohlman, B.</span>, <span class="refAuthor">Farrell, S.</span>, <span class="refAuthor">Ahlgren, B.</span>, and <span class="refAuthor">K. Holger</span>, <span class="refTitle">"Network of Information (NetInf) - An information-centric networking architecture"</span>, <span class="refContent">Computer Communications
+2287c2376
+< </span>, <span class="seriesInfo">DOI 10.1016/j.comcom.2013.01.009</span>, <time datetime="2013-04">April 2013</time>, <span>&lt;<a href="https://dl.acm.org/citation.cfm?id=2459643">https://dl.acm.org/citation.cfm?id=2459643</a>&gt;</span>. </dd>
+---
+> </span>, <span class="seriesInfo">DOI 10.1016/j.comcom.2013.01.009</span>, <time datetime="2013-04" class="refDate">April 2013</time>, <span>&lt;<a href="https://dl.acm.org/citation.cfm?id=2459643">https://dl.acm.org/citation.cfm?id=2459643</a>&gt;</span>. </dd>
+2291c2380
+< <span class="refAuthor">Trossen, D.</span><span class="refAuthor">, Tuononen, J.</span><span class="refAuthor">, Xylomenos, G.</span><span class="refAuthor">, Sarela, M.</span><span class="refAuthor">, Zahemszky, A.</span><span class="refAuthor">, Nikander, P.</span><span class="refAuthor">, and T. Rinta-aho</span>, <span class="refTitle">"From Design for Tussle to Tussle Networking: PSIRP Vision and Use Cases"</span>, <time datetime="2008-05">May 2008</time>, <span>&lt;<a href="http://www.psirp.org/files/Deliverables/PSIRP-TR08-0001_Vision.pdf">http://www.psirp.org/files/Deliverables/PSIRP-TR08-0001_Vision.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Trossen, D.</span>, <span class="refAuthor">Tuononen, J.</span>, <span class="refAuthor">Xylomenos, G.</span>, <span class="refAuthor">Sarela, M.</span>, <span class="refAuthor">Zahemszky, A.</span>, <span class="refAuthor">Nikander, P.</span>, and <span class="refAuthor">T. Rinta-aho</span>, <span class="refTitle">"From Design for Tussle to Tussle Networking: PSIRP Vision and Use Cases"</span>, <time datetime="2008-05" class="refDate">May 2008</time>, <span>&lt;<a href="http://www.psirp.org/files/Deliverables/PSIRP-TR08-0001_Vision.pdf">http://www.psirp.org/files/Deliverables/PSIRP-TR08-0001_Vision.pdf</a>&gt;</span>. </dd>
+2295,2296c2384,2385
+< <span class="refAuthor">Krol, M.</span><span class="refAuthor">, Habak, K.</span><span class="refAuthor">, Kutscher, D.</span><span class="refAuthor">, Oran, D.</span><span class="refAuthor">, and I. Psaras</span>, <span class="refTitle">"RICE: remote method invocation in ICN"</span>, <span class="refContent">ACM ICN
+< </span>, <span class="seriesInfo">DOI 10.1145/3267955.3267956</span>, <time datetime="2018-09">September 2018</time>, <span>&lt;<a href="https://dx.doi.org/10.1145/3267955.3267956">https://dx.doi.org/10.1145/3267955.3267956</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Krol, M.</span>, <span class="refAuthor">Habak, K.</span>, <span class="refAuthor">Kutscher, D.</span>, <span class="refAuthor">Oran, D.</span>, and <span class="refAuthor">I. Psaras</span>, <span class="refTitle">"RICE: remote method invocation in ICN"</span>, <span class="refContent">ACM ICN
+> </span>, <span class="seriesInfo">DOI 10.1145/3267955.3267956</span>, <time datetime="2018-09" class="refDate">September 2018</time>, <span>&lt;<a href="https://dx.doi.org/10.1145/3267955.3267956">https://dx.doi.org/10.1145/3267955.3267956</a>&gt;</span>. </dd>
+2300,2301c2389,2390
+< <span class="refAuthor">Yu, Y.</span><span class="refAuthor">, Afanasyev, A.</span><span class="refAuthor">, Clark, D.</span><span class="refAuthor">, Claffy, K. C.</span><span class="refAuthor">, Jacobson, V.</span><span class="refAuthor">, and L. Zhang</span>, <span class="refTitle">"Schematizing Trust in Named Data Networking"</span>, <span class="refContent">ACM ICN
+< </span>, <span class="seriesInfo">DOI 0.1145/2810156.2810170</span>, <time datetime="2015-09">September 2015</time>, <span>&lt;<a href="https://dx.doi.org/10.1145/2810156.2810170">https://dx.doi.org/10.1145/2810156.2810170</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Yu, Y.</span>, <span class="refAuthor">Afanasyev, A.</span>, <span class="refAuthor">Clark, D.</span>, <span class="refAuthor">Claffy, K. C.</span>, <span class="refAuthor">Jacobson, V.</span>, and <span class="refAuthor">L. Zhang</span>, <span class="refTitle">"Schematizing Trust in Named Data Networking"</span>, <span class="refContent">ACM ICN
+> </span>, <span class="seriesInfo">DOI 0.1145/2810156.2810170</span>, <time datetime="2015-09" class="refDate">September 2015</time>, <span>&lt;<a href="https://dx.doi.org/10.1145/2810156.2810170">https://dx.doi.org/10.1145/2810156.2810170</a>&gt;</span>. </dd>
+2312c2401
+< <span class="refAuthor">Named Data Networking</span>, <span class="refTitle">"Named Data Networking: Executive Summary"</span>, <time datetime="2010-09">September 2010</time>, <span>&lt;<a href="https://named-data.net/project/execsummary/">https://named-data.net/project/execsummary/</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Named Data Networking</span>, <span class="refTitle">"Named Data Networking: Executive Summary"</span>, <time datetime="2010-09" class="refDate">September 2010</time>, <span>&lt;<a href="https://named-data.net/project/execsummary/">https://named-data.net/project/execsummary/</a>&gt;</span>. </dd>
+2316c2405
+< <span class="refAuthor">Cerf, V.</span><span class="refAuthor">, Burleigh, S.</span><span class="refAuthor">, Hooke, A.</span><span class="refAuthor">, Torgerson, L.</span><span class="refAuthor">, Durst, R.</span><span class="refAuthor">, Scott, K.</span><span class="refAuthor">, Fall, K.</span><span class="refAuthor">, and H. Weiss</span>, <span class="refTitle">"Delay-Tolerant Networking Architecture"</span>, <span class="seriesInfo">RFC 4838</span>, <span class="seriesInfo">DOI 10.17487/RFC4838</span>, <time datetime="2007-04">April 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4838">https://www.rfc-editor.org/info/rfc4838</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cerf, V.</span>, <span class="refAuthor">Burleigh, S.</span>, <span class="refAuthor">Hooke, A.</span>, <span class="refAuthor">Torgerson, L.</span>, <span class="refAuthor">Durst, R.</span>, <span class="refAuthor">Scott, K.</span>, <span class="refAuthor">Fall, K.</span>, and <span class="refAuthor">H. Weiss</span>, <span class="refTitle">"Delay-Tolerant Networking Architecture"</span>, <span class="seriesInfo">RFC 4838</span>, <span class="seriesInfo">DOI 10.17487/RFC4838</span>, <time datetime="2007-04" class="refDate">April 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4838">https://www.rfc-editor.org/info/rfc4838</a>&gt;</span>. </dd>
+2320c2409
+< <span class="refAuthor">Shirey, R.</span>, <span class="refTitle">"Internet Security Glossary, Version 2"</span>, <span class="seriesInfo">FYI 36</span>, <span class="seriesInfo">RFC 4949</span>, <span class="seriesInfo">DOI 10.17487/RFC4949</span>, <time datetime="2007-08">August 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4949">https://www.rfc-editor.org/info/rfc4949</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Shirey, R.</span>, <span class="refTitle">"Internet Security Glossary, Version 2"</span>, <span class="seriesInfo">FYI 36</span>, <span class="seriesInfo">RFC 4949</span>, <span class="seriesInfo">DOI 10.17487/RFC4949</span>, <time datetime="2007-08" class="refDate">August 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4949">https://www.rfc-editor.org/info/rfc4949</a>&gt;</span>. </dd>
+2324c2413
+< <span class="refAuthor">Eastlake 3rd, D.</span><span class="refAuthor"> and T. Hansen</span>, <span class="refTitle">"US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)"</span>, <span class="seriesInfo">RFC 6234</span>, <span class="seriesInfo">DOI 10.17487/RFC6234</span>, <time datetime="2011-05">May 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6234">https://www.rfc-editor.org/info/rfc6234</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Eastlake 3rd, D.</span> and <span class="refAuthor">T. Hansen</span>, <span class="refTitle">"US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)"</span>, <span class="seriesInfo">RFC 6234</span>, <span class="seriesInfo">DOI 10.17487/RFC6234</span>, <time datetime="2011-05" class="refDate">May 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6234">https://www.rfc-editor.org/info/rfc6234</a>&gt;</span>. </dd>
+2328c2417
+< <span class="refAuthor">Mosko, M.</span><span class="refAuthor">, Solis, I.</span><span class="refAuthor">, and C. Wood</span>, <span class="refTitle">"Content-Centric Networking (CCNx) Semantics"</span>, <span class="seriesInfo">RFC 8569</span>, <span class="seriesInfo">DOI 10.17487/RFC8569</span>, <time datetime="2019-07">July 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8569">https://www.rfc-editor.org/info/rfc8569</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mosko, M.</span>, <span class="refAuthor">Solis, I.</span>, and <span class="refAuthor">C. Wood</span>, <span class="refTitle">"Content-Centric Networking (CCNx) Semantics"</span>, <span class="seriesInfo">RFC 8569</span>, <span class="seriesInfo">DOI 10.17487/RFC8569</span>, <time datetime="2019-07" class="refDate">July 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8569">https://www.rfc-editor.org/info/rfc8569</a>&gt;</span>. </dd>
+2332c2421
+< <span class="refAuthor">Mosko, M.</span><span class="refAuthor">, Solis, I.</span><span class="refAuthor">, and C. Wood</span>, <span class="refTitle">"Content-Centric Networking (CCNx) Messages in TLV Format"</span>, <span class="seriesInfo">RFC 8609</span>, <span class="seriesInfo">DOI 10.17487/RFC8609</span>, <time datetime="2019-07">July 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8609">https://www.rfc-editor.org/info/rfc8609</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mosko, M.</span>, <span class="refAuthor">Solis, I.</span>, and <span class="refAuthor">C. Wood</span>, <span class="refTitle">"Content-Centric Networking (CCNx) Messages in TLV Format"</span>, <span class="seriesInfo">RFC 8609</span>, <span class="seriesInfo">DOI 10.17487/RFC8609</span>, <time datetime="2019-07" class="refDate">July 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8609">https://www.rfc-editor.org/info/rfc8609</a>&gt;</span>. </dd>
+2338c2427
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2342c2431
+< <p id="section-appendix.a-1"><span class="contact-name">Marc Mosko</span> provided much guidance and helpful
+---
+> <p id="appendix-A-1"><span class="contact-name">Marc Mosko</span> provided much guidance and helpful
+2348c2437
+<       comments were received as part of the IESG conflict review from <span class="contact-name">Mirja       Kuehlewind</span> and <span class="contact-name">Benjamin Kaduk</span>.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+>       comments were received as part of the IESG conflict review from <span class="contact-name">Mirja       Kuehlewind</span> and <span class="contact-name">Benjamin Kaduk</span>.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+2352c2441
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
