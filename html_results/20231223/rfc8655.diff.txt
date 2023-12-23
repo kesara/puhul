@@ -1,0 +1,1491 @@
+31c31
+< <meta content="xml2rfc 2.34.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.0" name="generator">
+34c34,50
+< <link href="rfc8655.xml" type="application/rfc+xml" rel="alternate">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.0
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.4
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8655.xml" rel="alternate" type="application/rfc+xml">
+44c60
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+53a70,75
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+56d77
+<   width: extend-to-zoom;
+71c92
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+73a95
+>   overflow-wrap: break-word;
+159a182,190
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+174,177d204
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+178a206
+>   border: none;
+201a230,232
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+253c284
+< tt, code, pre, code {
+---
+> tt, code, pre {
+255c286
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+294a326,328
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+384a419,424
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+486c526
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+626d665
+< 
+648a688,690
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+716c758
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+816c858
+< tt, code, pre, code {
+---
+> tt, code, pre {
+821c863
+< pre.sourcecode,
+---
+> .sourcecode pre,
+857c899
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+935,940d976
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1011c1047
+<   margin: 0 0 0.25em 0;
+---
+>   margin-bottom: 0.25em;
+1025c1061
+<   margin-bottom: 0;
+---
+>   margin-bottom: 0.5em;
+1041a1078,1215
+> /* Sourcecode margin in print, when there's no pilcrow */
+> @media print {
+>   .artwork,
+>   .artwork > pre,
+>   .sourcecode {
+>     margin-bottom: 1em;
+>   }
+> }
+> /* Avoid narrow tables forcing too narrow table captions, which may render badly */
+> table {
+>   min-width: 20em;
+> }
+> /* ol type a */
+> ol.type-a { list-style-type: lower-alpha; }
+> ol.type-A { list-style-type: upper-alpha; }
+> ol.type-i { list-style-type: lower-roman; }
+> ol.type-I { list-style-type: lower-roman; }
+> /* Apply the print table and row borders in general, on request from the RPC,
+> and increase the contrast between border and odd row background slightly */
+> table {
+>   border: 1px solid #ddd;
+> }
+> td {
+>   border-top: 1px solid #ddd;
+> }
+> tr {
+>   break-inside: avoid;
+> }
+> tr:nth-child(2n+1) > td {
+>   background-color: #f8f8f8;
+> }
+> /* Use style rules to govern display of the TOC. */
+> @media screen and (max-width: 1023px) {
+>   #toc nav { display: none; }
+>   #toc.active nav { display: block; }
+> }
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1043c1217,1218
+< <link href="rfc-local.css" type="text/css" rel="stylesheet">
+---
+> <link href="rfc-local.css" rel="stylesheet" type="text/css">
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-detnet-architecture-13" rel="prev">
+1046c1221
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-detnet-architecture-13" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1048,1049c1223,1224
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1164,1166c1339,1341
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.1">
+<             <p id="section-boilerplate.3-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-boilerplate.3-1.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.1">
+>             <p id="section-boilerplate.3-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <span><a href="#name-introduction" class="internal xref">Introduction</a> (<a href="#name-introduction" class="internal xref">Introduction</a>)</span></p>
+1168,1172c1343,1347
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.2">
+<             <p id="section-boilerplate.3-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-boilerplate.3-1.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.2.2.1">
+<                 <p id="section-boilerplate.3-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-terms-used-in-this-document" class="xref">Terms Used in This Document</a><a href="#section-boilerplate.3-1.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.2">
+>             <p id="section-boilerplate.3-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <span><a href="#name-terminology" class="internal xref">Terminology</a> (<a href="#name-terminology" class="internal xref">Terminology</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.2.2.1">
+>                 <p id="section-boilerplate.3-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <span><a href="#name-terms-used-in-this-document" class="internal xref">Terms Used in This Document</a> (<a href="#name-terms-used-in-this-document" class="internal xref">Terms Used in This Document</a>)</span></p>
+1174,1175c1349,1350
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.2.2.2">
+<                 <p id="section-boilerplate.3-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-dictionary-of-terms-used-by" class="xref">Dictionary of Terms Used by TSN and DetNet</a><a href="#section-boilerplate.3-1.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.2.2.2">
+>                 <p id="section-boilerplate.3-1.2.2.2.1" class="keepWithNext"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <span><a href="#name-dictionary-of-terms-used-by" class="internal xref">Dictionary of Terms Used by TSN and DetNet</a> (<a href="#name-dictionary-of-terms-used-by" class="internal xref">Dictionary of Terms Used by TSN and DetNet</a>)</span></p>
+1179,1183c1354,1358
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.3">
+<             <p id="section-boilerplate.3-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-providing-the-detnet-qualit" class="xref">Providing the DetNet Quality of Service</a><a href="#section-boilerplate.3-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.3.2.1">
+<                 <p id="section-boilerplate.3-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-primary-goals-defining-the-" class="xref">Primary Goals Defining the DetNet QoS</a><a href="#section-boilerplate.3-1.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.3">
+>             <p id="section-boilerplate.3-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <span><a href="#name-providing-the-detnet-qualit" class="internal xref">Providing the DetNet Quality of Service</a> (<a href="#name-providing-the-detnet-qualit" class="internal xref">Providing the DetNet Quality of Service</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.3.2.1">
+>                 <p id="section-boilerplate.3-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <span><a href="#name-primary-goals-defining-the-" class="internal xref">Primary Goals Defining the DetNet QoS</a> (<a href="#name-primary-goals-defining-the-" class="internal xref">Primary Goals Defining the DetNet QoS</a>)</span></p>
+1185,1189c1360,1364
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.3.2.2">
+<                 <p id="section-boilerplate.3-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-mechanisms-to-achieve-detne" class="xref">Mechanisms to Achieve DetNet QoS</a><a href="#section-boilerplate.3-1.3.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.3.2.2.2.1">
+<                     <p id="section-boilerplate.3-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="xref">3.2.1</a>.  <a href="#name-resource-allocation" class="xref">Resource Allocation</a><a href="#section-boilerplate.3-1.3.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.3.2.2">
+>                 <p id="section-boilerplate.3-1.3.2.2.1" class="keepWithNext"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <span><a href="#name-mechanisms-to-achieve-detne" class="internal xref">Mechanisms to Achieve DetNet QoS</a> (<a href="#name-mechanisms-to-achieve-detne" class="internal xref">Mechanisms to Achieve DetNet QoS</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.3.2.2.2.1">
+>                     <p id="section-boilerplate.3-1.3.2.2.2.1.1" class="keepWithNext"><a href="#section-3.2.1" class="auto internal xref">3.2.1</a>.  <span><a href="#name-resource-allocation" class="internal xref">Resource Allocation</a> (<a href="#name-resource-allocation" class="internal xref">Resource Allocation</a>)</span></p>
+1191,1192c1366,1367
+<                   <li class="toc ulEmpty" id="section-boilerplate.3-1.3.2.2.2.2">
+<                     <p id="section-boilerplate.3-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="xref">3.2.2</a>.  <a href="#name-service-protection" class="xref">Service Protection</a><a href="#section-boilerplate.3-1.3.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.3.2.2.2.2">
+>                     <p id="section-boilerplate.3-1.3.2.2.2.2.1" class="keepWithNext"><a href="#section-3.2.2" class="auto internal xref">3.2.2</a>.  <span><a href="#name-service-protection" class="internal xref">Service Protection</a> (<a href="#name-service-protection" class="internal xref">Service Protection</a>)</span></p>
+1194,1195c1369,1370
+<                   <li class="toc ulEmpty" id="section-boilerplate.3-1.3.2.2.2.3">
+<                     <p id="section-boilerplate.3-1.3.2.2.2.3.1"><a href="#section-3.2.3" class="xref">3.2.3</a>.  <a href="#name-explicit-routes" class="xref">Explicit Routes</a><a href="#section-boilerplate.3-1.3.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.3.2.2.2.3">
+>                     <p id="section-boilerplate.3-1.3.2.2.2.3.1" class="keepWithNext"><a href="#section-3.2.3" class="auto internal xref">3.2.3</a>.  <span><a href="#name-explicit-routes" class="internal xref">Explicit Routes</a> (<a href="#name-explicit-routes" class="internal xref">Explicit Routes</a>)</span></p>
+1199,1203c1374,1378
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.3.2.3">
+<                 <p id="section-boilerplate.3-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-secondary-goals-for-detnet" class="xref">Secondary Goals for DetNet</a><a href="#section-boilerplate.3-1.3.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.3.2.3.2.1">
+<                     <p id="section-boilerplate.3-1.3.2.3.2.1.1"><a href="#section-3.3.1" class="xref">3.3.1</a>.  <a href="#name-coexistence-with-normal-tra" class="xref">Coexistence with Normal Traffic</a><a href="#section-boilerplate.3-1.3.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.3.2.3">
+>                 <p id="section-boilerplate.3-1.3.2.3.1" class="keepWithNext"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <span><a href="#name-secondary-goals-for-detnet" class="internal xref">Secondary Goals for DetNet</a> (<a href="#name-secondary-goals-for-detnet" class="internal xref">Secondary Goals for DetNet</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.3.2.3.2.1">
+>                     <p id="section-boilerplate.3-1.3.2.3.2.1.1" class="keepWithNext"><a href="#section-3.3.1" class="auto internal xref">3.3.1</a>.  <span><a href="#name-coexistence-with-normal-tra" class="internal xref">Coexistence with Normal Traffic</a> (<a href="#name-coexistence-with-normal-tra" class="internal xref">Coexistence with Normal Traffic</a>)</span></p>
+1205,1206c1380,1381
+<                   <li class="toc ulEmpty" id="section-boilerplate.3-1.3.2.3.2.2">
+<                     <p id="section-boilerplate.3-1.3.2.3.2.2.1"><a href="#section-3.3.2" class="xref">3.3.2</a>.  <a href="#name-fault-mitigation" class="xref">Fault Mitigation</a><a href="#section-boilerplate.3-1.3.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.3.2.3.2.2">
+>                     <p id="section-boilerplate.3-1.3.2.3.2.2.1" class="keepWithNext"><a href="#section-3.3.2" class="auto internal xref">3.3.2</a>.  <span><a href="#name-fault-mitigation" class="internal xref">Fault Mitigation</a> (<a href="#name-fault-mitigation" class="internal xref">Fault Mitigation</a>)</span></p>
+1212,1219c1387,1394
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.4">
+<             <p id="section-boilerplate.3-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-detnet-architecture" class="xref">DetNet Architecture</a><a href="#section-boilerplate.3-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.1">
+<                 <p id="section-boilerplate.3-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-detnet-stack-model" class="xref">DetNet Stack Model</a><a href="#section-boilerplate.3-1.4.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.1.2.1">
+<                     <p id="section-boilerplate.3-1.4.2.1.2.1.1"><a href="#section-4.1.1" class="xref">4.1.1</a>.  <a href="#name-representative-protocol-sta" class="xref">Representative Protocol Stack Model</a><a href="#section-boilerplate.3-1.4.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4">
+>             <p id="section-boilerplate.3-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <span><a href="#name-detnet-architecture" class="internal xref">DetNet Architecture</a> (<a href="#name-detnet-architecture" class="internal xref">DetNet Architecture</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.1">
+>                 <p id="section-boilerplate.3-1.4.2.1.1" class="keepWithNext"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <span><a href="#name-detnet-stack-model" class="internal xref">DetNet Stack Model</a> (<a href="#name-detnet-stack-model" class="internal xref">DetNet Stack Model</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.1.2.1">
+>                     <p id="section-boilerplate.3-1.4.2.1.2.1.1" class="keepWithNext"><a href="#section-4.1.1" class="auto internal xref">4.1.1</a>.  <span><a href="#name-representative-protocol-sta" class="internal xref">Representative Protocol Stack Model</a> (<a href="#name-representative-protocol-sta" class="internal xref">Representative Protocol Stack Model</a>)</span></p>
+1221,1222c1396,1397
+<                   <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.1.2.2">
+<                     <p id="section-boilerplate.3-1.4.2.1.2.2.1"><a href="#section-4.1.2" class="xref">4.1.2</a>.  <a href="#name-detnet-data-plane-overview" class="xref">DetNet Data-Plane Overview</a><a href="#section-boilerplate.3-1.4.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.1.2.2">
+>                     <p id="section-boilerplate.3-1.4.2.1.2.2.1" class="keepWithNext"><a href="#section-4.1.2" class="auto internal xref">4.1.2</a>.  <span><a href="#name-detnet-data-plane-overview" class="internal xref">DetNet Data-Plane Overview</a> (<a href="#name-detnet-data-plane-overview" class="internal xref">DetNet Data-Plane Overview</a>)</span></p>
+1224,1225c1399,1400
+<                   <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.1.2.3">
+<                     <p id="section-boilerplate.3-1.4.2.1.2.3.1"><a href="#section-4.1.3" class="xref">4.1.3</a>.  <a href="#name-network-reference-model" class="xref">Network Reference Model</a><a href="#section-boilerplate.3-1.4.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.1.2.3">
+>                     <p id="section-boilerplate.3-1.4.2.1.2.3.1" class="keepWithNext"><a href="#section-4.1.3" class="auto internal xref">4.1.3</a>.  <span><a href="#name-network-reference-model" class="internal xref">Network Reference Model</a> (<a href="#name-network-reference-model" class="internal xref">Network Reference Model</a>)</span></p>
+1229,1233c1404,1408
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.2">
+<                 <p id="section-boilerplate.3-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-detnet-systems" class="xref">DetNet Systems</a><a href="#section-boilerplate.3-1.4.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.2.2.1">
+<                     <p id="section-boilerplate.3-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="xref">4.2.1</a>.  <a href="#name-end-system" class="xref">End System</a><a href="#section-boilerplate.3-1.4.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.2">
+>                 <p id="section-boilerplate.3-1.4.2.2.1" class="keepWithNext"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <span><a href="#name-detnet-systems" class="internal xref">DetNet Systems</a> (<a href="#name-detnet-systems" class="internal xref">DetNet Systems</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.2.2.1">
+>                     <p id="section-boilerplate.3-1.4.2.2.2.1.1" class="keepWithNext"><a href="#section-4.2.1" class="auto internal xref">4.2.1</a>.  <span><a href="#name-end-system" class="internal xref">End System</a> (<a href="#name-end-system" class="internal xref">End System</a>)</span></p>
+1235,1236c1410,1411
+<                   <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.2.2.2">
+<                     <p id="section-boilerplate.3-1.4.2.2.2.2.1"><a href="#section-4.2.2" class="xref">4.2.2</a>.  <a href="#name-detnet-edge-relay-and-trans" class="xref">DetNet Edge, Relay, and Transit Nodes</a><a href="#section-boilerplate.3-1.4.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.2.2.2">
+>                     <p id="section-boilerplate.3-1.4.2.2.2.2.1" class="keepWithNext"><a href="#section-4.2.2" class="auto internal xref">4.2.2</a>.  <span><a href="#name-detnet-edge-relay-and-trans" class="internal xref">DetNet Edge, Relay, and Transit Nodes</a> (<a href="#name-detnet-edge-relay-and-trans" class="internal xref">DetNet Edge, Relay, and Transit Nodes</a>)</span></p>
+1240,1244c1415,1419
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.3">
+<                 <p id="section-boilerplate.3-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-detnet-flows" class="xref">DetNet Flows</a><a href="#section-boilerplate.3-1.4.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.3.2.1">
+<                     <p id="section-boilerplate.3-1.4.2.3.2.1.1"><a href="#section-4.3.1" class="xref">4.3.1</a>.  <a href="#name-detnet-flow-types" class="xref">DetNet Flow Types</a><a href="#section-boilerplate.3-1.4.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.3">
+>                 <p id="section-boilerplate.3-1.4.2.3.1" class="keepWithNext"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <span><a href="#name-detnet-flows" class="internal xref">DetNet Flows</a> (<a href="#name-detnet-flows" class="internal xref">DetNet Flows</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.3.2.1">
+>                     <p id="section-boilerplate.3-1.4.2.3.2.1.1" class="keepWithNext"><a href="#section-4.3.1" class="auto internal xref">4.3.1</a>.  <span><a href="#name-detnet-flow-types" class="internal xref">DetNet Flow Types</a> (<a href="#name-detnet-flow-types" class="internal xref">DetNet Flow Types</a>)</span></p>
+1246,1247c1421,1422
+<                   <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.3.2.2">
+<                     <p id="section-boilerplate.3-1.4.2.3.2.2.1"><a href="#section-4.3.2" class="xref">4.3.2</a>.  <a href="#name-source-transmission-behavio" class="xref">Source Transmission Behavior</a><a href="#section-boilerplate.3-1.4.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.3.2.2">
+>                     <p id="section-boilerplate.3-1.4.2.3.2.2.1" class="keepWithNext"><a href="#section-4.3.2" class="auto internal xref">4.3.2</a>.  <span><a href="#name-source-transmission-behavio" class="internal xref">Source Transmission Behavior</a> (<a href="#name-source-transmission-behavio" class="internal xref">Source Transmission Behavior</a>)</span></p>
+1249,1250c1424,1425
+<                   <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.3.2.3">
+<                     <p id="section-boilerplate.3-1.4.2.3.2.3.1"><a href="#section-4.3.3" class="xref">4.3.3</a>.  <a href="#name-incomplete-networks" class="xref">Incomplete Networks</a><a href="#section-boilerplate.3-1.4.2.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.3.2.3">
+>                     <p id="section-boilerplate.3-1.4.2.3.2.3.1" class="keepWithNext"><a href="#section-4.3.3" class="auto internal xref">4.3.3</a>.  <span><a href="#name-incomplete-networks" class="internal xref">Incomplete Networks</a> (<a href="#name-incomplete-networks" class="internal xref">Incomplete Networks</a>)</span></p>
+1254,1258c1429,1433
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.4">
+<                 <p id="section-boilerplate.3-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-traffic-engineering-for-det" class="xref">Traffic Engineering for DetNet</a><a href="#section-boilerplate.3-1.4.2.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.4.2.1">
+<                     <p id="section-boilerplate.3-1.4.2.4.2.1.1"><a href="#section-4.4.1" class="xref">4.4.1</a>.  <a href="#name-the-application-plane" class="xref">The Application Plane</a><a href="#section-boilerplate.3-1.4.2.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.4">
+>                 <p id="section-boilerplate.3-1.4.2.4.1" class="keepWithNext"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <span><a href="#name-traffic-engineering-for-det" class="internal xref">Traffic Engineering for DetNet</a> (<a href="#name-traffic-engineering-for-det" class="internal xref">Traffic Engineering for DetNet</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.4.2.1">
+>                     <p id="section-boilerplate.3-1.4.2.4.2.1.1" class="keepWithNext"><a href="#section-4.4.1" class="auto internal xref">4.4.1</a>.  <span><a href="#name-the-application-plane" class="internal xref">The Application Plane</a> (<a href="#name-the-application-plane" class="internal xref">The Application Plane</a>)</span></p>
+1260,1261c1435,1436
+<                   <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.4.2.2">
+<                     <p id="section-boilerplate.3-1.4.2.4.2.2.1"><a href="#section-4.4.2" class="xref">4.4.2</a>.  <a href="#name-the-controller-plane" class="xref">The Controller Plane</a><a href="#section-boilerplate.3-1.4.2.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.4.2.2">
+>                     <p id="section-boilerplate.3-1.4.2.4.2.2.1" class="keepWithNext"><a href="#section-4.4.2" class="auto internal xref">4.4.2</a>.  <span><a href="#name-the-controller-plane" class="internal xref">The Controller Plane</a> (<a href="#name-the-controller-plane" class="internal xref">The Controller Plane</a>)</span></p>
+1263,1264c1438,1439
+<                   <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.4.2.3">
+<                     <p id="section-boilerplate.3-1.4.2.4.2.3.1"><a href="#section-4.4.3" class="xref">4.4.3</a>.  <a href="#name-the-network-plane" class="xref">The Network Plane</a><a href="#section-boilerplate.3-1.4.2.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.4.2.3">
+>                     <p id="section-boilerplate.3-1.4.2.4.2.3.1" class="keepWithNext"><a href="#section-4.4.3" class="auto internal xref">4.4.3</a>.  <span><a href="#name-the-network-plane" class="internal xref">The Network Plane</a> (<a href="#name-the-network-plane" class="internal xref">The Network Plane</a>)</span></p>
+1268,1269c1443,1444
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.5">
+<                 <p id="section-boilerplate.3-1.4.2.5.1"><a href="#section-4.5" class="xref">4.5</a>.  <a href="#name-queuing-shaping-scheduling-" class="xref">Queuing, Shaping, Scheduling, and Preemption</a><a href="#section-boilerplate.3-1.4.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.5">
+>                 <p id="section-boilerplate.3-1.4.2.5.1" class="keepWithNext"><a href="#section-4.5" class="auto internal xref">4.5</a>.  <span><a href="#name-queuing-shaping-scheduling-" class="internal xref">Queuing, Shaping, Scheduling, and Preemption</a> (<a href="#name-queuing-shaping-scheduling-" class="internal xref">Queuing, Shaping, Scheduling, and Preemption</a>)</span></p>
+1271,1272c1446,1447
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.6">
+<                 <p id="section-boilerplate.3-1.4.2.6.1"><a href="#section-4.6" class="xref">4.6</a>.  <a href="#name-service-instance" class="xref">Service Instance</a><a href="#section-boilerplate.3-1.4.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.6">
+>                 <p id="section-boilerplate.3-1.4.2.6.1" class="keepWithNext"><a href="#section-4.6" class="auto internal xref">4.6</a>.  <span><a href="#name-service-instance" class="internal xref">Service Instance</a> (<a href="#name-service-instance" class="internal xref">Service Instance</a>)</span></p>
+1274,1278c1449,1453
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.7">
+<                 <p id="section-boilerplate.3-1.4.2.7.1"><a href="#section-4.7" class="xref">4.7</a>.  <a href="#name-flow-identification-at-tech" class="xref">Flow Identification at Technology Borders</a><a href="#section-boilerplate.3-1.4.2.7.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.7.2.1">
+<                     <p id="section-boilerplate.3-1.4.2.7.2.1.1"><a href="#section-4.7.1" class="xref">4.7.1</a>.  <a href="#name-exporting-flow-identificati" class="xref">Exporting Flow Identification</a><a href="#section-boilerplate.3-1.4.2.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.7">
+>                 <p id="section-boilerplate.3-1.4.2.7.1" class="keepWithNext"><a href="#section-4.7" class="auto internal xref">4.7</a>.  <span><a href="#name-flow-identification-at-tech" class="internal xref">Flow Identification at Technology Borders</a> (<a href="#name-flow-identification-at-tech" class="internal xref">Flow Identification at Technology Borders</a>)</span></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.7.2.1">
+>                     <p id="section-boilerplate.3-1.4.2.7.2.1.1" class="keepWithNext"><a href="#section-4.7.1" class="auto internal xref">4.7.1</a>.  <span><a href="#name-exporting-flow-identificati" class="internal xref">Exporting Flow Identification</a> (<a href="#name-exporting-flow-identificati" class="internal xref">Exporting Flow Identification</a>)</span></p>
+1280,1281c1455,1456
+<                   <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.7.2.2">
+<                     <p id="section-boilerplate.3-1.4.2.7.2.2.1"><a href="#section-4.7.2" class="xref">4.7.2</a>.  <a href="#name-flow-attribute-mapping-betw" class="xref">Flow Attribute Mapping between Layers</a><a href="#section-boilerplate.3-1.4.2.7.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.7.2.2">
+>                     <p id="section-boilerplate.3-1.4.2.7.2.2.1" class="keepWithNext"><a href="#section-4.7.2" class="auto internal xref">4.7.2</a>.  <span><a href="#name-flow-attribute-mapping-betw" class="internal xref">Flow Attribute Mapping between Layers</a> (<a href="#name-flow-attribute-mapping-betw" class="internal xref">Flow Attribute Mapping between Layers</a>)</span></p>
+1283,1284c1458,1459
+<                   <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.7.2.3">
+<                     <p id="section-boilerplate.3-1.4.2.7.2.3.1"><a href="#section-4.7.3" class="xref">4.7.3</a>.  <a href="#name-flow-id-mapping-examples" class="xref">Flow-ID Mapping Examples</a><a href="#section-boilerplate.3-1.4.2.7.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.7.2.3">
+>                     <p id="section-boilerplate.3-1.4.2.7.2.3.1" class="keepWithNext"><a href="#section-4.7.3" class="auto internal xref">4.7.3</a>.  <span><a href="#name-flow-id-mapping-examples" class="internal xref">Flow-ID Mapping Examples</a> (<a href="#name-flow-id-mapping-examples" class="internal xref">Flow-ID Mapping Examples</a>)</span></p>
+1288,1289c1463,1464
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.8">
+<                 <p id="section-boilerplate.3-1.4.2.8.1"><a href="#section-4.8" class="xref">4.8</a>.  <a href="#name-advertising-resources-capab" class="xref">Advertising Resources, Capabilities, and Adjacencies</a><a href="#section-boilerplate.3-1.4.2.8.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.8">
+>                 <p id="section-boilerplate.3-1.4.2.8.1" class="keepWithNext"><a href="#section-4.8" class="auto internal xref">4.8</a>.  <span><a href="#name-advertising-resources-capab" class="internal xref">Advertising Resources, Capabilities, and Adjacencies</a> (<a href="#name-advertising-resources-capab" class="internal xref">Advertising Resources, Capabilities, and Adjacencies</a>)</span></p>
+1291,1292c1466,1467
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.9">
+<                 <p id="section-boilerplate.3-1.4.2.9.1"><a href="#section-4.9" class="xref">4.9</a>.  <a href="#name-scaling-to-larger-networks" class="xref">Scaling to Larger Networks</a><a href="#section-boilerplate.3-1.4.2.9.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.9">
+>                 <p id="section-boilerplate.3-1.4.2.9.1" class="keepWithNext"><a href="#section-4.9" class="auto internal xref">4.9</a>.  <span><a href="#name-scaling-to-larger-networks" class="internal xref">Scaling to Larger Networks</a> (<a href="#name-scaling-to-larger-networks" class="internal xref">Scaling to Larger Networks</a>)</span></p>
+1294,1295c1469,1470
+<               <li class="toc ulEmpty" id="section-boilerplate.3-1.4.2.10">
+<                 <p id="section-boilerplate.3-1.4.2.10.1"><a href="#section-4.10" class="xref">4.10</a>. <a href="#name-compatibility-with-layer-2" class="xref">Compatibility with Layer 2</a><a href="#section-boilerplate.3-1.4.2.10.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.4.2.10">
+>                 <p id="section-boilerplate.3-1.4.2.10.1" class="keepWithNext"><a href="#section-4.10" class="auto internal xref">4.10</a>. <span><a href="#name-compatibility-with-layer-2" class="internal xref">Compatibility with Layer 2</a> (<a href="#name-compatibility-with-layer-2" class="internal xref">Compatibility with Layer 2</a>)</span></p>
+1299,1300c1474,1475
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.5">
+<             <p id="section-boilerplate.3-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-boilerplate.3-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.5">
+>             <p id="section-boilerplate.3-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <span><a href="#name-security-considerations" class="internal xref">Security Considerations</a> (<a href="#name-security-considerations" class="internal xref">Security Considerations</a>)</span></p>
+1302,1303c1477,1478
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.6">
+<             <p id="section-boilerplate.3-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-privacy-considerations" class="xref">Privacy Considerations</a><a href="#section-boilerplate.3-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.6">
+>             <p id="section-boilerplate.3-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <span><a href="#name-privacy-considerations" class="internal xref">Privacy Considerations</a> (<a href="#name-privacy-considerations" class="internal xref">Privacy Considerations</a>)</span></p>
+1305,1306c1480,1481
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.7">
+<             <p id="section-boilerplate.3-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-boilerplate.3-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.7">
+>             <p id="section-boilerplate.3-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <span><a href="#name-iana-considerations" class="internal xref">IANA Considerations</a> (<a href="#name-iana-considerations" class="internal xref">IANA Considerations</a>)</span></p>
+1308,1309c1483,1484
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.8">
+<             <p id="section-boilerplate.3-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-boilerplate.3-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.8">
+>             <p id="section-boilerplate.3-1.8.1" class="keepWithNext"><a href="#section-8" class="auto internal xref">8</a>.  <span><a href="#name-informative-references" class="internal xref">Informative References</a> (<a href="#name-informative-references" class="internal xref">Informative References</a>)</span></p>
+1311,1312c1486,1487
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.9">
+<             <p id="section-boilerplate.3-1.9.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-boilerplate.3-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.9">
+>             <p id="section-boilerplate.3-1.9.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref"></a><span><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a> (<a href="#name-acknowledgements" class="internal xref">Acknowledgements</a>)</span></p>
+1314,1315c1489,1490
+<           <li class="toc ulEmpty" id="section-boilerplate.3-1.10">
+<             <p id="section-boilerplate.3-1.10.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-boilerplate.3-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-boilerplate.3-1.10">
+>             <p id="section-boilerplate.3-1.10.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref"></a><span><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a> (<a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a>)</span></p>
+1344,1346c1519,1521
+< <p id="section-1-3"> The <span><a href="#RFC8557" class="xref">"Deterministic
+< Networking Problem Statement"</a> [<a href="#RFC8557" class="xref">RFC8557</a>]</span> introduces DetNet, and <span><a href="#RFC8578" class="xref">"Deterministic Networking Use Cases"</a> [<a href="#RFC8578" class="xref">RFC8578</a>]</span> summarizes the
+< need for it.  See <span>[<a href="#I-D.ietf-detnet-data-plane-framework" class="xref">DETNET-FRAMEWORK</a>]</span> for specific techniques
+---
+> <p id="section-1-3"> The <span><a href="#RFC8557" class="internal xref">"Deterministic
+> Networking Problem Statement"</a> [<a href="#RFC8557" class="cite xref">RFC8557</a>]</span> introduces DetNet, and <span><a href="#RFC8578" class="internal xref">"Deterministic Networking Use Cases"</a> [<a href="#RFC8578" class="cite xref">RFC8578</a>]</span> summarizes the
+> need for it.  See <span>[<a href="#I-D.ietf-detnet-data-plane-framework" class="cite xref">DETNET-FRAMEWORK</a>]</span> for specific techniques
+1366c1541
+< leveraging the Resource Reservation Protocol (RSVP) <span>[<a href="#RFC2205" class="xref">RFC2205</a>]</span>.
+---
+> leveraging the Resource Reservation Protocol (RSVP) <span>[<a href="#RFC2205" class="cite xref">RFC2205</a>]</span>.
+1370,1371c1545,1546
+< interconnected with different sub-network technologies (<a href="#sec_dt_dp" class="xref">Section 4.1.2</a>) where the nodes of the subnet are not DetNet aware
+< (<a href="#netref" class="xref">Section 4.1.3</a>).<a href="#section-1-4" class="pilcrow">¶</a></p>
+---
+> interconnected with different sub-network technologies (<a href="#sec_dt_dp" class="auto internal xref">Section 4.1.2</a>) where the nodes of the subnet are not DetNet aware
+> (<a href="#netref" class="auto internal xref">Section 4.1.3</a>).<a href="#section-1-4" class="pilcrow">¶</a></p>
+1375c1550
+< in <a href="#QueuingModels" class="xref">Section 4.5</a> also require time synchronization among
+---
+> in <a href="#QueuingModels" class="auto internal xref">Section 4.5</a> also require time synchronization among
+1392c1567
+< <dl class="dlNewline" id="section-2.1-2">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-2.1-2">
+1400a1576
+>           <dd class="break"></dd>
+1404a1581
+>           <dd class="break"></dd>
+1416a1594
+>           <dd class="break"></dd>
+1420a1599
+>           <dd class="break"></dd>
+1426a1606
+>           <dd class="break"></dd>
+1439a1620
+>           <dd class="break"></dd>
+1446a1628
+>           <dd class="break"></dd>
+1453a1636
+>           <dd class="break"></dd>
+1457a1641
+>           <dd class="break"></dd>
+1462a1647
+>           <dd class="break"></dd>
+1472a1658
+>           <dd class="break"></dd>
+1478a1665
+>           <dd class="break"></dd>
+1482a1670
+>           <dd class="break"></dd>
+1486a1675
+>           <dd class="break"></dd>
+1491a1681
+>           <dd class="break"></dd>
+1501a1692
+>           <dd class="break"></dd>
+1508a1700
+>           <dd class="break"></dd>
+1517a1710
+>           <dd class="break"></dd>
+1524a1718
+>           <dd class="break"></dd>
+1532a1727
+>           <dd class="break"></dd>
+1541a1737
+>           <dd class="break"></dd>
+1545a1742
+>           <dd class="break"></dd>
+1552a1750
+>           <dd class="break"></dd>
+1559a1758
+>         <dd class="break"></dd>
+1569c1768
+<    <span>[<a href="#IEEE802.1TSNTG" class="xref">IEEE802.1TSNTG</a>]</span> of the IEEE 802.1 WG to those of
+---
+>    <span>[<a href="#IEEE802.1TSNTG" class="cite xref">IEEE802.1TSNTG</a>]</span> of the IEEE 802.1 WG to those of
+1571c1770
+< <dl class="dlNewline" id="section-2.2-2">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-2.2-2">
+1575a1775
+>           <dd class="break"></dd>
+1580a1781
+>           <dd class="break"></dd>
+1584a1786
+>           <dd class="break"></dd>
+1589a1792
+>         <dd class="break"></dd>
+1605,1606c1808,1809
+< <ul>
+< <li id="section-3.1-2.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.1-2.1">
+1612c1815
+<           <li id="section-3.1-2.2">
+---
+>           <li class="normal" id="section-3.1-2.2">
+1616c1819
+<           <li id="section-3.1-2.3">
+---
+>           <li class="normal" id="section-3.1-2.3">
+1633,1635c1836,1838
+< <ul>
+< <li id="section-3.1-5.1">
+<  Resource allocation (<a href="#Zero" class="xref">Section 3.2.1</a>)<a href="#section-3.1-5.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.1-5.1">
+>  Resource allocation (<a href="#Zero" class="auto internal xref">Section 3.2.1</a>)<a href="#section-3.1-5.1" class="pilcrow">¶</a>
+1637,1638c1840,1841
+<           <li id="section-3.1-5.2">
+<  Service protection (<a href="#srvcprot" class="xref">Section 3.2.2</a>)<a href="#section-3.1-5.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-5.2">
+>  Service protection (<a href="#srvcprot" class="auto internal xref">Section 3.2.2</a>)<a href="#section-3.1-5.2" class="pilcrow">¶</a>
+1640,1641c1843,1844
+<           <li id="section-3.1-5.3">
+<  Explicit routes (<a href="#pinned" class="xref">Section 3.2.3</a>)<a href="#section-3.1-5.3" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-5.3">
+>  Explicit routes (<a href="#pinned" class="auto internal xref">Section 3.2.3</a>)<a href="#section-3.1-5.3" class="pilcrow">¶</a>
+1655c1858
+<  <span>[<a href="#RFC2914" class="xref">RFC2914</a>]</span> for App-flows is not required; however,
+---
+>  <span>[<a href="#RFC2914" class="cite xref">RFC2914</a>]</span> for App-flows is not required; however,
+1666,1667c1869,1870
+< replication and elimination (<a href="#Seamless" class="xref">Section 3.2.2.2</a>) and packet encoding
+< (<a href="#PacketEncoding" class="xref">Section 3.2.2.3</a>) are described in this document to provide
+---
+> replication and elimination (<a href="#Seamless" class="auto internal xref">Section 3.2.2.2</a>) and packet encoding
+> (<a href="#PacketEncoding" class="auto internal xref">Section 3.2.2.3</a>) are described in this document to provide
+1684,1685c1887,1888
+< <ul>
+< <li id="section-3.1-11.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.1-11.1">
+1688c1891
+<  e.g., as described in <span>[<a href="#IEC-62439-3" class="xref">IEC-62439-3</a>]</span>. In this
+---
+>  e.g., as described in <span>[<a href="#IEC-62439-3" class="cite xref">IEC-62439-3</a>]</span>. In this
+1692c1895
+<  front or the end of Ethernet frames. <span>[<a href="#RFC8227" class="xref">RFC8227</a>]</span> provides
+---
+>  front or the end of Ethernet frames. <span>[<a href="#RFC8227" class="cite xref">RFC8227</a>]</span> provides
+1695,1696c1898,1899
+<           <li id="section-3.1-11.2"> Resource allocation
+<  alone was originally offered by Audio Video Bridging as defined by IEEE 802.1 <span>[<a href="#IEEE802.1BA" class="xref">IEEE802.1BA</a>]</span>.  As long as the network suffers no failures,
+---
+>           <li class="normal" id="section-3.1-11.2"> Resource allocation
+>  alone was originally offered by Audio Video Bridging as defined by IEEE 802.1 <span>[<a href="#IEEE802.1BA" class="cite xref">IEEE802.1BA</a>]</span>.  As long as the network suffers no failures,
+1699c1902
+<  Protocol <span>[<a href="#IEEE802.1Q" class="xref">IEEE802.1Q</a>]</span>), shapers in every bridge,
+---
+>  Protocol <span>[<a href="#IEEE802.1Q" class="cite xref">IEEE802.1Q</a>]</span>), shapers in every bridge,
+1702c1905
+<           <li id="section-3.1-11.3"> Using all three together gives
+---
+>           <li class="normal" id="section-3.1-11.3"> Using all three together gives
+1746,1747c1949,1950
+<  expected to be responsive to implicit <span>[<a href="#RFC2914" class="xref">RFC2914</a>]</span> or explicit congestion notification
+<  <span>[<a href="#RFC3168" class="xref">RFC3168</a>]</span>.<a href="#section-3.2.1.1-1" class="pilcrow">¶</a></p>
+---
+>  expected to be responsive to implicit <span>[<a href="#RFC2914" class="cite xref">RFC2914</a>]</span> or explicit congestion notification
+>  <span>[<a href="#RFC3168" class="cite xref">RFC3168</a>]</span>.<a href="#section-3.2.1.1-1" class="pilcrow">¶</a></p>
+1750c1953
+<  destination (or nearly every node; see <a href="#Incomplete" class="xref">Section 4.3.3</a>) be careful to regulate its output to
+---
+>  destination (or nearly every node; see <a href="#Incomplete" class="auto internal xref">Section 4.3.3</a>) be careful to regulate its output to
+1757c1960
+<  and shaping functions (e.g., shaping as defined in <span>[<a href="#RFC2475" class="xref">RFC2475</a>]</span>) at the
+---
+>  and shaping functions (e.g., shaping as defined in <span>[<a href="#RFC2475" class="cite xref">RFC2475</a>]</span>) at the
+1762,1763c1965,1966
+<  issues (see, e.g., <span>[<a href="#BUFFERBLOAT" class="xref">BUFFERBLOAT</a>]</span>).<a href="#section-3.2.1.1-2" class="pilcrow">¶</a></p>
+< <p id="section-3.2.1.1-3"> The low-level mechanisms described in <a href="#QueuingModels" class="xref">Section 4.5</a>
+---
+>  issues (see, e.g., <span>[<a href="#BUFFERBLOAT" class="cite xref">BUFFERBLOAT</a>]</span>).<a href="#section-3.2.1.1-2" class="pilcrow">¶</a></p>
+> <p id="section-3.2.1.1-3"> The low-level mechanisms described in <a href="#QueuingModels" class="auto internal xref">Section 4.5</a>
+1798,1799c2001,2002
+< <ul>
+< <li id="section-3.2.1.2-3.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.2.1.2-3.1">
+1803c2006
+<               <li id="section-3.2.1.2-3.2">
+---
+>               <li class="normal" id="section-3.2.1.2-3.2">
+1808c2011
+<       Jitter reduction is provided by the mechanisms described in <a href="#QueuingModels" class="xref">Section 4.5</a>
+---
+>       Jitter reduction is provided by the mechanisms described in <a href="#QueuingModels" class="auto internal xref">Section 4.5</a>
+1824,1826c2027,2029
+<      paths. Various service protection methods are described in <span>[<a href="#RFC6372" class="xref">RFC6372</a>]</span>, e.g., 1+1 linear protection.  The functional
+<      details of an additional method are described in <a href="#Seamless" class="xref">Section 3.2.2.2</a>, which can be implemented as described in
+<      <a href="#PacketEncoding" class="xref">Section 3.2.2.3</a> or as specified in <span>[<a href="#I-D.ietf-detnet-mpls" class="xref">DETNET-MPLS</a>]</span> in order to provide 1+n hitless
+---
+>      paths. Various service protection methods are described in <span>[<a href="#RFC6372" class="cite xref">RFC6372</a>]</span>, e.g., 1+1 linear protection.  The functional
+>      details of an additional method are described in <a href="#Seamless" class="auto internal xref">Section 3.2.2.2</a>, which can be implemented as described in
+>      <a href="#PacketEncoding" class="auto internal xref">Section 3.2.2.3</a> or as specified in <span>[<a href="#I-D.ietf-detnet-mpls" class="cite xref">DETNET-MPLS</a>]</span> in order to provide 1+n hitless
+1843c2046
+<         (<a href="#Seamless" class="xref">Section 3.2.2.2</a>) can be used to provide in-order delivery.<a href="#section-3.2.2.1-1" class="pilcrow">¶</a></p>
+---
+>         (<a href="#Seamless" class="auto internal xref">Section 3.2.2.2</a>) can be used to provide in-order delivery.<a href="#section-3.2.2.1-1" class="pilcrow">¶</a></p>
+1862,1863c2065,2066
+< <ul>
+< <li id="section-3.2.2.2-3.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.2.2.2-3.1">
+1874c2077
+<               <li id="section-3.2.2.2-3.2"> The PRF
+---
+>               <li class="normal" id="section-3.2.2.2-3.2"> The PRF
+1879c2082
+<  described in <a href="#pinned" class="xref">Section 3.2.3</a>. The location
+---
+>  described in <a href="#pinned" class="auto internal xref">Section 3.2.3</a>. The location
+1883c2086
+<               <li id="section-3.2.2.2-3.3"> The PEF
+---
+>               <li class="normal" id="section-3.2.2.2-3.3"> The PEF
+1898c2101
+<               <li id="section-3.2.2.2-3.4"> The
+---
+>               <li class="normal" id="section-3.2.2.2-3.4"> The
+1922c2125
+< <p id="section-3.2.2.2-8"> This is shown in <a href="#FigSeamless" class="xref">Figure 1</a>, where the two relay nodes
+---
+> <p id="section-3.2.2.2-8"> This is shown in <a href="#FigSeamless" class="auto internal xref">Figure 1</a>, where the two relay nodes
+1931c2134
+<               <div class="artwork art-text alignLeft" id="section-3.2.2.2-9.1">
+---
+>               <div class="alignLeft art-text artwork" id="section-3.2.2.2-9.1">
+1984c2187
+< defined by <span>[<a href="#RFC6372" class="xref">RFC6372</a>]</span>, does not eliminate the chances of packet
+---
+> defined by <span>[<a href="#RFC6372" class="cite xref">RFC6372</a>]</span>, does not eliminate the chances of packet
+1999,2000c2202,2203
+< Service protection (see Sections <a href="#srvcprot" class="xref">3.2.2</a>
+< and <a href="#PacketEncoding" class="xref">3.2.2.3</a>) over explicit routes
+---
+> Service protection (see Sections <a href="#srvcprot" class="auto internal xref">3.2.2</a>
+> and <a href="#PacketEncoding" class="auto internal xref">3.2.2.3</a>) over explicit routes
+2002,2003c2205,2206
+< established in various ways, e.g., with RSVP-TE <span>[<a href="#RFC3209" class="xref">RFC3209</a>]</span>, with
+< Segment Routing (SR) <span>[<a href="#RFC8402" class="xref">RFC8402</a>]</span>, via a SDN approach <span>[<a href="#RFC8453" class="xref">RFC8453</a>]</span>, with IS-IS <span>[<a href="#RFC7813" class="xref">RFC7813</a>]</span>, etc.  Explicit routes
+---
+> established in various ways, e.g., with RSVP-TE <span>[<a href="#RFC3209" class="cite xref">RFC3209</a>]</span>, with
+> Segment Routing (SR) <span>[<a href="#RFC8402" class="cite xref">RFC8402</a>]</span>, via a SDN approach <span>[<a href="#RFC8453" class="cite xref">RFC8453</a>]</span>, with IS-IS <span>[<a href="#RFC7813" class="cite xref">RFC7813</a>]</span>, etc.  Explicit routes
+2010c2213
+< described in <a href="#inorder" class="xref">Section 3.2.2.1</a>, out-of-order packets influence the
+---
+> described in <a href="#inorder" class="auto internal xref">Section 3.2.2.1</a>, out-of-order packets influence the
+2027,2028c2230,2231
+<         other QoS mechanisms (<a href="#Coexistence" class="xref">Section 3.3.1</a>) and protection against misbehaving transmitters
+<         (<a href="#FaultMitigation" class="xref">Section 3.3.2</a>).<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+---
+>         other QoS mechanisms (<a href="#Coexistence" class="auto internal xref">Section 3.3.1</a>) and protection against misbehaving transmitters
+>         (<a href="#FaultMitigation" class="auto internal xref">Section 3.3.2</a>).<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+2040,2042c2243,2245
+<               flow, of course (see Sections <a href="#FaultMitigation" class="xref">3.3.2</a> and <a href="#SecurityConsiderations" class="xref">5</a>).  For these reasons:<a href="#section-3.3.1-1" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-3.3.1-2.1">Bandwidth (transmission opportunities) not utilized by a DetNet flow is
+---
+>               flow, of course (see Sections <a href="#FaultMitigation" class="auto internal xref">3.3.2</a> and <a href="#SecurityConsiderations" class="auto internal xref">5</a>).  For these reasons:<a href="#section-3.3.1-1" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="section-3.3.1-2.1">Bandwidth (transmission opportunities) not utilized by a DetNet flow is
+2045c2248
+<             <li id="section-3.3.1-2.2"> DetNet flows can be shaped or scheduled, in order to ensure that the
+---
+>             <li class="normal" id="section-3.3.1-2.2"> DetNet flows can be shaped or scheduled, in order to ensure that the
+2048c2251
+<             <li id="section-3.3.1-2.3"> When transmission opportunities for DetNet flows are scheduled in detail,
+---
+>             <li class="normal" id="section-3.3.1-2.3"> When transmission opportunities for DetNet flows are scheduled in detail,
+2056c2259
+<           traffic policing and shaping functions (e.g., <span>[<a href="#RFC2475" class="xref">RFC2475</a>]</span>). Thus, the net effect of the presence of DetNet
+---
+>           traffic policing and shaping functions (e.g., <span>[<a href="#RFC2475" class="cite xref">RFC2475</a>]</span>). Thus, the net effect of the presence of DetNet
+2091c2294
+<       transport-layer congestion control per <span>[<a href="#RFC2914" class="xref">RFC2914</a>]</span> into a network that is not
+---
+>       transport-layer congestion control per <span>[<a href="#RFC2914" class="cite xref">RFC2914</a>]</span> into a network that is not
+2110c2313
+<           policing and shaping functions (e.g., those described in <span>[<a href="#RFC2475" class="xref">RFC2475</a>]</span>),
+---
+>           policing and shaping functions (e.g., those described in <span>[<a href="#RFC2475" class="cite xref">RFC2475</a>]</span>),
+2112c2315
+<           applying active queue management <span>[<a href="#RFC7567" class="xref">RFC7567</a>]</span>.<a href="#section-3.3.2-4" class="pilcrow">¶</a></p>
+---
+>           applying active queue management <span>[<a href="#RFC7567" class="cite xref">RFC7567</a>]</span>.<a href="#section-3.3.2-4" class="pilcrow">¶</a></p>
+2130c2333
+<    DetNet functionality (<a href="#ProvidingQoS" class="xref">Section 3</a>) is implemented
+---
+>    DetNet functionality (<a href="#ProvidingQoS" class="auto internal xref">Section 3</a>) is implemented
+2142,2143c2345,2346
+< <p id="section-4.1.1-1"><a href="#ProtStack1" class="xref">Figure 2</a> illustrates a conceptual DetNet data-plane layering model.
+<                 One may compare it to that in <span>[<a href="#IEEE802.1CB" class="xref">IEEE802.1CB</a>]</span>, Annex C.<a href="#section-4.1.1-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-4.1.1-1"><a href="#ProtStack1" class="auto internal xref">Figure 2</a> illustrates a conceptual DetNet data-plane layering model.
+>                 One may compare it to that in <span>[<a href="#IEEE802.1CB" class="cite xref">IEEE802.1CB</a>]</span>, Annex C.<a href="#section-4.1.1-1" class="pilcrow">¶</a></p>
+2146c2349
+<             <div class="artwork art-text alignCenter" id="section-4.1.1-2.1">
+---
+>             <div class="alignCenter art-text artwork" id="section-4.1.1-2.1">
+2174,2175c2377,2378
+<                 given network. The functionality shown in <a href="#ProtStack1" class="xref">Figure 2</a> is:<a href="#section-4.1.1-3" class="pilcrow">¶</a></p>
+< <dl class="dlNewline" id="section-4.1.1-4">
+---
+>                 given network. The functionality shown in <a href="#ProtStack1" class="auto internal xref">Figure 2</a> is:<a href="#section-4.1.1-3" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlNewline" id="section-4.1.1-4">
+2179a2383
+>             <dd class="break"></dd>
+2185c2389
+<                     protection (<a href="#Seamless" class="xref">Section 3.2.2.2</a>); thus, its peer is
+---
+>                     protection (<a href="#Seamless" class="auto internal xref">Section 3.2.2.2</a>); thus, its peer is
+2190a2395
+>             <dd class="break"></dd>
+2203a2409
+>             <dd class="break"></dd>
+2214a2421
+>             <dd class="break"></dd>
+2223c2430
+<                     (<a href="#srvcprot" class="xref">Section 3.2.2</a>). Its peer is DetNet flow
+---
+>                     (<a href="#srvcprot" class="auto internal xref">Section 3.2.2</a>). Its peer is DetNet flow
+2225a2433
+>             <dd class="break"></dd>
+2234a2443
+>             <dd class="break"></dd>
+2243a2453
+>             <dd class="break"></dd>
+2247c2457
+<                     allocation. See <a href="#QueuingModels" class="xref">Section 4.5</a>.  The
+---
+>                     allocation. See <a href="#QueuingModels" class="auto internal xref">Section 4.5</a>.  The
+2253a2464
+>             <dd class="break"></dd>
+2259a2471
+>           <dd class="break"></dd>
+2265c2477
+<             not shown in <a href="#ProtStack1" class="xref">Figure 2</a>; it may reside in any
+---
+>             not shown in <a href="#ProtStack1" class="auto internal xref">Figure 2</a>; it may reside in any
+2299c2511
+<             DetNet system. A simple DetNet concept network is shown in <a href="#fig_detnet" class="xref">Figure 3</a>.
+---
+>             DetNet system. A simple DetNet concept network is shown in <a href="#fig_detnet" class="auto internal xref">Figure 3</a>.
+2304c2516
+< service sub-layer; both of these sub-layers are described in detail in <a href="#StackModel" class="xref">Section 4.1.1</a>.<a href="#section-4.1.2-1" class="pilcrow">¶</a></p>
+---
+> service sub-layer; both of these sub-layers are described in detail in <a href="#StackModel" class="auto internal xref">Section 4.1.1</a>.<a href="#section-4.1.2-1" class="pilcrow">¶</a></p>
+2307c2519
+<             <div class="artwork art-text alignCenter" id="section-4.1.2-2.1">
+---
+>             <div class="alignCenter art-text artwork" id="section-4.1.2-2.1">
+2333c2545
+<             solutions available. Some of them are illustrated in <a href="#fig_adaptation" class="xref">Figure 4</a>.  This separation of DetNet sub-layers,
+---
+>             solutions available. Some of them are illustrated in <a href="#fig_adaptation" class="auto internal xref">Figure 4</a>.  This separation of DetNet sub-layers,
+2339c2551
+<             <div class="artwork art-text alignCenter" id="section-4.1.2-4.1">
+---
+>             <div class="alignCenter art-text artwork" id="section-4.1.2-4.1">
+2360c2572
+<             Protocol (RTP) <span>[<a href="#RFC3550" class="xref">RFC3550</a>]</span> that is carried over a
+---
+>             Protocol (RTP) <span>[<a href="#RFC3550" class="cite xref">RFC3550</a>]</span> that is carried over a
+2386c2598
+< <p id="section-4.1.3-1"><a href="#fig_DetNetservice" class="xref">Figure 5</a> shows another view of the
+---
+> <p id="section-4.1.3-1"><a href="#fig_DetNetservice" class="auto internal xref">Figure 5</a> shows another view of the
+2390c2602
+<             <div class="artwork art-text alignLeft" id="section-4.1.3-2.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-4.1.3-2.1">
+2425c2637
+< <p id="section-4.1.3-3">DetNet User-to-Network Interfaces (DetNet-UNIs) ("U" in <a href="#fig_DetNetservice" class="xref">Figure 5</a>) are assumed in this document to be
+---
+> <p id="section-4.1.3-3">DetNet User-to-Network Interfaces (DetNet-UNIs) ("U" in <a href="#fig_DetNetservice" class="auto internal xref">Figure 5</a>) are assumed in this document to be
+2429,2430c2641,2642
+< <ul>
+< <li id="section-4.1.3-4.1">add encapsulation specific to networking technology to the DetNet flows if necessary,<a href="#section-4.1.3-4.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.1.3-4.1">add encapsulation specific to networking technology to the DetNet flows if necessary,<a href="#section-4.1.3-4.1" class="pilcrow">¶</a>
+2432c2644
+<             <li id="section-4.1.3-4.2">provide status of the availability of the resources associated with a reservation,<a href="#section-4.1.3-4.2" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-4.1.3-4.2">provide status of the availability of the resources associated with a reservation,<a href="#section-4.1.3-4.2" class="pilcrow">¶</a>
+2434c2646
+<             <li id="section-4.1.3-4.3">provide a synchronization service for the end system, or<a href="#section-4.1.3-4.3" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-4.1.3-4.3">provide a synchronization service for the end system, or<a href="#section-4.1.3-4.3" class="pilcrow">¶</a>
+2436c2648
+<             <li id="section-4.1.3-4.4">carry enough signaling to place the reservation in a network without a
+---
+>             <li class="normal" id="section-4.1.3-4.4">carry enough signaling to place the reservation in a network without a
+2477c2689
+<  shown in <a href="#fig_endsys2" class="xref">Figure 6</a>.<a href="#section-4.2.1-2" class="pilcrow">¶</a></p>
+---
+>  shown in <a href="#fig_endsys2" class="auto internal xref">Figure 6</a>.<a href="#section-4.2.1-2" class="pilcrow">¶</a></p>
+2480c2692
+<             <div class="artwork art-text alignLeft" id="section-4.2.1-3.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-4.2.1-3.1">
+2513c2725
+< <dl class="dlNewline" id="section-4.2.1-5">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-4.2.1-5">
+2516a2729
+>             <dd class="break"></dd>
+2522a2736
+>             <dd class="break"></dd>
+2527a2742
+>             <dd class="break"></dd>
+2534a2750
+>           <dd class="break"></dd>
+2544c2760
+<             As shown in <a href="#fig_detnet" class="xref">Figure 3</a>, DetNet edge nodes
+---
+>             As shown in <a href="#fig_detnet" class="auto internal xref">Figure 3</a>, DetNet edge nodes
+2577c2793
+< <dl class="dlNewline" id="section-4.3.1-2">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-4.3.1-2">
+2583a2800
+>             <dd class="break"></dd>
+2588a2806
+>             <dd class="break"></dd>
+2593a2812
+>             <dd class="break"></dd>
+2599a2819
+>           <dd class="break"></dd>
+2625,2626c2845,2846
+< <ul>
+< <li id="section-4.3.2-3.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.3.2-3.1">
+2629c2849
+<             <li id="section-4.3.2-3.2">
+---
+>             <li class="normal" id="section-4.3.2-3.2">
+2632c2852
+<             <li id="section-4.3.2-3.3">
+---
+>             <li class="normal" id="section-4.3.2-3.3">
+2652,2653c2872,2873
+<      congestion control <span>[<a href="#RFC2914" class="xref">RFC2914</a>]</span> or explicit congestion
+<      notification <span>[<a href="#RFC3168" class="xref">RFC3168</a>]</span>. The assumption is that a DetNet
+---
+>      congestion control <span>[<a href="#RFC2914" class="cite xref">RFC2914</a>]</span> or explicit congestion
+>      notification <span>[<a href="#RFC3168" class="cite xref">RFC3168</a>]</span>. The assumption is that a DetNet
+2703,2704c2923
+< <p id="section-4.4-1"><span><a href="#TEAS" class="xref">Traffic Engineering Architecture and Signaling (TEAS)
+<           </a> [<a href="#TEAS" class="xref">TEAS</a>]</span> defines traffic-engineering architectures for generic applicability
+---
+> <p id="section-4.4-1"><span><a href="#TEAS" class="internal xref">Traffic Engineering Architecture and Signaling (TEAS)</a> [<a href="#TEAS" class="cite xref">TEAS</a>]</span> defines traffic-engineering architectures for generic applicability
+2717,2719c2936,2938
+<          echoes the composition of Figure 1 of <span><a href="#RFC7426" class="xref">"Software-Defined Networking (SDN): Layers and
+<          Architecture Terminology"</a> [<a href="#RFC7426" class="xref">RFC7426</a>]</span> and the controllers identified in
+<          <span>[<a href="#RFC8453" class="xref">RFC8453</a>]</span> and <span>[<a href="#RFC7149" class="xref">RFC7149</a>]</span>.<a href="#section-4.4-3" class="pilcrow">¶</a></p>
+---
+>          echoes the composition of Figure 1 of <span><a href="#RFC7426" class="internal xref">"Software-Defined Networking (SDN): Layers and
+>          Architecture Terminology"</a> [<a href="#RFC7426" class="cite xref">RFC7426</a>]</span> and the controllers identified in
+>          <span>[<a href="#RFC8453" class="cite xref">RFC8453</a>]</span> and <span>[<a href="#RFC7149" class="cite xref">RFC7149</a>]</span>.<a href="#section-4.4-3" class="pilcrow">¶</a></p>
+2726c2945
+<          Per <span>[<a href="#RFC7426" class="xref">RFC7426</a>]</span>,
+---
+>          Per <span>[<a href="#RFC7426" class="cite xref">RFC7426</a>]</span>,
+2749c2968
+<          and Management Planes in <span>[<a href="#RFC7426" class="xref">RFC7426</a>]</span>, though Common
+---
+>          and Management Planes in <span>[<a href="#RFC7426" class="cite xref">RFC7426</a>]</span>, though Common
+2751c2970
+<   Working Group <span>[<a href="#CCAMP" class="xref">CCAMP</a>]</span>) makes an
+---
+>   Working Group <span>[<a href="#CCAMP" class="cite xref">CCAMP</a>]</span>) makes an
+2757c2976
+<          it is a Path Computation Element (PCE) <span>[<a href="#RFC4655" class="xref">RFC4655</a>]</span>, a
+---
+>          it is a Path Computation Element (PCE) <span>[<a href="#RFC4655" class="cite xref">RFC4655</a>]</span>, a
+2766c2985
+<   illustrated in <a href="#NorthSouth" class="xref">Figure 7</a>.<a href="#section-4.4.2-2" class="pilcrow">¶</a></p>
+---
+>   illustrated in <a href="#NorthSouth" class="auto internal xref">Figure 7</a>.<a href="#section-4.4.2-2" class="pilcrow">¶</a></p>
+2776c2995
+<          points. Scaling to larger networks is discussed in <a href="#Scaling" class="xref">Section 4.9</a>.<a href="#section-4.4.2-3" class="pilcrow">¶</a></p>
+---
+>          points. Scaling to larger networks is discussed in <a href="#Scaling" class="auto internal xref">Section 4.9</a>.<a href="#section-4.4.2-3" class="pilcrow">¶</a></p>
+2795c3014
+<   in <a href="#NorthSouth" class="xref">Figure 7</a>. This interface leverages and extends 
+---
+>   in <a href="#NorthSouth" class="auto internal xref">Figure 7</a>. This interface leverages and extends 
+2800c3019
+<             <div class="artwork art-text alignLeft" id="section-4.4.3-4.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-4.4.3-4.1">
+2854c3073
+< (<a href="#te" class="xref">Section 4.4</a>) to compute the latency contribution of each
+---
+> (<a href="#te" class="auto internal xref">Section 4.4</a>) to compute the latency contribution of each
+2862,2864c3081,3083
+< <ul>
+< <li id="section-4.5-3.1">
+<   A credit-based shaper <span>[<a href="#IEEE802.1Qav" class="xref">IEEE802.1Qav</a>]</span> (incorporated to <span>[<a href="#IEEE802.1Q" class="xref">IEEE802.1Q</a>]</span>).<a href="#section-4.5-3.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.5-3.1">
+>   A credit-based shaper <span>[<a href="#IEEE802.1Qav" class="cite xref">IEEE802.1Qav</a>]</span> (incorporated to <span>[<a href="#IEEE802.1Q" class="cite xref">IEEE802.1Q</a>]</span>).<a href="#section-4.5-3.1" class="pilcrow">¶</a>
+2866,2867c3085,3086
+<           <li id="section-4.5-3.2"> Time-gated queues governed by a rotating time schedule based on
+< synchronized time <span>[<a href="#IEEE802.1Qbv" class="xref">IEEE802.1Qbv</a>]</span> (incorporated to <span>[<a href="#IEEE802.1Q" class="xref">IEEE802.1Q</a>]</span>).<a href="#section-4.5-3.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-4.5-3.2"> Time-gated queues governed by a rotating time schedule based on
+> synchronized time <span>[<a href="#IEEE802.1Qbv" class="cite xref">IEEE802.1Qbv</a>]</span> (incorporated to <span>[<a href="#IEEE802.1Q" class="cite xref">IEEE802.1Q</a>]</span>).<a href="#section-4.5-3.2" class="pilcrow">¶</a>
+2869,2870c3088,3089
+<           <li id="section-4.5-3.3"> Synchronized double (or triple) buffers driven by synchronized time ticks.
+< <span>[<a href="#IEEE802.1Qch" class="xref">IEEE802.1Qch</a>]</span> (incorporated to <span>[<a href="#IEEE802.1Q" class="xref">IEEE802.1Q</a>]</span>).<a href="#section-4.5-3.3" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-4.5-3.3"> Synchronized double (or triple) buffers driven by synchronized time ticks.
+> <span>[<a href="#IEEE802.1Qch" class="cite xref">IEEE802.1Qch</a>]</span> (incorporated to <span>[<a href="#IEEE802.1Q" class="cite xref">IEEE802.1Q</a>]</span>).<a href="#section-4.5-3.3" class="pilcrow">¶</a>
+2872c3091
+<           <li id="section-4.5-3.4"> Preemption of an Ethernet packet in transmission by a packet with a more
+---
+>           <li class="normal" id="section-4.5-3.4"> Preemption of an Ethernet packet in transmission by a packet with a more
+2874c3093
+< packet <span>[<a href="#IEEE802.1Qbu" class="xref">IEEE802.1Qbu</a>]</span> (incorporated to <span>[<a href="#IEEE802.1Q" class="xref">IEEE802.1Q</a>]</span>) <span>[<a href="#IEEE802.3br" class="xref">IEEE802.3br</a>]</span> (incorporated to <span>[<a href="#IEEE802.3" class="xref">IEEE802.3</a>]</span>).<a href="#section-4.5-3.4" class="pilcrow">¶</a>
+---
+> packet <span>[<a href="#IEEE802.1Qbu" class="cite xref">IEEE802.1Qbu</a>]</span> (incorporated to <span>[<a href="#IEEE802.1Q" class="cite xref">IEEE802.1Q</a>]</span>) <span>[<a href="#IEEE802.3br" class="cite xref">IEEE802.3br</a>]</span> (incorporated to <span>[<a href="#IEEE802.3" class="cite xref">IEEE802.3</a>]</span>).<a href="#section-4.5-3.4" class="pilcrow">¶</a>
+2878c3097
+<  Ethernet <span>[<a href="#IEEE802.3" class="xref">IEEE802.3</a>]</span> and bridging
+---
+>  Ethernet <span>[<a href="#IEEE802.3" class="cite xref">IEEE802.3</a>]</span> and bridging
+2882,2883c3101,3102
+<  have their own methods (see, e.g., <span>[<a href="#I-D.ietf-6tisch-architecture" class="xref">TSCH-ARCH</a>]</span> and <span>[<a href="#RFC7554" class="xref">RFC7554</a>]</span>).
+<  Further techniques are defined by the IETF (e.g., <span>[<a href="#RFC8289" class="xref">RFC8289</a>]</span> and <span>[<a href="#RFC8033" class="xref">RFC8033</a>]</span>).  DetNet may
+---
+>  have their own methods (see, e.g., <span>[<a href="#I-D.ietf-6tisch-architecture" class="cite xref">TSCH-ARCH</a>]</span> and <span>[<a href="#RFC7554" class="cite xref">RFC7554</a>]</span>).
+>  Further techniques are defined by the IETF (e.g., <span>[<a href="#RFC8289" class="cite xref">RFC8289</a>]</span> and <span>[<a href="#RFC8033" class="cite xref">RFC8033</a>]</span>).  DetNet may
+2896c3115
+< <p id="section-4.6-2"> The DetNet network general reference model is shown in <a href="#fig_DetNetrefmodel" class="xref">Figure 8</a> for a DetNet service scenario (i.e., between two
+---
+> <p id="section-4.6-2"> The DetNet network general reference model is shown in <a href="#fig_DetNetrefmodel" class="auto internal xref">Figure 8</a> for a DetNet service scenario (i.e., between two
+2910c3129
+<           <div class="artwork art-text alignLeft" id="section-4.6-4.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-4.6-4.1">
+2931,2932c3150,3151
+< model described in <span>[<a href="#RFC6658" class="xref">RFC6658</a>]</span>. In the DetNet scenario, the PW is
+< likely to be used exclusively by the DetNet flow, whereas <span>[<a href="#RFC6658" class="xref">RFC6658</a>]</span> states:<a href="#section-4.6-5" class="pilcrow">¶</a></p>
+---
+> model described in <span>[<a href="#RFC6658" class="cite xref">RFC6658</a>]</span>. In the DetNet scenario, the PW is
+> likely to be used exclusively by the DetNet flow, whereas <span>[<a href="#RFC6658" class="cite xref">RFC6658</a>]</span> states:<a href="#section-4.6-5" class="pilcrow">¶</a></p>
+2945c3164
+< Further details are network technology specific and can be found in <span>[<a href="#I-D.ietf-detnet-data-plane-framework" class="xref">DETNET-FRAMEWORK</a>]</span>.<a href="#section-4.6-9" class="pilcrow">¶</a></p>
+---
+> Further details are network technology specific and can be found in <span>[<a href="#I-D.ietf-detnet-data-plane-framework" class="cite xref">DETNET-FRAMEWORK</a>]</span>.<a href="#section-4.6-9" class="pilcrow">¶</a></p>
+2955c3174
+<       identification for MPLS and IP Data Planes are described in <span>[<a href="#I-D.ietf-detnet-mpls" class="xref">DETNET-MPLS</a>]</span> and <span>[<a href="#I-D.ietf-detnet-ip" class="xref">DETNET-IP</a>]</span>,
+---
+>       identification for MPLS and IP Data Planes are described in <span>[<a href="#I-D.ietf-detnet-mpls" class="cite xref">DETNET-MPLS</a>]</span> and <span>[<a href="#I-D.ietf-detnet-ip" class="cite xref">DETNET-IP</a>]</span>,
+2966,2967c3185,3186
+< <ul>
+< <li id="section-4.7.1-2.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.7.1-2.1">
+2973c3192
+<             <li id="section-4.7.1-2.2">
+---
+>             <li class="normal" id="section-4.7.1-2.2">
+2979c3198
+<             <li id="section-4.7.1-2.3">
+---
+>             <li class="normal" id="section-4.7.1-2.3">
+2984c3203
+<             <li id="section-4.7.1-2.4">
+---
+>             <li class="normal" id="section-4.7.1-2.4">
+3005,3006c3224,3225
+< <ul>
+< <li id="section-4.7.1-5.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.7.1-5.1">
+3013c3232
+<             <li id="section-4.7.1-5.2">
+---
+>             <li class="normal" id="section-4.7.1-5.2">
+3043,3044c3262,3263
+< <ul>
+< <li id="section-4.7.2-2.1">IP routing<a href="#section-4.7.2-2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.7.2-2.1">IP routing<a href="#section-4.7.2-2.1" class="pilcrow">¶</a>
+3046c3265
+<             <li id="section-4.7.2-2.2">MPLS label switching<a href="#section-4.7.2-2.2" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-4.7.2-2.2">MPLS label switching<a href="#section-4.7.2-2.2" class="pilcrow">¶</a>
+3048c3267
+<             <li id="section-4.7.2-2.3">Ethernet bridging<a href="#section-4.7.2-2.3" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-4.7.2-2.3">Ethernet bridging<a href="#section-4.7.2-2.3" class="pilcrow">¶</a>
+3052c3271
+<  A packet with corresponding Flow-IDs is illustrated in <a href="#fig_FlowIDStack" class="xref">Figure 9</a>, 
+---
+>  A packet with corresponding Flow-IDs is illustrated in <a href="#fig_FlowIDStack" class="auto internal xref">Figure 9</a>, 
+3056c3275
+<             <div class="artwork art-text alignLeft" id="section-4.7.2-4.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-4.7.2-4.1">
+3078,3079c3297,3298
+< <ul>
+< <li id="section-4.7.2-6.1">created by a domain-specific function or<a href="#section-4.7.2-6.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.7.2-6.1">created by a domain-specific function or<a href="#section-4.7.2-6.1" class="pilcrow">¶</a>
+3081c3300
+<             <li id="section-4.7.2-6.2">derived from the Flow-ID added to the App-flow.<a href="#section-4.7.2-6.2" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-4.7.2-6.2">derived from the Flow-ID added to the App-flow.<a href="#section-4.7.2-6.2" class="pilcrow">¶</a>
+3094c3313
+< <p id="section-4.7.3-2"><a href="#fig_ippushflowid" class="xref">Figure 10</a> shows a scenario where an IP end system ("IP-A") is connected via two Ethernet switches ("ETH-n") to an IP router ("IP-1").<a href="#section-4.7.3-2" class="pilcrow">¶</a></p>
+---
+> <p id="section-4.7.3-2"><a href="#fig_ippushflowid" class="auto internal xref">Figure 10</a> shows a scenario where an IP end system ("IP-A") is connected via two Ethernet switches ("ETH-n") to an IP router ("IP-1").<a href="#section-4.7.3-2" class="pilcrow">¶</a></p>
+3097c3316
+<             <div class="artwork art-text alignLeft" id="section-4.7.3-3.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-4.7.3-3.1">
+3140c3359
+< <p id="section-4.7.3-5"><a href="#fig_mplspushflowid" class="xref">Figure 11</a> shows a scenario where MPLS domain nodes ("PE-n" and "P-m") are connected via two Ethernet switches ("ETH-n").<a href="#section-4.7.3-5" class="pilcrow">¶</a></p>
+---
+> <p id="section-4.7.3-5"><a href="#fig_mplspushflowid" class="auto internal xref">Figure 11</a> shows a scenario where MPLS domain nodes ("PE-n" and "P-m") are connected via two Ethernet switches ("ETH-n").<a href="#section-4.7.3-5" class="pilcrow">¶</a></p>
+3143c3362
+<             <div class="artwork art-text alignLeft" id="section-4.7.3-6.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-4.7.3-6.1">
+3199,3200c3418,3419
+< <ul>
+< <li id="section-4.8-2.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.8-2.1">
+3204c3423
+<  shaping algorithms are implemented (<a href="#QueuingModels" class="xref">Section 4.5</a>),
+---
+>  shaping algorithms are implemented (<a href="#QueuingModels" class="auto internal xref">Section 4.5</a>),
+3208c3427
+<           <li id="section-4.8-2.2">
+---
+>           <li class="normal" id="section-4.8-2.2">
+3211c3430
+<           <li id="section-4.8-2.3">
+---
+>           <li class="normal" id="section-4.8-2.3">
+3227c3446
+<    (<a href="#FaultMitigation" class="xref">Section 3.3.2</a>) is required.  The DetNet Data Plane, in order to
+---
+>    (<a href="#FaultMitigation" class="auto internal xref">Section 3.3.2</a>) is required.  The DetNet Data Plane, in order to
+3263c3482
+<    in <span>[<a href="#I-D.ietf-detnet-security" class="xref">DETNET-SECURITY</a>]</span>. This section considers
+---
+>    in <span>[<a href="#I-D.ietf-detnet-security" class="cite xref">DETNET-SECURITY</a>]</span>. This section considers
+3278c3497
+<    single administrative domain (see <a href="#introduction" class="xref">Section 1</a>). The primary
+---
+>    single administrative domain (see <a href="#introduction" class="auto internal xref">Section 1</a>). The primary
+3291c3510
+<    Traffic Engineered Networks (ACTN) can be found in <span><a href="https://www.rfc-editor.org/rfc/rfc8453#section-9" class="relref">Section 9</a> of [<a href="#RFC8453" class="xref">RFC8453</a>]</span>. In the case of distributed
+---
+>    Traffic Engineered Networks (ACTN) can be found in <span><a href="https://rfc-editor.org/rfc/rfc8453#section-9" class="relref">Section 9</a> of [<a href="#RFC8453" class="cite xref">RFC8453</a>]</span>. In the case of distributed
+3301,3302c3520,3521
+<    such as that provided by IPsec <span>[<a href="#RFC4301" class="xref">RFC4301</a>]</span>, for
+<    IP flows and by MACSec <span>[<a href="#IEEE802.1AE" class="xref">IEEE802.1AE</a>]</span> for
+---
+>    such as that provided by IPsec <span>[<a href="#RFC4301" class="cite xref">RFC4301</a>]</span>, for
+>    IP flows and by MACSec <span>[<a href="#IEEE802.1AE" class="cite xref">IEEE802.1AE</a>]</span> for
+3319,3320c3538,3539
+<    <a href="#Zero" class="xref">Section 3.2.1</a> and through the fault-mitigation
+<    methods described in <a href="#FaultMitigation" class="xref">Section 3.3.2</a>. To
+---
+>    <a href="#Zero" class="auto internal xref">Section 3.2.1</a> and through the fault-mitigation
+>    methods described in <a href="#FaultMitigation" class="auto internal xref">Section 3.3.2</a>. To
+3331c3550
+<    discussion of this topic can be found in <span>[<a href="#RFC7384" class="xref">RFC7384</a>]</span>.<a href="#section-5-8" class="pilcrow">¶</a></p>
+---
+>    discussion of this topic can be found in <span>[<a href="#RFC7384" class="cite xref">RFC7384</a>]</span>.<a href="#section-5-8" class="pilcrow">¶</a></p>
+3372c3591,3592
+< <span class="refAuthor">Gettys, J.</span><span class="refAuthor"> and K. Nichols</span>, <span class="refTitle">"Bufferbloat: Dark Buffers in the Internet"</span>, <span class="seriesInfo">DOI 10.1145/2063176.2063196</span>, <span class="seriesInfo">Communications of the ACM, Volume 55, Issue 1</span>, <time datetime="2012-01">January 2012</time>, <span>&lt;<a href="https://doi.org/10.1145/2063176.2063196">https://doi.org/10.1145/2063176.2063196</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Gettys, J.</span> and <span class="refAuthor">K. Nichols</span>, <span class="refTitle">"Bufferbloat: Dark Buffers in the Internet"</span>, <span class="seriesInfo">DOI 10.1145/2063176.2063196</span>, <span class="seriesInfo">Communications of the ACM, Volume 55, Issue 1</span>, <time datetime="2012-01" class="refDate">January 2012</time>, <span>&lt;<a href="https://doi.org/10.1145/2063176.2063196">https://doi.org/10.1145/2063176.2063196</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3375c3595,3596
+< <span class="refAuthor">IETF</span>, <span class="refTitle">"Common Control and Measurement Plane (ccamp)"</span>, <time>October 2019</time>, <span>&lt;<a href="https://datatracker.ietf.org/wg/ccamp/charter/">https://datatracker.ietf.org/wg/ccamp/charter/</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">IETF</span>, <span class="refTitle">"Common Control and Measurement Plane (ccamp)"</span>, <span>&lt;<a href="https://datatracker.ietf.org/wg/ccamp/charter/">https://datatracker.ietf.org/wg/ccamp/charter/</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3378c3599,3600
+< <span class="refAuthor">Varga, B.</span><span class="refAuthor">, Farkas, J.</span><span class="refAuthor">, Berger, L.</span><span class="refAuthor">, Fedyk, D.</span><span class="refAuthor">, Malis, A.</span><span class="refAuthor">, Bryant, S.</span><span class="refAuthor">, and J. Korhonen</span>, <span class="refTitle">"DetNet Data Plane Framework"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-detnet-data-plane-framework-02</span>, <time datetime="2019-09-13">13 September 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-detnet-data-plane-framework-02">https://tools.ietf.org/html/draft-ietf-detnet-data-plane-framework-02</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Varga, B.</span>, <span class="refAuthor">Farkas, J.</span>, <span class="refAuthor">Berger, L.</span>, <span class="refAuthor">Fedyk, D.</span>, <span class="refAuthor">Malis, A.</span>, <span class="refAuthor">Bryant, S.</span>, and <span class="refAuthor">J. Korhonen</span>, <span class="refTitle">"DetNet Data Plane Framework"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-detnet-data-plane-framework-02</span>, <time datetime="2019-09-13" class="refDate">13 September 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-detnet-data-plane-framework-02">https://tools.ietf.org/html/draft-ietf-detnet-data-plane-framework-02</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3381c3603,3604
+< <span class="refAuthor">Varga, B.</span><span class="refAuthor">, Farkas, J.</span><span class="refAuthor">, Berger, L.</span><span class="refAuthor">, Fedyk, D.</span><span class="refAuthor">, Malis, A.</span><span class="refAuthor">, Bryant, S.</span><span class="refAuthor">, and J. Korhonen</span>, <span class="refTitle">"DetNet Data Plane: IP"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-detnet-ip-01</span>, <time datetime="2019-07-01">1 July 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-detnet-ip-01">https://tools.ietf.org/html/draft-ietf-detnet-ip-01</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Varga, B.</span>, <span class="refAuthor">Farkas, J.</span>, <span class="refAuthor">Berger, L.</span>, <span class="refAuthor">Fedyk, D.</span>, <span class="refAuthor">Malis, A.</span>, <span class="refAuthor">Bryant, S.</span>, and <span class="refAuthor">J. Korhonen</span>, <span class="refTitle">"DetNet Data Plane: IP"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-detnet-ip-01</span>, <time datetime="2019-07-01" class="refDate">1 July 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-detnet-ip-01">https://tools.ietf.org/html/draft-ietf-detnet-ip-01</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3384c3607,3608
+< <span class="refAuthor">Varga, B.</span><span class="refAuthor">, Farkas, J.</span><span class="refAuthor">, Berger, L.</span><span class="refAuthor">, Fedyk, D.</span><span class="refAuthor">, Malis, A.</span><span class="refAuthor">, Bryant, S.</span><span class="refAuthor">, and J. Korhonen</span>, <span class="refTitle">"DetNet Data Plane: MPLS"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-detnet-mpls-01</span>, <time datetime="2019-07-01">1 July 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-detnet-mpls-01">https://tools.ietf.org/html/draft-ietf-detnet-mpls-01</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Varga, B.</span>, <span class="refAuthor">Farkas, J.</span>, <span class="refAuthor">Berger, L.</span>, <span class="refAuthor">Fedyk, D.</span>, <span class="refAuthor">Malis, A.</span>, <span class="refAuthor">Bryant, S.</span>, and <span class="refAuthor">J. Korhonen</span>, <span class="refTitle">"DetNet Data Plane: MPLS"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-detnet-mpls-01</span>, <time datetime="2019-07-01" class="refDate">1 July 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-detnet-mpls-01">https://tools.ietf.org/html/draft-ietf-detnet-mpls-01</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3387c3611,3612
+< <span class="refAuthor">Mizrahi, T.</span><span class="refAuthor">, Grossman, E.</span><span class="refAuthor">, Hacker, A.</span><span class="refAuthor">, Das, S.</span><span class="refAuthor">, Dowdell, J.</span><span class="refAuthor">, Austad, H.</span><span class="refAuthor">, Stanton, K.</span><span class="refAuthor">, and N. Finn</span>, <span class="refTitle">"Deterministic Networking (DetNet) Security Considerations"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-detnet-security-05</span>, <time datetime="2019-08-29">29 August 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-detnet-security-05">https://tools.ietf.org/html/draft-ietf-detnet-security-05</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mizrahi, T.</span>, <span class="refAuthor">Grossman, E.</span>, <span class="refAuthor">Hacker, A.</span>, <span class="refAuthor">Das, S.</span>, <span class="refAuthor">Dowdell, J.</span>, <span class="refAuthor">Austad, H.</span>, <span class="refAuthor">Stanton, K.</span>, and <span class="refAuthor">N. Finn</span>, <span class="refTitle">"Deterministic Networking (DetNet) Security Considerations"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-detnet-security-05</span>, <time datetime="2019-08-29" class="refDate">29 August 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-detnet-security-05">https://tools.ietf.org/html/draft-ietf-detnet-security-05</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3390c3615,3616
+< <span class="refAuthor">IEC</span>, <span class="refTitle">"Industrial communication networks - High availability automation networks - Part 3: Parallel Redundancy Protocol (PRP) and High-availability Seamless Redundancy (HSR)"</span>, <span class="seriesInfo">TC 65 / SC 65C</span>, <span class="seriesInfo">IEC 62439-3:2016</span>, <time datetime="2016-03">March 2016</time>, <span>&lt;<a href="https://webstore.iec.ch/publication/24447">https://webstore.iec.ch/publication/24447</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">IEC</span>, <span class="refTitle">"Industrial communication networks - High availability automation networks - Part 3: Parallel Redundancy Protocol (PRP) and High-availability Seamless Redundancy (HSR)"</span>, <span class="seriesInfo">TC 65 / SC 65C</span>, <span class="seriesInfo">IEC 62439-3:2016</span>, <time datetime="2016-03" class="refDate">March 2016</time>, <span>&lt;<a href="https://webstore.iec.ch/publication/24447">https://webstore.iec.ch/publication/24447</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3393a3620
+> <dd class="break"></dd>
+3396a3624
+> <dd class="break"></dd>
+3399c3627,3628
+< <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Local and metropolitan area networks--Frame Replication and Elimination for Reliability"</span>, <span class="seriesInfo">DOI 10.1109/IEEESTD.2017.8091139</span>, <span class="seriesInfo">IEEE 802.1CB-2017</span>, <time>October 2019</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/8091139">https://ieeexplore.ieee.org/document/8091139</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Local and metropolitan area networks--Frame Replication and Elimination for Reliability"</span>, <span class="seriesInfo">DOI 10.1109/IEEESTD.2017.8091139</span>, <span class="seriesInfo">IEEE 802.1CB-2017</span>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/8091139">https://ieeexplore.ieee.org/document/8091139</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3402a3632
+> <dd class="break"></dd>
+3405a3636
+> <dd class="break"></dd>
+3408a3640
+> <dd class="break"></dd>
+3411a3644
+> <dd class="break"></dd>
+3414a3648
+> <dd class="break"></dd>
+3417a3652
+> <dd class="break"></dd>
+3420a3656
+> <dd class="break"></dd>
+3423a3660
+> <dd class="break"></dd>
+3426c3663,3664
+< <span class="refAuthor">Braden, R., Ed.</span><span class="refAuthor">, Zhang, L.</span><span class="refAuthor">, Berson, S.</span><span class="refAuthor">, Herzog, S.</span><span class="refAuthor">, and S. Jamin</span>, <span class="refTitle">"Resource ReSerVation Protocol (RSVP) -- Version 1 Functional Specification"</span>, <span class="seriesInfo">RFC 2205</span>, <span class="seriesInfo">DOI 10.17487/RFC2205</span>, <time datetime="1997-09">September 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2205">https://www.rfc-editor.org/info/rfc2205</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Braden, R., Ed.</span>, <span class="refAuthor">Zhang, L.</span>, <span class="refAuthor">Berson, S.</span>, <span class="refAuthor">Herzog, S.</span>, and <span class="refAuthor">S. Jamin</span>, <span class="refTitle">"Resource ReSerVation Protocol (RSVP) -- Version 1 Functional Specification"</span>, <span class="seriesInfo">RFC 2205</span>, <span class="seriesInfo">DOI 10.17487/RFC2205</span>, <time datetime="1997-09" class="refDate">September 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2205">https://www.rfc-editor.org/info/rfc2205</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3429c3667,3668
+< <span class="refAuthor">Blake, S.</span><span class="refAuthor">, Black, D.</span><span class="refAuthor">, Carlson, M.</span><span class="refAuthor">, Davies, E.</span><span class="refAuthor">, Wang, Z.</span><span class="refAuthor">, and W. Weiss</span>, <span class="refTitle">"An Architecture for Differentiated Services"</span>, <span class="seriesInfo">RFC 2475</span>, <span class="seriesInfo">DOI 10.17487/RFC2475</span>, <time datetime="1998-12">December 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2475">https://www.rfc-editor.org/info/rfc2475</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Blake, S.</span>, <span class="refAuthor">Black, D.</span>, <span class="refAuthor">Carlson, M.</span>, <span class="refAuthor">Davies, E.</span>, <span class="refAuthor">Wang, Z.</span>, and <span class="refAuthor">W. Weiss</span>, <span class="refTitle">"An Architecture for Differentiated Services"</span>, <span class="seriesInfo">RFC 2475</span>, <span class="seriesInfo">DOI 10.17487/RFC2475</span>, <time datetime="1998-12" class="refDate">December 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2475">https://www.rfc-editor.org/info/rfc2475</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3432c3671,3672
+< <span class="refAuthor">Floyd, S.</span>, <span class="refTitle">"Congestion Control Principles"</span>, <span class="seriesInfo">BCP 41</span>, <span class="seriesInfo">RFC 2914</span>, <span class="seriesInfo">DOI 10.17487/RFC2914</span>, <time datetime="2000-09">September 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2914">https://www.rfc-editor.org/info/rfc2914</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Floyd, S.</span>, <span class="refTitle">"Congestion Control Principles"</span>, <span class="seriesInfo">BCP 41</span>, <span class="seriesInfo">RFC 2914</span>, <span class="seriesInfo">DOI 10.17487/RFC2914</span>, <time datetime="2000-09" class="refDate">September 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2914">https://www.rfc-editor.org/info/rfc2914</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3435c3675,3676
+< <span class="refAuthor">Ramakrishnan, K.</span><span class="refAuthor">, Floyd, S.</span><span class="refAuthor">, and D. Black</span>, <span class="refTitle">"The Addition of Explicit Congestion Notification (ECN) to IP"</span>, <span class="seriesInfo">RFC 3168</span>, <span class="seriesInfo">DOI 10.17487/RFC3168</span>, <time datetime="2001-09">September 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3168">https://www.rfc-editor.org/info/rfc3168</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Ramakrishnan, K.</span>, <span class="refAuthor">Floyd, S.</span>, and <span class="refAuthor">D. Black</span>, <span class="refTitle">"The Addition of Explicit Congestion Notification (ECN) to IP"</span>, <span class="seriesInfo">RFC 3168</span>, <span class="seriesInfo">DOI 10.17487/RFC3168</span>, <time datetime="2001-09" class="refDate">September 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3168">https://www.rfc-editor.org/info/rfc3168</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3438c3679,3680
+< <span class="refAuthor">Awduche, D.</span><span class="refAuthor">, Berger, L.</span><span class="refAuthor">, Gan, D.</span><span class="refAuthor">, Li, T.</span><span class="refAuthor">, Srinivasan, V.</span><span class="refAuthor">, and G. Swallow</span>, <span class="refTitle">"RSVP-TE: Extensions to RSVP for LSP Tunnels"</span>, <span class="seriesInfo">RFC 3209</span>, <span class="seriesInfo">DOI 10.17487/RFC3209</span>, <time datetime="2001-12">December 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3209">https://www.rfc-editor.org/info/rfc3209</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Awduche, D.</span>, <span class="refAuthor">Berger, L.</span>, <span class="refAuthor">Gan, D.</span>, <span class="refAuthor">Li, T.</span>, <span class="refAuthor">Srinivasan, V.</span>, and <span class="refAuthor">G. Swallow</span>, <span class="refTitle">"RSVP-TE: Extensions to RSVP for LSP Tunnels"</span>, <span class="seriesInfo">RFC 3209</span>, <span class="seriesInfo">DOI 10.17487/RFC3209</span>, <time datetime="2001-12" class="refDate">December 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3209">https://www.rfc-editor.org/info/rfc3209</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3441c3683,3684
+< <span class="refAuthor">Schulzrinne, H.</span><span class="refAuthor">, Casner, S.</span><span class="refAuthor">, Frederick, R.</span><span class="refAuthor">, and V. Jacobson</span>, <span class="refTitle">"RTP: A Transport Protocol for Real-Time Applications"</span>, <span class="seriesInfo">STD 64</span>, <span class="seriesInfo">RFC 3550</span>, <span class="seriesInfo">DOI 10.17487/RFC3550</span>, <time datetime="2003-07">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3550">https://www.rfc-editor.org/info/rfc3550</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schulzrinne, H.</span>, <span class="refAuthor">Casner, S.</span>, <span class="refAuthor">Frederick, R.</span>, and <span class="refAuthor">V. Jacobson</span>, <span class="refTitle">"RTP: A Transport Protocol for Real-Time Applications"</span>, <span class="seriesInfo">STD 64</span>, <span class="seriesInfo">RFC 3550</span>, <span class="seriesInfo">DOI 10.17487/RFC3550</span>, <time datetime="2003-07" class="refDate">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3550">https://www.rfc-editor.org/info/rfc3550</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3444c3687,3688
+< <span class="refAuthor">Kent, S.</span><span class="refAuthor"> and K. Seo</span>, <span class="refTitle">"Security Architecture for the Internet Protocol"</span>, <span class="seriesInfo">RFC 4301</span>, <span class="seriesInfo">DOI 10.17487/RFC4301</span>, <time datetime="2005-12">December 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4301">https://www.rfc-editor.org/info/rfc4301</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Kent, S.</span> and <span class="refAuthor">K. Seo</span>, <span class="refTitle">"Security Architecture for the Internet Protocol"</span>, <span class="seriesInfo">RFC 4301</span>, <span class="seriesInfo">DOI 10.17487/RFC4301</span>, <time datetime="2005-12" class="refDate">December 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4301">https://www.rfc-editor.org/info/rfc4301</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3447c3691,3692
+< <span class="refAuthor">Farrel, A.</span><span class="refAuthor">, Vasseur, J.-P.</span><span class="refAuthor">, and J. Ash</span>, <span class="refTitle">"A Path Computation Element (PCE)-Based Architecture"</span>, <span class="seriesInfo">RFC 4655</span>, <span class="seriesInfo">DOI 10.17487/RFC4655</span>, <time datetime="2006-08">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4655">https://www.rfc-editor.org/info/rfc4655</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Farrel, A.</span>, <span class="refAuthor">Vasseur, J.-P.</span>, and <span class="refAuthor">J. Ash</span>, <span class="refTitle">"A Path Computation Element (PCE)-Based Architecture"</span>, <span class="seriesInfo">RFC 4655</span>, <span class="seriesInfo">DOI 10.17487/RFC4655</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4655">https://www.rfc-editor.org/info/rfc4655</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3450c3695,3696
+< <span class="refAuthor">Sprecher, N., Ed.</span><span class="refAuthor"> and A. Farrel, Ed.</span>, <span class="refTitle">"MPLS Transport Profile (MPLS-TP) Survivability Framework"</span>, <span class="seriesInfo">RFC 6372</span>, <span class="seriesInfo">DOI 10.17487/RFC6372</span>, <time datetime="2011-09">September 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6372">https://www.rfc-editor.org/info/rfc6372</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Sprecher, N., Ed.</span> and <span class="refAuthor">A. Farrel, Ed.</span>, <span class="refTitle">"MPLS Transport Profile (MPLS-TP) Survivability Framework"</span>, <span class="seriesInfo">RFC 6372</span>, <span class="seriesInfo">DOI 10.17487/RFC6372</span>, <time datetime="2011-09" class="refDate">September 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6372">https://www.rfc-editor.org/info/rfc6372</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3453c3699,3700
+< <span class="refAuthor">Bryant, S., Ed.</span><span class="refAuthor">, Martini, L.</span><span class="refAuthor">, Swallow, G.</span><span class="refAuthor">, and A. Malis</span>, <span class="refTitle">"Packet Pseudowire Encapsulation over an MPLS PSN"</span>, <span class="seriesInfo">RFC 6658</span>, <span class="seriesInfo">DOI 10.17487/RFC6658</span>, <time datetime="2012-07">July 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6658">https://www.rfc-editor.org/info/rfc6658</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bryant, S., Ed.</span>, <span class="refAuthor">Martini, L.</span>, <span class="refAuthor">Swallow, G.</span>, and <span class="refAuthor">A. Malis</span>, <span class="refTitle">"Packet Pseudowire Encapsulation over an MPLS PSN"</span>, <span class="seriesInfo">RFC 6658</span>, <span class="seriesInfo">DOI 10.17487/RFC6658</span>, <time datetime="2012-07" class="refDate">July 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6658">https://www.rfc-editor.org/info/rfc6658</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3456c3703,3704
+< <span class="refAuthor">Boucadair, M.</span><span class="refAuthor"> and C. Jacquenet</span>, <span class="refTitle">"Software-Defined Networking: A Perspective from within a Service Provider Environment"</span>, <span class="seriesInfo">RFC 7149</span>, <span class="seriesInfo">DOI 10.17487/RFC7149</span>, <time datetime="2014-03">March 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7149">https://www.rfc-editor.org/info/rfc7149</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Boucadair, M.</span> and <span class="refAuthor">C. Jacquenet</span>, <span class="refTitle">"Software-Defined Networking: A Perspective from within a Service Provider Environment"</span>, <span class="seriesInfo">RFC 7149</span>, <span class="seriesInfo">DOI 10.17487/RFC7149</span>, <time datetime="2014-03" class="refDate">March 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7149">https://www.rfc-editor.org/info/rfc7149</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3459c3707,3708
+< <span class="refAuthor">Mizrahi, T.</span>, <span class="refTitle">"Security Requirements of Time Protocols in Packet Switched Networks"</span>, <span class="seriesInfo">RFC 7384</span>, <span class="seriesInfo">DOI 10.17487/RFC7384</span>, <time datetime="2014-10">October 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7384">https://www.rfc-editor.org/info/rfc7384</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mizrahi, T.</span>, <span class="refTitle">"Security Requirements of Time Protocols in Packet Switched Networks"</span>, <span class="seriesInfo">RFC 7384</span>, <span class="seriesInfo">DOI 10.17487/RFC7384</span>, <time datetime="2014-10" class="refDate">October 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7384">https://www.rfc-editor.org/info/rfc7384</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3462c3711,3712
+< <span class="refAuthor">Haleplidis, E., Ed.</span><span class="refAuthor">, Pentikousis, K., Ed.</span><span class="refAuthor">, Denazis, S.</span><span class="refAuthor">, Hadi Salim, J.</span><span class="refAuthor">, Meyer, D.</span><span class="refAuthor">, and O. Koufopavlou</span>, <span class="refTitle">"Software-Defined Networking (SDN): Layers and Architecture Terminology"</span>, <span class="seriesInfo">RFC 7426</span>, <span class="seriesInfo">DOI 10.17487/RFC7426</span>, <time datetime="2015-01">January 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7426">https://www.rfc-editor.org/info/rfc7426</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Haleplidis, E., Ed.</span>, <span class="refAuthor">Pentikousis, K., Ed.</span>, <span class="refAuthor">Denazis, S.</span>, <span class="refAuthor">Hadi Salim, J.</span>, <span class="refAuthor">Meyer, D.</span>, and <span class="refAuthor">O. Koufopavlou</span>, <span class="refTitle">"Software-Defined Networking (SDN): Layers and Architecture Terminology"</span>, <span class="seriesInfo">RFC 7426</span>, <span class="seriesInfo">DOI 10.17487/RFC7426</span>, <time datetime="2015-01" class="refDate">January 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7426">https://www.rfc-editor.org/info/rfc7426</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3465c3715,3716
+< <span class="refAuthor">Watteyne, T., Ed.</span><span class="refAuthor">, Palattella, M.</span><span class="refAuthor">, and L. Grieco</span>, <span class="refTitle">"Using IEEE 802.15.4e Time-Slotted Channel Hopping (TSCH) in the Internet of Things (IoT): Problem Statement"</span>, <span class="seriesInfo">RFC 7554</span>, <span class="seriesInfo">DOI 10.17487/RFC7554</span>, <time datetime="2015-05">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7554">https://www.rfc-editor.org/info/rfc7554</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Watteyne, T., Ed.</span>, <span class="refAuthor">Palattella, M.</span>, and <span class="refAuthor">L. Grieco</span>, <span class="refTitle">"Using IEEE 802.15.4e Time-Slotted Channel Hopping (TSCH) in the Internet of Things (IoT): Problem Statement"</span>, <span class="seriesInfo">RFC 7554</span>, <span class="seriesInfo">DOI 10.17487/RFC7554</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7554">https://www.rfc-editor.org/info/rfc7554</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3468c3719,3720
+< <span class="refAuthor">Baker, F., Ed.</span><span class="refAuthor"> and G. Fairhurst, Ed.</span>, <span class="refTitle">"IETF Recommendations Regarding Active Queue Management"</span>, <span class="seriesInfo">BCP 197</span>, <span class="seriesInfo">RFC 7567</span>, <span class="seriesInfo">DOI 10.17487/RFC7567</span>, <time datetime="2015-07">July 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7567">https://www.rfc-editor.org/info/rfc7567</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Baker, F., Ed.</span> and <span class="refAuthor">G. Fairhurst, Ed.</span>, <span class="refTitle">"IETF Recommendations Regarding Active Queue Management"</span>, <span class="seriesInfo">BCP 197</span>, <span class="seriesInfo">RFC 7567</span>, <span class="seriesInfo">DOI 10.17487/RFC7567</span>, <time datetime="2015-07" class="refDate">July 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7567">https://www.rfc-editor.org/info/rfc7567</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3471c3723,3724
+< <span class="refAuthor">Farkas, J., Ed.</span><span class="refAuthor">, Bragg, N.</span><span class="refAuthor">, Unbehagen, P.</span><span class="refAuthor">, Parsons, G.</span><span class="refAuthor">, Ashwood-Smith, P.</span><span class="refAuthor">, and C. Bowers</span>, <span class="refTitle">"IS-IS Path Control and Reservation"</span>, <span class="seriesInfo">RFC 7813</span>, <span class="seriesInfo">DOI 10.17487/RFC7813</span>, <time datetime="2016-06">June 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7813">https://www.rfc-editor.org/info/rfc7813</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Farkas, J., Ed.</span>, <span class="refAuthor">Bragg, N.</span>, <span class="refAuthor">Unbehagen, P.</span>, <span class="refAuthor">Parsons, G.</span>, <span class="refAuthor">Ashwood-Smith, P.</span>, and <span class="refAuthor">C. Bowers</span>, <span class="refTitle">"IS-IS Path Control and Reservation"</span>, <span class="seriesInfo">RFC 7813</span>, <span class="seriesInfo">DOI 10.17487/RFC7813</span>, <time datetime="2016-06" class="refDate">June 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7813">https://www.rfc-editor.org/info/rfc7813</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3474c3727,3728
+< <span class="refAuthor">Pan, R.</span><span class="refAuthor">, Natarajan, P.</span><span class="refAuthor">, Baker, F.</span><span class="refAuthor">, and G. White</span>, <span class="refTitle">"Proportional Integral Controller Enhanced (PIE): A Lightweight Control Scheme to Address the Bufferbloat Problem"</span>, <span class="seriesInfo">RFC 8033</span>, <span class="seriesInfo">DOI 10.17487/RFC8033</span>, <time datetime="2017-02">February 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8033">https://www.rfc-editor.org/info/rfc8033</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Pan, R.</span>, <span class="refAuthor">Natarajan, P.</span>, <span class="refAuthor">Baker, F.</span>, and <span class="refAuthor">G. White</span>, <span class="refTitle">"Proportional Integral Controller Enhanced (PIE): A Lightweight Control Scheme to Address the Bufferbloat Problem"</span>, <span class="seriesInfo">RFC 8033</span>, <span class="seriesInfo">DOI 10.17487/RFC8033</span>, <time datetime="2017-02" class="refDate">February 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8033">https://www.rfc-editor.org/info/rfc8033</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3477c3731,3732
+< <span class="refAuthor">Cheng, W.</span><span class="refAuthor">, Wang, L.</span><span class="refAuthor">, Li, H.</span><span class="refAuthor">, van Helvoort, H.</span><span class="refAuthor">, and J. Dong</span>, <span class="refTitle">"MPLS-TP Shared-Ring Protection (MSRP) Mechanism for Ring Topology"</span>, <span class="seriesInfo">RFC 8227</span>, <span class="seriesInfo">DOI 10.17487/RFC8227</span>, <time datetime="2017-08">August 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8227">https://www.rfc-editor.org/info/rfc8227</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cheng, W.</span>, <span class="refAuthor">Wang, L.</span>, <span class="refAuthor">Li, H.</span>, <span class="refAuthor">van Helvoort, H.</span>, and <span class="refAuthor">J. Dong</span>, <span class="refTitle">"MPLS-TP Shared-Ring Protection (MSRP) Mechanism for Ring Topology"</span>, <span class="seriesInfo">RFC 8227</span>, <span class="seriesInfo">DOI 10.17487/RFC8227</span>, <time datetime="2017-08" class="refDate">August 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8227">https://www.rfc-editor.org/info/rfc8227</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3480c3735,3736
+< <span class="refAuthor">Nichols, K.</span><span class="refAuthor">, Jacobson, V.</span><span class="refAuthor">, McGregor, A., Ed.</span><span class="refAuthor">, and J. Iyengar, Ed.</span>, <span class="refTitle">"Controlled Delay Active Queue Management"</span>, <span class="seriesInfo">RFC 8289</span>, <span class="seriesInfo">DOI 10.17487/RFC8289</span>, <time datetime="2018-01">January 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8289">https://www.rfc-editor.org/info/rfc8289</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Nichols, K.</span>, <span class="refAuthor">Jacobson, V.</span>, <span class="refAuthor">McGregor, A., Ed.</span>, and <span class="refAuthor">J. Iyengar, Ed.</span>, <span class="refTitle">"Controlled Delay Active Queue Management"</span>, <span class="seriesInfo">RFC 8289</span>, <span class="seriesInfo">DOI 10.17487/RFC8289</span>, <time datetime="2018-01" class="refDate">January 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8289">https://www.rfc-editor.org/info/rfc8289</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3483c3739,3740
+< <span class="refAuthor">Filsfils, C., Ed.</span><span class="refAuthor">, Previdi, S., Ed.</span><span class="refAuthor">, Ginsberg, L.</span><span class="refAuthor">, Decraene, B.</span><span class="refAuthor">, Litkowski, S.</span><span class="refAuthor">, and R. Shakir</span>, <span class="refTitle">"Segment Routing Architecture"</span>, <span class="seriesInfo">RFC 8402</span>, <span class="seriesInfo">DOI 10.17487/RFC8402</span>, <time datetime="2018-07">July 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8402">https://www.rfc-editor.org/info/rfc8402</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Filsfils, C., Ed.</span>, <span class="refAuthor">Previdi, S., Ed.</span>, <span class="refAuthor">Ginsberg, L.</span>, <span class="refAuthor">Decraene, B.</span>, <span class="refAuthor">Litkowski, S.</span>, and <span class="refAuthor">R. Shakir</span>, <span class="refTitle">"Segment Routing Architecture"</span>, <span class="seriesInfo">RFC 8402</span>, <span class="seriesInfo">DOI 10.17487/RFC8402</span>, <time datetime="2018-07" class="refDate">July 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8402">https://www.rfc-editor.org/info/rfc8402</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3486c3743,3744
+< <span class="refAuthor">Ceccarelli, D., Ed.</span><span class="refAuthor"> and Y. Lee, Ed.</span>, <span class="refTitle">"Framework for Abstraction and Control of TE Networks (ACTN)"</span>, <span class="seriesInfo">RFC 8453</span>, <span class="seriesInfo">DOI 10.17487/RFC8453</span>, <time datetime="2018-08">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8453">https://www.rfc-editor.org/info/rfc8453</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Ceccarelli, D., Ed.</span> and <span class="refAuthor">Y. Lee, Ed.</span>, <span class="refTitle">"Framework for Abstraction and Control of TE Networks (ACTN)"</span>, <span class="seriesInfo">RFC 8453</span>, <span class="seriesInfo">DOI 10.17487/RFC8453</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8453">https://www.rfc-editor.org/info/rfc8453</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3489c3747,3748
+< <span class="refAuthor">Finn, N.</span><span class="refAuthor"> and P. Thubert</span>, <span class="refTitle">"Deterministic Networking Problem Statement"</span>, <span class="seriesInfo">RFC 8557</span>, <span class="seriesInfo">DOI 10.17487/RFC8557</span>, <time datetime="2019-05">May 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8557">https://www.rfc-editor.org/info/rfc8557</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Finn, N.</span> and <span class="refAuthor">P. Thubert</span>, <span class="refTitle">"Deterministic Networking Problem Statement"</span>, <span class="seriesInfo">RFC 8557</span>, <span class="seriesInfo">DOI 10.17487/RFC8557</span>, <time datetime="2019-05" class="refDate">May 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8557">https://www.rfc-editor.org/info/rfc8557</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3492c3751,3752
+< <span class="refAuthor">Grossman, E., Ed.</span>, <span class="refTitle">"Deterministic Networking Use Cases"</span>, <span class="seriesInfo">RFC 8578</span>, <span class="seriesInfo">DOI 10.17487/RFC8578</span>, <time datetime="2019-05">May 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8578">https://www.rfc-editor.org/info/rfc8578</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Grossman, E., Ed.</span>, <span class="refTitle">"Deterministic Networking Use Cases"</span>, <span class="seriesInfo">RFC 8578</span>, <span class="seriesInfo">DOI 10.17487/RFC8578</span>, <time datetime="2019-05" class="refDate">May 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8578">https://www.rfc-editor.org/info/rfc8578</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3495c3755,3756
+< <span class="refAuthor">IETF</span>, <span class="refTitle">"Traffic Engineering Architecture and Signaling (teas)"</span>, <time>October 2019</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/charter-ietf-teas/">https://datatracker.ietf.org/doc/charter-ietf-teas/</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">IETF</span>, <span class="refTitle">"Traffic Engineering Architecture and Signaling (teas)"</span>, <span>&lt;<a href="https://datatracker.ietf.org/doc/charter-ietf-teas/">https://datatracker.ietf.org/doc/charter-ietf-teas/</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3498c3759,3760
+< <span class="refAuthor">Thubert, P.</span>, <span class="refTitle">"An Architecture for IPv6 over the TSCH mode of IEEE 802.15.4"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-6tisch-architecture-26</span>, <time datetime="2019-08-27">27 August 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-6tisch-architecture-26">https://tools.ietf.org/html/draft-ietf-6tisch-architecture-26</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Thubert, P.</span>, <span class="refTitle">"An Architecture for IPv6 over the TSCH mode of IEEE 802.15.4"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-6tisch-architecture-26</span>, <time datetime="2019-08-27" class="refDate">27 August 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-6tisch-architecture-26">https://tools.ietf.org/html/draft-ietf-6tisch-architecture-26</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+3501c3763
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+3505c3767
+< <p id="section-appendix.a-1">The authors wish to thank Lou Berger, David Black, Stewart
+---
+> <p id="appendix-A-1">The authors wish to thank Lou Berger, David Black, Stewart
+3510c3772
+<    Zamfir for their various contributions to this work.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+>    Zamfir for their various contributions to this work.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+3513c3775
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+3538c3800
+< <div dir="auto" class="left"><span class="street-address">Village d'Entreprises Green Side, 400, Avenue de Roumanille</span></div>
+---
+> <div dir="auto" class="left"><span class="street-address">Village d'Entreprises Green Side<br>400, Avenue de Roumanille</span></div>
+3578,3606c3840,3845
+< <script>var toc = document.getElementById("toc");
+< var tocToggle = toc.querySelector("h2");
+< var tocNav = toc.querySelector("nav");
+< 
+< // mobile menu toggle
+< tocToggle.onclick = function(event) {
+<     if (window.innerWidth < 1024) {
+<  var tocNavDisplay = tocNav.currentStyle ? tocNav.currentStyle.display : getComputedStyle(tocNav, null).display;
+<  if (tocNavDisplay == "none") {
+<      tocNav.style.display = "block";
+<  } else {
+<      tocNav.style.display = "none";
+<  }
+<     }
+< }
+< 
+< // toc anchor scroll to anchor
+< tocNav.addEventListener("click", function (event) {
+<     event.preventDefault();
+<     if (event.target.nodeName == 'A') {
+<  if (window.innerWidth < 1024) {
+<      tocNav.style.display = "none";
+<  }
+<  var href = event.target.getAttribute("href");
+<  var anchorId = href.substr(1);
+<  var anchor =  document.getElementById(anchorId);
+<  anchor.scrollIntoView(true);
+<  window.history.pushState("","",href);
+<     }
+---
+> <script>const toc = document.getElementById("toc");
+> toc.querySelector("h2").addEventListener("click", e => {
+>   toc.classList.toggle("active");
+> });
+> toc.querySelector("nav").addEventListener("click", e => {
+>   toc.classList.remove("active");
+3608,3616d3846
+< 
+< // switch toc mode when window resized
+< window.onresize = function () {
+<     if (window.innerWidth < 1024) {
+<  tocNav.style.display = "none";
+<     } else {
+<  tocNav.style.display = "block";
+<     }
+< }
