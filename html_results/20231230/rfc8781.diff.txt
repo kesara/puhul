@@ -1,0 +1,649 @@
+15c15
+< <meta content="xml2rfc 2.44.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.0" name="generator">
+17c17,33
+< <link href="rfc8781.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.0
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 5.0.0
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8781.xml" rel="alternate" type="application/rfc+xml">
+27c43
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+36a53,58
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+39d60
+<   width: extend-to-zoom;
+54c75
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+56a78
+>   overflow-wrap: break-word;
+142a165,173
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+157,160d187
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+161a189
+>   border: none;
+184a213,215
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+236c267
+< tt, code, pre, code {
+---
+> tt, code, pre {
+238c269
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+277a309,311
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+367a402,407
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+469c509
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+609d648
+< 
+631a671,673
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+699c741
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+799c841
+< tt, code, pre, code {
+---
+> tt, code, pre {
+804c846
+< pre.sourcecode,
+---
+> .sourcecode pre,
+840c882
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+918,923d959
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1027a1064
+>   .artwork > pre,
+1042c1079
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1048a1086,1088
+> tr {
+>   break-inside: avoid;
+> }
+1068c1108
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1072a1113
+>   break-before: auto;
+1085c1126
+< dd.break {
+---
+> span.break, dd.break {
+1097c1138,1199
+< }</style>
+---
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+1098a1201
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-6man-ra-pref64-09" rel="prev">
+1101c1204
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-6man-ra-pref64-09" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1103,1104c1206,1207
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1108c1211
+< <td class="center">Discovering PREF64 in Router Advertisements</td>
+---
+> <td class="center">Discovering PREF64 in Router Advertiseme</td>
+1198,1203c1301,1306
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+1205,1206c1308,1309
+< <li class="toc ulEmpty" id="section-toc.1-1.1.2.2">
+<                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="xref">1.2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+>                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+1210,1211c1313,1314
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-use-cases-for-communicating" class="xref">Use Cases for Communicating the NAT64 Prefix to Hosts</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-use-cases-for-communicating" class="internal xref">Use Cases for Communicating the NAT64 Prefix to Hosts</a></p>
+1213,1214c1316,1317
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-why-include-the-nat64-prefi" class="xref">Why Include the NAT64 Prefix in Router Advertisements?</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-why-include-the-nat64-prefi" class="internal xref">Why Include the NAT64 Prefix in Router Advertisements?</a></p>
+1216,1220c1319,1323
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-option-format" class="xref">Option Format</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-scaled-lifetime-processing" class="xref">Scaled Lifetime Processing</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-option-format" class="internal xref">Option Format</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-scaled-lifetime-processing" class="internal xref">Scaled Lifetime Processing</a></p>
+1224,1228c1327,1331
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-usage-guidelines" class="xref">Usage Guidelines</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-handling-multiple-nat64-pre" class="xref">Handling Multiple NAT64 Prefixes</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-usage-guidelines" class="internal xref">Usage Guidelines</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-handling-multiple-nat64-pre" class="internal xref">Handling Multiple NAT64 Prefixes</a></p>
+1230,1231c1333,1334
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-pref64-consistency" class="xref">PREF64 Consistency</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-pref64-consistency" class="internal xref">PREF64 Consistency</a></p>
+1235,1236c1338,1339
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1238,1239c1341,1342
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1241,1245c1344,1348
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.8.2.1">
+<                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+>                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1247,1248c1350,1351
+< <li class="toc ulEmpty" id="section-toc.1-1.8.2.2">
+<                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+>                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1252,1253c1355,1356
+< <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1255,1256c1358,1359
+< <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1266,1267c1369,1370
+< <p id="section-1-1">NAT64 <span>[<a href="#RFC6146" class="xref">RFC6146</a>]</span> with DNS Extensions
+<       for Network Address Translation from IPv6 clients to IPv4 servers (DNS64) <span>[<a href="#RFC6147" class="xref">RFC6147</a>]</span> is a widely deployed mechanism to
+---
+> <p id="section-1-1">NAT64 <span>[<a href="#RFC6146" class="cite xref">RFC6146</a>]</span> with DNS Extensions
+>       for Network Address Translation from IPv6 clients to IPv4 servers (DNS64) <span>[<a href="#RFC6147" class="cite xref">RFC6147</a>]</span> is a widely deployed mechanism to
+1270c1373
+<       document specifies a Neighbor Discovery <span>[<a href="#RFC4861" class="xref">RFC4861</a>]</span> option to be used in Router Advertisements
+---
+>       document specifies a Neighbor Discovery <span>[<a href="#RFC4861" class="cite xref">RFC4861</a>]</span> option to be used in Router Advertisements
+1280c1383
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1287c1390
+< <dl class="dlParallel" id="section-1.2-1">
+---
+> <span class="break"></span><dl class="dlParallel" id="section-1.2-1">
+1289,1290c1392,1393
+< <dd id="section-1.2-1.2">An IPv6 prefix used for IPv6 address
+<    synthesis <span>[<a href="#RFC6146" class="xref">RFC6146</a>]</span>;<a href="#section-1.2-1.2" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-1.2-1.2">An IPv6 prefix used for IPv6 address
+>    synthesis <span>[<a href="#RFC6146" class="cite xref">RFC6146</a>]</span>;<a href="#section-1.2-1.2" class="pilcrow">¶</a>
+1294,1295c1397,1398
+< <dd id="section-1.2-1.4">Network Address and Protocol Translation from IPv6 clients to
+<    IPv4 servers <span>[<a href="#RFC6146" class="xref">RFC6146</a>]</span>;<a href="#section-1.2-1.4" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-1.2-1.4">Network Address and Protocol Translation from IPv6 clients to
+>    IPv4 servers <span>[<a href="#RFC6146" class="cite xref">RFC6146</a>]</span>;<a href="#section-1.2-1.4" class="pilcrow">¶</a>
+1299c1402
+< <dd id="section-1.2-1.6">A message used by IPv6 routers to
+---
+>           <dd style="margin-left: 1.5em" id="section-1.2-1.6">A message used by IPv6 routers to
+1301c1404
+<    with various link and Internet parameters <span>[<a href="#RFC4861" class="xref">RFC4861</a>]</span>;<a href="#section-1.2-1.6" class="pilcrow">¶</a>
+---
+>    with various link and Internet parameters <span>[<a href="#RFC4861" class="cite xref">RFC4861</a>]</span>;<a href="#section-1.2-1.6" class="pilcrow">¶</a>
+1307c1410
+<    <span>[<a href="#RFC6147" class="xref">RFC6147</a>]</span>;<a href="#section-1.2-2" class="pilcrow">¶</a></p>
+---
+>    <span>[<a href="#RFC6147" class="cite xref">RFC6147</a>]</span>;<a href="#section-1.2-2" class="pilcrow">¶</a></p>
+1316,1317c1419,1420
+< <ul>
+< <li id="section-2-2.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-2-2.1">
+1319,1321c1422,1424
+< <ul>
+< <li id="section-2-2.1.2.1">Local DNSSEC validation (DNS64 in stub-resolver mode). As
+<      discussed in <span>[<a href="#RFC6147" class="xref">RFC6147</a>], <a href="https://www.rfc-editor.org/rfc/rfc6147#section-2" class="relref">Section 2</a></span>,
+---
+> <ul class="normal">
+> <li class="normal" id="section-2-2.1.2.1">Local DNSSEC validation (DNS64 in stub-resolver mode). As
+>      discussed in <span>[<a href="#RFC6147" class="cite xref">RFC6147</a>], <a href="https://rfc-editor.org/rfc/rfc6147#section-2" class="relref">Section 2</a></span>,
+1330c1433
+< <li id="section-2-2.1.2.2">Trusted DNS server. AAAA synthesis is required for the host to
+---
+>             <li class="normal" id="section-2-2.1.2.2">Trusted DNS server. AAAA synthesis is required for the host to
+1332,1333c1435,1436
+<      DNS-over-TLS <span>[<a href="#RFC7858" class="xref">RFC7858</a>]</span> or
+<      DNS-over-HTTPS <span>[<a href="#RFC8484" class="xref">RFC8484</a>]</span> server
+---
+>      DNS-over-TLS <span>[<a href="#RFC7858" class="cite xref">RFC7858</a>]</span> or
+>      DNS-over-HTTPS <span>[<a href="#RFC8484" class="cite xref">RFC8484</a>]</span> server
+1336c1439
+< <li id="section-2-2.1.2.3">Networks with no DNS64 server. Hosts that support AAAA
+---
+>             <li class="normal" id="section-2-2.1.2.3">Networks with no DNS64 server. Hosts that support AAAA
+1342c1445
+< <li id="section-2-2.2">
+---
+>         <li class="normal" id="section-2-2.2">
+1344,1346c1447,1449
+< <ul>
+< <li id="section-2-2.2.2.1">IPv4 address literals on an IPv6-only host. As described in
+<      <span>[<a href="#RFC8305" class="xref">RFC8305</a>], <a href="https://www.rfc-editor.org/rfc/rfc8305#section-7.1" class="relref">Section 7.1</a></span>, IPv6-only
+---
+> <ul class="normal">
+> <li class="normal" id="section-2-2.2.2.1">IPv4 address literals on an IPv6-only host. As described in
+>      <span>[<a href="#RFC8305" class="cite xref">RFC8305</a>], <a href="https://rfc-editor.org/rfc/rfc8305#section-7.1" class="relref">Section 7.1</a></span>, IPv6-only
+1350c1453
+< <li id="section-2-2.2.2.2">464XLAT <span>[<a href="#RFC6877" class="xref">RFC6877</a>]</span>. 464XLAT
+---
+>             <li class="normal" id="section-2-2.2.2.2">464XLAT <span>[<a href="#RFC6877" class="cite xref">RFC6877</a>]</span>. 464XLAT
+1361c1464
+< <dl class="dlParallel" id="section-3-1">
+---
+> <span class="break"></span><dl class="dlParallel" id="section-3-1">
+1363,1364c1466,1467
+< <dd id="section-3-1.2">NAT64 requires routing to be configured. IPv6 routing
+<       configuration requires receiving an IPv6 RA <span>[<a href="#RFC4861" class="xref">RFC4861</a>]</span>. Therefore, using RAs to provide hosts with the NAT64 prefix ensures that NAT64
+---
+>         <dd style="margin-left: 1.5em" id="section-3-1.2">NAT64 requires routing to be configured. IPv6 routing
+>       configuration requires receiving an IPv6 RA <span>[<a href="#RFC4861" class="cite xref">RFC4861</a>]</span>. Therefore, using RAs to provide hosts with the NAT64 prefix ensures that NAT64
+1370c1473
+< <dd id="section-3-1.4">Including the NAT64 prefix in the RA minimizes the number of packets required to configure a
+---
+>         <dd style="margin-left: 1.5em" id="section-3-1.4">Including the NAT64 prefix in the RA minimizes the number of packets required to configure a
+1381c1484
+< <dd id="section-3-1.6">It is possible to change the NAT64 prefix at any time,
+---
+>         <dd style="margin-left: 1.5em" id="section-3-1.6">It is possible to change the NAT64 prefix at any time,
+1387,1388c1490,1491
+< <dd id="section-3-1.8">All IPv6 hosts and networks are required to support
+<       Neighbor Discovery <span>[<a href="#RFC4861" class="xref">RFC4861</a>]</span> so just a
+---
+>         <dd style="margin-left: 1.5em" id="section-3-1.8">All IPv6 hosts and networks are required to support
+>       Neighbor Discovery <span>[<a href="#RFC4861" class="cite xref">RFC4861</a>]</span> so just a
+1390,1391c1493,1494
+<       options, such as <span>[<a href="#RFC7225" class="xref">RFC7225</a>]</span>, require
+<       implementing other protocols (e.g., Port Control Protocol (PCP) <span>[<a href="#RFC7225" class="xref">RFC7225</a>]</span>), which could be considered an obstacle for
+---
+>       options, such as <span>[<a href="#RFC7225" class="cite xref">RFC7225</a>]</span>, require
+>       implementing other protocols (e.g., Port Control Protocol (PCP) <span>[<a href="#RFC7225" class="cite xref">RFC7225</a>]</span>), which could be considered an obstacle for
+1404c1507
+<         <div class="artwork art-text alignCenter" id="section-4-1.1">
+---
+>         <div class="alignCenter art-text artwork" id="section-4-1.1">
+1424c1527
+< <dl class="dlParallel" id="section-4-3">
+---
+> <span class="break"></span><dl class="dlParallel" id="section-4-3">
+1426c1529
+< <dd id="section-4-3.2">8-bit identifier of the PREF64 option
+---
+>         <dd style="margin-left: 1.5em" id="section-4-3.2">8-bit identifier of the PREF64 option
+1431c1534
+< <dd id="section-4-3.4">8-bit unsigned integer.  The length of the
+---
+>         <dd style="margin-left: 1.5em" id="section-4-3.4">8-bit unsigned integer.  The length of the
+1439c1542
+< <dd id="section-4-3.6">13-bit unsigned integer. The maximum time in
+---
+>         <dd style="margin-left: 1.5em" id="section-4-3.6">13-bit unsigned integer. The maximum time in
+1441c1544
+<      be used. See <a href="#lifetime" class="xref">Section 4.1</a> for the
+---
+>      be used. See <a href="#lifetime" class="auto internal xref">Section 4.1</a> for the
+1446,1447c1549,1550
+< <dd id="section-4-3.8">3-bit unsigned integer. This field encodes the
+<      NAT64 Prefix Length defined in <span>[<a href="#RFC6052" class="xref">RFC6052</a>]</span>. The PLC field values 0, 1, 2, 3, 4, and 5
+---
+>         <dd style="margin-left: 1.5em" id="section-4-3.8">3-bit unsigned integer. This field encodes the
+>      NAT64 Prefix Length defined in <span>[<a href="#RFC6052" class="cite xref">RFC6052</a>]</span>. The PLC field values 0, 1, 2, 3, 4, and 5
+1455c1558
+< <dd id="section-4-3.10">96-bit unsigned integer. Contains bits 0 - 95 of the NAT64 prefix.<a href="#section-4-3.10" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-4-3.10">96-bit unsigned integer. Contains bits 0 - 95 of the NAT64 prefix.<a href="#section-4-3.10" class="pilcrow">¶</a>
+1467c1570
+<    is defined in <span><a href="https://www.rfc-editor.org/rfc/rfc4861#section-4.2" class="relref">Section 4.2</a> of [<a href="#RFC4861" class="xref">RFC4861</a>]</span> as a 16-bit unsigned integer.
+---
+>    is defined in <span><a href="https://rfc-editor.org/rfc/rfc4861#section-4.2" class="relref">Section 4.2</a> of [<a href="#RFC4861" class="cite xref">RFC4861</a>]</span> as a 16-bit unsigned integer.
+1488c1591
+<    to the lesser of 3 x MaxRtrAdvInterval <span>[<a href="#RFC4861" class="xref">RFC4861</a>]</span> divided by 8, or 8191.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+---
+>    to the lesser of 3 x MaxRtrAdvInterval <span>[<a href="#RFC4861" class="cite xref">RFC4861</a>]</span> divided by 8, or 8191.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+1515c1618
+<       For example, suppose an operator is using the <span>[<a href="#RFC1918" class="xref">RFC1918</a>]</span> address space 10.0.0.0/8 internally.
+---
+>       For example, suppose an operator is using the <span>[<a href="#RFC1918" class="cite xref">RFC1918</a>]</span> address space 10.0.0.0/8 internally.
+1525c1628
+<       given in <span><a href="https://www.rfc-editor.org/rfc/rfc7050#section-3" class="relref">Section 3</a> of [<a href="#RFC7050" class="xref">RFC7050</a>]</span>, limited
+---
+>       given in <span><a href="https://rfc-editor.org/rfc/rfc7050#section-3" class="relref">Section 3</a> of [<a href="#RFC7050" class="cite xref">RFC7050</a>]</span>, limited
+1533c1636
+<       <span>[<a href="#RFC7050" class="xref">RFC7050</a>]</span> or <span>[<a href="#RFC7225" class="xref">RFC7225</a>]</span>. This problem does not apply in IPv6-only
+---
+>       <span>[<a href="#RFC7050" class="cite xref">RFC7050</a>]</span> or <span>[<a href="#RFC7225" class="cite xref">RFC7225</a>]</span>. This problem does not apply in IPv6-only
+1545,1548c1648,1651
+< <ul>
+< <li id="section-5.1-2.1"> the host is using multiple mechanisms to discover PREF64
+<    prefixes (e.g., by using PCP <span>[<a href="#RFC7225" class="xref">RFC7225</a>]</span>) and/or resolving an IPv4-only fully qualified
+<    domain name <span>[<a href="#RFC7050" class="xref">RFC7050</a>]</span> in addition to
+---
+> <ul class="normal">
+> <li class="normal" id="section-5.1-2.1"> the host is using multiple mechanisms to discover PREF64
+>    prefixes (e.g., by using PCP <span>[<a href="#RFC7225" class="cite xref">RFC7225</a>]</span>) and/or resolving an IPv4-only fully qualified
+>    domain name <span>[<a href="#RFC7050" class="cite xref">RFC7050</a>]</span> in addition to
+1551c1654
+< <li id="section-5.1-2.2"> the PREF64 option presents in a single RA more than once;<a href="#section-5.1-2.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-5.1-2.2"> the PREF64 option presents in a single RA more than once;<a href="#section-5.1-2.2" class="pilcrow">¶</a>
+1553c1656
+< <li id="section-5.1-2.3"> the host receives multiple RAs with different PREF64 prefixes
+---
+>           <li class="normal" id="section-5.1-2.3"> the host receives multiple RAs with different PREF64 prefixes
+1561c1664
+<  given in <span><a href="https://www.rfc-editor.org/rfc/rfc7050#section-3" class="relref">Section 3</a> of [<a href="#RFC7050" class="xref">RFC7050</a>]</span>,
+---
+>  given in <span><a href="https://rfc-editor.org/rfc/rfc7050#section-3" class="relref">Section 3</a> of [<a href="#RFC7050" class="cite xref">RFC7050</a>]</span>,
+1567,1568c1670,1671
+< <ul>
+< <li id="section-5.1-5.1">PCP-discovered prefixes <span>[<a href="#RFC7225" class="xref">RFC7225</a>]</span>, if supported;<a href="#section-5.1-5.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-5.1-5.1">PCP-discovered prefixes <span>[<a href="#RFC7225" class="cite xref">RFC7225</a>]</span>, if supported;<a href="#section-5.1-5.1" class="pilcrow">¶</a>
+1570c1673
+< <li id="section-5.1-5.2">PREF64s discovered via the RA Option;<a href="#section-5.1-5.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-5.1-5.2">PREF64s discovered via the RA Option;<a href="#section-5.1-5.2" class="pilcrow">¶</a>
+1572c1675
+< <li id="section-5.1-5.3">PREF64s resolving an  IPv4-only fully qualified domain name <span>[<a href="#RFC7050" class="xref">RFC7050</a>]</span><a href="#section-5.1-5.3" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-5.1-5.3">PREF64s resolving an  IPv4-only fully qualified domain name <span>[<a href="#RFC7050" class="cite xref">RFC7050</a>]</span><a href="#section-5.1-5.3" class="pilcrow">¶</a>
+1576c1679
+<  and <span>[<a href="#RFC7225" class="xref">RFC7225</a>]</span>, hosts that receive the
+---
+>  and <span>[<a href="#RFC7225" class="cite xref">RFC7225</a>]</span>, hosts that receive the
+1583c1686
+<      of Provisioning Domain (PvD, <span>[<a href="#RFC7556" class="xref">RFC7556</a>]</span>)
+---
+>      of Provisioning Domain (PvD, <span>[<a href="#RFC7556" class="cite xref">RFC7556</a>]</span>)
+1594c1697
+<      <span><a href="https://www.rfc-editor.org/rfc/rfc4861#section-6.2.7" class="relref">Section 6.2.7</a> of [<a href="#RFC4861" class="xref">RFC4861</a>]</span>
+---
+>      <span><a href="https://rfc-editor.org/rfc/rfc4861#section-6.2.7" class="relref">Section 6.2.7</a> of [<a href="#RFC4861" class="cite xref">RFC4861</a>]</span>
+1603,1604c1706,1707
+< <ul>
+< <li id="section-5.2-2.1">set of PREF64s with a nonzero lifetime;<a href="#section-5.2-2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-5.2-2.1">set of PREF64s with a nonzero lifetime;<a href="#section-5.2-2.1" class="pilcrow">¶</a>
+1606c1709
+< <li id="section-5.2-2.2">set of PREF64s with a zero lifetime.<a href="#section-5.2-2.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-5.2-2.2">set of PREF64s with a zero lifetime.<a href="#section-5.2-2.2" class="pilcrow">¶</a>
+1610c1713
+< Routers that are aware of PvD (<span>[<a href="#RFC7556" class="xref">RFC7556</a>]</span>) <span class="bcp14">MUST</span> only compare information scoped to the
+---
+> Routers that are aware of PvD (<span>[<a href="#RFC7556" class="cite xref">RFC7556</a>]</span>) <span class="bcp14">MUST</span> only compare information scoped to the
+1623c1726
+<       "IPv6 Neighbor Discovery Option Formats" registry <span>[<a href="#IANA" class="xref">IANA</a>]</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
+---
+>       "IPv6 Neighbor Discovery Option Formats" registry <span>[<a href="#IANA" class="cite xref">IANA</a>]</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
+1653c1756
+<       secured -- e.g., by deploying an RA-Guard <span>[<a href="#RFC6105" class="xref">RFC6105</a>]</span>. Providing all configuration in RAs
+---
+>       secured -- e.g., by deploying an RA-Guard <span>[<a href="#RFC6105" class="cite xref">RFC6105</a>]</span>. Providing all configuration in RAs
+1664c1767
+< attacks, as described in <span>[<a href="#RFC6104" class="xref">RFC6104</a>]</span>.<a href="#section-7-2" class="pilcrow">¶</a></p>
+---
+> attacks, as described in <span>[<a href="#RFC6104" class="cite xref">RFC6104</a>]</span>.<a href="#section-7-2" class="pilcrow">¶</a></p>
+1667c1770
+<       eliminate the problem of NAT64 prefix validation described in <span><a href="https://www.rfc-editor.org/rfc/rfc7050#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC7050" class="xref">RFC7050</a>]</span>.<a href="#section-7-3" class="pilcrow">¶</a></p>
+---
+>       eliminate the problem of NAT64 prefix validation described in <span><a href="https://rfc-editor.org/rfc/rfc7050#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC7050" class="cite xref">RFC7050</a>]</span>.<a href="#section-7-3" class="pilcrow">¶</a></p>
+1685c1788
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+1689c1792
+< <span class="refAuthor">Narten, T.</span><span class="refAuthor">, Nordmark, E.</span><span class="refAuthor">, Simpson, W.</span><span class="refAuthor">, and H. Soliman</span>, <span class="refTitle">"Neighbor Discovery for IP version 6 (IPv6)"</span>, <span class="seriesInfo">RFC 4861</span>, <span class="seriesInfo">DOI 10.17487/RFC4861</span>, <time datetime="2007-09">September 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4861">https://www.rfc-editor.org/info/rfc4861</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Narten, T.</span>, <span class="refAuthor">Nordmark, E.</span>, <span class="refAuthor">Simpson, W.</span>, and <span class="refAuthor">H. Soliman</span>, <span class="refTitle">"Neighbor Discovery for IP version 6 (IPv6)"</span>, <span class="seriesInfo">RFC 4861</span>, <span class="seriesInfo">DOI 10.17487/RFC4861</span>, <time datetime="2007-09" class="refDate">September 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4861">https://www.rfc-editor.org/info/rfc4861</a>&gt;</span>. </dd>
+1693c1796
+< <span class="refAuthor">Bao, C.</span><span class="refAuthor">, Huitema, C.</span><span class="refAuthor">, Bagnulo, M.</span><span class="refAuthor">, Boucadair, M.</span><span class="refAuthor">, and X. Li</span>, <span class="refTitle">"IPv6 Addressing of IPv4/IPv6 Translators"</span>, <span class="seriesInfo">RFC 6052</span>, <span class="seriesInfo">DOI 10.17487/RFC6052</span>, <time datetime="2010-10">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6052">https://www.rfc-editor.org/info/rfc6052</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bao, C.</span>, <span class="refAuthor">Huitema, C.</span>, <span class="refAuthor">Bagnulo, M.</span>, <span class="refAuthor">Boucadair, M.</span>, and <span class="refAuthor">X. Li</span>, <span class="refTitle">"IPv6 Addressing of IPv4/IPv6 Translators"</span>, <span class="seriesInfo">RFC 6052</span>, <span class="seriesInfo">DOI 10.17487/RFC6052</span>, <time datetime="2010-10" class="refDate">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6052">https://www.rfc-editor.org/info/rfc6052</a>&gt;</span>. </dd>
+1697c1800
+< <span class="refAuthor">Savolainen, T.</span><span class="refAuthor">, Korhonen, J.</span><span class="refAuthor">, and D. Wing</span>, <span class="refTitle">"Discovery of the IPv6 Prefix Used for IPv6 Address Synthesis"</span>, <span class="seriesInfo">RFC 7050</span>, <span class="seriesInfo">DOI 10.17487/RFC7050</span>, <time datetime="2013-11">November 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7050">https://www.rfc-editor.org/info/rfc7050</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Savolainen, T.</span>, <span class="refAuthor">Korhonen, J.</span>, and <span class="refAuthor">D. Wing</span>, <span class="refTitle">"Discovery of the IPv6 Prefix Used for IPv6 Address Synthesis"</span>, <span class="seriesInfo">RFC 7050</span>, <span class="seriesInfo">DOI 10.17487/RFC7050</span>, <time datetime="2013-11" class="refDate">November 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7050">https://www.rfc-editor.org/info/rfc7050</a>&gt;</span>. </dd>
+1701c1804
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+1712c1815
+< <span class="refAuthor">Rekhter, Y.</span><span class="refAuthor">, Moskowitz, B.</span><span class="refAuthor">, Karrenberg, D.</span><span class="refAuthor">, de Groot, G. J.</span><span class="refAuthor">, and E. Lear</span>, <span class="refTitle">"Address Allocation for Private Internets"</span>, <span class="seriesInfo">BCP 5</span>, <span class="seriesInfo">RFC 1918</span>, <span class="seriesInfo">DOI 10.17487/RFC1918</span>, <time datetime="1996-02">February 1996</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1918">https://www.rfc-editor.org/info/rfc1918</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rekhter, Y.</span>, <span class="refAuthor">Moskowitz, B.</span>, <span class="refAuthor">Karrenberg, D.</span>, <span class="refAuthor">de Groot, G. J.</span>, and <span class="refAuthor">E. Lear</span>, <span class="refTitle">"Address Allocation for Private Internets"</span>, <span class="seriesInfo">BCP 5</span>, <span class="seriesInfo">RFC 1918</span>, <span class="seriesInfo">DOI 10.17487/RFC1918</span>, <time datetime="1996-02" class="refDate">February 1996</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1918">https://www.rfc-editor.org/info/rfc1918</a>&gt;</span>. </dd>
+1716c1819
+< <span class="refAuthor">Chown, T.</span><span class="refAuthor"> and S. Venaas</span>, <span class="refTitle">"Rogue IPv6 Router Advertisement Problem Statement"</span>, <span class="seriesInfo">RFC 6104</span>, <span class="seriesInfo">DOI 10.17487/RFC6104</span>, <time datetime="2011-02">February 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6104">https://www.rfc-editor.org/info/rfc6104</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Chown, T.</span> and <span class="refAuthor">S. Venaas</span>, <span class="refTitle">"Rogue IPv6 Router Advertisement Problem Statement"</span>, <span class="seriesInfo">RFC 6104</span>, <span class="seriesInfo">DOI 10.17487/RFC6104</span>, <time datetime="2011-02" class="refDate">February 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6104">https://www.rfc-editor.org/info/rfc6104</a>&gt;</span>. </dd>
+1720c1823
+< <span class="refAuthor">Levy-Abegnoli, E.</span><span class="refAuthor">, Van de Velde, G.</span><span class="refAuthor">, Popoviciu, C.</span><span class="refAuthor">, and J. Mohacsi</span>, <span class="refTitle">"IPv6 Router Advertisement Guard"</span>, <span class="seriesInfo">RFC 6105</span>, <span class="seriesInfo">DOI 10.17487/RFC6105</span>, <time datetime="2011-02">February 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6105">https://www.rfc-editor.org/info/rfc6105</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Levy-Abegnoli, E.</span>, <span class="refAuthor">Van de Velde, G.</span>, <span class="refAuthor">Popoviciu, C.</span>, and <span class="refAuthor">J. Mohacsi</span>, <span class="refTitle">"IPv6 Router Advertisement Guard"</span>, <span class="seriesInfo">RFC 6105</span>, <span class="seriesInfo">DOI 10.17487/RFC6105</span>, <time datetime="2011-02" class="refDate">February 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6105">https://www.rfc-editor.org/info/rfc6105</a>&gt;</span>. </dd>
+1724c1827
+< <span class="refAuthor">Bagnulo, M.</span><span class="refAuthor">, Matthews, P.</span><span class="refAuthor">, and I. van Beijnum</span>, <span class="refTitle">"Stateful NAT64: Network Address and Protocol Translation from IPv6 Clients to IPv4 Servers"</span>, <span class="seriesInfo">RFC 6146</span>, <span class="seriesInfo">DOI 10.17487/RFC6146</span>, <time datetime="2011-04">April 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6146">https://www.rfc-editor.org/info/rfc6146</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bagnulo, M.</span>, <span class="refAuthor">Matthews, P.</span>, and <span class="refAuthor">I. van Beijnum</span>, <span class="refTitle">"Stateful NAT64: Network Address and Protocol Translation from IPv6 Clients to IPv4 Servers"</span>, <span class="seriesInfo">RFC 6146</span>, <span class="seriesInfo">DOI 10.17487/RFC6146</span>, <time datetime="2011-04" class="refDate">April 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6146">https://www.rfc-editor.org/info/rfc6146</a>&gt;</span>. </dd>
+1728c1831
+< <span class="refAuthor">Bagnulo, M.</span><span class="refAuthor">, Sullivan, A.</span><span class="refAuthor">, Matthews, P.</span><span class="refAuthor">, and I. van Beijnum</span>, <span class="refTitle">"DNS64: DNS Extensions for Network Address Translation from IPv6 Clients to IPv4 Servers"</span>, <span class="seriesInfo">RFC 6147</span>, <span class="seriesInfo">DOI 10.17487/RFC6147</span>, <time datetime="2011-04">April 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6147">https://www.rfc-editor.org/info/rfc6147</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bagnulo, M.</span>, <span class="refAuthor">Sullivan, A.</span>, <span class="refAuthor">Matthews, P.</span>, and <span class="refAuthor">I. van Beijnum</span>, <span class="refTitle">"DNS64: DNS Extensions for Network Address Translation from IPv6 Clients to IPv4 Servers"</span>, <span class="seriesInfo">RFC 6147</span>, <span class="seriesInfo">DOI 10.17487/RFC6147</span>, <time datetime="2011-04" class="refDate">April 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6147">https://www.rfc-editor.org/info/rfc6147</a>&gt;</span>. </dd>
+1732c1835
+< <span class="refAuthor">Mawatari, M.</span><span class="refAuthor">, Kawashima, M.</span><span class="refAuthor">, and C. Byrne</span>, <span class="refTitle">"464XLAT: Combination of Stateful and Stateless Translation"</span>, <span class="seriesInfo">RFC 6877</span>, <span class="seriesInfo">DOI 10.17487/RFC6877</span>, <time datetime="2013-04">April 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6877">https://www.rfc-editor.org/info/rfc6877</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mawatari, M.</span>, <span class="refAuthor">Kawashima, M.</span>, and <span class="refAuthor">C. Byrne</span>, <span class="refTitle">"464XLAT: Combination of Stateful and Stateless Translation"</span>, <span class="seriesInfo">RFC 6877</span>, <span class="seriesInfo">DOI 10.17487/RFC6877</span>, <time datetime="2013-04" class="refDate">April 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6877">https://www.rfc-editor.org/info/rfc6877</a>&gt;</span>. </dd>
+1736c1839
+< <span class="refAuthor">Boucadair, M.</span>, <span class="refTitle">"Discovering NAT64 IPv6 Prefixes Using the Port Control Protocol (PCP)"</span>, <span class="seriesInfo">RFC 7225</span>, <span class="seriesInfo">DOI 10.17487/RFC7225</span>, <time datetime="2014-05">May 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7225">https://www.rfc-editor.org/info/rfc7225</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Boucadair, M.</span>, <span class="refTitle">"Discovering NAT64 IPv6 Prefixes Using the Port Control Protocol (PCP)"</span>, <span class="seriesInfo">RFC 7225</span>, <span class="seriesInfo">DOI 10.17487/RFC7225</span>, <time datetime="2014-05" class="refDate">May 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7225">https://www.rfc-editor.org/info/rfc7225</a>&gt;</span>. </dd>
+1740c1843
+< <span class="refAuthor">Anipko, D., Ed.</span>, <span class="refTitle">"Multiple Provisioning Domain Architecture"</span>, <span class="seriesInfo">RFC 7556</span>, <span class="seriesInfo">DOI 10.17487/RFC7556</span>, <time datetime="2015-06">June 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7556">https://www.rfc-editor.org/info/rfc7556</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Anipko, D., Ed.</span>, <span class="refTitle">"Multiple Provisioning Domain Architecture"</span>, <span class="seriesInfo">RFC 7556</span>, <span class="seriesInfo">DOI 10.17487/RFC7556</span>, <time datetime="2015-06" class="refDate">June 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7556">https://www.rfc-editor.org/info/rfc7556</a>&gt;</span>. </dd>
+1744c1847
+< <span class="refAuthor">Hu, Z.</span><span class="refAuthor">, Zhu, L.</span><span class="refAuthor">, Heidemann, J.</span><span class="refAuthor">, Mankin, A.</span><span class="refAuthor">, Wessels, D.</span><span class="refAuthor">, and P. Hoffman</span>, <span class="refTitle">"Specification for DNS over Transport Layer Security (TLS)"</span>, <span class="seriesInfo">RFC 7858</span>, <span class="seriesInfo">DOI 10.17487/RFC7858</span>, <time datetime="2016-05">May 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7858">https://www.rfc-editor.org/info/rfc7858</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hu, Z.</span>, <span class="refAuthor">Zhu, L.</span>, <span class="refAuthor">Heidemann, J.</span>, <span class="refAuthor">Mankin, A.</span>, <span class="refAuthor">Wessels, D.</span>, and <span class="refAuthor">P. Hoffman</span>, <span class="refTitle">"Specification for DNS over Transport Layer Security (TLS)"</span>, <span class="seriesInfo">RFC 7858</span>, <span class="seriesInfo">DOI 10.17487/RFC7858</span>, <time datetime="2016-05" class="refDate">May 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7858">https://www.rfc-editor.org/info/rfc7858</a>&gt;</span>. </dd>
+1748c1851
+< <span class="refAuthor">Schinazi, D.</span><span class="refAuthor"> and T. Pauly</span>, <span class="refTitle">"Happy Eyeballs Version 2: Better Connectivity Using Concurrency"</span>, <span class="seriesInfo">RFC 8305</span>, <span class="seriesInfo">DOI 10.17487/RFC8305</span>, <time datetime="2017-12">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8305">https://www.rfc-editor.org/info/rfc8305</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schinazi, D.</span> and <span class="refAuthor">T. Pauly</span>, <span class="refTitle">"Happy Eyeballs Version 2: Better Connectivity Using Concurrency"</span>, <span class="seriesInfo">RFC 8305</span>, <span class="seriesInfo">DOI 10.17487/RFC8305</span>, <time datetime="2017-12" class="refDate">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8305">https://www.rfc-editor.org/info/rfc8305</a>&gt;</span>. </dd>
+1752c1855
+< <span class="refAuthor">Hoffman, P.</span><span class="refAuthor"> and P. McManus</span>, <span class="refTitle">"DNS Queries over HTTPS (DoH)"</span>, <span class="seriesInfo">RFC 8484</span>, <span class="seriesInfo">DOI 10.17487/RFC8484</span>, <time datetime="2018-10">October 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8484">https://www.rfc-editor.org/info/rfc8484</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hoffman, P.</span> and <span class="refAuthor">P. McManus</span>, <span class="refTitle">"DNS Queries over HTTPS (DoH)"</span>, <span class="seriesInfo">RFC 8484</span>, <span class="seriesInfo">DOI 10.17487/RFC8484</span>, <time datetime="2018-10" class="refDate">October 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8484">https://www.rfc-editor.org/info/rfc8484</a>&gt;</span>. </dd>
+1758c1861
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+1762c1865
+< <p id="section-appendix.a-1">
+---
+> <p id="appendix-A-1">
+1767c1870
+<  <span class="contact-name">Michael Richardson</span>, <span class="contact-name">David Schinazi</span>, <span class="contact-name">Ole Troan</span>, <span class="contact-name">Eric Vynke</span>, <span class="contact-name">Bernie  Volz</span>.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+>  <span class="contact-name">Michael Richardson</span>, <span class="contact-name">David Schinazi</span>, <span class="contact-name">Ole Troan</span>, <span class="contact-name">Eric Vynke</span>, <span class="contact-name">Bernie  Volz</span>.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+1771c1874
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
