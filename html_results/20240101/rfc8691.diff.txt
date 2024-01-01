@@ -1,0 +1,1870 @@
+23c23
+< <meta content="xml2rfc 2.37.3" name="generator">
+---
+> <meta content="xml2rfc 3.19.0" name="generator">
+28c28,44
+< <link href="rfc8691.xml" type="application/rfc+xml" rel="alternate">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.0
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 5.0.0
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8691.xml" rel="alternate" type="application/rfc+xml">
+38c54
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+47a64,69
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+50d71
+<   width: extend-to-zoom;
+65c86
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+67a89
+>   overflow-wrap: break-word;
+153a176,184
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+168,171d198
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+172a200
+>   border: none;
+195a224,226
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+247c278
+< tt, code, pre, code {
+---
+> tt, code, pre {
+249c280
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+288a320,322
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+378a413,418
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+480c520
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+620d659
+< 
+642a682,684
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+710c752
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+810c852
+< tt, code, pre, code {
+---
+> tt, code, pre {
+815c857
+< pre.sourcecode,
+---
+> .sourcecode pre,
+851c893
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+929,934d970
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1005c1041
+<   margin: 0 0 0.25em 0;
+---
+>   margin-bottom: 0.25em;
+1038a1075
+>   .artwork > pre,
+1043,1047c1080,1130
+< /*
+<   The margin-left: 0 on <dd> removes all distinction
+<   between levels from nested <dl>s.  Undo that.
+< */
+< dl.olPercent > dd,
+---
+> /* Avoid narrow tables forcing too narrow table captions, which may render badly */
+> table {
+>   min-width: 20em;
+> }
+> /* ol type a */
+> ol.type-a { list-style-type: lower-alpha; }
+> ol.type-A { list-style-type: upper-alpha; }
+> ol.type-i { list-style-type: lower-roman; }
+> ol.type-I { list-style-type: lower-roman; }
+> /* Apply the print table and row borders in general, on request from the RPC,
+> and increase the contrast between border and odd row background slightly */
+> table {
+>   border: 1px solid #ddd;
+> }
+> td {
+>   border-top: 1px solid #ddd;
+> }
+> tr {
+>   break-inside: avoid;
+> }
+> tr:nth-child(2n+1) > td {
+>   background-color: #f8f8f8;
+> }
+> /* Use style rules to govern display of the TOC. */
+> @media screen and (max-width: 1023px) {
+>   #toc nav { display: none; }
+>   #toc.active nav { display: block; }
+> }
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+1049,1051c1132,1212
+<   margin-left: revert;
+< }</style>
+< <link href="rfc-local.css" type="text/css" rel="stylesheet">
+---
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+> <link href="rfc-local.css" rel="stylesheet" type="text/css">
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-ipwave-ipv6-over-80211ocb-52" rel="prev">
+1054c1215
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-ipwave-ipv6-over-80211ocb-52" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1056,1057c1217,1218
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1164,1193c1325,1354
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-communication-scenarios-whe" class="xref">Communication Scenarios Where IEEE 802.11-OCB Links Are Used</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-ipv6-over-80211-ocb" class="xref">IPv6 over 802.11-OCB</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-maximum-transmission-unit-m" class="xref">Maximum Transmission Unit (MTU)</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-frame-format" class="xref">Frame Format</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-link-local-addresses" class="xref">Link-Local Addresses</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.4">
+<                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-stateless-autoconfiguration" class="xref">Stateless Autoconfiguration</a><a href="#section-toc.1-1.4.2.4.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.5">
+<                 <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="xref">4.5</a>.  <a href="#name-address-mapping" class="xref">Address Mapping</a><a href="#section-toc.1-1.4.2.5.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.5.2.1">
+<                     <p id="section-toc.1-1.4.2.5.2.1.1"><a href="#section-4.5.1" class="xref">4.5.1</a>.  <a href="#name-address-mapping-unicast" class="xref">Address Mapping -- Unicast</a><a href="#section-toc.1-1.4.2.5.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-communication-scenarios-whe" class="internal xref">Communication Scenarios Where IEEE 802.11-OCB Links Are Used</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-ipv6-over-80211-ocb" class="internal xref">IPv6 over 802.11-OCB</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1" class="keepWithNext"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-maximum-transmission-unit-m" class="internal xref">Maximum Transmission Unit (MTU)</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1" class="keepWithNext"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-frame-format" class="internal xref">Frame Format</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1" class="keepWithNext"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-link-local-addresses" class="internal xref">Link-Local Addresses</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
+>                 <p id="section-toc.1-1.4.2.4.1" class="keepWithNext"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-stateless-autoconfiguration" class="internal xref">Stateless Autoconfiguration</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5">
+>                 <p id="section-toc.1-1.4.2.5.1" class="keepWithNext"><a href="#section-4.5" class="auto internal xref">4.5</a>.  <a href="#name-address-mapping" class="internal xref">Address Mapping</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5.2.1">
+>                     <p id="section-toc.1-1.4.2.5.2.1.1" class="keepWithNext"><a href="#section-4.5.1" class="auto internal xref">4.5.1</a>.  <a href="#name-address-mapping-unicast" class="internal xref">Address Mapping -- Unicast</a></p>
+1195,1196c1356,1357
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.5.2.2">
+<                     <p id="section-toc.1-1.4.2.5.2.2.1"><a href="#section-4.5.2" class="xref">4.5.2</a>.  <a href="#name-address-mapping-multicast" class="xref">Address Mapping -- Multicast</a><a href="#section-toc.1-1.4.2.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5.2.2">
+>                     <p id="section-toc.1-1.4.2.5.2.2.1" class="keepWithNext"><a href="#section-4.5.2" class="auto internal xref">4.5.2</a>.  <a href="#name-address-mapping-multicast" class="internal xref">Address Mapping -- Multicast</a></p>
+1200,1201c1361,1362
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.6">
+<                 <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="xref">4.6</a>.  <a href="#name-subnet-structure" class="xref">Subnet Structure</a><a href="#section-toc.1-1.4.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.6">
+>                 <p id="section-toc.1-1.4.2.6.1" class="keepWithNext"><a href="#section-4.6" class="auto internal xref">4.6</a>.  <a href="#name-subnet-structure" class="internal xref">Subnet Structure</a></p>
+1205,1212c1366,1373
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-privacy-considerations" class="xref">Privacy Considerations</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.1.2.1">
+<                     <p id="section-toc.1-1.5.2.1.2.1.1"><a href="#section-5.1.1" class="xref">5.1.1</a>.  <a href="#name-privacy-risks-of-meaningful" class="xref">Privacy Risks of Meaningful Information in Interface IDs</a><a href="#section-toc.1-1.5.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1" class="keepWithNext"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-privacy-considerations" class="internal xref">Privacy Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.1">
+>                     <p id="section-toc.1-1.5.2.1.2.1.1" class="keepWithNext"><a href="#section-5.1.1" class="auto internal xref">5.1.1</a>.  <a href="#name-privacy-risks-of-meaningful" class="internal xref">Privacy Risks of Meaningful Information in Interface IDs</a></p>
+1216,1217c1377,1378
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-mac-address-and-interface-i" class="xref">MAC Address and Interface ID Generation</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1" class="keepWithNext"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-mac-address-and-interface-i" class="internal xref">MAC Address and Interface ID Generation</a></p>
+1219,1220c1380,1381
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.3">
+<                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-pseudonymization-impact-on-" class="xref">Pseudonymization Impact on Confidentiality and Trust</a><a href="#section-toc.1-1.5.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
+>                 <p id="section-toc.1-1.5.2.3.1" class="keepWithNext"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-pseudonymization-impact-on-" class="internal xref">Pseudonymization Impact on Confidentiality and Trust</a></p>
+1224,1225c1385,1386
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1227,1231c1388,1392
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1" class="keepWithNext"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1233,1234c1394,1395
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1" class="keepWithNext"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1238,1239c1399,1400
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-80211p" class="xref">802.11p</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-80211p" class="internal xref">802.11p</a></p>
+1241,1242c1402,1403
+< <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.b" class="xref">Appendix B</a>.  <a href="#name-aspects-introduced-by-ocb-m" class="xref">Aspects Introduced by OCB Mode to 802.11</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-aspects-introduced-by-ocb-m" class="internal xref">Aspects Introduced by OCB Mode to 802.11</a></p>
+1244,1245c1405,1406
+< <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.c" class="xref">Appendix C</a>.  <a href="#name-changes-needed-on-an-80211a" class="xref">Changes Needed on an 802.11a Software Driver to Become an 802.11-OCB Driver</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1" class="keepWithNext"><a href="#appendix-C" class="auto internal xref">Appendix C</a>.  <a href="#name-changes-needed-on-an-80211a" class="internal xref">Changes Needed on an 802.11a Software Driver to Become an 802.11-OCB Driver</a></p>
+1247,1248c1408,1409
+< <li class="toc ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-appendix.d" class="xref">Appendix D</a>.  <a href="#name-protocol-layering" class="xref">Protocol Layering</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1" class="keepWithNext"><a href="#appendix-D" class="auto internal xref">Appendix D</a>.  <a href="#name-protocol-layering" class="internal xref">Protocol Layering</a></p>
+1250,1251c1411,1412
+< <li class="toc ulEmpty" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-appendix.e" class="xref">Appendix E</a>.  <a href="#name-design-considerations" class="xref">Design Considerations</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1" class="keepWithNext"><a href="#appendix-E" class="auto internal xref">Appendix E</a>.  <a href="#name-design-considerations" class="internal xref">Design Considerations</a></p>
+1253,1254c1414,1415
+< <li class="toc ulEmpty" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-appendix.f" class="xref">Appendix F</a>.  <a href="#name-ieee-80211-messages-transmi" class="xref">IEEE 802.11 Messages Transmitted in OCB Mode</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1" class="keepWithNext"><a href="#appendix-F" class="auto internal xref">Appendix F</a>.  <a href="#name-ieee-80211-messages-transmi" class="internal xref">IEEE 802.11 Messages Transmitted in OCB Mode</a></p>
+1256,1260c1417,1421
+< <li class="toc ulEmpty" id="section-toc.1-1.14">
+<             <p id="section-toc.1-1.14.1"><a href="#section-appendix.g" class="xref">Appendix G</a>.  <a href="#name-examples-of-packet-formats" class="xref">Examples of Packet Formats</a><a href="#section-toc.1-1.14.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.14.2.1">
+<                 <p id="section-toc.1-1.14.2.1.1"><a href="#section-g.1" class="xref">G.1</a>.  <a href="#name-capture-in-monitor-mode" class="xref">Capture in Monitor Mode</a><a href="#section-toc.1-1.14.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+>             <p id="section-toc.1-1.14.1" class="keepWithNext"><a href="#appendix-G" class="auto internal xref">Appendix G</a>.  <a href="#name-examples-of-packet-formats" class="internal xref">Examples of Packet Formats</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.1">
+>                 <p id="section-toc.1-1.14.2.1.1" class="keepWithNext"><a href="#appendix-G.1" class="auto internal xref">G.1</a>.  <a href="#name-capture-in-monitor-mode" class="internal xref">Capture in Monitor Mode</a></p>
+1262,1263c1423,1424
+< <li class="toc ulEmpty" id="section-toc.1-1.14.2.2">
+<                 <p id="section-toc.1-1.14.2.2.1"><a href="#section-g.2" class="xref">G.2</a>.  <a href="#name-capture-in-normal-mode" class="xref">Capture in Normal Mode</a><a href="#section-toc.1-1.14.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.2">
+>                 <p id="section-toc.1-1.14.2.2.1" class="keepWithNext"><a href="#appendix-G.2" class="auto internal xref">G.2</a>.  <a href="#name-capture-in-normal-mode" class="internal xref">Capture in Normal Mode</a></p>
+1267,1268c1428,1429
+< <li class="toc ulEmpty" id="section-toc.1-1.15">
+<             <p id="section-toc.1-1.15.1"><a href="#section-appendix.h" class="xref">Appendix H</a>.  <a href="#name-extra-terminology" class="xref">Extra Terminology</a><a href="#section-toc.1-1.15.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
+>             <p id="section-toc.1-1.15.1" class="keepWithNext"><a href="#appendix-H" class="auto internal xref">Appendix H</a>.  <a href="#name-extra-terminology" class="internal xref">Extra Terminology</a></p>
+1270,1271c1431,1432
+< <li class="toc ulEmpty" id="section-toc.1-1.16">
+<             <p id="section-toc.1-1.16.1"><a href="#section-appendix.i" class="xref">Appendix I</a>.  <a href="#name-neighbor-discovery-nd-poten" class="xref">Neighbor Discovery (ND) Potential Issues in Wireless Links</a><a href="#section-toc.1-1.16.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
+>             <p id="section-toc.1-1.16.1" class="keepWithNext"><a href="#appendix-I" class="auto internal xref">Appendix I</a>.  <a href="#name-neighbor-discovery-nd-poten" class="internal xref">Neighbor Discovery (ND) Potential Issues in Wireless Links</a></p>
+1273,1274c1434,1435
+< <li class="toc ulEmpty" id="section-toc.1-1.17">
+<             <p id="section-toc.1-1.17.1"><a href="#section-appendix.j" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.17.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17">
+>             <p id="section-toc.1-1.17.1" class="keepWithNext"><a href="#appendix-J" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1276,1277c1437,1438
+< <li class="toc ulEmpty" id="section-toc.1-1.18">
+<             <p id="section-toc.1-1.18.1"><a href="#section-appendix.k" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a><a href="#section-toc.1-1.18.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.18">
+>             <p id="section-toc.1-1.18.1" class="keepWithNext"><a href="#appendix-K" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+1279,1280c1440,1441
+< <li class="toc ulEmpty" id="section-toc.1-1.19">
+<             <p id="section-toc.1-1.19.1"><a href="#section-appendix.l" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.19.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.19">
+>             <p id="section-toc.1-1.19.1" class="keepWithNext"><a href="#appendix-L" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1293,1295c1454,1456
+<         <span>[<a href="#IEEE-802.11-2016" class="xref">IEEE-802.11-2016</a>]</span> (a.k.a., 802.11p;
+<  see Appendices <a href="#i802.11p" class="xref">A</a>,
+<         <a href="#introduced-by-OCB" class="xref">B</a>, and <a href="#software-changes" class="xref">C</a>) 
+---
+>         <span>[<a href="#IEEE-802.11-2016" class="cite xref">IEEE-802.11-2016</a>]</span> (a.k.a., 802.11p;
+>  see Appendices <a href="#i802.11p" class="auto internal xref">A</a>,
+>         <a href="#introduced-by-OCB" class="auto internal xref">B</a>, and <a href="#software-changes" class="auto internal xref">C</a>) 
+1301c1462
+<         over Ethernet <span>[<a href="#RFC2464" class="xref">RFC2464</a>]</span> but operates over 802.11-OCB to provide at least P2P (point-to-point) connectivity 
+---
+>         over Ethernet <span>[<a href="#RFC2464" class="cite xref">RFC2464</a>]</span> but operates over 802.11-OCB to provide at least P2P (point-to-point) connectivity 
+1307,1308c1468,1469
+< <ul>
+< <li id="section-1-3.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-1-3.1">
+1311c1472
+<         on Ethernet is described in <span>[<a href="#RFC1042" class="xref">RFC1042</a>]</span> and <span>[<a href="#RFC2464" class="xref">RFC2464</a>]</span>.<a href="#section-1-3.1" class="pilcrow">¶</a>
+---
+>         on Ethernet is described in <span>[<a href="#RFC1042" class="cite xref">RFC1042</a>]</span> and <span>[<a href="#RFC2464" class="cite xref">RFC2464</a>]</span>.<a href="#section-1-3.1" class="pilcrow">¶</a>
+1313c1474
+< <li id="section-1-3.2">
+---
+>         <li class="normal" id="section-1-3.2">
+1317,1318c1478,1479
+<      privacy recommendations are discussed in Sections <a href="#slaac" class="xref">4.4</a> and <a href="#Security" class="xref">5</a>.  The subnet structure is described
+<      in <a href="#subnet-structure" class="xref">Section 4.6</a>.  The movement
+---
+>      privacy recommendations are discussed in Sections <a href="#slaac" class="auto internal xref">4.4</a> and <a href="#Security" class="auto internal xref">5</a>.  The subnet structure is described
+>      in <a href="#subnet-structure" class="auto internal xref">Section 4.6</a>.  The movement
+1327c1488
+<         The reader may refer to <span>[<a href="#I-D.ietf-ipwave-vehicular-networking" class="xref">IPWAVE</a>]</span> for an overview of
+---
+>         The reader may refer to <span>[<a href="#I-D.ietf-ipwave-vehicular-networking" class="cite xref">IPWAVE</a>]</span> for an overview of
+1339c1500
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1343c1504
+< <dl class="dlNewline" id="section-2-3">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-2-3">
+1345c1506
+< <dd id="section-2-3.2">An IP-OBU denotes a
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.2">An IP-OBU denotes a
+1349c1510
+<  the definition of the term "OBU" in <a href="#extra-terminology" class="xref">Appendix H</a>.<a href="#section-2-3.2" class="pilcrow">¶</a>
+---
+>  the definition of the term "OBU" in <a href="#extra-terminology" class="auto internal xref">Appendix H</a>.<a href="#section-2-3.2" class="pilcrow">¶</a>
+1350a1512
+>         <dd class="break"></dd>
+1352c1514
+< <dd id="section-2-3.4">An IP-RSU is situated along the
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.4">An IP-RSU is situated along the
+1358,1359c1520,1521
+<         an Access Network Router (ANR), defined in <span>[<a href="#RFC3753" class="xref">RFC3753</a>]</span>, and a Wireless Termination Point (WTP),
+<         defined in <span>[<a href="#RFC5415" class="xref">RFC5415</a>]</span>.<a href="#section-2-3.4" class="pilcrow">¶</a>
+---
+>         an Access Network Router (ANR), defined in <span>[<a href="#RFC3753" class="cite xref">RFC3753</a>]</span>, and a Wireless Termination Point (WTP),
+>         defined in <span>[<a href="#RFC5415" class="cite xref">RFC5415</a>]</span>.<a href="#section-2-3.4" class="pilcrow">¶</a>
+1360a1523
+>         <dd class="break"></dd>
+1362c1525
+< <dd id="section-2-3.6">This is a mode
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.6">This is a mode
+1366a1530
+>         <dd class="break"></dd>
+1368c1532
+< <dd id="section-2-3.8"> This refers to the mode specified in IEEE Std 802.11-2016 when the
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.8"> This refers to the mode specified in IEEE Std 802.11-2016 when the
+1370a1535
+>       <dd class="break"></dd>
+1381c1546
+<         Environments'. In particular, we refer the reader to <span>[<a href="#I-D.ietf-ipwave-vehicular-networking" class="xref">IPWAVE</a>]</span>, which lists
+---
+>         Environments'. In particular, we refer the reader to <span>[<a href="#I-D.ietf-ipwave-vehicular-networking" class="cite xref">IPWAVE</a>]</span>, which lists
+1403,1404c1568,1569
+<           from <span>[<a href="#RFC2464" class="xref">RFC2464</a>]</span> and, as such, is 1500 octets. 
+<           As noted in <span>[<a href="#RFC8200" class="xref">RFC8200</a>]</span>, every link on the Internet must have a
+---
+>           from <span>[<a href="#RFC2464" class="cite xref">RFC2464</a>]</span> and, as such, is 1500 octets. 
+>           As noted in <span>[<a href="#RFC8200" class="cite xref">RFC8200</a>]</span>, every link on the Internet must have a
+1416c1581
+<       <span>[<a href="#IEEE-802.11-2016" class="xref">IEEE-802.11-2016</a>]</span>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+---
+>       <span>[<a href="#IEEE-802.11-2016" class="cite xref">IEEE-802.11-2016</a>]</span>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+1421c1586
+<    with EtherType Protocol Discrimination (EPD; see <a href="#epd" class="xref">Appendix D</a>), the value of the Type field <span class="bcp14">MUST</span> be set to
+---
+>    with EtherType Protocol Discrimination (EPD; see <a href="#epd" class="auto internal xref">Appendix D</a>), the value of the Type field <span class="bcp14">MUST</span> be set to
+1425c1590
+<       traffic, including the ones listed in <span>[<a href="#ETSI-sec-archi" class="xref">ETSI-sec-archi</a>]</span>.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+---
+>       traffic, including the ones listed in <span>[<a href="#ETSI-sec-archi" class="cite xref">ETSI-sec-archi</a>]</span>.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+1429c1594
+<    device drivers <span class="bcp14">MAY</span> implement IPv6 over Ethernet as per <span>[<a href="#RFC2464" class="xref">RFC2464</a>]</span> 
+---
+>    device drivers <span class="bcp14">MAY</span> implement IPv6 over Ethernet as per <span>[<a href="#RFC2464" class="cite xref">RFC2464</a>]</span> 
+1439c1604
+<    There are several types of IPv6 addresses <span>[<a href="#RFC4291" class="xref">RFC4291</a>]</span> <span>[<a href="#RFC4193" class="xref">RFC4193</a>]</span> that may be
+---
+>    There are several types of IPv6 addresses <span>[<a href="#RFC4291" class="cite xref">RFC4291</a>]</span> <span>[<a href="#RFC4193" class="cite xref">RFC4193</a>]</span> that may be
+1451c1616
+<       as is the case for the Ethernet <span>[<a href="#RFC2464" class="xref">RFC2464</a>]</span>.<a href="#section-4.3-2" class="pilcrow">¶</a></p>
+---
+>       as is the case for the Ethernet <span>[<a href="#RFC2464" class="cite xref">RFC2464</a>]</span>.<a href="#section-4.3-2" class="pilcrow">¶</a></p>
+1462c1627
+<       in <span>[<a href="#RFC4862" class="xref">RFC4862</a>]</span>.  This section describes
+---
+>       in <span>[<a href="#RFC4862" class="cite xref">RFC4862</a>]</span>.  This section describes
+1464c1629
+<    for 'link-local' IPv6 addresses are discussed in <a href="#ll" class="xref">Section 4.3</a>.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
+---
+>    for 'link-local' IPv6 addresses are discussed in <a href="#ll" class="auto internal xref">Section 4.3</a>.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
+1467,1468c1632,1633
+<           stable Interface Identifiers (IIDs) is described in <span>[<a href="#RFC8064" class="xref">RFC8064</a>]</span>.  The method of forming IIDs described in
+<           <span><a href="https://www.rfc-editor.org/rfc/rfc2464#section-4" class="relref">Section 4</a> of [<a href="#RFC2464" class="xref">RFC2464</a>]</span> <span class="bcp14">MAY</span> be used during
+---
+>           stable Interface Identifiers (IIDs) is described in <span>[<a href="#RFC8064" class="cite xref">RFC8064</a>]</span>.  The method of forming IIDs described in
+>           <span><a href="https://rfc-editor.org/rfc/rfc2464#section-4" class="relref">Section 4</a> of [<a href="#RFC2464" class="cite xref">RFC2464</a>]</span> <span class="bcp14">MAY</span> be used during
+1471c1636
+<           its length is 64 bits, similarly to IPv6 over Ethernet <span>[<a href="#RFC2464" class="xref">RFC2464</a>]</span>.<a href="#section-4.4-2" class="pilcrow">¶</a></p>
+---
+>           its length is 64 bits, similarly to IPv6 over Ethernet <span>[<a href="#RFC2464" class="cite xref">RFC2464</a>]</span>.<a href="#section-4.4-2" class="pilcrow">¶</a></p>
+1478c1643
+<           described in <span>[<a href="#RFC7136" class="xref">RFC7136</a>]</span>.<a href="#section-4.4-3" class="pilcrow">¶</a></p>
+---
+>           described in <span>[<a href="#RFC7136" class="cite xref">RFC7136</a>]</span>.<a href="#section-4.4-3" class="pilcrow">¶</a></p>
+1482,1483c1647,1648
+<    meaningful MAC address (<span>[<a href="#RFC2464" class="xref">RFC2464</a>], <a href="https://www.rfc-editor.org/rfc/rfc2464#section-4" class="relref">Section 4</a></span>), help avoid certain privacy risks (see the risks
+<    mentioned in <a href="#privacy-opaque-iid" class="xref">Section 5.1.1</a>).  If
+---
+>    meaningful MAC address (<span>[<a href="#RFC2464" class="cite xref">RFC2464</a>], <a href="https://rfc-editor.org/rfc/rfc2464#section-4" class="relref">Section 4</a></span>), help avoid certain privacy risks (see the risks
+>    mentioned in <a href="#privacy-opaque-iid" class="auto internal xref">Section 5.1.1</a>).  If
+1487c1652
+<    Stateless Address Autoconfiguration given in <span>[<a href="#RFC7217" class="xref">RFC7217</a>]</span>.  Typically, an opaque IID is formed starting from identifiers different
+---
+>    Stateless Address Autoconfiguration given in <span>[<a href="#RFC7217" class="cite xref">RFC7217</a>]</span>.  Typically, an opaque IID is formed starting from identifiers different
+1497c1662
+<    <span class="bcp14">RECOMMENDED</span> to use the mechanisms described in <span>[<a href="#RFC7217" class="xref">RFC7217</a>]</span> to
+---
+>    <span class="bcp14">RECOMMENDED</span> to use the mechanisms described in <span>[<a href="#RFC7217" class="cite xref">RFC7217</a>]</span> to
+1510c1675
+<    procedures specified for Ethernet interfaces described in Sections <a href="https://www.rfc-editor.org/rfc/rfc2464#section-6" class="relref">6</a> and  <a href="https://www.rfc-editor.org/rfc/rfc2464#section-7" class="relref">7</a> of <span>[<a href="#RFC2464" class="xref">RFC2464</a>]</span>.<a href="#section-4.5-1" class="pilcrow">¶</a></p>
+---
+>    procedures specified for Ethernet interfaces described in Sections <a href="https://rfc-editor.org/rfc/rfc2464#section-6" class="relref">6</a> and  <a href="https://rfc-editor.org/rfc/rfc2464#section-7" class="relref">7</a> of <span>[<a href="#RFC2464" class="cite xref">RFC2464</a>]</span>.<a href="#section-4.5-1" class="pilcrow">¶</a></p>
+1516c1681
+<      This document is scoped for Address Resolution (AR) and Duplicate Address Detection (DAD) per <span>[<a href="#RFC4862" class="xref">RFC4862</a>]</span>.<a href="#section-4.5.1-1" class="pilcrow">¶</a></p>
+---
+>      This document is scoped for Address Resolution (AR) and Duplicate Address Detection (DAD) per <span>[<a href="#RFC4862" class="cite xref">RFC4862</a>]</span>.<a href="#section-4.5.1-1" class="pilcrow">¶</a></p>
+1525c1690
+<      the method specified in <span><a href="https://www.rfc-editor.org/rfc/rfc2464#section-7" class="relref">Section 7</a> of [<a href="#RFC2464" class="xref">RFC2464</a>]</span>.  The meaning of the value "33-33"
+---
+>      the method specified in <span><a href="https://rfc-editor.org/rfc/rfc2464#section-7" class="relref">Section 7</a> of [<a href="#RFC2464" class="cite xref">RFC2464</a>]</span>.  The meaning of the value "33-33"
+1527c1692
+<      defined in <span><a href="https://www.rfc-editor.org/rfc/rfc7042#section-2.3.1" class="relref">Section 2.3.1</a> of [<a href="#RFC7042" class="xref">RFC7042</a>]</span>.<a href="#section-4.5.2-1" class="pilcrow">¶</a></p>
+---
+>      defined in <span><a href="https://rfc-editor.org/rfc/rfc7042#section-2.3.1" class="relref">Section 2.3.1</a> of [<a href="#RFC7042" class="cite xref">RFC7042</a>]</span>.<a href="#section-4.5.2-1" class="pilcrow">¶</a></p>
+1530c1695
+<             802.11 links proved to have some performance issues <span>[<a href="#I-D.ietf-mboned-ieee802-mcast-problems" class="xref">IEEE802-MCAST</a>]</span>.  These
+---
+>             802.11 links proved to have some performance issues <span>[<a href="#I-D.ietf-mboned-ieee802-mcast-problems" class="cite xref">IEEE802-MCAST</a>]</span>.  These
+1544c1709
+<       A Prefix List conceptual data structure (<span>[<a href="#RFC4861" class="xref">RFC4861</a>], <a href="https://www.rfc-editor.org/rfc/rfc4861#section-5.1" class="relref">Section 5.1</a></span>) is maintained for each
+---
+>       A Prefix List conceptual data structure (<span>[<a href="#RFC4861" class="cite xref">RFC4861</a>], <a href="https://rfc-editor.org/rfc/rfc4861#section-5.1" class="relref">Section 5.1</a></span>) is maintained for each
+1561c1726
+<    as described in <span>[<a href="#RFC5889" class="xref">RFC5889</a>]</span>.  On the other hand,
+---
+>    as described in <span>[<a href="#RFC5889" class="cite xref">RFC5889</a>]</span>.  On the other hand,
+1565c1730
+<    As recommended in <span>[<a href="#RFC5889" class="xref">RFC5889</a>]</span>, when the timing
+---
+>    As recommended in <span>[<a href="#RFC5889" class="cite xref">RFC5889</a>]</span>, when the timing
+1580c1745
+<     The baseline ND protocol <span>[<a href="#RFC4861" class="xref">RFC4861</a>]</span> <span class="bcp14">MUST</span> be supported over 802.11-OCB links.
+---
+>     The baseline ND protocol <span>[<a href="#RFC4861" class="cite xref">RFC4861</a>]</span> <span class="bcp14">MUST</span> be supported over 802.11-OCB links.
+1582,1583c1747,1748
+<     issues, as mentioned in <a href="#address-mapping-multicast" class="xref">Section 4.5.2</a> and
+<        <a href="#nd-wireless" class="xref">Appendix I</a>.  
+---
+>     issues, as mentioned in <a href="#address-mapping-multicast" class="auto internal xref">Section 4.5.2</a> and
+>        <a href="#nd-wireless" class="auto internal xref">Appendix I</a>.  
+1589c1754
+<        OCB mode; they are described in <a href="#nd-wireless" class="xref">Appendix I</a>.<a href="#section-4.6-6" class="pilcrow">¶</a></p>
+---
+>        OCB mode; they are described in <a href="#nd-wireless" class="auto internal xref">Appendix I</a>.<a href="#section-4.6-6" class="pilcrow">¶</a></p>
+1591,1593c1756,1758
+<    Protocols like Mobile IPv6 <span>[<a href="#RFC6275" class="xref">RFC6275</a>]</span>
+<           <span>[<a href="#RFC3963" class="xref">RFC3963</a>]</span> and
+<    DNAv6 <span>[<a href="#RFC6059" class="xref">RFC6059</a>]</span>, which depend on timely
+---
+>    Protocols like Mobile IPv6 <span>[<a href="#RFC6275" class="cite xref">RFC6275</a>]</span>
+>           <span>[<a href="#RFC3963" class="cite xref">RFC3963</a>]</span> and
+>    DNAv6 <span>[<a href="#RFC6059" class="cite xref">RFC6059</a>]</span>, which depend on timely
+1613c1778
+<  the application layer, the IEEE 1609.2 document <span>[<a href="#IEEE-1609.2" class="xref">IEEE-1609.2</a>]</span> provides security services for
+---
+>  the application layer, the IEEE 1609.2 document <span>[<a href="#IEEE-1609.2" class="cite xref">IEEE-1609.2</a>]</span> provides security services for
+1616c1781
+<  mechanism provided at the networking layer, such as IPsec <span>[<a href="#RFC4301" class="xref">RFC4301</a>]</span>, may provide data security protection to a
+---
+>  mechanism provided at the networking layer, such as IPsec <span>[<a href="#RFC4301" class="cite xref">RFC4301</a>]</span>, may provide data security protection to a
+1630,1631c1795,1796
+<     design allows for a number of threats outlined in <span><a href="https://www.rfc-editor.org/rfc/rfc6959#section-3" class="relref">Section 3</a> of [<a href="#RFC6959" class="xref">RFC6959</a>]</span>. 
+<     While not widely deployed, SEND <span>[<a href="#RFC3971" class="xref">RFC3971</a>]</span> <span>[<a href="#RFC3972" class="xref">RFC3972</a>]</span> is a solution 
+---
+>     design allows for a number of threats outlined in <span><a href="https://rfc-editor.org/rfc/rfc6959#section-3" class="relref">Section 3</a> of [<a href="#RFC6959" class="cite xref">RFC6959</a>]</span>. 
+>     While not widely deployed, SEND <span>[<a href="#RFC3971" class="cite xref">RFC3971</a>]</span> <span>[<a href="#RFC3972" class="cite xref">RFC3972</a>]</span> is a solution 
+1639c1804
+<           As with all Ethernet and 802.11 interface identifiers <span>[<a href="#RFC7721" class="xref">RFC7721</a>]</span>, the identifier of an 802.11-OCB
+---
+>           As with all Ethernet and 802.11 interface identifiers <span>[<a href="#RFC7721" class="cite xref">RFC7721</a>]</span>, the identifier of an 802.11-OCB
+1652,1653c1817,1818
+<           (<a href="#mac-change" class="xref">Section 5.2</a>), semantically opaque Interface
+<           Identifiers, and stable Interface Identifiers (<a href="#slaac" class="xref">Section 4.4</a>).  An example of a change policy is to change the MAC 
+---
+>           (<a href="#mac-change" class="auto internal xref">Section 5.2</a>), semantically opaque Interface
+>           Identifiers, and stable Interface Identifiers (<a href="#slaac" class="auto internal xref">Section 4.4</a>).  An example of a change policy is to change the MAC 
+1656c1821
+<           certain level. Furthermore,  for privacy concerns, <span>[<a href="#RFC8065" class="xref">RFC8065</a>]</span> recommends using an address-generation scheme
+---
+>           certain level. Furthermore,  for privacy concerns, <span>[<a href="#RFC8065" class="cite xref">RFC8065</a>]</span> recommends using an address-generation scheme
+1700c1865
+<    the privacy discussion in <a href="#introduced-by-OCB" class="xref">Appendix B</a>.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
+---
+>    the privacy discussion in <a href="#introduced-by-OCB" class="auto internal xref">Appendix B</a>.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
+1704,1705c1869,1870
+< <ul>
+< <li id="section-5.2-4.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-5.2-4.1">
+1708c1873
+< <li id="section-5.2-4.2">
+---
+>           <li class="normal" id="section-5.2-4.2">
+1711c1876
+< <li id="section-5.2-4.3">
+---
+>           <li class="normal" id="section-5.2-4.3">
+1714c1879
+<               <span>[<a href="#RFC4086" class="xref">RFC4086</a>]</span>.<a href="#section-5.2-4.3" class="pilcrow">¶</a>
+---
+>               <span>[<a href="#RFC4086" class="cite xref">RFC4086</a>]</span>.<a href="#section-5.2-4.3" class="pilcrow">¶</a>
+1720c1885
+<    defined in <span>[<a href="#SHA256" class="xref">SHA256</a>]</span>
+---
+>    defined in <span>[<a href="#SHA256" class="cite xref">SHA256</a>]</span>
+1736c1901
+<        such as the ones described in <a href="#mac-change" class="xref">Section 5.2</a>.
+---
+>        such as the ones described in <a href="#mac-change" class="auto internal xref">Section 5.2</a>.
+1763c1928,1929
+< <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Information technology - Telecommunications and information exchange between systems Local and metropolitan area networks--Specific requirements - Part 11: Wireless LAN Medium Access Control (MAC) and Physical Layer (PHY) Specifications"</span>, <span class="seriesInfo">IEEE Standard 802.11-2016</span>, <time datetime="2016-12">December 2016</time>, <span>&lt;<a href="https://standards.ieee.org/findstds/standard/802.11-2016.html">https://standards.ieee.org/findstds/standard/802.11-2016.html</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Information technology - Telecommunications and information exchange between systems Local and metropolitan area networks--Specific requirements - Part 11: Wireless LAN Medium Access Control (MAC) and Physical Layer (PHY) Specifications"</span>, <span class="seriesInfo">IEEE Standard 802.11-2016</span>, <time datetime="2016-12" class="refDate">December 2016</time>, <span>&lt;<a href="https://standards.ieee.org/findstds/standard/802.11-2016.html">https://standards.ieee.org/findstds/standard/802.11-2016.html</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1766c1932,1933
+< <span class="refAuthor">Postel, J.</span><span class="refAuthor"> and J. Reynolds</span>, <span class="refTitle">"Standard for the transmission of IP datagrams over IEEE 802 networks"</span>, <span class="seriesInfo">STD 43</span>, <span class="seriesInfo">RFC 1042</span>, <span class="seriesInfo">DOI 10.17487/RFC1042</span>, <time datetime="1988-02">February 1988</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1042">https://www.rfc-editor.org/info/rfc1042</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Postel, J.</span> and <span class="refAuthor">J. Reynolds</span>, <span class="refTitle">"Standard for the transmission of IP datagrams over IEEE 802 networks"</span>, <span class="seriesInfo">STD 43</span>, <span class="seriesInfo">RFC 1042</span>, <span class="seriesInfo">DOI 10.17487/RFC1042</span>, <time datetime="1988-02" class="refDate">February 1988</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1042">https://www.rfc-editor.org/info/rfc1042</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1769c1936,1937
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1772c1940,1941
+< <span class="refAuthor">Crawford, M.</span>, <span class="refTitle">"Transmission of IPv6 Packets over Ethernet Networks"</span>, <span class="seriesInfo">RFC 2464</span>, <span class="seriesInfo">DOI 10.17487/RFC2464</span>, <time datetime="1998-12">December 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2464">https://www.rfc-editor.org/info/rfc2464</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Crawford, M.</span>, <span class="refTitle">"Transmission of IPv6 Packets over Ethernet Networks"</span>, <span class="seriesInfo">RFC 2464</span>, <span class="seriesInfo">DOI 10.17487/RFC2464</span>, <time datetime="1998-12" class="refDate">December 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2464">https://www.rfc-editor.org/info/rfc2464</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1775c1944,1945
+< <span class="refAuthor">Eastlake 3rd, D.</span><span class="refAuthor">, Schiller, J.</span><span class="refAuthor">, and S. Crocker</span>, <span class="refTitle">"Randomness Requirements for Security"</span>, <span class="seriesInfo">BCP 106</span>, <span class="seriesInfo">RFC 4086</span>, <span class="seriesInfo">DOI 10.17487/RFC4086</span>, <time datetime="2005-06">June 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4086">https://www.rfc-editor.org/info/rfc4086</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Eastlake 3rd, D.</span>, <span class="refAuthor">Schiller, J.</span>, and <span class="refAuthor">S. Crocker</span>, <span class="refTitle">"Randomness Requirements for Security"</span>, <span class="seriesInfo">BCP 106</span>, <span class="seriesInfo">RFC 4086</span>, <span class="seriesInfo">DOI 10.17487/RFC4086</span>, <time datetime="2005-06" class="refDate">June 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4086">https://www.rfc-editor.org/info/rfc4086</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1778c1948,1949
+< <span class="refAuthor">Draves, R.</span><span class="refAuthor"> and D. Thaler</span>, <span class="refTitle">"Default Router Preferences and More-Specific Routes"</span>, <span class="seriesInfo">RFC 4191</span>, <span class="seriesInfo">DOI 10.17487/RFC4191</span>, <time datetime="2005-11">November 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4191">https://www.rfc-editor.org/info/rfc4191</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Draves, R.</span> and <span class="refAuthor">D. Thaler</span>, <span class="refTitle">"Default Router Preferences and More-Specific Routes"</span>, <span class="seriesInfo">RFC 4191</span>, <span class="seriesInfo">DOI 10.17487/RFC4191</span>, <time datetime="2005-11" class="refDate">November 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4191">https://www.rfc-editor.org/info/rfc4191</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1781c1952,1953
+< <span class="refAuthor">Hinden, R.</span><span class="refAuthor"> and B. Haberman</span>, <span class="refTitle">"Unique Local IPv6 Unicast Addresses"</span>, <span class="seriesInfo">RFC 4193</span>, <span class="seriesInfo">DOI 10.17487/RFC4193</span>, <time datetime="2005-10">October 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4193">https://www.rfc-editor.org/info/rfc4193</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hinden, R.</span> and <span class="refAuthor">B. Haberman</span>, <span class="refTitle">"Unique Local IPv6 Unicast Addresses"</span>, <span class="seriesInfo">RFC 4193</span>, <span class="seriesInfo">DOI 10.17487/RFC4193</span>, <time datetime="2005-10" class="refDate">October 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4193">https://www.rfc-editor.org/info/rfc4193</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1784c1956,1957
+< <span class="refAuthor">Hinden, R.</span><span class="refAuthor"> and S. Deering</span>, <span class="refTitle">"IP Version 6 Addressing Architecture"</span>, <span class="seriesInfo">RFC 4291</span>, <span class="seriesInfo">DOI 10.17487/RFC4291</span>, <time datetime="2006-02">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4291">https://www.rfc-editor.org/info/rfc4291</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hinden, R.</span> and <span class="refAuthor">S. Deering</span>, <span class="refTitle">"IP Version 6 Addressing Architecture"</span>, <span class="seriesInfo">RFC 4291</span>, <span class="seriesInfo">DOI 10.17487/RFC4291</span>, <time datetime="2006-02" class="refDate">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4291">https://www.rfc-editor.org/info/rfc4291</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1787c1960,1961
+< <span class="refAuthor">Kent, S.</span><span class="refAuthor"> and K. Seo</span>, <span class="refTitle">"Security Architecture for the Internet Protocol"</span>, <span class="seriesInfo">RFC 4301</span>, <span class="seriesInfo">DOI 10.17487/RFC4301</span>, <time datetime="2005-12">December 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4301">https://www.rfc-editor.org/info/rfc4301</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Kent, S.</span> and <span class="refAuthor">K. Seo</span>, <span class="refTitle">"Security Architecture for the Internet Protocol"</span>, <span class="seriesInfo">RFC 4301</span>, <span class="seriesInfo">DOI 10.17487/RFC4301</span>, <time datetime="2005-12" class="refDate">December 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4301">https://www.rfc-editor.org/info/rfc4301</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1790c1964,1965
+< <span class="refAuthor">Narten, T.</span><span class="refAuthor">, Nordmark, E.</span><span class="refAuthor">, Simpson, W.</span><span class="refAuthor">, and H. Soliman</span>, <span class="refTitle">"Neighbor Discovery for IP version 6 (IPv6)"</span>, <span class="seriesInfo">RFC 4861</span>, <span class="seriesInfo">DOI 10.17487/RFC4861</span>, <time datetime="2007-09">September 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4861">https://www.rfc-editor.org/info/rfc4861</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Narten, T.</span>, <span class="refAuthor">Nordmark, E.</span>, <span class="refAuthor">Simpson, W.</span>, and <span class="refAuthor">H. Soliman</span>, <span class="refTitle">"Neighbor Discovery for IP version 6 (IPv6)"</span>, <span class="seriesInfo">RFC 4861</span>, <span class="seriesInfo">DOI 10.17487/RFC4861</span>, <time datetime="2007-09" class="refDate">September 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4861">https://www.rfc-editor.org/info/rfc4861</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1793c1968,1969
+< <span class="refAuthor">Thomson, S.</span><span class="refAuthor">, Narten, T.</span><span class="refAuthor">, and T. Jinmei</span>, <span class="refTitle">"IPv6 Stateless Address Autoconfiguration"</span>, <span class="seriesInfo">RFC 4862</span>, <span class="seriesInfo">DOI 10.17487/RFC4862</span>, <time datetime="2007-09">September 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4862">https://www.rfc-editor.org/info/rfc4862</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Thomson, S.</span>, <span class="refAuthor">Narten, T.</span>, and <span class="refAuthor">T. Jinmei</span>, <span class="refTitle">"IPv6 Stateless Address Autoconfiguration"</span>, <span class="seriesInfo">RFC 4862</span>, <span class="seriesInfo">DOI 10.17487/RFC4862</span>, <time datetime="2007-09" class="refDate">September 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4862">https://www.rfc-editor.org/info/rfc4862</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1796c1972,1973
+< <span class="refAuthor">Calhoun, P., Ed.</span><span class="refAuthor">, Montemurro, M., Ed.</span><span class="refAuthor">, and D. Stanley, Ed.</span>, <span class="refTitle">"Control And Provisioning of Wireless Access Points (CAPWAP) Protocol Specification"</span>, <span class="seriesInfo">RFC 5415</span>, <span class="seriesInfo">DOI 10.17487/RFC5415</span>, <time datetime="2009-03">March 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5415">https://www.rfc-editor.org/info/rfc5415</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Calhoun, P., Ed.</span>, <span class="refAuthor">Montemurro, M., Ed.</span>, and <span class="refAuthor">D. Stanley, Ed.</span>, <span class="refTitle">"Control And Provisioning of Wireless Access Points (CAPWAP) Protocol Specification"</span>, <span class="seriesInfo">RFC 5415</span>, <span class="seriesInfo">DOI 10.17487/RFC5415</span>, <time datetime="2009-03" class="refDate">March 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5415">https://www.rfc-editor.org/info/rfc5415</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1799c1976,1977
+< <span class="refAuthor">Krishnan, S.</span><span class="refAuthor"> and G. Daley</span>, <span class="refTitle">"Simple Procedures for Detecting Network Attachment in IPv6"</span>, <span class="seriesInfo">RFC 6059</span>, <span class="seriesInfo">DOI 10.17487/RFC6059</span>, <time datetime="2010-11">November 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6059">https://www.rfc-editor.org/info/rfc6059</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Krishnan, S.</span> and <span class="refAuthor">G. Daley</span>, <span class="refTitle">"Simple Procedures for Detecting Network Attachment in IPv6"</span>, <span class="seriesInfo">RFC 6059</span>, <span class="seriesInfo">DOI 10.17487/RFC6059</span>, <time datetime="2010-11" class="refDate">November 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6059">https://www.rfc-editor.org/info/rfc6059</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1802c1980,1981
+< <span class="refAuthor">Perkins, C., Ed.</span><span class="refAuthor">, Johnson, D.</span><span class="refAuthor">, and J. Arkko</span>, <span class="refTitle">"Mobility Support in IPv6"</span>, <span class="seriesInfo">RFC 6275</span>, <span class="seriesInfo">DOI 10.17487/RFC6275</span>, <time datetime="2011-07">July 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6275">https://www.rfc-editor.org/info/rfc6275</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Perkins, C., Ed.</span>, <span class="refAuthor">Johnson, D.</span>, and <span class="refAuthor">J. Arkko</span>, <span class="refTitle">"Mobility Support in IPv6"</span>, <span class="seriesInfo">RFC 6275</span>, <span class="seriesInfo">DOI 10.17487/RFC6275</span>, <time datetime="2011-07" class="refDate">July 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6275">https://www.rfc-editor.org/info/rfc6275</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1805c1984,1985
+< <span class="refAuthor">Eastlake 3rd, D.</span><span class="refAuthor"> and J. Abley</span>, <span class="refTitle">"IANA Considerations and IETF Protocol and Documentation Usage for IEEE 802 Parameters"</span>, <span class="seriesInfo">BCP 141</span>, <span class="seriesInfo">RFC 7042</span>, <span class="seriesInfo">DOI 10.17487/RFC7042</span>, <time datetime="2013-10">October 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7042">https://www.rfc-editor.org/info/rfc7042</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Eastlake 3rd, D.</span> and <span class="refAuthor">J. Abley</span>, <span class="refTitle">"IANA Considerations and IETF Protocol and Documentation Usage for IEEE 802 Parameters"</span>, <span class="seriesInfo">BCP 141</span>, <span class="seriesInfo">RFC 7042</span>, <span class="seriesInfo">DOI 10.17487/RFC7042</span>, <time datetime="2013-10" class="refDate">October 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7042">https://www.rfc-editor.org/info/rfc7042</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1808c1988,1989
+< <span class="refAuthor">Carpenter, B.</span><span class="refAuthor"> and S. Jiang</span>, <span class="refTitle">"Significance of IPv6 Interface Identifiers"</span>, <span class="seriesInfo">RFC 7136</span>, <span class="seriesInfo">DOI 10.17487/RFC7136</span>, <time datetime="2014-02">February 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7136">https://www.rfc-editor.org/info/rfc7136</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Carpenter, B.</span> and <span class="refAuthor">S. Jiang</span>, <span class="refTitle">"Significance of IPv6 Interface Identifiers"</span>, <span class="seriesInfo">RFC 7136</span>, <span class="seriesInfo">DOI 10.17487/RFC7136</span>, <time datetime="2014-02" class="refDate">February 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7136">https://www.rfc-editor.org/info/rfc7136</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1811c1992,1993
+< <span class="refAuthor">Gont, F.</span>, <span class="refTitle">"A Method for Generating Semantically Opaque Interface Identifiers with IPv6 Stateless Address Autoconfiguration (SLAAC)"</span>, <span class="seriesInfo">RFC 7217</span>, <span class="seriesInfo">DOI 10.17487/RFC7217</span>, <time datetime="2014-04">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7217">https://www.rfc-editor.org/info/rfc7217</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Gont, F.</span>, <span class="refTitle">"A Method for Generating Semantically Opaque Interface Identifiers with IPv6 Stateless Address Autoconfiguration (SLAAC)"</span>, <span class="seriesInfo">RFC 7217</span>, <span class="seriesInfo">DOI 10.17487/RFC7217</span>, <time datetime="2014-04" class="refDate">April 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7217">https://www.rfc-editor.org/info/rfc7217</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1814c1996,1997
+< <span class="refAuthor">Gont, F.</span><span class="refAuthor">, Cooper, A.</span><span class="refAuthor">, Thaler, D.</span><span class="refAuthor">, and W. Liu</span>, <span class="refTitle">"Recommendation on Stable IPv6 Interface Identifiers"</span>, <span class="seriesInfo">RFC 8064</span>, <span class="seriesInfo">DOI 10.17487/RFC8064</span>, <time datetime="2017-02">February 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8064">https://www.rfc-editor.org/info/rfc8064</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Gont, F.</span>, <span class="refAuthor">Cooper, A.</span>, <span class="refAuthor">Thaler, D.</span>, and <span class="refAuthor">W. Liu</span>, <span class="refTitle">"Recommendation on Stable IPv6 Interface Identifiers"</span>, <span class="seriesInfo">RFC 8064</span>, <span class="seriesInfo">DOI 10.17487/RFC8064</span>, <time datetime="2017-02" class="refDate">February 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8064">https://www.rfc-editor.org/info/rfc8064</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1817c2000,2001
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1820c2004,2005
+< <span class="refAuthor">Deering, S.</span><span class="refAuthor"> and R. Hinden</span>, <span class="refTitle">"Internet Protocol, Version 6 (IPv6) Specification"</span>, <span class="seriesInfo">STD 86</span>, <span class="seriesInfo">RFC 8200</span>, <span class="seriesInfo">DOI 10.17487/RFC8200</span>, <time datetime="2017-07">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8200">https://www.rfc-editor.org/info/rfc8200</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Deering, S.</span> and <span class="refAuthor">R. Hinden</span>, <span class="refTitle">"Internet Protocol, Version 6 (IPv6) Specification"</span>, <span class="seriesInfo">STD 86</span>, <span class="seriesInfo">RFC 8200</span>, <span class="seriesInfo">DOI 10.17487/RFC8200</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8200">https://www.rfc-editor.org/info/rfc8200</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1830a2016
+> <dd class="break"></dd>
+1833a2020
+> <dd class="break"></dd>
+1836a2024
+> <dd class="break"></dd>
+1839c2027,2028
+< <span class="refTitle">"Intelligent Transport Systems (ITS); Security; ITS communications security architecture and security management"</span>, <span class="seriesInfo">ETSI TS 102 940 V1.2.1</span>, <time datetime="2016-11">November 2016</time>, <span>&lt;<a href="http://www.etsi.org/deliver/etsi_ts/102900_102999/102940/01.02.01_60/ts_102940v010201p.pdf">http://www.etsi.org/deliver/etsi_ts/102900_102999/102940/01.02.01_60/ts_102940v010201p.pdf</a>&gt;</span>. </dd>
+---
+> <span class="refTitle">"Intelligent Transport Systems (ITS); Security; ITS communications security architecture and security management"</span>, <span class="seriesInfo">ETSI TS 102 940 V1.2.1</span>, <time datetime="2016-11" class="refDate">November 2016</time>, <span>&lt;<a href="http://www.etsi.org/deliver/etsi_ts/102900_102999/102940/01.02.01_60/ts_102940v010201p.pdf">http://www.etsi.org/deliver/etsi_ts/102900_102999/102940/01.02.01_60/ts_102940v010201p.pdf</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1842c2031,2032
+< <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Wireless Access in Vehicular Environments--Security Services for Applications and Management Messages"</span>, <span class="seriesInfo">DOI 10.1109/IEEESTD.2016.7426684</span>, <span class="seriesInfo">IEEE Standard 1609.2-2016</span>, <time datetime="2016-03">March 2016</time>, <span>&lt;<a href="http://ieeexplore.ieee.org/document/7426684">http://ieeexplore.ieee.org/document/7426684</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Wireless Access in Vehicular Environments--Security Services for Applications and Management Messages"</span>, <span class="seriesInfo">DOI 10.1109/IEEESTD.2016.7426684</span>, <span class="seriesInfo">IEEE Standard 1609.2-2016</span>, <time datetime="2016-03" class="refDate">March 2016</time>, <span>&lt;<a href="http://ieeexplore.ieee.org/document/7426684">http://ieeexplore.ieee.org/document/7426684</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1845c2035,2036
+< <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Wireless Access in Vehicular Environments (WAVE) -- Networking Services"</span>, <span class="seriesInfo">DOI 10.1109/IEEESTD.2016.7458115</span>, <span class="seriesInfo">IEEE Standard 1609.3-2016</span>, <time datetime="2016-04">April 2016</time>, <span>&lt;<a href="http://ieeexplore.ieee.org/document/7458115">http://ieeexplore.ieee.org/document/7458115</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Wireless Access in Vehicular Environments (WAVE) -- Networking Services"</span>, <span class="seriesInfo">DOI 10.1109/IEEESTD.2016.7458115</span>, <span class="seriesInfo">IEEE Standard 1609.3-2016</span>, <time datetime="2016-04" class="refDate">April 2016</time>, <span>&lt;<a href="http://ieeexplore.ieee.org/document/7458115">http://ieeexplore.ieee.org/document/7458115</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1848c2039,2040
+< <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Wireless Access in Vehicular Environments (WAVE) -- Multi-Channel Operation"</span>, <span class="seriesInfo">DOI 10.1109/IEEESTD.2016.7435228</span>, <span class="seriesInfo">IEEE Standard 1609.4-2016</span>, <time datetime="2016-03">March 2016</time>, <span>&lt;<a href="http://ieeexplore.ieee.org/document/7435228">http://ieeexplore.ieee.org/document/7435228</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Wireless Access in Vehicular Environments (WAVE) -- Multi-Channel Operation"</span>, <span class="seriesInfo">DOI 10.1109/IEEESTD.2016.7435228</span>, <span class="seriesInfo">IEEE Standard 1609.4-2016</span>, <time datetime="2016-03" class="refDate">March 2016</time>, <span>&lt;<a href="http://ieeexplore.ieee.org/document/7435228">http://ieeexplore.ieee.org/document/7435228</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1851c2043,2044
+< <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Information Technology - Telecommunications and Information Exchange Between Systems - Local and Metropolitan Area Networks - Specific Requirements - Part 11: Wireless LAN Medium Access Control (MAC) and Physical Layer (PHY) Specifications"</span>, <span class="seriesInfo">DOI 10.1109/IEEESTD.2007.373646</span>, <span class="seriesInfo">IEEE Standard 802.11-2007</span>, <time datetime="2007-06">June 2007</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/4248378">https://ieeexplore.ieee.org/document/4248378</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Information Technology - Telecommunications and Information Exchange Between Systems - Local and Metropolitan Area Networks - Specific Requirements - Part 11: Wireless LAN Medium Access Control (MAC) and Physical Layer (PHY) Specifications"</span>, <span class="seriesInfo">DOI 10.1109/IEEESTD.2007.373646</span>, <span class="seriesInfo">IEEE Standard 802.11-2007</span>, <time datetime="2007-06" class="refDate">June 2007</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/4248378">https://ieeexplore.ieee.org/document/4248378</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1854c2047,2048
+< <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Information technology--Telecommunications and information exchange between systems Local and metropolitan area networks--Specific requirements Part 11: Wireless LAN Medium Access Control (MAC) and Physical Layer (PHY) Specifications"</span>, <span class="seriesInfo">DOI 10.1109/IEEESTD.2012.6178212</span>, <span class="seriesInfo">IEEE Standard 802.11-2012</span>, <time datetime="2012-03">March 2012</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/6419735">https://ieeexplore.ieee.org/document/6419735</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Information technology--Telecommunications and information exchange between systems Local and metropolitan area networks--Specific requirements Part 11: Wireless LAN Medium Access Control (MAC) and Physical Layer (PHY) Specifications"</span>, <span class="seriesInfo">DOI 10.1109/IEEESTD.2012.6178212</span>, <span class="seriesInfo">IEEE Standard 802.11-2012</span>, <time datetime="2012-03" class="refDate">March 2012</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/6419735">https://ieeexplore.ieee.org/document/6419735</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1857c2051,2052
+< <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Information technology - Telecommunications and information exchange between systems - Local and metropolitan area networks - Specific requirements, Part 11: Wireless LAN Medium Access Control (MAC) and Physical Layer (PHY) Specifications, Amendment 6: Wireless Access in Vehicular Environments"</span>, <span class="seriesInfo">DOI 10.1109/IEEESTD.2010.5514475</span>, <span class="seriesInfo">IEEE Standard 802.11p-2010</span>, <time datetime="2010-07">July 2010</time>, <span>&lt;<a href="https://standards.ieee.org/standard/802_11p-2010.html">https://standards.ieee.org/standard/802_11p-2010.html</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Information technology - Telecommunications and information exchange between systems - Local and metropolitan area networks - Specific requirements, Part 11: Wireless LAN Medium Access Control (MAC) and Physical Layer (PHY) Specifications, Amendment 6: Wireless Access in Vehicular Environments"</span>, <span class="seriesInfo">DOI 10.1109/IEEESTD.2010.5514475</span>, <span class="seriesInfo">IEEE Standard 802.11p-2010</span>, <time datetime="2010-07" class="refDate">July 2010</time>, <span>&lt;<a href="https://standards.ieee.org/standard/802_11p-2010.html">https://standards.ieee.org/standard/802_11p-2010.html</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1860c2055,2056
+< <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Ethernet"</span>, <span class="seriesInfo">DOI 10.1109/IEEESTD.2012.6419735</span>, <span class="seriesInfo">IEEE Standard 802.3-2012</span>, <time datetime="2012-12">December 2012</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/6419735">https://ieeexplore.ieee.org/document/6419735</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">IEEE</span>, <span class="refTitle">"IEEE Standard for Ethernet"</span>, <span class="seriesInfo">DOI 10.1109/IEEESTD.2012.6419735</span>, <span class="seriesInfo">IEEE Standard 802.3-2012</span>, <time datetime="2012-12" class="refDate">December 2012</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/6419735">https://ieeexplore.ieee.org/document/6419735</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1863c2059,2060
+< <span class="refAuthor">Perkins, C.</span><span class="refAuthor">, McBride, M.</span><span class="refAuthor">, Stanley, D.</span><span class="refAuthor">, Kumari, W.</span><span class="refAuthor">, and J. Zuniga</span>, <span class="refTitle">"Multicast Considerations over IEEE 802 Wireless Media"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-mboned-ieee802-mcast-problems-11</span>, <time datetime="2019-12-11">11 December 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-mboned-ieee802-mcast-problems-11">https://tools.ietf.org/html/draft-ietf-mboned-ieee802-mcast-problems-11</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Perkins, C.</span>, <span class="refAuthor">McBride, M.</span>, <span class="refAuthor">Stanley, D.</span>, <span class="refAuthor">Kumari, W.</span>, and <span class="refAuthor">J. Zuniga</span>, <span class="refTitle">"Multicast Considerations over IEEE 802 Wireless Media"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-mboned-ieee802-mcast-problems-11</span>, <time datetime="2019-12-11" class="refDate">11 December 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-mboned-ieee802-mcast-problems-11">https://tools.ietf.org/html/draft-ietf-mboned-ieee802-mcast-problems-11</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1866c2063,2064
+< <span class="refAuthor">Jeong, J.</span>, <span class="refTitle">"IP Wireless Access in Vehicular Environments (IPWAVE): Problem Statement and Use Cases"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ipwave-vehicular-networking-12</span>, <time datetime="2019-10-03">3 October 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-ipwave-vehicular-networking-12">https://tools.ietf.org/html/draft-ietf-ipwave-vehicular-networking-12</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jeong, J.</span>, <span class="refTitle">"IP Wireless Access in Vehicular Environments (IPWAVE): Problem Statement and Use Cases"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ipwave-vehicular-networking-12</span>, <time datetime="2019-10-03" class="refDate">3 October 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-ipwave-vehicular-networking-12">https://tools.ietf.org/html/draft-ietf-ipwave-vehicular-networking-12</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1869c2067,2068
+< <span class="refAuthor">Manner, J., Ed.</span><span class="refAuthor"> and M. Kojo, Ed.</span>, <span class="refTitle">"Mobility Related Terminology"</span>, <span class="seriesInfo">RFC 3753</span>, <span class="seriesInfo">DOI 10.17487/RFC3753</span>, <time datetime="2004-06">June 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3753">https://www.rfc-editor.org/info/rfc3753</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Manner, J., Ed.</span> and <span class="refAuthor">M. Kojo, Ed.</span>, <span class="refTitle">"Mobility Related Terminology"</span>, <span class="seriesInfo">RFC 3753</span>, <span class="seriesInfo">DOI 10.17487/RFC3753</span>, <time datetime="2004-06" class="refDate">June 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3753">https://www.rfc-editor.org/info/rfc3753</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1872c2071,2072
+< <span class="refAuthor">Devarapalli, V.</span><span class="refAuthor">, Wakikawa, R.</span><span class="refAuthor">, Petrescu, A.</span><span class="refAuthor">, and P. Thubert</span>, <span class="refTitle">"Network Mobility (NEMO) Basic Support Protocol"</span>, <span class="seriesInfo">RFC 3963</span>, <span class="seriesInfo">DOI 10.17487/RFC3963</span>, <time datetime="2005-01">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3963">https://www.rfc-editor.org/info/rfc3963</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Devarapalli, V.</span>, <span class="refAuthor">Wakikawa, R.</span>, <span class="refAuthor">Petrescu, A.</span>, and <span class="refAuthor">P. Thubert</span>, <span class="refTitle">"Network Mobility (NEMO) Basic Support Protocol"</span>, <span class="seriesInfo">RFC 3963</span>, <span class="seriesInfo">DOI 10.17487/RFC3963</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3963">https://www.rfc-editor.org/info/rfc3963</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1875c2075,2076
+< <span class="refAuthor">Arkko, J., Ed.</span><span class="refAuthor">, Kempf, J.</span><span class="refAuthor">, Zill, B.</span><span class="refAuthor">, and P. Nikander</span>, <span class="refTitle">"SEcure Neighbor Discovery (SEND)"</span>, <span class="seriesInfo">RFC 3971</span>, <span class="seriesInfo">DOI 10.17487/RFC3971</span>, <time datetime="2005-03">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3971">https://www.rfc-editor.org/info/rfc3971</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Arkko, J., Ed.</span>, <span class="refAuthor">Kempf, J.</span>, <span class="refAuthor">Zill, B.</span>, and <span class="refAuthor">P. Nikander</span>, <span class="refTitle">"SEcure Neighbor Discovery (SEND)"</span>, <span class="seriesInfo">RFC 3971</span>, <span class="seriesInfo">DOI 10.17487/RFC3971</span>, <time datetime="2005-03" class="refDate">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3971">https://www.rfc-editor.org/info/rfc3971</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1878c2079,2080
+< <span class="refAuthor">Aura, T.</span>, <span class="refTitle">"Cryptographically Generated Addresses (CGA)"</span>, <span class="seriesInfo">RFC 3972</span>, <span class="seriesInfo">DOI 10.17487/RFC3972</span>, <time datetime="2005-03">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3972">https://www.rfc-editor.org/info/rfc3972</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Aura, T.</span>, <span class="refTitle">"Cryptographically Generated Addresses (CGA)"</span>, <span class="seriesInfo">RFC 3972</span>, <span class="seriesInfo">DOI 10.17487/RFC3972</span>, <time datetime="2005-03" class="refDate">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3972">https://www.rfc-editor.org/info/rfc3972</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1881c2083,2084
+< <span class="refAuthor">Baccelli, E., Ed.</span><span class="refAuthor"> and M. Townsley, Ed.</span>, <span class="refTitle">"IP Addressing Model in Ad Hoc Networks"</span>, <span class="seriesInfo">RFC 5889</span>, <span class="seriesInfo">DOI 10.17487/RFC5889</span>, <time datetime="2010-09">September 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5889">https://www.rfc-editor.org/info/rfc5889</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Baccelli, E., Ed.</span> and <span class="refAuthor">M. Townsley, Ed.</span>, <span class="refTitle">"IP Addressing Model in Ad Hoc Networks"</span>, <span class="seriesInfo">RFC 5889</span>, <span class="seriesInfo">DOI 10.17487/RFC5889</span>, <time datetime="2010-09" class="refDate">September 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5889">https://www.rfc-editor.org/info/rfc5889</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1884c2087,2088
+< <span class="refAuthor">McPherson, D.</span><span class="refAuthor">, Baker, F.</span><span class="refAuthor">, and J. Halpern</span>, <span class="refTitle">"Source Address Validation Improvement (SAVI) Threat Scope"</span>, <span class="seriesInfo">RFC 6959</span>, <span class="seriesInfo">DOI 10.17487/RFC6959</span>, <time datetime="2013-05">May 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6959">https://www.rfc-editor.org/info/rfc6959</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">McPherson, D.</span>, <span class="refAuthor">Baker, F.</span>, and <span class="refAuthor">J. Halpern</span>, <span class="refTitle">"Source Address Validation Improvement (SAVI) Threat Scope"</span>, <span class="seriesInfo">RFC 6959</span>, <span class="seriesInfo">DOI 10.17487/RFC6959</span>, <time datetime="2013-05" class="refDate">May 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6959">https://www.rfc-editor.org/info/rfc6959</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1887c2091,2092
+< <span class="refAuthor">Cooper, A.</span><span class="refAuthor">, Gont, F.</span><span class="refAuthor">, and D. Thaler</span>, <span class="refTitle">"Security and Privacy Considerations for IPv6 Address Generation Mechanisms"</span>, <span class="seriesInfo">RFC 7721</span>, <span class="seriesInfo">DOI 10.17487/RFC7721</span>, <time datetime="2016-03">March 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7721">https://www.rfc-editor.org/info/rfc7721</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cooper, A.</span>, <span class="refAuthor">Gont, F.</span>, and <span class="refAuthor">D. Thaler</span>, <span class="refTitle">"Security and Privacy Considerations for IPv6 Address Generation Mechanisms"</span>, <span class="seriesInfo">RFC 7721</span>, <span class="seriesInfo">DOI 10.17487/RFC7721</span>, <time datetime="2016-03" class="refDate">March 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7721">https://www.rfc-editor.org/info/rfc7721</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1890c2095,2096
+< <span class="refAuthor">Thaler, D.</span>, <span class="refTitle">"Privacy Considerations for IPv6 Adaptation-Layer Mechanisms"</span>, <span class="seriesInfo">RFC 8065</span>, <span class="seriesInfo">DOI 10.17487/RFC8065</span>, <time datetime="2017-02">February 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8065">https://www.rfc-editor.org/info/rfc8065</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Thaler, D.</span>, <span class="refTitle">"Privacy Considerations for IPv6 Adaptation-Layer Mechanisms"</span>, <span class="seriesInfo">RFC 8065</span>, <span class="seriesInfo">DOI 10.17487/RFC8065</span>, <time datetime="2017-02" class="refDate">February 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8065">https://www.rfc-editor.org/info/rfc8065</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1893c2099,2100
+< <span class="refAuthor">Thubert, P., Ed.</span><span class="refAuthor">, Nordmark, E.</span><span class="refAuthor">, Chakrabarti, S.</span><span class="refAuthor">, and C. Perkins</span>, <span class="refTitle">"Registration Extensions for IPv6 over Low-Power Wireless Personal Area Network (6LoWPAN) Neighbor Discovery"</span>, <span class="seriesInfo">RFC 8505</span>, <span class="seriesInfo">DOI 10.17487/RFC8505</span>, <time datetime="2018-11">November 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8505">https://www.rfc-editor.org/info/rfc8505</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Thubert, P., Ed.</span>, <span class="refAuthor">Nordmark, E.</span>, <span class="refAuthor">Chakrabarti, S.</span>, and <span class="refAuthor">C. Perkins</span>, <span class="refTitle">"Registration Extensions for IPv6 over Low-Power Wireless Personal Area Network (6LoWPAN) Neighbor Discovery"</span>, <span class="seriesInfo">RFC 8505</span>, <span class="seriesInfo">DOI 10.17487/RFC8505</span>, <time datetime="2018-11" class="refDate">November 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8505">https://www.rfc-editor.org/info/rfc8505</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1896c2103,2104
+< <span class="refAuthor">National Institute of Standards and Technology</span>, <span class="refTitle">"Secure Hash Standard (SHS)"</span>, <span class="seriesInfo">DOI 10.6028/NIST.FIPS.180-4</span>, <span class="seriesInfo">FIPS 180-4</span>, <time datetime="2015-08">August 2015</time>, <span>&lt;<a href="https://csrc.nist.gov/publications/detail/fips/180/4/final">https://csrc.nist.gov/publications/detail/fips/180/4/final</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">National Institute of Standards and Technology</span>, <span class="refTitle">"Secure Hash Standard (SHS)"</span>, <span class="seriesInfo">DOI 10.6028/NIST.FIPS.180-4</span>, <span class="seriesInfo">FIPS 180-4</span>, <time datetime="2015-08" class="refDate">August 2015</time>, <span>&lt;<a href="https://csrc.nist.gov/publications/detail/fips/180/4/final">https://csrc.nist.gov/publications/detail/fips/180/4/final</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1901c2109
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+1903c2111
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-80211p" class="section-name selfRef">802.11p</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-80211p" class="section-name selfRef">802.11p</a>
+1905c2113
+< <p id="section-appendix.a-1">
+---
+> <p id="appendix-A-1">
+1907c2115
+<         "802.11p" networks is rolled in <span>[<a href="#IEEE-802.11-2016" class="xref">IEEE-802.11-2016</a>]</span>.  In that document, the term "802.11p" disappears.
+---
+>         "802.11p" networks is rolled in <span>[<a href="#IEEE-802.11-2016" class="cite xref">IEEE-802.11-2016</a>]</span>.  In that document, the term "802.11p" disappears.
+1910c2118
+<         <span>[<a href="#IEEE-802.11-2016" class="xref">IEEE-802.11-2016</a>]</span>.  Whenever OCBActivated is
+---
+>         <span>[<a href="#IEEE-802.11-2016" class="cite xref">IEEE-802.11-2016</a>]</span>.  Whenever OCBActivated is
+1915c2123
+<         to ff:ff:ff:ff:ff:ff.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+>         to ff:ff:ff:ff:ff:ff.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+1919c2127
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+1921c2129
+< <a href="#section-appendix.b" class="section-number selfRef">Appendix B. </a><a href="#name-aspects-introduced-by-ocb-m" class="section-name selfRef">Aspects Introduced by OCB Mode to 802.11</a>
+---
+> <a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-aspects-introduced-by-ocb-m" class="section-name selfRef">Aspects Introduced by OCB Mode to 802.11</a>
+1923c2131
+< <p id="section-appendix.b-1">
+---
+> <p id="appendix-B-1">
+1941,1942c2149,2150
+<         the world.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-2">
+---
+>         the world.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+> <p id="appendix-B-2">
+1944,1946c2152,2154
+<  properties:<a href="#section-appendix.b-2" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-appendix.b-3.1"> 
+---
+>  properties:<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="appendix-B-3.1"> 
+1948c2156
+<             of the BSSID is set to 1).<a href="#section-appendix.b-3.1" class="pilcrow">¶</a>
+---
+>             of the BSSID is set to 1).<a href="#appendix-B-3.1" class="pilcrow">¶</a>
+1950c2158
+< <li id="section-appendix.b-3.2"> No IEEE 802.11 beacon frames are transmitted.<a href="#section-appendix.b-3.2" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="appendix-B-3.2"> No IEEE 802.11 beacon frames are transmitted.<a href="#appendix-B-3.2" class="pilcrow">¶</a>
+1952c2160
+< <li id="section-appendix.b-3.3"> No authentication is required in order to be able to communicate.<a href="#section-appendix.b-3.3" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="appendix-B-3.3"> No authentication is required in order to be able to communicate.<a href="#appendix-B-3.3" class="pilcrow">¶</a>
+1954c2162
+< <li id="section-appendix.b-3.4"> No association is needed in order to be able to communicate.<a href="#section-appendix.b-3.4" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="appendix-B-3.4"> No association is needed in order to be able to communicate.<a href="#appendix-B-3.4" class="pilcrow">¶</a>
+1956c2164
+< <li id="section-appendix.b-3.5"> No encryption is provided in order to be able to communicate.<a href="#section-appendix.b-3.5" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="appendix-B-3.5"> No encryption is provided in order to be able to communicate.<a href="#appendix-B-3.5" class="pilcrow">¶</a>
+1958c2166
+< <li id="section-appendix.b-3.6"> Flag dot11OCBActivated is set to "true".<a href="#section-appendix.b-3.6" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="appendix-B-3.6"> Flag dot11OCBActivated is set to "true".<a href="#appendix-B-3.6" class="pilcrow">¶</a>
+1961c2169
+< <p id="section-appendix.b-4">
+---
+> <p id="appendix-B-4">
+1966,1968c2174,2176
+<  eventual conflict(s).<a href="#section-appendix.b-4" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-5">
+<         The message exchange diagram in <a href="#fig_mess-exch" class="xref">Figure 1</a>
+---
+>  eventual conflict(s).<a href="#appendix-B-4" class="pilcrow">¶</a></p>
+> <p id="appendix-B-5">
+>         The message exchange diagram in <a href="#fig_mess-exch" class="auto internal xref">Figure 1</a>
+1974c2182
+<         currently specified by the 802.11 standard are listed in <a href="#OCB-messages" class="xref">Appendix F</a>.<a href="#section-appendix.b-5" class="pilcrow">¶</a></p>
+---
+>         currently specified by the 802.11 standard are listed in <a href="#OCB-messages" class="auto internal xref">Appendix F</a>.<a href="#appendix-B-5" class="pilcrow">¶</a></p>
+1977c2185
+<         <div class="artwork art-text alignCenter" id="section-appendix.b-6.1">
+---
+>         <div class="alignCenter art-text artwork" id="appendix-B-6.1">
+2001,2002c2209,2210
+< <p id="section-appendix.b-7">
+<  The 802.11-OCB interface was specified in <span>[<a href="#IEEE-802.11p-2010" class="xref">IEEE-802.11p-2010</a>]</span>, Amendment 6: Wireless
+---
+> <p id="appendix-B-7">
+>  The 802.11-OCB interface was specified in <span>[<a href="#IEEE-802.11p-2010" class="cite xref">IEEE-802.11p-2010</a>]</span>, Amendment 6: Wireless
+2004,2007c2212,2215
+<  to <span>[<a href="#IEEE-802.11-2007" class="xref">IEEE-802.11-2007</a>]</span>.  Since then, this amendment
+<  has been integrated into <span>[<a href="#IEEE-802.11-2012" class="xref">IEEE-802.11-2012</a>]</span> and <span>[<a href="#IEEE-802.11-2016" class="xref">IEEE-802.11-2016</a>]</span>.<a href="#section-appendix.b-7" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-8">
+<  In <span>[<a href="#IEEE-802.11p-2010" class="xref">IEEE-802.11p-2010</a>]</span>, anything qualified specifically as
+---
+>  to <span>[<a href="#IEEE-802.11-2007" class="cite xref">IEEE-802.11-2007</a>]</span>.  Since then, this amendment
+>  has been integrated into <span>[<a href="#IEEE-802.11-2012" class="cite xref">IEEE-802.11-2012</a>]</span> and <span>[<a href="#IEEE-802.11-2016" class="cite xref">IEEE-802.11-2016</a>]</span>.<a href="#appendix-B-7" class="pilcrow">¶</a></p>
+> <p id="appendix-B-8">
+>  In <span>[<a href="#IEEE-802.11p-2010" class="cite xref">IEEE-802.11p-2010</a>]</span>, anything qualified specifically as
+2010,2011c2218,2219
+<  introduced to 802.11.<a href="#section-appendix.b-8" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-9">
+---
+>  introduced to 802.11.<a href="#appendix-B-8" class="pilcrow">¶</a></p>
+> <p id="appendix-B-9">
+2013c2221
+<         802.11, we refer to the earlier <span>[<a href="#IEEE-802.11p-2010" class="xref">IEEE-802.11p-2010</a>]</span>.  The amendment is concerned with
+---
+>         802.11, we refer to the earlier <span>[<a href="#IEEE-802.11p-2010" class="cite xref">IEEE-802.11p-2010</a>]</span>.  The amendment is concerned with
+2027,2028c2235,2236
+<         5.4 GHz and 5.9 GHz.<a href="#section-appendix.b-9" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-10">
+---
+>         5.4 GHz and 5.9 GHz.<a href="#appendix-B-9" class="pilcrow">¶</a></p>
+> <p id="appendix-B-10">
+2036,2037c2244,2245
+<         protocol.<a href="#section-appendix.b-10" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-11">
+---
+>         protocol.<a href="#appendix-B-10" class="pilcrow">¶</a></p>
+> <p id="appendix-B-11">
+2048,2049c2256,2257
+<         links.<a href="#section-appendix.b-11" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-12">
+---
+>         links.<a href="#appendix-B-11" class="pilcrow">¶</a></p>
+> <p id="appendix-B-12">
+2059,2061c2267,2269
+<         the operation of a wide range of protocols relying on IPv6.<a href="#section-appendix.b-12" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-appendix.b-13.1">
+---
+>         the operation of a wide range of protocols relying on IPv6.<a href="#appendix-B-12" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="appendix-B-13.1">
+2073,2074c2281,2282
+<             Mobile IPv6 protocol <span>[<a href="#RFC6275" class="xref">RFC6275</a>]</span> and the
+<             protocols for IP layer security <span>[<a href="#RFC4301" class="xref">RFC4301</a>]</span>
+---
+>             Mobile IPv6 protocol <span>[<a href="#RFC6275" class="cite xref">RFC6275</a>]</span> and the
+>             protocols for IP layer security <span>[<a href="#RFC4301" class="cite xref">RFC4301</a>]</span>
+2076c2284
+<             described in this document.<a href="#section-appendix.b-13.1" class="pilcrow">¶</a>
+---
+>             described in this document.<a href="#appendix-B-13.1" class="pilcrow">¶</a>
+2078c2286
+< <li id="section-appendix.b-13.2">
+---
+>         <li class="normal" id="appendix-B-13.2">
+2084c2292
+<             system.  This message is optional for implementation.<a href="#section-appendix.b-13.2" class="pilcrow">¶</a>
+---
+>             system.  This message is optional for implementation.<a href="#appendix-B-13.2" class="pilcrow">¶</a>
+2086c2294
+< <li id="section-appendix.b-13.3">
+---
+>         <li class="normal" id="appendix-B-13.3">
+2113c2321
+<             the EU) compared to Wireless LAN (802.11a/b/g/n).<a href="#section-appendix.b-13.3" class="pilcrow">¶</a>
+---
+>             the EU) compared to Wireless LAN (802.11a/b/g/n).<a href="#appendix-B-13.3" class="pilcrow">¶</a>
+2115c2323
+< <li id="section-appendix.b-13.4">
+---
+>         <li class="normal" id="appendix-B-13.4">
+2119c2327
+<             MAC layer.<a href="#section-appendix.b-13.4" class="pilcrow">¶</a>
+---
+>             MAC layer.<a href="#appendix-B-13.4" class="pilcrow">¶</a>
+2121c2329
+< <li id="section-appendix.b-13.5">
+---
+>         <li class="normal" id="appendix-B-13.5">
+2130,2132c2338,2340
+<             risks).  This is further described in <a href="#Security" class="xref">Section 5</a>.  A relevant function is described in
+<             <span>[<a href="#IEEE-1609.3" class="xref">IEEE-1609.3</a>]</span>
+<             and <span>[<a href="#IEEE-1609.4" class="xref">IEEE-1609.4</a>]</span>.<a href="#section-appendix.b-13.5" class="pilcrow">¶</a>
+---
+>             risks).  This is further described in <a href="#Security" class="auto internal xref">Section 5</a>.  A relevant function is described in
+>             <span>[<a href="#IEEE-1609.3" class="cite xref">IEEE-1609.3</a>]</span>
+>             and <span>[<a href="#IEEE-1609.4" class="cite xref">IEEE-1609.4</a>]</span>.<a href="#appendix-B-13.5" class="pilcrow">¶</a>
+2138c2346
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
+2140c2348
+< <a href="#section-appendix.c" class="section-number selfRef">Appendix C. </a><a href="#name-changes-needed-on-an-80211a" class="section-name selfRef">Changes Needed on an 802.11a Software Driver to Become an 802.11-OCB Driver</a>
+---
+> <a href="#appendix-C" class="section-number selfRef">Appendix C. </a><a href="#name-changes-needed-on-an-80211a" class="section-name selfRef">Changes Needed on an 802.11a Software Driver to Become an 802.11-OCB Driver</a>
+2142c2350
+< <p id="section-appendix.c-1">
+---
+> <p id="appendix-C-1">
+2146,2147c2354,2355
+<         802.11a ad hoc stack.<a href="#section-appendix.c-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.c-2">
+---
+>         802.11a ad hoc stack.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+> <p id="appendix-C-2">
+2149,2151c2357,2359
+<  follows:<a href="#section-appendix.c-2" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-appendix.c-3.1">
+---
+>  follows:<a href="#appendix-C-2" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="appendix-C-3.1">
+2155c2363
+<      5875 MHz to 5925 MHz in France.<a href="#section-appendix.c-3.1" class="pilcrow">¶</a>
+---
+>      5875 MHz to 5925 MHz in France.<a href="#appendix-C-3.1" class="pilcrow">¶</a>
+2157c2365
+< <li id="section-appendix.c-3.2">
+---
+>         <li class="normal" id="appendix-C-3.2">
+2159c2367
+<      using 10 MHz channel spacings.<a href="#section-appendix.c-3.2" class="pilcrow">¶</a>
+---
+>      using 10 MHz channel spacings.<a href="#appendix-C-3.2" class="pilcrow">¶</a>
+2161c2369
+< <li id="section-appendix.c-3.3">
+---
+>         <li class="normal" id="appendix-C-3.3">
+2164c2372
+<             (but experimental environments do not require compliance).<a href="#section-appendix.c-3.3" class="pilcrow">¶</a>
+---
+>             (but experimental environments do not require compliance).<a href="#appendix-C-3.3" class="pilcrow">¶</a>
+2166c2374
+< <li id="section-appendix.c-3.4">
+---
+>         <li class="normal" id="appendix-C-3.4">
+2169c2377
+<             33 dBm in Europe; other regional conditions apply.<a href="#section-appendix.c-3.4" class="pilcrow">¶</a>
+---
+>             33 dBm in Europe; other regional conditions apply.<a href="#appendix-C-3.4" class="pilcrow">¶</a>
+2172,2179c2380,2387
+< <p id="section-appendix.c-4">
+<         Changes needed on the network stack in OCB mode are as follows:<a href="#section-appendix.c-4" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-appendix.c-5.1">
+<           <p id="section-appendix.c-5.1.1">
+<             Physical layer:<a href="#section-appendix.c-5.1.1" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-appendix.c-5.1.2.1">
+---
+> <p id="appendix-C-4">
+>         Changes needed on the network stack in OCB mode are as follows:<a href="#appendix-C-4" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="appendix-C-5.1">
+>           <p id="appendix-C-5.1.1">
+>             Physical layer:<a href="#appendix-C-5.1.1" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="appendix-C-5.1.2.1">
+2182c2390
+<                 Access (OFDMA) encoding mode.<a href="#section-appendix.c-5.1.2.1" class="pilcrow">¶</a>
+---
+>                 Access (OFDMA) encoding mode.<a href="#appendix-C-5.1.2.1" class="pilcrow">¶</a>
+2184c2392
+< <li id="section-appendix.c-5.1.2.2">
+---
+>             <li class="normal" id="appendix-C-5.1.2.2">
+2186c2394
+<                 internal clock frequency is divided by two).<a href="#section-appendix.c-5.1.2.2" class="pilcrow">¶</a>
+---
+>                 internal clock frequency is divided by two).<a href="#appendix-C-5.1.2.2" class="pilcrow">¶</a>
+2188c2396
+< <li id="section-appendix.c-5.1.2.3">
+---
+>             <li class="normal" id="appendix-C-5.1.2.3">
+2195c2403
+<                 the location-specific regulatory rules.<a href="#section-appendix.c-5.1.2.3" class="pilcrow">¶</a>
+---
+>                 the location-specific regulatory rules.<a href="#appendix-C-5.1.2.3" class="pilcrow">¶</a>
+2199,2203c2407,2411
+< <li id="section-appendix.c-5.2">
+<           <p id="section-appendix.c-5.2.1">
+< MAC layer:<a href="#section-appendix.c-5.2.1" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-appendix.c-5.2.2.1">
+---
+>         <li class="normal" id="appendix-C-5.2">
+>           <p id="appendix-C-5.2.1">
+> MAC layer:<a href="#appendix-C-5.2.1" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="appendix-C-5.2.2.1">
+2207c2415
+<                 Advertisement (defined below).<a href="#section-appendix.c-5.2.2.1" class="pilcrow">¶</a>
+---
+>                 Advertisement (defined below).<a href="#appendix-C-5.2.2.1" class="pilcrow">¶</a>
+2209,2210c2417,2418
+< <li id="section-appendix.c-5.2.2.2">
+<                 No encryption key or method must be used.<a href="#section-appendix.c-5.2.2.2" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="appendix-C-5.2.2.2">
+>                 No encryption key or method must be used.<a href="#appendix-C-5.2.2.2" class="pilcrow">¶</a>
+2212c2420
+< <li id="section-appendix.c-5.2.2.3">
+---
+>             <li class="normal" id="appendix-C-5.2.2.3">
+2215c2423
+<                 (ff:ff:ff:ff:ff:ff).<a href="#section-appendix.c-5.2.2.3" class="pilcrow">¶</a>
+---
+>                 (ff:ff:ff:ff:ff:ff).<a href="#appendix-C-5.2.2.3" class="pilcrow">¶</a>
+2217c2425
+< <li id="section-appendix.c-5.2.2.4">
+---
+>             <li class="normal" id="appendix-C-5.2.2.4">
+2221c2429
+<                 called.<a href="#section-appendix.c-5.2.2.4" class="pilcrow">¶</a>
+---
+>                 called.<a href="#appendix-C-5.2.2.4" class="pilcrow">¶</a>
+2223,2224c2431,2432
+< <li id="section-appendix.c-5.2.2.5">
+<                 The beacon interval is always set to 0 (zero).<a href="#section-appendix.c-5.2.2.5" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="appendix-C-5.2.2.5">
+>                 The beacon interval is always set to 0 (zero).<a href="#appendix-C-5.2.2.5" class="pilcrow">¶</a>
+2226c2434
+< <li id="section-appendix.c-5.2.2.6">
+---
+>             <li class="normal" id="appendix-C-5.2.2.6">
+2231c2439
+<                 Advertisements.<a href="#section-appendix.c-5.2.2.6" class="pilcrow">¶</a>
+---
+>                 Advertisements.<a href="#appendix-C-5.2.2.6" class="pilcrow">¶</a>
+2239c2447
+< <section id="section-appendix.d">
+---
+> <section id="appendix-D">
+2241c2449
+< <a href="#section-appendix.d" class="section-number selfRef">Appendix D. </a><a href="#name-protocol-layering" class="section-name selfRef">Protocol Layering</a>
+---
+> <a href="#appendix-D" class="section-number selfRef">Appendix D. </a><a href="#name-protocol-layering" class="section-name selfRef">Protocol Layering</a>
+2243c2451
+< <p id="section-appendix.d-1">
+---
+> <p id="appendix-D-1">
+2246c2454
+<         illustrated in <a href="#fig_epd" class="xref">Figure 2</a>.  The IP layer
+---
+>         illustrated in <a href="#fig_epd" class="auto internal xref">Figure 2</a>.  The IP layer
+2248,2249c2456,2457
+<         (EPD). This discrimination layer is described in <span>[<a href="#IEEE-802.3-2012" class="xref">IEEE-802.3-2012</a>]</span>. The interface between IPv6 and EPD is the LLC_SAP
+<         (Link Layer Control Service Access Point).<a href="#section-appendix.d-1" class="pilcrow">¶</a></p>
+---
+>         (EPD). This discrimination layer is described in <span>[<a href="#IEEE-802.3-2012" class="cite xref">IEEE-802.3-2012</a>]</span>. The interface between IPv6 and EPD is the LLC_SAP
+>         (Link Layer Control Service Access Point).<a href="#appendix-D-1" class="pilcrow">¶</a></p>
+2252c2460
+<         <div class="artwork art-text alignCenter" id="section-appendix.d-2.1">
+---
+>         <div class="alignCenter art-text artwork" id="appendix-D-2.1">
+2276c2484
+< <section id="section-appendix.e">
+---
+> <section id="appendix-E">
+2278c2486
+< <a href="#section-appendix.e" class="section-number selfRef">Appendix E. </a><a href="#name-design-considerations" class="section-name selfRef">Design Considerations</a>
+---
+> <a href="#appendix-E" class="section-number selfRef">Appendix E. </a><a href="#name-design-considerations" class="section-name selfRef">Design Considerations</a>
+2280c2488
+< <p id="section-appendix.e-1">
+---
+> <p id="appendix-E-1">
+2290c2498
+<         of the 802.11-OCB link.<a href="#section-appendix.e-1" class="pilcrow">¶</a></p>
+---
+>         of the 802.11-OCB link.<a href="#appendix-E-1" class="pilcrow">¶</a></p>
+2294c2502
+< <section id="section-appendix.f">
+---
+> <section id="appendix-F">
+2296c2504
+< <a href="#section-appendix.f" class="section-number selfRef">Appendix F. </a><a href="#name-ieee-80211-messages-transmi" class="section-name selfRef">IEEE 802.11 Messages Transmitted in OCB Mode</a>
+---
+> <a href="#appendix-F" class="section-number selfRef">Appendix F. </a><a href="#name-ieee-80211-messages-transmi" class="section-name selfRef">IEEE 802.11 Messages Transmitted in OCB Mode</a>
+2298c2506
+< <p id="section-appendix.f-1">
+---
+> <p id="appendix-F-1">
+2301,2303c2509,2511
+<         i.e., when dot11OCBActivated is true in a STA:<a href="#section-appendix.f-1" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-appendix.f-2.1">
+---
+>         i.e., when dot11OCBActivated is true in a STA:<a href="#appendix-F-1" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="appendix-F-2.1">
+2306c2514
+<             Advertisement.<a href="#section-appendix.f-2.1" class="pilcrow">¶</a>
+---
+>             Advertisement.<a href="#appendix-F-2.1" class="pilcrow">¶</a>
+2308c2516
+< <li id="section-appendix.f-2.2">
+---
+>         <li class="normal" id="appendix-F-2.2">
+2310c2518
+<             PS-Poll, CF-End, and CF-End plus CFAck.<a href="#section-appendix.f-2.2" class="pilcrow">¶</a>
+---
+>             PS-Poll, CF-End, and CF-End plus CFAck.<a href="#appendix-F-2.2" class="pilcrow">¶</a>
+2312c2520
+< <li id="section-appendix.f-2.3">
+---
+>         <li class="normal" id="appendix-F-2.3">
+2314c2522
+<             Data.<a href="#section-appendix.f-2.3" class="pilcrow">¶</a>
+---
+>             Data.<a href="#appendix-F-2.3" class="pilcrow">¶</a>
+2320c2528
+< <section id="section-appendix.g">
+---
+> <section id="appendix-G">
+2322c2530
+< <a href="#section-appendix.g" class="section-number selfRef">Appendix G. </a><a href="#name-examples-of-packet-formats" class="section-name selfRef">Examples of Packet Formats</a>
+---
+> <a href="#appendix-G" class="section-number selfRef">Appendix G. </a><a href="#name-examples-of-packet-formats" class="section-name selfRef">Examples of Packet Formats</a>
+2324c2532
+< <p id="section-appendix.g-1">
+---
+> <p id="appendix-G-1">
+2326,2327c2534,2535
+<  over an IEEE 802.11-OCB link.<a href="#section-appendix.g-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.g-2">
+---
+>  over an IEEE 802.11-OCB link.<a href="#appendix-G-1" class="pilcrow">¶</a></p>
+> <p id="appendix-G-2">
+2330,2331c2538,2539
+<         transmitted like any other 802.11 and Ethernet packets.<a href="#section-appendix.g-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.g-3">
+---
+>         transmitted like any other 802.11 and Ethernet packets.<a href="#appendix-G-2" class="pilcrow">¶</a></p>
+> <p id="appendix-G-3">
+2333c2541
+<         802.11-OCB link.  In the topology depicted in <a href="#topo" class="xref">Figure 3</a>, the packet is an IPv6 Router Advertisement.
+---
+>         802.11-OCB link.  In the topology depicted in <a href="#topo" class="auto internal xref">Figure 3</a>, the packet is an IPv6 Router Advertisement.
+2338,2339c2546,2547
+<         mode.  The topology used during the capture is depicted below.<a href="#section-appendix.g-3" class="pilcrow">¶</a></p>
+< <p id="section-appendix.g-4">
+---
+>         mode.  The topology used during the capture is depicted below.<a href="#appendix-G-3" class="pilcrow">¶</a></p>
+> <p id="appendix-G-4">
+2347c2555
+<  product).<a href="#section-appendix.g-4" class="pilcrow">¶</a></p>
+---
+>  product).<a href="#appendix-G-4" class="pilcrow">¶</a></p>
+2350c2558
+<         <div class="artwork art-text alignCenter" id="section-appendix.g-5.1">
+---
+>         <div class="alignCenter art-text artwork" id="appendix-G-5.1">
+2362c2570
+< <p id="section-appendix.g-6">
+---
+> <p id="appendix-G-6">
+2367,2368c2575,2576
+<         802.11-OCB is outside the context of a BSSID.<a href="#section-appendix.g-6" class="pilcrow">¶</a></p>
+< <p id="section-appendix.g-7">
+---
+>         802.11-OCB is outside the context of a BSSID.<a href="#appendix-G-6" class="pilcrow">¶</a></p>
+> <p id="appendix-G-7">
+2371,2376c2579,2584
+<         are exactly the same.<a href="#section-appendix.g-7" class="pilcrow">¶</a></p>
+< <section id="section-g.1">
+<         <h2 id="name-capture-in-monitor-mode">
+< <a href="#section-g.1" class="section-number selfRef">G.1. </a><a href="#name-capture-in-monitor-mode" class="section-name selfRef">Capture in Monitor Mode</a>
+<         </h2>
+< <p id="section-g.1-1">
+---
+>         are exactly the same.<a href="#appendix-G-7" class="pilcrow">¶</a></p>
+> <section id="appendix-G.1">
+>         <h3 id="name-capture-in-monitor-mode">
+> <a href="#appendix-G.1" class="section-number selfRef">G.1. </a><a href="#name-capture-in-monitor-mode" class="section-name selfRef">Capture in Monitor Mode</a>
+>         </h3>
+> <p id="appendix-G.1-1">
+2387,2388c2595,2596
+<           power levels, data rate, or the ratio of signal to noise).<a href="#section-g.1-1" class="pilcrow">¶</a></p>
+< <p id="section-g.1-2">
+---
+>           power levels, data rate, or the ratio of signal to noise).<a href="#appendix-G.1-1" class="pilcrow">¶</a></p>
+> <p id="appendix-G.1-2">
+2391c2599
+<           ICMPv6 header.<a href="#section-g.1-2" class="pilcrow">¶</a></p>
+---
+>           ICMPv6 header.<a href="#appendix-G.1-2" class="pilcrow">¶</a></p>
+2394c2602
+<           <div class="artwork art-text alignCenter" id="section-g.1-3.1">
+---
+>           <div class="alignCenter art-text artwork" id="appendix-G.1-3.1">
+2411c2619
+<           <div class="artwork art-text alignCenter" id="section-g.1-4.1">
+---
+>           <div class="alignCenter art-text artwork" id="appendix-G.1-4.1">
+2434c2642
+<           <div class="artwork art-text alignCenter" id="section-g.1-5.1">
+---
+>           <div class="alignCenter art-text artwork" id="appendix-G.1-5.1">
+2449c2657
+<           <div class="artwork art-text alignCenter" id="section-g.1-6.1">
+---
+>           <div class="alignCenter art-text artwork" id="appendix-G.1-6.1">
+2480c2688
+<           <div class="artwork art-text alignCenter" id="section-g.1-7.1">
+---
+>           <div class="alignCenter art-text artwork" id="appendix-G.1-7.1">
+2498c2706
+< <p id="section-g.1-8">
+---
+> <p id="appendix-G.1-8">
+2501,2502c2709,2710
+<           received.<a href="#section-g.1-8" class="pilcrow">¶</a></p>
+< <p id="section-g.1-9">
+---
+>           received.<a href="#appendix-G.1-8" class="pilcrow">¶</a></p>
+> <p id="appendix-G.1-9">
+2509,2510c2717,2718
+<           together are set to 0x90C6.<a href="#section-g.1-9" class="pilcrow">¶</a></p>
+< <p id="section-g.1-10">
+---
+>           together are set to 0x90C6.<a href="#appendix-G.1-9" class="pilcrow">¶</a></p>
+> <p id="appendix-G.1-10">
+2515,2516c2723,2724
+<           as "IPv6".<a href="#section-g.1-10" class="pilcrow">¶</a></p>
+< <p id="section-g.1-11">
+---
+>           as "IPv6".<a href="#appendix-G.1-10" class="pilcrow">¶</a></p>
+> <p id="appendix-G.1-11">
+2521,2522c2729,2730
+<           as described in <span>[<a href="#RFC4861" class="xref">RFC4861</a>]</span>.<a href="#section-g.1-11" class="pilcrow">¶</a></p>
+< <p id="section-g.1-12">
+---
+>           as described in <span>[<a href="#RFC4861" class="cite xref">RFC4861</a>]</span>.<a href="#appendix-G.1-11" class="pilcrow">¶</a></p>
+> <p id="appendix-G.1-12">
+2525,2526c2733,2734
+<           address is set to ff02::1.<a href="#section-g.1-12" class="pilcrow">¶</a></p>
+< <p id="section-g.1-13">
+---
+>           address is set to ff02::1.<a href="#appendix-G.1-12" class="pilcrow">¶</a></p>
+> <p id="appendix-G.1-13">
+2538c2746
+<           on the communication channel.<a href="#section-g.1-13" class="pilcrow">¶</a></p>
+---
+>           on the communication channel.<a href="#appendix-G.1-13" class="pilcrow">¶</a></p>
+2540,2544c2748,2752
+< <section id="section-g.2">
+<         <h2 id="name-capture-in-normal-mode">
+< <a href="#section-g.2" class="section-number selfRef">G.2. </a><a href="#name-capture-in-normal-mode" class="section-name selfRef">Capture in Normal Mode</a>
+<         </h2>
+< <p id="section-g.2-1">
+---
+> <section id="appendix-G.2">
+>         <h3 id="name-capture-in-normal-mode">
+> <a href="#appendix-G.2" class="section-number selfRef">G.2. </a><a href="#name-capture-in-normal-mode" class="section-name selfRef">Capture in Normal Mode</a>
+>         </h3>
+> <p id="appendix-G.2-1">
+2547c2755
+<    depicted below.<a href="#section-g.2-1" class="pilcrow">¶</a></p>
+---
+>    depicted below.<a href="#appendix-G.2-1" class="pilcrow">¶</a></p>
+2550c2758
+<           <div class="artwork art-text alignCenter" id="section-g.2-2.1">
+---
+>           <div class="alignCenter art-text artwork" id="appendix-G.2-2.1">
+2569c2777
+<           <div class="artwork art-text alignCenter" id="section-g.2-3.1">
+---
+>           <div class="alignCenter art-text artwork" id="appendix-G.2-3.1">
+2600c2808
+<           <div class="artwork art-text alignCenter" id="section-g.2-4.1">
+---
+>           <div class="alignCenter art-text artwork" id="appendix-G.2-4.1">
+2618c2826
+< <p id="section-g.2-5">
+---
+> <p id="appendix-G.2-5">
+2622,2623c2830,2831
+<           present.<a href="#section-g.2-5" class="pilcrow">¶</a></p>
+< <p id="section-g.2-6">
+---
+>           present.<a href="#appendix-G.2-5" class="pilcrow">¶</a></p>
+> <p id="appendix-G.2-6">
+2627,2628c2835,2836
+<           the monitor mode capture.<a href="#section-g.2-6" class="pilcrow">¶</a></p>
+< <p id="section-g.2-7">
+---
+>           the monitor mode capture.<a href="#appendix-G.2-6" class="pilcrow">¶</a></p>
+> <p id="appendix-G.2-7">
+2632,2633c2840,2841
+<           in the monitor mode capture.<a href="#section-g.2-7" class="pilcrow">¶</a></p>
+< <p id="section-g.2-8">
+---
+>           in the monitor mode capture.<a href="#appendix-G.2-7" class="pilcrow">¶</a></p>
+> <p id="appendix-G.2-8">
+2636,2637c2844,2845
+<           mode on a pure Ethernet cable interface.<a href="#section-g.2-8" class="pilcrow">¶</a></p>
+< <p id="section-g.2-9">
+---
+>           mode on a pure Ethernet cable interface.<a href="#appendix-G.2-8" class="pilcrow">¶</a></p>
+> <p id="appendix-G.2-9">
+2646c2854
+<           use of the unique Type 0x86DD.<a href="#section-g.2-9" class="pilcrow">¶</a></p>
+---
+>           use of the unique Type 0x86DD.<a href="#appendix-G.2-9" class="pilcrow">¶</a></p>
+2651c2859
+< <section id="section-appendix.h">
+---
+> <section id="appendix-H">
+2653c2861
+< <a href="#section-appendix.h" class="section-number selfRef">Appendix H. </a><a href="#name-extra-terminology" class="section-name selfRef">Extra Terminology</a>
+---
+> <a href="#appendix-H" class="section-number selfRef">Appendix H. </a><a href="#name-extra-terminology" class="section-name selfRef">Extra Terminology</a>
+2655c2863
+< <p id="section-appendix.h-1">
+---
+> <p id="appendix-H-1">
+2657,2660c2865,2868
+<  used to define the main terms in the terminology section (<a href="#terminology" class="xref">Section 2</a>).<a href="#section-appendix.h-1" class="pilcrow">¶</a></p>
+< <dl class="dlNewline" id="section-appendix.h-2">
+<         <dt id="section-appendix.h-2.1">DSRC (Dedicated Short Range Communication):</dt>
+< <dd id="section-appendix.h-2.2">The US Federal Communications Commission
+---
+>  used to define the main terms in the terminology section (<a href="#terminology" class="auto internal xref">Section 2</a>).<a href="#appendix-H-1" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlNewline" id="appendix-H-2">
+>         <dt id="appendix-H-2.1">DSRC (Dedicated Short Range Communication):</dt>
+>         <dd style="margin-left: 1.5em" id="appendix-H-2.2">The US Federal Communications Commission
+2662c2870
+<  the Code of Federal Regulations (CFR) 47, Parts 90 <span>[<a href="#CFR-90" class="xref">CFR-90</a>]</span> and 95 <span>[<a href="#CFR-95" class="xref">CFR-95</a>]</span>. 
+---
+>  the Code of Federal Regulations (CFR) 47, Parts 90 <span>[<a href="#CFR-90" class="cite xref">CFR-90</a>]</span> and 95 <span>[<a href="#CFR-95" class="cite xref">CFR-95</a>]</span>. 
+2665c2873
+<  Code was dated December 6, 2019.<a href="#section-appendix.h-2.2" class="pilcrow">¶</a>
+---
+>  Code was dated December 6, 2019.<a href="#appendix-H-2.2" class="pilcrow">¶</a>
+2667,2668c2875,2877
+< <dt id="section-appendix.h-2.3">DSRCS (Dedicated Short-Range Communications Services):</dt>
+< <dd id="section-appendix.h-2.4">
+---
+>         <dd class="break"></dd>
+> <dt id="appendix-H-2.3">DSRCS (Dedicated Short-Range Communications Services):</dt>
+>         <dd style="margin-left: 1.5em" id="appendix-H-2.4">
+2674c2883
+<  instructional messages related to the units involved. <span>[<a href="#CFR-90.7" class="xref">CFR-90.7</a>]</span><a href="#section-appendix.h-2.4" class="pilcrow">¶</a>
+---
+>  instructional messages related to the units involved. <span>[<a href="#CFR-90.7" class="cite xref">CFR-90.7</a>]</span><a href="#appendix-H-2.4" class="pilcrow">¶</a>
+2676,2677c2885,2887
+< <dt id="section-appendix.h-2.5">OBU (On-Board Unit):</dt>
+< <dd id="section-appendix.h-2.6">An
+---
+>         <dd class="break"></dd>
+> <dt id="appendix-H-2.5">OBU (On-Board Unit):</dt>
+>         <dd style="margin-left: 1.5em" id="appendix-H-2.6">An
+2685c2895
+<  licensed by rule under part 95 of <span>[<a href="#CFR-95" class="xref">CFR-95</a>]</span> and
+---
+>  licensed by rule under part 95 of <span>[<a href="#CFR-95" class="cite xref">CFR-95</a>]</span> and
+2687c2897
+<  Portable OBUs are also licensed by rule under part 95 of <span>[<a href="#CFR-95" class="xref">CFR-95</a>]</span>.  OBU operations in the Unlicensed National
+---
+>  Portable OBUs are also licensed by rule under part 95 of <span>[<a href="#CFR-95" class="cite xref">CFR-95</a>]</span>.  OBU operations in the Unlicensed National
+2689c2899
+<  those bands. <span>[<a href="#CFR-90.7" class="xref">CFR-90.7</a>]</span><a href="#section-appendix.h-2.6" class="pilcrow">¶</a>
+---
+>  those bands. <span>[<a href="#CFR-90.7" class="cite xref">CFR-90.7</a>]</span><a href="#appendix-H-2.6" class="pilcrow">¶</a>
+2691,2692c2901,2903
+< <dt id="section-appendix.h-2.7">RSU (Roadside Unit):</dt>
+< <dd id="section-appendix.h-2.8">A
+---
+>         <dd class="break"></dd>
+> <dt id="appendix-H-2.7">RSU (Roadside Unit):</dt>
+>         <dd style="margin-left: 1.5em" id="appendix-H-2.8">A
+2704c2915
+<  required. <span>[<a href="#CFR-90.7" class="xref">CFR-90.7</a>]</span><a href="#section-appendix.h-2.8" class="pilcrow">¶</a>
+---
+>  required. <span>[<a href="#CFR-90.7" class="cite xref">CFR-90.7</a>]</span><a href="#appendix-H-2.8" class="pilcrow">¶</a>
+2705a2917
+>       <dd class="break"></dd>
+2710c2922
+< <section id="section-appendix.i">
+---
+> <section id="appendix-I">
+2712c2924
+< <a href="#section-appendix.i" class="section-number selfRef">Appendix I. </a><a href="#name-neighbor-discovery-nd-poten" class="section-name selfRef">Neighbor Discovery (ND) Potential Issues in Wireless Links</a>
+---
+> <a href="#appendix-I" class="section-number selfRef">Appendix I. </a><a href="#name-neighbor-discovery-nd-poten" class="section-name selfRef">Neighbor Discovery (ND) Potential Issues in Wireless Links</a>
+2714,2715c2926,2927
+< <p id="section-appendix.i-1">
+<  IPv6 Neighbor Discovery (IPv6 ND) <span>[<a href="#RFC4861" class="xref">RFC4861</a>]</span> <span>[<a href="#RFC4862" class="xref">RFC4862</a>]</span> was
+---
+> <p id="appendix-I-1">
+>  IPv6 Neighbor Discovery (IPv6 ND) <span>[<a href="#RFC4861" class="cite xref">RFC4861</a>]</span> <span>[<a href="#RFC4862" class="cite xref">RFC4862</a>]</span> was
+2718c2930
+<  for multicast from the lower layer. <span><a href="https://www.rfc-editor.org/rfc/rfc4861#section-3.2" class="relref">Section 3.2</a> of [<a href="#RFC4861" class="xref">RFC4861</a>]</span> indicates that the operation on shared media and on
+---
+>  for multicast from the lower layer. <span><a href="https://rfc-editor.org/rfc/rfc4861#section-3.2" class="relref">Section 3.2</a> of [<a href="#RFC4861" class="cite xref">RFC4861</a>]</span> indicates that the operation on shared media and on
+2725,2726c2937,2938
+<  any set of peers.<a href="#section-appendix.i-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.i-2">
+---
+>  any set of peers.<a href="#appendix-I-1" class="pilcrow">¶</a></p>
+> <p id="appendix-I-2">
+2728c2940
+<  pillar of IPv6 and is the basis for unicast IP communication. <span>[<a href="#RFC4861" class="xref">RFC4861</a>]</span> details the DAD method to prevent an address from
+---
+>  pillar of IPv6 and is the basis for unicast IP communication. <span>[<a href="#RFC4861" class="cite xref">RFC4861</a>]</span> details the DAD method to prevent an address from
+2736,2737c2948,2949
+<  within the scope for the duration of the address ownership.<a href="#section-appendix.i-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.i-3">
+---
+>  within the scope for the duration of the address ownership.<a href="#appendix-I-2" class="pilcrow">¶</a></p>
+> <p id="appendix-I-3">
+2744c2956
+<  as specified by <span>[<a href="#RFC4861" class="xref">RFC4861</a>]</span> cannot be
+---
+>  as specified by <span>[<a href="#RFC4861" class="cite xref">RFC4861</a>]</span> cannot be
+2747,2748c2959,2960
+<  detrimental to unicast traffic (see <span>[<a href="#I-D.ietf-mboned-ieee802-mcast-problems" class="xref">IEEE802-MCAST</a>]</span>).<a href="#section-appendix.i-3" class="pilcrow">¶</a></p>
+< <p id="section-appendix.i-4">
+---
+>  detrimental to unicast traffic (see <span>[<a href="#I-D.ietf-mboned-ieee802-mcast-problems" class="cite xref">IEEE802-MCAST</a>]</span>).<a href="#appendix-I-3" class="pilcrow">¶</a></p>
+> <p id="appendix-I-4">
+2756,2758c2968,2970
+<  address has this property but may yield privacy issues.<a href="#section-appendix.i-4" class="pilcrow">¶</a></p>
+< <p id="section-appendix.i-5"><span>[<a href="#RFC8505" class="xref">RFC8505</a>]</span> provides a more recent approach to IPv6 ND, in
+<  particular DAD. <span>[<a href="#RFC8505" class="xref">RFC8505</a>]</span> is designed to fit wireless and
+---
+>  address has this property but may yield privacy issues.<a href="#appendix-I-4" class="pilcrow">¶</a></p>
+> <p id="appendix-I-5"><span>[<a href="#RFC8505" class="cite xref">RFC8505</a>]</span> provides a more recent approach to IPv6 ND, in
+>  particular DAD. <span>[<a href="#RFC8505" class="cite xref">RFC8505</a>]</span> is designed to fit wireless and
+2760c2972
+<  continuous access to the medium may not be guaranteed. <span>[<a href="#RFC8505" class="xref">RFC8505</a>], <a href="https://www.rfc-editor.org/rfc/rfc8505#section-5.6" class="relref">Section 5.6</a></span> ("Link-Local Addresses and Registration")
+---
+>  continuous access to the medium may not be guaranteed. <span>[<a href="#RFC8505" class="cite xref">RFC8505</a>], <a href="https://rfc-editor.org/rfc/rfc8505#section-5.6" class="relref">Section 5.6</a></span> ("Link-Local Addresses and Registration")
+2764,2765c2976,2977
+<  and resolve the link-layer address using a unicast exchange.<a href="#section-appendix.i-5" class="pilcrow">¶</a></p>
+< <p id="section-appendix.i-6"><span>[<a href="#RFC8505" class="xref">RFC8505</a>]</span> also enables a router (acting as a 6LR) to own a
+---
+>  and resolve the link-layer address using a unicast exchange.<a href="#appendix-I-5" class="pilcrow">¶</a></p>
+> <p id="appendix-I-6"><span>[<a href="#RFC8505" class="cite xref">RFC8505</a>]</span> also enables a router (acting as a 6LR) to own a
+2774c2986
+<  default router preference <span>[<a href="#RFC4191" class="xref">RFC4191</a>]</span>, whereas a car that does
+---
+>  default router preference <span>[<a href="#RFC4191" class="cite xref">RFC4191</a>]</span>, whereas a car that does
+2777,2781c2989,2993
+<  Layer 3. This is why <span>[<a href="#RFC8505" class="xref">RFC8505</a>]</span> is well suited for wireless in
+<  general.<a href="#section-appendix.i-6" class="pilcrow">¶</a></p>
+< <p id="section-appendix.i-7">
+<  Support of <span>[<a href="#RFC8505" class="xref">RFC8505</a>]</span> may be implemented on OCB. OCB nodes
+<  that support <span>[<a href="#RFC8505" class="xref">RFC8505</a>]</span> <span class="bcp14">SHOULD</span> support the 6LN operation in order
+---
+>  Layer 3. This is why <span>[<a href="#RFC8505" class="cite xref">RFC8505</a>]</span> is well suited for wireless in
+>  general.<a href="#appendix-I-6" class="pilcrow">¶</a></p>
+> <p id="appendix-I-7">
+>  Support of <span>[<a href="#RFC8505" class="cite xref">RFC8505</a>]</span> may be implemented on OCB. OCB nodes
+>  that support <span>[<a href="#RFC8505" class="cite xref">RFC8505</a>]</span> <span class="bcp14">SHOULD</span> support the 6LN operation in order
+2784,2785c2996,2997
+<  that can be used by hosts that are compliant with <span>[<a href="#RFC8505" class="xref">RFC8505</a>]</span> for address
+<  autoconfiguration and registration.<a href="#section-appendix.i-7" class="pilcrow">¶</a></p>
+---
+>  that can be used by hosts that are compliant with <span>[<a href="#RFC8505" class="cite xref">RFC8505</a>]</span> for address
+>  autoconfiguration and registration.<a href="#appendix-I-7" class="pilcrow">¶</a></p>
+2789c3001
+< <section id="section-appendix.j">
+---
+> <section id="appendix-J">
+2793c3005
+< <p id="section-appendix.j-1">
+---
+> <p id="appendix-J-1">
+2796,2797c3008,3009
+<  this document.<a href="#section-appendix.j-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.j-2">
+---
+>  this document.<a href="#appendix-J-1" class="pilcrow">¶</a></p>
+> <p id="appendix-J-2">
+2800,2801c3012,3013
+<         proofreading, and suggesting modifications for this document.<a href="#section-appendix.j-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.j-3">
+---
+>         proofreading, and suggesting modifications for this document.<a href="#appendix-J-2" class="pilcrow">¶</a></p>
+> <p id="appendix-J-3">
+2804,2805c3016,3017
+<         proofreading and suggesting modifications for this document.<a href="#section-appendix.j-3" class="pilcrow">¶</a></p>
+< <p id="section-appendix.j-4">
+---
+>         proofreading and suggesting modifications for this document.<a href="#appendix-J-3" class="pilcrow">¶</a></p>
+> <p id="appendix-J-4">
+2808,2809c3020,3021
+<         reviewing the suggesting modifications of this document.<a href="#section-appendix.j-4" class="pilcrow">¶</a></p>
+< <p id="section-appendix.j-5">  
+---
+>         reviewing the suggesting modifications of this document.<a href="#appendix-J-4" class="pilcrow">¶</a></p>
+> <p id="appendix-J-5">  
+2818,2821c3030,3033
+<         helped to improve the document.<a href="#section-appendix.j-5" class="pilcrow">¶</a></p>
+< <p id="section-appendix.j-6"><span class="contact-name">Pierre Pfister</span>, <span class="contact-name">Rostislav Lisovy</span>, and others wrote 802.11-OCB
+<         drivers for Linux.<a href="#section-appendix.j-6" class="pilcrow">¶</a></p>
+< <p id="section-appendix.j-7">
+---
+>         helped to improve the document.<a href="#appendix-J-5" class="pilcrow">¶</a></p>
+> <p id="appendix-J-6"><span class="contact-name">Pierre Pfister</span>, <span class="contact-name">Rostislav Lisovy</span>, and others wrote 802.11-OCB
+>         drivers for Linux.<a href="#appendix-J-6" class="pilcrow">¶</a></p>
+> <p id="appendix-J-7">
+2825,2826c3037,3038
+<         groups.<a href="#section-appendix.j-7" class="pilcrow">¶</a></p>
+< <p id="section-appendix.j-8">
+---
+>         groups.<a href="#appendix-J-7" class="pilcrow">¶</a></p>
+> <p id="appendix-J-8">
+2829,2834c3041,3046
+<         meetings held at IETF in 2016.<a href="#section-appendix.j-8" class="pilcrow">¶</a></p>
+< <p id="section-appendix.j-9">
+<  The human rights protocol considerations review was done by <span class="contact-name">Amelia Andersdotter</span>.<a href="#section-appendix.j-9" class="pilcrow">¶</a></p>
+< <p id="section-appendix.j-10">The work of <span class="contact-name">Jong-Hyouk Lee</span> was supported by the National Research Foundation
+< of Korea (NRF) grant funded by the Korea government (MSIT) (NRF-2018R1A4A1025632).<a href="#section-appendix.j-10" class="pilcrow">¶</a></p>
+< <p id="section-appendix.j-11">The work of <span class="contact-name">Jérôme Härri</span> was supported by EURECOM industrial members,
+---
+>         meetings held at IETF in 2016.<a href="#appendix-J-8" class="pilcrow">¶</a></p>
+> <p id="appendix-J-9">
+>  The human rights protocol considerations review was done by <span class="contact-name">Amelia Andersdotter</span>.<a href="#appendix-J-9" class="pilcrow">¶</a></p>
+> <p id="appendix-J-10">The work of <span class="contact-name">Jong-Hyouk Lee</span> was supported by the National Research Foundation
+> of Korea (NRF) grant funded by the Korea government (MSIT) (NRF-2018R1A4A1025632).<a href="#appendix-J-10" class="pilcrow">¶</a></p>
+> <p id="appendix-J-11">The work of <span class="contact-name">Jérôme Härri</span> was supported by EURECOM industrial members,
+2837c3049
+< official policy or position of EURECOM industrial members.<a href="#section-appendix.j-11" class="pilcrow">¶</a></p>
+---
+> official policy or position of EURECOM industrial members.<a href="#appendix-J-11" class="pilcrow">¶</a></p>
+2841c3053
+< <section id="section-appendix.k">
+---
+> <section id="appendix-K">
+2845,2846c3057,3058
+< <p id="section-appendix.k-1"><span class="contact-name">Christian Huitema</span> and <span class="contact-name">Tony Li</span> contributed to this document.<a href="#section-appendix.k-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.k-2"><span class="contact-name">Romain Kuntz</span> contributed extensively regarding IPv6 handovers
+---
+> <p id="appendix-K-1"><span class="contact-name">Christian Huitema</span> and <span class="contact-name">Tony Li</span> contributed to this document.<a href="#appendix-K-1" class="pilcrow">¶</a></p>
+> <p id="appendix-K-2"><span class="contact-name">Romain Kuntz</span> contributed extensively regarding IPv6 handovers
+2848,2851c3060,3063
+<         links).<a href="#section-appendix.k-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.k-3"><span class="contact-name">Tim Leinmueller</span> contributed the idea of the use of IPv6 over
+<         802.11-OCB for the distribution of certificates.<a href="#section-appendix.k-3" class="pilcrow">¶</a></p>
+< <p id="section-appendix.k-4"><span class="contact-name">Marios Makassikis</span>, <span class="contact-name">Jose Santa Lozano</span>, <span class="contact-name">Albin Severinson</span>, and
+---
+>         links).<a href="#appendix-K-2" class="pilcrow">¶</a></p>
+> <p id="appendix-K-3"><span class="contact-name">Tim Leinmueller</span> contributed the idea of the use of IPv6 over
+>         802.11-OCB for the distribution of certificates.<a href="#appendix-K-3" class="pilcrow">¶</a></p>
+> <p id="appendix-K-4"><span class="contact-name">Marios Makassikis</span>, <span class="contact-name">Jose Santa Lozano</span>, <span class="contact-name">Albin Severinson</span>, and
+2853,2854c3065,3066
+<         of using IP messages over 802.11-OCB in initial trials.<a href="#section-appendix.k-4" class="pilcrow">¶</a></p>
+< <p id="section-appendix.k-5"><span class="contact-name">Michelle Wetterwald</span> contributed extensively to the MTU
+---
+>         of using IP messages over 802.11-OCB in initial trials.<a href="#appendix-K-4" class="pilcrow">¶</a></p>
+> <p id="appendix-K-5"><span class="contact-name">Michelle Wetterwald</span> contributed extensively to the MTU
+2856c3068
+<         other parts of the document.<a href="#section-appendix.k-5" class="pilcrow">¶</a></p>
+---
+>         other parts of the document.<a href="#appendix-K-5" class="pilcrow">¶</a></p>
+2860c3072
+< <section id="section-appendix.l">
+---
+> <section id="appendix-L">
+2922,2950c3134,3139
+< <script>var toc = document.getElementById("toc");
+< var tocToggle = toc.querySelector("h2");
+< var tocNav = toc.querySelector("nav");
+< 
+< // mobile menu toggle
+< tocToggle.onclick = function(event) {
+<     if (window.innerWidth < 1024) {
+<  var tocNavDisplay = tocNav.currentStyle ? tocNav.currentStyle.display : getComputedStyle(tocNav, null).display;
+<  if (tocNavDisplay == "none") {
+<      tocNav.style.display = "block";
+<  } else {
+<      tocNav.style.display = "none";
+<  }
+<     }
+< }
+< 
+< // toc anchor scroll to anchor
+< tocNav.addEventListener("click", function (event) {
+<     event.preventDefault();
+<     if (event.target.nodeName == 'A') {
+<  if (window.innerWidth < 1024) {
+<      tocNav.style.display = "none";
+<  }
+<  var href = event.target.getAttribute("href");
+<  var anchorId = href.substr(1);
+<  var anchor =  document.getElementById(anchorId);
+<  anchor.scrollIntoView(true);
+<  window.history.pushState("","",href);
+<     }
+---
+> <script>const toc = document.getElementById("toc");
+> toc.querySelector("h2").addEventListener("click", e => {
+>   toc.classList.toggle("active");
+> });
+> toc.querySelector("nav").addEventListener("click", e => {
+>   toc.classList.remove("active");
+2952,2960d3140
+< 
+< // switch toc mode when window resized
+< window.onresize = function () {
+<     if (window.innerWidth < 1024) {
+<  tocNav.style.display = "none";
+<     } else {
+<  tocNav.style.display = "block";
+<     }
+< }
