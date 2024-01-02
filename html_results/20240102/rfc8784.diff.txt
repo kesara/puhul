@@ -1,0 +1,518 @@
+24c24
+< <meta content="xml2rfc 2.46.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.0" name="generator">
+33c33,49
+< <link href="rfc8784.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.0
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 5.0.0
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8784.xml" rel="alternate" type="application/rfc+xml">
+43c59
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+52a69,74
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+55d76
+<   width: extend-to-zoom;
+70c91
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+72a94
+>   overflow-wrap: break-word;
+158a181,189
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+173,176d203
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+177a205
+>   border: none;
+200a229,231
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+252c283
+< tt, code, pre, code {
+---
+> tt, code, pre {
+254c285
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+293a325,327
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+383a418,423
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+485c525
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+625d664
+< 
+647a687,689
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+715c757
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+815c857
+< tt, code, pre, code {
+---
+> tt, code, pre {
+820c862
+< pre.sourcecode,
+---
+> .sourcecode pre,
+856c898
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1037a1080
+>   .artwork > pre,
+1052c1095
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1058a1102,1104
+> tr {
+>   break-inside: avoid;
+> }
+1078c1124
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1109c1155
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1127,1128c1173,1213
+< p tt, p code {
+<   background-color: #f9f9f9;
+---
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+1131a1217
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-ipsecme-qr-ikev2-11" rel="prev">
+1134c1220
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-ipsecme-qr-ikev2-11" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1136,1137c1222,1223
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1246,1251c1332,1337
+< <nav class="toc"><ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+1255,1256c1341,1342
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-assumptions" class="xref">Assumptions</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-assumptions" class="internal xref">Assumptions</a></p>
+1258,1259c1344,1345
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-exchanges" class="xref">Exchanges</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-exchanges" class="internal xref">Exchanges</a></p>
+1261,1262c1347,1348
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-upgrade-procedure" class="xref">Upgrade Procedure</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-upgrade-procedure" class="internal xref">Upgrade Procedure</a></p>
+1264,1274c1350,1360
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-ppk" class="xref">PPK</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-ppk_id-format" class="xref">PPK_ID Format</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-operational-considerations" class="xref">Operational Considerations</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.5.2.2.2.1">
+<                     <p id="section-toc.1-1.5.2.2.2.1.1"><a href="#section-5.2.1" class="xref">5.2.1</a>.  <a href="#name-ppk-distribution" class="xref">PPK Distribution</a><a href="#section-toc.1-1.5.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-ppk" class="internal xref">PPK</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-ppk_id-format" class="internal xref">PPK_ID Format</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-operational-considerations" class="internal xref">Operational Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.1">
+>                     <p id="section-toc.1-1.5.2.2.2.1.1"><a href="#section-5.2.1" class="auto internal xref">5.2.1</a>.  <a href="#name-ppk-distribution" class="internal xref">PPK Distribution</a></p>
+1276,1277c1362,1363
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.5.2.2.2.2">
+<                     <p id="section-toc.1-1.5.2.2.2.2.1"><a href="#section-5.2.2" class="xref">5.2.2</a>.  <a href="#name-group-ppk" class="xref">Group PPK</a><a href="#section-toc.1-1.5.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.2">
+>                     <p id="section-toc.1-1.5.2.2.2.2.1"><a href="#section-5.2.2" class="auto internal xref">5.2.2</a>.  <a href="#name-group-ppk" class="internal xref">Group PPK</a></p>
+1279,1280c1365,1366
+<                   <li class="toc ulEmpty compact" id="section-toc.1-1.5.2.2.2.3">
+<                     <p id="section-toc.1-1.5.2.2.2.3.1"><a href="#section-5.2.3" class="xref">5.2.3</a>.  <a href="#name-ppk-only-authentication" class="xref">PPK-Only Authentication</a><a href="#section-toc.1-1.5.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.3">
+>                     <p id="section-toc.1-1.5.2.2.2.3.1"><a href="#section-5.2.3" class="auto internal xref">5.2.3</a>.  <a href="#name-ppk-only-authentication" class="internal xref">PPK-Only Authentication</a></p>
+1286,1287c1372,1373
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1289,1290c1375,1376
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1292,1296c1378,1382
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty compact">
+< <li class="toc ulEmpty compact" id="section-toc.1-1.8.2.1">
+<                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+>                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1298,1299c1384,1385
+<               <li class="toc ulEmpty compact" id="section-toc.1-1.8.2.2">
+<                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+>                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1303,1304c1389,1390
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-discussion-and-rationale" class="xref">Discussion and Rationale</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-discussion-and-rationale" class="internal xref">Discussion and Rationale</a></p>
+1306,1307c1392,1393
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1309,1310c1395,1396
+<           <li class="toc ulEmpty compact" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1325,1327c1411,1413
+<       (ECDH) problems in polynomial time <span>[<a href="#I-D.hoffman-c2pq" class="xref">C2PQ</a>]</span>, and this would imply that the security of existing
+<       IKEv2 <span>[<a href="#RFC7296" class="xref">RFC7296</a>]</span> systems would be
+<       compromised.  IKEv1 <span>[<a href="#RFC2409" class="xref">RFC2409</a>]</span>, when used with strong preshared
+---
+>       (ECDH) problems in polynomial time <span>[<a href="#I-D.hoffman-c2pq" class="cite xref">C2PQ</a>]</span>, and this would imply that the security of existing
+>       IKEv2 <span>[<a href="#RFC7296" class="cite xref">RFC7296</a>]</span> systems would be
+>       compromised.  IKEv1 <span>[<a href="#RFC2409" class="cite xref">RFC2409</a>]</span>, when used with strong preshared
+1363c1449
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1381c1467
+< <div class="artwork art-text alignLeft" id="section-2-2">
+---
+> <div class="alignLeft art-text artwork" id="section-2-2">
+1387c1473
+<       <span><a href="https://www.rfc-editor.org/rfc/rfc7296#section-1.2" class="relref">Section 1.2</a> of [<a href="#RFC7296" class="xref">RFC7296</a>]</span>.<a href="#section-2-3" class="pilcrow">¶</a></p>
+---
+>       <span><a href="https://rfc-editor.org/rfc/rfc7296#section-1.2" class="relref">Section 1.2</a> of [<a href="#RFC7296" class="cite xref">RFC7296</a>]</span>.<a href="#section-2-3" class="pilcrow">¶</a></p>
+1397c1483
+< <div class="artwork art-text alignLeft" id="section-3-2">
+---
+> <div class="alignLeft art-text artwork" id="section-3-2">
+1407c1493
+<       if the original message did (see <span><a href="https://www.rfc-editor.org/rfc/rfc7296#section-2.6" class="relref">Section 2.6</a> of [<a href="#RFC7296" class="xref">RFC7296</a>]</span>).<a href="#section-3-4" class="pilcrow">¶</a></p>
+---
+>       if the original message did (see <span><a href="https://rfc-editor.org/rfc/rfc7296#section-2.6" class="relref">Section 2.6</a> of [<a href="#RFC7296" class="cite xref">RFC7296</a>]</span>).<a href="#section-3-4" class="pilcrow">¶</a></p>
+1409c1495
+<       then it ignores the received notification (as defined in <span>[<a href="#RFC7296" class="xref">RFC7296</a>]</span> for unknown status notifications) 
+---
+>       then it ignores the received notification (as defined in <span>[<a href="#RFC7296" class="cite xref">RFC7296</a>]</span> for unknown status notifications) 
+1412c1498
+< <div class="artwork art-text alignLeft" id="section-3-6">
+---
+> <div class="alignLeft art-text artwork" id="section-3-6">
+1424c1510
+<       PPKs at all or doesn't have any PPK configured for the initiator. See <a href="#Security" class="xref">Section 6</a> for discussion
+---
+>       PPKs at all or doesn't have any PPK configured for the initiator. See <a href="#Security" class="auto internal xref">Section 6</a> for discussion
+1430,1432c1516,1518
+<       IKEv2 key derivation from <span><a href="https://www.rfc-editor.org/rfc/rfc7296#section-2.14" class="relref">Section 2.14</a> of [<a href="#RFC7296" class="xref">RFC7296</a>]</span>:<a href="#section-3-9" class="pilcrow">¶</a></p>
+< <div id="section-3-10">
+< <pre class="sourcecode lang-pseudocode">
+---
+>       IKEv2 key derivation from <span><a href="https://rfc-editor.org/rfc/rfc7296#section-2.14" class="relref">Section 2.14</a> of [<a href="#RFC7296" class="cite xref">RFC7296</a>]</span>:<a href="#section-3-9" class="pilcrow">¶</a></p>
+> <div class="lang-pseudocode sourcecode" id="section-3-10">
+> <pre>
+1452c1538
+< <span>[<a href="#IANA-IKEV2" class="xref">IANA-IKEV2</a>]</span>) have an output size equal to the (preferred) key size. For such PRFs, only the first
+---
+> <span>[<a href="#IANA-IKEV2" class="cite xref">IANA-IKEV2</a>]</span>) have an output size equal to the (preferred) key size. For such PRFs, only the first
+1454,1455c1540,1541
+< <div id="section-3-13">
+< <pre class="sourcecode lang-pseudocode">
+---
+> <div class="lang-pseudocode sourcecode" id="section-3-13">
+> <pre>
+1466c1552
+< <div class="artwork art-text alignLeft" id="section-3-16">
+---
+> <div class="alignLeft art-text artwork" id="section-3-16">
+1499,1500c1585,1586
+< <div id="section-3-21">
+< <pre class="sourcecode lang-pseudocode">
+---
+> <div class="lang-pseudocode sourcecode" id="section-3-21">
+> <pre>
+1520c1606
+< <p id="section-3-24"><a href="#table1" class="xref">Table 1</a> summarizes the above logic for the responder:<a href="#section-3-24" class="pilcrow">¶</a></p>
+---
+> <p id="section-3-24"><a href="#table1" class="auto internal xref">Table 1</a> summarizes the above logic for the responder:<a href="#section-3-24" class="pilcrow">¶</a></p>
+1587,1588c1673,1674
+< <div id="section-3-27">
+< <pre class="sourcecode lang-pseudocode">
+---
+> <div class="lang-pseudocode sourcecode" id="section-3-27">
+> <pre>
+1597c1683
+< <div class="artwork art-text alignLeft" id="section-3-29">
+---
+> <div class="alignLeft art-text artwork" id="section-3-29">
+1622c1708
+<       See more details about EAP authentication in IKEv2 in <span><a href="https://www.rfc-editor.org/rfc/rfc7296#section-2.16" class="relref">Section 2.16</a> of [<a href="#RFC7296" class="xref">RFC7296</a>]</span>.<a href="#section-3-31" class="pilcrow">¶</a></p>
+---
+>       See more details about EAP authentication in IKEv2 in <span><a href="https://rfc-editor.org/rfc/rfc7296#section-2.16" class="relref">Section 2.16</a> of [<a href="#RFC7296" class="cite xref">RFC7296</a>]</span>.<a href="#section-3-31" class="pilcrow">¶</a></p>
+1632c1718
+< <div class="artwork art-text alignLeft" id="section-3-33">
+---
+> <div class="alignLeft art-text artwork" id="section-3-33">
+1723c1809
+<           character set <span>[<a href="#RFC4648" class="xref">RFC4648</a>]</span>.<a href="#section-5.1-2.2" class="pilcrow">¶</a>
+---
+>           character set <span>[<a href="#RFC4648" class="cite xref">RFC4648</a>]</span>.<a href="#section-5.1-2.2" class="pilcrow">¶</a>
+1739,1740c1825,1826
+<    While the method of distribution is a local matter and is out of scope of this document or IKEv2, <span>[<a href="#RFC6030" class="xref">RFC6030</a>]</span> describes a format for the transport and provisioning of symmetric keys. That format
+<    could be reused using the PIN profile (defined in <span><a href="https://www.rfc-editor.org/rfc/rfc6030#section-10.2" class="relref">Section 10.2</a> of [<a href="#RFC6030" class="xref">RFC6030</a>]</span>)
+---
+>    While the method of distribution is a local matter and is out of scope of this document or IKEv2, <span>[<a href="#RFC6030" class="cite xref">RFC6030</a>]</span> describes a format for the transport and provisioning of symmetric keys. That format
+>    could be reused using the PIN profile (defined in <span><a href="https://rfc-editor.org/rfc/rfc6030#section-10.2" class="relref">Section 10.2</a> of [<a href="#RFC6030" class="cite xref">RFC6030</a>]</span>)
+1776c1862
+<           Authentication method <span>[<a href="#RFC7619" class="xref">RFC7619</a>]</span> is
+---
+>           Authentication method <span>[<a href="#RFC7619" class="cite xref">RFC7619</a>]</span> is
+1795c1881
+<   algorithm <span>[<a href="#GROVER" class="xref">GROVER</a>]</span>; that effectively halves the size of
+---
+>   algorithm <span>[<a href="#GROVER" class="cite xref">GROVER</a>]</span>; that effectively halves the size of
+1803c1889
+<       Call for Proposals <span>[<a href="#NISTPQCFP" class="xref">NISTPQCFP</a>]</span>. Deriving
+---
+>       Call for Proposals <span>[<a href="#NISTPQCFP" class="cite xref">NISTPQCFP</a>]</span>. Deriving
+1823c1909
+<       It is possible to create a childless IKE SA as specified in <span>[<a href="#RFC6023" class="xref">RFC6023</a>]</span>. This prevents Child SA 
+---
+>       It is possible to create a childless IKE SA as specified in <span>[<a href="#RFC6023" class="cite xref">RFC6023</a>]</span>. This prevents Child SA 
+1842c1928
+< <p id="section-6-7"><a href="#Exchanges" class="xref">Section 3</a> requires the initiator to
+---
+> <p id="section-6-7"><a href="#Exchanges" class="auto internal xref">Section 3</a> requires the initiator to
+1851c1937
+<       measures (see <span>[<a href="#RFC8019" class="xref">RFC8019</a>]</span> for more
+---
+>       measures (see <span>[<a href="#RFC8019" class="cite xref">RFC8019</a>]</span> for more
+1878c1964
+<       out (see <span><a href="https://www.rfc-editor.org/rfc/rfc7296#section-2.4" class="relref">Section 2.4</a> of [<a href="#RFC7296" class="xref">RFC7296</a>]</span> for more details about retransmission timers in
+---
+>       out (see <span><a href="https://rfc-editor.org/rfc/rfc7296#section-2.4" class="relref">Section 2.4</a> of [<a href="#RFC7296" class="cite xref">RFC7296</a>]</span> for more details about retransmission timers in
+1894c1980
+<       <span>[<a href="#IANA-IKEV2" class="xref">IANA-IKEV2</a>]</span>:<a href="#section-7-1" class="pilcrow">¶</a></p>
+---
+>       <span>[<a href="#IANA-IKEV2" class="cite xref">IANA-IKEV2</a>]</span>:<a href="#section-7-1" class="pilcrow">¶</a></p>
+1924c2010
+<       Version 2 (IKEv2) Parameters" registry <span>[<a href="#IANA-IKEV2" class="xref">IANA-IKEV2</a>]</span>. This new subregistry is for the PPK_ID types used in
+---
+>       Version 2 (IKEv2) Parameters" registry <span>[<a href="#IANA-IKEV2" class="cite xref">IANA-IKEV2</a>]</span>. This new subregistry is for the PPK_ID types used in
+1971,1972c2057,2058
+<       are made using the Expert Review policy <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>. Changes and additions to the Reserved for Private Use range of
+<       this registry are made using the Private Use policy <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>.<a href="#section-7-5" class="pilcrow">¶</a></p>
+---
+>       are made using the Expert Review policy <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>. Changes and additions to the Reserved for Private Use range of
+>       this registry are made using the Private Use policy <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>.<a href="#section-7-5" class="pilcrow">¶</a></p>
+1989c2075
+< <span class="refAuthor">Kaufman, C.</span><span class="refAuthor">, Hoffman, P.</span><span class="refAuthor">, Nir, Y.</span><span class="refAuthor">, Eronen, P.</span><span class="refAuthor">, and T. Kivinen</span>, <span class="refTitle">"Internet Key Exchange Protocol Version 2 (IKEv2)"</span>, <span class="seriesInfo">STD 79</span>, <span class="seriesInfo">RFC 7296</span>, <span class="seriesInfo">DOI 10.17487/RFC7296</span>, <time datetime="2014-10" class="refDate">October 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7296">https://www.rfc-editor.org/info/rfc7296</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Kaufman, C.</span>, <span class="refAuthor">Hoffman, P.</span>, <span class="refAuthor">Nir, Y.</span>, <span class="refAuthor">Eronen, P.</span>, and <span class="refAuthor">T. Kivinen</span>, <span class="refTitle">"Internet Key Exchange Protocol Version 2 (IKEv2)"</span>, <span class="seriesInfo">STD 79</span>, <span class="seriesInfo">RFC 7296</span>, <span class="seriesInfo">DOI 10.17487/RFC7296</span>, <time datetime="2014-10" class="refDate">October 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7296">https://www.rfc-editor.org/info/rfc7296</a>&gt;</span>. </dd>
+2021c2107
+< <span class="refAuthor">Harkins, D.</span><span class="refAuthor"> and D. Carrel</span>, <span class="refTitle">"The Internet Key Exchange (IKE)"</span>, <span class="seriesInfo">RFC 2409</span>, <span class="seriesInfo">DOI 10.17487/RFC2409</span>, <time datetime="1998-11" class="refDate">November 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2409">https://www.rfc-editor.org/info/rfc2409</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Harkins, D.</span> and <span class="refAuthor">D. Carrel</span>, <span class="refTitle">"The Internet Key Exchange (IKE)"</span>, <span class="seriesInfo">RFC 2409</span>, <span class="seriesInfo">DOI 10.17487/RFC2409</span>, <time datetime="1998-11" class="refDate">November 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2409">https://www.rfc-editor.org/info/rfc2409</a>&gt;</span>. </dd>
+2029c2115
+< <span class="refAuthor">Nir, Y.</span><span class="refAuthor">, Tschofenig, H.</span><span class="refAuthor">, Deng, H.</span><span class="refAuthor">, and R. Singh</span>, <span class="refTitle">"A Childless Initiation of the Internet Key Exchange Version 2 (IKEv2) Security Association (SA)"</span>, <span class="seriesInfo">RFC 6023</span>, <span class="seriesInfo">DOI 10.17487/RFC6023</span>, <time datetime="2010-10" class="refDate">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6023">https://www.rfc-editor.org/info/rfc6023</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Nir, Y.</span>, <span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Deng, H.</span>, and <span class="refAuthor">R. Singh</span>, <span class="refTitle">"A Childless Initiation of the Internet Key Exchange Version 2 (IKEv2) Security Association (SA)"</span>, <span class="seriesInfo">RFC 6023</span>, <span class="seriesInfo">DOI 10.17487/RFC6023</span>, <time datetime="2010-10" class="refDate">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6023">https://www.rfc-editor.org/info/rfc6023</a>&gt;</span>. </dd>
+2033c2119
+< <span class="refAuthor">Hoyer, P.</span><span class="refAuthor">, Pei, M.</span><span class="refAuthor">, and S. Machani</span>, <span class="refTitle">"Portable Symmetric Key Container (PSKC)"</span>, <span class="seriesInfo">RFC 6030</span>, <span class="seriesInfo">DOI 10.17487/RFC6030</span>, <time datetime="2010-10" class="refDate">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6030">https://www.rfc-editor.org/info/rfc6030</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hoyer, P.</span>, <span class="refAuthor">Pei, M.</span>, and <span class="refAuthor">S. Machani</span>, <span class="refTitle">"Portable Symmetric Key Container (PSKC)"</span>, <span class="seriesInfo">RFC 6030</span>, <span class="seriesInfo">DOI 10.17487/RFC6030</span>, <time datetime="2010-10" class="refDate">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6030">https://www.rfc-editor.org/info/rfc6030</a>&gt;</span>. </dd>
+2037c2123
+< <span class="refAuthor">Smyslov, V.</span><span class="refAuthor"> and P. Wouters</span>, <span class="refTitle">"The NULL Authentication Method in the Internet Key Exchange Protocol Version 2 (IKEv2)"</span>, <span class="seriesInfo">RFC 7619</span>, <span class="seriesInfo">DOI 10.17487/RFC7619</span>, <time datetime="2015-08" class="refDate">August 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7619">https://www.rfc-editor.org/info/rfc7619</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Smyslov, V.</span> and <span class="refAuthor">P. Wouters</span>, <span class="refTitle">"The NULL Authentication Method in the Internet Key Exchange Protocol Version 2 (IKEv2)"</span>, <span class="seriesInfo">RFC 7619</span>, <span class="seriesInfo">DOI 10.17487/RFC7619</span>, <time datetime="2015-08" class="refDate">August 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7619">https://www.rfc-editor.org/info/rfc7619</a>&gt;</span>. </dd>
+2041c2127
+< <span class="refAuthor">Nir, Y.</span><span class="refAuthor"> and V. Smyslov</span>, <span class="refTitle">"Protecting Internet Key Exchange Protocol Version 2 (IKEv2) Implementations from Distributed Denial-of-Service Attacks"</span>, <span class="seriesInfo">RFC 8019</span>, <span class="seriesInfo">DOI 10.17487/RFC8019</span>, <time datetime="2016-11" class="refDate">November 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8019">https://www.rfc-editor.org/info/rfc8019</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Nir, Y.</span> and <span class="refAuthor">V. Smyslov</span>, <span class="refTitle">"Protecting Internet Key Exchange Protocol Version 2 (IKEv2) Implementations from Distributed Denial-of-Service Attacks"</span>, <span class="seriesInfo">RFC 8019</span>, <span class="seriesInfo">DOI 10.17487/RFC8019</span>, <time datetime="2016-11" class="refDate">November 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8019">https://www.rfc-editor.org/info/rfc8019</a>&gt;</span>. </dd>
+2045c2131
+< <span class="refAuthor">Cotton, M.</span><span class="refAuthor">, Leiba, B.</span><span class="refAuthor">, and T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cotton, M.</span>, <span class="refAuthor">Leiba, B.</span>, and <span class="refAuthor">T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+2051c2137
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2053c2139
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-discussion-and-rationale" class="section-name selfRef">Discussion and Rationale</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-discussion-and-rationale" class="section-name selfRef">Discussion and Rationale</a>
+2055c2141
+< <p id="section-appendix.a-1">The primary goal of this document is to augment the IKEv2 protocol to
+---
+> <p id="appendix-A-1">The primary goal of this document is to augment the IKEv2 protocol to
+2072,2073c2158,2159
+<       a compromise to allow the responder to select the correct PPK quickly.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2">Another goal of this protocol is to minimize the number of changes 
+---
+>       a compromise to allow the responder to select the correct PPK quickly.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2">Another goal of this protocol is to minimize the number of changes 
+2077,2078c2163,2164
+<    on systems that perform most of the IKEv2 processing in hardware.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-3">A third goal is to be friendly to incremental deployment in
+---
+>    on systems that perform most of the IKEv2 processing in hardware.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+> <p id="appendix-A-3">A third goal is to be friendly to incremental deployment in
+2082,2084c2168,2170
+<       why we allow the PPK to be configured as optional.<a href="#section-appendix.a-3" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-4">A fourth goal is to avoid violating any of the security properties
+<       provided by IKEv2.<a href="#section-appendix.a-4" class="pilcrow">¶</a></p>
+---
+>       why we allow the PPK to be configured as optional.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+> <p id="appendix-A-4">A fourth goal is to avoid violating any of the security properties
+>       provided by IKEv2.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+2088c2174
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+2092c2178
+< <p id="section-appendix.b-1">We would like to thank <span class="contact-name">Tero Kivinen</span>, <span class="contact-name">Paul Wouters</span>, <span class="contact-name">Graham Bartlett</span>,
+---
+> <p id="appendix-B-1">We would like to thank <span class="contact-name">Tero Kivinen</span>, <span class="contact-name">Paul Wouters</span>, <span class="contact-name">Graham Bartlett</span>,
+2095c2181
+<       for the scheme.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+---
+>       for the scheme.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+2099c2185
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
