@@ -1,0 +1,616 @@
+20c20
+< <meta content="xml2rfc 2.35.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.0" name="generator">
+22c22,38
+< <link href="rfc8657.xml" type="application/rfc+xml" rel="alternate">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.0
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 5.0.0
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8657.xml" rel="alternate" type="application/rfc+xml">
+32c48
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+41a58,63
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+44d65
+<   width: extend-to-zoom;
+59c80
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+61a83
+>   overflow-wrap: break-word;
+147a170,178
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+162,165d192
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+166a194
+>   border: none;
+189a218,220
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+241c272
+< tt, code, pre, code {
+---
+> tt, code, pre {
+243c274
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+282a314,316
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+372a407,412
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+474c514
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+614d653
+< 
+636a676,678
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+704c746
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+804c846
+< tt, code, pre, code {
+---
+> tt, code, pre {
+809c851
+< pre.sourcecode,
+---
+> .sourcecode pre,
+845c887
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+923,928d964
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+999c1035
+<   margin: 0 0 0.25em 0;
+---
+>   margin-bottom: 0.25em;
+1013c1049
+<   margin-bottom: 0;
+---
+>   margin-bottom: 0.5em;
+1031a1068,1069
+>   .artwork,
+>   .artwork > pre,
+1035,1036c1073,1206
+< }</style>
+< <link href="rfc-local.css" type="text/css" rel="stylesheet">
+---
+> }
+> /* Avoid narrow tables forcing too narrow table captions, which may render badly */
+> table {
+>   min-width: 20em;
+> }
+> /* ol type a */
+> ol.type-a { list-style-type: lower-alpha; }
+> ol.type-A { list-style-type: upper-alpha; }
+> ol.type-i { list-style-type: lower-roman; }
+> ol.type-I { list-style-type: lower-roman; }
+> /* Apply the print table and row borders in general, on request from the RPC,
+> and increase the contrast between border and odd row background slightly */
+> table {
+>   border: 1px solid #ddd;
+> }
+> td {
+>   border-top: 1px solid #ddd;
+> }
+> tr {
+>   break-inside: avoid;
+> }
+> tr:nth-child(2n+1) > td {
+>   background-color: #f8f8f8;
+> }
+> /* Use style rules to govern display of the TOC. */
+> @media screen and (max-width: 1023px) {
+>   #toc nav { display: none; }
+>   #toc.active nav { display: block; }
+> }
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+> <link href="rfc-local.css" rel="stylesheet" type="text/css">
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-acme-caa-10" rel="prev">
+1039c1209
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-acme-caa-10" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1041,1042c1211,1212
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1137,1148c1307,1318
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-extensions-to-the-caa-recor" class="xref">Extensions to the CAA Record: The "accounturi" Parameter</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-use-with-acme" class="xref">Use with ACME</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-extensions-to-the-caa-recor" class="internal xref">Extensions to the CAA Record: The "accounturi" Parameter</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-use-with-acme" class="internal xref">Use with ACME</a></p>
+1150,1151c1320,1321
+<               <li class="toc ulEmpty" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-use-without-acme" class="xref">Use without ACME</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1" class="keepWithNext"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-use-without-acme" class="internal xref">Use without ACME</a></p>
+1155,1156c1325,1326
+<           <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-extensions-to-the-caa-record" class="xref">Extensions to the CAA Record: The "validationmethods" Parameter</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-extensions-to-the-caa-record" class="internal xref">Extensions to the CAA Record: The "validationmethods" Parameter</a></p>
+1158,1162c1328,1332
+<           <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-limited-to-cas-processing-c" class="xref">Limited to CAs Processing CAA Records</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1" class="keepWithNext"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-limited-to-cas-processing-c" class="internal xref">Limited to CAs Processing CAA Records</a></p>
+1164,1165c1334,1335
+<               <li class="toc ulEmpty" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-restrictions-ineffective-wi" class="xref">Restrictions Ineffective without CA Recognition</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1" class="keepWithNext"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-restrictions-ineffective-wi" class="internal xref">Restrictions Ineffective without CA Recognition</a></p>
+1167,1168c1337,1338
+<               <li class="toc ulEmpty" id="section-toc.1-1.5.2.3">
+<                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-mandatory-consistency-in-ca" class="xref">Mandatory Consistency in CA Recognition</a><a href="#section-toc.1-1.5.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
+>                 <p id="section-toc.1-1.5.2.3.1" class="keepWithNext"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-mandatory-consistency-in-ca" class="internal xref">Mandatory Consistency in CA Recognition</a></p>
+1170,1171c1340,1341
+<               <li class="toc ulEmpty" id="section-toc.1-1.5.2.4">
+<                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="xref">5.4</a>.  <a href="#name-uri-ambiguity" class="xref">URI Ambiguity</a><a href="#section-toc.1-1.5.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
+>                 <p id="section-toc.1-1.5.2.4.1" class="keepWithNext"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-uri-ambiguity" class="internal xref">URI Ambiguity</a></p>
+1173,1174c1343,1344
+<               <li class="toc ulEmpty" id="section-toc.1-1.5.2.5">
+<                 <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="xref">5.5</a>.  <a href="#name-authorization-freshness" class="xref">Authorization Freshness</a><a href="#section-toc.1-1.5.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5">
+>                 <p id="section-toc.1-1.5.2.5.1" class="keepWithNext"><a href="#section-5.5" class="auto internal xref">5.5</a>.  <a href="#name-authorization-freshness" class="internal xref">Authorization Freshness</a></p>
+1176,1177c1346,1347
+<               <li class="toc ulEmpty" id="section-toc.1-1.5.2.6">
+<                 <p id="section-toc.1-1.5.2.6.1"><a href="#section-5.6" class="xref">5.6</a>.  <a href="#name-use-with-and-without-dnssec" class="xref">Use with and without DNSSEC</a><a href="#section-toc.1-1.5.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.6">
+>                 <p id="section-toc.1-1.5.2.6.1" class="keepWithNext"><a href="#section-5.6" class="auto internal xref">5.6</a>.  <a href="#name-use-with-and-without-dnssec" class="internal xref">Use with and without DNSSEC</a></p>
+1179,1180c1349,1350
+<               <li class="toc ulEmpty" id="section-toc.1-1.5.2.7">
+<                 <p id="section-toc.1-1.5.2.7.1"><a href="#section-5.7" class="xref">5.7</a>.  <a href="#name-restrictions-supersedable-b" class="xref">Restrictions Supersedable by DNS Delegation</a><a href="#section-toc.1-1.5.2.7.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.7">
+>                 <p id="section-toc.1-1.5.2.7.1" class="keepWithNext"><a href="#section-5.7" class="auto internal xref">5.7</a>.  <a href="#name-restrictions-supersedable-b" class="internal xref">Restrictions Supersedable by DNS Delegation</a></p>
+1182,1183c1352,1353
+<               <li class="toc ulEmpty" id="section-toc.1-1.5.2.8">
+<                 <p id="section-toc.1-1.5.2.8.1"><a href="#section-5.8" class="xref">5.8</a>.  <a href="#name-misconfiguration-hazards" class="xref">Misconfiguration Hazards</a><a href="#section-toc.1-1.5.2.8.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.8">
+>                 <p id="section-toc.1-1.5.2.8.1" class="keepWithNext"><a href="#section-5.8" class="auto internal xref">5.8</a>.  <a href="#name-misconfiguration-hazards" class="internal xref">Misconfiguration Hazards</a></p>
+1185,1186c1355,1356
+<               <li class="toc ulEmpty" id="section-toc.1-1.5.2.9">
+<                 <p id="section-toc.1-1.5.2.9.1"><a href="#section-5.9" class="xref">5.9</a>.  <a href="#name-revelation-of-account-uris" class="xref">Revelation of Account URIs</a><a href="#section-toc.1-1.5.2.9.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.9">
+>                 <p id="section-toc.1-1.5.2.9.1" class="keepWithNext"><a href="#section-5.9" class="auto internal xref">5.9</a>.  <a href="#name-revelation-of-account-uris" class="internal xref">Revelation of Account URIs</a></p>
+1190,1191c1360,1361
+<           <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1193,1194c1363,1364
+<           <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1196,1197c1366,1367
+<           <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-examples" class="xref">Examples</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-examples" class="internal xref">Examples</a></p>
+1199,1200c1369,1370
+<           <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+1213c1383
+< record <span>[<a href="#RFC8659" class="xref">RFC8659</a>]</span>. The first, "accounturi", allows
+---
+> record <span>[<a href="#RFC8659" class="cite xref">RFC8659</a>]</span>. The first, "accounturi", allows
+1229c1399
+< <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when,
+---
+> <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when,
+1239,1240c1409,1410
+< "issuewild" Properties defined by <span>[<a href="#RFC8659" class="xref">RFC8659</a>]</span>. The value of this
+< parameter, if specified, <span class="bcp14">MUST</span> be a URI <span>[<a href="#RFC3986" class="xref">RFC3986</a>]</span> identifying a
+---
+> "issuewild" Properties defined by <span>[<a href="#RFC8659" class="cite xref">RFC8659</a>]</span>. The value of this
+> parameter, if specified, <span class="bcp14">MUST</span> be a URI <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span> identifying a
+1256c1426
+<    specification <span>[<a href="#RFC8659" class="xref">RFC8659</a>]</span>. CAs <span class="bcp14">MUST</span> still perform such
+---
+>    specification <span>[<a href="#RFC8659" class="cite xref">RFC8659</a>]</span>. CAs <span class="bcp14">MUST</span> still perform such
+1265c1435
+< <p id="section-3.1-1">An Automatic Certificate Management Environment (ACME) <span>[<a href="#RFC8555" class="xref">RFC8555</a>]</span> account object <span class="bcp14">MAY</span> be identified by setting the
+---
+> <p id="section-3.1-1">An Automatic Certificate Management Environment (ACME) <span>[<a href="#RFC8555" class="cite xref">RFC8555</a>]</span> account object <span class="bcp14">MAY</span> be identified by setting the
+1300c1470
+< <span>[<a href="#RFC8555" class="xref">RFC8555</a>]</span> or a CA‑specific non-ACME validation
+---
+> <span>[<a href="#RFC8555" class="cite xref">RFC8555</a>]</span> or a CA‑specific non-ACME validation
+1308,1310c1478,1480
+< ABNF <span>[<a href="#RFC5234" class="xref">RFC5234</a>]</span>:<a href="#section-4-6" class="pilcrow">¶</a></p>
+< <div id="section-4-7">
+< <pre class="sourcecode lang-abnf">
+---
+> ABNF <span>[<a href="#RFC5234" class="cite xref">RFC5234</a>]</span>:<a href="#section-4-6" class="pilcrow">¶</a></p>
+> <div class="lang-abnf sourcecode" id="section-4-7">
+> <pre>
+1333c1503
+< <p id="section-5.1-1">All of the security considerations listed in <span>[<a href="#RFC8659" class="xref">RFC8659</a>]</span> are inherited by
+---
+> <p id="section-5.1-1">All of the security considerations listed in <span>[<a href="#RFC8659" class="cite xref">RFC8659</a>]</span> are inherited by
+1406c1576
+< <div class="artwork art-text alignLeft" id="section-5.4-3">
+---
+> <div class="alignLeft art-text artwork" id="section-5.4-3">
+1417,1418c1587,1588
+< (see <span><a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.2" class="relref">Section 3.2</a> of [<a href="#RFC3986" class="xref">RFC3986</a>]</span>):<a href="#section-5.4-6" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-5.4-7">
+---
+> (see <span><a href="https://rfc-editor.org/rfc/rfc3986#section-3.2" class="relref">Section 3.2</a> of [<a href="#RFC3986" class="cite xref">RFC3986</a>]</span>):<a href="#section-5.4-6" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="section-5.4-7">
+1429c1599
+< <p id="section-5.5-1">The CAA specification <span>[<a href="#RFC8659" class="xref">RFC8659</a>]</span> governs the act of issuance by a CA. In some cases, a CA
+---
+> <p id="section-5.5-1">The CAA specification <span>[<a href="#RFC8659" class="cite xref">RFC8659</a>]</span> governs the act of issuance by a CA. In some cases, a CA
+1465c1635
+< <ol start="1" type="1" class="normal" id="section-5.6-5">
+---
+> <ol start="1" type="1" class="normal type-1" id="section-5.6-5">
+1485c1655
+< <ol start="1" type="1" class="normal" id="section-5.6-9">
+---
+> <ol start="1" type="1" class="normal type-1" id="section-5.6-9">
+1496c1666
+< <a href="#limited-to-cas-processing-caa-records" class="xref">Section 5.1</a>.<a href="#section-5.6-10" class="pilcrow">¶</a></p>
+---
+> <a href="#limited-to-cas-processing-caa-records" class="auto internal xref">Section 5.1</a>.<a href="#section-5.6-10" class="pilcrow">¶</a></p>
+1544c1714
+< <p id="section-6-1">This document has no IANA actions. As per <span>[<a href="#RFC8659" class="xref">RFC8659</a>]</span>, the parameter namespace for the CAA "issue"
+---
+> <p id="section-6-1">This document has no IANA actions. As per <span>[<a href="#RFC8659" class="cite xref">RFC8659</a>]</span>, the parameter namespace for the CAA "issue"
+1558c1728,1729
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1561c1732,1733
+< <span class="refAuthor">Berners-Lee, T.</span><span class="refAuthor">, Fielding, R.</span><span class="refAuthor">, and L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3986">https://www.rfc-editor.org/info/rfc3986</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Berners-Lee, T.</span>, <span class="refAuthor">Fielding, R.</span>, and <span class="refAuthor">L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3986">https://www.rfc-editor.org/info/rfc3986</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1564c1736,1737
+< <span class="refAuthor">Crocker, D., Ed.</span><span class="refAuthor"> and P. Overell</span>, <span class="refTitle">"Augmented BNF for Syntax Specifications: ABNF"</span>, <span class="seriesInfo">STD 68</span>, <span class="seriesInfo">RFC 5234</span>, <span class="seriesInfo">DOI 10.17487/RFC5234</span>, <time datetime="2008-01">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5234">https://www.rfc-editor.org/info/rfc5234</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Crocker, D., Ed.</span> and <span class="refAuthor">P. Overell</span>, <span class="refTitle">"Augmented BNF for Syntax Specifications: ABNF"</span>, <span class="seriesInfo">STD 68</span>, <span class="seriesInfo">RFC 5234</span>, <span class="seriesInfo">DOI 10.17487/RFC5234</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5234">https://www.rfc-editor.org/info/rfc5234</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1567c1740,1741
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1570c1744,1745
+< <span class="refAuthor">Barnes, R.</span><span class="refAuthor">, Hoffman-Andrews, J.</span><span class="refAuthor">, McCarney, D.</span><span class="refAuthor">, and J. Kasten</span>, <span class="refTitle">"Automatic Certificate Management Environment (ACME)"</span>, <span class="seriesInfo">RFC 8555</span>, <span class="seriesInfo">DOI 10.17487/RFC8555</span>, <time datetime="2019-03">March 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8555">https://www.rfc-editor.org/info/rfc8555</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Barnes, R.</span>, <span class="refAuthor">Hoffman-Andrews, J.</span>, <span class="refAuthor">McCarney, D.</span>, and <span class="refAuthor">J. Kasten</span>, <span class="refTitle">"Automatic Certificate Management Environment (ACME)"</span>, <span class="seriesInfo">RFC 8555</span>, <span class="seriesInfo">DOI 10.17487/RFC8555</span>, <time datetime="2019-03" class="refDate">March 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8555">https://www.rfc-editor.org/info/rfc8555</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1573c1748,1749
+< <span class="refAuthor">Hallam-Baker, P.</span><span class="refAuthor">, Stradling, R.</span><span class="refAuthor">, and J. Hoffman-Andrews</span>, <span class="refTitle">"DNS Certification Authority Authorization (CAA) Resource Record"</span>, <span class="seriesInfo">RFC 8659</span>, <span class="seriesInfo">DOI 10.17487/RFC8659</span>, <time datetime="2019-11">November 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8659">https://www.rfc-editor.org/info/rfc8659</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hallam-Baker, P.</span>, <span class="refAuthor">Stradling, R.</span>, and <span class="refAuthor">J. Hoffman-Andrews</span>, <span class="refTitle">"DNS Certification Authority Authorization (CAA) Resource Record"</span>, <span class="seriesInfo">RFC 8659</span>, <span class="seriesInfo">DOI 10.17487/RFC8659</span>, <time datetime="2019-11" class="refDate">November 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8659">https://www.rfc-editor.org/info/rfc8659</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1577c1753
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+1579c1755
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
+1581c1757
+< <p id="section-appendix.a-1">The following shows an example DNS zone file fragment that nominates two
+---
+> <p id="appendix-A-1">The following shows an example DNS zone file fragment that nominates two
+1583,1584c1759,1760
+< Issuance is restricted to the CA "example.net".<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-appendix.a-2">
+---
+> Issuance is restricted to the CA "example.net".<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A-2">
+1589c1765
+<   accounturi=https://example.net/account/2345" </pre><a href="#section-appendix.a-2" class="pilcrow">¶</a>
+---
+>   accounturi=https://example.net/account/2345"</pre><a href="#appendix-A-2" class="pilcrow">¶</a>
+1591,1593c1767,1769
+< <p id="section-appendix.a-3">The following shows a zone file fragment that restricts the ACME methods that
+< can be used; only ACME methods "dns-01" and "xyz-01" can be used.<a href="#section-appendix.a-3" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-appendix.a-4">
+---
+> <p id="appendix-A-3">The following shows a zone file fragment that restricts the ACME methods that
+> can be used; only ACME methods "dns-01" and "xyz-01" can be used.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A-4">
+1596c1772
+<   validationmethods=dns-01,xyz-01" </pre><a href="#section-appendix.a-4" class="pilcrow">¶</a>
+---
+>   validationmethods=dns-01,xyz-01"</pre><a href="#appendix-A-4" class="pilcrow">¶</a>
+1598,1599c1774,1775
+< <p id="section-appendix.a-5">The following shows an equivalent way of expressing the same restriction:<a href="#section-appendix.a-5" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-appendix.a-6">
+---
+> <p id="appendix-A-5">The following shows an equivalent way of expressing the same restriction:<a href="#appendix-A-5" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A-6">
+1602c1778
+< example.com. IN CAA 0 issue "example.net; validationmethods=xyz-01" </pre><a href="#section-appendix.a-6" class="pilcrow">¶</a>
+---
+> example.com. IN CAA 0 issue "example.net; validationmethods=xyz-01"</pre><a href="#appendix-A-6" class="pilcrow">¶</a>
+1604c1780
+< <p id="section-appendix.a-7">The following shows a zone file fragment in which one account can be used to
+---
+> <p id="appendix-A-7">The following shows a zone file fragment in which one account can be used to
+1606,1607c1782,1783
+< "http-01" method.<a href="#section-appendix.a-7" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-appendix.a-8">
+---
+> "http-01" method.<a href="#appendix-A-7" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A-8">
+1614c1790
+<   validationmethods=http-01" </pre><a href="#section-appendix.a-8" class="pilcrow">¶</a>
+---
+>   validationmethods=http-01"</pre><a href="#appendix-A-8" class="pilcrow">¶</a>
+1616,1618c1792,1794
+< <p id="section-appendix.a-9">The following shows a zone file fragment in which only ACME method "dns-01" or
+< a CA-specific method "ca-foo" can be used.<a href="#section-appendix.a-9" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-appendix.a-10">
+---
+> <p id="appendix-A-9">The following shows a zone file fragment in which only ACME method "dns-01" or
+> a CA-specific method "ca-foo" can be used.<a href="#appendix-A-9" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A-10">
+1621c1797
+<   validationmethods=dns-01,ca-foo" </pre><a href="#section-appendix.a-10" class="pilcrow">¶</a>
+---
+>   validationmethods=dns-01,ca-foo"</pre><a href="#appendix-A-10" class="pilcrow">¶</a>
+1626c1802
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+1639,1667c1815,1820
+< <script>var toc = document.getElementById("toc");
+< var tocToggle = toc.querySelector("h2");
+< var tocNav = toc.querySelector("nav");
+< 
+< // mobile menu toggle
+< tocToggle.onclick = function(event) {
+<     if (window.innerWidth < 1024) {
+<  var tocNavDisplay = tocNav.currentStyle ? tocNav.currentStyle.display : getComputedStyle(tocNav, null).display;
+<  if (tocNavDisplay == "none") {
+<      tocNav.style.display = "block";
+<  } else {
+<      tocNav.style.display = "none";
+<  }
+<     }
+< }
+< 
+< // toc anchor scroll to anchor
+< tocNav.addEventListener("click", function (event) {
+<     event.preventDefault();
+<     if (event.target.nodeName == 'A') {
+<  if (window.innerWidth < 1024) {
+<      tocNav.style.display = "none";
+<  }
+<  var href = event.target.getAttribute("href");
+<  var anchorId = href.substr(1);
+<  var anchor =  document.getElementById(anchorId);
+<  anchor.scrollIntoView(true);
+<  window.history.pushState("","",href);
+<     }
+---
+> <script>const toc = document.getElementById("toc");
+> toc.querySelector("h2").addEventListener("click", e => {
+>   toc.classList.toggle("active");
+> });
+> toc.querySelector("nav").addEventListener("click", e => {
+>   toc.classList.remove("active");
+1669,1677d1821
+< 
+< // switch toc mode when window resized
+< window.onresize = function () {
+<     if (window.innerWidth < 1024) {
+<  tocNav.style.display = "none";
+<     } else {
+<  tocNav.style.display = "block";
+<     }
+< }
