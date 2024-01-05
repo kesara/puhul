@@ -1,0 +1,586 @@
+2c2
+< <html lang="en" class="RFC BCP">
+---
+> <html lang="en" class="BCP RFC">
+24c24
+< <meta content="xml2rfc 2.47.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.0" name="generator">
+26c26,42
+< <link href="rfc8815.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.0
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 5.0.0
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8815.xml" rel="alternate" type="application/rfc+xml">
+36c52
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+45a62,67
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+48d69
+<   width: extend-to-zoom;
+63c84
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+65a87
+>   overflow-wrap: break-word;
+151a174,182
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+166,169d196
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+170a198
+>   border: none;
+193a222,224
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+245c276
+< tt, code, pre, code {
+---
+> tt, code, pre {
+247c278
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+286a318,320
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+376a411,416
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+478c518
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+618d657
+< 
+640a680,682
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+708c750
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+808c850
+< tt, code, pre, code {
+---
+> tt, code, pre {
+813c855
+< pre.sourcecode,
+---
+> .sourcecode pre,
+849c891
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1030a1073
+>   .artwork > pre,
+1045c1088
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1051a1095,1097
+> tr {
+>   break-inside: avoid;
+> }
+1071c1117
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1102c1148
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1127c1173
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1129c1175,1176
+< ol.compact, .olCompact {
+---
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+1137c1184,1208
+< }</style>
+---
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+1138a1210
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-mboned-deprecate-interdomain-asm-07" rel="prev">
+1141c1213
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-mboned-deprecate-interdomain-asm-07" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1143,1144c1215,1216
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1252,1266c1324,1338
+< <nav class="toc"><ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-background" class="xref">Background</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.1">
+<                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-multicast-service-models" class="xref">Multicast Service Models</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.2">
+<                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-asm-routing-protocols" class="xref">ASM Routing Protocols</a><a href="#section-toc.1-1.2.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.2.2.1">
+<                     <p id="section-toc.1-1.2.2.2.2.1.1" class="keepWithNext"><a href="#section-2.2.1" class="xref">2.2.1</a>.  <a href="#name-pim-sparse-mode-pim-sm" class="xref">PIM Sparse Mode (PIM-SM)</a><a href="#section-toc.1-1.2.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-background" class="internal xref">Background</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+>                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-multicast-service-models" class="internal xref">Multicast Service Models</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+>                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-asm-routing-protocols" class="internal xref">ASM Routing Protocols</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2.2.1">
+>                     <p id="section-toc.1-1.2.2.2.2.1.1" class="keepWithNext"><a href="#section-2.2.1" class="auto internal xref">2.2.1</a>.  <a href="#name-pim-sparse-mode-pim-sm" class="internal xref">PIM Sparse Mode (PIM-SM)</a></p>
+1268,1269c1340,1341
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.2.2.2">
+<                     <p id="section-toc.1-1.2.2.2.2.2.1"><a href="#section-2.2.2" class="xref">2.2.2</a>.  <a href="#name-embedded-rp" class="xref">Embedded-RP</a><a href="#section-toc.1-1.2.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2.2.2">
+>                     <p id="section-toc.1-1.2.2.2.2.2.1"><a href="#section-2.2.2" class="auto internal xref">2.2.2</a>.  <a href="#name-embedded-rp" class="internal xref">Embedded-RP</a></p>
+1271,1272c1343,1344
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.2.2.3">
+<                     <p id="section-toc.1-1.2.2.2.2.3.1"><a href="#section-2.2.3" class="xref">2.2.3</a>.  <a href="#name-bidir-rp" class="xref">BIDIR-RP</a><a href="#section-toc.1-1.2.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2.2.3">
+>                     <p id="section-toc.1-1.2.2.2.2.3.1"><a href="#section-2.2.3" class="auto internal xref">2.2.3</a>.  <a href="#name-bidir-rp" class="internal xref">BIDIR-RP</a></p>
+1276,1277c1348,1349
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.3">
+<                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-ssm-routing-protocols" class="xref">SSM Routing Protocols</a><a href="#section-toc.1-1.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
+>                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="auto internal xref">2.3</a>.  <a href="#name-ssm-routing-protocols" class="internal xref">SSM Routing Protocols</a></p>
+1281,1291c1353,1363
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-discussion" class="xref">Discussion</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-observations-on-asm-and-ssm" class="xref">Observations on ASM and SSM Deployments</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-advantages-of-ssm-for-inter" class="xref">Advantages of SSM for Interdomain Multicast</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.1">
+<                     <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="xref">3.2.1</a>.  <a href="#name-reduced-network-operations-" class="xref">Reduced Network Operations Complexity</a><a href="#section-toc.1-1.3.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-discussion" class="internal xref">Discussion</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-observations-on-asm-and-ssm" class="internal xref">Observations on ASM and SSM Deployments</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-advantages-of-ssm-for-inter" class="internal xref">Advantages of SSM for Interdomain Multicast</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.1">
+>                     <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="auto internal xref">3.2.1</a>.  <a href="#name-reduced-network-operations-" class="internal xref">Reduced Network Operations Complexity</a></p>
+1293,1294c1365,1366
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.2">
+<                     <p id="section-toc.1-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="xref">3.2.2</a>.  <a href="#name-no-network-wide-ip-multicas" class="xref">No Network-Wide IP Multicast Group-Address Management</a><a href="#section-toc.1-1.3.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.2">
+>                     <p id="section-toc.1-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="auto internal xref">3.2.2</a>.  <a href="#name-no-network-wide-ip-multicas" class="internal xref">No Network-Wide IP Multicast Group-Address Management</a></p>
+1296,1297c1368,1369
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2.2.3">
+<                     <p id="section-toc.1-1.3.2.2.2.3.1"><a href="#section-3.2.3" class="xref">3.2.3</a>.  <a href="#name-intrinsic-source-control-se" class="xref">Intrinsic Source-Control Security</a><a href="#section-toc.1-1.3.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.3">
+>                     <p id="section-toc.1-1.3.2.2.2.3.1"><a href="#section-3.2.3" class="auto internal xref">3.2.3</a>.  <a href="#name-intrinsic-source-control-se" class="internal xref">Intrinsic Source-Control Security</a></p>
+1303,1307c1375,1379
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-recommendations" class="xref">Recommendations</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-deprecating-use-of-asm-for-" class="xref">Deprecating Use of ASM for Interdomain Multicast</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-recommendations" class="internal xref">Recommendations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-deprecating-use-of-asm-for-" class="internal xref">Deprecating Use of ASM for Interdomain Multicast</a></p>
+1309,1310c1381,1382
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-including-network-support-f" class="xref">Including Network Support for IGMPv3/MLDv2</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-including-network-support-f" class="internal xref">Including Network Support for IGMPv3/MLDv2</a></p>
+1312,1313c1384,1385
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-building-application-suppor" class="xref">Building Application Support for SSM</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-building-application-suppor" class="internal xref">Building Application Support for SSM</a></p>
+1315,1316c1387,1388
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.4">
+<                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-developing-application-guid" class="xref">Developing Application Guidance: SSM, ASM, Service Discovery</a><a href="#section-toc.1-1.4.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
+>                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-developing-application-guid" class="internal xref">Developing Application Guidance: SSM, ASM, Service Discovery</a></p>
+1318,1319c1390,1391
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.5">
+<                 <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="xref">4.5</a>.  <a href="#name-preferring-ssm-applications" class="xref">Preferring SSM Applications Intradomain</a><a href="#section-toc.1-1.4.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5">
+>                 <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="auto internal xref">4.5</a>.  <a href="#name-preferring-ssm-applications" class="internal xref">Preferring SSM Applications Intradomain</a></p>
+1321,1322c1393,1394
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.6">
+<                 <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="xref">4.6</a>.  <a href="#name-documenting-an-asm-ssm-prot" class="xref">Documenting an ASM/SSM Protocol Mapping Mechanism</a><a href="#section-toc.1-1.4.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.6">
+>                 <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="auto internal xref">4.6</a>.  <a href="#name-documenting-an-asm-ssm-prot" class="internal xref">Documenting an ASM/SSM Protocol Mapping Mechanism</a></p>
+1324,1325c1396,1397
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.7">
+<                 <p id="section-toc.1-1.4.2.7.1"><a href="#section-4.7" class="xref">4.7</a>.  <a href="#name-not-filtering-asm-addressin" class="xref">Not Filtering ASM Addressing between Domains</a><a href="#section-toc.1-1.4.2.7.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.7">
+>                 <p id="section-toc.1-1.4.2.7.1"><a href="#section-4.7" class="auto internal xref">4.7</a>.  <a href="#name-not-filtering-asm-addressin" class="internal xref">Not Filtering ASM Addressing between Domains</a></p>
+1327,1328c1399,1400
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.8">
+<                 <p id="section-toc.1-1.4.2.8.1"><a href="#section-4.8" class="xref">4.8</a>.  <a href="#name-not-precluding-intradomain-" class="xref">Not Precluding Intradomain ASM</a><a href="#section-toc.1-1.4.2.8.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.8">
+>                 <p id="section-toc.1-1.4.2.8.1"><a href="#section-4.8" class="auto internal xref">4.8</a>.  <a href="#name-not-precluding-intradomain-" class="internal xref">Not Precluding Intradomain ASM</a></p>
+1330,1331c1402,1403
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.9">
+<                 <p id="section-toc.1-1.4.2.9.1"><a href="#section-4.9" class="xref">4.9</a>.  <a href="#name-evolving-pim-deployments-fo" class="xref">Evolving PIM Deployments for SSM</a><a href="#section-toc.1-1.4.2.9.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.9">
+>                 <p id="section-toc.1-1.4.2.9.1"><a href="#section-4.9" class="auto internal xref">4.9</a>.  <a href="#name-evolving-pim-deployments-fo" class="internal xref">Evolving PIM Deployments for SSM</a></p>
+1335,1336c1407,1408
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-future-interdomain-asm-work" class="xref">Future Interdomain ASM Work</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-future-interdomain-asm-work" class="internal xref">Future Interdomain ASM Work</a></p>
+1338,1339c1410,1411
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1341,1342c1413,1414
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1344,1348c1416,1420
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.8.2.1">
+<                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+>                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1350,1351c1422,1423
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.8.2.2">
+<                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+>                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1355,1356c1427,1428
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1358,1359c1430,1431
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1410c1482
+<    described in <span>[<a href="#RFC1112" class="xref">RFC1112</a>]</span>, receivers express interest 
+---
+>    described in <span>[<a href="#RFC1112" class="cite xref">RFC1112</a>]</span>, receivers express interest 
+1428c1500
+<    can be found in <span>[<a href="#RFC5771" class="xref">RFC5771</a>]</span>, while
+---
+>    can be found in <span>[<a href="#RFC5771" class="cite xref">RFC5771</a>]</span>, while
+1430,1431c1502,1503
+<    can be found in <span>[<a href="#RFC2375" class="xref">RFC2375</a>]</span> and
+<    <span>[<a href="#RFC3307" class="xref">RFC3307</a>]</span>.
+---
+>    can be found in <span>[<a href="#RFC2375" class="cite xref">RFC2375</a>]</span> and
+>    <span>[<a href="#RFC3307" class="cite xref">RFC3307</a>]</span>.
+1433c1505
+<    in <span>[<a href="#RFC4291" class="xref">RFC4291</a>]</span>.<a href="#section-2.1-3" class="pilcrow">¶</a></p>
+---
+>    in <span>[<a href="#RFC4291" class="cite xref">RFC4291</a>]</span>.<a href="#section-2.1-3" class="pilcrow">¶</a></p>
+1446c1518
+<      detailed in <span>[<a href="#RFC7761" class="xref">RFC7761</a>]</span>.
+---
+>      detailed in <span>[<a href="#RFC7761" class="cite xref">RFC7761</a>]</span>.
+1459c1531
+<      <span>[<a href="#RFC3618" class="xref">RFC3618</a>]</span> is used to allow an RP in one 
+---
+>      <span>[<a href="#RFC3618" class="cite xref">RFC3618</a>]</span> is used to allow an RP in one 
+1461c1533
+<      Deployment scenarios for MSDP are given in <span>[<a href="#RFC4611" class="xref">RFC4611</a>]</span>.
+---
+>      Deployment scenarios for MSDP are given in <span>[<a href="#RFC4611" class="cite xref">RFC4611</a>]</span>.
+1475c1547
+<           now historic (e.g., <span>[<a href="#RFC3913" class="xref">RFC3913</a>]</span>).<a href="#section-2.2.1-3" class="pilcrow">¶</a></p>
+---
+>           now historic (e.g., <span>[<a href="#RFC3913" class="cite xref">RFC3913</a>]</span>).<a href="#section-2.2.1-3" class="pilcrow">¶</a></p>
+1484c1556
+<      Embedded-RP <span>[<a href="#RFC3956" class="xref">RFC3956</a>]</span> allows routers supporting the protocol
+---
+>      Embedded-RP <span>[<a href="#RFC3956" class="cite xref">RFC3956</a>]</span> allows routers supporting the protocol
+1496c1568
+< <p id="section-2.2.3-1">BIDIR-PIM <span>[<a href="#RFC5015" class="xref">RFC5015</a>]</span> is
+---
+> <p id="section-2.2.3-1">BIDIR-PIM <span>[<a href="#RFC5015" class="cite xref">RFC5015</a>]</span> is
+1510c1582
+<          SSM is detailed in <span>[<a href="#RFC4607" class="xref">RFC4607</a>]</span>. It mandates the use of 
+---
+>          SSM is detailed in <span>[<a href="#RFC4607" class="cite xref">RFC4607</a>]</span>. It mandates the use of 
+1512c1584
+<    <span>[<a href="#RFC7761" class="xref">RFC7761</a>]</span>.<a href="#section-2.3-1" class="pilcrow">¶</a></p>
+---
+>    <span>[<a href="#RFC7761" class="cite xref">RFC7761</a>]</span>.<a href="#section-2.3-1" class="pilcrow">¶</a></p>
+1525c1597
+<    ff3x::/32 is reserved for source-specific multicast use.  See <span>[<a href="#RFC4607" class="xref">RFC4607</a>]</span>.<a href="#section-2.3-3" class="pilcrow">¶</a></p>
+---
+>    ff3x::/32 is reserved for source-specific multicast use.  See <span>[<a href="#RFC4607" class="cite xref">RFC4607</a>]</span>.<a href="#section-2.3-3" class="pilcrow">¶</a></p>
+1587c1659
+<  <span>[<a href="#RFC3376" class="xref">RFC3376</a>]</span> and 
+---
+>  <span>[<a href="#RFC3376" class="cite xref">RFC3376</a>]</span> and 
+1589c1661
+<  <span>[<a href="#RFC3810" class="xref">RFC3810</a>]</span>.  While support for 
+---
+>  <span>[<a href="#RFC3810" class="cite xref">RFC3810</a>]</span>.  While support for 
+1603c1675
+<         interdomain deployments. See <span>[<a href="#RFC4607" class="xref">RFC4607</a>]</span> for
+---
+>         interdomain deployments. See <span>[<a href="#RFC4607" class="cite xref">RFC4607</a>]</span> for
+1670c1742
+<    This topic is expanded upon in <span>[<a href="#RFC4609" class="xref">RFC4609</a>]</span>.<a href="#section-3.2.3-3" class="pilcrow">¶</a></p>
+---
+>    This topic is expanded upon in <span>[<a href="#RFC4609" class="cite xref">RFC4609</a>]</span>.<a href="#section-3.2.3-3" class="pilcrow">¶</a></p>
+1695c1767
+<  are documented in <span>[<a href="#RFC8313" class="xref">RFC8313</a>]</span>.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+---
+>  are documented in <span>[<a href="#RFC8313" class="cite xref">RFC8313</a>]</span>.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+1723,1724c1795,1796
+<  support the components of IGMPv3 <span>[<a href="#RFC3376" class="xref">RFC3376</a>]</span> and MLDv2 
+<  <span>[<a href="#RFC3810" class="xref">RFC3810</a>]</span> necessary to support SSM (i.e., explicitly sending 
+---
+>  support the components of IGMPv3 <span>[<a href="#RFC3376" class="cite xref">RFC3376</a>]</span> and MLDv2 
+>  <span>[<a href="#RFC3810" class="cite xref">RFC3810</a>]</span> necessary to support SSM (i.e., explicitly sending 
+1726c1798
+<  "IPv6 Node Requirements" <span>[<a href="#RFC8504" class="xref">RFC8504</a>]</span>
+---
+>  "IPv6 Node Requirements" <span>[<a href="#RFC8504" class="cite xref">RFC8504</a>]</span>
+1731c1803
+<  <span>[<a href="#RFC4604" class="xref">RFC4604</a>]</span>.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+---
+>  <span>[<a href="#RFC4604" class="cite xref">RFC4604</a>]</span>.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+1738c1810
+<         There is further discussion in <span>[<a href="#RFC4541" class="xref">RFC4541</a>]</span>.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+---
+>         There is further discussion in <span>[<a href="#RFC4541" class="cite xref">RFC4541</a>]</span>.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+1770c1842
+<  in  <span>[<a href="#RFC3170" class="xref">RFC3170</a>]</span>.<a href="#section-4.3-4" class="pilcrow">¶</a></p>
+---
+>  in  <span>[<a href="#RFC3170" class="cite xref">RFC3170</a>]</span>.<a href="#section-4.3-4" class="pilcrow">¶</a></p>
+1791c1863
+<    Discovery (DNS-SD) <span>[<a href="#RFC6763" class="xref">RFC6763</a>]</span> should be used
+---
+>    Discovery (DNS-SD) <span>[<a href="#RFC6763" class="cite xref">RFC6763</a>]</span> should be used
+1861c1933
+<         use Anycast-RP <span>[<a href="#RFC4610" class="xref">RFC4610</a>]</span> or MSDP (with IPv4) for RP 
+---
+>         use Anycast-RP <span>[<a href="#RFC4610" class="cite xref">RFC4610</a>]</span> or MSDP (with IPv4) for RP 
+1867c1939
+<         necessary due to application requirements (see <a href="#guidance" class="xref">Section 4.4</a>).<a href="#section-4.8-2" class="pilcrow">¶</a></p>
+---
+>         necessary due to application requirements (see <a href="#guidance" class="auto internal xref">Section 4.4</a>).<a href="#section-4.8-2" class="pilcrow">¶</a></p>
+1872c1944
+<         mechanisms to deal with the interdomain ASM issues explained in <a href="#advantages" class="xref">Section 3.2</a>.<a href="#section-4.8-3" class="pilcrow">¶</a></p>
+---
+>         mechanisms to deal with the interdomain ASM issues explained in <a href="#advantages" class="auto internal xref">Section 3.2</a>.<a href="#section-4.8-3" class="pilcrow">¶</a></p>
+1917c1989
+<  address-management simplicity as SSM (see <a href="#advantages" class="xref">Section 3.2</a>).  Accordingly, this 
+---
+>  address-management simplicity as SSM (see <a href="#advantages" class="auto internal xref">Section 3.2</a>).  Accordingly, this 
+1919c1991
+<  multicast focus on SSM items listed in <a href="#recommendations" class="xref">Section 4</a>.<a href="#section-5-2" class="pilcrow">¶</a></p>
+---
+>  multicast focus on SSM items listed in <a href="#recommendations" class="auto internal xref">Section 4</a>.<a href="#section-5-2" class="pilcrow">¶</a></p>
+1958c2030
+< <span class="refAuthor">Cain, B.</span><span class="refAuthor">, Deering, S.</span><span class="refAuthor">, Kouvelas, I.</span><span class="refAuthor">, Fenner, B.</span><span class="refAuthor">, and A. Thyagarajan</span>, <span class="refTitle">"Internet Group Management Protocol, Version 3"</span>, <span class="seriesInfo">RFC 3376</span>, <span class="seriesInfo">DOI 10.17487/RFC3376</span>, <time datetime="2002-10" class="refDate">October 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3376">https://www.rfc-editor.org/info/rfc3376</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cain, B.</span>, <span class="refAuthor">Deering, S.</span>, <span class="refAuthor">Kouvelas, I.</span>, <span class="refAuthor">Fenner, B.</span>, and <span class="refAuthor">A. Thyagarajan</span>, <span class="refTitle">"Internet Group Management Protocol, Version 3"</span>, <span class="seriesInfo">RFC 3376</span>, <span class="seriesInfo">DOI 10.17487/RFC3376</span>, <time datetime="2002-10" class="refDate">October 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3376">https://www.rfc-editor.org/info/rfc3376</a>&gt;</span>. </dd>
+1962c2034
+< <span class="refAuthor">Vida, R., Ed.</span><span class="refAuthor"> and L. Costa, Ed.</span>, <span class="refTitle">"Multicast Listener Discovery Version 2 (MLDv2) for IPv6"</span>, <span class="seriesInfo">RFC 3810</span>, <span class="seriesInfo">DOI 10.17487/RFC3810</span>, <time datetime="2004-06" class="refDate">June 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3810">https://www.rfc-editor.org/info/rfc3810</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Vida, R., Ed.</span> and <span class="refAuthor">L. Costa, Ed.</span>, <span class="refTitle">"Multicast Listener Discovery Version 2 (MLDv2) for IPv6"</span>, <span class="seriesInfo">RFC 3810</span>, <span class="seriesInfo">DOI 10.17487/RFC3810</span>, <time datetime="2004-06" class="refDate">June 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3810">https://www.rfc-editor.org/info/rfc3810</a>&gt;</span>. </dd>
+1966c2038
+< <span class="refAuthor">Savola, P.</span><span class="refAuthor"> and B. Haberman</span>, <span class="refTitle">"Embedding the Rendezvous Point (RP) Address in an IPv6 Multicast Address"</span>, <span class="seriesInfo">RFC 3956</span>, <span class="seriesInfo">DOI 10.17487/RFC3956</span>, <time datetime="2004-11" class="refDate">November 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3956">https://www.rfc-editor.org/info/rfc3956</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Savola, P.</span> and <span class="refAuthor">B. Haberman</span>, <span class="refTitle">"Embedding the Rendezvous Point (RP) Address in an IPv6 Multicast Address"</span>, <span class="seriesInfo">RFC 3956</span>, <span class="seriesInfo">DOI 10.17487/RFC3956</span>, <time datetime="2004-11" class="refDate">November 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3956">https://www.rfc-editor.org/info/rfc3956</a>&gt;</span>. </dd>
+1970c2042
+< <span class="refAuthor">Hinden, R.</span><span class="refAuthor"> and S. Deering</span>, <span class="refTitle">"IP Version 6 Addressing Architecture"</span>, <span class="seriesInfo">RFC 4291</span>, <span class="seriesInfo">DOI 10.17487/RFC4291</span>, <time datetime="2006-02" class="refDate">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4291">https://www.rfc-editor.org/info/rfc4291</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hinden, R.</span> and <span class="refAuthor">S. Deering</span>, <span class="refTitle">"IP Version 6 Addressing Architecture"</span>, <span class="seriesInfo">RFC 4291</span>, <span class="seriesInfo">DOI 10.17487/RFC4291</span>, <time datetime="2006-02" class="refDate">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4291">https://www.rfc-editor.org/info/rfc4291</a>&gt;</span>. </dd>
+1974c2046
+< <span class="refAuthor">Holbrook, H.</span><span class="refAuthor"> and B. Cain</span>, <span class="refTitle">"Source-Specific Multicast for IP"</span>, <span class="seriesInfo">RFC 4607</span>, <span class="seriesInfo">DOI 10.17487/RFC4607</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4607">https://www.rfc-editor.org/info/rfc4607</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Holbrook, H.</span> and <span class="refAuthor">B. Cain</span>, <span class="refTitle">"Source-Specific Multicast for IP"</span>, <span class="seriesInfo">RFC 4607</span>, <span class="seriesInfo">DOI 10.17487/RFC4607</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4607">https://www.rfc-editor.org/info/rfc4607</a>&gt;</span>. </dd>
+1978c2050
+< <span class="refAuthor">Cotton, M.</span><span class="refAuthor">, Vegoda, L.</span><span class="refAuthor">, and D. Meyer</span>, <span class="refTitle">"IANA Guidelines for IPv4 Multicast Address Assignments"</span>, <span class="seriesInfo">BCP 51</span>, <span class="seriesInfo">RFC 5771</span>, <span class="seriesInfo">DOI 10.17487/RFC5771</span>, <time datetime="2010-03" class="refDate">March 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5771">https://www.rfc-editor.org/info/rfc5771</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cotton, M.</span>, <span class="refAuthor">Vegoda, L.</span>, and <span class="refAuthor">D. Meyer</span>, <span class="refTitle">"IANA Guidelines for IPv4 Multicast Address Assignments"</span>, <span class="seriesInfo">BCP 51</span>, <span class="seriesInfo">RFC 5771</span>, <span class="seriesInfo">DOI 10.17487/RFC5771</span>, <time datetime="2010-03" class="refDate">March 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5771">https://www.rfc-editor.org/info/rfc5771</a>&gt;</span>. </dd>
+1982c2054
+< <span class="refAuthor">Fenner, B.</span><span class="refAuthor">, Handley, M.</span><span class="refAuthor">, Holbrook, H.</span><span class="refAuthor">, Kouvelas, I.</span><span class="refAuthor">, Parekh, R.</span><span class="refAuthor">, Zhang, Z.</span><span class="refAuthor">, and L. Zheng</span>, <span class="refTitle">"Protocol Independent Multicast - Sparse Mode (PIM-SM): Protocol Specification (Revised)"</span>, <span class="seriesInfo">STD 83</span>, <span class="seriesInfo">RFC 7761</span>, <span class="seriesInfo">DOI 10.17487/RFC7761</span>, <time datetime="2016-03" class="refDate">March 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7761">https://www.rfc-editor.org/info/rfc7761</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fenner, B.</span>, <span class="refAuthor">Handley, M.</span>, <span class="refAuthor">Holbrook, H.</span>, <span class="refAuthor">Kouvelas, I.</span>, <span class="refAuthor">Parekh, R.</span>, <span class="refAuthor">Zhang, Z.</span>, and <span class="refAuthor">L. Zheng</span>, <span class="refTitle">"Protocol Independent Multicast - Sparse Mode (PIM-SM): Protocol Specification (Revised)"</span>, <span class="seriesInfo">STD 83</span>, <span class="seriesInfo">RFC 7761</span>, <span class="seriesInfo">DOI 10.17487/RFC7761</span>, <time datetime="2016-03" class="refDate">March 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7761">https://www.rfc-editor.org/info/rfc7761</a>&gt;</span>. </dd>
+1986c2058
+< <span class="refAuthor">Tarapore, P., Ed.</span><span class="refAuthor">, Sayko, R.</span><span class="refAuthor">, Shepherd, G.</span><span class="refAuthor">, Eckert, T., Ed.</span><span class="refAuthor">, and R. Krishnan</span>, <span class="refTitle">"Use of Multicast across Inter-domain Peering Points"</span>, <span class="seriesInfo">BCP 213</span>, <span class="seriesInfo">RFC 8313</span>, <span class="seriesInfo">DOI 10.17487/RFC8313</span>, <time datetime="2018-01" class="refDate">January 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8313">https://www.rfc-editor.org/info/rfc8313</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Tarapore, P., Ed.</span>, <span class="refAuthor">Sayko, R.</span>, <span class="refAuthor">Shepherd, G.</span>, <span class="refAuthor">Eckert, T., Ed.</span>, and <span class="refAuthor">R. Krishnan</span>, <span class="refTitle">"Use of Multicast across Inter-domain Peering Points"</span>, <span class="seriesInfo">BCP 213</span>, <span class="seriesInfo">RFC 8313</span>, <span class="seriesInfo">DOI 10.17487/RFC8313</span>, <time datetime="2018-01" class="refDate">January 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8313">https://www.rfc-editor.org/info/rfc8313</a>&gt;</span>. </dd>
+1997c2069
+< <span class="refAuthor">Hinden, R.</span><span class="refAuthor"> and S. Deering</span>, <span class="refTitle">"IPv6 Multicast Address Assignments"</span>, <span class="seriesInfo">RFC 2375</span>, <span class="seriesInfo">DOI 10.17487/RFC2375</span>, <time datetime="1998-07" class="refDate">July 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2375">https://www.rfc-editor.org/info/rfc2375</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hinden, R.</span> and <span class="refAuthor">S. Deering</span>, <span class="refTitle">"IPv6 Multicast Address Assignments"</span>, <span class="seriesInfo">RFC 2375</span>, <span class="seriesInfo">DOI 10.17487/RFC2375</span>, <time datetime="1998-07" class="refDate">July 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2375">https://www.rfc-editor.org/info/rfc2375</a>&gt;</span>. </dd>
+2001c2073
+< <span class="refAuthor">Quinn, B.</span><span class="refAuthor"> and K. Almeroth</span>, <span class="refTitle">"IP Multicast Applications: Challenges and Solutions"</span>, <span class="seriesInfo">RFC 3170</span>, <span class="seriesInfo">DOI 10.17487/RFC3170</span>, <time datetime="2001-09" class="refDate">September 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3170">https://www.rfc-editor.org/info/rfc3170</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Quinn, B.</span> and <span class="refAuthor">K. Almeroth</span>, <span class="refTitle">"IP Multicast Applications: Challenges and Solutions"</span>, <span class="seriesInfo">RFC 3170</span>, <span class="seriesInfo">DOI 10.17487/RFC3170</span>, <time datetime="2001-09" class="refDate">September 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3170">https://www.rfc-editor.org/info/rfc3170</a>&gt;</span>. </dd>
+2005c2077
+< <span class="refAuthor">Fenner, B., Ed.</span><span class="refAuthor"> and D. Meyer, Ed.</span>, <span class="refTitle">"Multicast Source Discovery Protocol (MSDP)"</span>, <span class="seriesInfo">RFC 3618</span>, <span class="seriesInfo">DOI 10.17487/RFC3618</span>, <time datetime="2003-10" class="refDate">October 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3618">https://www.rfc-editor.org/info/rfc3618</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fenner, B., Ed.</span> and <span class="refAuthor">D. Meyer, Ed.</span>, <span class="refTitle">"Multicast Source Discovery Protocol (MSDP)"</span>, <span class="seriesInfo">RFC 3618</span>, <span class="seriesInfo">DOI 10.17487/RFC3618</span>, <time datetime="2003-10" class="refDate">October 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3618">https://www.rfc-editor.org/info/rfc3618</a>&gt;</span>. </dd>
+2013c2085
+< <span class="refAuthor">Christensen, M.</span><span class="refAuthor">, Kimball, K.</span><span class="refAuthor">, and F. Solensky</span>, <span class="refTitle">"Considerations for Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD) Snooping Switches"</span>, <span class="seriesInfo">RFC 4541</span>, <span class="seriesInfo">DOI 10.17487/RFC4541</span>, <time datetime="2006-05" class="refDate">May 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4541">https://www.rfc-editor.org/info/rfc4541</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Christensen, M.</span>, <span class="refAuthor">Kimball, K.</span>, and <span class="refAuthor">F. Solensky</span>, <span class="refTitle">"Considerations for Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD) Snooping Switches"</span>, <span class="seriesInfo">RFC 4541</span>, <span class="seriesInfo">DOI 10.17487/RFC4541</span>, <time datetime="2006-05" class="refDate">May 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4541">https://www.rfc-editor.org/info/rfc4541</a>&gt;</span>. </dd>
+2017c2089
+< <span class="refAuthor">Holbrook, H.</span><span class="refAuthor">, Cain, B.</span><span class="refAuthor">, and B. Haberman</span>, <span class="refTitle">"Using Internet Group Management Protocol Version 3 (IGMPv3) and Multicast Listener Discovery Protocol Version 2 (MLDv2) for Source-Specific Multicast"</span>, <span class="seriesInfo">RFC 4604</span>, <span class="seriesInfo">DOI 10.17487/RFC4604</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4604">https://www.rfc-editor.org/info/rfc4604</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Holbrook, H.</span>, <span class="refAuthor">Cain, B.</span>, and <span class="refAuthor">B. Haberman</span>, <span class="refTitle">"Using Internet Group Management Protocol Version 3 (IGMPv3) and Multicast Listener Discovery Protocol Version 2 (MLDv2) for Source-Specific Multicast"</span>, <span class="seriesInfo">RFC 4604</span>, <span class="seriesInfo">DOI 10.17487/RFC4604</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4604">https://www.rfc-editor.org/info/rfc4604</a>&gt;</span>. </dd>
+2021c2093
+< <span class="refAuthor">Savola, P.</span><span class="refAuthor">, Lehtonen, R.</span><span class="refAuthor">, and D. Meyer</span>, <span class="refTitle">"Protocol Independent Multicast - Sparse Mode (PIM-SM) Multicast Routing Security Issues and Enhancements"</span>, <span class="seriesInfo">RFC 4609</span>, <span class="seriesInfo">DOI 10.17487/RFC4609</span>, <time datetime="2006-10" class="refDate">October 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4609">https://www.rfc-editor.org/info/rfc4609</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Savola, P.</span>, <span class="refAuthor">Lehtonen, R.</span>, and <span class="refAuthor">D. Meyer</span>, <span class="refTitle">"Protocol Independent Multicast - Sparse Mode (PIM-SM) Multicast Routing Security Issues and Enhancements"</span>, <span class="seriesInfo">RFC 4609</span>, <span class="seriesInfo">DOI 10.17487/RFC4609</span>, <time datetime="2006-10" class="refDate">October 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4609">https://www.rfc-editor.org/info/rfc4609</a>&gt;</span>. </dd>
+2025c2097
+< <span class="refAuthor">Farinacci, D.</span><span class="refAuthor"> and Y. Cai</span>, <span class="refTitle">"Anycast-RP Using Protocol Independent Multicast (PIM)"</span>, <span class="seriesInfo">RFC 4610</span>, <span class="seriesInfo">DOI 10.17487/RFC4610</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4610">https://www.rfc-editor.org/info/rfc4610</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Farinacci, D.</span> and <span class="refAuthor">Y. Cai</span>, <span class="refTitle">"Anycast-RP Using Protocol Independent Multicast (PIM)"</span>, <span class="seriesInfo">RFC 4610</span>, <span class="seriesInfo">DOI 10.17487/RFC4610</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4610">https://www.rfc-editor.org/info/rfc4610</a>&gt;</span>. </dd>
+2029c2101
+< <span class="refAuthor">McBride, M.</span><span class="refAuthor">, Meylor, J.</span><span class="refAuthor">, and D. Meyer</span>, <span class="refTitle">"Multicast Source Discovery Protocol (MSDP) Deployment Scenarios"</span>, <span class="seriesInfo">BCP 121</span>, <span class="seriesInfo">RFC 4611</span>, <span class="seriesInfo">DOI 10.17487/RFC4611</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4611">https://www.rfc-editor.org/info/rfc4611</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">McBride, M.</span>, <span class="refAuthor">Meylor, J.</span>, and <span class="refAuthor">D. Meyer</span>, <span class="refTitle">"Multicast Source Discovery Protocol (MSDP) Deployment Scenarios"</span>, <span class="seriesInfo">BCP 121</span>, <span class="seriesInfo">RFC 4611</span>, <span class="seriesInfo">DOI 10.17487/RFC4611</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4611">https://www.rfc-editor.org/info/rfc4611</a>&gt;</span>. </dd>
+2033c2105
+< <span class="refAuthor">Handley, M.</span><span class="refAuthor">, Kouvelas, I.</span><span class="refAuthor">, Speakman, T.</span><span class="refAuthor">, and L. Vicisano</span>, <span class="refTitle">"Bidirectional Protocol Independent Multicast (BIDIR-PIM)"</span>, <span class="seriesInfo">RFC 5015</span>, <span class="seriesInfo">DOI 10.17487/RFC5015</span>, <time datetime="2007-10" class="refDate">October 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5015">https://www.rfc-editor.org/info/rfc5015</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Handley, M.</span>, <span class="refAuthor">Kouvelas, I.</span>, <span class="refAuthor">Speakman, T.</span>, and <span class="refAuthor">L. Vicisano</span>, <span class="refTitle">"Bidirectional Protocol Independent Multicast (BIDIR-PIM)"</span>, <span class="seriesInfo">RFC 5015</span>, <span class="seriesInfo">DOI 10.17487/RFC5015</span>, <time datetime="2007-10" class="refDate">October 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5015">https://www.rfc-editor.org/info/rfc5015</a>&gt;</span>. </dd>
+2037c2109
+< <span class="refAuthor">Cheshire, S.</span><span class="refAuthor"> and M. Krochmal</span>, <span class="refTitle">"DNS-Based Service Discovery"</span>, <span class="seriesInfo">RFC 6763</span>, <span class="seriesInfo">DOI 10.17487/RFC6763</span>, <time datetime="2013-02" class="refDate">February 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6763">https://www.rfc-editor.org/info/rfc6763</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cheshire, S.</span> and <span class="refAuthor">M. Krochmal</span>, <span class="refTitle">"DNS-Based Service Discovery"</span>, <span class="seriesInfo">RFC 6763</span>, <span class="seriesInfo">DOI 10.17487/RFC6763</span>, <time datetime="2013-02" class="refDate">February 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6763">https://www.rfc-editor.org/info/rfc6763</a>&gt;</span>. </dd>
+2041c2113
+< <span class="refAuthor">Chown, T.</span><span class="refAuthor">, Loughney, J.</span><span class="refAuthor">, and T. Winters</span>, <span class="refTitle">"IPv6 Node Requirements"</span>, <span class="seriesInfo">BCP 220</span>, <span class="seriesInfo">RFC 8504</span>, <span class="seriesInfo">DOI 10.17487/RFC8504</span>, <time datetime="2019-01" class="refDate">January 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8504">https://www.rfc-editor.org/info/rfc8504</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Chown, T.</span>, <span class="refAuthor">Loughney, J.</span>, and <span class="refAuthor">T. Winters</span>, <span class="refTitle">"IPv6 Node Requirements"</span>, <span class="seriesInfo">BCP 220</span>, <span class="seriesInfo">RFC 8504</span>, <span class="seriesInfo">DOI 10.17487/RFC8504</span>, <time datetime="2019-01" class="refDate">January 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8504">https://www.rfc-editor.org/info/rfc8504</a>&gt;</span>. </dd>
+2046c2118
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2050c2122
+< <p id="section-appendix.a-1">
+---
+> <p id="appendix-A-1">
+2066c2138
+<  <span class="contact-name">Sandy Zhang</span>.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+>  <span class="contact-name">Sandy Zhang</span>.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+2069c2141
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
