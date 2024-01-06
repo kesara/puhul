@@ -1,0 +1,420 @@
+2c2
+< <html lang="en" class="RFC BCP">
+---
+> <html lang="en" class="BCP RFC">
+21c21
+< <meta content="xml2rfc 2.46.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.0" name="generator">
+24c24,40
+< <link href="rfc8820.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.0
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 5.0.1
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8820.xml" rel="alternate" type="application/rfc+xml">
+34c50
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+43a60,65
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+46d67
+<   width: extend-to-zoom;
+61c82
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+63a85
+>   overflow-wrap: break-word;
+149a172,180
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+164,167d194
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+168a196
+>   border: none;
+191a220,222
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+243c274
+< tt, code, pre, code {
+---
+> tt, code, pre {
+245c276
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+284a316,318
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+374a409,414
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+476c516
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+616d655
+< 
+638a678,680
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+706c748
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+806c848
+< tt, code, pre, code {
+---
+> tt, code, pre {
+811c853
+< pre.sourcecode,
+---
+> .sourcecode pre,
+847c889
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1028a1071
+>   .artwork > pre,
+1043c1086
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1049a1093,1095
+> tr {
+>   break-inside: avoid;
+> }
+1069c1115
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1100c1146
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1118,1119c1164,1204
+< p tt, p code {
+<   background-color: #f9f9f9;
+---
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+1122a1208
+> <link href="https://datatracker.ietf.org/doc/draft-nottingham-rfc7320bis-03" rel="prev">
+1125c1211
+<   <link href="https://datatracker.ietf.org/doc/draft-nottingham-rfc7320bis-03" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1127,1128c1213,1214
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1231,1236c1317,1322
+< <nav class="toc"><ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-intended-audience" class="xref">Intended Audience</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-intended-audience" class="internal xref">Intended Audience</a></p>
+1238,1239c1324,1325
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.1.2.2">
+<                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="xref">1.2</a>.  <a href="#name-notational-conventions" class="xref">Notational Conventions</a><a href="#section-toc.1-1.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+>                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-notational-conventions" class="internal xref">Notational Conventions</a></p>
+1243,1250c1329,1336
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-best-current-practices-for-" class="xref">Best Current Practices for Standardizing Structured URIs</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.2.2.1">
+<                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-uri-schemes" class="xref">URI Schemes</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.2.2.2">
+<                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-uri-authorities" class="xref">URI Authorities</a><a href="#section-toc.1-1.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-best-current-practices-for-" class="internal xref">Best Current Practices for Standardizing Structured URIs</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+>                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-uri-schemes" class="internal xref">URI Schemes</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+>                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-uri-authorities" class="internal xref">URI Authorities</a></p>
+1252,1253c1338,1339
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.2.2.3">
+<                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-uri-paths" class="xref">URI Paths</a><a href="#section-toc.1-1.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
+>                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="auto internal xref">2.3</a>.  <a href="#name-uri-paths" class="internal xref">URI Paths</a></p>
+1255,1256c1341,1342
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.2.2.4">
+<                 <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="xref">2.4</a>.  <a href="#name-uri-queries" class="xref">URI Queries</a><a href="#section-toc.1-1.2.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.4">
+>                 <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="auto internal xref">2.4</a>.  <a href="#name-uri-queries" class="internal xref">URI Queries</a></p>
+1258,1259c1344,1345
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.2.2.5">
+<                 <p id="section-toc.1-1.2.2.5.1"><a href="#section-2.5" class="xref">2.5</a>.  <a href="#name-uri-fragment-identifiers" class="xref">URI Fragment Identifiers</a><a href="#section-toc.1-1.2.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.5">
+>                 <p id="section-toc.1-1.2.2.5.1"><a href="#section-2.5" class="auto internal xref">2.5</a>.  <a href="#name-uri-fragment-identifiers" class="internal xref">URI Fragment Identifiers</a></p>
+1263,1264c1349,1350
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-alternatives-to-specifying-" class="xref">Alternatives to Specifying Structure in URIs</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-alternatives-to-specifying-" class="internal xref">Alternatives to Specifying Structure in URIs</a></p>
+1266,1267c1352,1353
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1269,1270c1355,1356
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1272,1276c1358,1362
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1278,1279c1364,1365
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.6.2.2">
+<                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+>                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1283,1284c1369,1370
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-changes-from-rfc-7320" class="xref">Changes from RFC 7320</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-changes-from-rfc-7320" class="internal xref">Changes from RFC 7320</a></p>
+1286,1287c1372,1373
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1289,1290c1375,1376
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+1301c1387
+< <p id="section-1-1">URIs <span>[<a href="#RFC3986" class="xref">RFC3986</a>]</span> very often include
+---
+> <p id="section-1-1">URIs <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span> very often include
+1314c1400
+< <p id="section-1-3">Because the owner of the URI (as defined in <span>[<a href="#webarch" class="xref">webarch</a>]</span>, Section 2.2.2.1) is choosing to use the
+---
+> <p id="section-1-3">Because the owner of the URI (as defined in <span>[<a href="#webarch" class="cite xref">webarch</a>]</span>, Section 2.2.2.1) is choosing to use the
+1324,1325c1410,1411
+< its stability (see <span>[<a href="#webarch" class="xref">webarch</a>]</span>, Section 3.5.1) and can cause several alternate forms of the URI
+< to exist (see <span>[<a href="#webarch" class="xref">webarch</a>]</span>, Section 2.3.1).<a href="#section-1-4.2" class="pilcrow">¶</a>
+---
+> its stability (see <span>[<a href="#webarch" class="cite xref">webarch</a>]</span>, Section 3.5.1) and can cause several alternate forms of the URI
+> to exist (see <span>[<a href="#webarch" class="cite xref">webarch</a>]</span>, Section 2.3.1).<a href="#section-1-4.2" class="pilcrow">¶</a>
+1344c1430
+< allowed by <span>[<a href="#RFC3986" class="xref">RFC3986</a>]</span> (usually, by updating the URI scheme definition) is therefore sometimes
+---
+> allowed by <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span> (usually, by updating the URI scheme definition) is therefore sometimes
+1348c1434
+< formats in standards. It also offers strategies for specifications in <a href="#alternatives" class="xref">Section 3</a>.<a href="#section-1-6" class="pilcrow">¶</a></p>
+---
+> formats in standards. It also offers strategies for specifications in <a href="#alternatives" class="auto internal xref">Section 3</a>.<a href="#section-1-6" class="pilcrow">¶</a></p>
+1392c1478
+<        <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when, and only
+---
+>        <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only
+1403c1489
+< <p id="section-2-1">This section updates <span>[<a href="#RFC3986" class="xref">RFC3986</a>]</span> by advising Specifications how they should define structure and
+---
+> <p id="section-2-1">This section updates <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span> by advising Specifications how they should define structure and
+1416c1502
+< scheme names) <span class="bcp14">MUST</span> do so by modifying <span>[<a href="#BCP35" class="xref">BCP35</a>]</span> (an exceptional circumstance).<a href="#section-2.1-2" class="pilcrow">¶</a></p>
+---
+> scheme names) <span class="bcp14">MUST</span> do so by modifying <span>[<a href="#BCP35" class="cite xref">BCP35</a>]</span> (an exceptional circumstance).<a href="#section-2.1-2" class="pilcrow">¶</a></p>
+1427c1513
+<         structures it relies upon (e.g., DNS name syntax, as defined in <span><a href="https://www.rfc-editor.org/rfc/rfc1034#section-3.5" class="relref">Section 3.5</a> of [<a href="#RFC1034" class="xref">RFC1034</a>]</span>).<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+---
+>         structures it relies upon (e.g., DNS name syntax, as defined in <span><a href="https://rfc-editor.org/rfc/rfc1034#section-3.5" class="relref">Section 3.5</a> of [<a href="#RFC1034" class="cite xref">RFC1034</a>]</span>).<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+1445c1531
+< <span>[<a href="#RFC8615" class="xref">RFC8615</a>]</span>. See that document for a description of the applicability of that mechanism.<a href="#section-2.3-3" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#RFC8615" class="cite xref">RFC8615</a>]</span>. See that document for a description of the applicability of that mechanism.<a href="#section-2.3-3" class="pilcrow">¶</a></p>
+1474c1560
+< <p id="section-2.4-4">Per the "Form submission" section of <span>[<a href="#HTML5" class="xref">HTML5</a>]</span>, HTML constrains the syntax of
+---
+> <p id="section-2.4-4">Per the "Form submission" section of <span>[<a href="#HTML5" class="cite xref">HTML5</a>]</span>, HTML constrains the syntax of
+1485c1571
+< <p id="section-2.5-1"><span><a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.5" class="relref">Section 3.5</a> of [<a href="#RFC3986" class="xref">RFC3986</a>]</span> specifies fragment identifiers' syntax and semantics as being dependent
+---
+> <p id="section-2.5-1"><span><a href="https://rfc-editor.org/rfc/rfc3986#section-3.5" class="relref">Section 3.5</a> of [<a href="#RFC3986" class="cite xref">RFC3986</a>]</span> specifies fragment identifiers' syntax and semantics as being dependent
+1488c1574
+< by media types in their definitions (for example, as JSON Pointer <span>[<a href="#RFC6901" class="xref">RFC6901</a>]</span> does).<a href="#section-2.5-1" class="pilcrow">¶</a></p>
+---
+> by media types in their definitions (for example, as JSON Pointer <span>[<a href="#RFC6901" class="cite xref">RFC6901</a>]</span> does).<a href="#section-2.5-1" class="pilcrow">¶</a></p>
+1501c1587
+< <p id="section-3-1">Given the issues described in <a href="#intro" class="xref">Section 1</a>, the most successful strategy for Applications and
+---
+> <p id="section-3-1">Given the issues described in <a href="#intro" class="auto internal xref">Section 1</a>, the most successful strategy for Applications and
+1505c1591
+< <p id="section-3-2"><span>[<a href="#RFC8288" class="xref">RFC8288</a>]</span> specifies relation types for web links. By providing a framework for linking on the
+---
+> <p id="section-3-2"><span>[<a href="#RFC8288" class="cite xref">RFC8288</a>]</span> specifies relation types for web links. By providing a framework for linking on the
+1508c1594
+< <p id="section-3-3"><span>[<a href="#RFC6570" class="xref">RFC6570</a>]</span> provides a standard syntax for URI Templates that can be used to dynamically insert
+---
+> <p id="section-3-3"><span>[<a href="#RFC6570" class="cite xref">RFC6570</a>]</span> provides a standard syntax for URI Templates that can be used to dynamically insert
+1511c1597
+< <p id="section-3-4"><span>[<a href="#RFC8615" class="xref">RFC8615</a>]</span> allows specific paths to be "reserved" for standard use on URI schemes that opt into
+---
+> <p id="section-3-4"><span>[<a href="#RFC8615" class="cite xref">RFC8615</a>]</span> allows specific paths to be "reserved" for standard use on URI schemes that opt into
+1515c1601
+< solution and does not address the issues described in <a href="#intro" class="xref">Section 1</a>. For example, prefixing query parameters
+---
+> solution and does not address the issues described in <a href="#intro" class="auto internal xref">Section 1</a>. For example, prefixing query parameters
+1529c1615
+< <span>[<a href="#RFC6943" class="xref">RFC6943</a>]</span>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#RFC6943" class="cite xref">RFC6943</a>]</span>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+1555c1641
+< <span class="refAuthor">Berners-Lee, T.</span><span class="refAuthor">, Fielding, R.</span><span class="refAuthor">, and L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3986">https://www.rfc-editor.org/info/rfc3986</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Berners-Lee, T.</span>, <span class="refAuthor">Fielding, R.</span>, and <span class="refAuthor">L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3986">https://www.rfc-editor.org/info/rfc3986</a>&gt;</span>. </dd>
+1563c1649
+< <span class="refAuthor">Jacobs, I.</span><span class="refAuthor"> and N. Walsh</span>, <span class="refTitle">"Architecture of the World Wide Web, Volume One"</span>, <time datetime="2004-12" class="refDate">December 2004</time>, <span>&lt;<a href="https://www.w3.org/TR/2004/REC-webarch-20041215">https://www.w3.org/TR/2004/REC-webarch-20041215</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jacobs, I.</span> and <span class="refAuthor">N. Walsh</span>, <span class="refTitle">"Architecture of the World Wide Web, Volume One"</span>, <time datetime="2004-12" class="refDate">December 2004</time>, <span>&lt;<a href="https://www.w3.org/TR/2004/REC-webarch-20041215">https://www.w3.org/TR/2004/REC-webarch-20041215</a>&gt;</span>. </dd>
+1574c1660
+< <span class="refAuthor">Thaler, D., Ed.</span><span class="refAuthor">, Hansen, T.</span><span class="refAuthor">, and T. Hardie</span>, <span class="refTitle">"Guidelines and Registration Procedures for New URI Schemes"</span>, <span class="seriesInfo">BCP 35</span>, <span class="seriesInfo">RFC 7595</span>, <time datetime="2015-06" class="refDate">June 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/bcp35">https://www.rfc-editor.org/info/bcp35</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Thaler, D., Ed.</span>, <span class="refAuthor">Hansen, T.</span>, and <span class="refAuthor">T. Hardie</span>, <span class="refTitle">"Guidelines and Registration Procedures for New URI Schemes"</span>, <span class="seriesInfo">BCP 35</span>, <span class="seriesInfo">RFC 7595</span>, <time datetime="2015-06" class="refDate">June 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/bcp35">https://www.rfc-editor.org/info/bcp35</a>&gt;</span>. </dd>
+1586c1672
+< <span class="refAuthor">Gregorio, J.</span><span class="refAuthor">, Fielding, R.</span><span class="refAuthor">, Hadley, M.</span><span class="refAuthor">, Nottingham, M.</span><span class="refAuthor">, and D. Orchard</span>, <span class="refTitle">"URI Template"</span>, <span class="seriesInfo">RFC 6570</span>, <span class="seriesInfo">DOI 10.17487/RFC6570</span>, <time datetime="2012-03" class="refDate">March 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6570">https://www.rfc-editor.org/info/rfc6570</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Gregorio, J.</span>, <span class="refAuthor">Fielding, R.</span>, <span class="refAuthor">Hadley, M.</span>, <span class="refAuthor">Nottingham, M.</span>, and <span class="refAuthor">D. Orchard</span>, <span class="refTitle">"URI Template"</span>, <span class="seriesInfo">RFC 6570</span>, <span class="seriesInfo">DOI 10.17487/RFC6570</span>, <time datetime="2012-03" class="refDate">March 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6570">https://www.rfc-editor.org/info/rfc6570</a>&gt;</span>. </dd>
+1590c1676
+< <span class="refAuthor">Bryan, P., Ed.</span><span class="refAuthor">, Zyp, K.</span><span class="refAuthor">, and M. Nottingham, Ed.</span>, <span class="refTitle">"JavaScript Object Notation (JSON) Pointer"</span>, <span class="seriesInfo">RFC 6901</span>, <span class="seriesInfo">DOI 10.17487/RFC6901</span>, <time datetime="2013-04" class="refDate">April 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6901">https://www.rfc-editor.org/info/rfc6901</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bryan, P., Ed.</span>, <span class="refAuthor">Zyp, K.</span>, and <span class="refAuthor">M. Nottingham, Ed.</span>, <span class="refTitle">"JavaScript Object Notation (JSON) Pointer"</span>, <span class="seriesInfo">RFC 6901</span>, <span class="seriesInfo">DOI 10.17487/RFC6901</span>, <time datetime="2013-04" class="refDate">April 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6901">https://www.rfc-editor.org/info/rfc6901</a>&gt;</span>. </dd>
+1608c1694
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+1610c1696
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-changes-from-rfc-7320" class="section-name selfRef">Changes from RFC 7320</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-changes-from-rfc-7320" class="section-name selfRef">Changes from RFC 7320</a>
+1612c1698
+< <p id="section-appendix.a-1">Many of the requirements of RFC 7320 were removed, in the spirit of making this BCP guidance rather than rules.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A-1">Many of the requirements of RFC 7320 were removed, in the spirit of making this BCP guidance rather than rules.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+1616c1702
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+1620c1706
+< <p id="section-appendix.b-1">Thanks to <span class="contact-name">David Booth</span>, <span class="contact-name">Dave       Crocker</span>, <span class="contact-name">Tim Bray</span>, <span class="contact-name">Anne van       Kesteren</span>, <span class="contact-name">Martin Thomson</span>, <span class="contact-name">Erik Wilde</span>, <span class="contact-name">Dave Thaler</span>, and <span class="contact-name">Barry Leiba</span> for their suggestions and feedback.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-B-1">Thanks to <span class="contact-name">David Booth</span>, <span class="contact-name">Dave       Crocker</span>, <span class="contact-name">Tim Bray</span>, <span class="contact-name">Anne van       Kesteren</span>, <span class="contact-name">Martin Thomson</span>, <span class="contact-name">Erik Wilde</span>, <span class="contact-name">Dave Thaler</span>, and <span class="contact-name">Barry Leiba</span> for their suggestions and feedback.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+1624c1710
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">

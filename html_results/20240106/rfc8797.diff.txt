@@ -1,0 +1,558 @@
+21c21
+< <meta content="xml2rfc 2.46.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.0" name="generator">
+24c24,40
+< <link href="rfc8797.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.0
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 5.0.1
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8797.xml" rel="alternate" type="application/rfc+xml">
+34c50
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+43a60,65
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+46d67
+<   width: extend-to-zoom;
+61c82
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+63a85
+>   overflow-wrap: break-word;
+149a172,180
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+164,167d194
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+168a196
+>   border: none;
+191a220,222
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+243c274
+< tt, code, pre, code {
+---
+> tt, code, pre {
+245c276
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+284a316,318
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+374a409,414
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+476c516
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+616d655
+< 
+638a678,680
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+706c748
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+806c848
+< tt, code, pre, code {
+---
+> tt, code, pre {
+811c853
+< pre.sourcecode,
+---
+> .sourcecode pre,
+847c889
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1028a1071
+>   .artwork > pre,
+1043c1086
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1049a1093,1095
+> tr {
+>   break-inside: avoid;
+> }
+1069c1115
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1100c1146
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1118,1119c1164,1204
+< p tt, p code {
+<   background-color: #f9f9f9;
+---
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+1122a1208
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-nfsv4-rpcrdma-cm-pvt-data-08" rel="prev">
+1125c1211
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-nfsv4-rpcrdma-cm-pvt-data-08" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1127,1128c1213,1214
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1227,1238c1313,1324
+< <nav class="toc"><ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-advertised-transport-proper" class="xref">Advertised Transport Properties</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-inline-threshold-size" class="xref">Inline Threshold Size</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-advertised-transport-proper" class="internal xref">Advertised Transport Properties</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-inline-threshold-size" class="internal xref">Inline Threshold Size</a></p>
+1240,1241c1326,1327
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-remote-invalidation" class="xref">Remote Invalidation</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-remote-invalidation" class="internal xref">Remote Invalidation</a></p>
+1245,1249c1331,1335
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-private-data-message-format" class="xref">Private Data Message Format</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-using-the-r-field" class="xref">Using the R Field</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-private-data-message-format" class="internal xref">Private Data Message Format</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-using-the-r-field" class="internal xref">Using the R Field</a></p>
+1251,1252c1337,1338
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-send-and-receive-size-value" class="xref">Send and Receive Size Values</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-send-and-receive-size-value" class="internal xref">Send and Receive Size Values</a></p>
+1256,1260c1342,1346
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-interoperability-considerat" class="xref">Interoperability Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-interoperability-with-rpc-o" class="xref">Interoperability with RPC-over-RDMA Version 1 Implementations</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-interoperability-considerat" class="internal xref">Interoperability Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-interoperability-with-rpc-o" class="internal xref">Interoperability with RPC-over-RDMA Version 1 Implementations</a></p>
+1262,1263c1348,1349
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-interoperability-amongst-rd" class="xref">Interoperability amongst RDMA Transports</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-interoperability-amongst-rd" class="internal xref">Interoperability amongst RDMA Transports</a></p>
+1267,1268c1353,1354
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-updating-the-message-format" class="xref">Updating the Message Format</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-updating-the-message-format" class="internal xref">Updating the Message Format</a></p>
+1270,1271c1356,1357
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1273,1277c1359,1363
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.8.2.1">
+<                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-guidance-for-designated-exp" class="xref">Guidance for Designated Experts</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+>                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-guidance-for-designated-exp" class="internal xref">Guidance for Designated Experts</a></p>
+1281,1285c1367,1371
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.9.2.1">
+<                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="xref">9.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.9.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
+>                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="auto internal xref">9.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1287,1288c1373,1374
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.9.2.2">
+<                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="xref">9.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.9.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
+>                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1292,1293c1378,1379
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1295,1296c1381,1382
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+1309c1395
+< <span>[<a href="#RFC8166" class="xref">RFC8166</a>]</span>
+---
+> <span>[<a href="#RFC8166" class="cite xref">RFC8166</a>]</span>
+1313c1399
+< <span>[<a href="#RFC5531" class="xref">RFC5531</a>]</span>.
+---
+> <span>[<a href="#RFC5531" class="cite xref">RFC5531</a>]</span>.
+1316c1402
+< <span>[<a href="#RFC5040" class="xref">RFC5040</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#RFC5040" class="cite xref">RFC5040</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+1331c1417
+< <span>[<a href="#RFC5666" class="xref">RFC5666</a>]</span>.
+---
+> <span>[<a href="#RFC5666" class="cite xref">RFC5666</a>]</span>.
+1333c1419
+< <span>[<a href="#RFC8166" class="xref">RFC8166</a>]</span>
+---
+> <span>[<a href="#RFC8166" class="cite xref">RFC8166</a>]</span>
+1340c1426
+< <span>[<a href="#RFC5042" class="xref">RFC5042</a>]</span>.<a href="#section-1-3.2" class="pilcrow">¶</a>
+---
+> <span>[<a href="#RFC5042" class="cite xref">RFC5042</a>]</span>.<a href="#section-1-3.2" class="pilcrow">¶</a>
+1346,1347c1432,1433
+< <span>[<a href="#RFC4506" class="xref">RFC4506</a>]</span>
+< specified in <span>[<a href="#RFC8166" class="xref">RFC8166</a>]</span>.
+---
+> <span>[<a href="#RFC4506" class="cite xref">RFC4506</a>]</span>
+> specified in <span>[<a href="#RFC8166" class="cite xref">RFC8166</a>]</span>.
+1361,1363c1447,1449
+< (described in <span><a href="https://www.rfc-editor.org/rfc/rfc5044#section-7.1" class="relref">Section 7.1</a> of [<a href="#RFC5044" class="xref">RFC5044</a>]</span>
+< and extended in <span>[<a href="#RFC6581" class="xref">RFC6581</a>]</span>) or the InfiniBand Connection Manager
+< <span>[<a href="#IBA" class="xref">IBA</a>]</span>.<a href="#section-1-5" class="pilcrow">¶</a></p>
+---
+> (described in <span><a href="https://rfc-editor.org/rfc/rfc5044#section-7.1" class="relref">Section 7.1</a> of [<a href="#RFC5044" class="cite xref">RFC5044</a>]</span>
+> and extended in <span>[<a href="#RFC6581" class="cite xref">RFC6581</a>]</span>) or the InfiniBand Connection Manager
+> <span>[<a href="#IBA" class="cite xref">IBA</a>]</span>.<a href="#section-1-5" class="pilcrow">¶</a></p>
+1373c1459
+< <span>[<a href="#RFC8166" class="xref">RFC8166</a>]</span>.<a href="#section-1-6" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#RFC8166" class="cite xref">RFC8166</a>]</span>.<a href="#section-1-6" class="pilcrow">¶</a></p>
+1378c1464
+< <a href="#section_96A18D5A-2AE4-490D-B140-B964302BF1DF" class="xref">Section 6</a>
+---
+> <a href="#section_96A18D5A-2AE4-490D-B140-B964302BF1DF" class="auto internal xref">Section 6</a>
+1380c1466
+< <a href="#section_8701C122-F206-4F87-8FA6-62F1CD648A14" class="xref">Section 8</a>
+---
+> <a href="#section_8701C122-F206-4F87-8FA6-62F1CD648A14" class="auto internal xref">Section 8</a>
+1399c1485
+<        <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when, and only
+---
+>        <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only
+1414c1500
+< <span><a href="https://www.rfc-editor.org/rfc/rfc8166#section-3.3.2" class="relref">Section 3.3.2</a> of [<a href="#RFC8166" class="xref">RFC8166</a>]</span>
+---
+> <span><a href="https://rfc-editor.org/rfc/rfc8166#section-3.3.2" class="relref">Section 3.3.2</a> of [<a href="#RFC8166" class="cite xref">RFC8166</a>]</span>
+1430c1516
+< See Sections <a href="https://www.rfc-editor.org/rfc/rfc8166#section-3.3" class="relref">3.3</a> and <a href="https://www.rfc-editor.org/rfc/rfc8166#section-3.5" class="relref">3.5</a> of <span>[<a href="#RFC8166" class="xref">RFC8166</a>]</span>
+---
+> See Sections <a href="https://rfc-editor.org/rfc/rfc8166#section-3.3" class="relref">3.3</a> and <a href="https://rfc-editor.org/rfc/rfc8166#section-3.5" class="relref">3.5</a> of <span>[<a href="#RFC8166" class="cite xref">RFC8166</a>]</span>
+1434c1520
+< connections is 1024 bytes (as defined in <span><a href="https://www.rfc-editor.org/rfc/rfc8166#section-3.3.3" class="relref">Section 3.3.3</a> of [<a href="#RFC8166" class="xref">RFC8166</a>]</span>).
+---
+> connections is 1024 bytes (as defined in <span><a href="https://rfc-editor.org/rfc/rfc8166#section-3.3.3" class="relref">Section 3.3.3</a> of [<a href="#RFC8166" class="cite xref">RFC8166</a>]</span>).
+1438c1524
+< <span>[<a href="#RFC7530" class="xref">RFC7530</a>]</span>
+---
+> <span>[<a href="#RFC7530" class="cite xref">RFC7530</a>]</span>
+1441c1527
+< <span>[<a href="#RFC1813" class="xref">RFC1813</a>]</span>,
+---
+> <span>[<a href="#RFC1813" class="cite xref">RFC1813</a>]</span>,
+1448c1534
+< <span>[<a href="#RFC7861" class="xref">RFC7861</a>]</span>.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#RFC7861" class="cite xref">RFC7861</a>]</span>.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
+1465c1551
+< <span>[<a href="#RFC5042" class="xref">RFC5042</a>]</span>.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#RFC5042" class="cite xref">RFC5042</a>]</span>.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+1533c1619
+< <span>[<a href="#IBA" class="xref">IBA</a>]</span>.
+---
+> <span>[<a href="#IBA" class="cite xref">IBA</a>]</span>.
+1557c1643
+< <div class="artwork art-text alignLeft" id="section-4-5">
+---
+> <div class="alignLeft art-text artwork" id="section-4-5">
+1569c1655
+<         <dd id="section-4-6.2">
+---
+>         <dd style="margin-left: 1.5em" id="section-4-6.2">
+1576c1662
+< <a href="#section_0BD80E15-13FF-4210-A1D8-E0AE531821A4" class="xref">Section 5.2</a>.<a href="#section-4-6.2" class="pilcrow">¶</a>
+---
+> <a href="#section_0BD80E15-13FF-4210-A1D8-E0AE531821A4" class="auto internal xref">Section 5.2</a>.<a href="#section-4-6.2" class="pilcrow">¶</a>
+1580c1666
+<         <dd id="section-4-6.4">
+---
+>         <dd style="margin-left: 1.5em" id="section-4-6.4">
+1586c1672
+< <a href="#section_96A18D5A-2AE4-490D-B140-B964302BF1DF" class="xref">Section 6</a>.<a href="#section-4-6.4" class="pilcrow">¶</a>
+---
+> <a href="#section_96A18D5A-2AE4-490D-B140-B964302BF1DF" class="auto internal xref">Section 6</a>.<a href="#section-4-6.4" class="pilcrow">¶</a>
+1590c1676
+<         <dd id="section-4-6.6">
+---
+>         <dd style="margin-left: 1.5em" id="section-4-6.6">
+1598c1684
+<         <dd id="section-4-6.8">
+---
+>         <dd style="margin-left: 1.5em" id="section-4-6.8">
+1602c1688
+< <a href="#section_1D624044-49CC-4464-9BEF-59EA2473ACBF" class="xref">Section 4.1</a>.<a href="#section-4-6.8" class="pilcrow">¶</a>
+---
+> <a href="#section_1D624044-49CC-4464-9BEF-59EA2473ACBF" class="auto internal xref">Section 4.1</a>.<a href="#section-4-6.8" class="pilcrow">¶</a>
+1606c1692
+<         <dd id="section-4-6.10">
+---
+>         <dd style="margin-left: 1.5em" id="section-4-6.10">
+1612c1698
+< <a href="#section_689BD9D4-9C3C-41C7-81F3-8BBE283D252B" class="xref">Section 4.2</a>.<a href="#section-4-6.10" class="pilcrow">¶</a>
+---
+> <a href="#section_689BD9D4-9C3C-41C7-81F3-8BBE283D252B" class="auto internal xref">Section 4.2</a>.<a href="#section-4-6.10" class="pilcrow">¶</a>
+1616c1702
+<         <dd id="section-4-6.12">
+---
+>         <dd style="margin-left: 1.5em" id="section-4-6.12">
+1622c1708
+< <a href="#section_689BD9D4-9C3C-41C7-81F3-8BBE283D252B" class="xref">Section 4.2</a>.<a href="#section-4-6.12" class="pilcrow">¶</a>
+---
+> <a href="#section_689BD9D4-9C3C-41C7-81F3-8BBE283D252B" class="auto internal xref">Section 4.2</a>.<a href="#section-4-6.12" class="pilcrow">¶</a>
+1634c1720
+< <a href="#section_F82BDC05-F8A6-478C-A02C-BC308EE75A18" class="xref">Section 3.2</a>.
+---
+> <a href="#section_F82BDC05-F8A6-478C-A02C-BC308EE75A18" class="auto internal xref">Section 3.2</a>.
+1660c1746
+< is 1024 octets (see <span><a href="https://www.rfc-editor.org/rfc/rfc8166#section-3.3.3" class="relref">Section 3.3.3</a> of [<a href="#RFC8166" class="xref">RFC8166</a>]</span>).
+---
+> is 1024 octets (see <span><a href="https://rfc-editor.org/rfc/rfc8166#section-3.3.3" class="relref">Section 3.3.3</a> of [<a href="#RFC8166" class="cite xref">RFC8166</a>]</span>).
+1706c1792
+< <a href="#section_99541DF3-E579-42B6-9C7A-D020926798F6" class="xref">Section 4</a>,
+---
+> <a href="#section_99541DF3-E579-42B6-9C7A-D020926798F6" class="auto internal xref">Section 4</a>,
+1710c1796
+< <span>[<a href="#RFC8166" class="xref">RFC8166</a>]</span>.
+---
+> <span>[<a href="#RFC8166" class="cite xref">RFC8166</a>]</span>.
+1723c1809
+< <a href="#section_99541DF3-E579-42B6-9C7A-D020926798F6" class="xref">Section 4</a>
+---
+> <a href="#section_99541DF3-E579-42B6-9C7A-D020926798F6" class="auto internal xref">Section 4</a>
+1727c1813
+< <span>[<a href="#RFC6581" class="xref">RFC6581</a>]</span>, and others.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#RFC6581" class="cite xref">RFC6581</a>]</span>, and others.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+1782c1868
+< <a href="#section_8701C122-F206-4F87-8FA6-62F1CD648A14" class="xref">Section 8</a>.<a href="#section-6-4.1" class="pilcrow">¶</a>
+---
+> <a href="#section_8701C122-F206-4F87-8FA6-62F1CD648A14" class="auto internal xref">Section 8</a>.<a href="#section-6-4.1" class="pilcrow">¶</a>
+1806c1892
+< <span>[<a href="#RFC8166" class="xref">RFC8166</a>]</span>
+---
+> <span>[<a href="#RFC8166" class="cite xref">RFC8166</a>]</span>
+1812c1898
+< Section 9.7.7 of <span>[<a href="#IBA" class="xref">IBA</a>]</span>.
+---
+> Section 9.7.7 of <span>[<a href="#IBA" class="cite xref">IBA</a>]</span>.
+1822c1908
+< <span>[<a href="#RFC5042" class="xref">RFC5042</a>]</span>
+---
+> <span>[<a href="#RFC5042" class="cite xref">RFC5042</a>]</span>
+1827c1913
+< When deployed with the Remote Direct Memory Access Protocol (RDMAP) <span>[<a href="#RFC5040" class="xref">RFC5040</a>]</span>, DDP <span>[<a href="#RFC5041" class="xref">RFC5041</a>]</span>, and MPA <span>[<a href="#RFC5044" class="xref">RFC5044</a>]</span>, IPsec establishes a protected channel before any
+---
+> When deployed with the Remote Direct Memory Access Protocol (RDMAP) <span>[<a href="#RFC5040" class="cite xref">RFC5040</a>]</span>, DDP <span>[<a href="#RFC5041" class="cite xref">RFC5041</a>]</span>, and MPA <span>[<a href="#RFC5044" class="cite xref">RFC5044</a>]</span>, IPsec establishes a protected channel before any
+1854c1940
+< <a href="#section_0BD80E15-13FF-4210-A1D8-E0AE531821A4" class="xref">Section 5.2</a>,
+---
+> <a href="#section_0BD80E15-13FF-4210-A1D8-E0AE531821A4" class="auto internal xref">Section 5.2</a>,
+1911c1997
+< the Specification Required policy as defined in <span><a href="https://www.rfc-editor.org/rfc/rfc8126#section-4.6" class="relref">Section 4.6</a> of [<a href="#RFC8126" class="xref">RFC8126</a>]</span>.<a href="#section-8-4" class="pilcrow">¶</a></p>
+---
+> the Specification Required policy as defined in <span><a href="https://rfc-editor.org/rfc/rfc8126#section-4.6" class="relref">Section 4.6</a> of [<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>.<a href="#section-8-4" class="pilcrow">¶</a></p>
+1969c2055
+< <span class="refAuthor">Recio, R.</span><span class="refAuthor">, Metzler, B.</span><span class="refAuthor">, Culley, P.</span><span class="refAuthor">, Hilland, J.</span><span class="refAuthor">, and D. Garcia</span>, <span class="refTitle">"A Remote Direct Memory Access Protocol Specification"</span>, <span class="seriesInfo">RFC 5040</span>, <span class="seriesInfo">DOI 10.17487/RFC5040</span>, <time datetime="2007-10" class="refDate">October 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5040">https://www.rfc-editor.org/info/rfc5040</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Recio, R.</span>, <span class="refAuthor">Metzler, B.</span>, <span class="refAuthor">Culley, P.</span>, <span class="refAuthor">Hilland, J.</span>, and <span class="refAuthor">D. Garcia</span>, <span class="refTitle">"A Remote Direct Memory Access Protocol Specification"</span>, <span class="seriesInfo">RFC 5040</span>, <span class="seriesInfo">DOI 10.17487/RFC5040</span>, <time datetime="2007-10" class="refDate">October 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5040">https://www.rfc-editor.org/info/rfc5040</a>&gt;</span>. </dd>
+1973c2059
+< <span class="refAuthor">Pinkerton, J.</span><span class="refAuthor"> and E. Deleganes</span>, <span class="refTitle">"Direct Data Placement Protocol (DDP) / Remote Direct Memory Access Protocol (RDMAP) Security"</span>, <span class="seriesInfo">RFC 5042</span>, <span class="seriesInfo">DOI 10.17487/RFC5042</span>, <time datetime="2007-10" class="refDate">October 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5042">https://www.rfc-editor.org/info/rfc5042</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Pinkerton, J.</span> and <span class="refAuthor">E. Deleganes</span>, <span class="refTitle">"Direct Data Placement Protocol (DDP) / Remote Direct Memory Access Protocol (RDMAP) Security"</span>, <span class="seriesInfo">RFC 5042</span>, <span class="seriesInfo">DOI 10.17487/RFC5042</span>, <time datetime="2007-10" class="refDate">October 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5042">https://www.rfc-editor.org/info/rfc5042</a>&gt;</span>. </dd>
+1977c2063
+< <span class="refAuthor">Cotton, M.</span><span class="refAuthor">, Leiba, B.</span><span class="refAuthor">, and T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cotton, M.</span>, <span class="refAuthor">Leiba, B.</span>, and <span class="refAuthor">T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+1981c2067
+< <span class="refAuthor">Lever, C., Ed.</span><span class="refAuthor">, Simpson, W.</span><span class="refAuthor">, and T. Talpey</span>, <span class="refTitle">"Remote Direct Memory Access Transport for Remote Procedure Call Version 1"</span>, <span class="seriesInfo">RFC 8166</span>, <span class="seriesInfo">DOI 10.17487/RFC8166</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8166">https://www.rfc-editor.org/info/rfc8166</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Lever, C., Ed.</span>, <span class="refAuthor">Simpson, W.</span>, and <span class="refAuthor">T. Talpey</span>, <span class="refTitle">"Remote Direct Memory Access Transport for Remote Procedure Call Version 1"</span>, <span class="seriesInfo">RFC 8166</span>, <span class="seriesInfo">DOI 10.17487/RFC8166</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8166">https://www.rfc-editor.org/info/rfc8166</a>&gt;</span>. </dd>
+1996c2082
+< <span class="refAuthor">Callaghan, B.</span><span class="refAuthor">, Pawlowski, B.</span><span class="refAuthor">, and P. Staubach</span>, <span class="refTitle">"NFS Version 3 Protocol Specification"</span>, <span class="seriesInfo">RFC 1813</span>, <span class="seriesInfo">DOI 10.17487/RFC1813</span>, <time datetime="1995-06" class="refDate">June 1995</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1813">https://www.rfc-editor.org/info/rfc1813</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Callaghan, B.</span>, <span class="refAuthor">Pawlowski, B.</span>, and <span class="refAuthor">P. Staubach</span>, <span class="refTitle">"NFS Version 3 Protocol Specification"</span>, <span class="seriesInfo">RFC 1813</span>, <span class="seriesInfo">DOI 10.17487/RFC1813</span>, <time datetime="1995-06" class="refDate">June 1995</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1813">https://www.rfc-editor.org/info/rfc1813</a>&gt;</span>. </dd>
+2000c2086
+< <span class="refAuthor">Shah, H.</span><span class="refAuthor">, Pinkerton, J.</span><span class="refAuthor">, Recio, R.</span><span class="refAuthor">, and P. Culley</span>, <span class="refTitle">"Direct Data Placement over Reliable Transports"</span>, <span class="seriesInfo">RFC 5041</span>, <span class="seriesInfo">DOI 10.17487/RFC5041</span>, <time datetime="2007-10" class="refDate">October 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5041">https://www.rfc-editor.org/info/rfc5041</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Shah, H.</span>, <span class="refAuthor">Pinkerton, J.</span>, <span class="refAuthor">Recio, R.</span>, and <span class="refAuthor">P. Culley</span>, <span class="refTitle">"Direct Data Placement over Reliable Transports"</span>, <span class="seriesInfo">RFC 5041</span>, <span class="seriesInfo">DOI 10.17487/RFC5041</span>, <time datetime="2007-10" class="refDate">October 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5041">https://www.rfc-editor.org/info/rfc5041</a>&gt;</span>. </dd>
+2004c2090
+< <span class="refAuthor">Culley, P.</span><span class="refAuthor">, Elzur, U.</span><span class="refAuthor">, Recio, R.</span><span class="refAuthor">, Bailey, S.</span><span class="refAuthor">, and J. Carrier</span>, <span class="refTitle">"Marker PDU Aligned Framing for TCP Specification"</span>, <span class="seriesInfo">RFC 5044</span>, <span class="seriesInfo">DOI 10.17487/RFC5044</span>, <time datetime="2007-10" class="refDate">October 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5044">https://www.rfc-editor.org/info/rfc5044</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Culley, P.</span>, <span class="refAuthor">Elzur, U.</span>, <span class="refAuthor">Recio, R.</span>, <span class="refAuthor">Bailey, S.</span>, and <span class="refAuthor">J. Carrier</span>, <span class="refTitle">"Marker PDU Aligned Framing for TCP Specification"</span>, <span class="seriesInfo">RFC 5044</span>, <span class="seriesInfo">DOI 10.17487/RFC5044</span>, <time datetime="2007-10" class="refDate">October 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5044">https://www.rfc-editor.org/info/rfc5044</a>&gt;</span>. </dd>
+2012c2098
+< <span class="refAuthor">Talpey, T.</span><span class="refAuthor"> and B. Callaghan</span>, <span class="refTitle">"Remote Direct Memory Access Transport for Remote Procedure Call"</span>, <span class="seriesInfo">RFC 5666</span>, <span class="seriesInfo">DOI 10.17487/RFC5666</span>, <time datetime="2010-01" class="refDate">January 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5666">https://www.rfc-editor.org/info/rfc5666</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Talpey, T.</span> and <span class="refAuthor">B. Callaghan</span>, <span class="refTitle">"Remote Direct Memory Access Transport for Remote Procedure Call"</span>, <span class="seriesInfo">RFC 5666</span>, <span class="seriesInfo">DOI 10.17487/RFC5666</span>, <time datetime="2010-01" class="refDate">January 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5666">https://www.rfc-editor.org/info/rfc5666</a>&gt;</span>. </dd>
+2016c2102
+< <span class="refAuthor">Kanevsky, A., Ed.</span><span class="refAuthor">, Bestler, C., Ed.</span><span class="refAuthor">, Sharp, R.</span><span class="refAuthor">, and S. Wise</span>, <span class="refTitle">"Enhanced Remote Direct Memory Access (RDMA) Connection Establishment"</span>, <span class="seriesInfo">RFC 6581</span>, <span class="seriesInfo">DOI 10.17487/RFC6581</span>, <time datetime="2012-04" class="refDate">April 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6581">https://www.rfc-editor.org/info/rfc6581</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Kanevsky, A., Ed.</span>, <span class="refAuthor">Bestler, C., Ed.</span>, <span class="refAuthor">Sharp, R.</span>, and <span class="refAuthor">S. Wise</span>, <span class="refTitle">"Enhanced Remote Direct Memory Access (RDMA) Connection Establishment"</span>, <span class="seriesInfo">RFC 6581</span>, <span class="seriesInfo">DOI 10.17487/RFC6581</span>, <time datetime="2012-04" class="refDate">April 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6581">https://www.rfc-editor.org/info/rfc6581</a>&gt;</span>. </dd>
+2020c2106
+< <span class="refAuthor">Haynes, T., Ed.</span><span class="refAuthor"> and D. Noveck, Ed.</span>, <span class="refTitle">"Network File System (NFS) Version 4 Protocol"</span>, <span class="seriesInfo">RFC 7530</span>, <span class="seriesInfo">DOI 10.17487/RFC7530</span>, <time datetime="2015-03" class="refDate">March 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7530">https://www.rfc-editor.org/info/rfc7530</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Haynes, T., Ed.</span> and <span class="refAuthor">D. Noveck, Ed.</span>, <span class="refTitle">"Network File System (NFS) Version 4 Protocol"</span>, <span class="seriesInfo">RFC 7530</span>, <span class="seriesInfo">DOI 10.17487/RFC7530</span>, <time datetime="2015-03" class="refDate">March 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7530">https://www.rfc-editor.org/info/rfc7530</a>&gt;</span>. </dd>
+2024c2110
+< <span class="refAuthor">Adamson, A.</span><span class="refAuthor"> and N. Williams</span>, <span class="refTitle">"Remote Procedure Call (RPC) Security Version 3"</span>, <span class="seriesInfo">RFC 7861</span>, <span class="seriesInfo">DOI 10.17487/RFC7861</span>, <time datetime="2016-11" class="refDate">November 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7861">https://www.rfc-editor.org/info/rfc7861</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Adamson, A.</span> and <span class="refAuthor">N. Williams</span>, <span class="refTitle">"Remote Procedure Call (RPC) Security Version 3"</span>, <span class="seriesInfo">RFC 7861</span>, <span class="seriesInfo">DOI 10.17487/RFC7861</span>, <time datetime="2016-11" class="refDate">November 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7861">https://www.rfc-editor.org/info/rfc7861</a>&gt;</span>. </dd>
+2030c2116
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2034c2120
+< <p id="section-appendix.a-1">
+---
+> <p id="appendix-A-1">
+2053,2054c2139,2140
+< <span class="contact-name">Dave Minturn</span>.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2">
+---
+> <span class="contact-name">Dave Minturn</span>.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2">
+2065c2151
+< NFSV4 Working Group Secretary <span class="contact-name">Thomas Haynes</span>.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+---
+> NFSV4 Working Group Secretary <span class="contact-name">Thomas Haynes</span>.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+2069c2155
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">

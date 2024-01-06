@@ -1,0 +1,1343 @@
+19c19
+< <meta content="xml2rfc 2.44.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.0" name="generator">
+22c22,38
+< <link href="rfc8777.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.0
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 5.0.1
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8777.xml" rel="alternate" type="application/rfc+xml">
+32c48
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+41a58,63
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+44d65
+<   width: extend-to-zoom;
+59c80
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+61a83
+>   overflow-wrap: break-word;
+147a170,178
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+162,165d192
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+166a194
+>   border: none;
+189a218,220
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+241c272
+< tt, code, pre, code {
+---
+> tt, code, pre {
+243c274
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+282a314,316
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+372a407,412
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+474c514
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+614d653
+< 
+636a676,678
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+704c746
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+804c846
+< tt, code, pre, code {
+---
+> tt, code, pre {
+809c851
+< pre.sourcecode,
+---
+> .sourcecode pre,
+845c887
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+923,928d964
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1032a1069
+>   .artwork > pre,
+1047c1084
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1053a1091,1093
+> tr {
+>   break-inside: avoid;
+> }
+1073c1113
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1077a1118
+>   break-before: auto;
+1090c1131
+< dd.break {
+---
+> span.break, dd.break {
+1102c1143,1204
+< }</style>
+---
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+1103a1206
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-mboned-driad-amt-discovery-13" rel="prev">
+1106c1209
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-mboned-driad-amt-discovery-13" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1108,1109c1211,1212
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1207,1218c1310,1321
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-background" class="xref">Background</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.1.2.2">
+<                 <p id="section-toc.1-1.1.2.2.1"><a href="#section-1.2" class="xref">1.2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.1.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1.2.2.2.1">
+<                     <p id="section-toc.1-1.1.2.2.2.1.1" class="keepWithNext"><a href="#section-1.2.1" class="xref">1.2.1</a>.  <a href="#name-relays-and-gateways" class="xref">Relays and Gateways</a><a href="#section-toc.1-1.1.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-background" class="internal xref">Background</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+>                 <p id="section-toc.1-1.1.2.2.1"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2.2.1">
+>                     <p id="section-toc.1-1.1.2.2.2.1.1" class="keepWithNext"><a href="#section-1.2.1" class="auto internal xref">1.2.1</a>.  <a href="#name-relays-and-gateways" class="internal xref">Relays and Gateways</a></p>
+1220,1221c1323,1324
+< <li class="toc ulEmpty" id="section-toc.1-1.1.2.2.2.2">
+<                     <p id="section-toc.1-1.1.2.2.2.2.1" class="keepWithNext"><a href="#section-1.2.2" class="xref">1.2.2</a>.  <a href="#name-definitions" class="xref">Definitions</a><a href="#section-toc.1-1.1.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2.2.2">
+>                     <p id="section-toc.1-1.1.2.2.2.2.1" class="keepWithNext"><a href="#section-1.2.2" class="auto internal xref">1.2.2</a>.  <a href="#name-definitions" class="internal xref">Definitions</a></p>
+1223,1224c1326,1327
+< <li class="toc ulEmpty" id="section-toc.1-1.1.2.2.2.3">
+<                     <p id="section-toc.1-1.1.2.2.2.3.1"><a href="#section-1.2.3" class="xref">1.2.3</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.1.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2.2.3">
+>                     <p id="section-toc.1-1.1.2.2.2.3.1"><a href="#section-1.2.3" class="auto internal xref">1.2.3</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+1230,1243c1333,1346
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-relay-discovery-overview" class="xref">Relay Discovery Overview</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.1">
+<                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-basic-mechanics" class="xref">Basic Mechanics</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.2">
+<                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-signaling-and-discovery" class="xref">Signaling and Discovery</a><a href="#section-toc.1-1.2.2.2.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.3">
+<                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-example-deployments" class="xref">Example Deployments</a><a href="#section-toc.1-1.2.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.3.2.1">
+<                     <p id="section-toc.1-1.2.2.3.2.1.1"><a href="#section-2.3.1" class="xref">2.3.1</a>.  <a href="#name-example-receiving-networks" class="xref">Example Receiving Networks</a><a href="#section-toc.1-1.2.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-relay-discovery-overview" class="internal xref">Relay Discovery Overview</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+>                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-basic-mechanics" class="internal xref">Basic Mechanics</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+>                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-signaling-and-discovery" class="internal xref">Signaling and Discovery</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
+>                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="auto internal xref">2.3</a>.  <a href="#name-example-deployments" class="internal xref">Example Deployments</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.1">
+>                     <p id="section-toc.1-1.2.2.3.2.1.1"><a href="#section-2.3.1" class="auto internal xref">2.3.1</a>.  <a href="#name-example-receiving-networks" class="internal xref">Example Receiving Networks</a></p>
+1245,1246c1348,1349
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.3.2.2">
+<                     <p id="section-toc.1-1.2.2.3.2.2.1"><a href="#section-2.3.2" class="xref">2.3.2</a>.  <a href="#name-example-sending-networks" class="xref">Example Sending Networks</a><a href="#section-toc.1-1.2.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.2">
+>                     <p id="section-toc.1-1.2.2.3.2.2.1"><a href="#section-2.3.2" class="auto internal xref">2.3.2</a>.  <a href="#name-example-sending-networks" class="internal xref">Example Sending Networks</a></p>
+1252,1259c1355,1362
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-relay-discovery-operation" class="xref">Relay Discovery Operation</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-optimal-relay-selection" class="xref">Optimal Relay Selection</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.1.2.1">
+<                     <p id="section-toc.1-1.3.2.1.2.1.1"><a href="#section-3.1.1" class="xref">3.1.1</a>.  <a href="#name-overview" class="xref">Overview</a><a href="#section-toc.1-1.3.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-relay-discovery-operation" class="internal xref">Relay Discovery Operation</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-optimal-relay-selection" class="internal xref">Optimal Relay Selection</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1.2.1">
+>                     <p id="section-toc.1-1.3.2.1.2.1.1"><a href="#section-3.1.1" class="auto internal xref">3.1.1</a>.  <a href="#name-overview" class="internal xref">Overview</a></p>
+1261,1262c1364,1365
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.1.2.2">
+<                     <p id="section-toc.1-1.3.2.1.2.2.1"><a href="#section-3.1.2" class="xref">3.1.2</a>.  <a href="#name-preference-ordering" class="xref">Preference Ordering</a><a href="#section-toc.1-1.3.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1.2.2">
+>                     <p id="section-toc.1-1.3.2.1.2.2.1"><a href="#section-3.1.2" class="auto internal xref">3.1.2</a>.  <a href="#name-preference-ordering" class="internal xref">Preference Ordering</a></p>
+1264,1265c1367,1368
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.1.2.3">
+<                     <p id="section-toc.1-1.3.2.1.2.3.1"><a href="#section-3.1.3" class="xref">3.1.3</a>.  <a href="#name-connecting-to-multiple-rela" class="xref">Connecting to Multiple Relays</a><a href="#section-toc.1-1.3.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1.2.3">
+>                     <p id="section-toc.1-1.3.2.1.2.3.1"><a href="#section-3.1.3" class="auto internal xref">3.1.3</a>.  <a href="#name-connecting-to-multiple-rela" class="internal xref">Connecting to Multiple Relays</a></p>
+1269,1273c1372,1376
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-happy-eyeballs" class="xref">Happy Eyeballs</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.2.2.1">
+<                     <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="xref">3.2.1</a>.  <a href="#name-overview-2" class="xref">Overview</a><a href="#section-toc.1-1.3.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-happy-eyeballs" class="internal xref">Happy Eyeballs</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.1">
+>                     <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="auto internal xref">3.2.1</a>.  <a href="#name-overview-2" class="internal xref">Overview</a></p>
+1275,1276c1378,1379
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.2.2.2">
+<                     <p id="section-toc.1-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="xref">3.2.2</a>.  <a href="#name-algorithm-guidelines" class="xref">Algorithm Guidelines</a><a href="#section-toc.1-1.3.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.2">
+>                     <p id="section-toc.1-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="auto internal xref">3.2.2</a>.  <a href="#name-algorithm-guidelines" class="internal xref">Algorithm Guidelines</a></p>
+1278,1279c1381,1382
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.2.2.3">
+<                     <p id="section-toc.1-1.3.2.2.2.3.1"><a href="#section-3.2.3" class="xref">3.2.3</a>.  <a href="#name-connection-definition" class="xref">Connection Definition</a><a href="#section-toc.1-1.3.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.3">
+>                     <p id="section-toc.1-1.3.2.2.2.3.1"><a href="#section-3.2.3" class="auto internal xref">3.2.3</a>.  <a href="#name-connection-definition" class="internal xref">Connection Definition</a></p>
+1283,1287c1386,1390
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.3">
+<                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-guidelines-for-restarting-d" class="xref">Guidelines for Restarting Discovery</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.3.2.1">
+<                     <p id="section-toc.1-1.3.2.3.2.1.1"><a href="#section-3.3.1" class="xref">3.3.1</a>.  <a href="#name-overview-3" class="xref">Overview</a><a href="#section-toc.1-1.3.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+>                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-guidelines-for-restarting-d" class="internal xref">Guidelines for Restarting Discovery</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3.2.1">
+>                     <p id="section-toc.1-1.3.2.3.2.1.1"><a href="#section-3.3.1" class="auto internal xref">3.3.1</a>.  <a href="#name-overview-3" class="internal xref">Overview</a></p>
+1289,1290c1392,1393
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.3.2.2">
+<                     <p id="section-toc.1-1.3.2.3.2.2.1"><a href="#section-3.3.2" class="xref">3.3.2</a>.  <a href="#name-updates-to-restarting-event" class="xref">Updates to Restarting Events</a><a href="#section-toc.1-1.3.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3.2.2">
+>                     <p id="section-toc.1-1.3.2.3.2.2.1"><a href="#section-3.3.2" class="auto internal xref">3.3.2</a>.  <a href="#name-updates-to-restarting-event" class="internal xref">Updates to Restarting Events</a></p>
+1292,1293c1395,1396
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.3.2.3">
+<                     <p id="section-toc.1-1.3.2.3.2.3.1"><a href="#section-3.3.3" class="xref">3.3.3</a>.  <a href="#name-tunnel-stability" class="xref">Tunnel Stability</a><a href="#section-toc.1-1.3.2.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3.2.3">
+>                     <p id="section-toc.1-1.3.2.3.2.3.1"><a href="#section-3.3.3" class="auto internal xref">3.3.3</a>.  <a href="#name-tunnel-stability" class="internal xref">Tunnel Stability</a></p>
+1295,1296c1398,1399
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.3.2.4">
+<                     <p id="section-toc.1-1.3.2.3.2.4.1"><a href="#section-3.3.4" class="xref">3.3.4</a>.  <a href="#name-traffic-health" class="xref">Traffic Health</a><a href="#section-toc.1-1.3.2.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3.2.4">
+>                     <p id="section-toc.1-1.3.2.3.2.4.1"><a href="#section-3.3.4" class="auto internal xref">3.3.4</a>.  <a href="#name-traffic-health" class="internal xref">Traffic Health</a></p>
+1298,1299c1401,1402
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.3.2.5">
+<                     <p id="section-toc.1-1.3.2.3.2.5.1"><a href="#section-3.3.5" class="xref">3.3.5</a>.  <a href="#name-relay-loaded-or-shutting-do" class="xref">Relay Loaded or Shutting Down</a><a href="#section-toc.1-1.3.2.3.2.5.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3.2.5">
+>                     <p id="section-toc.1-1.3.2.3.2.5.1"><a href="#section-3.3.5" class="auto internal xref">3.3.5</a>.  <a href="#name-relay-loaded-or-shutting-do" class="internal xref">Relay Loaded or Shutting Down</a></p>
+1301,1302c1404,1405
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.3.2.6">
+<                     <p id="section-toc.1-1.3.2.3.2.6.1"><a href="#section-3.3.6" class="xref">3.3.6</a>.  <a href="#name-relay-discovery-messages-vs" class="xref">Relay Discovery Messages vs. Restarting Discovery</a><a href="#section-toc.1-1.3.2.3.2.6.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3.2.6">
+>                     <p id="section-toc.1-1.3.2.3.2.6.1"><a href="#section-3.3.6" class="auto internal xref">3.3.6</a>.  <a href="#name-relay-discovery-messages-vs" class="internal xref">Relay Discovery Messages vs. Restarting Discovery</a></p>
+1304,1305c1407,1408
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.3.2.7">
+<                     <p id="section-toc.1-1.3.2.3.2.7.1"><a href="#section-3.3.7" class="xref">3.3.7</a>.  <a href="#name-independent-discovery-per-t" class="xref">Independent Discovery per Traffic Source</a><a href="#section-toc.1-1.3.2.3.2.7.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3.2.7">
+>                     <p id="section-toc.1-1.3.2.3.2.7.1"><a href="#section-3.3.7" class="auto internal xref">3.3.7</a>.  <a href="#name-independent-discovery-per-t" class="internal xref">Independent Discovery per Traffic Source</a></p>
+1309,1310c1412,1413
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.4">
+<                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="xref">3.4</a>.  <a href="#name-dns-configuration" class="xref">DNS Configuration</a><a href="#section-toc.1-1.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+>                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-dns-configuration" class="internal xref">DNS Configuration</a></p>
+1312,1313c1415,1416
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.5">
+<                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="xref">3.5</a>.  <a href="#name-waiting-for-dns-resolution" class="xref">Waiting for DNS Resolution</a><a href="#section-toc.1-1.3.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
+>                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-waiting-for-dns-resolution" class="internal xref">Waiting for DNS Resolution</a></p>
+1317,1327c1420,1430
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-amtrelay-resource-record-de" class="xref">AMTRELAY Resource Record Definition</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-amtrelay-rrtype" class="xref">AMTRELAY RRType</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-amtrelay-rdata-format" class="xref">AMTRELAY RData Format</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.2.2.1">
+<                     <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="xref">4.2.1</a>.  <a href="#name-rdata-format-precedence" class="xref">RData Format - Precedence</a><a href="#section-toc.1-1.4.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-amtrelay-resource-record-de" class="internal xref">AMTRELAY Resource Record Definition</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-amtrelay-rrtype" class="internal xref">AMTRELAY RRType</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-amtrelay-rdata-format" class="internal xref">AMTRELAY RData Format</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.1">
+>                     <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="auto internal xref">4.2.1</a>.  <a href="#name-rdata-format-precedence" class="internal xref">RData Format - Precedence</a></p>
+1329,1330c1432,1433
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.2.2.2">
+<                     <p id="section-toc.1-1.4.2.2.2.2.1"><a href="#section-4.2.2" class="xref">4.2.2</a>.  <a href="#name-rdata-format-discovery-opti" class="xref">RData Format - Discovery Optional (D-bit)</a><a href="#section-toc.1-1.4.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.2">
+>                     <p id="section-toc.1-1.4.2.2.2.2.1"><a href="#section-4.2.2" class="auto internal xref">4.2.2</a>.  <a href="#name-rdata-format-discovery-opti" class="internal xref">RData Format - Discovery Optional (D-bit)</a></p>
+1332,1333c1435,1436
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.2.2.3">
+<                     <p id="section-toc.1-1.4.2.2.2.3.1"><a href="#section-4.2.3" class="xref">4.2.3</a>.  <a href="#name-rdata-format-type" class="xref">RData Format - Type</a><a href="#section-toc.1-1.4.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.3">
+>                     <p id="section-toc.1-1.4.2.2.2.3.1"><a href="#section-4.2.3" class="auto internal xref">4.2.3</a>.  <a href="#name-rdata-format-type" class="internal xref">RData Format - Type</a></p>
+1335,1336c1438,1439
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.2.2.4">
+<                     <p id="section-toc.1-1.4.2.2.2.4.1"><a href="#section-4.2.4" class="xref">4.2.4</a>.  <a href="#name-rdata-format-relay" class="xref">RData Format - Relay</a><a href="#section-toc.1-1.4.2.2.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.4">
+>                     <p id="section-toc.1-1.4.2.2.2.4.1"><a href="#section-4.2.4" class="auto internal xref">4.2.4</a>.  <a href="#name-rdata-format-relay" class="internal xref">RData Format - Relay</a></p>
+1340,1344c1443,1447
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-amtrelay-record-presentatio" class="xref">AMTRELAY Record Presentation Format</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.3.2.1">
+<                     <p id="section-toc.1-1.4.2.3.2.1.1"><a href="#section-4.3.1" class="xref">4.3.1</a>.  <a href="#name-representation-of-amtrelay-" class="xref">Representation of AMTRELAY RRs</a><a href="#section-toc.1-1.4.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-amtrelay-record-presentatio" class="internal xref">AMTRELAY Record Presentation Format</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.1">
+>                     <p id="section-toc.1-1.4.2.3.2.1.1"><a href="#section-4.3.1" class="auto internal xref">4.3.1</a>.  <a href="#name-representation-of-amtrelay-" class="internal xref">Representation of AMTRELAY RRs</a></p>
+1346,1347c1449,1450
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.3.2.2">
+<                     <p id="section-toc.1-1.4.2.3.2.2.1"><a href="#section-4.3.2" class="xref">4.3.2</a>.  <a href="#name-examples" class="xref">Examples</a><a href="#section-toc.1-1.4.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.2">
+>                     <p id="section-toc.1-1.4.2.3.2.2.1"><a href="#section-4.3.2" class="auto internal xref">4.3.2</a>.  <a href="#name-examples" class="internal xref">Examples</a></p>
+1353,1354c1456,1457
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1356,1360c1459,1463
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-use-of-amt" class="xref">Use of AMT</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-use-of-amt" class="internal xref">Use of AMT</a></p>
+1362,1363c1465,1466
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.2">
+<                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-record-spoofing" class="xref">Record-Spoofing</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+>                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-record-spoofing" class="internal xref">Record-Spoofing</a></p>
+1365,1366c1468,1469
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.3">
+<                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="xref">6.3</a>.  <a href="#name-congestion" class="xref">Congestion</a><a href="#section-toc.1-1.6.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
+>                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-congestion" class="internal xref">Congestion</a></p>
+1370,1374c1473,1477
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1376,1377c1479,1480
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1381,1382c1484,1485
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-unknown-rrtype-construction" class="xref">Unknown RRType Construction</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-unknown-rrtype-construction" class="internal xref">Unknown RRType Construction</a></p>
+1384,1385c1487,1488
+< <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1387,1388c1490,1491
+< <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+1402c1505
+< <p id="section-1-2">AMT (Automatic Multicast Tunneling) is defined in <span>[<a href="#RFC7450" class="xref">RFC7450</a>]</span> and provides
+---
+> <p id="section-1-2">AMT (Automatic Multicast Tunneling) is defined in <span>[<a href="#RFC7450" class="cite xref">RFC7450</a>]</span> and provides
+1405c1508
+< <p id="section-1-3"><span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-4.1.5" class="relref">Section 4.1.5</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span> explains that the relay selection process
+---
+> <p id="section-1-3"><span><a href="https://rfc-editor.org/rfc/rfc7450#section-4.1.5" class="relref">Section 4.1.5</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span> explains that the relay selection process
+1411c1514
+< <p id="section-1-4"><span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-4.1.5" class="relref">Section 4.1.5</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span> goes on
+---
+> <p id="section-1-4"><span><a href="https://rfc-editor.org/rfc/rfc7450#section-4.1.5" class="relref">Section 4.1.5</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span> goes on
+1414,1415c1517,1518
+<  <a href="https://www.rfc-editor.org/rfc/rfc8313#section-3.3" class="relref">3.3</a> and
+<  <a href="https://www.rfc-editor.org/rfc/rfc8313#section-3.4" class="relref">3.4</a> of <span>[<a href="#RFC8313" class="xref">RFC8313</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
+---
+>  <a href="https://rfc-editor.org/rfc/rfc8313#section-3.3" class="relref">3.3</a> and
+>  <a href="https://rfc-editor.org/rfc/rfc8313#section-3.4" class="relref">3.4</a> of <span>[<a href="#RFC8313" class="cite xref">RFC8313</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
+1420c1523
+< <p id="section-1-6">This document extends the relay discovery procedure described in <span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-5.2.3.4" class="relref">Section 5.2.3.4</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>.<a href="#section-1-6" class="pilcrow">¶</a></p>
+---
+> <p id="section-1-6">This document extends the relay discovery procedure described in <span><a href="https://rfc-editor.org/rfc/rfc7450#section-5.2.3.4" class="relref">Section 5.2.3.4</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>.<a href="#section-1-6" class="pilcrow">¶</a></p>
+1427c1530
+<  described in <span>[<a href="#RFC1034" class="xref">RFC1034</a>]</span>, <span>[<a href="#RFC1035" class="xref">RFC1035</a>]</span>, and the subsequent documents that update them, particularly <span>[<a href="#RFC2181" class="xref">RFC2181</a>]</span>.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+---
+>  described in <span>[<a href="#RFC1034" class="cite xref">RFC1034</a>]</span>, <span>[<a href="#RFC1035" class="cite xref">RFC1035</a>]</span>, and the subsequent documents that update them, particularly <span>[<a href="#RFC2181" class="cite xref">RFC2181</a>]</span>.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+1429,1432c1532,1535
+<  regarding source-specific multicast as described in <span>[<a href="#RFC4607" class="xref">RFC4607</a>]</span> and the
+<  use of Internet Group Management Protocol Version 3 (IGMPv3) <span>[<a href="#RFC3376" class="xref">RFC3376</a>]</span> and Multicast Listener Discovery Version 2
+<  (MLDv2) <span>[<a href="#RFC3810" class="xref">RFC3810</a>]</span> for group management of
+<  source-specific multicast channels, as described in <span>[<a href="#RFC4604" class="xref">RFC4604</a>]</span>.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
+---
+>  regarding source-specific multicast as described in <span>[<a href="#RFC4607" class="cite xref">RFC4607</a>]</span> and the
+>  use of Internet Group Management Protocol Version 3 (IGMPv3) <span>[<a href="#RFC3376" class="cite xref">RFC3376</a>]</span> and Multicast Listener Discovery Version 2
+>  (MLDv2) <span>[<a href="#RFC3810" class="cite xref">RFC3810</a>]</span> for group management of
+>  source-specific multicast channels, as described in <span>[<a href="#RFC4604" class="cite xref">RFC4604</a>]</span>.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
+1434,1435c1537,1538
+<  listed in Sections <a href="https://www.rfc-editor.org/rfc/rfc7450#section-3.2" class="relref">3.2</a>
+<   and <a href="https://www.rfc-editor.org/rfc/rfc7450#section-3.3" class="relref">3.3</a> of <span>[<a href="#RFC7450" class="xref">RFC7450</a>]</span>.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
+---
+>  listed in Sections <a href="https://rfc-editor.org/rfc/rfc7450#section-3.2" class="relref">3.2</a>
+>   and <a href="https://rfc-editor.org/rfc/rfc7450#section-3.3" class="relref">3.3</a> of <span>[<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
+1452c1555
+<  them as native multicast packets, as illustrated in <a href="#figtunnel" class="xref">Figure 1</a>.<a href="#section-1.2.1-1" class="pilcrow">¶</a></p>
+---
+>  them as native multicast packets, as illustrated in <a href="#figtunnel" class="auto internal xref">Figure 1</a>.<a href="#section-1.2.1-1" class="pilcrow">¶</a></p>
+1455c1558
+<             <div class="artwork art-text alignLeft" id="section-1.2.1-2.1">
+---
+>             <div class="alignLeft art-text artwork" id="section-1.2.1-2.1">
+1488c1591
+<                 <td class="text-left" rowspan="1" colspan="1">A source-specific multicast channel, as described in <span>[<a href="#RFC4607" class="xref">RFC4607</a>]</span>. A pair of IP addresses with a source host IP and destination group IP.</td>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">A source-specific multicast channel, as described in <span>[<a href="#RFC4607" class="cite xref">RFC4607</a>]</span>. A pair of IP addresses with a source host IP and destination group IP.</td>
+1497c1600
+<   discovery, as mentioned in <span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-4.2.1.1" class="relref">Section 4.2.1.1</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>.</td>
+---
+>   discovery, as mentioned in <span><a href="https://rfc-editor.org/rfc/rfc7450#section-4.2.1.1" class="relref">Section 4.2.1.1</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>.</td>
+1501c1604
+<                 <td class="text-left" rowspan="1" colspan="1">Further from the source of traffic, as described in <span>[<a href="#RFC7450" class="xref">RFC7450</a>]</span>.</td>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">Further from the source of traffic, as described in <span>[<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>.</td>
+1505c1608
+<                 <td class="text-left" rowspan="1" colspan="1">Fully Qualified Domain Name, as described in <span>[<a href="#RFC8499" class="xref">RFC8499</a>]</span>.</td>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">Fully Qualified Domain Name, as described in <span>[<a href="#RFC8499" class="cite xref">RFC8499</a>]</span>.</td>
+1509c1612
+<                 <td class="text-left" rowspan="1" colspan="1">An AMT gateway, as described in <span>[<a href="#RFC7450" class="xref">RFC7450</a>]</span>.</td>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">An AMT gateway, as described in <span>[<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>.</td>
+1513c1616
+<                 <td class="text-left" rowspan="1" colspan="1">The "Limit" flag described in <span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-5.1.4.4" class="relref">Section 5.1.4.4</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>.</td>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">The "Limit" flag described in <span><a href="https://rfc-editor.org/rfc/rfc7450#section-5.1.4.4" class="relref">Section 5.1.4.4</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>.</td>
+1521c1624
+<                 <td class="text-left" rowspan="1" colspan="1">An AMT relay, as described in <span>[<a href="#RFC7450" class="xref">RFC7450</a>]</span>.</td>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">An AMT relay, as described in <span>[<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>.</td>
+1525c1628
+<                 <td class="text-left" rowspan="1" colspan="1">Reverse Path Forwarding, as described in <span>[<a href="#RFC5110" class="xref">RFC5110</a>]</span>.</td>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">Reverse Path Forwarding, as described in <span>[<a href="#RFC5110" class="cite xref">RFC5110</a>]</span>.</td>
+1529c1632
+<                 <td class="text-left" rowspan="1" colspan="1">A DNS Resource Record, as described in <span>[<a href="#RFC1034" class="xref">RFC1034</a>]</span>.</td>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">A DNS Resource Record, as described in <span>[<a href="#RFC1034" class="cite xref">RFC1034</a>]</span>.</td>
+1533c1636
+<                 <td class="text-left" rowspan="1" colspan="1">A DNS Resource Record Type, as described in <span>[<a href="#RFC1034" class="xref">RFC1034</a>]</span>.</td>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">A DNS Resource Record Type, as described in <span>[<a href="#RFC1034" class="cite xref">RFC1034</a>]</span>.</td>
+1537c1640
+<                 <td class="text-left" rowspan="1" colspan="1">Source-specific multicast, as described in <span>[<a href="#RFC4607" class="xref">RFC4607</a>]</span>.</td>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">Source-specific multicast, as described in <span>[<a href="#RFC4607" class="cite xref">RFC4607</a>]</span>.</td>
+1541c1644
+<                 <td class="text-left" rowspan="1" colspan="1">Closer to the source of traffic, as described in <span>[<a href="#RFC7450" class="xref">RFC7450</a>]</span>.</td>
+---
+>                 <td class="text-left" rowspan="1" colspan="1">Closer to the source of traffic, as described in <span>[<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>.</td>
+1555c1658
+<      described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>      described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1589,1590c1692,1693
+<  reverse mapping trees (in-addr.arpa for IPv4, as described in <span><a href="https://www.rfc-editor.org/rfc/rfc1035#section-3.5" class="relref">Section 3.5</a> of [<a href="#RFC1035" class="xref">RFC1035</a>]</span>, or ip6.arpa for IPv6, as
+<   described in <span><a href="https://www.rfc-editor.org/rfc/rfc3596#section-2.5" class="relref">Section 2.5</a> of [<a href="#RFC3596" class="xref">RFC3596</a>]</span>).<a href="#section-2.1-4" class="pilcrow">¶</a></p>
+---
+>  reverse mapping trees (in-addr.arpa for IPv4, as described in <span><a href="https://rfc-editor.org/rfc/rfc1035#section-3.5" class="relref">Section 3.5</a> of [<a href="#RFC1035" class="cite xref">RFC1035</a>]</span>, or ip6.arpa for IPv6, as
+>   described in <span><a href="https://rfc-editor.org/rfc/rfc3596#section-2.5" class="relref">Section 2.5</a> of [<a href="#RFC3596" class="cite xref">RFC3596</a>]</span>).<a href="#section-2.1-4" class="pilcrow">¶</a></p>
+1592c1695
+<  procedure described in <span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-5.2.3.4" class="relref">Section 5.2.3.4</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>.  A gateway that
+---
+>  procedure described in <span><a href="https://rfc-editor.org/rfc/rfc7450#section-5.2.3.4" class="relref">Section 5.2.3.4</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>.  A gateway that
+1596,1599c1699,1702
+<  the requirements outlined in <a href="#priority" class="xref">Section 3.1</a>.<a href="#section-2.1-5" class="pilcrow">¶</a></p>
+< <p id="section-2.1-6">Some detailed example use cases are provided in <a href="#exampledeployments" class="xref">Section 2.3</a>, and
+<  other applicable example topologies appear in Sections <a href="https://www.rfc-editor.org/rfc/rfc8313#section-3.3" class="relref">3.3</a>,
+<  <a href="https://www.rfc-editor.org/rfc/rfc8313#section-3.4" class="relref">3.4</a>, and <a href="https://www.rfc-editor.org/rfc/rfc8313#section-3.5" class="relref">3.5</a> of <span>[<a href="#RFC8313" class="xref">RFC8313</a>]</span>.<a href="#section-2.1-6" class="pilcrow">¶</a></p>
+---
+>  the requirements outlined in <a href="#priority" class="auto internal xref">Section 3.1</a>.<a href="#section-2.1-5" class="pilcrow">¶</a></p>
+> <p id="section-2.1-6">Some detailed example use cases are provided in <a href="#exampledeployments" class="auto internal xref">Section 2.3</a>, and
+>  other applicable example topologies appear in Sections <a href="https://rfc-editor.org/rfc/rfc8313#section-3.3" class="relref">3.3</a>,
+>  <a href="https://rfc-editor.org/rfc/rfc8313#section-3.4" class="relref">3.4</a>, and <a href="https://rfc-editor.org/rfc/rfc8313#section-3.5" class="relref">3.5</a> of <span>[<a href="#RFC8313" class="cite xref">RFC8313</a>]</span>.<a href="#section-2.1-6" class="pilcrow">¶</a></p>
+1610c1713
+< <p id="section-2.2-2">The example in <a href="#figmessaging" class="xref">Figure 2</a> contains two multicast-enabled
+---
+> <p id="section-2.2-2">The example in <a href="#figmessaging" class="auto internal xref">Figure 2</a> contains two multicast-enabled
+1621,1622c1724,1725
+<  Transport (FLUTE) <span>[<a href="#RFC6726" class="xref">RFC6726</a>]</span>, a live
+<  video stream using RTP <span>[<a href="#RFC3550" class="xref">RFC3550</a>]</span>, or any other application that might
+---
+>  Transport (FLUTE) <span>[<a href="#RFC6726" class="cite xref">RFC6726</a>]</span>, a live
+>  video stream using RTP <span>[<a href="#RFC3550" class="cite xref">RFC3550</a>]</span>, or any other application that might
+1626c1729
+<           <div class="artwork art-text alignLeft" id="section-2.2-6.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-2.2-6.1">
+1672,1673c1775,1776
+<  (see <a href="#rpformat" class="xref">Section 4.3</a> for details about the AMTRELAY RR format and
+<  semantics).  As described in <span><a href="https://www.rfc-editor.org/rfc/rfc3596#section-2.5" class="relref">Section 2.5</a> of [<a href="#RFC3596" class="xref">RFC3596</a>]</span>, the
+---
+>  (see <a href="#rpformat" class="auto internal xref">Section 4.3</a> for details about the AMTRELAY RR format and
+>  semantics).  As described in <span><a href="https://rfc-editor.org/rfc/rfc3596#section-2.5" class="relref">Section 2.5</a> of [<a href="#RFC3596" class="cite xref">RFC3596</a>]</span>, the
+1675,1676c1778,1779
+< <div id="section-2.2-9">
+< <pre class="sourcecode">
+---
+> <div class="sourcecode" id="section-2.2-9">
+> <pre>
+1681c1784
+< <p id="section-2.2-10">The sequence of events depicted in <a href="#figmessaging" class="xref">Figure 2</a> is as follows:<a href="#section-2.2-10" class="pilcrow">¶</a></p>
+---
+> <p id="section-2.2-10">The sequence of events depicted in <a href="#figmessaging" class="auto internal xref">Figure 2</a> is as follows:<a href="#section-2.2-10" class="pilcrow">¶</a></p>
+1687c1790
+<  network with PIM <span>[<a href="#RFC7761" class="xref">RFC7761</a>]</span> or another
+---
+>  network with PIM <span>[<a href="#RFC7761" class="cite xref">RFC7761</a>]</span> or another
+1701c1804
+<  in <span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-4" class="relref">Section 4</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>, then forwards a membership report to the
+---
+>  in <span><a href="https://rfc-editor.org/rfc/rfc7450#section-4" class="relref">Section 4</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>, then forwards a membership report to the
+1712c1815
+<  as described in <span><a href="https://www.rfc-editor.org/rfc/rfc1035#section-3.5" class="relref">Section 3.5</a> of [<a href="#RFC1035" class="xref">RFC1035</a>]</span>, instead of the in6.arpa
+---
+>  as described in <span><a href="https://rfc-editor.org/rfc/rfc1035#section-3.5" class="relref">Section 3.5</a> of [<a href="#RFC1035" class="cite xref">RFC1035</a>]</span>, instead of the in6.arpa
+1737c1840
+<  <a href="#figrxisp" class="xref">Figure 3</a>.<a href="#section-2.3.1.1-1" class="pilcrow">¶</a></p>
+---
+>  <a href="#figrxisp" class="auto internal xref">Figure 3</a>.<a href="#section-2.3.1.1-1" class="pilcrow">¶</a></p>
+1739c1842
+<  IGMPv3 as described in <span>[<a href="#RFC4604" class="xref">RFC4604</a>]</span>, and the AMT gateway in this
+---
+>  IGMPv3 as described in <span>[<a href="#RFC4604" class="cite xref">RFC4604</a>]</span>, and the AMT gateway in this
+1741c1844
+<  networks in <a href="#extx" class="xref">Section 2.3.2</a> by discovering the appropriate AMT relays with a DNS
+---
+>  networks in <a href="#extx" class="auto internal xref">Section 2.3.2</a> by discovering the appropriate AMT relays with a DNS
+1745c1848
+<               <div class="artwork art-text alignLeft" id="section-2.3.1.1-3.1">
+---
+>               <div class="alignLeft art-text artwork" id="section-2.3.1.1-3.1">
+1790c1893
+<  accesses some multicast content, illustrated in <a href="#figrxofficenm" class="xref">Figure 4</a>.<a href="#section-2.3.1.2-1" class="pilcrow">¶</a></p>
+---
+>  accesses some multicast content, illustrated in <a href="#figrxofficenm" class="auto internal xref">Figure 4</a>.<a href="#section-2.3.1.2-1" class="pilcrow">¶</a></p>
+1799c1902
+<  in <span>[<a href="#RFC7359" class="xref">RFC7359</a>]</span>, deliberately excluding multicast traffic for a VPN
+---
+>  in <span>[<a href="#RFC7359" class="cite xref">RFC7359</a>]</span>, deliberately excluding multicast traffic for a VPN
+1803c1906
+<               <div class="artwork art-text alignLeft" id="section-2.3.1.2-4.1">
+---
+>               <div class="alignLeft art-text artwork" id="section-2.3.1.2-4.1">
+1835c1938
+< <p id="section-2.3.1.2-5">By adding an AMT relay to this office network as in <a href="#figrxoffice" class="xref">Figure 5</a>, it's
+---
+> <p id="section-2.3.1.2-5">By adding an AMT relay to this office network as in <a href="#figrxoffice" class="auto internal xref">Figure 5</a>, it's
+1837c1940
+<  ISP in <a href="#exrxisp" class="xref">Section 2.3.1.1</a>.<a href="#section-2.3.1.2-5" class="pilcrow">¶</a></p>
+---
+>  ISP in <a href="#exrxisp" class="auto internal xref">Section 2.3.1.1</a>.<a href="#section-2.3.1.2-5" class="pilcrow">¶</a></p>
+1840c1943
+<               <div class="artwork art-text alignLeft" id="section-2.3.1.2-6.1">
+---
+>               <div class="alignLeft art-text artwork" id="section-2.3.1.2-6.1">
+1873,1874c1976,1977
+<  the one in <a href="#figrxoffice" class="xref">Figure 5</a> receiving Internet services from a
+<  multicast-capable network like the one in <a href="#figrxisp" class="xref">Figure 3</a>, it's important for
+---
+>  the one in <a href="#figrxoffice" class="auto internal xref">Figure 5</a> receiving Internet services from a
+>  multicast-capable network like the one in <a href="#figrxisp" class="auto internal xref">Figure 3</a>, it's important for
+1878c1981
+<  network in <a href="#figrxisp" class="xref">Figure 3</a>.<a href="#section-2.3.1.2-7" class="pilcrow">¶</a></p>
+---
+>  network in <a href="#figrxisp" class="auto internal xref">Figure 3</a>.<a href="#section-2.3.1.2-7" class="pilcrow">¶</a></p>
+1894c1997
+<  traffic, as in <a href="#figtxrelay" class="xref">Figure 6</a>, each address could appear as an AMTRELAY RR
+---
+>  traffic, as in <a href="#figtxrelay" class="auto internal xref">Figure 6</a>, each address could appear as an AMTRELAY RR
+1900c2003
+<               <div class="artwork art-text alignLeft" id="section-2.3.2.1-2.1">
+---
+>               <div class="alignLeft art-text artwork" id="section-2.3.2.1-2.1">
+1932c2035
+<  <a href="#figtxisp" class="xref">Figure 7</a>. In this case, it's recommended that the ISP also provide at
+---
+>  <a href="#figtxisp" class="auto internal xref">Figure 7</a>. In this case, it's recommended that the ISP also provide at
+1941c2044
+<               <div class="artwork art-text alignLeft" id="section-2.3.2.2-3.1">
+---
+>               <div class="alignLeft art-text artwork" id="section-2.3.2.2-3.1">
+2005c2108
+<  outlined in <a href="#figrxoffice" class="xref">Figure 5</a> from <a href="#exoffice" class="xref">Section 2.3.1.2</a>.<a href="#section-3.1.1-3" class="pilcrow">¶</a></p>
+---
+>  outlined in <a href="#figrxoffice" class="auto internal xref">Figure 5</a> from <a href="#exoffice" class="auto internal xref">Section 2.3.1.2</a>.<a href="#section-3.1.1-3" class="pilcrow">¶</a></p>
+2022c2125
+<  <span>[<a href="#RFC6763" class="xref">RFC6763</a>]</span> using "_amt._udp" as the Service section of the queries, or a
+---
+>  <span>[<a href="#RFC6763" class="cite xref">RFC6763</a>]</span> using "_amt._udp" as the Service section of the queries, or a
+2024c2127
+<  the (S,G) (as described in <a href="#trafficabsent" class="xref">Section 3.3.4.1</a> and <a href="#loaded" class="xref">3.3.5</a>); and<a href="#section-3.1.1-5.4" class="pilcrow">¶</a>
+---
+>  the (S,G) (as described in <a href="#trafficabsent" class="auto internal xref">Section 3.3.4.1</a> and <a href="#loaded" class="auto internal xref">3.3.5</a>); and<a href="#section-3.1.1-5.4" class="pilcrow">¶</a>
+2027c2130
+<  anycast addresses from <span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-7" class="relref">Section 7</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>.<a href="#section-3.1.1-5.5" class="pilcrow">¶</a>
+---
+>  anycast addresses from <span><a href="https://rfc-editor.org/rfc/rfc7450#section-7" class="relref">Section 7</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>.<a href="#section-3.1.1-5.5" class="pilcrow">¶</a>
+2049,2050c2152,2153
+<     such a situation, consider the network in <a href="#figrxoffice" class="xref">Figure 5</a> connected as one
+<     of the customers to the network in <a href="#figrxisp" class="xref">Figure 3</a>.<a href="#section-3.1.1-8" class="pilcrow">¶</a></p>
+---
+>     such a situation, consider the network in <a href="#figrxoffice" class="auto internal xref">Figure 5</a> connected as one
+>     of the customers to the network in <a href="#figrxisp" class="auto internal xref">Figure 3</a>.<a href="#section-3.1.1-8" class="pilcrow">¶</a></p>
+2060,2061c2163,2164
+<  Happy Eyeballs <span>[<a href="#RFC8305" class="xref">RFC8305</a>]</span> algorithm to try candidate relays
+<  concurrently (see <a href="#happy" class="xref">Section 3.2</a>), but even
+---
+>  Happy Eyeballs <span>[<a href="#RFC8305" class="cite xref">RFC8305</a>]</span> algorithm to try candidate relays
+>  concurrently (see <a href="#happy" class="auto internal xref">Section 3.2</a>), but even
+2074,2075c2177,2178
+< <p id="section-3.1.2-4"><span><a href="https://www.rfc-editor.org/rfc/rfc8305#section-4" class="relref">Section 4</a> of [<a href="#RFC8305" class="xref">RFC8305</a>]</span> requires a Happy Eyeballs algorithm to sort
+<  the addresses with the Destination Address Selection defined in <span><a href="https://www.rfc-editor.org/rfc/rfc6724#section-6" class="relref">Section 6</a> of [<a href="#RFC6724" class="xref">RFC6724</a>]</span>, but for the above reasons, that requirement is superseded
+---
+> <p id="section-3.1.2-4"><span><a href="https://rfc-editor.org/rfc/rfc8305#section-4" class="relref">Section 4</a> of [<a href="#RFC8305" class="cite xref">RFC8305</a>]</span> requires a Happy Eyeballs algorithm to sort
+>  the addresses with the Destination Address Selection defined in <span><a href="https://rfc-editor.org/rfc/rfc6724#section-6" class="relref">Section 6</a> of [<a href="#RFC6724" class="cite xref">RFC6724</a>]</span>, but for the above reasons, that requirement is superseded
+2077,2078c2180,2181
+< <ul>
+< <li id="section-3.1.2-5.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.1.2-5.1">
+2080,2081c2183,2184
+< <p id="section-3.1.2-5.1.2"><a href="#figrxoffice" class="xref">Figure 5</a> and <a href="#exoffice" class="xref">Section 2.3.1.2</a> provide a motivating example to prefer
+<   DNS-SD <span>[<a href="#RFC6763" class="xref">RFC6763</a>]</span> for discovery strictly ahead of using the AMTRELAY RR
+---
+> <p id="section-3.1.2-5.1.2"><a href="#figrxoffice" class="auto internal xref">Figure 5</a> and <a href="#exoffice" class="auto internal xref">Section 2.3.1.2</a> provide a motivating example to prefer
+>   DNS-SD <span>[<a href="#RFC6763" class="cite xref">RFC6763</a>]</span> for discovery strictly ahead of using the AMTRELAY RR
+2085,2086c2188,2189
+<   service discovery using DNS Service Discovery (DNS-SD) <span>[<a href="#RFC6763" class="xref">RFC6763</a>]</span> for
+<   _amt._udp.&lt;domain&gt; (with &lt;domain&gt; chosen as described in <span><a href="https://www.rfc-editor.org/rfc/rfc6763#section-11" class="relref">Section 11</a> of [<a href="#RFC6763" class="xref">RFC6763</a>]</span>) and use the AMT relays discovered that way in preference to
+---
+>   service discovery using DNS Service Discovery (DNS-SD) <span>[<a href="#RFC6763" class="cite xref">RFC6763</a>]</span> for
+>   _amt._udp.&lt;domain&gt; (with &lt;domain&gt; chosen as described in <span><a href="https://rfc-editor.org/rfc/rfc6763#section-11" class="relref">Section 11</a> of [<a href="#RFC6763" class="cite xref">RFC6763</a>]</span>) and use the AMT relays discovered that way in preference to
+2090c2193
+< <li id="section-3.1.2-5.2">
+---
+>             <li class="normal" id="section-3.1.2-5.2">
+2098c2201
+<   DNS-SD, the network <span class="bcp14">SHOULD</span> use the well-known anycast addresses from <span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-7" class="relref">Section 7</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span> to route discovery traffic to the relay most
+---
+>   DNS-SD, the network <span class="bcp14">SHOULD</span> use the well-known anycast addresses from <span><a href="https://rfc-editor.org/rfc/rfc7450#section-7" class="relref">Section 7</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span> to route discovery traffic to the relay most
+2105c2208
+< <li id="section-3.1.2-5.3">
+---
+>             <li class="normal" id="section-3.1.2-5.3">
+2110,2111c2213,2214
+<   like <a href="#figtxrelay" class="xref">Figure 6</a> in <a href="#extxsnd" class="xref">Section 2.3.2.1</a> and by relays in a
+<   provider-controlled network like <a href="#figtxisp" class="xref">Figure 7</a> in <a href="#extxprv" class="xref">Section 2.3.2.2</a>, with
+---
+>   like <a href="#figtxrelay" class="auto internal xref">Figure 6</a> in <a href="#extxsnd" class="auto internal xref">Section 2.3.2.1</a> and by relays in a
+>   provider-controlled network like <a href="#figtxisp" class="auto internal xref">Figure 7</a> in <a href="#extxprv" class="auto internal xref">Section 2.3.2.2</a>, with
+2115c2218
+<   described in <a href="#rrdef-precedence" class="xref">Section 4.2.1</a> is a critical method of control so
+---
+>   described in <a href="#rrdef-precedence" class="auto internal xref">Section 4.2.1</a> is a critical method of control so
+2123c2226
+<   from <span><a href="https://www.rfc-editor.org/rfc/rfc6724#section-6" class="relref">Section 6</a> of [<a href="#RFC6724" class="xref">RFC6724</a>]</span> so that only relay IPs with the same
+---
+>   from <span><a href="https://rfc-editor.org/rfc/rfc6724#section-6" class="relref">Section 6</a> of [<a href="#RFC6724" class="cite xref">RFC6724</a>]</span> so that only relay IPs with the same
+2133c2236
+< <li id="section-3.1.2-7.2">Anycast addresses from <span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-7" class="relref">Section 7</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span><a href="#section-3.1.2-7.2" class="pilcrow">¶</a>
+---
+>             <li id="section-3.1.2-7.2">Anycast addresses from <span><a href="https://rfc-editor.org/rfc/rfc7450#section-7" class="relref">Section 7</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span><a href="#section-3.1.2-7.2" class="pilcrow">¶</a>
+2142c2245
+<  defined in <span><a href="https://www.rfc-editor.org/rfc/rfc6724#section-6" class="relref">Section 6</a> of [<a href="#RFC6724" class="xref">RFC6724</a>]</span>.<a href="#section-3.1.2-9" class="pilcrow">¶</a></p>
+---
+>  defined in <span><a href="https://rfc-editor.org/rfc/rfc6724#section-6" class="relref">Section 6</a> of [<a href="#RFC6724" class="cite xref">RFC6724</a>]</span>.<a href="#section-3.1.2-9" class="pilcrow">¶</a></p>
+2156c2259
+<  from <span><a href="https://www.rfc-editor.org/rfc/rfc8305#section-4" class="relref">Section 4</a> of [<a href="#RFC8305" class="xref">RFC8305</a>]</span>, such as the address family interleaving
+---
+>  from <span><a href="https://rfc-editor.org/rfc/rfc8305#section-4" class="relref">Section 4</a> of [<a href="#RFC8305" class="cite xref">RFC8305</a>]</span>, such as the address family interleaving
+2159c2262
+<  by the hold-down timers described in <a href="#trafficabsent" class="xref">Section 3.3.4.1</a> or <a href="#loaded" class="xref">3.3.5</a>.  These
+---
+>  by the hold-down timers described in <a href="#trafficabsent" class="auto internal xref">Section 3.3.4.1</a> or <a href="#loaded" class="auto internal xref">3.3.5</a>.  These
+2165c2268
+<  by the Happy Eyeballs requirements described in <span><a href="https://www.rfc-editor.org/rfc/rfc8305#section-5" class="relref">Section 5</a> of [<a href="#RFC8305" class="xref">RFC8305</a>]</span>
+---
+>  by the Happy Eyeballs requirements described in <span><a href="https://rfc-editor.org/rfc/rfc8305#section-5" class="relref">Section 5</a> of [<a href="#RFC8305" class="cite xref">RFC8305</a>]</span>
+2179c2282
+< <p id="section-3.1.3-2">A gateway configured to do this <span class="bcp14">SHOULD</span> still use the same preference-ordering logic from <a href="#ordering" class="xref">Section 3.1.2</a> for each connection.  (Note that
+---
+> <p id="section-3.1.3-2">A gateway configured to do this <span class="bcp14">SHOULD</span> still use the same preference-ordering logic from <a href="#ordering" class="auto internal xref">Section 3.1.2</a> for each connection.  (Note that
+2197c2300
+<  for relay discovery.  Happy Eyeballs <span>[<a href="#RFC8305" class="xref">RFC8305</a>]</span> provides a widely
+---
+>  for relay discovery.  Happy Eyeballs <span>[<a href="#RFC8305" class="cite xref">RFC8305</a>]</span> provides a widely
+2205c2308
+<  and the preference ordering of relays defined in <a href="#ordering" class="xref">Section 3.1.2</a> together provide guidance on use of a Happy Eyeballs algorithm for the
+---
+>  and the preference ordering of relays defined in <a href="#ordering" class="auto internal xref">Section 3.1.2</a> together provide guidance on use of a Happy Eyeballs algorithm for the
+2207c2310
+< <p id="section-3.2.1-3">Note that according to the definition in <a href="#connection-def" class="xref">Section 3.2.3</a> of this
+---
+> <p id="section-3.2.1-3">Note that according to the definition in <a href="#connection-def" class="auto internal xref">Section 3.2.3</a> of this
+2209c2312
+<  report.  As described in <span><a href="https://www.rfc-editor.org/rfc/rfc8305#section-5" class="relref">Section 5</a> of [<a href="#RFC8305" class="xref">RFC8305</a>]</span>, only one of the
+---
+>  report.  As described in <span><a href="https://rfc-editor.org/rfc/rfc8305#section-5" class="relref">Section 5</a> of [<a href="#RFC8305" class="cite xref">RFC8305</a>]</span>, only one of the
+2222,2223c2325,2326
+<     described in <span><a href="https://www.rfc-editor.org/rfc/rfc8305#section-3" class="relref">Section 3</a> of [<a href="#RFC8305" class="xref">RFC8305</a>]</span>, a gateway attempts to resolve the domain names
+<  listed in <a href="#priority" class="xref">Section 3.1</a>.  This consists of resolving the SRV queries for
+---
+>     described in <span><a href="https://rfc-editor.org/rfc/rfc8305#section-3" class="relref">Section 3</a> of [<a href="#RFC8305" class="cite xref">RFC8305</a>]</span>, a gateway attempts to resolve the domain names
+>  listed in <a href="#priority" class="auto internal xref">Section 3.1</a>.  This consists of resolving the SRV queries for
+2227,2228c2330,2331
+< <ul>
+< <li id="section-3.2.2-3.1">one
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.2.2-3.1">one
+2232c2335
+<     as urged by <span>[<a href="#RFC2782" class="xref">RFC2782</a>]</span>),
+---
+>     as urged by <span>[<a href="#RFC2782" class="cite xref">RFC2782</a>]</span>),
+2235c2338
+< <li id="section-3.2.2-3.2">
+---
+>             <li class="normal" id="section-3.2.2-3.2">
+2237c2340
+<     responses from <a href="#rtype" class="xref">Section 4.2.3</a> or
+---
+>     responses from <a href="#rtype" class="auto internal xref">Section 4.2.3</a> or
+2243c2346
+<  destination addresses" phase described in <span><a href="https://www.rfc-editor.org/rfc/rfc8305#section-4" class="relref">Section 4</a> of [<a href="#RFC8305" class="xref">RFC8305</a>]</span>),
+---
+>  destination addresses" phase described in <span><a href="https://rfc-editor.org/rfc/rfc8305#section-4" class="relref">Section 4</a> of [<a href="#RFC8305" class="cite xref">RFC8305</a>]</span>),
+2260,2261c2363,2364
+<  <a href="#ordering" class="xref">Section 3.1.2</a> and attempts connections with the corresponding relays
+<  under the algorithm restrictions and guidelines given in <span>[<a href="#RFC8305" class="xref">RFC8305</a>]</span> for
+---
+>  <a href="#ordering" class="auto internal xref">Section 3.1.2</a> and attempts connections with the corresponding relays
+>  under the algorithm restrictions and guidelines given in <span>[<a href="#RFC8305" class="cite xref">RFC8305</a>]</span> for
+2263c2366
+<  phase.  As described in <span><a href="https://www.rfc-editor.org/rfc/rfc8305#section-3" class="relref">Section 3</a> of [<a href="#RFC8305" class="xref">RFC8305</a>]</span>, DNS resolution is
+---
+>  phase.  As described in <span><a href="https://rfc-editor.org/rfc/rfc8305#section-3" class="relref">Section 3</a> of [<a href="#RFC8305" class="cite xref">RFC8305</a>]</span>, DNS resolution is
+2273c2376
+< <p id="section-3.2.3-1"><span><a href="https://www.rfc-editor.org/rfc/rfc8305#section-5" class="relref">Section 5</a> of [<a href="#RFC8305" class="xref">RFC8305</a>]</span>
+---
+> <p id="section-3.2.3-1"><span><a href="https://rfc-editor.org/rfc/rfc8305#section-5" class="relref">Section 5</a> of [<a href="#RFC8305" class="cite xref">RFC8305</a>]</span>
+2276c2379
+<  <span>[<a href="#RFC7450" class="xref">RFC7450</a>]</span>, and there is no TCP connection involved in an AMT tunnel.<a href="#section-3.2.3-2" class="pilcrow">¶</a></p>
+---
+>  <span>[<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>, and there is no TCP connection involved in an AMT tunnel.<a href="#section-3.2.3-2" class="pilcrow">¶</a></p>
+2280,2281c2383,2384
+< <ul>
+< <li id="section-3.2.3-4.1">An AMT connection is established successfully when the gateway receives
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.2.3-4.1">An AMT connection is established successfully when the gateway receives
+2283c2386
+<  (<span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-5.1.4" class="relref">Section 5.1.4</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>) that does not have the L flag set.<a href="#section-3.2.3-4.1" class="pilcrow">¶</a>
+---
+>  (<span><a href="https://rfc-editor.org/rfc/rfc7450#section-5.1.4" class="relref">Section 5.1.4</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>) that does not have the L flag set.<a href="#section-3.2.3-4.1" class="pilcrow">¶</a>
+2286c2389
+< <p id="section-3.2.3-5">See <a href="#loaded" class="xref">Section 3.3.5</a> of this document for further information about the
+---
+> <p id="section-3.2.3-5">See <a href="#loaded" class="auto internal xref">Section 3.3.5</a> of this document for further information about the
+2288c2391
+<  connection.  See <a href="#flowhealth" class="xref">Section 3.3.4</a> for an overview of how to respond
+---
+>  connection.  See <a href="#flowhealth" class="auto internal xref">Section 3.3.4</a> for an overview of how to respond
+2339c2442
+< <p id="section-3.3.2-1"><span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-5.2.3.4.1" class="relref">Section 5.2.3.4.1</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span> lists several events that may cause a
+---
+> <p id="section-3.3.2-1"><span><a href="https://rfc-editor.org/rfc/rfc7450#section-5.2.3.4.1" class="relref">Section 5.2.3.4.1</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span> lists several events that may cause a
+2374c2477
+< <a href="#trafficabsent" class="xref">Section 3.3.4.1</a>).<a href="#section-3.3.2-3.9" class="pilcrow">¶</a>
+---
+> <a href="#trafficabsent" class="auto internal xref">Section 3.3.4.1</a>).<a href="#section-3.3.2-3.9" class="pilcrow">¶</a>
+2396c2499
+< <p id="section-3.3.3-3">However, see Sections <a href="#flowhealth" class="xref">3.3.4</a>, <a href="#discoverymessage" class="xref">3.3.6</a>, and <a href="#ancient" class="xref">3.3.4.3</a> for more
+---
+> <p id="section-3.3.3-3">However, see Sections <a href="#flowhealth" class="auto internal xref">3.3.4</a>, <a href="#discoverymessage" class="auto internal xref">3.3.6</a>, and <a href="#ancient" class="auto internal xref">3.3.4.3</a> for more
+2422c2525
+< mapping timeout described in <span>[<a href="#RFC4787" class="xref">RFC4787</a>]</span>).<a href="#section-3.3.4.1-3" class="pilcrow">¶</a></p>
+---
+> mapping timeout described in <span>[<a href="#RFC4787" class="cite xref">RFC4787</a>]</span>).<a href="#section-3.3.4.1-3" class="pilcrow">¶</a></p>
+2424c2527
+< timeout recommended in the similar algorithm from <span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-5.2.3.4.3" class="relref">Section 5.2.3.4.3</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>.  This is to provide time for RPF Join propagation in the
+---
+> timeout recommended in the similar algorithm from <span><a href="https://rfc-editor.org/rfc/rfc7450#section-5.2.3.4.3" class="relref">Section 5.2.3.4.3</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>.  This is to provide time for RPF Join propagation in the
+2466c2569
+< connected to the same relay, as described in <a href="#stability" class="xref">Section 3.3.3</a>.<a href="#section-3.3.4.3-1" class="pilcrow">¶</a></p>
+---
+> connected to the same relay, as described in <a href="#stability" class="auto internal xref">Section 3.3.3</a>.<a href="#section-3.3.4.3-1" class="pilcrow">¶</a></p>
+2490c2593
+< <p id="section-3.3.5-1">The L flag (see <span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-5.1.4.4" class="relref">Section 5.1.4.4</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>) is the preferred mechanism for
+---
+> <p id="section-3.3.5-1">The L flag (see <span><a href="https://rfc-editor.org/rfc/rfc7450#section-5.1.4.4" class="relref">Section 5.1.4.4</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>) is the preferred mechanism for
+2495c2598
+< discovery process is underway for multiple candidate relays (<a href="#happy" class="xref">Section 3.2</a>),
+---
+> discovery process is underway for multiple candidate relays (<a href="#happy" class="auto internal xref">Section 3.2</a>),
+2500c2603
+< in <a href="#trafficabsent" class="xref">Section 3.3.4.1</a> so that the relay is removed from consideration
+---
+> in <a href="#trafficabsent" class="auto internal xref">Section 3.3.4.1</a> so that the relay is removed from consideration
+2509,2510c2612,2613
+< <p id="section-3.3.6-1">All AMT relays are required by <span>[<a href="#RFC7450" class="xref">RFC7450</a>]</span> to support handling of
+< Relay Discovery messages (e.g., in <span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-5.3.3.2" class="relref">Section 5.3.3.2</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>).<a href="#section-3.3.6-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-3.3.6-1">All AMT relays are required by <span>[<a href="#RFC7450" class="cite xref">RFC7450</a>]</span> to support handling of
+> Relay Discovery messages (e.g., in <span><a href="https://rfc-editor.org/rfc/rfc7450#section-5.3.3.2" class="relref">Section 5.3.3.2</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>).<a href="#section-3.3.6-1" class="pilcrow">¶</a></p>
+2518c2621
+< described in <a href="#stability" class="xref">Section 3.3.3</a>.<a href="#section-3.3.6-2" class="pilcrow">¶</a></p>
+---
+> described in <a href="#stability" class="auto internal xref">Section 3.3.3</a>.<a href="#section-3.3.6-2" class="pilcrow">¶</a></p>
+2544c2647
+< <span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-4.1.2.1" class="relref">Section 4.1.2.1</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>.<a href="#section-3.3.7-1" class="pilcrow">¶</a></p>
+---
+> <span><a href="https://rfc-editor.org/rfc/rfc7450#section-4.1.2.1" class="relref">Section 4.1.2.1</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>.<a href="#section-3.3.7-1" class="pilcrow">¶</a></p>
+2563c2666
+< mapping trees (in-addr.arpa for IPv4, as described in <span><a href="https://www.rfc-editor.org/rfc/rfc1035#section-3.5" class="relref">Section 3.5</a> of [<a href="#RFC1035" class="xref">RFC1035</a>]</span>, or ip6.arpa for IPv6, as described in <span><a href="https://www.rfc-editor.org/rfc/rfc3596#section-2.5" class="relref">Section 2.5</a> of [<a href="#RFC3596" class="xref">RFC3596</a>]</span>).<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+---
+> mapping trees (in-addr.arpa for IPv4, as described in <span><a href="https://rfc-editor.org/rfc/rfc1035#section-3.5" class="relref">Section 3.5</a> of [<a href="#RFC1035" class="cite xref">RFC1035</a>]</span>, or ip6.arpa for IPv6, as described in <span><a href="https://rfc-editor.org/rfc/rfc3596#section-2.5" class="relref">Section 2.5</a> of [<a href="#RFC3596" class="cite xref">RFC3596</a>]</span>).<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+2567c2670
+< (see, for example, <span><a href="https://www.rfc-editor.org/rfc/rfc2317#section-5.2" class="relref">Section 5.2</a> of [<a href="#RFC2317" class="xref">RFC2317</a>]</span>), but the use case enabled
+---
+> (see, for example, <span><a href="https://rfc-editor.org/rfc/rfc2317#section-5.2" class="relref">Section 5.2</a> of [<a href="#RFC2317" class="cite xref">RFC2317</a>]</span>), but the use case enabled
+2574,2575c2677,2678
+< outlining this need are described in <span>[<a href="#RFC2317" class="xref">RFC2317</a>]</span>.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
+< <p id="section-3.4-4">See Sections <a href="#rrdef" class="xref">4</a> and <a href="#rpformat" class="xref">4.3</a> for a detailed explanation of the contents
+---
+> outlining this need are described in <span>[<a href="#RFC2317" class="cite xref">RFC2317</a>]</span>.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
+> <p id="section-3.4-4">See Sections <a href="#rrdef" class="auto internal xref">4</a> and <a href="#rpformat" class="auto internal xref">4.3</a> for a detailed explanation of the contents
+2593c2696
+< <span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-5.2.3.4.3" class="relref">Section 5.2.3.4.3</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>, the <span class="bcp14">RECOMMENDED</span> timeout is a random value
+---
+> <span><a href="https://rfc-editor.org/rfc/rfc7450#section-5.2.3.4.3" class="relref">Section 5.2.3.4.3</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>, the <span class="bcp14">RECOMMENDED</span> timeout is a random value
+2623c2726
+< <div class="artwork art-text alignLeft" id="section-4.2-2">
+---
+> <div class="alignLeft art-text artwork" id="section-4.2-2">
+2640c2743
+< the same way as the PREFERENCE field described in <span><a href="https://www.rfc-editor.org/rfc/rfc1035#section-3.3.9" class="relref">Section 3.3.9</a> of [<a href="#RFC1035" class="xref">RFC1035</a>]</span>.<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
+---
+> the same way as the PREFERENCE field described in <span><a href="https://rfc-editor.org/rfc/rfc1035#section-3.3.9" class="relref">Section 3.3.9</a> of [<a href="#RFC1035" class="cite xref">RFC1035</a>]</span>.<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
+2652c2755
+< discovery as described in <span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-4.2.1.1" class="relref">Section 4.2.1.1</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span> rather than directly
+---
+> discovery as described in <span><a href="https://rfc-editor.org/rfc/rfc7450#section-4.2.1.1" class="relref">Section 4.2.1.1</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span> rather than directly
+2654,2655c2757,2758
+< <p id="section-4.2.2-3">That is, the gateway <span class="bcp14">MUST</span> receive an AMT Relay Advertisement message (<span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-5.1.2" class="relref">Section 5.1.2</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>) for an address before sending an AMT Request message
+< (<span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-5.1.3" class="relref">Section 5.1.3</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>) to that address. Before receiving the Relay
+---
+> <p id="section-4.2.2-3">That is, the gateway <span class="bcp14">MUST</span> receive an AMT Relay Advertisement message (<span><a href="https://rfc-editor.org/rfc/rfc7450#section-5.1.2" class="relref">Section 5.1.2</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>) for an address before sending an AMT Request message
+> (<span><a href="https://rfc-editor.org/rfc/rfc7450#section-5.1.3" class="relref">Section 5.1.3</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>) to that address. Before receiving the Relay
+2659c2762
+< brokers, as mentioned in <span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-4.2.1.1" class="relref">Section 4.2.1.1</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>.<a href="#section-4.2.2-3" class="pilcrow">¶</a></p>
+---
+> brokers, as mentioned in <span><a href="https://rfc-editor.org/rfc/rfc7450#section-4.2.1.1" class="relref">Section 4.2.1.1</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>.<a href="#section-4.2.2-3" class="pilcrow">¶</a></p>
+2675,2676c2778,2779
+< <ul>
+< <li id="section-4.2.3-3.1">type = 0:
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.2.3-3.1">type = 0:
+2679c2782
+< <li id="section-4.2.3-3.2">type = 1:
+---
+>             <li class="normal" id="section-4.2.3-3.2">type = 1:
+2682c2785
+< <li id="section-4.2.3-3.3">type = 2:
+---
+>             <li class="normal" id="section-4.2.3-3.3">type = 2:
+2685c2788
+< <li id="section-4.2.3-3.4">type = 3:
+---
+>             <li class="normal" id="section-4.2.3-3.4">type = 3:
+2688c2791
+< <span class="bcp14">MUST NOT</span> be compressed (see <span><a href="https://www.rfc-editor.org/rfc/rfc1035#section-3.3" class="relref">Section 3.3</a> of [<a href="#RFC1035" class="xref">RFC1035</a>]</span> and <span><a href="https://www.rfc-editor.org/rfc/rfc3597#section-4" class="relref">Section 4</a> of [<a href="#RFC3597" class="xref">RFC3597</a>]</span>).<a href="#section-4.2.3-3.4" class="pilcrow">¶</a>
+---
+> <span class="bcp14">MUST NOT</span> be compressed (see <span><a href="https://rfc-editor.org/rfc/rfc1035#section-3.3" class="relref">Section 3.3</a> of [<a href="#RFC1035" class="cite xref">RFC1035</a>]</span> and <span><a href="https://rfc-editor.org/rfc/rfc3597#section-4" class="relref">Section 4</a> of [<a href="#RFC3597" class="cite xref">RFC3597</a>]</span>).<a href="#section-4.2.3-3.4" class="pilcrow">¶</a>
+2707c2810
+< <span><a href="https://www.rfc-editor.org/rfc/rfc1035#section-3.4.1" class="relref">Section 3.4.1</a> of [<a href="#RFC1035" class="xref">RFC1035</a>]</span>. This is a 32-bit number in network byte
+---
+> <span><a href="https://rfc-editor.org/rfc/rfc1035#section-3.4.1" class="relref">Section 3.4.1</a> of [<a href="#RFC1035" class="cite xref">RFC1035</a>]</span>. This is a 32-bit number in network byte
+2711c2814
+< <span><a href="https://www.rfc-editor.org/rfc/rfc3596#section-2.2" class="relref">Section 2.2</a> of [<a href="#RFC3596" class="xref">RFC3596</a>]</span>. This is a 128-bit number in network byte order.<a href="#section-4.2.4-4" class="pilcrow">¶</a></p>
+---
+> <span><a href="https://rfc-editor.org/rfc/rfc3596#section-2.2" class="relref">Section 2.2</a> of [<a href="#RFC3596" class="cite xref">RFC3596</a>]</span>. This is a 128-bit number in network byte order.<a href="#section-4.2.4-4" class="pilcrow">¶</a></p>
+2713c2816
+< name, as described in <span><a href="https://www.rfc-editor.org/rfc/rfc1035#section-3.3" class="relref">Section 3.3</a> of [<a href="#RFC1035" class="xref">RFC1035</a>]</span>. For the reasons given in <span><a href="https://www.rfc-editor.org/rfc/rfc3597#section-4" class="relref">Section 4</a> of [<a href="#RFC3597" class="xref">RFC3597</a>]</span>, compression <span class="bcp14">MUST NOT</span> be
+---
+> name, as described in <span><a href="https://rfc-editor.org/rfc/rfc1035#section-3.3" class="relref">Section 3.3</a> of [<a href="#RFC1035" class="cite xref">RFC1035</a>]</span>. For the reasons given in <span><a href="https://rfc-editor.org/rfc/rfc3597#section-4" class="relref">Section 4</a> of [<a href="#RFC3597" class="cite xref">RFC3597</a>]</span>, compression <span class="bcp14">MUST NOT</span> be
+2739,2740c2842,2843
+< <div id="section-4.3.1-4">
+< <pre class="sourcecode">
+---
+> <div class="sourcecode" id="section-4.3.1-4">
+> <pre>
+2753,2754c2856,2857
+< <div id="section-4.3.2-2">
+< <pre class="sourcecode">
+---
+> <div class="sourcecode" id="section-4.3.2-2">
+> <pre>
+2765c2868
+< described in <a href="#rrdef-dbit" class="xref">Section 4.2.2</a>) and a precedence 10 (meaning they're
+---
+> described in <a href="#rrdef-dbit" class="auto internal xref">Section 4.2.2</a>) and a precedence 10 (meaning they're
+2769c2872
+< described in <span>[<a href="#RFC3597" class="xref">RFC3597</a>]</span>.  This approach would replace the AMTRELAY
+---
+> described in <span>[<a href="#RFC3597" class="cite xref">RFC3597</a>]</span>.  This approach would replace the AMTRELAY
+2771,2772c2874,2875
+< <div id="section-4.3.2-5">
+< <pre class="sourcecode">
+---
+> <div class="sourcecode" id="section-4.3.2-5">
+> <pre>
+2790c2893
+< <p id="section-4.3.2-6">See <a href="#extranslate" class="xref">Appendix A</a> for more details.<a href="#section-4.3.2-6" class="pilcrow">¶</a></p>
+---
+> <p id="section-4.3.2-6">See <a href="#extranslate" class="auto internal xref">Appendix A</a> for more details.<a href="#section-4.3.2-6" class="pilcrow">¶</a></p>
+2841c2944
+< <p id="section-5-4">Values 0, 1, 2, and 3 are further explained in Sections <a href="#rtype" class="xref">4.2.3</a> and <a href="#rdformat" class="xref">4.2.4</a>.
+---
+> <p id="section-5-4">Values 0, 1, 2, and 3 are further explained in Sections <a href="#rtype" class="auto internal xref">4.2.3</a> and <a href="#rdformat" class="auto internal xref">4.2.4</a>.
+2843c2946
+< Specification Required (as described in <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>).<a href="#section-5-4" class="pilcrow">¶</a></p>
+---
+> Specification Required (as described in <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>).<a href="#section-5-4" class="pilcrow">¶</a></p>
+2860c2963
+< in <span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-6" class="relref">Section 6</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+---
+> in <span><a href="https://rfc-editor.org/rfc/rfc7450#section-6" class="relref">Section 6</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+2863,2864c2966,2967
+< opportunistic use of IPsec <span>[<a href="#RFC4301" class="xref">RFC4301</a>]</span> to secure traffic received from AMT
+< relays when IPSECKEY records <span>[<a href="#RFC4025" class="xref">RFC4025</a>]</span> are available or when a trust
+---
+> opportunistic use of IPsec <span>[<a href="#RFC4301" class="cite xref">RFC4301</a>]</span> to secure traffic received from AMT
+> relays when IPSECKEY records <span>[<a href="#RFC4025" class="cite xref">RFC4025</a>]</span> are available or when a trust
+2867c2970
+< Multicast Data packets (<span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-5.1.6" class="relref">Section 5.1.6</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>), so absent
+---
+> Multicast Data packets (<span><a href="https://rfc-editor.org/rfc/rfc7450#section-5.1.6" class="relref">Section 5.1.6</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>), so absent
+2888,2890c2991,2993
+< any secure channel, such as with a TSIG <span>[<a href="#RFC2845" class="xref">RFC2845</a>]</span> or SIG(0) <span>[<a href="#RFC2931" class="xref">RFC2931</a>]</span>
+< channel, a secure local channel on the host, DNS over TLS <span>[<a href="#RFC7858" class="xref">RFC7858</a>]</span>,
+< DNS over HTTPS <span>[<a href="#RFC8484" class="xref">RFC8484</a>]</span>, or some other mechanism that provides
+---
+> any secure channel, such as with a TSIG <span>[<a href="#RFC2845" class="cite xref">RFC2845</a>]</span> or SIG(0) <span>[<a href="#RFC2931" class="cite xref">RFC2931</a>]</span>
+> channel, a secure local channel on the host, DNS over TLS <span>[<a href="#RFC7858" class="cite xref">RFC7858</a>]</span>,
+> DNS over HTTPS <span>[<a href="#RFC8484" class="cite xref">RFC8484</a>]</span>, or some other mechanism that provides
+2903c3006
+< some congestion risks, as described in <span><a href="https://www.rfc-editor.org/rfc/rfc8085#section-4" class="relref">Section 4</a> of [<a href="#RFC8085" class="xref">RFC8085</a>]</span>.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
+---
+> some congestion risks, as described in <span><a href="https://rfc-editor.org/rfc/rfc8085#section-4" class="relref">Section 4</a> of [<a href="#RFC8085" class="cite xref">RFC8085</a>]</span>.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
+2908c3011
+< those described in <span><a href="https://www.rfc-editor.org/rfc/rfc8085#section-3.1.10" class="relref">Section 3.1.10</a> of [<a href="#RFC8085" class="xref">RFC8085</a>]</span> and similar
+---
+> those described in <span><a href="https://rfc-editor.org/rfc/rfc8085#section-3.1.10" class="relref">Section 3.1.10</a> of [<a href="#RFC8085" class="cite xref">RFC8085</a>]</span> and similar
+2912c3015
+< <p id="section-6.3-3"><span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-4.1.4.2" class="relref">Section 4.1.4.2</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span> and <span><a href="https://www.rfc-editor.org/rfc/rfc7450#section-6.1" class="relref">Section 6.1</a> of [<a href="#RFC7450" class="xref">RFC7450</a>]</span>
+---
+> <p id="section-6.3-3"><span><a href="https://rfc-editor.org/rfc/rfc7450#section-4.1.4.2" class="relref">Section 4.1.4.2</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span> and <span><a href="https://rfc-editor.org/rfc/rfc7450#section-6.1" class="relref">Section 6.1</a> of [<a href="#RFC7450" class="cite xref">RFC7450</a>]</span>
+2930c3033
+< <span class="refAuthor">Mockapetris, P.</span>, <span class="refTitle">"Domain names - concepts and facilities"</span>, <span class="seriesInfo">STD 13</span>, <span class="seriesInfo">RFC 1034</span>, <span class="seriesInfo">DOI 10.17487/RFC1034</span>, <time datetime="1987-11">November 1987</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1034">https://www.rfc-editor.org/info/rfc1034</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mockapetris, P.</span>, <span class="refTitle">"Domain names - concepts and facilities"</span>, <span class="seriesInfo">STD 13</span>, <span class="seriesInfo">RFC 1034</span>, <span class="seriesInfo">DOI 10.17487/RFC1034</span>, <time datetime="1987-11" class="refDate">November 1987</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1034">https://www.rfc-editor.org/info/rfc1034</a>&gt;</span>. </dd>
+2934c3037
+< <span class="refAuthor">Mockapetris, P.</span>, <span class="refTitle">"Domain names - implementation and specification"</span>, <span class="seriesInfo">STD 13</span>, <span class="seriesInfo">RFC 1035</span>, <span class="seriesInfo">DOI 10.17487/RFC1035</span>, <time datetime="1987-11">November 1987</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1035">https://www.rfc-editor.org/info/rfc1035</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mockapetris, P.</span>, <span class="refTitle">"Domain names - implementation and specification"</span>, <span class="seriesInfo">STD 13</span>, <span class="seriesInfo">RFC 1035</span>, <span class="seriesInfo">DOI 10.17487/RFC1035</span>, <time datetime="1987-11" class="refDate">November 1987</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1035">https://www.rfc-editor.org/info/rfc1035</a>&gt;</span>. </dd>
+2938c3041
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+2942c3045
+< <span class="refAuthor">Elz, R.</span><span class="refAuthor"> and R. Bush</span>, <span class="refTitle">"Clarifications to the DNS Specification"</span>, <span class="seriesInfo">RFC 2181</span>, <span class="seriesInfo">DOI 10.17487/RFC2181</span>, <time datetime="1997-07">July 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2181">https://www.rfc-editor.org/info/rfc2181</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Elz, R.</span> and <span class="refAuthor">R. Bush</span>, <span class="refTitle">"Clarifications to the DNS Specification"</span>, <span class="seriesInfo">RFC 2181</span>, <span class="seriesInfo">DOI 10.17487/RFC2181</span>, <time datetime="1997-07" class="refDate">July 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2181">https://www.rfc-editor.org/info/rfc2181</a>&gt;</span>. </dd>
+2946c3049
+< <span class="refAuthor">Gulbrandsen, A.</span><span class="refAuthor">, Vixie, P.</span><span class="refAuthor">, and L. Esibov</span>, <span class="refTitle">"A DNS RR for specifying the location of services (DNS SRV)"</span>, <span class="seriesInfo">RFC 2782</span>, <span class="seriesInfo">DOI 10.17487/RFC2782</span>, <time datetime="2000-02">February 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2782">https://www.rfc-editor.org/info/rfc2782</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Gulbrandsen, A.</span>, <span class="refAuthor">Vixie, P.</span>, and <span class="refAuthor">L. Esibov</span>, <span class="refTitle">"A DNS RR for specifying the location of services (DNS SRV)"</span>, <span class="seriesInfo">RFC 2782</span>, <span class="seriesInfo">DOI 10.17487/RFC2782</span>, <time datetime="2000-02" class="refDate">February 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2782">https://www.rfc-editor.org/info/rfc2782</a>&gt;</span>. </dd>
+2950c3053
+< <span class="refAuthor">Cain, B.</span><span class="refAuthor">, Deering, S.</span><span class="refAuthor">, Kouvelas, I.</span><span class="refAuthor">, Fenner, B.</span><span class="refAuthor">, and A. Thyagarajan</span>, <span class="refTitle">"Internet Group Management Protocol, Version 3"</span>, <span class="seriesInfo">RFC 3376</span>, <span class="seriesInfo">DOI 10.17487/RFC3376</span>, <time datetime="2002-10">October 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3376">https://www.rfc-editor.org/info/rfc3376</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cain, B.</span>, <span class="refAuthor">Deering, S.</span>, <span class="refAuthor">Kouvelas, I.</span>, <span class="refAuthor">Fenner, B.</span>, and <span class="refAuthor">A. Thyagarajan</span>, <span class="refTitle">"Internet Group Management Protocol, Version 3"</span>, <span class="seriesInfo">RFC 3376</span>, <span class="seriesInfo">DOI 10.17487/RFC3376</span>, <time datetime="2002-10" class="refDate">October 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3376">https://www.rfc-editor.org/info/rfc3376</a>&gt;</span>. </dd>
+2954c3057
+< <span class="refAuthor">Thomson, S.</span><span class="refAuthor">, Huitema, C.</span><span class="refAuthor">, Ksinant, V.</span><span class="refAuthor">, and M. Souissi</span>, <span class="refTitle">"DNS Extensions to Support IP Version 6"</span>, <span class="seriesInfo">STD 88</span>, <span class="seriesInfo">RFC 3596</span>, <span class="seriesInfo">DOI 10.17487/RFC3596</span>, <time datetime="2003-10">October 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3596">https://www.rfc-editor.org/info/rfc3596</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Thomson, S.</span>, <span class="refAuthor">Huitema, C.</span>, <span class="refAuthor">Ksinant, V.</span>, and <span class="refAuthor">M. Souissi</span>, <span class="refTitle">"DNS Extensions to Support IP Version 6"</span>, <span class="seriesInfo">STD 88</span>, <span class="seriesInfo">RFC 3596</span>, <span class="seriesInfo">DOI 10.17487/RFC3596</span>, <time datetime="2003-10" class="refDate">October 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3596">https://www.rfc-editor.org/info/rfc3596</a>&gt;</span>. </dd>
+2958c3061
+< <span class="refAuthor">Gustafsson, A.</span>, <span class="refTitle">"Handling of Unknown DNS Resource Record (RR) Types"</span>, <span class="seriesInfo">RFC 3597</span>, <span class="seriesInfo">DOI 10.17487/RFC3597</span>, <time datetime="2003-09">September 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3597">https://www.rfc-editor.org/info/rfc3597</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Gustafsson, A.</span>, <span class="refTitle">"Handling of Unknown DNS Resource Record (RR) Types"</span>, <span class="seriesInfo">RFC 3597</span>, <span class="seriesInfo">DOI 10.17487/RFC3597</span>, <time datetime="2003-09" class="refDate">September 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3597">https://www.rfc-editor.org/info/rfc3597</a>&gt;</span>. </dd>
+2962c3065
+< <span class="refAuthor">Vida, R., Ed.</span><span class="refAuthor"> and L. Costa, Ed.</span>, <span class="refTitle">"Multicast Listener Discovery Version 2 (MLDv2) for IPv6"</span>, <span class="seriesInfo">RFC 3810</span>, <span class="seriesInfo">DOI 10.17487/RFC3810</span>, <time datetime="2004-06">June 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3810">https://www.rfc-editor.org/info/rfc3810</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Vida, R., Ed.</span> and <span class="refAuthor">L. Costa, Ed.</span>, <span class="refTitle">"Multicast Listener Discovery Version 2 (MLDv2) for IPv6"</span>, <span class="seriesInfo">RFC 3810</span>, <span class="seriesInfo">DOI 10.17487/RFC3810</span>, <time datetime="2004-06" class="refDate">June 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3810">https://www.rfc-editor.org/info/rfc3810</a>&gt;</span>. </dd>
+2966c3069
+< <span class="refAuthor">Holbrook, H.</span><span class="refAuthor">, Cain, B.</span><span class="refAuthor">, and B. Haberman</span>, <span class="refTitle">"Using Internet Group Management Protocol Version 3 (IGMPv3) and Multicast Listener Discovery Protocol Version 2 (MLDv2) for Source-Specific Multicast"</span>, <span class="seriesInfo">RFC 4604</span>, <span class="seriesInfo">DOI 10.17487/RFC4604</span>, <time datetime="2006-08">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4604">https://www.rfc-editor.org/info/rfc4604</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Holbrook, H.</span>, <span class="refAuthor">Cain, B.</span>, and <span class="refAuthor">B. Haberman</span>, <span class="refTitle">"Using Internet Group Management Protocol Version 3 (IGMPv3) and Multicast Listener Discovery Protocol Version 2 (MLDv2) for Source-Specific Multicast"</span>, <span class="seriesInfo">RFC 4604</span>, <span class="seriesInfo">DOI 10.17487/RFC4604</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4604">https://www.rfc-editor.org/info/rfc4604</a>&gt;</span>. </dd>
+2970c3073
+< <span class="refAuthor">Holbrook, H.</span><span class="refAuthor"> and B. Cain</span>, <span class="refTitle">"Source-Specific Multicast for IP"</span>, <span class="seriesInfo">RFC 4607</span>, <span class="seriesInfo">DOI 10.17487/RFC4607</span>, <time datetime="2006-08">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4607">https://www.rfc-editor.org/info/rfc4607</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Holbrook, H.</span> and <span class="refAuthor">B. Cain</span>, <span class="refTitle">"Source-Specific Multicast for IP"</span>, <span class="seriesInfo">RFC 4607</span>, <span class="seriesInfo">DOI 10.17487/RFC4607</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4607">https://www.rfc-editor.org/info/rfc4607</a>&gt;</span>. </dd>
+2974c3077
+< <span class="refAuthor">Thaler, D., Ed.</span><span class="refAuthor">, Draves, R.</span><span class="refAuthor">, Matsumoto, A.</span><span class="refAuthor">, and T. Chown</span>, <span class="refTitle">"Default Address Selection for Internet Protocol Version 6 (IPv6)"</span>, <span class="seriesInfo">RFC 6724</span>, <span class="seriesInfo">DOI 10.17487/RFC6724</span>, <time datetime="2012-09">September 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6724">https://www.rfc-editor.org/info/rfc6724</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Thaler, D., Ed.</span>, <span class="refAuthor">Draves, R.</span>, <span class="refAuthor">Matsumoto, A.</span>, and <span class="refAuthor">T. Chown</span>, <span class="refTitle">"Default Address Selection for Internet Protocol Version 6 (IPv6)"</span>, <span class="seriesInfo">RFC 6724</span>, <span class="seriesInfo">DOI 10.17487/RFC6724</span>, <time datetime="2012-09" class="refDate">September 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6724">https://www.rfc-editor.org/info/rfc6724</a>&gt;</span>. </dd>
+2978c3081
+< <span class="refAuthor">Cheshire, S.</span><span class="refAuthor"> and M. Krochmal</span>, <span class="refTitle">"DNS-Based Service Discovery"</span>, <span class="seriesInfo">RFC 6763</span>, <span class="seriesInfo">DOI 10.17487/RFC6763</span>, <time datetime="2013-02">February 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6763">https://www.rfc-editor.org/info/rfc6763</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cheshire, S.</span> and <span class="refAuthor">M. Krochmal</span>, <span class="refTitle">"DNS-Based Service Discovery"</span>, <span class="seriesInfo">RFC 6763</span>, <span class="seriesInfo">DOI 10.17487/RFC6763</span>, <time datetime="2013-02" class="refDate">February 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6763">https://www.rfc-editor.org/info/rfc6763</a>&gt;</span>. </dd>
+2982c3085
+< <span class="refAuthor">Bumgardner, G.</span>, <span class="refTitle">"Automatic Multicast Tunneling"</span>, <span class="seriesInfo">RFC 7450</span>, <span class="seriesInfo">DOI 10.17487/RFC7450</span>, <time datetime="2015-02">February 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7450">https://www.rfc-editor.org/info/rfc7450</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bumgardner, G.</span>, <span class="refTitle">"Automatic Multicast Tunneling"</span>, <span class="seriesInfo">RFC 7450</span>, <span class="seriesInfo">DOI 10.17487/RFC7450</span>, <time datetime="2015-02" class="refDate">February 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7450">https://www.rfc-editor.org/info/rfc7450</a>&gt;</span>. </dd>
+2986c3089
+< <span class="refAuthor">Eggert, L.</span><span class="refAuthor">, Fairhurst, G.</span><span class="refAuthor">, and G. Shepherd</span>, <span class="refTitle">"UDP Usage Guidelines"</span>, <span class="seriesInfo">BCP 145</span>, <span class="seriesInfo">RFC 8085</span>, <span class="seriesInfo">DOI 10.17487/RFC8085</span>, <time datetime="2017-03">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8085">https://www.rfc-editor.org/info/rfc8085</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Eggert, L.</span>, <span class="refAuthor">Fairhurst, G.</span>, and <span class="refAuthor">G. Shepherd</span>, <span class="refTitle">"UDP Usage Guidelines"</span>, <span class="seriesInfo">BCP 145</span>, <span class="seriesInfo">RFC 8085</span>, <span class="seriesInfo">DOI 10.17487/RFC8085</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8085">https://www.rfc-editor.org/info/rfc8085</a>&gt;</span>. </dd>
+2990c3093
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+2994c3097
+< <span class="refAuthor">Schinazi, D.</span><span class="refAuthor"> and T. Pauly</span>, <span class="refTitle">"Happy Eyeballs Version 2: Better Connectivity Using Concurrency"</span>, <span class="seriesInfo">RFC 8305</span>, <span class="seriesInfo">DOI 10.17487/RFC8305</span>, <time datetime="2017-12">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8305">https://www.rfc-editor.org/info/rfc8305</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schinazi, D.</span> and <span class="refAuthor">T. Pauly</span>, <span class="refTitle">"Happy Eyeballs Version 2: Better Connectivity Using Concurrency"</span>, <span class="seriesInfo">RFC 8305</span>, <span class="seriesInfo">DOI 10.17487/RFC8305</span>, <time datetime="2017-12" class="refDate">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8305">https://www.rfc-editor.org/info/rfc8305</a>&gt;</span>. </dd>
+2998c3101
+< <span class="refAuthor">Hoffman, P.</span><span class="refAuthor">, Sullivan, A.</span><span class="refAuthor">, and K. Fujiwara</span>, <span class="refTitle">"DNS Terminology"</span>, <span class="seriesInfo">BCP 219</span>, <span class="seriesInfo">RFC 8499</span>, <span class="seriesInfo">DOI 10.17487/RFC8499</span>, <time datetime="2019-01">January 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8499">https://www.rfc-editor.org/info/rfc8499</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hoffman, P.</span>, <span class="refAuthor">Sullivan, A.</span>, and <span class="refAuthor">K. Fujiwara</span>, <span class="refTitle">"DNS Terminology"</span>, <span class="seriesInfo">BCP 219</span>, <span class="seriesInfo">RFC 8499</span>, <span class="seriesInfo">DOI 10.17487/RFC8499</span>, <time datetime="2019-01" class="refDate">January 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8499">https://www.rfc-editor.org/info/rfc8499</a>&gt;</span>. </dd>
+3009c3112
+< <span class="refAuthor">Eidnes, H.</span><span class="refAuthor">, de Groot, G.</span><span class="refAuthor">, and P. Vixie</span>, <span class="refTitle">"Classless IN-ADDR.ARPA delegation"</span>, <span class="seriesInfo">BCP 20</span>, <span class="seriesInfo">RFC 2317</span>, <span class="seriesInfo">DOI 10.17487/RFC2317</span>, <time datetime="1998-03">March 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2317">https://www.rfc-editor.org/info/rfc2317</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Eidnes, H.</span>, <span class="refAuthor">de Groot, G.</span>, and <span class="refAuthor">P. Vixie</span>, <span class="refTitle">"Classless IN-ADDR.ARPA delegation"</span>, <span class="seriesInfo">BCP 20</span>, <span class="seriesInfo">RFC 2317</span>, <span class="seriesInfo">DOI 10.17487/RFC2317</span>, <time datetime="1998-03" class="refDate">March 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2317">https://www.rfc-editor.org/info/rfc2317</a>&gt;</span>. </dd>
+3013c3116
+< <span class="refAuthor">Vixie, P.</span><span class="refAuthor">, Gudmundsson, O.</span><span class="refAuthor">, Eastlake 3rd, D.</span><span class="refAuthor">, and B. Wellington</span>, <span class="refTitle">"Secret Key Transaction Authentication for DNS (TSIG)"</span>, <span class="seriesInfo">RFC 2845</span>, <span class="seriesInfo">DOI 10.17487/RFC2845</span>, <time datetime="2000-05">May 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2845">https://www.rfc-editor.org/info/rfc2845</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Vixie, P.</span>, <span class="refAuthor">Gudmundsson, O.</span>, <span class="refAuthor">Eastlake 3rd, D.</span>, and <span class="refAuthor">B. Wellington</span>, <span class="refTitle">"Secret Key Transaction Authentication for DNS (TSIG)"</span>, <span class="seriesInfo">RFC 2845</span>, <span class="seriesInfo">DOI 10.17487/RFC2845</span>, <time datetime="2000-05" class="refDate">May 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2845">https://www.rfc-editor.org/info/rfc2845</a>&gt;</span>. </dd>
+3017c3120
+< <span class="refAuthor">Eastlake 3rd, D.</span>, <span class="refTitle">"DNS Request and Transaction Signatures ( SIG(0)s )"</span>, <span class="seriesInfo">RFC 2931</span>, <span class="seriesInfo">DOI 10.17487/RFC2931</span>, <time datetime="2000-09">September 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2931">https://www.rfc-editor.org/info/rfc2931</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Eastlake 3rd, D.</span>, <span class="refTitle">"DNS Request and Transaction Signatures ( SIG(0)s )"</span>, <span class="seriesInfo">RFC 2931</span>, <span class="seriesInfo">DOI 10.17487/RFC2931</span>, <time datetime="2000-09" class="refDate">September 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2931">https://www.rfc-editor.org/info/rfc2931</a>&gt;</span>. </dd>
+3021c3124
+< <span class="refAuthor">Schulzrinne, H.</span><span class="refAuthor">, Casner, S.</span><span class="refAuthor">, Frederick, R.</span><span class="refAuthor">, and V. Jacobson</span>, <span class="refTitle">"RTP: A Transport Protocol for Real-Time Applications"</span>, <span class="seriesInfo">STD 64</span>, <span class="seriesInfo">RFC 3550</span>, <span class="seriesInfo">DOI 10.17487/RFC3550</span>, <time datetime="2003-07">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3550">https://www.rfc-editor.org/info/rfc3550</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schulzrinne, H.</span>, <span class="refAuthor">Casner, S.</span>, <span class="refAuthor">Frederick, R.</span>, and <span class="refAuthor">V. Jacobson</span>, <span class="refTitle">"RTP: A Transport Protocol for Real-Time Applications"</span>, <span class="seriesInfo">STD 64</span>, <span class="seriesInfo">RFC 3550</span>, <span class="seriesInfo">DOI 10.17487/RFC3550</span>, <time datetime="2003-07" class="refDate">July 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3550">https://www.rfc-editor.org/info/rfc3550</a>&gt;</span>. </dd>
+3025c3128
+< <span class="refAuthor">Richardson, M.</span>, <span class="refTitle">"A Method for Storing IPsec Keying Material in DNS"</span>, <span class="seriesInfo">RFC 4025</span>, <span class="seriesInfo">DOI 10.17487/RFC4025</span>, <time datetime="2005-03">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4025">https://www.rfc-editor.org/info/rfc4025</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Richardson, M.</span>, <span class="refTitle">"A Method for Storing IPsec Keying Material in DNS"</span>, <span class="seriesInfo">RFC 4025</span>, <span class="seriesInfo">DOI 10.17487/RFC4025</span>, <time datetime="2005-03" class="refDate">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4025">https://www.rfc-editor.org/info/rfc4025</a>&gt;</span>. </dd>
+3029c3132
+< <span class="refAuthor">Kent, S.</span><span class="refAuthor"> and K. Seo</span>, <span class="refTitle">"Security Architecture for the Internet Protocol"</span>, <span class="seriesInfo">RFC 4301</span>, <span class="seriesInfo">DOI 10.17487/RFC4301</span>, <time datetime="2005-12">December 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4301">https://www.rfc-editor.org/info/rfc4301</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Kent, S.</span> and <span class="refAuthor">K. Seo</span>, <span class="refTitle">"Security Architecture for the Internet Protocol"</span>, <span class="seriesInfo">RFC 4301</span>, <span class="seriesInfo">DOI 10.17487/RFC4301</span>, <time datetime="2005-12" class="refDate">December 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4301">https://www.rfc-editor.org/info/rfc4301</a>&gt;</span>. </dd>
+3033c3136
+< <span class="refAuthor">Audet, F., Ed.</span><span class="refAuthor"> and C. Jennings</span>, <span class="refTitle">"Network Address Translation (NAT) Behavioral Requirements for Unicast UDP"</span>, <span class="seriesInfo">BCP 127</span>, <span class="seriesInfo">RFC 4787</span>, <span class="seriesInfo">DOI 10.17487/RFC4787</span>, <time datetime="2007-01">January 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4787">https://www.rfc-editor.org/info/rfc4787</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Audet, F., Ed.</span> and <span class="refAuthor">C. Jennings</span>, <span class="refTitle">"Network Address Translation (NAT) Behavioral Requirements for Unicast UDP"</span>, <span class="seriesInfo">BCP 127</span>, <span class="seriesInfo">RFC 4787</span>, <span class="seriesInfo">DOI 10.17487/RFC4787</span>, <time datetime="2007-01" class="refDate">January 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4787">https://www.rfc-editor.org/info/rfc4787</a>&gt;</span>. </dd>
+3037c3140
+< <span class="refAuthor">Savola, P.</span>, <span class="refTitle">"Overview of the Internet Multicast Routing Architecture"</span>, <span class="seriesInfo">RFC 5110</span>, <span class="seriesInfo">DOI 10.17487/RFC5110</span>, <time datetime="2008-01">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5110">https://www.rfc-editor.org/info/rfc5110</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Savola, P.</span>, <span class="refTitle">"Overview of the Internet Multicast Routing Architecture"</span>, <span class="seriesInfo">RFC 5110</span>, <span class="seriesInfo">DOI 10.17487/RFC5110</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5110">https://www.rfc-editor.org/info/rfc5110</a>&gt;</span>. </dd>
+3041c3144
+< <span class="refAuthor">Paila, T.</span><span class="refAuthor">, Walsh, R.</span><span class="refAuthor">, Luby, M.</span><span class="refAuthor">, Roca, V.</span><span class="refAuthor">, and R. Lehtonen</span>, <span class="refTitle">"FLUTE - File Delivery over Unidirectional Transport"</span>, <span class="seriesInfo">RFC 6726</span>, <span class="seriesInfo">DOI 10.17487/RFC6726</span>, <time datetime="2012-11">November 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6726">https://www.rfc-editor.org/info/rfc6726</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Paila, T.</span>, <span class="refAuthor">Walsh, R.</span>, <span class="refAuthor">Luby, M.</span>, <span class="refAuthor">Roca, V.</span>, and <span class="refAuthor">R. Lehtonen</span>, <span class="refTitle">"FLUTE - File Delivery over Unidirectional Transport"</span>, <span class="seriesInfo">RFC 6726</span>, <span class="seriesInfo">DOI 10.17487/RFC6726</span>, <time datetime="2012-11" class="refDate">November 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6726">https://www.rfc-editor.org/info/rfc6726</a>&gt;</span>. </dd>
+3045c3148
+< <span class="refAuthor">Gont, F.</span>, <span class="refTitle">"Layer 3 Virtual Private Network (VPN) Tunnel Traffic Leakages in Dual-Stack Hosts/Networks"</span>, <span class="seriesInfo">RFC 7359</span>, <span class="seriesInfo">DOI 10.17487/RFC7359</span>, <time datetime="2014-08">August 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7359">https://www.rfc-editor.org/info/rfc7359</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Gont, F.</span>, <span class="refTitle">"Layer 3 Virtual Private Network (VPN) Tunnel Traffic Leakages in Dual-Stack Hosts/Networks"</span>, <span class="seriesInfo">RFC 7359</span>, <span class="seriesInfo">DOI 10.17487/RFC7359</span>, <time datetime="2014-08" class="refDate">August 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7359">https://www.rfc-editor.org/info/rfc7359</a>&gt;</span>. </dd>
+3049c3152
+< <span class="refAuthor">Fenner, B.</span><span class="refAuthor">, Handley, M.</span><span class="refAuthor">, Holbrook, H.</span><span class="refAuthor">, Kouvelas, I.</span><span class="refAuthor">, Parekh, R.</span><span class="refAuthor">, Zhang, Z.</span><span class="refAuthor">, and L. Zheng</span>, <span class="refTitle">"Protocol Independent Multicast - Sparse Mode (PIM-SM): Protocol Specification (Revised)"</span>, <span class="seriesInfo">STD 83</span>, <span class="seriesInfo">RFC 7761</span>, <span class="seriesInfo">DOI 10.17487/RFC7761</span>, <time datetime="2016-03">March 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7761">https://www.rfc-editor.org/info/rfc7761</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fenner, B.</span>, <span class="refAuthor">Handley, M.</span>, <span class="refAuthor">Holbrook, H.</span>, <span class="refAuthor">Kouvelas, I.</span>, <span class="refAuthor">Parekh, R.</span>, <span class="refAuthor">Zhang, Z.</span>, and <span class="refAuthor">L. Zheng</span>, <span class="refTitle">"Protocol Independent Multicast - Sparse Mode (PIM-SM): Protocol Specification (Revised)"</span>, <span class="seriesInfo">STD 83</span>, <span class="seriesInfo">RFC 7761</span>, <span class="seriesInfo">DOI 10.17487/RFC7761</span>, <time datetime="2016-03" class="refDate">March 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7761">https://www.rfc-editor.org/info/rfc7761</a>&gt;</span>. </dd>
+3053c3156
+< <span class="refAuthor">Hu, Z.</span><span class="refAuthor">, Zhu, L.</span><span class="refAuthor">, Heidemann, J.</span><span class="refAuthor">, Mankin, A.</span><span class="refAuthor">, Wessels, D.</span><span class="refAuthor">, and P. Hoffman</span>, <span class="refTitle">"Specification for DNS over Transport Layer Security (TLS)"</span>, <span class="seriesInfo">RFC 7858</span>, <span class="seriesInfo">DOI 10.17487/RFC7858</span>, <time datetime="2016-05">May 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7858">https://www.rfc-editor.org/info/rfc7858</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hu, Z.</span>, <span class="refAuthor">Zhu, L.</span>, <span class="refAuthor">Heidemann, J.</span>, <span class="refAuthor">Mankin, A.</span>, <span class="refAuthor">Wessels, D.</span>, and <span class="refAuthor">P. Hoffman</span>, <span class="refTitle">"Specification for DNS over Transport Layer Security (TLS)"</span>, <span class="seriesInfo">RFC 7858</span>, <span class="seriesInfo">DOI 10.17487/RFC7858</span>, <time datetime="2016-05" class="refDate">May 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7858">https://www.rfc-editor.org/info/rfc7858</a>&gt;</span>. </dd>
+3057c3160
+< <span class="refAuthor">Cotton, M.</span><span class="refAuthor">, Leiba, B.</span><span class="refAuthor">, and T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cotton, M.</span>, <span class="refAuthor">Leiba, B.</span>, and <span class="refAuthor">T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+3061c3164
+< <span class="refAuthor">Tarapore, P., Ed.</span><span class="refAuthor">, Sayko, R.</span><span class="refAuthor">, Shepherd, G.</span><span class="refAuthor">, Eckert, T., Ed.</span><span class="refAuthor">, and R. Krishnan</span>, <span class="refTitle">"Use of Multicast across Inter-domain Peering Points"</span>, <span class="seriesInfo">BCP 213</span>, <span class="seriesInfo">RFC 8313</span>, <span class="seriesInfo">DOI 10.17487/RFC8313</span>, <time datetime="2018-01">January 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8313">https://www.rfc-editor.org/info/rfc8313</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Tarapore, P., Ed.</span>, <span class="refAuthor">Sayko, R.</span>, <span class="refAuthor">Shepherd, G.</span>, <span class="refAuthor">Eckert, T., Ed.</span>, and <span class="refAuthor">R. Krishnan</span>, <span class="refTitle">"Use of Multicast across Inter-domain Peering Points"</span>, <span class="seriesInfo">BCP 213</span>, <span class="seriesInfo">RFC 8313</span>, <span class="seriesInfo">DOI 10.17487/RFC8313</span>, <time datetime="2018-01" class="refDate">January 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8313">https://www.rfc-editor.org/info/rfc8313</a>&gt;</span>. </dd>
+3065c3168
+< <span class="refAuthor">Hoffman, P.</span><span class="refAuthor"> and P. McManus</span>, <span class="refTitle">"DNS Queries over HTTPS (DoH)"</span>, <span class="seriesInfo">RFC 8484</span>, <span class="seriesInfo">DOI 10.17487/RFC8484</span>, <time datetime="2018-10">October 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8484">https://www.rfc-editor.org/info/rfc8484</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hoffman, P.</span> and <span class="refAuthor">P. McManus</span>, <span class="refTitle">"DNS Queries over HTTPS (DoH)"</span>, <span class="seriesInfo">RFC 8484</span>, <span class="seriesInfo">DOI 10.17487/RFC8484</span>, <time datetime="2018-10" class="refDate">October 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8484">https://www.rfc-editor.org/info/rfc8484</a>&gt;</span>. </dd>
+3071c3174
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+3073c3176
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-unknown-rrtype-construction" class="section-name selfRef">Unknown RRType Construction</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-unknown-rrtype-construction" class="section-name selfRef">Unknown RRType Construction</a>
+3075,3078c3178,3181
+< <p id="section-appendix.a-1">In a DNS resolver that understands the AMTRELAY type, the zone file might
+< contain this line:<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <div id="section-appendix.a-2">
+< <pre class="sourcecode">
+---
+> <p id="appendix-A-1">In a DNS resolver that understands the AMTRELAY type, the zone file might
+> contain this line:<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <div class="sourcecode" id="appendix-A-2">
+> <pre>
+3080c3183
+< </pre><a href="#section-appendix.a-2" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A-2" class="pilcrow">¶</a>
+3082,3085c3185,3188
+< <p id="section-appendix.a-3">In order to translate this example to appear as an unknown RRType
+< as defined in <span>[<a href="#RFC3597" class="xref">RFC3597</a>]</span>, one could run the following program:<a href="#section-appendix.a-3" class="pilcrow">¶</a></p>
+< <div id="section-appendix.a-4">
+< <pre class="sourcecode lang-python">&lt;CODE BEGINS&gt;
+---
+> <p id="appendix-A-3">In order to translate this example to appear as an unknown RRType
+> as defined in <span>[<a href="#RFC3597" class="cite xref">RFC3597</a>]</span>, one could run the following program:<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+> <div class="lang-python sourcecode" id="appendix-A-4">
+> <pre>&lt;CODE BEGINS&gt;
+3102c3205
+< &lt;CODE ENDS&gt;</pre><a href="#section-appendix.a-4" class="pilcrow">¶</a>
+---
+> &lt;CODE ENDS&gt;</pre><a href="#appendix-A-4" class="pilcrow">¶</a>
+3104,3106c3207,3209
+< <p id="section-appendix.a-5">The length of the RData and the hex string for the domain name
+< "amtrelays.example.com" are the outputs of this program.<a href="#section-appendix.a-5" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-6">The length of the wire-encoded domain name is 22, so 2 was added to
+---
+> <p id="appendix-A-5">The length of the RData and the hex string for the domain name
+> "amtrelays.example.com" are the outputs of this program.<a href="#appendix-A-5" class="pilcrow">¶</a></p>
+> <p id="appendix-A-6">The length of the wire-encoded domain name is 22, so 2 was added to
+3110,3112c3213,3215
+< relay type fields, as described in <a href="#rrdef" class="xref">Section 4</a>.<a href="#section-appendix.a-6" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-7">This results in a zone file entry like this:<a href="#section-appendix.a-7" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-appendix.a-8">
+---
+> relay type fields, as described in <a href="#rrdef" class="auto internal xref">Section 4</a>.<a href="#appendix-A-6" class="pilcrow">¶</a></p>
+> <p id="appendix-A-7">This results in a zone file entry like this:<a href="#appendix-A-7" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="appendix-A-8">
+3118c3221
+< </pre><a href="#section-appendix.a-8" class="pilcrow">¶</a>
+---
+> </pre><a href="#appendix-A-8" class="pilcrow">¶</a>
+3123c3226
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+3127,3129c3230,3232
+< <p id="section-appendix.b-1">This specification was inspired by the previous work of <span class="contact-name">Doug Nortz</span>, <span class="contact-name">Robert Sayko</span>, <span class="contact-name">David Segelstein</span>, and <span class="contact-name">Percy Tarapore</span>, presented in
+< the MBONED Working Group at IETF 93.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-2">Thanks to <span class="contact-name">Jeff Goldsmith</span>, <span class="contact-name">Toerless Eckert</span>, <span class="contact-name">Mikael Abrahamsson</span>, <span class="contact-name">Lenny Giuliano</span>, <span class="contact-name">Mark Andrews</span>, <span class="contact-name">Sandy Zheng</span>, <span class="contact-name">Kyle Rose</span>, <span class="contact-name">Ben Kaduk</span>,
+---
+> <p id="appendix-B-1">This specification was inspired by the previous work of <span class="contact-name">Doug Nortz</span>, <span class="contact-name">Robert Sayko</span>, <span class="contact-name">David Segelstein</span>, and <span class="contact-name">Percy Tarapore</span>, presented in
+> the MBONED Working Group at IETF 93.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+> <p id="appendix-B-2">Thanks to <span class="contact-name">Jeff Goldsmith</span>, <span class="contact-name">Toerless Eckert</span>, <span class="contact-name">Mikael Abrahamsson</span>, <span class="contact-name">Lenny Giuliano</span>, <span class="contact-name">Mark Andrews</span>, <span class="contact-name">Sandy Zheng</span>, <span class="contact-name">Kyle Rose</span>, <span class="contact-name">Ben Kaduk</span>,
+3133c3236
+< and <span class="contact-name">Daniel Franke</span> for their very helpful reviews and comments.<a href="#section-appendix.b-2" class="pilcrow">¶</a></p>
+---
+> and <span class="contact-name">Daniel Franke</span> for their very helpful reviews and comments.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+3137c3240
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">

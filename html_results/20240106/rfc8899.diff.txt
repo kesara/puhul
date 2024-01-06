@@ -1,0 +1,1090 @@
+36c36
+< <meta content="xml2rfc 3.0.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.0" name="generator">
+43c43,59
+< <link href="rfc8899.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.0
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 5.0.1
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8899.xml" rel="alternate" type="application/rfc+xml">
+53c69
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+62a79,84
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+65d86
+<   width: extend-to-zoom;
+80c101
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+82a104
+>   overflow-wrap: break-word;
+168a191,199
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+183,186d213
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+187a215
+>   border: none;
+210a239,241
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+262c293
+< tt, code, pre, code {
+---
+> tt, code, pre {
+264c295
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+303a335,337
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+393a428,433
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+495c535
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+635d674
+< 
+657a697,699
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+725c767
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+825c867
+< tt, code, pre, code {
+---
+> tt, code, pre {
+830c872
+< pre.sourcecode,
+---
+> .sourcecode pre,
+866c908
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1047a1090
+>   .artwork > pre,
+1062c1105
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1068a1112,1114
+> tr {
+>   break-inside: avoid;
+> }
+1088c1134
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1119c1165
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1144c1190
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1162c1208
+< dd > div:first-child > pre.sourcecode,
+---
+> dd > div.sourcecode:first-child,
+1166c1212,1225
+< }</style>
+---
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+1167a1227
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-tsvwg-datagram-plpmtud-22" rel="prev">
+1170c1230
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-tsvwg-datagram-plpmtud-22" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1172,1173c1232,1233
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1300,1305c1360,1365
+< <nav class="toc"><ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-classical-path-mtu-discover" class="xref">Classical Path MTU Discovery</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-classical-path-mtu-discover" class="internal xref">Classical Path MTU Discovery</a></p>
+1307,1308c1367,1368
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.1.2.2">
+<                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="xref">1.2</a>.  <a href="#name-packetization-layer-path-mt" class="xref">Packetization Layer Path MTU Discovery</a><a href="#section-toc.1-1.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+>                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-packetization-layer-path-mt" class="internal xref">Packetization Layer Path MTU Discovery</a></p>
+1310,1311c1370,1371
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.1.2.3">
+<                 <p id="section-toc.1-1.1.2.3.1" class="keepWithNext"><a href="#section-1.3" class="xref">1.3</a>.  <a href="#name-path-mtu-discovery-for-data" class="xref">Path MTU Discovery for Datagram Services</a><a href="#section-toc.1-1.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.3">
+>                 <p id="section-toc.1-1.1.2.3.1" class="keepWithNext"><a href="#section-1.3" class="auto internal xref">1.3</a>.  <a href="#name-path-mtu-discovery-for-data" class="internal xref">Path MTU Discovery for Datagram Services</a></p>
+1315,1316c1375,1376
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+1318,1319c1378,1379
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-features-required-to-provid" class="xref">Features Required to Provide Datagram PLPMTUD</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-features-required-to-provid" class="internal xref">Features Required to Provide Datagram PLPMTUD</a></p>
+1321,1343c1381,1403
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-dplpmtud-mechanisms" class="xref">DPLPMTUD Mechanisms</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-plpmtu-probe-packets" class="xref">PLPMTU Probe Packets</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-confirmation-of-probed-pack" class="xref">Confirmation of Probed Packet Size</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-black-hole-detection-and-re" class="xref">Black Hole Detection and Reducing the PLPMTU</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.4">
+<                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-the-maximum-packet-size-mps" class="xref">The Maximum Packet Size (MPS)</a><a href="#section-toc.1-1.4.2.4.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.5">
+<                 <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="xref">4.5</a>.  <a href="#name-disabling-the-effect-of-pmt" class="xref">Disabling the Effect of PMTUD</a><a href="#section-toc.1-1.4.2.5.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.6">
+<                 <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="xref">4.6</a>.  <a href="#name-response-to-ptb-messages" class="xref">Response to PTB Messages</a><a href="#section-toc.1-1.4.2.6.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.6.2.1">
+<                     <p id="section-toc.1-1.4.2.6.2.1.1"><a href="#section-4.6.1" class="xref">4.6.1</a>.  <a href="#name-validation-of-ptb-messages" class="xref">Validation of PTB Messages</a><a href="#section-toc.1-1.4.2.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-dplpmtud-mechanisms" class="internal xref">DPLPMTUD Mechanisms</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-plpmtu-probe-packets" class="internal xref">PLPMTU Probe Packets</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-confirmation-of-probed-pack" class="internal xref">Confirmation of Probed Packet Size</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-black-hole-detection-and-re" class="internal xref">Black Hole Detection and Reducing the PLPMTU</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
+>                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-the-maximum-packet-size-mps" class="internal xref">The Maximum Packet Size (MPS)</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5">
+>                 <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="auto internal xref">4.5</a>.  <a href="#name-disabling-the-effect-of-pmt" class="internal xref">Disabling the Effect of PMTUD</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.6">
+>                 <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="auto internal xref">4.6</a>.  <a href="#name-response-to-ptb-messages" class="internal xref">Response to PTB Messages</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.6.2.1">
+>                     <p id="section-toc.1-1.4.2.6.2.1.1"><a href="#section-4.6.1" class="auto internal xref">4.6.1</a>.  <a href="#name-validation-of-ptb-messages" class="internal xref">Validation of PTB Messages</a></p>
+1345,1346c1405,1406
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.6.2.2">
+<                     <p id="section-toc.1-1.4.2.6.2.2.1"><a href="#section-4.6.2" class="xref">4.6.2</a>.  <a href="#name-use-of-ptb-messages" class="xref">Use of PTB Messages</a><a href="#section-toc.1-1.4.2.6.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.6.2.2">
+>                     <p id="section-toc.1-1.4.2.6.2.2.1"><a href="#section-4.6.2" class="auto internal xref">4.6.2</a>.  <a href="#name-use-of-ptb-messages" class="internal xref">Use of PTB Messages</a></p>
+1352,1359c1412,1419
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-datagram-packetization-laye" class="xref">Datagram Packetization Layer PMTUD</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-dplpmtud-components" class="xref">DPLPMTUD Components</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.1.2.1">
+<                     <p id="section-toc.1-1.5.2.1.2.1.1"><a href="#section-5.1.1" class="xref">5.1.1</a>.  <a href="#name-timers" class="xref">Timers</a><a href="#section-toc.1-1.5.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-datagram-packetization-laye" class="internal xref">Datagram Packetization Layer PMTUD</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-dplpmtud-components" class="internal xref">DPLPMTUD Components</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.1">
+>                     <p id="section-toc.1-1.5.2.1.2.1.1"><a href="#section-5.1.1" class="auto internal xref">5.1.1</a>.  <a href="#name-timers" class="internal xref">Timers</a></p>
+1361,1362c1421,1422
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.1.2.2">
+<                     <p id="section-toc.1-1.5.2.1.2.2.1"><a href="#section-5.1.2" class="xref">5.1.2</a>.  <a href="#name-constants" class="xref">Constants</a><a href="#section-toc.1-1.5.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.2">
+>                     <p id="section-toc.1-1.5.2.1.2.2.1"><a href="#section-5.1.2" class="auto internal xref">5.1.2</a>.  <a href="#name-constants" class="internal xref">Constants</a></p>
+1364,1365c1424,1425
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.1.2.3">
+<                     <p id="section-toc.1-1.5.2.1.2.3.1"><a href="#section-5.1.3" class="xref">5.1.3</a>.  <a href="#name-variables" class="xref">Variables</a><a href="#section-toc.1-1.5.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.3">
+>                     <p id="section-toc.1-1.5.2.1.2.3.1"><a href="#section-5.1.3" class="auto internal xref">5.1.3</a>.  <a href="#name-variables" class="internal xref">Variables</a></p>
+1367,1368c1427,1428
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.1.2.4">
+<                     <p id="section-toc.1-1.5.2.1.2.4.1"><a href="#section-5.1.4" class="xref">5.1.4</a>.  <a href="#name-overview-of-dplpmtud-phases" class="xref">Overview of DPLPMTUD Phases</a><a href="#section-toc.1-1.5.2.1.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.4">
+>                     <p id="section-toc.1-1.5.2.1.2.4.1"><a href="#section-5.1.4" class="auto internal xref">5.1.4</a>.  <a href="#name-overview-of-dplpmtud-phases" class="internal xref">Overview of DPLPMTUD Phases</a></p>
+1372,1373c1432,1433
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-state-machine" class="xref">State Machine</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-state-machine" class="internal xref">State Machine</a></p>
+1375,1379c1435,1439
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.3">
+<                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-search-to-increase-the-plpm" class="xref">Search to Increase the PLPMTU</a><a href="#section-toc.1-1.5.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.3.2.1">
+<                     <p id="section-toc.1-1.5.2.3.2.1.1"><a href="#section-5.3.1" class="xref">5.3.1</a>.  <a href="#name-probing-for-a-larger-plpmtu" class="xref">Probing for a Larger PLPMTU</a><a href="#section-toc.1-1.5.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
+>                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-search-to-increase-the-plpm" class="internal xref">Search to Increase the PLPMTU</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.1">
+>                     <p id="section-toc.1-1.5.2.3.2.1.1"><a href="#section-5.3.1" class="auto internal xref">5.3.1</a>.  <a href="#name-probing-for-a-larger-plpmtu" class="internal xref">Probing for a Larger PLPMTU</a></p>
+1381,1382c1441,1442
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.3.2.2">
+<                     <p id="section-toc.1-1.5.2.3.2.2.1"><a href="#section-5.3.2" class="xref">5.3.2</a>.  <a href="#name-selection-of-probe-sizes" class="xref">Selection of Probe Sizes</a><a href="#section-toc.1-1.5.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.2">
+>                     <p id="section-toc.1-1.5.2.3.2.2.1"><a href="#section-5.3.2" class="auto internal xref">5.3.2</a>.  <a href="#name-selection-of-probe-sizes" class="internal xref">Selection of Probe Sizes</a></p>
+1384,1385c1444,1445
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.3.2.3">
+<                     <p id="section-toc.1-1.5.2.3.2.3.1"><a href="#section-5.3.3" class="xref">5.3.3</a>.  <a href="#name-resilience-to-inconsistent-" class="xref">Resilience to Inconsistent Path Information</a><a href="#section-toc.1-1.5.2.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.3">
+>                     <p id="section-toc.1-1.5.2.3.2.3.1"><a href="#section-5.3.3" class="auto internal xref">5.3.3</a>.  <a href="#name-resilience-to-inconsistent-" class="internal xref">Resilience to Inconsistent Path Information</a></p>
+1389,1390c1449,1450
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.4">
+<                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="xref">5.4</a>.  <a href="#name-robustness-to-inconsistent-" class="xref">Robustness to Inconsistent Paths</a><a href="#section-toc.1-1.5.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
+>                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-robustness-to-inconsistent-" class="internal xref">Robustness to Inconsistent Paths</a></p>
+1394,1407c1454,1467
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-specification-of-protocol-s" class="xref">Specification of Protocol-Specific Methods</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-application-support-for-dpl" class="xref">Application Support for DPLPMTUD with UDP or UDP-Lite</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.1.2.1">
+<                     <p id="section-toc.1-1.6.2.1.2.1.1"><a href="#section-6.1.1" class="xref">6.1.1</a>.  <a href="#name-application-request" class="xref">Application Request</a><a href="#section-toc.1-1.6.2.1.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.1.2.2">
+<                     <p id="section-toc.1-1.6.2.1.2.2.1"><a href="#section-6.1.2" class="xref">6.1.2</a>.  <a href="#name-application-response" class="xref">Application Response</a><a href="#section-toc.1-1.6.2.1.2.2.1" class="pilcrow">¶</a></p>
+< </li>
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.1.2.3">
+<                     <p id="section-toc.1-1.6.2.1.2.3.1"><a href="#section-6.1.3" class="xref">6.1.3</a>.  <a href="#name-sending-application-probe-p" class="xref">Sending Application Probe Packets</a><a href="#section-toc.1-1.6.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-specification-of-protocol-s" class="internal xref">Specification of Protocol-Specific Methods</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-application-support-for-dpl" class="internal xref">Application Support for DPLPMTUD with UDP or UDP-Lite</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.1">
+>                     <p id="section-toc.1-1.6.2.1.2.1.1"><a href="#section-6.1.1" class="auto internal xref">6.1.1</a>.  <a href="#name-application-request" class="internal xref">Application Request</a></p>
+> </li>
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.2">
+>                     <p id="section-toc.1-1.6.2.1.2.2.1"><a href="#section-6.1.2" class="auto internal xref">6.1.2</a>.  <a href="#name-application-response" class="internal xref">Application Response</a></p>
+> </li>
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.3">
+>                     <p id="section-toc.1-1.6.2.1.2.3.1"><a href="#section-6.1.3" class="auto internal xref">6.1.3</a>.  <a href="#name-sending-application-probe-p" class="internal xref">Sending Application Probe Packets</a></p>
+1409,1410c1469,1470
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.1.2.4">
+<                     <p id="section-toc.1-1.6.2.1.2.4.1"><a href="#section-6.1.4" class="xref">6.1.4</a>.  <a href="#name-initial-connectivity" class="xref">Initial Connectivity</a><a href="#section-toc.1-1.6.2.1.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.4">
+>                     <p id="section-toc.1-1.6.2.1.2.4.1"><a href="#section-6.1.4" class="auto internal xref">6.1.4</a>.  <a href="#name-initial-connectivity" class="internal xref">Initial Connectivity</a></p>
+1412,1413c1472,1473
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.1.2.5">
+<                     <p id="section-toc.1-1.6.2.1.2.5.1"><a href="#section-6.1.5" class="xref">6.1.5</a>.  <a href="#name-validating-the-path" class="xref">Validating the Path</a><a href="#section-toc.1-1.6.2.1.2.5.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.5">
+>                     <p id="section-toc.1-1.6.2.1.2.5.1"><a href="#section-6.1.5" class="auto internal xref">6.1.5</a>.  <a href="#name-validating-the-path" class="internal xref">Validating the Path</a></p>
+1415,1416c1475,1476
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.1.2.6">
+<                     <p id="section-toc.1-1.6.2.1.2.6.1"><a href="#section-6.1.6" class="xref">6.1.6</a>.  <a href="#name-handling-of-ptb-messages" class="xref">Handling of PTB Messages</a><a href="#section-toc.1-1.6.2.1.2.6.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.6">
+>                     <p id="section-toc.1-1.6.2.1.2.6.1"><a href="#section-6.1.6" class="auto internal xref">6.1.6</a>.  <a href="#name-handling-of-ptb-messages" class="internal xref">Handling of PTB Messages</a></p>
+1420,1427c1480,1487
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2">
+<                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-dplpmtud-for-sctp" class="xref">DPLPMTUD for SCTP</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2.2.1">
+<                     <p id="section-toc.1-1.6.2.2.2.1.1"><a href="#section-6.2.1" class="xref">6.2.1</a>.  <a href="#name-sctp-ipv4-and-sctp-ipv6" class="xref">SCTP/IPv4 and SCTP/IPv6</a><a href="#section-toc.1-1.6.2.2.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2.2.1.2.1">
+<                         <p id="section-toc.1-1.6.2.2.2.1.2.1.1"><a href="#section-6.2.1.1" class="xref">6.2.1.1</a>.  <a href="#name-initial-connectivity-2" class="xref">Initial Connectivity</a><a href="#section-toc.1-1.6.2.2.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+>                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-dplpmtud-for-sctp" class="internal xref">DPLPMTUD for SCTP</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.1">
+>                     <p id="section-toc.1-1.6.2.2.2.1.1"><a href="#section-6.2.1" class="auto internal xref">6.2.1</a>.  <a href="#name-sctp-ipv4-and-sctp-ipv6" class="internal xref">SCTP/IPv4 and SCTP/IPv6</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.1.2.1">
+>                         <p id="section-toc.1-1.6.2.2.2.1.2.1.1"><a href="#section-6.2.1.1" class="auto internal xref">6.2.1.1</a>.  <a href="#name-initial-connectivity-2" class="internal xref">Initial Connectivity</a></p>
+1429,1430c1489,1490
+<                       <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2.2.1.2.2">
+<                         <p id="section-toc.1-1.6.2.2.2.1.2.2.1"><a href="#section-6.2.1.2" class="xref">6.2.1.2</a>.  <a href="#name-sending-sctp-probe-packets" class="xref">Sending SCTP Probe Packets</a><a href="#section-toc.1-1.6.2.2.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                       <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.1.2.2">
+>                         <p id="section-toc.1-1.6.2.2.2.1.2.2.1"><a href="#section-6.2.1.2" class="auto internal xref">6.2.1.2</a>.  <a href="#name-sending-sctp-probe-packets" class="internal xref">Sending SCTP Probe Packets</a></p>
+1432,1433c1492,1493
+<                       <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2.2.1.2.3">
+<                         <p id="section-toc.1-1.6.2.2.2.1.2.3.1"><a href="#section-6.2.1.3" class="xref">6.2.1.3</a>.  <a href="#name-validating-the-path-with-sc" class="xref">Validating the Path with SCTP</a><a href="#section-toc.1-1.6.2.2.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>                       <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.1.2.3">
+>                         <p id="section-toc.1-1.6.2.2.2.1.2.3.1"><a href="#section-6.2.1.3" class="auto internal xref">6.2.1.3</a>.  <a href="#name-validating-the-path-with-sc" class="internal xref">Validating the Path with SCTP</a></p>
+1435,1436c1495,1496
+<                       <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2.2.1.2.4">
+<                         <p id="section-toc.1-1.6.2.2.2.1.2.4.1"><a href="#section-6.2.1.4" class="xref">6.2.1.4</a>.  <a href="#name-ptb-message-handling-by-sct" class="xref">PTB Message Handling by SCTP</a><a href="#section-toc.1-1.6.2.2.2.1.2.4.1" class="pilcrow">¶</a></p>
+---
+>                       <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.1.2.4">
+>                         <p id="section-toc.1-1.6.2.2.2.1.2.4.1"><a href="#section-6.2.1.4" class="auto internal xref">6.2.1.4</a>.  <a href="#name-ptb-message-handling-by-sct" class="internal xref">PTB Message Handling by SCTP</a></p>
+1440,1444c1500,1504
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2.2.2">
+<                     <p id="section-toc.1-1.6.2.2.2.2.1"><a href="#section-6.2.2" class="xref">6.2.2</a>.  <a href="#name-dplpmtud-for-sctp-udp" class="xref">DPLPMTUD for SCTP/UDP</a><a href="#section-toc.1-1.6.2.2.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2.2.2.2.1">
+<                         <p id="section-toc.1-1.6.2.2.2.2.2.1.1"><a href="#section-6.2.2.1" class="xref">6.2.2.1</a>.  <a href="#name-initial-connectivity-3" class="xref">Initial Connectivity</a><a href="#section-toc.1-1.6.2.2.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.2">
+>                     <p id="section-toc.1-1.6.2.2.2.2.1"><a href="#section-6.2.2" class="auto internal xref">6.2.2</a>.  <a href="#name-dplpmtud-for-sctp-udp" class="internal xref">DPLPMTUD for SCTP/UDP</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.2.2.1">
+>                         <p id="section-toc.1-1.6.2.2.2.2.2.1.1"><a href="#section-6.2.2.1" class="auto internal xref">6.2.2.1</a>.  <a href="#name-initial-connectivity-3" class="internal xref">Initial Connectivity</a></p>
+1446,1447c1506,1507
+<                       <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2.2.2.2.2">
+<                         <p id="section-toc.1-1.6.2.2.2.2.2.2.1"><a href="#section-6.2.2.2" class="xref">6.2.2.2</a>.  <a href="#name-sending-sctp-udp-probe-pack" class="xref">Sending SCTP/UDP Probe Packets</a><a href="#section-toc.1-1.6.2.2.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                       <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.2.2.2">
+>                         <p id="section-toc.1-1.6.2.2.2.2.2.2.1"><a href="#section-6.2.2.2" class="auto internal xref">6.2.2.2</a>.  <a href="#name-sending-sctp-udp-probe-pack" class="internal xref">Sending SCTP/UDP Probe Packets</a></p>
+1449,1450c1509,1510
+<                       <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2.2.2.2.3">
+<                         <p id="section-toc.1-1.6.2.2.2.2.2.3.1"><a href="#section-6.2.2.3" class="xref">6.2.2.3</a>.  <a href="#name-validating-the-path-with-sct" class="xref">Validating the Path with SCTP/UDP</a><a href="#section-toc.1-1.6.2.2.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                       <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.2.2.3">
+>                         <p id="section-toc.1-1.6.2.2.2.2.2.3.1"><a href="#section-6.2.2.3" class="auto internal xref">6.2.2.3</a>.  <a href="#name-validating-the-path-with-sct" class="internal xref">Validating the Path with SCTP/UDP</a></p>
+1452,1453c1512,1513
+<                       <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2.2.2.2.4">
+<                         <p id="section-toc.1-1.6.2.2.2.2.2.4.1"><a href="#section-6.2.2.4" class="xref">6.2.2.4</a>.  <a href="#name-handling-of-ptb-messages-by" class="xref">Handling of PTB Messages by SCTP/UDP</a><a href="#section-toc.1-1.6.2.2.2.2.2.4.1" class="pilcrow">¶</a></p>
+---
+>                       <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.2.2.4">
+>                         <p id="section-toc.1-1.6.2.2.2.2.2.4.1"><a href="#section-6.2.2.4" class="auto internal xref">6.2.2.4</a>.  <a href="#name-handling-of-ptb-messages-by" class="internal xref">Handling of PTB Messages by SCTP/UDP</a></p>
+1457,1461c1517,1521
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2.2.3">
+<                     <p id="section-toc.1-1.6.2.2.2.3.1"><a href="#section-6.2.3" class="xref">6.2.3</a>.  <a href="#name-dplpmtud-for-sctp-dtls" class="xref">DPLPMTUD for SCTP/DTLS</a><a href="#section-toc.1-1.6.2.2.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2.2.3.2.1">
+<                         <p id="section-toc.1-1.6.2.2.2.3.2.1.1"><a href="#section-6.2.3.1" class="xref">6.2.3.1</a>.  <a href="#name-initial-connectivity-4" class="xref">Initial Connectivity</a><a href="#section-toc.1-1.6.2.2.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.3">
+>                     <p id="section-toc.1-1.6.2.2.2.3.1"><a href="#section-6.2.3" class="auto internal xref">6.2.3</a>.  <a href="#name-dplpmtud-for-sctp-dtls" class="internal xref">DPLPMTUD for SCTP/DTLS</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.3.2.1">
+>                         <p id="section-toc.1-1.6.2.2.2.3.2.1.1"><a href="#section-6.2.3.1" class="auto internal xref">6.2.3.1</a>.  <a href="#name-initial-connectivity-4" class="internal xref">Initial Connectivity</a></p>
+1463,1464c1523,1524
+<                       <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2.2.3.2.2">
+<                         <p id="section-toc.1-1.6.2.2.2.3.2.2.1"><a href="#section-6.2.3.2" class="xref">6.2.3.2</a>.  <a href="#name-sending-sctp-dtls-probe-pac" class="xref">Sending SCTP/DTLS Probe Packets</a><a href="#section-toc.1-1.6.2.2.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                       <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.3.2.2">
+>                         <p id="section-toc.1-1.6.2.2.2.3.2.2.1"><a href="#section-6.2.3.2" class="auto internal xref">6.2.3.2</a>.  <a href="#name-sending-sctp-dtls-probe-pac" class="internal xref">Sending SCTP/DTLS Probe Packets</a></p>
+1466,1467c1526,1527
+<                       <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2.2.3.2.3">
+<                         <p id="section-toc.1-1.6.2.2.2.3.2.3.1"><a href="#section-6.2.3.3" class="xref">6.2.3.3</a>.  <a href="#name-validating-the-path-with-sctp" class="xref">Validating the Path with SCTP/DTLS</a><a href="#section-toc.1-1.6.2.2.2.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>                       <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.3.2.3">
+>                         <p id="section-toc.1-1.6.2.2.2.3.2.3.1"><a href="#section-6.2.3.3" class="auto internal xref">6.2.3.3</a>.  <a href="#name-validating-the-path-with-sctp" class="internal xref">Validating the Path with SCTP/DTLS</a></p>
+1469,1470c1529,1530
+<                       <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2.2.3.2.4">
+<                         <p id="section-toc.1-1.6.2.2.2.3.2.4.1"><a href="#section-6.2.3.4" class="xref">6.2.3.4</a>.  <a href="#name-handling-of-ptb-messages-by-" class="xref">Handling of PTB Messages by SCTP/DTLS</a><a href="#section-toc.1-1.6.2.2.2.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>                       <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.3.2.4">
+>                         <p id="section-toc.1-1.6.2.2.2.3.2.4.1"><a href="#section-6.2.3.4" class="auto internal xref">6.2.3.4</a>.  <a href="#name-handling-of-ptb-messages-by-" class="internal xref">Handling of PTB Messages by SCTP/DTLS</a></p>
+1476,1477c1536,1537
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.3">
+<                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="xref">6.3</a>.  <a href="#name-dplpmtud-for-quic" class="xref">DPLPMTUD for QUIC</a><a href="#section-toc.1-1.6.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
+>                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-dplpmtud-for-quic" class="internal xref">DPLPMTUD for QUIC</a></p>
+1481,1482c1541,1542
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1484,1485c1544,1545
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1487,1491c1547,1551
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.9.2.1">
+<                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="xref">9.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.9.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
+>                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="auto internal xref">9.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1493,1494c1553,1554
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.9.2.2">
+<                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="xref">9.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.9.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
+>                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1498,1499c1558,1559
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1501,1502c1561,1562
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1528c1588
+<         (PTB) messages (e.g., <span>[<a href="#RFC1191" class="xref">RFC1191</a>]</span> and <span>[<a href="#RFC8201" class="xref">RFC8201</a>]</span>). In this document, the term PTB message is
+---
+>         (PTB) messages (e.g., <span>[<a href="#RFC1191" class="cite xref">RFC1191</a>]</span> and <span>[<a href="#RFC8201" class="cite xref">RFC8201</a>]</span>). In this document, the term PTB message is
+1530,1531c1590,1591
+<         error Fragmentation Needed (Type 3, Code 4) <span>[<a href="#RFC0792" class="xref">RFC0792</a>]</span> and ICMPv6 Packet Too Big messages (Type 2)
+<         <span>[<a href="#RFC4443" class="xref">RFC4443</a>]</span>. When a sender receives a PTB message,
+---
+>         error Fragmentation Needed (Type 3, Code 4) <span>[<a href="#RFC0792" class="cite xref">RFC0792</a>]</span> and ICMPv6 Packet Too Big messages (Type 2)
+>         <span>[<a href="#RFC4443" class="cite xref">RFC4443</a>]</span>. When a sender receives a PTB message,
+1547c1607
+<  sender for some reason (for example, see <span>[<a href="#RFC2923" class="xref">RFC2923</a>]</span>).<a href="#section-1.1-3" class="pilcrow">¶</a></p>
+---
+>  sender for some reason (for example, see <span>[<a href="#RFC2923" class="cite xref">RFC2923</a>]</span>).<a href="#section-1.1-3" class="pilcrow">¶</a></p>
+1552c1612
+<             <span><a href="https://www.rfc-editor.org/rfc/rfc4443#section-2.4" class="relref">Section 2.4</a> of [<a href="#RFC4443" class="xref">RFC4443</a>]</span>).<a href="#section-1.1-5.1" class="pilcrow">¶</a>
+---
+>             <span><a href="https://rfc-editor.org/rfc/rfc4443#section-2.4" class="relref">Section 2.4</a> of [<a href="#RFC4443" class="cite xref">RFC4443</a>]</span>).<a href="#section-1.1-5.1" class="pilcrow">¶</a>
+1555c1615
+<             firewalls <span>[<a href="#RFC4890" class="xref">RFC4890</a>]</span>. A firewall
+---
+>             firewalls <span>[<a href="#RFC4890" class="cite xref">RFC4890</a>]</span>. A firewall
+1565c1625
+<             correctly formatted ICMP message to the sender <span>[<a href="#I-D.ietf-intarea-tunnels" class="xref">TUNNELS</a>]</span>. Failure to do this
+---
+>             correctly formatted ICMP message to the sender <span>[<a href="#I-D.ietf-intarea-tunnels" class="cite xref">TUNNELS</a>]</span>. Failure to do this
+1590c1650
+<         effective PMTU <span>[<a href="#RFC8201" class="xref">RFC8201</a>]</span>. A sender can protect
+---
+>         effective PMTU <span>[<a href="#RFC8201" class="cite xref">RFC8201</a>]</span>. A sender can protect
+1599c1659
+<             <p id="section-1.1-7.1.1">When a router issuing the ICMP message implements RFC 792 <span>[<a href="#RFC0792" class="xref">RFC0792</a>]</span>, it is only required to include the first
+---
+>             <p id="section-1.1-7.1.1">When a router issuing the ICMP message implements RFC 792 <span>[<a href="#RFC0792" class="cite xref">RFC0792</a>]</span>, it is only required to include the first
+1604c1664
+<             recommendation in RFC 1812 <span>[<a href="#RFC1812" class="xref">RFC1812</a>]</span> is that
+---
+>             recommendation in RFC 1812 <span>[<a href="#RFC1812" class="cite xref">RFC1812</a>]</span> is that
+1609c1669
+<             <span>[<a href="#RFC4443" class="xref">RFC4443</a>]</span>.<a href="#section-1.1-7.1.2" class="pilcrow">¶</a></p>
+---
+>             <span>[<a href="#RFC4443" class="cite xref">RFC4443</a>]</span>.<a href="#section-1.1-7.1.2" class="pilcrow">¶</a></p>
+1637c1697
+<             the ICMP-quoted packet <span>[<a href="#RFC5508" class="xref">RFC5508</a>]</span> in
+---
+>             the ICMP-quoted packet <span>[<a href="#RFC5508" class="cite xref">RFC5508</a>]</span> in
+1657c1717
+<         (PLPMTUD) <span>[<a href="#RFC4821" class="xref">RFC4821</a>]</span> introduces a method
+---
+>         (PLPMTUD) <span>[<a href="#RFC4821" class="cite xref">RFC4821</a>]</span> introduces a method
+1661,1663c1721,1723
+<         implementing discovery of the PMTU <span>[<a href="#BCP145" class="xref">BCP145</a>]</span>.<a href="#section-1.2-2" class="pilcrow">¶</a></p>
+< <p id="section-1.2-3">This document updates <span>[<a href="#RFC4821" class="xref">RFC4821</a>]</span> to specify the PLPMTUD method for
+<         datagram PLs and also updates <span>[<a href="#BCP145" class="xref">BCP145</a>]</span> to refer to the method
+---
+>         implementing discovery of the PMTU <span>[<a href="#BCP145" class="cite xref">BCP145</a>]</span>.<a href="#section-1.2-2" class="pilcrow">¶</a></p>
+> <p id="section-1.2-3">This document updates <span>[<a href="#RFC4821" class="cite xref">RFC4821</a>]</span> to specify the PLPMTUD method for
+>         datagram PLs and also updates <span>[<a href="#BCP145" class="cite xref">BCP145</a>]</span> to refer to the method
+1665c1725
+<         with UDP datagrams instead of the method in <span>[<a href="#RFC4821" class="xref">RFC4821</a>]</span>.<a href="#section-1.2-3" class="pilcrow">¶</a></p>
+---
+>         with UDP datagrams instead of the method in <span>[<a href="#RFC4821" class="cite xref">RFC4821</a>]</span>.<a href="#section-1.2-3" class="pilcrow">¶</a></p>
+1688c1748
+< <p id="section-1.3-1"><a href="#Spec" class="xref">Section 5</a> of this document presents a set of
+---
+> <p id="section-1.3-1"><a href="#Spec" class="auto internal xref">Section 5</a> of this document presents a set of
+1691c1751
+<         relies upon features of the PL described in <a href="#Requirements" class="xref">Section 3</a> and applies to transport protocols
+---
+>         relies upon features of the PL described in <a href="#Requirements" class="auto internal xref">Section 3</a> and applies to transport protocols
+1696,1697c1756,1757
+<         <a href="https://www.rfc-editor.org/rfc/rfc8085#section-3.2" class="relref">3.2</a> 
+<         of the UDP Usage Guidelines <span>[<a href="#BCP145" class="xref">BCP145</a>]</span> state that "an application <span class="bcp14">SHOULD</span>
+---
+>         <a href="https://rfc-editor.org/rfc/rfc8085#section-3.2" class="relref">3.2</a> 
+>         of the UDP Usage Guidelines <span>[<a href="#BCP145" class="cite xref">BCP145</a>]</span> state that "an application <span class="bcp14">SHOULD</span>
+1702c1762
+<         specify this method in place of PLPMTUD <span>[<a href="#RFC4821" class="xref">RFC4821</a>]</span>
+---
+>         specify this method in place of PLPMTUD <span>[<a href="#RFC4821" class="cite xref">RFC4821</a>]</span>
+1704,1705c1764,1765
+<         MPS (see <a href="#mps" class="xref">Section 4.4</a>).<a href="#section-1.3-2" class="pilcrow">¶</a></p>
+< <p id="section-1.3-3"><span><a href="https://www.rfc-editor.org/rfc/rfc4821#section-10.2" class="relref">Section 10.2</a> of [<a href="#RFC4821" class="xref">RFC4821</a>]</span> recommended a PLPMTUD
+---
+>         MPS (see <a href="#mps" class="auto internal xref">Section 4.4</a>).<a href="#section-1.3-2" class="pilcrow">¶</a></p>
+> <p id="section-1.3-3"><span><a href="https://rfc-editor.org/rfc/rfc4821#section-10.2" class="relref">Section 10.2</a> of [<a href="#RFC4821" class="cite xref">RFC4821</a>]</span> recommended a PLPMTUD
+1708c1768
+<  bundled with a PAD chunk as defined in <span>[<a href="#RFC4820" class="xref">RFC4820</a>]</span>.
+---
+>  bundled with a PAD chunk as defined in <span>[<a href="#RFC4820" class="cite xref">RFC4820</a>]</span>.
+1712c1772
+< <p id="section-1.3-4">The Datagram Congestion Control Protocol (DCCP) <span>[<a href="#RFC4340" class="xref">RFC4340</a>]</span> requires implementations to support Classical
+---
+> <p id="section-1.3-4">The Datagram Congestion Control Protocol (DCCP) <span>[<a href="#RFC4340" class="cite xref">RFC4340</a>]</span> requires implementations to support Classical
+1719c1779
+< <p id="section-1.3-5"><a href="#dplpmtud-mechanisms" class="xref">Section 4</a> and <a href="#Spec" class="xref">Section 5</a> define the protocol mechanisms and specification
+---
+> <p id="section-1.3-5"><a href="#dplpmtud-mechanisms" class="auto internal xref">Section 4</a> and <a href="#Spec" class="auto internal xref">Section 5</a> define the protocol mechanisms and specification
+1721c1781
+< <p id="section-1.3-6"><a href="#protocol_specific_methods" class="xref">Section 6</a> specifies the
+---
+> <p id="section-1.3-6"><a href="#protocol_specific_methods" class="auto internal xref">Section 6</a> specifies the
+1725c1785
+< <p id="section-1.3-7"><a href="#protocol_specific_methods" class="xref">Section 6</a>
+---
+> <p id="section-1.3-7"><a href="#protocol_specific_methods" class="auto internal xref">Section 6</a>
+1727,1728c1787,1788
+<         updating <span>[<a href="#RFC4960" class="xref">RFC4960</a>]</span>, <span>[<a href="#RFC6951" class="xref">RFC6951</a>]</span>, and <span>[<a href="#RFC8261" class="xref">RFC8261</a>]</span> to use the
+<         method specified in this document instead of the method in <span>[<a href="#RFC4821" class="xref">RFC4821</a>]</span>.<a href="#section-1.3-7" class="pilcrow">¶</a></p>
+---
+>         updating <span>[<a href="#RFC4960" class="cite xref">RFC4960</a>]</span>, <span>[<a href="#RFC6951" class="cite xref">RFC6951</a>]</span>, and <span>[<a href="#RFC8261" class="cite xref">RFC8261</a>]</span> to use the
+>         method specified in this document instead of the method in <span>[<a href="#RFC4821" class="cite xref">RFC4821</a>]</span>.<a href="#section-1.3-7" class="pilcrow">¶</a></p>
+1738c1798
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1741c1801
+<       copied from <span>[<a href="#RFC4821" class="xref">RFC4821</a>]</span>, and the definitions in <span>[<a href="#RFC1122" class="xref">RFC1122</a>]</span> apply.<a href="#section-2-2" class="pilcrow">¶</a></p>
+---
+>       copied from <span>[<a href="#RFC4821" class="cite xref">RFC4821</a>]</span>, and the definitions in <span>[<a href="#RFC1122" class="cite xref">RFC1122</a>]</span> apply.<a href="#section-2-2" class="pilcrow">¶</a></p>
+1778c1838
+<         <dd style="margin-left: 1.5em" id="section-2-3.8">Classical PMTUD is a process described in <span>[<a href="#RFC1191" class="xref">RFC1191</a>]</span> and <span>[<a href="#RFC8201" class="xref">RFC8201</a>]</span> in which nodes
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.8">Classical PMTUD is a process described in <span>[<a href="#RFC1191" class="cite xref">RFC1191</a>]</span> and <span>[<a href="#RFC8201" class="cite xref">RFC8201</a>]</span> in which nodes
+1801c1861
+<         <dd style="margin-left: 1.5em" id="section-2-3.16">The effective MTU for sending (EMTU_S) is defined in <span>[<a href="#RFC1122" class="xref">RFC1122</a>]</span> as "the maximum IP datagram size that may be
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.16">The effective MTU for sending (EMTU_S) is defined in <span>[<a href="#RFC1122" class="cite xref">RFC1122</a>]</span> as "the maximum IP datagram size that may be
+1807c1867
+<         <dd style="margin-left: 1.5em" id="section-2-3.18">The effective MTU for receiving (EMTU_R) is designated in <span>[<a href="#RFC1122" class="xref">RFC1122</a>]</span> as "the largest datagram size that can be
+---
+>         <dd style="margin-left: 1.5em" id="section-2-3.18">The effective MTU for receiving (EMTU_R) is designated in <span>[<a href="#RFC1122" class="cite xref">RFC1122</a>]</span> as "the largest datagram size that can be
+1828c1888
+<           continues the requirement in <span>[<a href="#RFC4821" class="xref">RFC4821</a>]</span>
+---
+>           continues the requirement in <span>[<a href="#RFC4821" class="cite xref">RFC4821</a>]</span>
+1837c1897
+<    attempt to use (see the constants defined in <a href="#Constants" class="xref">Section 5.1.2</a>).<a href="#section-2-3.24" class="pilcrow">¶</a>
+---
+>    attempt to use (see the constants defined in <a href="#Constants" class="auto internal xref">Section 5.1.2</a>).<a href="#section-2-3.24" class="pilcrow">¶</a>
+1842c1902
+<    attempt to use (see the constants defined in <a href="#Constants" class="xref">Section 5.1.2</a>).<a href="#section-2-3.26" class="pilcrow">¶</a>
+---
+>    attempt to use (see the constants defined in <a href="#Constants" class="auto internal xref">Section 5.1.2</a>).<a href="#section-2-3.26" class="pilcrow">¶</a>
+1848c1908
+<           using a single datagram (see <a href="#mps" class="xref">Section 4.4</a>).<a href="#section-2-3.28" class="pilcrow">¶</a>
+---
+>           using a single datagram (see <a href="#mps" class="auto internal xref">Section 4.4</a>).<a href="#section-2-3.28" class="pilcrow">¶</a>
+1853c1913
+<           expected to experience across a path, taken as 2 minutes <span>[<a href="#BCP145" class="xref">BCP145</a>]</span>.<a href="#section-2-3.30" class="pilcrow">¶</a>
+---
+>           expected to experience across a path, taken as 2 minutes <span>[<a href="#BCP145" class="cite xref">BCP145</a>]</span>.<a href="#section-2-3.30" class="pilcrow">¶</a>
+1882,1883c1942,1943
+<    Needed (Type 3, Code 4) <span>[<a href="#RFC0792" class="xref">RFC0792</a>]</span> and ICMPv6
+<    Packet Too Big messages (Type 2) <span>[<a href="#RFC4443" class="xref">RFC4443</a>]</span>.<a href="#section-2-3.40" class="pilcrow">¶</a>
+---
+>    Needed (Type 3, Code 4) <span>[<a href="#RFC0792" class="cite xref">RFC0792</a>]</span> and ICMPv6
+>    Packet Too Big messages (Type 2) <span>[<a href="#RFC4443" class="cite xref">RFC4443</a>]</span>.<a href="#section-2-3.40" class="pilcrow">¶</a>
+1928c1988
+< <p id="section-3-1">The principles expressed in <span>[<a href="#RFC4821" class="xref">RFC4821</a>]</span> apply to
+---
+> <p id="section-3-1">The principles expressed in <span>[<a href="#RFC4821" class="cite xref">RFC4821</a>]</span> apply to
+1946c2006
+<           <span><a href="https://www.rfc-editor.org/rfc/rfc8201#section-5.4" class="relref">Section 5.4</a> of [<a href="#RFC8201" class="xref">RFC8201</a>]</span>).<a href="#section-3-3.2" class="pilcrow">¶</a>
+---
+>           <span><a href="https://rfc-editor.org/rfc/rfc8201#section-5.4" class="relref">Section 5.4</a> of [<a href="#RFC8201" class="cite xref">RFC8201</a>]</span>).<a href="#section-3-3.2" class="pilcrow">¶</a>
+1951c2011
+<           <a href="#protocol_specific_methods" class="xref">Section 6</a> provides examples of
+---
+>           <a href="#protocol_specific_methods" class="auto internal xref">Section 6</a> provides examples of
+1980c2040
+<           the PLPMTU discovery information <span>[<a href="#RFC8201" class="xref">RFC8201</a>]</span>.
+---
+>           the PLPMTU discovery information <span>[<a href="#RFC8201" class="cite xref">RFC8201</a>]</span>.
+1984c2044
+<           <span class="bcp14">MUST NOT</span> be used to increase the PLPMTU <span>[<a href="#RFC8201" class="xref">RFC8201</a>]</span> 
+---
+>           <span class="bcp14">MUST NOT</span> be used to increase the PLPMTU <span>[<a href="#RFC8201" class="cite xref">RFC8201</a>]</span> 
+2002c2062
+<           congestion and <span class="bcp14">SHOULD NOT</span> trigger a congestion control reaction <span>[<a href="#RFC4821" class="xref">RFC4821</a>]</span>
+---
+>           congestion and <span class="bcp14">SHOULD NOT</span> trigger a congestion control reaction <span>[<a href="#RFC4821" class="cite xref">RFC4821</a>]</span>
+2006c2066
+<           window measured in bytes <span>[<a href="#RFC4821" class="xref">RFC4821</a>]</span>. Therefore,
+---
+>           window measured in bytes <span>[<a href="#RFC4821" class="cite xref">RFC4821</a>]</span>. Therefore,
+2026c2086
+<           PLPMTUD <span>[<a href="#RFC4821" class="xref">RFC4821</a>]</span> states, "If PLPMTUD updates
+---
+>           PLPMTUD <span>[<a href="#RFC4821" class="cite xref">RFC4821</a>]</span> states, "If PLPMTUD updates
+2029c2089
+<           <a href="https://www.rfc-editor.org/rfc/rfc4821#section-5.2" class="relref">5.2</a>)
+---
+>           <a href="https://rfc-editor.org/rfc/rfc4821#section-5.2" class="relref">5.2</a>)
+2033c2093
+<           <span><a href="https://www.rfc-editor.org/rfc/rfc8201#section-5.2" class="relref">Section 5.2</a> of [<a href="#RFC8201" class="xref">RFC8201</a>]</span> 
+---
+>           <span><a href="https://rfc-editor.org/rfc/rfc8201#section-5.2" class="relref">Section 5.2</a> of [<a href="#RFC8201" class="cite xref">RFC8201</a>]</span> 
+2090c2150
+<         packets by choosing to appropriately segment data being sent <span>[<a href="#RFC4821" class="xref">RFC4821</a>]</span>. In contrast, a datagram PL that constructs a
+---
+>         packets by choosing to appropriately segment data being sent <span>[<a href="#RFC4821" class="cite xref">RFC4821</a>]</span>. In contrast, a datagram PL that constructs a
+2165c2225
+< <p id="section-4.2-4"><a href="#protocol_specific_methods" class="xref">Section 6</a> specifies this
+---
+> <p id="section-4.2-4"><a href="#protocol_specific_methods" class="auto internal xref">Section 6</a> specifies this
+2175c2235
+<         <a href="#Constants" class="xref">Section 5.1.2</a> and variables defined in <a href="#Variables" class="xref">Section 5.1.3</a>.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+---
+>         <a href="#Constants" class="auto internal xref">Section 5.1.2</a> and variables defined in <a href="#Variables" class="auto internal xref">Section 5.1.3</a>.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+2187c2247
+<             using the CONFIRMATION_TIMER, <a href="#Timers" class="xref">Section 5.1.1</a>). A
+---
+>             using the CONFIRMATION_TIMER, <a href="#Timers" class="auto internal xref">Section 5.1.1</a>). A
+2199c2259
+<             PLPMTUD for TCP <span>[<a href="#RFC4821" class="xref">RFC4821</a>]</span>).<a href="#section-4.3-4.3" class="pilcrow">¶</a>
+---
+>             PLPMTUD for TCP <span>[<a href="#RFC4821" class="cite xref">RFC4821</a>]</span>).<a href="#section-4.3-4.3" class="pilcrow">¶</a>
+2227c2287
+<         illustrated in <a href="#fig-mps-relationship" class="xref">Figure 1</a>.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
+---
+>         illustrated in <a href="#fig-mps-relationship" class="auto internal xref">Figure 1</a>.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
+2231c2291
+<             <div class="artwork art-svg alignLeft" id="section-4.4-2.1.1">
+---
+>             <div class="alignLeft art-svg artwork" id="section-4.4-2.1.1">
+2333c2393
+<  (e.g., <span>[<a href="#RFC4960" class="xref">RFC4960</a>]</span>), then the sender either discards
+---
+>  (e.g., <span>[<a href="#RFC4960" class="cite xref">RFC4960</a>]</span>), then the sender either discards
+2339c2399
+<  communication <span>[<a href="#RFC8900" class="xref">RFC8900</a>]</span>,
+---
+>  communication <span>[<a href="#RFC8900" class="cite xref">RFC8900</a>]</span>,
+2349c2409
+<           processing of outgoing packets that enforces a PMTU <span>[<a href="#RFC1191" class="xref">RFC1191</a>]</span><span>[<a href="#RFC8201" class="xref">RFC8201</a>]</span> for each flow
+---
+>           processing of outgoing packets that enforces a PMTU <span>[<a href="#RFC1191" class="cite xref">RFC1191</a>]</span><span>[<a href="#RFC8201" class="cite xref">RFC8201</a>]</span> for each flow
+2366c2426
+< <p id="section-4.6-2"><a href="#PTB" class="xref">Section 4.6.1</a> describes validation for both IPv4
+---
+> <p id="section-4.6-2"><a href="#PTB" class="auto internal xref">Section 4.6.1</a> describes validation for both IPv4
+2386,2387c2446,2447
+<           <span><a href="https://www.rfc-editor.org/rfc/rfc8201#section-4" class="relref">Section 4</a> of [<a href="#RFC8201" class="xref">RFC8201</a>]</span> and 
+<           <span><a href="https://www.rfc-editor.org/rfc/rfc8085#section-5.2" class="relref">Section 5.2</a> of [<a href="#BCP145" class="xref">BCP145</a>]</span>).
+---
+>           <span><a href="https://rfc-editor.org/rfc/rfc8201#section-4" class="relref">Section 4</a> of [<a href="#RFC8201" class="cite xref">RFC8201</a>]</span> and 
+>           <span><a href="https://rfc-editor.org/rfc/rfc8085#section-5.2" class="relref">Section 5.2</a> of [<a href="#BCP145" class="cite xref">BCP145</a>]</span>).
+2400c2460
+<           for an off-path attacker to determine <span>[<a href="#BCP145" class="xref">BCP145</a>]</span>. For example, it could check the value of a
+---
+>           for an off-path attacker to determine <span>[<a href="#BCP145" class="cite xref">BCP145</a>]</span>. For example, it could check the value of a
+2408,2409c2468,2469
+<           section (<a href="#Security" class="xref">Section 8</a>).<a href="#section-4.6.1-6" class="pilcrow">¶</a></p>
+< <p id="section-4.6.1-7"><a href="#validPTB_SIZE" class="xref">Section 4.6.2</a> describes this processing of
+---
+>           section (<a href="#Security" class="auto internal xref">Section 8</a>).<a href="#section-4.6.1-6" class="pilcrow">¶</a></p>
+> <p id="section-4.6.1-7"><a href="#validPTB_SIZE" class="auto internal xref">Section 4.6.2</a> describes this processing of
+2434c2494
+<    utilized, using the set of constants defined in <a href="#Constants" class="xref">Section 5.1.2</a>. 
+---
+>    utilized, using the set of constants defined in <a href="#Constants" class="auto internal xref">Section 5.1.2</a>. 
+2440c2500
+< <li class="normal" id="section-4.6.2-6.2.1.1">Invalid PL_PTB_SIZE, see <a href="#PTB" class="xref">Section 4.6.1</a>.<a href="#section-4.6.2-6.2.1.1" class="pilcrow">¶</a>
+---
+> <li class="normal" id="section-4.6.2-6.2.1.1">Invalid PL_PTB_SIZE, see <a href="#PTB" class="auto internal xref">Section 4.6.1</a>.<a href="#section-4.6.2-6.2.1.1" class="pilcrow">¶</a>
+2446c2506
+<                   triggers the enabling of a resilience mode (see <a href="#Resilience" class="xref">Section 5.3.3</a>).<a href="#section-4.6.2-6.2.1.3" class="pilcrow">¶</a>
+---
+>                   triggers the enabling of a resilience mode (see <a href="#Resilience" class="auto internal xref">Section 5.3.3</a>).<a href="#section-4.6.2-6.2.1.3" class="pilcrow">¶</a>
+2454c2514
+< <li class="normal" id="section-4.6.2-6.4.1.1">A robust PL <span class="bcp14">MAY</span> enter an error state (see <a href="#States" class="xref">Section 5.2</a>) for an IPv4 path when the PL_PTB_SIZE
+---
+> <li class="normal" id="section-4.6.2-6.4.1.1">A robust PL <span class="bcp14">MAY</span> enter an error state (see <a href="#States" class="auto internal xref">Section 5.2</a>) for an IPv4 path when the PL_PTB_SIZE
+2456c2516
+<                   bytes <span>[<a href="#RFC0791" class="xref">RFC0791</a>]</span> and when this is less
+---
+>                   bytes <span>[<a href="#RFC0791" class="cite xref">RFC0791</a>]</span> and when this is less
+2459c2519
+<                 <li class="normal" id="section-4.6.2-6.4.1.2">A robust PL <span class="bcp14">MAY</span> enter an error state (see <a href="#States" class="xref">Section 5.2</a>) for an IPv6 path when the PL_PTB_SIZE
+---
+>                 <li class="normal" id="section-4.6.2-6.4.1.2">A robust PL <span class="bcp14">MAY</span> enter an error state (see <a href="#States" class="auto internal xref">Section 5.2</a>) for an IPv6 path when the PL_PTB_SIZE
+2461c2521
+<                   bytes <span>[<a href="#RFC8200" class="xref">RFC8200</a>]</span> and when this is less
+---
+>                   bytes <span>[<a href="#RFC8200" class="cite xref">RFC8200</a>]</span> and when this is less
+2525c2585
+<       introduced at various points (as indicated with * in <a href="#fig-plpmtudimplement" class="xref">Figure 2</a>)
+---
+>       introduced at various points (as indicated with * in <a href="#fig-plpmtudimplement" class="auto internal xref">Figure 2</a>)
+2536c2596
+<           <div class="artwork art-svg alignLeft" id="section-5-3.1.1">
+---
+>           <div class="alignLeft art-svg artwork" id="section-5-3.1.1">
+2658,2659c2718,2719
+<                 <a href="https://www.rfc-editor.org/rfc/rfc8085#section-3.1.1" class="relref">3.1.1</a> 
+<                 of the UDP Usage Guidelines <span>[<a href="#BCP145" class="xref">BCP145</a>]</span>.<a href="#section-5.1.1-2.2.1" class="pilcrow">¶</a></p>
+---
+>                 <a href="https://rfc-editor.org/rfc/rfc8085#section-3.1.1" class="relref">3.1.1</a> 
+>                 of the UDP Usage Guidelines <span>[<a href="#BCP145" class="cite xref">BCP145</a>]</span>.<a href="#section-5.1.1-2.2.1" class="pilcrow">¶</a></p>
+2667c2727
+<                 seconds, as recommended by PLPMTUD <span>[<a href="#RFC4821" class="xref">RFC4821</a>]</span>.<a href="#section-5.1.1-2.4.1" class="pilcrow">¶</a></p>
+---
+>                 seconds, as recommended by PLPMTUD <span>[<a href="#RFC4821" class="cite xref">RFC4821</a>]</span>.<a href="#section-5.1.1-2.4.1" class="pilcrow">¶</a></p>
+2687,2688c2747,2748
+<                 <a href="https://www.rfc-editor.org/rfc/rfc8085#section-3.1.1" class="relref">3.1.1</a> 
+<                 of the UDP Usage Guidelines <span>[<a href="#BCP145" class="xref">BCP145</a>]</span>.<a href="#section-5.1.1-2.6.1" class="pilcrow">¶</a></p>
+---
+>                 <a href="https://rfc-editor.org/rfc/rfc8085#section-3.1.1" class="relref">3.1.1</a> 
+>                 of the UDP Usage Guidelines <span>[<a href="#BCP145" class="cite xref">BCP145</a>]</span>.<a href="#section-5.1.1-2.6.1" class="pilcrow">¶</a></p>
+2711c2771
+<               counter (see <a href="#Variables" class="xref">Section 5.1.3</a>). MAX_PROBES represents
+---
+>               counter (see <a href="#Variables" class="auto internal xref">Section 5.1.3</a>). MAX_PROBES represents
+2725c2785
+<        IPv6 packet, as specified in <span>[<a href="#RFC8200" class="xref">RFC8200</a>]</span>. For
+---
+>        IPv6 packet, as specified in <span>[<a href="#RFC8200" class="cite xref">RFC8200</a>]</span>. For
+2733c2793
+<        <span><a href="https://www.rfc-editor.org/rfc/rfc1122#section-3.3.3" class="relref">Section 3.3.3</a> of [<a href="#RFC1122" class="xref">RFC1122</a>]</span>.<a href="#section-5.1.2-2.4" class="pilcrow">¶</a>
+---
+>        <span><a href="https://rfc-editor.org/rfc/rfc1122#section-3.3.3" class="relref">Section 3.3.3</a> of [<a href="#RFC1122" class="cite xref">RFC1122</a>]</span>.<a href="#section-5.1.2-2.4" class="pilcrow">¶</a>
+2782c2842
+< <p id="section-5.1.3-3"><a href="#fig-mps" class="xref">Figure 3</a> illustrates the relationship between the packet
+---
+> <p id="section-5.1.3-3"><a href="#fig-mps" class="auto internal xref">Figure 3</a> illustrates the relationship between the packet
+2792c2852
+<               <div class="artwork art-svg alignLeft" id="section-5.1.3-4.1.1">
+---
+>               <div class="alignLeft art-svg artwork" id="section-5.1.3-4.1.1">
+2873c2933
+<           machine, <a href="#States" class="xref">Section 5.2</a>.<a href="#section-5.1.4-1" class="pilcrow">¶</a></p>
+---
+>           machine, <a href="#States" class="auto internal xref">Section 5.2</a>.<a href="#section-5.1.4-1" class="pilcrow">¶</a></p>
+2877c2937
+<               <div class="artwork art-svg alignLeft" id="section-5.1.4-2.1.1">
+---
+>               <div class="alignLeft art-svg artwork" id="section-5.1.4-2.1.1">
+3171c3231
+<                 or terminate the search, see <a href="#mechanism-ptb" class="xref">Section 4.6</a>.<a href="#section-5.1.4-3.4.2" class="pilcrow">¶</a></p>
+---
+>                 or terminate the search, see <a href="#mechanism-ptb" class="auto internal xref">Section 4.6</a>.<a href="#section-5.1.4-3.4.2" class="pilcrow">¶</a></p>
+3220c3280
+< <p id="section-5.2-1">A state machine for DPLPMTUD is depicted in <a href="#fig-states" class="xref">Figure 5</a>. If multipath or multihoming is supported,
+---
+> <p id="section-5.2-1">A state machine for DPLPMTUD is depicted in <a href="#fig-states" class="auto internal xref">Figure 5</a>. If multipath or multihoming is supported,
+3227c3287
+<             <div class="artwork art-svg alignLeft" id="section-5.2-3.1.1">
+---
+>             <div class="alignLeft art-svg artwork" id="section-5.2-3.1.1">
+3886c3946
+<               in <a href="#searchincrease" class="xref">Section 5.3</a>).<a href="#section-5.2-6.6.2" class="pilcrow">¶</a></p>
+---
+>               in <a href="#searchincrease" class="auto internal xref">Section 5.3</a>).<a href="#section-5.2-6.6.2" class="pilcrow">¶</a></p>
+3962c4022
+<    at the PL (see <a href="#Probe" class="xref">Section 4.1</a>).<a href="#section-5.3.1-3" class="pilcrow">¶</a></p>
+---
+>    at the PL (see <a href="#Probe" class="auto internal xref">Section 4.1</a>).<a href="#section-5.3.1-3" class="pilcrow">¶</a></p>
+3966c4026
+<           across the path (<a href="#Probe" class="xref">Section 4.1</a>). This confirms that the
+---
+>           across the path (<a href="#Probe" class="auto internal xref">Section 4.1</a>). This confirms that the
+4053,4054c4113,4114
+< <p id="section-6.1-1">The current specifications of UDP <span>[<a href="#RFC0768" class="xref">RFC0768</a>]</span>
+<         and UDP-Lite <span>[<a href="#RFC3828" class="xref">RFC3828</a>]</span> do not define a method in
+---
+> <p id="section-6.1-1">The current specifications of UDP <span>[<a href="#RFC0768" class="cite xref">RFC0768</a>]</span>
+>         and UDP-Lite <span>[<a href="#RFC3828" class="cite xref">RFC3828</a>]</span> do not define a method in
+4060c4120
+<         higher-layer protocol features to implement the method <span>[<a href="#BCP145" class="xref">BCP145</a>]</span>.<a href="#section-6.1-2" class="pilcrow">¶</a></p>
+---
+>         higher-layer protocol features to implement the method <span>[<a href="#BCP145" class="cite xref">BCP145</a>]</span>.<a href="#section-6.1-2" class="pilcrow">¶</a></p>
+4079c4139
+<           protection from off-path insertion of data <span>[<a href="#BCP145" class="xref">BCP145</a>]</span>. Suitable methods include a parameter known
+---
+>           protection from off-path insertion of data <span>[<a href="#BCP145" class="cite xref">BCP145</a>]</span>. Suitable methods include a parameter known
+4133c4193
+<           <span><a href="https://www.rfc-editor.org/rfc/rfc8085#section-5.2" class="relref">Section 5.2</a> of [<a href="#BCP145" class="xref">BCP145</a>]</span>. This requires that the application checks
+---
+>           <span><a href="https://rfc-editor.org/rfc/rfc8085#section-5.2" class="relref">Section 5.2</a> of [<a href="#BCP145" class="cite xref">BCP145</a>]</span>. This requires that the application checks
+4136c4196
+<           less than the current probed size (see <a href="#validPTB_SIZE" class="xref">Section 4.6.2</a>). 
+---
+>           less than the current probed size (see <a href="#validPTB_SIZE" class="auto internal xref">Section 4.6.2</a>). 
+4147c4207
+< <p id="section-6.2-1"><span><a href="https://www.rfc-editor.org/rfc/rfc4821#section-10.2" class="relref">Section 10.2</a> of [<a href="#RFC4821" class="xref">RFC4821</a>]</span> 
+---
+> <p id="section-6.2-1"><span><a href="https://rfc-editor.org/rfc/rfc4821#section-10.2" class="relref">Section 10.2</a> of [<a href="#RFC4821" class="cite xref">RFC4821</a>]</span> 
+4149c4209
+<         <span><a href="https://www.rfc-editor.org/rfc/rfc4960#section-7.3" class="relref">Section 7.3</a> of [<a href="#RFC4960" class="xref">RFC4960</a>]</span> 
+---
+>         <span><a href="https://rfc-editor.org/rfc/rfc4960#section-7.3" class="relref">Section 7.3</a> of [<a href="#RFC4960" class="cite xref">RFC4960</a>]</span> 
+4156c4216
+<         SCTP message. The PAD chunk defined in <span>[<a href="#RFC4820" class="xref">RFC4820</a>]</span>
+---
+>         SCTP message. The PAD chunk defined in <span>[<a href="#RFC4820" class="cite xref">RFC4820</a>]</span>
+4162c4222
+< <p id="section-6.2-2"><span><a href="https://www.rfc-editor.org/rfc/rfc4960#section-6.9" class="relref">Section 6.9</a> of [<a href="#RFC4960" class="xref">RFC4960</a>]</span> 
+---
+> <p id="section-6.2-2"><span><a href="https://rfc-editor.org/rfc/rfc4960#section-6.9" class="relref">Section 6.9</a> of [<a href="#RFC4960" class="cite xref">RFC4960</a>]</span> 
+4166,4167c4226,4227
+<     <span>[<a href="#RFC4960" class="xref">RFC4960</a>]</span> describes the method for retransmitting DATA
+<    chunks when the MPS has been reduced, and <span><a href="https://www.rfc-editor.org/rfc/rfc4960#section-6.9" class="relref">Section 6.9</a> of [<a href="#RFC4960" class="xref">RFC4960</a>]</span>
+---
+>     <span>[<a href="#RFC4960" class="cite xref">RFC4960</a>]</span> describes the method for retransmitting DATA
+>    chunks when the MPS has been reduced, and <span><a href="https://rfc-editor.org/rfc/rfc4960#section-6.9" class="relref">Section 6.9</a> of [<a href="#RFC4960" class="cite xref">RFC4960</a>]</span>
+4179c4239
+< <p id="section-6.2.1.1-1">The base protocol is specified in <span>[<a href="#RFC4960" class="xref">RFC4960</a>]</span>. This provides an acknowledged PL. A
+---
+> <p id="section-6.2.1.1-1">The base protocol is specified in <span>[<a href="#RFC4960" class="cite xref">RFC4960</a>]</span>. This provides an acknowledged PL. A
+4199c4259
+<      suggested in <span>[<a href="#RFC4960" class="xref">RFC4960</a>]</span>, the probe size to help
+---
+>      suggested in <span>[<a href="#RFC4960" class="cite xref">RFC4960</a>]</span>, the probe size to help
+4230c4290
+<             <span><a href="https://www.rfc-editor.org/rfc/rfc4960#appendix-C" class="relref">Appendix C</a> of [<a href="#RFC4960" class="xref">RFC4960</a>]</span>. 
+---
+>             <span><a href="https://rfc-editor.org/rfc/rfc4960#appendix-C" class="relref">Appendix C</a> of [<a href="#RFC4960" class="cite xref">RFC4960</a>]</span>. 
+4237c4297
+<             PL_PTB_SIZE is less than the current probe size (see <a href="#mechanism-ptb" class="xref">Section 4.6</a>).<a href="#section-6.2.1.4-2" class="pilcrow">¶</a></p>
+---
+>             PL_PTB_SIZE is less than the current probe size (see <a href="#mechanism-ptb" class="auto internal xref">Section 4.6</a>).<a href="#section-6.2.1.4-2" class="pilcrow">¶</a></p>
+4246c4306
+< <p id="section-6.2.2-1">The UDP encapsulation of SCTP is specified in <span>[<a href="#RFC6951" class="xref">RFC6951</a>]</span>.<a href="#section-6.2.2-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-6.2.2-1">The UDP encapsulation of SCTP is specified in <span>[<a href="#RFC6951" class="cite xref">RFC6951</a>]</span>.<a href="#section-6.2.2-1" class="pilcrow">¶</a></p>
+4248c4308
+<           <a href="https://www.rfc-editor.org/rfc/rfc6951#section-5.6" class="relref">5.6</a> 
+---
+>           <a href="https://rfc-editor.org/rfc/rfc6951#section-5.6" class="relref">5.6</a> 
+4251c4311
+<           Section <a href="https://www.rfc-editor.org/rfc/rfc6951#section-5.6" class="relref">5.6</a>:<a href="#section-6.2.2-2" class="pilcrow">¶</a></p>
+---
+>           Section <a href="https://rfc-editor.org/rfc/rfc6951#section-5.6" class="relref">5.6</a>:<a href="#section-6.2.2-2" class="pilcrow">¶</a></p>
+4268c4328
+< <p id="section-6.2.2.2-1">Packet probing can be performed as specified in <a href="#sctp_over_ip_probing" class="xref">Section 6.2.1.2</a>. The size of the probe
+---
+> <p id="section-6.2.2.2-1">Packet probing can be performed as specified in <a href="#sctp_over_ip_probing" class="auto internal xref">Section 6.2.1.2</a>. The size of the probe
+4287c4347
+<             <span><a href="https://www.rfc-editor.org/rfc/rfc4960#appendix-C" class="relref">Appendix C</a> of [<a href="#RFC4960" class="xref">RFC4960</a>]</span>. 
+---
+>             <span><a href="https://rfc-editor.org/rfc/rfc4960#appendix-C" class="relref">Appendix C</a> of [<a href="#RFC4960" class="cite xref">RFC4960</a>]</span>. 
+4304c4364
+<           is specified in <span>[<a href="#RFC8261" class="xref">RFC8261</a>]</span>. This is used for
+---
+>           is specified in <span>[<a href="#RFC8261" class="cite xref">RFC8261</a>]</span>. This is used for
+4307c4367
+<           <a href="https://www.rfc-editor.org/rfc/rfc8261#section-5" class="relref">5</a>
+---
+>           <a href="https://rfc-editor.org/rfc/rfc8261#section-5" class="relref">5</a>
+4321c4381
+< <p id="section-6.2.3.2-1">Packet probing can be done as specified in <a href="#sctp_over_ip_probing" class="xref">Section 6.2.1.2</a>. The maximum payload is
+---
+> <p id="section-6.2.3.2-1">Packet probing can be done as specified in <a href="#sctp_over_ip_probing" class="auto internal xref">Section 6.2.1.2</a>. The maximum payload is
+4341c4401
+< <p id="section-6.2.3.4-1"><span>[<a href="#RFC4960" class="xref">RFC4960</a>]</span> does not specify a way to
+---
+> <p id="section-6.2.3.4-1"><span>[<a href="#RFC4960" class="cite xref">RFC4960</a>]</span> does not specify a way to
+4353c4413
+< <p id="section-6.3-1">QUIC <span>[<a href="#I-D.ietf-quic-transport" class="xref">QUIC</a>]</span> is a UDP-based
+---
+> <p id="section-6.3-1">QUIC <span>[<a href="#I-D.ietf-quic-transport" class="cite xref">QUIC</a>]</span> is a UDP-based
+4358c4418
+<  an acknowledged PL. <span>[<a href="#I-D.ietf-quic-transport" class="xref">QUIC</a>]</span>
+---
+>  an acknowledged PL. <span>[<a href="#I-D.ietf-quic-transport" class="cite xref">QUIC</a>]</span>
+4387,4388c4447,4448
+<       <a href="https://www.rfc-editor.org/rfc/rfc8085#section-5.1" class="relref">5.1</a>
+<       of <span>[<a href="#BCP145" class="xref">BCP145</a>]</span>).<a href="#section-8-3" class="pilcrow">¶</a></p>
+---
+>       <a href="https://rfc-editor.org/rfc/rfc8085#section-5.1" class="relref">5.1</a>
+>       of <span>[<a href="#BCP145" class="cite xref">BCP145</a>]</span>).<a href="#section-8-3" class="pilcrow">¶</a></p>
+4391c4451
+<       (see <a href="#Classic-PMTUD" class="xref">Section 1.1</a>). This method therefore does not rely
+---
+>       (see <a href="#Classic-PMTUD" class="auto internal xref">Section 1.1</a>). This method therefore does not rely
+4398c4458
+<       actually sent by the path layer, see <a href="#PTB" class="xref">Section 4.6.1</a>).<a href="#section-8-4" class="pilcrow">¶</a></p>
+---
+>       actually sent by the path layer, see <a href="#PTB" class="auto internal xref">Section 4.6.1</a>).<a href="#section-8-4" class="pilcrow">¶</a></p>
+4429c4489
+<       provide robustness (see <a href="#robustness" class="xref">Section 5.4</a>) in the method
+---
+>       provide robustness (see <a href="#robustness" class="auto internal xref">Section 5.4</a>) in the method
+4456c4516
+< <span class="refAuthor">Eggert, L.</span><span class="refAuthor">, Fairhurst, G.</span><span class="refAuthor">, and G. Shepherd</span>, <span class="refTitle">"UDP Usage Guidelines"</span>, <span class="seriesInfo">BCP 145</span>, <span class="seriesInfo">RFC 8085</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/bcp145">https://www.rfc-editor.org/info/bcp145</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Eggert, L.</span>, <span class="refAuthor">Fairhurst, G.</span>, and <span class="refAuthor">G. Shepherd</span>, <span class="refTitle">"UDP Usage Guidelines"</span>, <span class="seriesInfo">BCP 145</span>, <span class="seriesInfo">RFC 8085</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/bcp145">https://www.rfc-editor.org/info/bcp145</a>&gt;</span>. </dd>
+4468c4528
+< <span class="refAuthor">Mogul, J.</span><span class="refAuthor"> and S. Deering</span>, <span class="refTitle">"Path MTU discovery"</span>, <span class="seriesInfo">RFC 1191</span>, <span class="seriesInfo">DOI 10.17487/RFC1191</span>, <time datetime="1990-11" class="refDate">November 1990</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1191">https://www.rfc-editor.org/info/rfc1191</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mogul, J.</span> and <span class="refAuthor">S. Deering</span>, <span class="refTitle">"Path MTU discovery"</span>, <span class="seriesInfo">RFC 1191</span>, <span class="seriesInfo">DOI 10.17487/RFC1191</span>, <time datetime="1990-11" class="refDate">November 1990</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1191">https://www.rfc-editor.org/info/rfc1191</a>&gt;</span>. </dd>
+4476c4536
+< <span class="refAuthor">Larzon, L-A.</span><span class="refAuthor">, Degermark, M.</span><span class="refAuthor">, Pink, S.</span><span class="refAuthor">, Jonsson, L-E., Ed.</span><span class="refAuthor">, and G. Fairhurst, Ed.</span>, <span class="refTitle">"The Lightweight User Datagram Protocol (UDP-Lite)"</span>, <span class="seriesInfo">RFC 3828</span>, <span class="seriesInfo">DOI 10.17487/RFC3828</span>, <time datetime="2004-07" class="refDate">July 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3828">https://www.rfc-editor.org/info/rfc3828</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Larzon, L-A.</span>, <span class="refAuthor">Degermark, M.</span>, <span class="refAuthor">Pink, S.</span>, <span class="refAuthor">Jonsson, L-E., Ed.</span>, and <span class="refAuthor">G. Fairhurst, Ed.</span>, <span class="refTitle">"The Lightweight User Datagram Protocol (UDP-Lite)"</span>, <span class="seriesInfo">RFC 3828</span>, <span class="seriesInfo">DOI 10.17487/RFC3828</span>, <time datetime="2004-07" class="refDate">July 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3828">https://www.rfc-editor.org/info/rfc3828</a>&gt;</span>. </dd>
+4480c4540
+< <span class="refAuthor">Tuexen, M.</span><span class="refAuthor">, Stewart, R.</span><span class="refAuthor">, and P. Lei</span>, <span class="refTitle">"Padding Chunk and Parameter for the Stream Control Transmission Protocol (SCTP)"</span>, <span class="seriesInfo">RFC 4820</span>, <span class="seriesInfo">DOI 10.17487/RFC4820</span>, <time datetime="2007-03" class="refDate">March 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4820">https://www.rfc-editor.org/info/rfc4820</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Tuexen, M.</span>, <span class="refAuthor">Stewart, R.</span>, and <span class="refAuthor">P. Lei</span>, <span class="refTitle">"Padding Chunk and Parameter for the Stream Control Transmission Protocol (SCTP)"</span>, <span class="seriesInfo">RFC 4820</span>, <span class="seriesInfo">DOI 10.17487/RFC4820</span>, <time datetime="2007-03" class="refDate">March 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4820">https://www.rfc-editor.org/info/rfc4820</a>&gt;</span>. </dd>
+4488c4548
+< <span class="refAuthor">Tuexen, M.</span><span class="refAuthor"> and R. Stewart</span>, <span class="refTitle">"UDP Encapsulation of Stream Control Transmission Protocol (SCTP) Packets for End-Host to End-Host Communication"</span>, <span class="seriesInfo">RFC 6951</span>, <span class="seriesInfo">DOI 10.17487/RFC6951</span>, <time datetime="2013-05" class="refDate">May 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6951">https://www.rfc-editor.org/info/rfc6951</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Tuexen, M.</span> and <span class="refAuthor">R. Stewart</span>, <span class="refTitle">"UDP Encapsulation of Stream Control Transmission Protocol (SCTP) Packets for End-Host to End-Host Communication"</span>, <span class="seriesInfo">RFC 6951</span>, <span class="seriesInfo">DOI 10.17487/RFC6951</span>, <time datetime="2013-05" class="refDate">May 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6951">https://www.rfc-editor.org/info/rfc6951</a>&gt;</span>. </dd>
+4496c4556
+< <span class="refAuthor">Deering, S.</span><span class="refAuthor"> and R. Hinden</span>, <span class="refTitle">"Internet Protocol, Version 6 (IPv6) Specification"</span>, <span class="seriesInfo">STD 86</span>, <span class="seriesInfo">RFC 8200</span>, <span class="seriesInfo">DOI 10.17487/RFC8200</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8200">https://www.rfc-editor.org/info/rfc8200</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Deering, S.</span> and <span class="refAuthor">R. Hinden</span>, <span class="refTitle">"Internet Protocol, Version 6 (IPv6) Specification"</span>, <span class="seriesInfo">STD 86</span>, <span class="seriesInfo">RFC 8200</span>, <span class="seriesInfo">DOI 10.17487/RFC8200</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8200">https://www.rfc-editor.org/info/rfc8200</a>&gt;</span>. </dd>
+4500c4560
+< <span class="refAuthor">McCann, J.</span><span class="refAuthor">, Deering, S.</span><span class="refAuthor">, Mogul, J.</span><span class="refAuthor">, and R. Hinden, Ed.</span>, <span class="refTitle">"Path MTU Discovery for IP version 6"</span>, <span class="seriesInfo">STD 87</span>, <span class="seriesInfo">RFC 8201</span>, <span class="seriesInfo">DOI 10.17487/RFC8201</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8201">https://www.rfc-editor.org/info/rfc8201</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">McCann, J.</span>, <span class="refAuthor">Deering, S.</span>, <span class="refAuthor">Mogul, J.</span>, and <span class="refAuthor">R. Hinden, Ed.</span>, <span class="refTitle">"Path MTU Discovery for IP version 6"</span>, <span class="seriesInfo">STD 87</span>, <span class="seriesInfo">RFC 8201</span>, <span class="seriesInfo">DOI 10.17487/RFC8201</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8201">https://www.rfc-editor.org/info/rfc8201</a>&gt;</span>. </dd>
+4504c4564
+< <span class="refAuthor">Tuexen, M.</span><span class="refAuthor">, Stewart, R.</span><span class="refAuthor">, Jesup, R.</span><span class="refAuthor">, and S. Loreto</span>, <span class="refTitle">"Datagram Transport Layer Security (DTLS) Encapsulation of SCTP Packets"</span>, <span class="seriesInfo">RFC 8261</span>, <span class="seriesInfo">DOI 10.17487/RFC8261</span>, <time datetime="2017-11" class="refDate">November 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8261">https://www.rfc-editor.org/info/rfc8261</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Tuexen, M.</span>, <span class="refAuthor">Stewart, R.</span>, <span class="refAuthor">Jesup, R.</span>, and <span class="refAuthor">S. Loreto</span>, <span class="refTitle">"Datagram Transport Layer Security (DTLS) Encapsulation of SCTP Packets"</span>, <span class="seriesInfo">RFC 8261</span>, <span class="seriesInfo">DOI 10.17487/RFC8261</span>, <time datetime="2017-11" class="refDate">November 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8261">https://www.rfc-editor.org/info/rfc8261</a>&gt;</span>. </dd>
+4515c4575
+< <span class="refAuthor">Iyengar, J., Ed.</span><span class="refAuthor"> and M. Thomson, Ed.</span>, <span class="refTitle">"QUIC: A UDP-Based Multiplexed and Secure Transport"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-quic-transport-29</span>, <time datetime="2020-06-10" class="refDate">10 June 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-quic-transport-29">https://tools.ietf.org/html/draft-ietf-quic-transport-29</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Iyengar, J., Ed.</span> and <span class="refAuthor">M. Thomson, Ed.</span>, <span class="refTitle">"QUIC: A UDP-Based Multiplexed and Secure Transport"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-quic-transport-29</span>, <time datetime="2020-06-10" class="refDate">10 June 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-quic-transport-29">https://tools.ietf.org/html/draft-ietf-quic-transport-29</a>&gt;</span>. </dd>
+4535c4595
+< <span class="refAuthor">Kohler, E.</span><span class="refAuthor">, Handley, M.</span><span class="refAuthor">, and S. Floyd</span>, <span class="refTitle">"Datagram Congestion Control Protocol (DCCP)"</span>, <span class="seriesInfo">RFC 4340</span>, <span class="seriesInfo">DOI 10.17487/RFC4340</span>, <time datetime="2006-03" class="refDate">March 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4340">https://www.rfc-editor.org/info/rfc4340</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Kohler, E.</span>, <span class="refAuthor">Handley, M.</span>, and <span class="refAuthor">S. Floyd</span>, <span class="refTitle">"Datagram Congestion Control Protocol (DCCP)"</span>, <span class="seriesInfo">RFC 4340</span>, <span class="seriesInfo">DOI 10.17487/RFC4340</span>, <time datetime="2006-03" class="refDate">March 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4340">https://www.rfc-editor.org/info/rfc4340</a>&gt;</span>. </dd>
+4539c4599
+< <span class="refAuthor">Conta, A.</span><span class="refAuthor">, Deering, S.</span><span class="refAuthor">, and M. Gupta, Ed.</span>, <span class="refTitle">"Internet Control Message Protocol (ICMPv6) for the Internet Protocol Version 6 (IPv6) Specification"</span>, <span class="seriesInfo">STD 89</span>, <span class="seriesInfo">RFC 4443</span>, <span class="seriesInfo">DOI 10.17487/RFC4443</span>, <time datetime="2006-03" class="refDate">March 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4443">https://www.rfc-editor.org/info/rfc4443</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Conta, A.</span>, <span class="refAuthor">Deering, S.</span>, and <span class="refAuthor">M. Gupta, Ed.</span>, <span class="refTitle">"Internet Control Message Protocol (ICMPv6) for the Internet Protocol Version 6 (IPv6) Specification"</span>, <span class="seriesInfo">STD 89</span>, <span class="seriesInfo">RFC 4443</span>, <span class="seriesInfo">DOI 10.17487/RFC4443</span>, <time datetime="2006-03" class="refDate">March 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4443">https://www.rfc-editor.org/info/rfc4443</a>&gt;</span>. </dd>
+4543c4603
+< <span class="refAuthor">Mathis, M.</span><span class="refAuthor"> and J. Heffner</span>, <span class="refTitle">"Packetization Layer Path MTU Discovery"</span>, <span class="seriesInfo">RFC 4821</span>, <span class="seriesInfo">DOI 10.17487/RFC4821</span>, <time datetime="2007-03" class="refDate">March 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4821">https://www.rfc-editor.org/info/rfc4821</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mathis, M.</span> and <span class="refAuthor">J. Heffner</span>, <span class="refTitle">"Packetization Layer Path MTU Discovery"</span>, <span class="seriesInfo">RFC 4821</span>, <span class="seriesInfo">DOI 10.17487/RFC4821</span>, <time datetime="2007-03" class="refDate">March 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4821">https://www.rfc-editor.org/info/rfc4821</a>&gt;</span>. </dd>
+4547c4607
+< <span class="refAuthor">Davies, E.</span><span class="refAuthor"> and J. Mohacsi</span>, <span class="refTitle">"Recommendations for Filtering ICMPv6 Messages in Firewalls"</span>, <span class="seriesInfo">RFC 4890</span>, <span class="seriesInfo">DOI 10.17487/RFC4890</span>, <time datetime="2007-05" class="refDate">May 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4890">https://www.rfc-editor.org/info/rfc4890</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Davies, E.</span> and <span class="refAuthor">J. Mohacsi</span>, <span class="refTitle">"Recommendations for Filtering ICMPv6 Messages in Firewalls"</span>, <span class="seriesInfo">RFC 4890</span>, <span class="seriesInfo">DOI 10.17487/RFC4890</span>, <time datetime="2007-05" class="refDate">May 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4890">https://www.rfc-editor.org/info/rfc4890</a>&gt;</span>. </dd>
+4551c4611
+< <span class="refAuthor">Srisuresh, P.</span><span class="refAuthor">, Ford, B.</span><span class="refAuthor">, Sivakumar, S.</span><span class="refAuthor">, and S. Guha</span>, <span class="refTitle">"NAT Behavioral Requirements for ICMP"</span>, <span class="seriesInfo">BCP 148</span>, <span class="seriesInfo">RFC 5508</span>, <span class="seriesInfo">DOI 10.17487/RFC5508</span>, <time datetime="2009-04" class="refDate">April 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5508">https://www.rfc-editor.org/info/rfc5508</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Srisuresh, P.</span>, <span class="refAuthor">Ford, B.</span>, <span class="refAuthor">Sivakumar, S.</span>, and <span class="refAuthor">S. Guha</span>, <span class="refTitle">"NAT Behavioral Requirements for ICMP"</span>, <span class="seriesInfo">BCP 148</span>, <span class="seriesInfo">RFC 5508</span>, <span class="seriesInfo">DOI 10.17487/RFC5508</span>, <time datetime="2009-04" class="refDate">April 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5508">https://www.rfc-editor.org/info/rfc5508</a>&gt;</span>. </dd>
+4555c4615
+< <span class="refAuthor">Bonica, R.</span><span class="refAuthor">, Baker, F.</span><span class="refAuthor">, Huston, G.</span><span class="refAuthor">, Hinden, R.</span><span class="refAuthor">, Troan, O.</span><span class="refAuthor">, and F. Gont</span>, <span class="refTitle">"IP Fragmentation Considered Fragile"</span>, <span class="seriesInfo">RFC 8900</span>, <span class="seriesInfo">BCP 230</span>, <time datetime="2020-09" class="refDate">September 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8900">https://www.rfc-editor.org/info/rfc8900</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bonica, R.</span>, <span class="refAuthor">Baker, F.</span>, <span class="refAuthor">Huston, G.</span>, <span class="refAuthor">Hinden, R.</span>, <span class="refAuthor">Troan, O.</span>, and <span class="refAuthor">F. Gont</span>, <span class="refTitle">"IP Fragmentation Considered Fragile"</span>, <span class="seriesInfo">RFC 8900</span>, <span class="seriesInfo">BCP 230</span>, <time datetime="2020-09" class="refDate">September 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8900">https://www.rfc-editor.org/info/rfc8900</a>&gt;</span>. </dd>
+4559c4619
+< <span class="refAuthor">Touch, J.</span><span class="refAuthor"> and M. Townsley</span>, <span class="refTitle">"IP Tunnels in the Internet Architecture"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-intarea-tunnels-10</span>, <time datetime="2019-09-12" class="refDate">12 September 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-intarea-tunnels-10">https://tools.ietf.org/html/draft-ietf-intarea-tunnels-10</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Touch, J.</span> and <span class="refAuthor">M. Townsley</span>, <span class="refTitle">"IP Tunnels in the Internet Architecture"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-intarea-tunnels-10</span>, <time datetime="2019-09-12" class="refDate">12 September 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-intarea-tunnels-10">https://tools.ietf.org/html/draft-ietf-intarea-tunnels-10</a>&gt;</span>. </dd>
+4565c4625
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+4569c4629
+< <p id="section-appendix.a-1">This work was partially funded by the European Union Horizon 2020
+---
+> <p id="appendix-A-1">This work was partially funded by the European Union Horizon 2020
+4572,4573c4632,4633
+<       (NEAT). The views expressed are solely those of the author(s).<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2">
+---
+>       (NEAT). The views expressed are solely those of the author(s).<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2">
+4577c4637
+<       implementations.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+---
+>       implementations.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+4581c4641
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">

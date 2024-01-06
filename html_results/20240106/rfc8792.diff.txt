@@ -1,0 +1,816 @@
+22c22
+< <meta content="xml2rfc 2.46.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.0" name="generator">
+26c26,42
+< <link href="rfc8792.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.0
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 5.0.1
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.12
+> -->
+> <link href="rfc/rfc8792.xml" rel="alternate" type="application/rfc+xml">
+36c52
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+45a62,67
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+48d69
+<   width: extend-to-zoom;
+63c84
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+65a87
+>   overflow-wrap: break-word;
+151a174,182
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+166,169d196
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+170a198
+>   border: none;
+193a222,224
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+245c276
+< tt, code, pre, code {
+---
+> tt, code, pre {
+247c278
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+286a318,320
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+376a411,416
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+478c518
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+618d657
+< 
+640a680,682
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+708c750
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+808c850
+< tt, code, pre, code {
+---
+> tt, code, pre {
+813c855
+< pre.sourcecode,
+---
+> .sourcecode pre,
+849c891
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1030a1073
+>   .artwork > pre,
+1045c1088
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1051a1095,1097
+> tr {
+>   break-inside: avoid;
+> }
+1071c1117
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1102c1148
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1120,1121c1166,1206
+< p tt, p code {
+<   background-color: #f9f9f9;
+---
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+1124a1210
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-netmod-artwork-folding-12" rel="prev">
+1127c1213
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-netmod-artwork-folding-12" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1129,1130c1215,1216
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1238,1240c1324,1326
+< <nav class="toc"><ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+1242,1243c1328,1329
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-applicability-statement" class="xref">Applicability Statement</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-applicability-statement" class="internal xref">Applicability Statement</a></p>
+1245,1246c1331,1332
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="xref">3</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+1248,1252c1334,1338
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-goals" class="xref">Goals</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-automated-folding-of-long-l" class="xref">Automated Folding of Long Lines in Text Content</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-goals" class="internal xref">Goals</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-automated-folding-of-long-l" class="internal xref">Automated Folding of Long Lines in Text Content</a></p>
+1254,1255c1340,1341
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-automated-reconstitution-of" class="xref">Automated Reconstitution of the Original Text Content</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-automated-reconstitution-of" class="internal xref">Automated Reconstitution of the Original Text Content</a></p>
+1259,1263c1345,1349
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-limitations" class="xref">Limitations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-not-recommended-for-graphic" class="xref">Not Recommended for Graphical Artwork</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-limitations" class="internal xref">Limitations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-not-recommended-for-graphic" class="internal xref">Not Recommended for Graphical Artwork</a></p>
+1265,1266c1351,1352
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-doesnt-work-as-well-as-form" class="xref">Doesn't Work as Well as Format-Specific Options</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-doesnt-work-as-well-as-form" class="internal xref">Doesn't Work as Well as Format-Specific Options</a></p>
+1270,1274c1356,1360
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-two-folding-strategies" class="xref">Two Folding Strategies</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-comparison" class="xref">Comparison</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-two-folding-strategies" class="internal xref">Two Folding Strategies</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-comparison" class="internal xref">Comparison</a></p>
+1276,1277c1362,1363
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.6.2.2">
+<                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-recommendation" class="xref">Recommendation</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+>                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-recommendation" class="internal xref">Recommendation</a></p>
+1281,1288c1367,1374
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-the-single-backslash-strate" class="xref">The Single Backslash Strategy ('\')</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-folded-structure" class="xref">Folded Structure</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.7.2.1.2.1">
+<                     <p id="section-toc.1-1.7.2.1.2.1.1"><a href="#section-7.1.1" class="xref">7.1.1</a>.  <a href="#name-header" class="xref">Header</a><a href="#section-toc.1-1.7.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-the-single-backslash-strate" class="internal xref">The Single Backslash Strategy ('\')</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-folded-structure" class="internal xref">Folded Structure</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1.2.1">
+>                     <p id="section-toc.1-1.7.2.1.2.1.1"><a href="#section-7.1.1" class="auto internal xref">7.1.1</a>.  <a href="#name-header" class="internal xref">Header</a></p>
+1290,1291c1376,1377
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.7.2.1.2.2">
+<                     <p id="section-toc.1-1.7.2.1.2.2.1"><a href="#section-7.1.2" class="xref">7.1.2</a>.  <a href="#name-body" class="xref">Body</a><a href="#section-toc.1-1.7.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1.2.2">
+>                     <p id="section-toc.1-1.7.2.1.2.2.1"><a href="#section-7.1.2" class="auto internal xref">7.1.2</a>.  <a href="#name-body" class="internal xref">Body</a></p>
+1295,1299c1381,1385
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-algorithm" class="xref">Algorithm</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.7.2.2.2.1">
+<                     <p id="section-toc.1-1.7.2.2.2.1.1"><a href="#section-7.2.1" class="xref">7.2.1</a>.  <a href="#name-folding" class="xref">Folding</a><a href="#section-toc.1-1.7.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-algorithm" class="internal xref">Algorithm</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.1">
+>                     <p id="section-toc.1-1.7.2.2.2.1.1"><a href="#section-7.2.1" class="auto internal xref">7.2.1</a>.  <a href="#name-folding" class="internal xref">Folding</a></p>
+1301,1302c1387,1388
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.7.2.2.2.2">
+<                     <p id="section-toc.1-1.7.2.2.2.2.1"><a href="#section-7.2.2" class="xref">7.2.2</a>.  <a href="#name-unfolding" class="xref">Unfolding</a><a href="#section-toc.1-1.7.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.2">
+>                     <p id="section-toc.1-1.7.2.2.2.2.1"><a href="#section-7.2.2" class="auto internal xref">7.2.2</a>.  <a href="#name-unfolding" class="internal xref">Unfolding</a></p>
+1308,1315c1394,1401
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-the-double-backslash-strate" class="xref">The Double Backslash Strategy ('\\')</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.8.2.1">
+<                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-folded-structure-2" class="xref">Folded Structure</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.8.2.1.2.1">
+<                     <p id="section-toc.1-1.8.2.1.2.1.1"><a href="#section-8.1.1" class="xref">8.1.1</a>.  <a href="#name-header-2" class="xref">Header</a><a href="#section-toc.1-1.8.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-the-double-backslash-strate" class="internal xref">The Double Backslash Strategy ('\\')</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+>                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-folded-structure-2" class="internal xref">Folded Structure</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1.2.1">
+>                     <p id="section-toc.1-1.8.2.1.2.1.1"><a href="#section-8.1.1" class="auto internal xref">8.1.1</a>.  <a href="#name-header-2" class="internal xref">Header</a></p>
+1317,1318c1403,1404
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.8.2.1.2.2">
+<                     <p id="section-toc.1-1.8.2.1.2.2.1"><a href="#section-8.1.2" class="xref">8.1.2</a>.  <a href="#name-body-2" class="xref">Body</a><a href="#section-toc.1-1.8.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1.2.2">
+>                     <p id="section-toc.1-1.8.2.1.2.2.1"><a href="#section-8.1.2" class="auto internal xref">8.1.2</a>.  <a href="#name-body-2" class="internal xref">Body</a></p>
+1322,1326c1408,1412
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.8.2.2">
+<                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-algorithm-2" class="xref">Algorithm</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.8.2.2.2.1">
+<                     <p id="section-toc.1-1.8.2.2.2.1.1"><a href="#section-8.2.1" class="xref">8.2.1</a>.  <a href="#name-folding-2" class="xref">Folding</a><a href="#section-toc.1-1.8.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+>                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-algorithm-2" class="internal xref">Algorithm</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2.2.1">
+>                     <p id="section-toc.1-1.8.2.2.2.1.1"><a href="#section-8.2.1" class="auto internal xref">8.2.1</a>.  <a href="#name-folding-2" class="internal xref">Folding</a></p>
+1328,1329c1414,1415
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.8.2.2.2.2">
+<                     <p id="section-toc.1-1.8.2.2.2.2.1"><a href="#section-8.2.2" class="xref">8.2.2</a>.  <a href="#name-unfolding-2" class="xref">Unfolding</a><a href="#section-toc.1-1.8.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2.2.2">
+>                     <p id="section-toc.1-1.8.2.2.2.2.1"><a href="#section-8.2.2" class="auto internal xref">8.2.2</a>.  <a href="#name-unfolding-2" class="internal xref">Unfolding</a></p>
+1335,1342c1421,1428
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-examples" class="xref">Examples</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.9.2.1">
+<                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="xref">9.1</a>.  <a href="#name-example-showing-boundary-co" class="xref">Example Showing Boundary Conditions</a><a href="#section-toc.1-1.9.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.9.2.1.2.1">
+<                     <p id="section-toc.1-1.9.2.1.2.1.1"><a href="#section-9.1.1" class="xref">9.1.1</a>.  <a href="#name-using" class="xref">Using '\'</a><a href="#section-toc.1-1.9.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-examples" class="internal xref">Examples</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
+>                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="auto internal xref">9.1</a>.  <a href="#name-example-showing-boundary-co" class="internal xref">Example Showing Boundary Conditions</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1.2.1">
+>                     <p id="section-toc.1-1.9.2.1.2.1.1"><a href="#section-9.1.1" class="auto internal xref">9.1.1</a>.  <a href="#name-using" class="internal xref">Using '\'</a></p>
+1344,1345c1430,1431
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.9.2.1.2.2">
+<                     <p id="section-toc.1-1.9.2.1.2.2.1"><a href="#section-9.1.2" class="xref">9.1.2</a>.  <a href="#name-using-2" class="xref">Using '\\'</a><a href="#section-toc.1-1.9.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1.2.2">
+>                     <p id="section-toc.1-1.9.2.1.2.2.1"><a href="#section-9.1.2" class="auto internal xref">9.1.2</a>.  <a href="#name-using-2" class="internal xref">Using '\\'</a></p>
+1349,1353c1435,1439
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.9.2.2">
+<                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="xref">9.2</a>.  <a href="#name-example-showing-multiple-wr" class="xref">Example Showing Multiple Wraps of a Single Line</a><a href="#section-toc.1-1.9.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.9.2.2.2.1">
+<                     <p id="section-toc.1-1.9.2.2.2.1.1"><a href="#section-9.2.1" class="xref">9.2.1</a>.  <a href="#name-using-3" class="xref">Using '\'</a><a href="#section-toc.1-1.9.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
+>                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-example-showing-multiple-wr" class="internal xref">Example Showing Multiple Wraps of a Single Line</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2.2.1">
+>                     <p id="section-toc.1-1.9.2.2.2.1.1"><a href="#section-9.2.1" class="auto internal xref">9.2.1</a>.  <a href="#name-using-3" class="internal xref">Using '\'</a></p>
+1355,1356c1441,1442
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.9.2.2.2.2">
+<                     <p id="section-toc.1-1.9.2.2.2.2.1"><a href="#section-9.2.2" class="xref">9.2.2</a>.  <a href="#name-using-4" class="xref">Using '\\'</a><a href="#section-toc.1-1.9.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2.2.2">
+>                     <p id="section-toc.1-1.9.2.2.2.2.1"><a href="#section-9.2.2" class="auto internal xref">9.2.2</a>.  <a href="#name-using-4" class="internal xref">Using '\\'</a></p>
+1360,1364c1446,1450
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.9.2.3">
+<                 <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="xref">9.3</a>.  <a href="#name-example-showing-smart-foldi" class="xref">Example Showing "Smart" Folding</a><a href="#section-toc.1-1.9.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.9.2.3.2.1">
+<                     <p id="section-toc.1-1.9.2.3.2.1.1"><a href="#section-9.3.1" class="xref">9.3.1</a>.  <a href="#name-using-5" class="xref">Using '\'</a><a href="#section-toc.1-1.9.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.3">
+>                 <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="auto internal xref">9.3</a>.  <a href="#name-example-showing-smart-foldi" class="internal xref">Example Showing "Smart" Folding</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.3.2.1">
+>                     <p id="section-toc.1-1.9.2.3.2.1.1"><a href="#section-9.3.1" class="auto internal xref">9.3.1</a>.  <a href="#name-using-5" class="internal xref">Using '\'</a></p>
+1366,1367c1452,1453
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.9.2.3.2.2">
+<                     <p id="section-toc.1-1.9.2.3.2.2.1"><a href="#section-9.3.2" class="xref">9.3.2</a>.  <a href="#name-using-6" class="xref">Using '\\'</a><a href="#section-toc.1-1.9.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.3.2.2">
+>                     <p id="section-toc.1-1.9.2.3.2.2.1"><a href="#section-9.3.2" class="auto internal xref">9.3.2</a>.  <a href="#name-using-6" class="internal xref">Using '\\'</a></p>
+1371,1375c1457,1461
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.9.2.4">
+<                 <p id="section-toc.1-1.9.2.4.1"><a href="#section-9.4" class="xref">9.4</a>.  <a href="#name-example-showing-forced-fold" class="xref">Example Showing "Forced" Folding</a><a href="#section-toc.1-1.9.2.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.9.2.4.2.1">
+<                     <p id="section-toc.1-1.9.2.4.2.1.1"><a href="#section-9.4.1" class="xref">9.4.1</a>.  <a href="#name-using-7" class="xref">Using '\'</a><a href="#section-toc.1-1.9.2.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.4">
+>                 <p id="section-toc.1-1.9.2.4.1"><a href="#section-9.4" class="auto internal xref">9.4</a>.  <a href="#name-example-showing-forced-fold" class="internal xref">Example Showing "Forced" Folding</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.4.2.1">
+>                     <p id="section-toc.1-1.9.2.4.2.1.1"><a href="#section-9.4.1" class="auto internal xref">9.4.1</a>.  <a href="#name-using-7" class="internal xref">Using '\'</a></p>
+1377,1378c1463,1464
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.9.2.4.2.2">
+<                     <p id="section-toc.1-1.9.2.4.2.2.1"><a href="#section-9.4.2" class="xref">9.4.2</a>.  <a href="#name-using-8" class="xref">Using '\\'</a><a href="#section-toc.1-1.9.2.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.4.2.2">
+>                     <p id="section-toc.1-1.9.2.4.2.2.1"><a href="#section-9.4.2" class="auto internal xref">9.4.2</a>.  <a href="#name-using-8" class="internal xref">Using '\\'</a></p>
+1384,1385c1470,1471
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1387,1388c1473,1474
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1390,1394c1476,1480
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-12" class="xref">12</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.12.2.1">
+<                 <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="xref">12.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.12.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1">
+>                 <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="auto internal xref">12.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1396,1397c1482,1483
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.12.2.2">
+<                 <p id="section-toc.1-1.12.2.2.1"><a href="#section-12.2" class="xref">12.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.12.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.2">
+>                 <p id="section-toc.1-1.12.2.2.1"><a href="#section-12.2" class="auto internal xref">12.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1401,1402c1487,1488
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-bash-shell-script-rfcfold" class="xref">Bash Shell Script: rfcfold</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-bash-shell-script-rfcfold" class="internal xref">Bash Shell Script: rfcfold</a></p>
+1404,1405c1490,1491
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.14">
+<             <p id="section-toc.1-1.14.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.14.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+>             <p id="section-toc.1-1.14.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1407,1408c1493,1494
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.15">
+<             <p id="section-toc.1-1.15.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.15.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
+>             <p id="section-toc.1-1.15.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1418c1504
+< <p id="section-1-1"><span>[<a href="#RFC7994" class="xref">RFC7994</a>]</span> sets out the requirements for
+---
+> <p id="section-1-1"><span>[<a href="#RFC7994" class="cite xref">RFC7994</a>]</span> sets out the requirements for
+1423c1509
+<         fragments.  Many times, the example text or code exceeds the 72-character line-length limit.  The 'xml2rfc' utility <span>[<a href="#xml2rfc" class="xref">xml2rfc</a>]</span>, at the time of this document's publication, does not
+---
+>         fragments.  Many times, the example text or code exceeds the 72-character line-length limit.  The 'xml2rfc' utility <span>[<a href="#xml2rfc" class="cite xref">xml2rfc</a>]</span>, at the time of this document's publication, does not
+1439,1440c1525,1526
+<         referenced by the &lt;sourcecode&gt; element defined in <span><a href="https://www.rfc-editor.org/rfc/rfc7991#section-2.48" class="relref">Section 2.48</a> of [<a href="#RFC7991" class="xref">RFC7991</a>]</span>, rather than for two-dimensional imagery, such
+<         as would be referenced by the &lt;artwork&gt; element defined in <span><a href="https://www.rfc-editor.org/rfc/rfc7991#section-2.5" class="relref">Section 2.5</a> of [<a href="#RFC7991" class="xref">RFC7991</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
+---
+>         referenced by the &lt;sourcecode&gt; element defined in <span><a href="https://rfc-editor.org/rfc/rfc7991#section-2.48" class="relref">Section 2.48</a> of [<a href="#RFC7991" class="cite xref">RFC7991</a>]</span>, rather than for two-dimensional imagery, such
+>         as would be referenced by the &lt;artwork&gt; element defined in <span><a href="https://rfc-editor.org/rfc/rfc7991#section-2.5" class="relref">Section 2.5</a> of [<a href="#RFC7991" class="cite xref">RFC7991</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
+1454,1455c1540,1541
+<           &lt;sourcecode&gt; element (<span><a href="https://www.rfc-editor.org/rfc/rfc7991#section-2.48" class="relref">Section 2.48</a> of [<a href="#RFC7991" class="xref">RFC7991</a>]</span>)
+<           and the xml2rfc v2 &lt;artwork&gt; element (<span><a href="https://www.rfc-editor.org/rfc/rfc7749#section-2.5" class="relref">Section 2.5</a> of [<a href="#RFC7749" class="xref">RFC7749</a>]</span>), which, for
+---
+>           &lt;sourcecode&gt; element (<span><a href="https://rfc-editor.org/rfc/rfc7991#section-2.48" class="relref">Section 2.48</a> of [<a href="#RFC7991" class="cite xref">RFC7991</a>]</span>)
+>           and the xml2rfc v2 &lt;artwork&gt; element (<span><a href="https://rfc-editor.org/rfc/rfc7749#section-2.5" class="relref">Section 2.5</a> of [<a href="#RFC7749" class="cite xref">RFC7749</a>]</span>), which, for
+1458,1459c1544,1545
+<           (<span><a href="https://www.rfc-editor.org/rfc/rfc7991#section-2.5" class="relref">Section 2.5</a> of [<a href="#RFC7991" class="xref">RFC7991</a>]</span>), but as described in
+<           <a href="#not-for-art" class="xref">Section 5.1</a>, it is generally not recommended.<a href="#section-2-2" class="pilcrow">¶</a></p>
+---
+>           (<span><a href="https://rfc-editor.org/rfc/rfc7991#section-2.5" class="relref">Section 2.5</a> of [<a href="#RFC7991" class="cite xref">RFC7991</a>]</span>), but as described in
+>           <a href="#not-for-art" class="auto internal xref">Section 5.1</a>, it is generally not recommended.<a href="#section-2-2" class="pilcrow">¶</a></p>
+1473c1559
+<        <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when, and only
+---
+>        <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only
+1516c1602
+< <p id="section-4.2-2">For instance, YANG modules <span>[<a href="#RFC7950" class="xref">RFC7950</a>]</span> are already
+---
+> <p id="section-4.2-2">For instance, YANG modules <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span> are already
+1520c1606
+<             Internet-Drafts has been discussed <span>[<a href="#yang-doctors-thread" class="xref">yang-doctors-thread</a>]</span>.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+---
+>             Internet-Drafts has been discussed <span>[<a href="#yang-doctors-thread" class="cite xref">yang-doctors-thread</a>]</span>.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+1552c1638
+< <p id="section-5.2-2">For instance, both the 'pyang' and 'yanglint' utilities <span>[<a href="#pyang" class="xref">pyang</a>]</span> <span>[<a href="#yanglint" class="xref">yanglint</a>]</span>
+---
+> <p id="section-5.2-2">For instance, both the 'pyang' and 'yanglint' utilities <span>[<a href="#pyang" class="cite xref">pyang</a>]</span> <span>[<a href="#yanglint" class="cite xref">yanglint</a>]</span>
+1555c1641
+<           generating YANG tree diagrams <span>[<a href="#RFC8340" class="xref">RFC8340</a>]</span>.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
+---
+>           generating YANG tree diagrams <span>[<a href="#RFC8340" class="cite xref">RFC8340</a>]</span>.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
+1557c1643
+<           <span>[<a href="#RFC7950" class="xref">RFC7950</a>]</span>) allow any quoted string to be
+---
+>           <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span>) allow any quoted string to be
+1574c1660
+<         <dd id="section-6-2.2">Uses a backslash
+---
+>         <dd style="margin-left: 1.5em" id="section-6-2.2">Uses a backslash
+1581c1667
+<         <dd id="section-6-2.4">Uses a backslash
+---
+>         <dd style="margin-left: 1.5em" id="section-6-2.4">Uses a backslash
+1635c1721
+< <div class="artwork art-text alignLeft" id="section-7.1.1-3">
+---
+> <div class="alignLeft art-text artwork" id="section-7.1.1-3">
+1648c1734
+< <p id="section-7.1.2-1">The character encoding is the same as the encoding described in <span><a href="https://www.rfc-editor.org/rfc/rfc7994#section-2" class="relref">Section 2</a> of [<a href="#RFC7994" class="xref">RFC7994</a>]</span>, except that, per <span>[<a href="#RFC7991" class="xref">RFC7991</a>]</span>,
+---
+> <p id="section-7.1.2-1">The character encoding is the same as the encoding described in <span><a href="https://rfc-editor.org/rfc/rfc7994#section-2" class="relref">Section 2</a> of [<a href="#RFC7994" class="cite xref">RFC7994</a>]</span>, except that, per <span>[<a href="#RFC7991" class="cite xref">RFC7991</a>]</span>,
+1668c1754
+<             section.  For example, the 'xiax' utility <span>[<a href="#xiax" class="xref">xiax</a>]</span> does this.<a href="#section-7.2-3" class="pilcrow">¶</a></p>
+---
+>             section.  For example, the 'xiax' utility <span>[<a href="#xiax" class="cite xref">xiax</a>]</span> does this.<a href="#section-7.2-3" class="pilcrow">¶</a></p>
+1697c1783
+<             described in <a href="#single-header" class="xref">Section 7.1.1</a>, ensuring that any additional
+---
+>             described in <a href="#single-header" class="auto internal xref">Section 7.1.1</a>, ensuring that any additional
+1727c1813
+<             function in <a href="#script" class="xref">Appendix A</a>.<a href="#section-7.2.1-11" class="pilcrow">¶</a></p>
+---
+>             function in <a href="#script" class="auto internal xref">Appendix A</a>.<a href="#section-7.2.1-11" class="pilcrow">¶</a></p>
+1735c1821
+<               <a href="#single-header" class="xref">Section 7.1.1</a>.  If the header is not present, exit
+---
+>               <a href="#single-header" class="auto internal xref">Section 7.1.1</a>.  If the header is not present, exit
+1747c1833
+<             function in <a href="#script" class="xref">Appendix A</a>.<a href="#section-7.2.2-5" class="pilcrow">¶</a></p>
+---
+>             function in <a href="#script" class="auto internal xref">Appendix A</a>.<a href="#section-7.2.2-5" class="pilcrow">¶</a></p>
+1773c1859
+< <div class="artwork art-text alignLeft" id="section-8.1.1-3">
+---
+> <div class="alignLeft art-text artwork" id="section-8.1.1-3">
+1786c1872
+< <p id="section-8.1.2-1">The character encoding is the same as the encoding described in <span><a href="https://www.rfc-editor.org/rfc/rfc7994#section-2" class="relref">Section 2</a> of [<a href="#RFC7994" class="xref">RFC7994</a>]</span>, except that, per <span>[<a href="#RFC7991" class="xref">RFC7991</a>]</span>,
+---
+> <p id="section-8.1.2-1">The character encoding is the same as the encoding described in <span><a href="https://rfc-editor.org/rfc/rfc7994#section-2" class="relref">Section 2</a> of [<a href="#RFC7994" class="cite xref">RFC7994</a>]</span>, except that, per <span>[<a href="#RFC7991" class="cite xref">RFC7991</a>]</span>,
+1808c1894
+<             section.  For example, the 'xiax' utility <span>[<a href="#xiax" class="xref">xiax</a>]</span> does this.<a href="#section-8.2-3" class="pilcrow">¶</a></p>
+---
+>             section.  For example, the 'xiax' utility <span>[<a href="#xiax" class="cite xref">xiax</a>]</span> does this.<a href="#section-8.2-3" class="pilcrow">¶</a></p>
+1839c1925
+<             described in <a href="#double-header" class="xref">Section 8.1.1</a>, ensuring that any additional
+---
+>             described in <a href="#double-header" class="auto internal xref">Section 8.1.1</a>, ensuring that any additional
+1869c1955
+<             function in <a href="#script" class="xref">Appendix A</a>.<a href="#section-8.2.1-11" class="pilcrow">¶</a></p>
+---
+>             function in <a href="#script" class="auto internal xref">Appendix A</a>.<a href="#section-8.2.1-11" class="pilcrow">¶</a></p>
+1877c1963
+<               <a href="#double-header" class="xref">Section 8.1.1</a>.  If the header is not present, exit
+---
+>               <a href="#double-header" class="auto internal xref">Section 8.1.1</a>.  If the header is not present, exit
+1891c1977
+<             function in <a href="#script" class="xref">Appendix A</a>.<a href="#section-8.2.2-5" class="pilcrow">¶</a></p>
+---
+>             function in <a href="#script" class="auto internal xref">Appendix A</a>.<a href="#section-8.2.2-5" class="pilcrow">¶</a></p>
+1918c2004
+< <div class="artwork art-text alignLeft" id="section-9.1.1-1">
+---
+> <div class="alignLeft art-text artwork" id="section-9.1.1-1">
+1938c2024
+< <div class="artwork art-text alignLeft" id="section-9.1.2-1">
+---
+> <div class="alignLeft art-text artwork" id="section-9.1.2-1">
+1967c2053
+< <div class="artwork art-text alignLeft" id="section-9.2.1-1">
+---
+> <div class="alignLeft art-text artwork" id="section-9.2.1-1">
+1982c2068
+< <div class="artwork art-text alignLeft" id="section-9.2.2-1">
+---
+> <div class="alignLeft art-text artwork" id="section-9.2.2-1">
+2001c2087
+< <p id="section-9.3-2">The text content was manually folded, since the script in <a href="#script" class="xref">Appendix A</a>
+---
+> <p id="section-9.3-2">The text content was manually folded, since the script in <a href="#script" class="auto internal xref">Appendix A</a>
+2009c2095
+< <div class="artwork art-text alignLeft" id="section-9.3.1-1">
+---
+> <div class="alignLeft art-text artwork" id="section-9.3.1-1">
+2032,2033c2118,2119
+<               script in <a href="#script" class="xref">Appendix A</a>.<a href="#section-9.3.1-2" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-9.3.1-3">
+---
+>               script in <a href="#script" class="auto internal xref">Appendix A</a>.<a href="#section-9.3.1-2" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="section-9.3.1-3">
+2059c2145
+< <div class="artwork art-text alignLeft" id="section-9.3.2-1">
+---
+> <div class="alignLeft art-text artwork" id="section-9.3.2-1">
+2082,2083c2168,2169
+<               script in <a href="#script" class="xref">Appendix A</a>.<a href="#section-9.3.2-2" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-9.3.2-3">
+---
+>               script in <a href="#script" class="auto internal xref">Appendix A</a>.<a href="#section-9.3.2-2" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="section-9.3.2-3">
+2113c2199
+< <div class="artwork art-text alignLeft" id="section-9.4-2">
+---
+> <div class="alignLeft art-text artwork" id="section-9.4-2">
+2137c2223
+< <div class="artwork art-text alignLeft" id="section-9.4.1-1">
+---
+> <div class="alignLeft art-text artwork" id="section-9.4.1-1">
+2164c2250
+< <div class="artwork art-text alignLeft" id="section-9.4.2-1">
+---
+> <div class="alignLeft art-text artwork" id="section-9.4.2-1">
+2255c2341
+< <span class="refAuthor">Bjorklund, M.</span><span class="refAuthor"> and L. Berger, Ed.</span>, <span class="refTitle">"YANG Tree Diagrams"</span>, <span class="seriesInfo">BCP 215</span>, <span class="seriesInfo">RFC 8340</span>, <span class="seriesInfo">DOI 10.17487/RFC8340</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8340">https://www.rfc-editor.org/info/rfc8340</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bjorklund, M.</span> and <span class="refAuthor">L. Berger, Ed.</span>, <span class="refTitle">"YANG Tree Diagrams"</span>, <span class="seriesInfo">BCP 215</span>, <span class="seriesInfo">RFC 8340</span>, <span class="seriesInfo">DOI 10.17487/RFC8340</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8340">https://www.rfc-editor.org/info/rfc8340</a>&gt;</span>. </dd>
+2277c2363
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2279c2365
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-bash-shell-script-rfcfold" class="section-name selfRef">Bash Shell Script: rfcfold</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-bash-shell-script-rfcfold" class="section-name selfRef">Bash Shell Script: rfcfold</a>
+2281c2367
+< <p id="section-appendix.a-1">This non-normative appendix includes a Bash shell script <span>[<a href="#bash" class="xref">bash</a>]</span> 
+---
+> <p id="appendix-A-1">This non-normative appendix includes a Bash shell script <span>[<a href="#bash" class="cite xref">bash</a>]</span> 
+2283c2369
+<           single and double backslash strategies described in Sections <a href="#single-slash" class="xref">7</a> and <a href="#double-slash" class="xref">8</a>,
+---
+>           single and double backslash strategies described in Sections <a href="#single-slash" class="auto internal xref">7</a> and <a href="#double-slash" class="auto internal xref">8</a>,
+2285,2286c2371,2372
+<       <span>&lt;<a href="https://github.com/ietf-tools/rfcfold">https://github.com/ietf-tools/rfcfold</a>&gt;</span>.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2">This script is intended to be applied to a single text content
+---
+>       <span>&lt;<a href="https://github.com/ietf-tools/rfcfold">https://github.com/ietf-tools/rfcfold</a>&gt;</span>.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2">This script is intended to be applied to a single text content
+2290,2291c2376,2377
+<           document before utilizing this script.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-3">For readability purposes, this script forces the minimum
+---
+>           document before utilizing this script.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+> <p id="appendix-A-3">For readability purposes, this script forces the minimum
+2293,2294c2379,2380
+<           raw header text defined in Sections <a href="#single-header" class="xref">7.1.1</a> and
+<           <a href="#double-header" class="xref">8.1.1</a> so as to ensure that the header
+---
+>           raw header text defined in Sections <a href="#single-header" class="auto internal xref">7.1.1</a> and
+>           <a href="#double-header" class="auto internal xref">8.1.1</a> so as to ensure that the header
+2296,2298c2382,2384
+<           characters on each side of the raw header text.<a href="#section-appendix.a-3" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-4">When a tab character is detected in the input file, this script 
+<           exits with the following error message:<a href="#section-appendix.a-4" class="pilcrow">¶</a></p>
+---
+>           characters on each side of the raw header text.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+> <p id="appendix-A-4">When a tab character is detected in the input file, this script 
+>           exits with the following error message:<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+2300c2386
+< <li class="normal ulEmpty" id="section-appendix.a-5.1">Error: infile contains a tab character, which is not allowed.<a href="#section-appendix.a-5.1" class="pilcrow">¶</a>
+---
+> <li class="normal ulEmpty" id="appendix-A-5.1">Error: infile contains a tab character, which is not allowed.<a href="#appendix-A-5.1" class="pilcrow">¶</a>
+2303c2389
+< <p id="section-appendix.a-6">This script tests for the availability of GNU awk (gawk), in
+---
+> <p id="appendix-A-6">This script tests for the availability of GNU awk (gawk), in
+2309c2395
+<           message:<a href="#section-appendix.a-6" class="pilcrow">¶</a></p>
+---
+>           message:<a href="#appendix-A-6" class="pilcrow">¶</a></p>
+2311c2397
+< <li class="normal ulEmpty" id="section-appendix.a-7.1">Debug: no GNU awk; skipping checks for special characters.<a href="#section-appendix.a-7.1" class="pilcrow">¶</a>
+---
+> <li class="normal ulEmpty" id="appendix-A-7.1">Debug: no GNU awk; skipping checks for special characters.<a href="#appendix-A-7.1" class="pilcrow">¶</a>
+2314c2400
+< <p id="section-appendix.a-8">When 'gawk' is available (see above) and ASCII-based control
+---
+> <p id="appendix-A-8">When 'gawk' is available (see above) and ASCII-based control
+2316c2402
+<           the following warning message:<a href="#section-appendix.a-8" class="pilcrow">¶</a></p>
+---
+>           the following warning message:<a href="#appendix-A-8" class="pilcrow">¶</a></p>
+2318c2404
+< <li class="normal ulEmpty" id="section-appendix.a-9.1">Warning: infile contains ASCII control characters (unsupported).<a href="#section-appendix.a-9.1" class="pilcrow">¶</a>
+---
+> <li class="normal ulEmpty" id="appendix-A-9.1">Warning: infile contains ASCII control characters (unsupported).<a href="#appendix-A-9.1" class="pilcrow">¶</a>
+2321c2407
+< <p id="section-appendix.a-10">When 'gawk' is available (see above) and non-ASCII characters
+---
+> <p id="appendix-A-10">When 'gawk' is available (see above) and non-ASCII characters
+2323c2409
+<           message:<a href="#section-appendix.a-10" class="pilcrow">¶</a></p>
+---
+>           message:<a href="#appendix-A-10" class="pilcrow">¶</a></p>
+2325c2411
+< <li class="normal ulEmpty" id="section-appendix.a-11.1">Warning: infile contains non-ASCII characters (unsupported).<a href="#section-appendix.a-11.1" class="pilcrow">¶</a>
+---
+> <li class="normal ulEmpty" id="appendix-A-11.1">Warning: infile contains non-ASCII characters (unsupported).<a href="#appendix-A-11.1" class="pilcrow">¶</a>
+2328,2329c2414,2415
+< <p id="section-appendix.a-12">This script does not implement the whitespace-avoidance logic
+<           described in <a href="#single-folding" class="xref">Section 7.2.1</a>.  In
+---
+> <p id="appendix-A-12">This script does not implement the whitespace-avoidance logic
+>           described in <a href="#single-folding" class="auto internal xref">Section 7.2.1</a>.  In
+2331c2417
+<           the script will exit with the following error message:<a href="#section-appendix.a-12" class="pilcrow">¶</a></p>
+---
+>           the script will exit with the following error message:<a href="#appendix-A-12" class="pilcrow">¶</a></p>
+2333c2419
+< <li class="normal ulEmpty" id="section-appendix.a-13.1">Error: infile has a space character occurring on the
+---
+> <li class="normal ulEmpty" id="appendix-A-13.1">Error: infile has a space character occurring on the
+2335c2421
+<     '\' strategy.<a href="#section-appendix.a-13.1" class="pilcrow">¶</a>
+---
+>     '\' strategy.<a href="#appendix-A-13.1" class="pilcrow">¶</a>
+2338c2424
+< <p id="section-appendix.a-14">While this script can unfold input that contains forced foldings,
+---
+> <p id="appendix-A-14">While this script can unfold input that contains forced foldings,
+2340,2341c2426,2427
+<           folding is described in Sections <a href="#single-folding" class="xref">7.2.1</a> and
+<           <a href="#double-folding" class="xref">8.2.1</a>.  When being asked to fold a file
+---
+>           folding is described in Sections <a href="#single-folding" class="auto internal xref">7.2.1</a> and
+>           <a href="#double-folding" class="auto internal xref">8.2.1</a>.  When being asked to fold a file
+2343,2344c2429,2430
+<           with one of the following error messages:<a href="#section-appendix.a-14" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-15">For '\':<a href="#section-appendix.a-15" class="pilcrow">¶</a></p>
+---
+>           with one of the following error messages:<a href="#appendix-A-14" class="pilcrow">¶</a></p>
+> <p id="appendix-A-15">For '\':<a href="#appendix-A-15" class="pilcrow">¶</a></p>
+2346c2432
+< <li class="normal ulEmpty" id="section-appendix.a-16.1">Error: infile has a line ending with a '\' character.
+---
+> <li class="normal ulEmpty" id="appendix-A-16.1">Error: infile has a line ending with a '\' character.
+2350c2436
+<     described in RFC 8792).<a href="#section-appendix.a-16.1" class="pilcrow">¶</a>
+---
+>     described in RFC 8792).<a href="#appendix-A-16.1" class="pilcrow">¶</a>
+2353c2439
+< <p id="section-appendix.a-17">For '\\':<a href="#section-appendix.a-17" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-A-17">For '\\':<a href="#appendix-A-17" class="pilcrow">¶</a></p>
+2355c2441
+< <li class="normal ulEmpty" id="section-appendix.a-18.1">Error: infile has a line ending with a '\' character
+---
+> <li class="normal ulEmpty" id="appendix-A-18.1">Error: infile has a line ending with a '\' character
+2361c2447
+<     in RFC 8792).<a href="#section-appendix.a-18.1" class="pilcrow">¶</a>
+---
+>     in RFC 8792).<a href="#appendix-A-18.1" class="pilcrow">¶</a>
+2364c2450
+< <p id="section-appendix.a-19">Shell-level end-of-line backslash ('\') characters have been
+---
+> <p id="appendix-A-19">Shell-level end-of-line backslash ('\') characters have been
+2368c2454
+<           lack of the mandatory header described in <a href="#single-header" class="xref">Section 7.1.1</a>,
+---
+>           lack of the mandatory header described in <a href="#single-header" class="auto internal xref">Section 7.1.1</a>,
+2370,2372c2456,2458
+<           in <a href="#single-slash" class="xref">Section 7</a>).<a href="#section-appendix.a-19" class="pilcrow">¶</a></p>
+< <div id="section-appendix.a-20">
+< <pre class="sourcecode lang-bash">&lt;CODE BEGINS&gt; file "rfcfold"
+---
+>           in <a href="#single-slash" class="auto internal xref">Section 7</a>).<a href="#appendix-A-19" class="pilcrow">¶</a></p>
+> <div class="breakable lang-bash sourcecode" id="appendix-A-20">
+> <pre>&lt;CODE BEGINS&gt; file "rfcfold"
+2766c2852
+< &lt;CODE ENDS&gt;</pre><a href="#section-appendix.a-20" class="pilcrow">¶</a>
+---
+> &lt;CODE ENDS&gt;</pre><a href="#appendix-A-20" class="pilcrow">¶</a>
+2770c2856
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+2774c2860
+< <p id="section-appendix.b-1">The authors thank the RFC Editor for confirming that there was
+---
+> <p id="appendix-B-1">The authors thank the RFC Editor for confirming that there was
+2777,2778c2863,2864
+<           work.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-2">The authors thank the following folks for their various
+---
+>           work.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+> <p id="appendix-B-2">The authors thank the following folks for their various
+2788c2874
+<           and <span class="contact-name">Rob Wilton</span>.<a href="#section-appendix.b-2" class="pilcrow">¶</a></p>
+---
+>           and <span class="contact-name">Rob Wilton</span>.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+2791c2877
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
