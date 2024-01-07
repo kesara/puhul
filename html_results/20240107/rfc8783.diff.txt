@@ -1,0 +1,1699 @@
+17c17
+< <meta content="xml2rfc 2.45.1" name="generator">
+---
+> <meta content="xml2rfc 3.19.0" name="generator">
+29c29,45
+< <link href="rfc8783.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.0
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 5.0.1
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.13
+> -->
+> <link href="rfc/rfc8783.xml" rel="alternate" type="application/rfc+xml">
+39c55
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+48a65,70
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+51d72
+<   width: extend-to-zoom;
+66c87
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+68a90
+>   overflow-wrap: break-word;
+154a177,185
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+169,172d199
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+173a201
+>   border: none;
+196a225,227
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+248c279
+< tt, code, pre, code {
+---
+> tt, code, pre {
+250c281
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+289a321,323
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+379a414,419
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+481c521
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+621d660
+< 
+643a683,685
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+711c753
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+811c853
+< tt, code, pre, code {
+---
+> tt, code, pre {
+816c858
+< pre.sourcecode,
+---
+> .sourcecode pre,
+852c894
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+930,935d971
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1039a1076
+>   .artwork > pre,
+1054c1091
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1060a1098,1100
+> tr {
+>   break-inside: avoid;
+> }
+1080c1120
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1084a1125
+>   break-before: auto;
+1097c1138
+< dd.break {
+---
+> span.break, dd.break {
+1109c1150,1211
+< }</style>
+---
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+1110a1213
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-dots-data-channel-31" rel="prev">
+1113c1216
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-dots-data-channel-31" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1115,1116c1218,1219
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1214,1228c1317,1331
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-dots-data-channel" class="xref">DOTS Data Channel</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-design-overview" class="xref">Design Overview</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-dots-servers-discovery" class="xref">DOTS Server(s) Discovery</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-dots-data-channel" class="internal xref">DOTS Data Channel</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-design-overview" class="internal xref">Design Overview</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-dots-servers-discovery" class="internal xref">DOTS Server(s) Discovery</a></p>
+1230,1231c1333,1334
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.3">
+<                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-dots-gateways" class="xref">DOTS Gateways</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+>                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-dots-gateways" class="internal xref">DOTS Gateways</a></p>
+1233,1234c1336,1337
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.4">
+<                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="xref">3.4</a>.  <a href="#name-detecting-and-preventing-in" class="xref">Detecting and Preventing Infinite Loops</a><a href="#section-toc.1-1.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+>                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-detecting-and-preventing-in" class="internal xref">Detecting and Preventing Infinite Loops</a></p>
+1236,1237c1339,1340
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.5">
+<                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="xref">3.5</a>.  <a href="#name-preventing-stale-entries" class="xref">Preventing Stale Entries</a><a href="#section-toc.1-1.3.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
+>                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-preventing-stale-entries" class="internal xref">Preventing Stale Entries</a></p>
+1241,1245c1344,1348
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-dots-data-channel-yang-modu" class="xref">DOTS Data Channel YANG Module</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-generic-tree-structure" class="xref">Generic Tree Structure</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-dots-data-channel-yang-modu" class="internal xref">DOTS Data Channel YANG Module</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-generic-tree-structure" class="internal xref">Generic Tree Structure</a></p>
+1247,1248c1350,1351
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-filtering-fields" class="xref">Filtering Fields</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-filtering-fields" class="internal xref">Filtering Fields</a></p>
+1250,1251c1353,1354
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-yang-module" class="xref">YANG Module</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-yang-module" class="internal xref">YANG Module</a></p>
+1255,1259c1358,1362
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-managing-dots-clients" class="xref">Managing DOTS Clients</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-registering-dots-clients" class="xref">Registering DOTS Clients</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-managing-dots-clients" class="internal xref">Managing DOTS Clients</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-registering-dots-clients" class="internal xref">Registering DOTS Clients</a></p>
+1261,1262c1364,1365
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-de-registering-dots-clients" class="xref">De-registering DOTS Clients</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-de-registering-dots-clients" class="internal xref">De-registering DOTS Clients</a></p>
+1266,1270c1369,1373
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-managing-dots-aliases" class="xref">Managing DOTS Aliases</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.1">
+<                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-creating-aliases" class="xref">Creating Aliases</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-managing-dots-aliases" class="internal xref">Managing DOTS Aliases</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+>                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-creating-aliases" class="internal xref">Creating Aliases</a></p>
+1272,1273c1375,1376
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.2">
+<                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-retrieving-installed-aliase" class="xref">Retrieving Installed Aliases</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+>                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-retrieving-installed-aliase" class="internal xref">Retrieving Installed Aliases</a></p>
+1275,1276c1378,1379
+< <li class="toc ulEmpty" id="section-toc.1-1.6.2.3">
+<                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="xref">6.3</a>.  <a href="#name-deleting-aliases" class="xref">Deleting Aliases</a><a href="#section-toc.1-1.6.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
+>                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-deleting-aliases" class="internal xref">Deleting Aliases</a></p>
+1280,1284c1383,1387
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-managing-dots-filtering-rul" class="xref">Managing DOTS Filtering Rules</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-retrieving-dots-filtering-c" class="xref">Retrieving DOTS Filtering Capabilities</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-managing-dots-filtering-rul" class="internal xref">Managing DOTS Filtering Rules</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-retrieving-dots-filtering-c" class="internal xref">Retrieving DOTS Filtering Capabilities</a></p>
+1286,1287c1389,1390
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-installing-filtering-rules" class="xref">Installing Filtering Rules</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-installing-filtering-rules" class="internal xref">Installing Filtering Rules</a></p>
+1289,1290c1392,1393
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.3">
+<                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="xref">7.3</a>.  <a href="#name-retrieving-installed-filter" class="xref">Retrieving Installed Filtering Rules</a><a href="#section-toc.1-1.7.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3">
+>                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="auto internal xref">7.3</a>.  <a href="#name-retrieving-installed-filter" class="internal xref">Retrieving Installed Filtering Rules</a></p>
+1292,1293c1395,1396
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.4">
+<                 <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="xref">7.4</a>.  <a href="#name-removing-filtering-rules" class="xref">Removing Filtering Rules</a><a href="#section-toc.1-1.7.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.4">
+>                 <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="auto internal xref">7.4</a>.  <a href="#name-removing-filtering-rules" class="internal xref">Removing Filtering Rules</a></p>
+1297,1298c1400,1401
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-operational-considerations" class="xref">Operational Considerations</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-operational-considerations" class="internal xref">Operational Considerations</a></p>
+1300,1301c1403,1404
+< <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1303,1304c1406,1407
+< <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1306,1310c1409,1413
+< <li class="toc ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.11.2.1">
+<                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="xref">11.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.11.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
+>                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1312,1313c1415,1416
+< <li class="toc ulEmpty" id="section-toc.1-1.11.2.2">
+<                 <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="xref">11.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.11.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
+>                 <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="auto internal xref">11.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1317,1318c1420,1421
+< <li class="toc ulEmpty" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-examples-filtering-fragment" class="xref">Examples: Filtering Fragments</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-examples-filtering-fragment" class="internal xref">Examples: Filtering Fragments</a></p>
+1320,1324c1423,1427
+< <li class="toc ulEmpty" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-appendix.b" class="xref">Appendix B</a>.  <a href="#name-examples-filtering-tcp-mess" class="xref">Examples: Filtering TCP Messages</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.13.2.1">
+<                 <p id="section-toc.1-1.13.2.1.1"><a href="#section-b.1" class="xref">B.1</a>.  <a href="#name-discard-tcp-null-attack" class="xref">Discard TCP Null Attack</a><a href="#section-toc.1-1.13.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-examples-filtering-tcp-mess" class="internal xref">Examples: Filtering TCP Messages</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.1">
+>                 <p id="section-toc.1-1.13.2.1.1"><a href="#appendix-B.1" class="auto internal xref">B.1</a>.  <a href="#name-discard-tcp-null-attack" class="internal xref">Discard TCP Null Attack</a></p>
+1326,1327c1429,1430
+< <li class="toc ulEmpty" id="section-toc.1-1.13.2.2">
+<                 <p id="section-toc.1-1.13.2.2.1"><a href="#section-b.2" class="xref">B.2</a>.  <a href="#name-rate-limit-syn-flooding" class="xref">Rate-Limit SYN Flooding</a><a href="#section-toc.1-1.13.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.2">
+>                 <p id="section-toc.1-1.13.2.2.1"><a href="#appendix-B.2" class="auto internal xref">B.2</a>.  <a href="#name-rate-limit-syn-flooding" class="internal xref">Rate-Limit SYN Flooding</a></p>
+1329,1330c1432,1433
+< <li class="toc ulEmpty" id="section-toc.1-1.13.2.3">
+<                 <p id="section-toc.1-1.13.2.3.1"><a href="#section-b.3" class="xref">B.3</a>.  <a href="#name-rate-limit-ack-flooding" class="xref">Rate-Limit ACK Flooding</a><a href="#section-toc.1-1.13.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.3">
+>                 <p id="section-toc.1-1.13.2.3.1"><a href="#appendix-B.3" class="auto internal xref">B.3</a>.  <a href="#name-rate-limit-ack-flooding" class="internal xref">Rate-Limit ACK Flooding</a></p>
+1334,1335c1437,1438
+< <li class="toc ulEmpty" id="section-toc.1-1.14">
+<             <p id="section-toc.1-1.14.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.14.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+>             <p id="section-toc.1-1.14.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1337,1338c1440,1441
+< <li class="toc ulEmpty" id="section-toc.1-1.15">
+<             <p id="section-toc.1-1.15.1"><a href="#section-appendix.d" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a><a href="#section-toc.1-1.15.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
+>             <p id="section-toc.1-1.15.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+1340,1341c1443,1444
+< <li class="toc ulEmpty" id="section-toc.1-1.16">
+<             <p id="section-toc.1-1.16.1"><a href="#section-appendix.e" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.16.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
+>             <p id="section-toc.1-1.16.1"><a href="#appendix-E" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1357c1460
+< <p id="section-1-2">As discussed in <span>[<a href="#RFC8612" class="xref">RFC8612</a>]</span>, the lack of a common
+---
+> <p id="section-1-2">As discussed in <span>[<a href="#RFC8612" class="cite xref">RFC8612</a>]</span>, the lack of a common
+1363c1466
+<       <span>[<a href="#I-D.ietf-dots-architecture" class="xref">DOTS-ARCH</a>]</span>. The DOTS approach is thus
+---
+>       <span>[<a href="#I-D.ietf-dots-architecture" class="cite xref">DOTS-ARCH</a>]</span>. The DOTS approach is thus
+1367c1470
+<       data channel (<a href="#channels" class="xref">Figure 1</a>).<a href="#section-1-2" class="pilcrow">¶</a></p>
+---
+>       data channel (<a href="#channels" class="auto internal xref">Figure 1</a>).<a href="#section-1-2" class="pilcrow">¶</a></p>
+1370c1473
+<         <div class="artwork art-text alignLeft" id="section-1-3.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-1-3.1">
+1387c1490
+<       suspicious. The DOTS signal channel is further elaborated in <span>[<a href="#RFC8782" class="xref">RFC8782</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
+---
+>       suspicious. The DOTS signal channel is further elaborated in <span>[<a href="#RFC8782" class="cite xref">RFC8782</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
+1391c1494
+<       <span><a href="https://tools.ietf.org/html/draft-ietf-dots-architecture-18#section-2" class="relref">Section 2</a> of [<a href="#I-D.ietf-dots-architecture" class="xref">DOTS-ARCH</a>]</span> mentions that the DOTS
+---
+>       <span><a href="https://tools.ietf.org/html/draft-ietf-dots-architecture-18#section-2" class="relref">Section 2</a> of [<a href="#I-D.ietf-dots-architecture" class="cite xref">DOTS-ARCH</a>]</span> mentions that the DOTS
+1393,1394c1496,1497
+< <ul>
+< <li id="section-1-6.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-1-6.1">
+1401,1402c1504,1505
+<           <span><a href="https://tools.ietf.org/html/draft-ietf-dots-architecture-18#section-2" class="relref">Section 2</a> of [<a href="#I-D.ietf-dots-architecture" class="xref">DOTS-ARCH</a>]</span>).<a href="#section-1-6.1.2" class="pilcrow">¶</a></p>
+< <p id="section-1-6.1.3">Refer to <a href="#identifier" class="xref">Section 6</a> for more
+---
+>           <span><a href="https://tools.ietf.org/html/draft-ietf-dots-architecture-18#section-2" class="relref">Section 2</a> of [<a href="#I-D.ietf-dots-architecture" class="cite xref">DOTS-ARCH</a>]</span>).<a href="#section-1-6.1.2" class="pilcrow">¶</a></p>
+> <p id="section-1-6.1.3">Refer to <a href="#identifier" class="auto internal xref">Section 6</a> for more
+1405c1508
+< <li id="section-1-6.2">
+---
+>         <li class="normal" id="section-1-6.2">
+1413,1414c1516,1517
+< <ul>
+< <li id="section-1-6.2.3.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-1-6.2.3.1">
+1427c1530
+< <li id="section-1-6.2.3.2">
+---
+>             <li class="normal" id="section-1-6.2.3.2">
+1438c1541
+< <p id="section-1-6.2.4">Refer to <a href="#filter" class="xref">Section 7</a> for more
+---
+> <p id="section-1-6.2.4">Refer to <a href="#filter" class="auto internal xref">Section 7</a> for more
+1451c1554
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1453c1556
+< <p id="section-2-2">The reader should be familiar with the terms defined in <span>[<a href="#RFC8612" class="xref">RFC8612</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+---
+> <p id="section-2-2">The reader should be familiar with the terms defined in <span>[<a href="#RFC8612" class="cite xref">RFC8612</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+1455,1456c1558,1559
+<       <span>[<a href="#RFC7950" class="xref">RFC7950</a>]</span>. The meaning of the symbols in the tree
+<       diagrams is defined in <span>[<a href="#RFC8340" class="xref">RFC8340</a>]</span>.<a href="#section-2-3" class="pilcrow">¶</a></p>
+---
+>       <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span>. The meaning of the symbols in the tree
+>       diagrams is defined in <span>[<a href="#RFC8340" class="cite xref">RFC8340</a>]</span>.<a href="#section-2-3" class="pilcrow">¶</a></p>
+1458c1561
+<       that it is not device specific <span>[<a href="#RFC8519" class="xref">RFC8519</a>]</span>. As such,
+---
+>       that it is not device specific <span>[<a href="#RFC8519" class="cite xref">RFC8519</a>]</span>. As such,
+1484c1587
+<         data channel protocol are documented in <span>[<a href="#RFC8612" class="xref">RFC8612</a>]</span>.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+---
+>         data channel protocol are documented in <span>[<a href="#RFC8612" class="cite xref">RFC8612</a>]</span>.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+1490,1491c1593,1594
+<         data delivery success or failure. This document uses RESTCONF <span>[<a href="#RFC8040" class="xref">RFC8040</a>]</span> over TLS over TCP as the DOTS data channel
+<         protocol. The abstract layering of the DOTS data channel is shown in <a href="#fig_dots2" class="xref">Figure 2</a>.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+---
+>         data delivery success or failure. This document uses RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span> over TLS over TCP as the DOTS data channel
+>         protocol. The abstract layering of the DOTS data channel is shown in <a href="#fig_dots2" class="auto internal xref">Figure 2</a>.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+1494c1597
+<           <div class="artwork art-text alignCenter" id="section-3.1-4.1">
+---
+>           <div class="alignCenter art-text artwork" id="section-3.1-4.1">
+1517c1620
+<         RESTCONF methods are defined in <span><a href="https://www.rfc-editor.org/rfc/rfc8040#section-4" class="relref">Section 4</a> of [<a href="#RFC8040" class="xref">RFC8040</a>]</span>.<a href="#section-3.1-5" class="pilcrow">¶</a></p>
+---
+>         RESTCONF methods are defined in <span><a href="https://rfc-editor.org/rfc/rfc8040#section-4" class="relref">Section 4</a> of [<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>.<a href="#section-3.1-5" class="pilcrow">¶</a></p>
+1521c1624
+<         operations (<span><a href="https://www.rfc-editor.org/rfc/rfc8040#section-5.4" class="relref">Section 5.4</a> of [<a href="#RFC8040" class="xref">RFC8040</a>]</span>). The
+---
+>         operations (<span><a href="https://rfc-editor.org/rfc/rfc8040#section-5.4" class="relref">Section 5.4</a> of [<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>). The
+1523c1626
+<         (<span><a href="https://www.rfc-editor.org/rfc/rfc8040#section-7" class="relref">Section 7</a> of [<a href="#RFC8040" class="xref">RFC8040</a>]</span>).<a href="#section-3.1-6" class="pilcrow">¶</a></p>
+---
+>         (<span><a href="https://rfc-editor.org/rfc/rfc8040#section-7" class="relref">Section 7</a> of [<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>).<a href="#section-3.1-6" class="pilcrow">¶</a></p>
+1525c1628
+<         discussed in <span><a href="https://www.rfc-editor.org/rfc/rfc8040#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC8040" class="xref">RFC8040</a>]</span> to
+---
+>         discussed in <span><a href="https://rfc-editor.org/rfc/rfc8040#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC8040" class="cite xref">RFC8040</a>]</span> to
+1530c1633
+<         supports (<span><a href="https://www.rfc-editor.org/rfc/rfc8040#section-3.7" class="relref">Section 3.7</a> of [<a href="#RFC8040" class="xref">RFC8040</a>]</span>). For example,
+---
+>         supports (<span><a href="https://rfc-editor.org/rfc/rfc8040#section-3.7" class="relref">Section 3.7</a> of [<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>). For example,
+1533c1636
+< <p id="section-3.1-8">JavaScript Object Notation (JSON) <span>[<a href="#RFC8259" class="xref">RFC8259</a>]</span>
+---
+> <p id="section-3.1-8">JavaScript Object Notation (JSON) <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span>
+1537,1538c1640,1641
+<         <span>[<a href="#RFC7951" class="xref">RFC7951</a>]</span> for representing DOTS data channel
+<         configuration data using YANG (<a href="#YANG" class="xref">Section 4</a>) as JSON
+---
+>         <span>[<a href="#RFC7951" class="cite xref">RFC7951</a>]</span> for representing DOTS data channel
+>         configuration data using YANG (<a href="#YANG" class="auto internal xref">Section 4</a>) as JSON
+1542c1645
+<         data (i.e., non-configuration data) from the DOTS server(s) (<a href="#registering" class="xref">Section 5</a>). 
+---
+>         data (i.e., non-configuration data) from the DOTS server(s) (<a href="#registering" class="auto internal xref">Section 5</a>). 
+1544c1647
+<         <span><a href="https://www.rfc-editor.org/rfc/rfc8782#section-8" class="relref">Section 8</a> of [<a href="#RFC8782" class="xref">RFC8782</a>]</span>. 
+---
+>         <span><a href="https://rfc-editor.org/rfc/rfc8782#section-8" class="relref">Section 8</a> of [<a href="#RFC8782" class="cite xref">RFC8782</a>]</span>. 
+1546c1649
+<         <span><a href="https://www.rfc-editor.org/rfc/rfc8782#section-4.4.1" class="relref">Section 4.4.1</a> of [<a href="#RFC8782" class="xref">RFC8782</a>]</span>.<a href="#section-3.1-9" class="pilcrow">¶</a></p>
+---
+>         <span><a href="https://rfc-editor.org/rfc/rfc8782#section-4.4.1" class="relref">Section 4.4.1</a> of [<a href="#RFC8782" class="cite xref">RFC8782</a>]</span>.<a href="#section-3.1-9" class="pilcrow">¶</a></p>
+1557c1660
+<         notifications (<span><a href="https://www.rfc-editor.org/rfc/rfc8040#section-6.3" class="relref">Section 6.3</a> of [<a href="#RFC8040" class="xref">RFC8040</a>]</span>).
+---
+>         notifications (<span><a href="https://rfc-editor.org/rfc/rfc8040#section-6.3" class="relref">Section 6.3</a> of [<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>).
+1560c1663
+<         can be found in <span>[<a href="#I-D.ietf-netconf-restconf-client-server" class="xref">RESTCONF-MODELS</a>]</span>.<a href="#section-3.1-10" class="pilcrow">¶</a></p>
+---
+>         can be found in <span>[<a href="#I-D.ietf-netconf-restconf-client-server" class="cite xref">RESTCONF-MODELS</a>]</span>.<a href="#section-3.1-10" class="pilcrow">¶</a></p>
+1567c1670
+<         NAT bindings. A TLS heartbeat <span>[<a href="#RFC6520" class="xref">RFC6520</a>]</span> verifies
+---
+>         NAT bindings. A TLS heartbeat <span>[<a href="#RFC6520" class="cite xref">RFC6520</a>]</span> verifies
+1578c1681
+<         <a href="#install" class="xref">Section 7.2</a> specifies a default behavior when no
+---
+>         <a href="#install" class="auto internal xref">Section 7.2</a> specifies a default behavior when no
+1583,1584c1686,1687
+< <ul>
+< <li id="section-3.1-14.1">A DOTS client can systematically send a GET message before
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.1-14.1">A DOTS client can systematically send a GET message before
+1587c1690
+< <li id="section-3.1-14.2">A DOTS client can reestablish the disconnected DOTS session
+---
+>           <li class="normal" id="section-3.1-14.2">A DOTS client can reestablish the disconnected DOTS session
+1593c1696
+<         discussed in <span><a href="https://www.rfc-editor.org/rfc/rfc8782#section-3" class="relref">Section 3</a> of [<a href="#RFC8782" class="xref">RFC8782</a>]</span>.<a href="#section-3.1-15" class="pilcrow">¶</a></p>
+---
+>         discussed in <span><a href="https://rfc-editor.org/rfc/rfc8782#section-3" class="relref">Section 3</a> of [<a href="#RFC8782" class="cite xref">RFC8782</a>]</span>.<a href="#section-3.1-15" class="pilcrow">¶</a></p>
+1597,1599c1700,1702
+< <p id="section-3.1-17">Some of the fields introduced in <a href="#YANG" class="xref">Section 4</a> are
+<         also discussed in Sections <a href="#registering" class="xref">5</a>, 
+<         <a href="#identifier" class="xref">6</a>, and <a href="#filter" class="xref">7</a>. 
+---
+> <p id="section-3.1-17">Some of the fields introduced in <a href="#YANG" class="auto internal xref">Section 4</a> are
+>         also discussed in Sections <a href="#registering" class="auto internal xref">5</a>, 
+>         <a href="#identifier" class="auto internal xref">6</a>, and <a href="#filter" class="auto internal xref">7</a>. 
+1609c1712
+<         DHCP <span>[<a href="#I-D.ietf-dots-server-discovery" class="xref">DOTS-SERVER-DISC</a>]</span>). The
+---
+>         DHCP <span>[<a href="#I-D.ietf-dots-server-discovery" class="cite xref">DOTS-SERVER-DISC</a>]</span>). The
+1622c1725
+<         domain identifier) parameter specified in <span>[<a href="#RFC8782" class="xref">RFC8782</a>]</span> <span class="bcp14">MUST</span> be followed by DOTS
+---
+>         domain identifier) parameter specified in <span>[<a href="#RFC8782" class="cite xref">RFC8782</a>]</span> <span class="bcp14">MUST</span> be followed by DOTS
+1626c1729
+<         DOTS gateways is specified in <a href="#loops" class="xref">Section 3.4</a>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+---
+>         DOTS gateways is specified in <a href="#loops" class="auto internal xref">Section 3.4</a>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+1645c1748
+<         support the procedure defined in <span><a href="https://www.rfc-editor.org/rfc/rfc7230#section-5.7.1" class="relref">Section 5.7.1</a> of [<a href="#RFC7230" class="xref">RFC7230</a>]</span>. 
+---
+>         support the procedure defined in <span><a href="https://rfc-editor.org/rfc/rfc7230#section-5.7.1" class="relref">Section 5.7.1</a> of [<a href="#RFC7230" class="cite xref">RFC7230</a>]</span>. 
+1650,1651c1753,1754
+< <ul>
+< <li id="section-3.4-2.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.4-2.1">
+1657c1760
+<             in <a href="#looperr" class="xref">Figure 3</a>.<a href="#section-3.4-2.1.1" class="pilcrow">¶</a></p>
+---
+>             in <a href="#looperr" class="auto internal xref">Figure 3</a>.<a href="#section-3.4-2.1.1" class="pilcrow">¶</a></p>
+1660,1661c1763,1764
+<               <div id="section-3.4-2.1.2.1">
+< <pre class="sourcecode">
+---
+>               <div class="sourcecode" id="section-3.4-2.1.2.1">
+> <pre>
+1679c1782
+< <li id="section-3.4-2.2">Otherwise, the DOTS agent <span class="bcp14">MUST</span> update or insert the Via
+---
+>           <li class="normal" id="section-3.4-2.2">Otherwise, the DOTS agent <span class="bcp14">MUST</span> update or insert the Via
+1719c1822
+< <p id="section-4.1-3">The tree structure for the DOTS alias is depicted in <a href="#talias" class="xref">Figure 4</a>.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
+---
+> <p id="section-4.1-3">The tree structure for the DOTS alias is depicted in <a href="#talias" class="auto internal xref">Figure 4</a>.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
+1722,1723c1825,1826
+<           <div id="section-4.1-4.1">
+< <pre class="sourcecode lang-yangtree">
+---
+>           <div class="lang-yangtree sourcecode" id="section-4.1-4.1">
+> <pre>
+1753,1754c1856,1857
+< <ul>
+< <li id="section-4.1-6.1">Drop-list management, which enables a DOTS client to inform a
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.1-6.1">Drop-list management, which enables a DOTS client to inform a
+1758c1861
+< <li id="section-4.1-6.2">Accept-list management, which enables a DOTS client to inform a
+---
+>           <li class="normal" id="section-4.1-6.2">Accept-list management, which enables a DOTS client to inform a
+1762c1865
+< <li id="section-4.1-6.3">Policy management, which enables a DOTS client to request the
+---
+>           <li class="normal" id="section-4.1-6.3">Policy management, which enables a DOTS client to request the
+1769c1872
+<         <a href="#tacl" class="xref">Figure 5</a>.<a href="#section-4.1-7" class="pilcrow">¶</a></p>
+---
+>         <a href="#tacl" class="auto internal xref">Figure 5</a>.<a href="#section-4.1-7" class="pilcrow">¶</a></p>
+1774,1775c1877,1878
+< <ul>
+< <li id="section-4.1-9.1">Retrieve a filtering entry (or all entries) created by a DOTS
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.1-9.1">Retrieve a filtering entry (or all entries) created by a DOTS
+1778c1881
+< <li id="section-4.1-9.2">Delete a filtering entry that was instantiated by a DOTS
+---
+>           <li class="normal" id="section-4.1-9.2">Delete a filtering entry that was instantiated by a DOTS
+1783c1886
+<         <span>[<a href="#RFC8519" class="xref">RFC8519</a>]</span>. Concretely, DOTS agents are assumed to
+---
+>         <span>[<a href="#RFC8519" class="cite xref">RFC8519</a>]</span>. Concretely, DOTS agents are assumed to
+1796,1797c1899,1900
+<           <div id="section-4.1-12.1">
+< <pre class="sourcecode lang-yangtree">
+---
+>           <div class="lang-yangtree sourcecode" id="section-4.1-12.1">
+> <pre>
+1861c1964
+<         'ietf-packet-fields' <span>[<a href="#RFC8519" class="xref">RFC8519</a>]</span>, which defines
+---
+>         'ietf-packet-fields' <span>[<a href="#RFC8519" class="cite xref">RFC8519</a>]</span>, which defines
+1868c1971
+<         Indeed, <span>[<a href="#RFC8519" class="xref">RFC8519</a>]</span> does not support such
+---
+>         Indeed, <span>[<a href="#RFC8519" class="cite xref">RFC8519</a>]</span> does not support such
+1875,1876c1978,1979
+<         <a href="#frag" class="xref">Appendix A</a>.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+< <p id="section-4.2-3"><a href="#tipv4" class="xref">Figure 6</a> shows the IPv4 match subtree.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+---
+>         <a href="#frag" class="auto internal xref">Appendix A</a>.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+> <p id="section-4.2-3"><a href="#tipv4" class="auto internal xref">Figure 6</a> shows the IPv4 match subtree.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+1879,1880c1982,1983
+<           <div id="section-4.2-4.1">
+< <pre class="sourcecode lang-yangtree">
+---
+>           <div class="lang-yangtree sourcecode" id="section-4.2-4.1">
+> <pre>
+1931c2034
+< <p id="section-4.2-5"><a href="#tipv6" class="xref">Figure 7</a> shows the IPv6 match subtree.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
+---
+> <p id="section-4.2-5"><a href="#tipv6" class="auto internal xref">Figure 7</a> shows the IPv6 match subtree.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
+1934,1935c2037,2038
+<           <div id="section-4.2-6.1">
+< <pre class="sourcecode lang-yangtree">
+---
+>           <div class="lang-yangtree sourcecode" id="section-4.2-6.1">
+> <pre>
+1984,1985c2087,2088
+< <p id="section-4.2-7"><a href="#ttcp" class="xref">Figure 8</a> shows the TCP match subtree. In
+<         addition to the fields defined in <span>[<a href="#RFC8519" class="xref">RFC8519</a>]</span>, this
+---
+> <p id="section-4.2-7"><a href="#ttcp" class="auto internal xref">Figure 8</a> shows the TCP match subtree. In
+>         addition to the fields defined in <span>[<a href="#RFC8519" class="cite xref">RFC8519</a>]</span>, this
+1988c2091
+<         examples are provided in <a href="#flags" class="xref">Appendix B</a>.<a href="#section-4.2-7" class="pilcrow">¶</a></p>
+---
+>         examples are provided in <a href="#flags" class="auto internal xref">Appendix B</a>.<a href="#section-4.2-7" class="pilcrow">¶</a></p>
+1991,1992c2094,2095
+<           <div id="section-4.2-8.1">
+< <pre class="sourcecode lang-yangtree">
+---
+>           <div class="breakable lang-yangtree sourcecode" id="section-4.2-8.1">
+> <pre>
+2050c2153
+< <p id="section-4.2-9"><a href="#ttransport" class="xref">Figure 9</a> shows the UDP and ICMP match
+---
+> <p id="section-4.2-9"><a href="#ttransport" class="auto internal xref">Figure 9</a> shows the UDP and ICMP match
+2056,2057c2159,2160
+<           <div id="section-4.2-10.1">
+< <pre class="sourcecode lang-yangtree">
+---
+>           <div class="lang-yangtree sourcecode" id="section-4.2-10.1">
+> <pre>
+2110,2111c2213,2214
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-4.2-12.1">Match based on the IP header (IPv4 and IPv6), match based on
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-4.2-12.1">Match based on the IP header (IPv4 and IPv6), match based on
+2119c2222
+<         implementations (<a href="#mf" class="xref">Table 1</a>):<a href="#section-4.2-13" class="pilcrow">¶</a></p>
+---
+>         implementations (<a href="#mf" class="auto internal xref">Table 1</a>):<a href="#section-4.2-13" class="pilcrow">¶</a></p>
+2163c2266
+<         structure of the 'capabilities' is shown in <a href="#tcap" class="xref">Figure 10</a>. 
+---
+>         structure of the 'capabilities' is shown in <a href="#tcap" class="auto internal xref">Figure 10</a>. 
+2169,2170c2272,2273
+<           <div id="section-4.2-16.1">
+< <pre class="sourcecode lang-yangtree">
+---
+>           <div class="breakable lang-yangtree sourcecode" id="section-4.2-16.1">
+> <pre>
+2237,2239c2340,2342
+< <p id="section-4.3-1">This module uses the common YANG types defined in <span>[<a href="#RFC6991" class="xref">RFC6991</a>]</span> and types defined in <span>[<a href="#RFC8519" class="xref">RFC8519</a>]</span>.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+< <div id="section-4.3-2">
+< <pre class="sourcecode lang-yang">&lt;CODE BEGINS&gt; file "ietf-dots-data-channel@2020-05-28.yang"
+---
+> <p id="section-4.3-1">This module uses the common YANG types defined in <span>[<a href="#RFC6991" class="cite xref">RFC6991</a>]</span> and types defined in <span>[<a href="#RFC8519" class="cite xref">RFC8519</a>]</span>.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+> <div class="breakable lang-yang sourcecode" id="section-4.3-2">
+> <pre>&lt;CODE BEGINS&gt; file "ietf-dots-data-channel@2020-05-28.yang"
+3067c3170
+<         request (shown in <a href="#register" class="xref">Figure 11</a>).<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+---
+>         request (shown in <a href="#register" class="auto internal xref">Figure 11</a>).<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+3070,3071c3173,3174
+<           <div id="section-5.1-2.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-5.1-2.1">
+> <pre>
+3090c3193
+< <dl class="dlParallel" id="section-5.1-4">
+---
+> <span class="break"></span><dl class="dlParallel" id="section-5.1-4">
+3092c3195
+< <dd id="section-5.1-4.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-5.1-4.2">
+3096c3199
+<             defined in <span>[<a href="#RFC8782" class="xref">RFC8782</a>]</span>.<a href="#section-5.1-4.2.1" class="pilcrow">¶</a></p>
+---
+>             defined in <span>[<a href="#RFC8782" class="cite xref">RFC8782</a>]</span>.<a href="#section-5.1-4.2.1" class="pilcrow">¶</a></p>
+3108c3211
+<         per client, per client domain, or both. <a href="#register-relayed" class="xref">Figure 12</a> 
+---
+>         per client, per client domain, or both. <a href="#register-relayed" class="auto internal xref">Figure 12</a> 
+3113,3114c3216,3217
+<           <div id="section-5.1-6.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-5.1-6.1">
+> <pre>
+3135c3238
+< <dl class="dlParallel" id="section-5.1-8">
+---
+> <span class="break"></span><dl class="dlParallel" id="section-5.1-8">
+3137c3240
+< <dd id="section-5.1-8.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-5.1-8.2">
+3140c3243
+<             <span>[<a href="#RFC8782" class="xref">RFC8782</a>]</span>.<a href="#section-5.1-8.2.1" class="pilcrow">¶</a></p>
+---
+>             <span>[<a href="#RFC8782" class="cite xref">RFC8782</a>]</span>.<a href="#section-5.1-8.2.1" class="pilcrow">¶</a></p>
+3143,3144c3246,3247
+<             DOTS methods to manage aliases (<a href="#identifier" class="xref">Section 6</a>)
+<             or filtering rules (<a href="#filter" class="xref">Section 7</a>). DOTS servers
+---
+>             DOTS methods to manage aliases (<a href="#identifier" class="auto internal xref">Section 6</a>)
+>             or filtering rules (<a href="#filter" class="auto internal xref">Section 7</a>). DOTS servers
+3152c3255
+<         <a href="#register-example" class="xref">Figure 13</a>. This request is relayed by a
+---
+>         <a href="#register-example" class="auto internal xref">Figure 13</a>. This request is relayed by a
+3157,3158c3260,3261
+<           <div id="section-5.1-10.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-5.1-10.1">
+> <pre>
+3178c3281
+<         DOTS clients (<span><a href="https://www.rfc-editor.org/rfc/rfc8782#section-4.4.1" class="relref">Section 4.4.1</a> of [<a href="#RFC8782" class="xref">RFC8782</a>]</span>).<a href="#section-5.1-11" class="pilcrow">¶</a></p>
+---
+>         DOTS clients (<span><a href="https://rfc-editor.org/rfc/rfc8782#section-4.4.1" class="relref">Section 4.4.1</a> of [<a href="#RFC8782" class="cite xref">RFC8782</a>]</span>).<a href="#section-5.1-11" class="pilcrow">¶</a></p>
+3182c3285
+<         <span>[<a href="#RFC6125" class="xref">RFC6125</a>]</span>.<a href="#section-5.1-12" class="pilcrow">¶</a></p>
+---
+>         <span>[<a href="#RFC6125" class="cite xref">RFC6125</a>]</span>.<a href="#section-5.1-12" class="pilcrow">¶</a></p>
+3188c3291
+<         <span><a href="https://www.rfc-editor.org/rfc/rfc8782#section-4.4.1" class="relref">Section 4.4.1</a> of [<a href="#RFC8782" class="xref">RFC8782</a>]</span>.<a href="#section-5.1-13" class="pilcrow">¶</a></p>
+---
+>         <span><a href="https://rfc-editor.org/rfc/rfc8782#section-4.4.1" class="relref">Section 4.4.1</a> of [<a href="#RFC8782" class="cite xref">RFC8782</a>]</span>.<a href="#section-5.1-13" class="pilcrow">¶</a></p>
+3194,3195c3297,3298
+< <ul>
+< <li id="section-5.1-15.1">"201 Created" status-line is returned in the response if the
+---
+> <ul class="normal">
+> <li class="normal" id="section-5.1-15.1">"201 Created" status-line is returned in the response if the
+3198c3301
+< <li id="section-5.1-15.2">"400 Bad Request" status-line is returned by the DOTS server
+---
+>           <li class="normal" id="section-5.1-15.2">"400 Bad Request" status-line is returned by the DOTS server
+3202c3305
+< <li id="section-5.1-15.3">"409 Conflict" status-line is returned to the requesting DOTS
+---
+>           <li class="normal" id="section-5.1-15.3">"409 Conflict" status-line is returned to the requesting DOTS
+3208,3209c3311,3312
+<         create/delete/retrieve aliases (<a href="#identifier" class="xref">Section 6</a>) and
+<         filtering rules (<a href="#filter" class="xref">Section 7</a>).<a href="#section-5.1-16" class="pilcrow">¶</a></p>
+---
+>         create/delete/retrieve aliases (<a href="#identifier" class="auto internal xref">Section 6</a>) and
+>         filtering rules (<a href="#filter" class="auto internal xref">Section 7</a>).<a href="#section-5.1-16" class="pilcrow">¶</a></p>
+3211c3314
+<         (<span><a href="https://www.rfc-editor.org/rfc/rfc8040#section-4.5" class="relref">Section 4.5</a> of [<a href="#RFC8040" class="xref">RFC8040</a>]</span>) 
+---
+>         (<span><a href="https://rfc-editor.org/rfc/rfc8040#section-4.5" class="relref">Section 4.5</a> of [<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>) 
+3213c3316
+<         server. An example is shown in <a href="#putregister" class="xref">Figure 14</a>.<a href="#section-5.1-17" class="pilcrow">¶</a></p>
+---
+>         server. An example is shown in <a href="#putregister" class="auto internal xref">Figure 14</a>.<a href="#section-5.1-17" class="pilcrow">¶</a></p>
+3216,3217c3319,3320
+<           <div id="section-5.1-18.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-5.1-18.1">
+> <pre>
+3249c3352
+<         shown in <a href="#derigister" class="xref">Figure 15</a>.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+---
+>         shown in <a href="#derigister" class="auto internal xref">Figure 15</a>.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+3252,3253c3355,3356
+<           <div id="section-5.2-2.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-5.2-2.1">
+> <pre>
+3273,3274c3376,3377
+<       aliases (<a href="#calias" class="xref">Section 6.1</a>), to retrieve one or a list of
+<       aliases (<a href="#ralias" class="xref">Section 6.2</a>), and to delete an alias (<a href="#dalias" class="xref">Section 6.3</a>).<a href="#section-6-1" class="pilcrow">¶</a></p>
+---
+>       aliases (<a href="#calias" class="auto internal xref">Section 6.1</a>), to retrieve one or a list of
+>       aliases (<a href="#ralias" class="auto internal xref">Section 6.2</a>), and to delete an alias (<a href="#dalias" class="auto internal xref">Section 6.3</a>).<a href="#section-6-1" class="pilcrow">¶</a></p>
+3287c3390
+<         <a href="#createalias" class="xref">Figure 16</a>.<a href="#section-6.1-3" class="pilcrow">¶</a></p>
+---
+>         <a href="#createalias" class="auto internal xref">Figure 16</a>.<a href="#section-6.1-3" class="pilcrow">¶</a></p>
+3290,3291c3393,3394
+<           <div id="section-6.1-4.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-6.1-4.1">
+> <pre>
+3331c3434
+< <dl class="dlParallel" id="section-6.1-6">
+---
+> <span class="break"></span><dl class="dlParallel" id="section-6.1-6">
+3333c3436
+< <dd id="section-6.1-6.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-6.1-6.2">
+3339c3442
+< <dd id="section-6.1-6.4">
+---
+>           <dd style="margin-left: 1.5em" id="section-6.1-6.4">
+3342c3445
+<             (CIDR) notation <span>[<a href="#RFC4632" class="xref">RFC4632</a>]</span>. As a reminder, the
+---
+>             (CIDR) notation <span>[<a href="#RFC4632" class="cite xref">RFC4632</a>]</span>. As a reminder, the
+3355c3458
+< <dd id="section-6.1-6.6">
+---
+>           <dd style="margin-left: 1.5em" id="section-6.1-6.6">
+3363,3364c3466,3467
+< <p id="section-6.1-6.6.4">For TCP, UDP, Stream Control Transmission Protocol (SCTP) <span>[<a href="#RFC4960" class="xref">RFC4960</a>]</span>, 
+<             or Datagram Congestion Control Protocol (DCCP) <span>[<a href="#RFC4340" class="xref">RFC4340</a>]</span>, 
+---
+> <p id="section-6.1-6.6.4">For TCP, UDP, Stream Control Transmission Protocol (SCTP) <span>[<a href="#RFC4960" class="cite xref">RFC4960</a>]</span>, 
+>             or Datagram Congestion Control Protocol (DCCP) <span>[<a href="#RFC4340" class="cite xref">RFC4340</a>]</span>, 
+3370c3473
+< <dd id="section-6.1-6.8">
+---
+>           <dd style="margin-left: 1.5em" id="section-6.1-6.8">
+3372c3475
+<             taken from the IANA protocol registry <span>[<a href="#IANA-PROTO" class="xref">IANA-PROTO</a>]</span>.<a href="#section-6.1-6.8.1" class="pilcrow">¶</a></p>
+---
+>             taken from the IANA protocol registry <span>[<a href="#IANA-PROTO" class="cite xref">IANA-PROTO</a>]</span>.<a href="#section-6.1-6.8.1" class="pilcrow">¶</a></p>
+3381c3484
+< <dd id="section-6.1-6.10">
+---
+>           <dd style="margin-left: 1.5em" id="section-6.1-6.10">
+3383c3486
+<             (FQDNs) identifying resources under attack <span>[<a href="#RFC8499" class="xref">RFC8499</a>]</span>.<a href="#section-6.1-6.10.1" class="pilcrow">¶</a></p>
+---
+>             (FQDNs) identifying resources under attack <span>[<a href="#RFC8499" class="cite xref">RFC8499</a>]</span>.<a href="#section-6.1-6.10.1" class="pilcrow">¶</a></p>
+3396c3499
+< <dd id="section-6.1-6.12">
+---
+>           <dd style="margin-left: 1.5em" id="section-6.1-6.12">
+3398c3501
+<             (URIs) <span>[<a href="#RFC3986" class="xref">RFC3986</a>]</span>.<a href="#section-6.1-6.12.1" class="pilcrow">¶</a></p>
+---
+>             (URIs) <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span>.<a href="#section-6.1-6.12.1" class="pilcrow">¶</a></p>
+3413c3516
+< <p id="section-6.1-9"><a href="#Figure2" class="xref">Figure 17</a> shows a POST request to create an
+---
+> <p id="section-6.1-9"><a href="#Figure2" class="auto internal xref">Figure 17</a> shows a POST request to create an
+3419,3420c3522,3523
+<           <div id="section-6.1-10.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-6.1-10.1">
+> <pre>
+3467c3570
+<         receipt of this message, the DOTS client <span class="bcp14">MUST</span> register (<a href="#registering" class="xref">Section 5</a>).<a href="#section-6.1-14" class="pilcrow">¶</a></p>
+---
+>         receipt of this message, the DOTS client <span class="bcp14">MUST</span> register (<a href="#registering" class="auto internal xref">Section 5</a>).<a href="#section-6.1-14" class="pilcrow">¶</a></p>
+3483c3586
+<         DOTS client from a DOTS server (<span><a href="https://www.rfc-editor.org/rfc/rfc8040#section-3.3.1" class="relref">Section 3.3.1</a> of [<a href="#RFC8040" class="xref">RFC8040</a>]</span>). If no 'name' is included in the request,
+---
+>         DOTS client from a DOTS server (<span><a href="https://rfc-editor.org/rfc/rfc8040#section-3.3.1" class="relref">Section 3.3.1</a> of [<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>). If no 'name' is included in the request,
+3486c3589
+< <p id="section-6.2-2"><a href="#Figure4" class="xref">Figure 18</a> shows an example to retrieve all the
+---
+> <p id="section-6.2-2"><a href="#Figure4" class="auto internal xref">Figure 18</a> shows an example to retrieve all the
+3489c3592
+<         <span><a href="https://www.rfc-editor.org/rfc/rfc8040#section-4.8.1" class="relref">Section 4.8.1</a> of [<a href="#RFC8040" class="xref">RFC8040</a>]</span>.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
+---
+>         <span><a href="https://rfc-editor.org/rfc/rfc8040#section-4.8.1" class="relref">Section 4.8.1</a> of [<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
+3492,3493c3595,3596
+<           <div id="section-6.2-3.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-6.2-3.1">
+> <pre>
+3505c3608
+< <p id="section-6.2-4"><a href="#Figure6" class="xref">Figure 19</a> shows an example of the response
+---
+> <p id="section-6.2-4"><a href="#Figure6" class="auto internal xref">Figure 19</a> shows an example of the response
+3511,3512c3614,3615
+<           <div id="section-6.2-5.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-6.2-5.1">
+> <pre>
+3557c3660
+< <p id="section-6.2-6"><a href="#analias" class="xref">Figure 20</a> shows an example of a GET request to
+---
+> <p id="section-6.2-6"><a href="#analias" class="auto internal xref">Figure 20</a> shows an example of a GET request to
+3561,3562c3664,3665
+<           <div id="section-6.2-7.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-6.2-7.1">
+> <pre>
+3593c3696
+< <p id="section-6.3-4"><a href="#Figure3" class="xref">Figure 21</a> shows an example of a request to
+---
+> <p id="section-6.3-4"><a href="#Figure3" class="auto internal xref">Figure 21</a> shows an example of a request to
+3597,3598c3700,3701
+<           <div id="section-6.3-5.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-6.3-5.1">
+> <pre>
+3619,3622c3722,3725
+<       DOTS filtering capabilities (<a href="#rcap" class="xref">Section 7.1</a>), to create
+<       filtering rules (<a href="#install" class="xref">Section 7.2</a>), to retrieve active
+<       filtering rules (<a href="#rfilter" class="xref">Section 7.3</a>), and to delete a filtering
+<       rule (<a href="#dfilter" class="xref">Section 7.4</a>).<a href="#section-7-1" class="pilcrow">¶</a></p>
+---
+>       DOTS filtering capabilities (<a href="#rcap" class="auto internal xref">Section 7.1</a>), to create
+>       filtering rules (<a href="#install" class="auto internal xref">Section 7.2</a>), to retrieve active
+>       filtering rules (<a href="#rfilter" class="auto internal xref">Section 7.3</a>), and to delete a filtering
+>       rule (<a href="#dfilter" class="auto internal xref">Section 7.4</a>).<a href="#section-7-1" class="pilcrow">¶</a></p>
+3629c3732
+<         capabilities supported by a DOTS server. <a href="#cap" class="xref">Figure 22</a>
+---
+>         capabilities supported by a DOTS server. <a href="#cap" class="auto internal xref">Figure 22</a>
+3633,3634c3736,3737
+<           <div id="section-7.1-2.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-7.1-2.1">
+> <pre>
+3648c3751
+< <p id="section-7.1-4"><a href="#capex" class="xref">Figure 23</a> shows an example of a response body
+---
+> <p id="section-7.1-4"><a href="#capex" class="auto internal xref">Figure 23</a> shows an example of a response body
+3650,3652c3753,3755
+< <ul>
+< <li id="section-7.1-5.1">IPv4, IPv6, TCP, UDP, ICMP, and ICMPv6 mandatory match criteria
+<             listed in <a href="#filf" class="xref">Section 4.2</a>.<a href="#section-7.1-5.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-7.1-5.1">IPv4, IPv6, TCP, UDP, ICMP, and ICMPv6 mandatory match criteria
+>             listed in <a href="#filf" class="auto internal xref">Section 4.2</a>.<a href="#section-7.1-5.1" class="pilcrow">¶</a>
+3654c3757
+< <li id="section-7.1-5.2">'accept', 'drop', and 'rate-limit' actions.<a href="#section-7.1-5.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-7.1-5.2">'accept', 'drop', and 'rate-limit' actions.<a href="#section-7.1-5.2" class="pilcrow">¶</a>
+3659,3660c3762,3763
+<           <div id="section-7.1-6.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-7.1-6.1">
+> <pre>
+3714c3817
+< <p id="section-7.2-2"><a href="#Figure7" class="xref">Figure 24</a> shows an example of a POST request to
+---
+> <p id="section-7.2-2"><a href="#Figure7" class="auto internal xref">Figure 24</a> shows an example of a POST request to
+3716c3819
+<         examples are discussed in <a href="#frag" class="xref">Appendix A</a>.<a href="#section-7.2-2" class="pilcrow">¶</a></p>
+---
+>         examples are discussed in <a href="#frag" class="auto internal xref">Appendix A</a>.<a href="#section-7.2-2" class="pilcrow">¶</a></p>
+3719,3720c3822,3823
+<           <div id="section-7.2-3.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-7.2-3.1">
+> <pre>
+3760c3863
+< <dl class="dlParallel" id="section-7.2-5">
+---
+> <span class="break"></span><dl class="dlParallel" id="section-7.2-5">
+3762c3865
+< <dd id="section-7.2-5.2">
+---
+>           <dd style="margin-left: 1.5em" id="section-7.2-5.2">
+3768c3871
+< <dd id="section-7.2-5.4">
+---
+>           <dd style="margin-left: 1.5em" id="section-7.2-5.4">
+3771c3874
+<             example of <a href="#Figure7" class="xref">Figure 24</a>.<a href="#section-7.2-5.4.1" class="pilcrow">¶</a></p>
+---
+>             example of <a href="#Figure7" class="auto internal xref">Figure 24</a>.<a href="#section-7.2-5.4.1" class="pilcrow">¶</a></p>
+3776c3879
+< <dd id="section-7.2-5.6">
+---
+>           <dd style="margin-left: 1.5em" id="section-7.2-5.6">
+3794c3897
+< <dd id="section-7.2-5.8">
+---
+>           <dd style="margin-left: 1.5em" id="section-7.2-5.8">
+3797c3900
+<             UDP, ICMP). The detailed match parameters are specified in <a href="#YANG" class="xref">Section 4</a>.<a href="#section-7.2-5.8.1" class="pilcrow">¶</a></p>
+---
+>             UDP, ICMP). The detailed match parameters are specified in <a href="#YANG" class="auto internal xref">Section 4</a>.<a href="#section-7.2-5.8.1" class="pilcrow">¶</a></p>
+3799c3902
+<             depicted in <a href="#Figure7" class="xref">Figure 24</a>, an IPv4 matching
+---
+>             depicted in <a href="#Figure7" class="auto internal xref">Figure 24</a>, an IPv4 matching
+3806c3909
+< <dd id="section-7.2-5.10">
+---
+>           <dd style="margin-left: 1.5em" id="section-7.2-5.10">
+3818c3921
+< <dd id="section-7.2-5.12">
+---
+>           <dd style="margin-left: 1.5em" id="section-7.2-5.12">
+3824c3927
+< <dd id="section-7.2-5.14">
+---
+>           <dd style="margin-left: 1.5em" id="section-7.2-5.14">
+3830c3933
+<             unit is the same as the one used for "traffic-rate" in <span>[<a href="#RFC5575" class="xref">RFC5575</a>]</span>.<a href="#section-7.2-5.14.2" class="pilcrow">¶</a></p>
+---
+>             unit is the same as the one used for "traffic-rate" in <span>[<a href="#RFC5575" class="cite xref">RFC5575</a>]</span>.<a href="#section-7.2-5.14.2" class="pilcrow">¶</a></p>
+3849c3952
+<         receipt of this message, the DOTS client <span class="bcp14">MUST</span> register (<a href="#register" class="xref">Figure 11</a>).<a href="#section-7.2-7" class="pilcrow">¶</a></p>
+---
+>         receipt of this message, the DOTS client <span class="bcp14">MUST</span> register (<a href="#register" class="auto internal xref">Figure 11</a>).<a href="#section-7.2-7" class="pilcrow">¶</a></p>
+3854c3957
+< <p id="section-7.2-9">The "insert" query parameter (<span><a href="https://www.rfc-editor.org/rfc/rfc8040#section-4.8.5" class="relref">Section 4.8.5</a> of [<a href="#RFC8040" class="xref">RFC8040</a>]</span>) 
+---
+> <p id="section-7.2-9">The "insert" query parameter (<span><a href="https://rfc-editor.org/rfc/rfc8040#section-4.8.5" class="relref">Section 4.8.5</a> of [<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>) 
+3884c3987
+<         depicted in <a href="#PUTv6" class="xref">Figure 25</a>. In reference to this
+---
+>         depicted in <a href="#PUTv6" class="auto internal xref">Figure 25</a>. In reference to this
+3889,3890c3992,3993
+<           <div id="section-7.3-4.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-7.3-4.1">
+> <pre>
+3943c4046
+<         <a href="#install" class="xref">Section 7.2</a> to process the request. We consider in the
+---
+>         <a href="#install" class="auto internal xref">Section 7.2</a> to process the request. We consider in the
+3949c4052
+<         rules as illustrated in <a href="#Get" class="xref">Figure 26</a>. The "content"
+---
+>         rules as illustrated in <a href="#Get" class="auto internal xref">Figure 26</a>. The "content"
+3951c4054
+<         this GET request is shown in <a href="#Getr" class="xref">Figure 27</a>.<a href="#section-7.3-6" class="pilcrow">¶</a></p>
+---
+>         this GET request is shown in <a href="#Getr" class="auto internal xref">Figure 27</a>.<a href="#section-7.3-6" class="pilcrow">¶</a></p>
+3954,3955c4057,4058
+<           <div id="section-7.3-7.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-7.3-7.1">
+> <pre>
+3969,3970c4072,4073
+<           <div id="section-7.3-8.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-7.3-8.1">
+> <pre>
+4018c4121
+<         configuration data related to an ACL as shown in <a href="#GEtc" class="xref">Figure 28</a>. It does so by setting the "content" query
+---
+>         configuration data related to an ACL as shown in <a href="#GEtc" class="auto internal xref">Figure 28</a>. It does so by setting the "content" query
+4022,4023c4125,4126
+<           <div id="section-7.3-10.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-7.3-10.1">
+> <pre>
+4035c4138
+< <p id="section-7.3-11">A response to this GET request is shown in <a href="#GEtcr" class="xref">Figure 29</a>.<a href="#section-7.3-11" class="pilcrow">¶</a></p>
+---
+> <p id="section-7.3-11">A response to this GET request is shown in <a href="#GEtcr" class="auto internal xref">Figure 29</a>.<a href="#section-7.3-11" class="pilcrow">¶</a></p>
+4038,4039c4141,4142
+<           <div id="section-7.3-12.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-7.3-12.1">
+> <pre>
+4087,4088c4190,4191
+<         non-configuration data bound to a given ACL as shown in <a href="#GEtnc" class="xref">Figure 30</a>. A response to this GET request is shown in
+<         <a href="#GEtncr" class="xref">Figure 31</a>.<a href="#section-7.3-13" class="pilcrow">¶</a></p>
+---
+>         non-configuration data bound to a given ACL as shown in <a href="#GEtnc" class="auto internal xref">Figure 30</a>. A response to this GET request is shown in
+>         <a href="#GEtncr" class="auto internal xref">Figure 31</a>.<a href="#section-7.3-13" class="pilcrow">¶</a></p>
+4091,4092c4194,4195
+<           <div id="section-7.3-14.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-7.3-14.1">
+> <pre>
+4106,4107c4209,4210
+<           <div id="section-7.3-15.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-7.3-15.1">
+> <pre>
+4146,4147c4249,4250
+< <p id="section-7.4-3"><a href="#Figure9" class="xref">Figure 32</a> shows an example of a request to
+<         remove the IPv4 ACL "sample-ipv4-acl" created in <a href="#install" class="xref">Section 7.2</a>.<a href="#section-7.4-3" class="pilcrow">¶</a></p>
+---
+> <p id="section-7.4-3"><a href="#Figure9" class="auto internal xref">Figure 32</a> shows an example of a request to
+>         remove the IPv4 ACL "sample-ipv4-acl" created in <a href="#install" class="auto internal xref">Section 7.2</a>.<a href="#section-7.4-3" class="pilcrow">¶</a></p>
+4150,4151c4253,4254
+<           <div id="section-7.4-4.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-7.4-4.1">
+> <pre>
+4163c4266
+< <p id="section-7.4-6"><a href="#Figure9a" class="xref">Figure 33</a> shows an example of a response
+---
+> <p id="section-7.4-6"><a href="#Figure9a" class="auto internal xref">Figure 33</a> shows an example of a response
+4168,4169c4271,4272
+<           <div id="section-7.4-7.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="section-7.4-7.1">
+> <pre>
+4194,4195c4297,4298
+< <ul>
+< <li id="section-8-2.1">DOTS servers <span class="bcp14">MUST NOT</span> enable both DOTS data channel and direct
+---
+> <ul class="normal">
+> <li class="normal" id="section-8-2.1">DOTS servers <span class="bcp14">MUST NOT</span> enable both DOTS data channel and direct
+4200c4303
+< <li id="section-8-2.2">DOTS agents <span class="bcp14">SHOULD</span> enable the DOTS data channel to configure
+---
+>         <li class="normal" id="section-8-2.2">DOTS agents <span class="bcp14">SHOULD</span> enable the DOTS data channel to configure
+4206,4207c4309,4310
+< <li id="section-8-2.3">If a DOTS server has enabled direct configuration, it can reject
+<           the DOTS data channel connection using hard ICMP error <span>[<a href="#RFC1122" class="xref">RFC1122</a>]</span> or RST (Reset) bit in the TCP header or
+---
+>         <li class="normal" id="section-8-2.3">If a DOTS server has enabled direct configuration, it can reject
+>           the DOTS data channel connection using hard ICMP error <span>[<a href="#RFC1122" class="cite xref">RFC1122</a>]</span> or RST (Reset) bit in the TCP header or
+4219,4220c4322,4323
+<       subregistry within the "IETF XML Registry" <span>[<a href="#RFC3688" class="xref">RFC3688</a>]</span>:<a href="#section-9-1" class="pilcrow">¶</a></p>
+< <dl class="dlParallel dlCompact" id="section-9-2">
+---
+>       subregistry within the "IETF XML Registry" <span>[<a href="#RFC3688" class="cite xref">RFC3688</a>]</span>:<a href="#section-9-1" class="pilcrow">¶</a></p>
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-9-2">
+4222c4325
+< <dd id="section-9-2.2">yang:ietf-dots-data-channel<a href="#section-9-2.2" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-9-2.2">yang:ietf-dots-data-channel<a href="#section-9-2.2" class="pilcrow">¶</a>
+4226c4329
+< <dd id="section-9-2.4">urn:ietf:params:xml:ns:yang:ietf-dots-data-channel<a href="#section-9-2.4" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-9-2.4">urn:ietf:params:xml:ns:yang:ietf-dots-data-channel<a href="#section-9-2.4" class="pilcrow">¶</a>
+4230c4333
+< <dd id="section-9-2.6">The IESG.<a href="#section-9-2.6" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-9-2.6">The IESG.<a href="#section-9-2.6" class="pilcrow">¶</a>
+4234c4337
+< <dd id="section-9-2.8">N/A; the requested URI is an XML namespace.<a href="#section-9-2.8" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-9-2.8">N/A; the requested URI is an XML namespace.<a href="#section-9-2.8" class="pilcrow">¶</a>
+4238c4341
+< <dd id="section-9-2.10">RFC 8783<a href="#section-9-2.10" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-9-2.10">RFC 8783<a href="#section-9-2.10" class="pilcrow">¶</a>
+4243c4346
+<       module in the "YANG Module Names" subregistry <span>[<a href="#RFC7950" class="xref">RFC7950</a>]</span> 
+---
+>       module in the "YANG Module Names" subregistry <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span> 
+4245c4348
+< <dl class="dlParallel dlCompact" id="section-9-4">
+---
+> <span class="break"></span><dl class="dlCompact dlParallel" id="section-9-4">
+4247c4350
+< <dd id="section-9-4.2">ietf-dots-data-channel<a href="#section-9-4.2" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-9-4.2">ietf-dots-data-channel<a href="#section-9-4.2" class="pilcrow">¶</a>
+4251c4354
+< <dd id="section-9-4.4">urn:ietf:params:xml:ns:yang:ietf-dots-data-channel<a href="#section-9-4.4" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-9-4.4">urn:ietf:params:xml:ns:yang:ietf-dots-data-channel<a href="#section-9-4.4" class="pilcrow">¶</a>
+4255c4358
+< <dd id="section-9-4.6">data-channel<a href="#section-9-4.6" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-9-4.6">data-channel<a href="#section-9-4.6" class="pilcrow">¶</a>
+4259c4362
+< <dd id="section-9-4.8">RFC 8783<a href="#section-9-4.8" class="pilcrow">¶</a>
+---
+>         <dd style="margin-left: 1.5em" id="section-9-4.8">RFC 8783<a href="#section-9-4.8" class="pilcrow">¶</a>
+4270c4373
+< <p id="section-10-1">RESTCONF security considerations are discussed in <span>[<a href="#RFC8040" class="xref">RFC8040</a>]</span>. 
+---
+> <p id="section-10-1">RESTCONF security considerations are discussed in <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. 
+4272,4274c4375,4377
+<       security recommendations in Sections <a href="https://www.rfc-editor.org/rfc/rfc8040#section-2" class="relref">2</a> and 
+<       <a href="https://www.rfc-editor.org/rfc/rfc8040#section-12" class="relref">12</a> 
+<       of <span>[<a href="#RFC8040" class="xref">RFC8040</a>]</span>.  
+---
+>       security recommendations in Sections <a href="https://rfc-editor.org/rfc/rfc8040#section-2" class="relref">2</a> and 
+>       <a href="https://rfc-editor.org/rfc/rfc8040#section-12" class="relref">12</a> 
+>       of <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>.  
+4277,4279c4380,4382
+<       Sections <a href="https://www.rfc-editor.org/rfc/rfc8782#section-7.1" class="relref">7.1</a> and 
+<       <a href="https://www.rfc-editor.org/rfc/rfc8782#section-8" class="relref">8</a> 
+<       of <span>[<a href="#RFC8782" class="xref">RFC8782</a>]</span>.<a href="#section-10-1" class="pilcrow">¶</a></p>
+---
+>       Sections <a href="https://rfc-editor.org/rfc/rfc8782#section-7.1" class="relref">7.1</a> and 
+>       <a href="https://rfc-editor.org/rfc/rfc8782#section-8" class="relref">8</a> 
+>       of <span>[<a href="#RFC8782" class="cite xref">RFC8782</a>]</span>.<a href="#section-10-1" class="pilcrow">¶</a></p>
+4283c4386
+<       confidentiality protection, and the guidance given in <span>[<a href="#RFC7525" class="xref">RFC7525</a>]</span>
+---
+>       confidentiality protection, and the guidance given in <span>[<a href="#RFC7525" class="cite xref">RFC7525</a>]</span>
+4296c4399
+<       TCP Authentication Option (TCP-AO) <span>[<a href="#RFC5925" class="xref">RFC5925</a>]</span>. If TCP-AO is used, then any bogus packets
+---
+>       TCP Authentication Option (TCP-AO) <span>[<a href="#RFC5925" class="cite xref">RFC5925</a>]</span>. If TCP-AO is used, then any bogus packets
+4321,4322c4424,4425
+<       privacy enabling protocols (e.g., DNS over TLS <span>[<a href="#RFC7858" class="xref">RFC7858</a>]</span> 
+<       or DNS over HTTPS (DoH) <span>[<a href="#RFC8484" class="xref">RFC8484</a>]</span>) to
+---
+>       privacy enabling protocols (e.g., DNS over TLS <span>[<a href="#RFC7858" class="cite xref">RFC7858</a>]</span> 
+>       or DNS over HTTPS (DoH) <span>[<a href="#RFC8484" class="cite xref">RFC8484</a>]</span>) to
+4325c4428
+<       FQDN resolution is authentic (e.g., DNSSEC <span>[<a href="#RFC4034" class="xref">RFC4034</a>]</span>).<a href="#section-10-9" class="pilcrow">¶</a></p>
+---
+>       FQDN resolution is authentic (e.g., DNSSEC <span>[<a href="#RFC4034" class="cite xref">RFC4034</a>]</span>).<a href="#section-10-9" class="pilcrow">¶</a></p>
+4328c4431
+<       defined in <a href="#loops" class="xref">Section 3.4</a>.<a href="#section-10-10" class="pilcrow">¶</a></p>
+---
+>       defined in <a href="#loops" class="auto internal xref">Section 3.4</a>.<a href="#section-10-10" class="pilcrow">¶</a></p>
+4332c4435
+< as NETCONF <span>[<a href="#RFC6241" class="xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="xref">RFC8040</a>]</span>.
+---
+> as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>.
+4335,4336c4438,4439
+< <span>[<a href="#RFC6242" class="xref">RFC6242</a>]</span>. The lowest RESTCONF layer is HTTPS, and the
+< mandatory-to-implement secure transport is TLS <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span>.<a href="#section-10-11" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#RFC6242" class="cite xref">RFC6242</a>]</span>. The lowest RESTCONF layer is HTTPS, and the
+> mandatory-to-implement secure transport is TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-10-11" class="pilcrow">¶</a></p>
+4338c4441
+< The Network Configuration Access Control Model (NACM) <span>[<a href="#RFC8341" class="xref">RFC8341</a>]</span>
+---
+> The Network Configuration Access Control Model (NACM) <span>[<a href="#RFC8341" class="cite xref">RFC8341</a>]</span>
+4354,4355c4457,4458
+< <ul>
+< <li id="section-10-14.1">Setting an arbitrarily low rate-limit, which may prevent
+---
+> <ul class="normal">
+> <li class="normal" id="section-10-14.1">Setting an arbitrarily low rate-limit, which may prevent
+4358c4461
+< <li id="section-10-14.2">Setting an arbitrarily high rate-limit, which may lead to the
+---
+>         <li class="normal" id="section-10-14.2">Setting an arbitrarily high rate-limit, which may lead to the
+4361c4464
+< <li id="section-10-14.3">Communicating invalid aliases to the server (alias), which will
+---
+>         <li class="normal" id="section-10-14.3">Communicating invalid aliases to the server (alias), which will
+4364c4467
+< <li id="section-10-14.4">Setting invalid ACL entries, which may prevent legitimate traffic
+---
+>         <li class="normal" id="section-10-14.4">Setting invalid ACL entries, which may prevent legitimate traffic
+4370c4473
+<   This module reuses YANG structures from <span>[<a href="#RFC8519" class="xref">RFC8519</a>]</span>, and the security
+---
+>   This module reuses YANG structures from <span>[<a href="#RFC8519" class="cite xref">RFC8519</a>]</span>, and the security
+4385c4488
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+4389c4492
+< <span class="refAuthor">Mealling, M.</span>, <span class="refTitle">"The IETF XML Registry"</span>, <span class="seriesInfo">BCP 81</span>, <span class="seriesInfo">RFC 3688</span>, <span class="seriesInfo">DOI 10.17487/RFC3688</span>, <time datetime="2004-01">January 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3688">https://www.rfc-editor.org/info/rfc3688</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mealling, M.</span>, <span class="refTitle">"The IETF XML Registry"</span>, <span class="seriesInfo">BCP 81</span>, <span class="seriesInfo">RFC 3688</span>, <span class="seriesInfo">DOI 10.17487/RFC3688</span>, <time datetime="2004-01" class="refDate">January 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3688">https://www.rfc-editor.org/info/rfc3688</a>&gt;</span>. </dd>
+4393c4496
+< <span class="refAuthor">Fuller, V.</span><span class="refAuthor"> and T. Li</span>, <span class="refTitle">"Classless Inter-domain Routing (CIDR): The Internet Address Assignment and Aggregation Plan"</span>, <span class="seriesInfo">BCP 122</span>, <span class="seriesInfo">RFC 4632</span>, <span class="seriesInfo">DOI 10.17487/RFC4632</span>, <time datetime="2006-08">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4632">https://www.rfc-editor.org/info/rfc4632</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fuller, V.</span> and <span class="refAuthor">T. Li</span>, <span class="refTitle">"Classless Inter-domain Routing (CIDR): The Internet Address Assignment and Aggregation Plan"</span>, <span class="seriesInfo">BCP 122</span>, <span class="seriesInfo">RFC 4632</span>, <span class="seriesInfo">DOI 10.17487/RFC4632</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4632">https://www.rfc-editor.org/info/rfc4632</a>&gt;</span>. </dd>
+4397c4500
+< <span class="refAuthor">Saint-Andre, P.</span><span class="refAuthor"> and J. Hodges</span>, <span class="refTitle">"Representation and Verification of Domain-Based Application Service Identity within Internet Public Key Infrastructure Using X.509 (PKIX) Certificates in the Context of Transport Layer Security (TLS)"</span>, <span class="seriesInfo">RFC 6125</span>, <span class="seriesInfo">DOI 10.17487/RFC6125</span>, <time datetime="2011-03">March 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6125">https://www.rfc-editor.org/info/rfc6125</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Saint-Andre, P.</span> and <span class="refAuthor">J. Hodges</span>, <span class="refTitle">"Representation and Verification of Domain-Based Application Service Identity within Internet Public Key Infrastructure Using X.509 (PKIX) Certificates in the Context of Transport Layer Security (TLS)"</span>, <span class="seriesInfo">RFC 6125</span>, <span class="seriesInfo">DOI 10.17487/RFC6125</span>, <time datetime="2011-03" class="refDate">March 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6125">https://www.rfc-editor.org/info/rfc6125</a>&gt;</span>. </dd>
+4401c4504
+< <span class="refAuthor">Enns, R., Ed.</span><span class="refAuthor">, Bjorklund, M., Ed.</span><span class="refAuthor">, Schoenwaelder, J., Ed.</span><span class="refAuthor">, and A. Bierman, Ed.</span>, <span class="refTitle">"Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6241</span>, <span class="seriesInfo">DOI 10.17487/RFC6241</span>, <time datetime="2011-06">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6241">https://www.rfc-editor.org/info/rfc6241</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Enns, R., Ed.</span>, <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refAuthor">Schoenwaelder, J., Ed.</span>, and <span class="refAuthor">A. Bierman, Ed.</span>, <span class="refTitle">"Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6241</span>, <span class="seriesInfo">DOI 10.17487/RFC6241</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6241">https://www.rfc-editor.org/info/rfc6241</a>&gt;</span>. </dd>
+4405c4508
+< <span class="refAuthor">Wasserman, M.</span>, <span class="refTitle">"Using the NETCONF Protocol over Secure Shell (SSH)"</span>, <span class="seriesInfo">RFC 6242</span>, <span class="seriesInfo">DOI 10.17487/RFC6242</span>, <time datetime="2011-06">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6242">https://www.rfc-editor.org/info/rfc6242</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Wasserman, M.</span>, <span class="refTitle">"Using the NETCONF Protocol over Secure Shell (SSH)"</span>, <span class="seriesInfo">RFC 6242</span>, <span class="seriesInfo">DOI 10.17487/RFC6242</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6242">https://www.rfc-editor.org/info/rfc6242</a>&gt;</span>. </dd>
+4409c4512
+< <span class="refAuthor">Schoenwaelder, J., Ed.</span>, <span class="refTitle">"Common YANG Data Types"</span>, <span class="seriesInfo">RFC 6991</span>, <span class="seriesInfo">DOI 10.17487/RFC6991</span>, <time datetime="2013-07">July 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6991">https://www.rfc-editor.org/info/rfc6991</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schoenwaelder, J., Ed.</span>, <span class="refTitle">"Common YANG Data Types"</span>, <span class="seriesInfo">RFC 6991</span>, <span class="seriesInfo">DOI 10.17487/RFC6991</span>, <time datetime="2013-07" class="refDate">July 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6991">https://www.rfc-editor.org/info/rfc6991</a>&gt;</span>. </dd>
+4413c4516
+< <span class="refAuthor">Fielding, R., Ed.</span><span class="refAuthor"> and J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing"</span>, <span class="seriesInfo">RFC 7230</span>, <span class="seriesInfo">DOI 10.17487/RFC7230</span>, <time datetime="2014-06">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7230">https://www.rfc-editor.org/info/rfc7230</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fielding, R., Ed.</span> and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing"</span>, <span class="seriesInfo">RFC 7230</span>, <span class="seriesInfo">DOI 10.17487/RFC7230</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7230">https://www.rfc-editor.org/info/rfc7230</a>&gt;</span>. </dd>
+4417c4520
+< <span class="refAuthor">Sheffer, Y.</span><span class="refAuthor">, Holz, R.</span><span class="refAuthor">, and P. Saint-Andre</span>, <span class="refTitle">"Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)"</span>, <span class="seriesInfo">BCP 195</span>, <span class="seriesInfo">RFC 7525</span>, <span class="seriesInfo">DOI 10.17487/RFC7525</span>, <time datetime="2015-05">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7525">https://www.rfc-editor.org/info/rfc7525</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Sheffer, Y.</span>, <span class="refAuthor">Holz, R.</span>, and <span class="refAuthor">P. Saint-Andre</span>, <span class="refTitle">"Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)"</span>, <span class="seriesInfo">BCP 195</span>, <span class="seriesInfo">RFC 7525</span>, <span class="seriesInfo">DOI 10.17487/RFC7525</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7525">https://www.rfc-editor.org/info/rfc7525</a>&gt;</span>. </dd>
+4421c4524
+< <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refTitle">"The YANG 1.1 Data Modeling Language"</span>, <span class="seriesInfo">RFC 7950</span>, <span class="seriesInfo">DOI 10.17487/RFC7950</span>, <time datetime="2016-08">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7950">https://www.rfc-editor.org/info/rfc7950</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refTitle">"The YANG 1.1 Data Modeling Language"</span>, <span class="seriesInfo">RFC 7950</span>, <span class="seriesInfo">DOI 10.17487/RFC7950</span>, <time datetime="2016-08" class="refDate">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7950">https://www.rfc-editor.org/info/rfc7950</a>&gt;</span>. </dd>
+4425c4528
+< <span class="refAuthor">Lhotka, L.</span>, <span class="refTitle">"JSON Encoding of Data Modeled with YANG"</span>, <span class="seriesInfo">RFC 7951</span>, <span class="seriesInfo">DOI 10.17487/RFC7951</span>, <time datetime="2016-08">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7951">https://www.rfc-editor.org/info/rfc7951</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Lhotka, L.</span>, <span class="refTitle">"JSON Encoding of Data Modeled with YANG"</span>, <span class="seriesInfo">RFC 7951</span>, <span class="seriesInfo">DOI 10.17487/RFC7951</span>, <time datetime="2016-08" class="refDate">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7951">https://www.rfc-editor.org/info/rfc7951</a>&gt;</span>. </dd>
+4429c4532
+< <span class="refAuthor">Bierman, A.</span><span class="refAuthor">, Bjorklund, M.</span><span class="refAuthor">, and K. Watsen</span>, <span class="refTitle">"RESTCONF Protocol"</span>, <span class="seriesInfo">RFC 8040</span>, <span class="seriesInfo">DOI 10.17487/RFC8040</span>, <time datetime="2017-01">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8040">https://www.rfc-editor.org/info/rfc8040</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Bjorklund, M.</span>, and <span class="refAuthor">K. Watsen</span>, <span class="refTitle">"RESTCONF Protocol"</span>, <span class="seriesInfo">RFC 8040</span>, <span class="seriesInfo">DOI 10.17487/RFC8040</span>, <time datetime="2017-01" class="refDate">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8040">https://www.rfc-editor.org/info/rfc8040</a>&gt;</span>. </dd>
+4433c4536
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+4437c4540
+< <span class="refAuthor">Bray, T., Ed.</span>, <span class="refTitle">"The JavaScript Object Notation (JSON) Data Interchange Format"</span>, <span class="seriesInfo">STD 90</span>, <span class="seriesInfo">RFC 8259</span>, <span class="seriesInfo">DOI 10.17487/RFC8259</span>, <time datetime="2017-12">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8259">https://www.rfc-editor.org/info/rfc8259</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bray, T., Ed.</span>, <span class="refTitle">"The JavaScript Object Notation (JSON) Data Interchange Format"</span>, <span class="seriesInfo">STD 90</span>, <span class="seriesInfo">RFC 8259</span>, <span class="seriesInfo">DOI 10.17487/RFC8259</span>, <time datetime="2017-12" class="refDate">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8259">https://www.rfc-editor.org/info/rfc8259</a>&gt;</span>. </dd>
+4441c4544
+< <span class="refAuthor">Bierman, A.</span><span class="refAuthor"> and M. Bjorklund</span>, <span class="refTitle">"Network Configuration Access Control Model"</span>, <span class="seriesInfo">STD 91</span>, <span class="seriesInfo">RFC 8341</span>, <span class="seriesInfo">DOI 10.17487/RFC8341</span>, <time datetime="2018-03">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8341">https://www.rfc-editor.org/info/rfc8341</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bierman, A.</span> and <span class="refAuthor">M. Bjorklund</span>, <span class="refTitle">"Network Configuration Access Control Model"</span>, <span class="seriesInfo">STD 91</span>, <span class="seriesInfo">RFC 8341</span>, <span class="seriesInfo">DOI 10.17487/RFC8341</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8341">https://www.rfc-editor.org/info/rfc8341</a>&gt;</span>. </dd>
+4445c4548
+< <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8446">https://www.rfc-editor.org/info/rfc8446</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8446">https://www.rfc-editor.org/info/rfc8446</a>&gt;</span>. </dd>
+4449c4552
+< <span class="refAuthor">Jethanandani, M.</span><span class="refAuthor">, Agarwal, S.</span><span class="refAuthor">, Huang, L.</span><span class="refAuthor">, and D. Blair</span>, <span class="refTitle">"YANG Data Model for Network Access Control Lists (ACLs)"</span>, <span class="seriesInfo">RFC 8519</span>, <span class="seriesInfo">DOI 10.17487/RFC8519</span>, <time datetime="2019-03">March 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8519">https://www.rfc-editor.org/info/rfc8519</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jethanandani, M.</span>, <span class="refAuthor">Agarwal, S.</span>, <span class="refAuthor">Huang, L.</span>, and <span class="refAuthor">D. Blair</span>, <span class="refTitle">"YANG Data Model for Network Access Control Lists (ACLs)"</span>, <span class="seriesInfo">RFC 8519</span>, <span class="seriesInfo">DOI 10.17487/RFC8519</span>, <time datetime="2019-03" class="refDate">March 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8519">https://www.rfc-editor.org/info/rfc8519</a>&gt;</span>. </dd>
+4453c4556
+< <span class="refAuthor">Reddy.K, T., Ed.</span><span class="refAuthor">, Boucadair, M., Ed.</span><span class="refAuthor">, Patil, P.</span><span class="refAuthor">, Mortensen, A.</span><span class="refAuthor">, and N. Teague</span>, <span class="refTitle">"Distributed Denial-of-Service Open Threat Signaling (DOTS) Signal Channel Specification"</span>, <span class="seriesInfo">RFC 8782</span>, <span class="seriesInfo">DOI 10.17487/RFC8782</span>, <time datetime="2020-05">May 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8782">https://www.rfc-editor.org/info/rfc8782</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Reddy.K, T., Ed.</span>, <span class="refAuthor">Boucadair, M., Ed.</span>, <span class="refAuthor">Patil, P.</span>, <span class="refAuthor">Mortensen, A.</span>, and <span class="refAuthor">N. Teague</span>, <span class="refTitle">"Distributed Denial-of-Service Open Threat Signaling (DOTS) Signal Channel Specification"</span>, <span class="seriesInfo">RFC 8782</span>, <span class="seriesInfo">DOI 10.17487/RFC8782</span>, <time datetime="2020-05" class="refDate">May 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8782">https://www.rfc-editor.org/info/rfc8782</a>&gt;</span>. </dd>
+4464c4567
+< <span class="refAuthor">Mortensen, A.</span><span class="refAuthor">, Reddy.K, T.</span><span class="refAuthor">, Andreasen, F.</span><span class="refAuthor">, Teague, N.</span><span class="refAuthor">, and R. Compton</span>, <span class="refTitle">"Distributed-Denial-of-Service Open Threat Signaling (DOTS) Architecture"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-dots-architecture-18</span>, <time datetime="2020-03-06">6 March 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-dots-architecture-18">https://tools.ietf.org/html/draft-ietf-dots-architecture-18</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mortensen, A.</span>, <span class="refAuthor">Reddy.K, T.</span>, <span class="refAuthor">Andreasen, F.</span>, <span class="refAuthor">Teague, N.</span>, and <span class="refAuthor">R. Compton</span>, <span class="refTitle">"Distributed-Denial-of-Service Open Threat Signaling (DOTS) Architecture"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-dots-architecture-18</span>, <time datetime="2020-03-06" class="refDate">6 March 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-dots-architecture-18">https://tools.ietf.org/html/draft-ietf-dots-architecture-18</a>&gt;</span>. </dd>
+4468c4571
+< <span class="refAuthor">Boucadair, M.</span><span class="refAuthor"> and T. Reddy.K</span>, <span class="refTitle">"Distributed-Denial-of-Service Open Threat Signaling (DOTS) Agent Discovery"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-dots-server-discovery-10</span>, <time datetime="2020-02-07">7 February 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-dots-server-discovery-10">https://tools.ietf.org/html/draft-ietf-dots-server-discovery-10</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Boucadair, M.</span> and <span class="refAuthor">T. Reddy.K</span>, <span class="refTitle">"Distributed-Denial-of-Service Open Threat Signaling (DOTS) Agent Discovery"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-dots-server-discovery-10</span>, <time datetime="2020-02-07" class="refDate">7 February 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-dots-server-discovery-10">https://tools.ietf.org/html/draft-ietf-dots-server-discovery-10</a>&gt;</span>. </dd>
+4472c4575
+< <span class="refAuthor">IANA</span>, <span class="refTitle">"Protocol Numbers"</span>, <time></time>, <span>&lt;<a href="http://www.iana.org/assignments/protocol-numbers">http://www.iana.org/assignments/protocol-numbers</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">IANA</span>, <span class="refTitle">"Protocol Numbers"</span>, <span>&lt;<a href="http://www.iana.org/assignments/protocol-numbers">http://www.iana.org/assignments/protocol-numbers</a>&gt;</span>. </dd>
+4476c4579
+< <span class="refAuthor">Watsen, K.</span>, <span class="refTitle">"RESTCONF Client and Server Models"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netconf-restconf-client-server-19</span>, <time datetime="2020-05-20">20 May 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-netconf-restconf-client-server-19">https://tools.ietf.org/html/draft-ietf-netconf-restconf-client-server-19</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Watsen, K.</span>, <span class="refTitle">"RESTCONF Client and Server Models"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netconf-restconf-client-server-19</span>, <time datetime="2020-05-20" class="refDate">20 May 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-netconf-restconf-client-server-19">https://tools.ietf.org/html/draft-ietf-netconf-restconf-client-server-19</a>&gt;</span>. </dd>
+4480c4583
+< <span class="refAuthor">Braden, R., Ed.</span>, <span class="refTitle">"Requirements for Internet Hosts - Communication Layers"</span>, <span class="seriesInfo">STD 3</span>, <span class="seriesInfo">RFC 1122</span>, <span class="seriesInfo">DOI 10.17487/RFC1122</span>, <time datetime="1989-10">October 1989</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1122">https://www.rfc-editor.org/info/rfc1122</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Braden, R., Ed.</span>, <span class="refTitle">"Requirements for Internet Hosts - Communication Layers"</span>, <span class="seriesInfo">STD 3</span>, <span class="seriesInfo">RFC 1122</span>, <span class="seriesInfo">DOI 10.17487/RFC1122</span>, <time datetime="1989-10" class="refDate">October 1989</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1122">https://www.rfc-editor.org/info/rfc1122</a>&gt;</span>. </dd>
+4484c4587
+< <span class="refAuthor">Berners-Lee, T.</span><span class="refAuthor">, Fielding, R.</span><span class="refAuthor">, and L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3986">https://www.rfc-editor.org/info/rfc3986</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Berners-Lee, T.</span>, <span class="refAuthor">Fielding, R.</span>, and <span class="refAuthor">L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3986">https://www.rfc-editor.org/info/rfc3986</a>&gt;</span>. </dd>
+4488c4591
+< <span class="refAuthor">Arends, R.</span><span class="refAuthor">, Austein, R.</span><span class="refAuthor">, Larson, M.</span><span class="refAuthor">, Massey, D.</span><span class="refAuthor">, and S. Rose</span>, <span class="refTitle">"Resource Records for the DNS Security Extensions"</span>, <span class="seriesInfo">RFC 4034</span>, <span class="seriesInfo">DOI 10.17487/RFC4034</span>, <time datetime="2005-03">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4034">https://www.rfc-editor.org/info/rfc4034</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Arends, R.</span>, <span class="refAuthor">Austein, R.</span>, <span class="refAuthor">Larson, M.</span>, <span class="refAuthor">Massey, D.</span>, and <span class="refAuthor">S. Rose</span>, <span class="refTitle">"Resource Records for the DNS Security Extensions"</span>, <span class="seriesInfo">RFC 4034</span>, <span class="seriesInfo">DOI 10.17487/RFC4034</span>, <time datetime="2005-03" class="refDate">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4034">https://www.rfc-editor.org/info/rfc4034</a>&gt;</span>. </dd>
+4492c4595
+< <span class="refAuthor">Kohler, E.</span><span class="refAuthor">, Handley, M.</span><span class="refAuthor">, and S. Floyd</span>, <span class="refTitle">"Datagram Congestion Control Protocol (DCCP)"</span>, <span class="seriesInfo">RFC 4340</span>, <span class="seriesInfo">DOI 10.17487/RFC4340</span>, <time datetime="2006-03">March 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4340">https://www.rfc-editor.org/info/rfc4340</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Kohler, E.</span>, <span class="refAuthor">Handley, M.</span>, and <span class="refAuthor">S. Floyd</span>, <span class="refTitle">"Datagram Congestion Control Protocol (DCCP)"</span>, <span class="seriesInfo">RFC 4340</span>, <span class="seriesInfo">DOI 10.17487/RFC4340</span>, <time datetime="2006-03" class="refDate">March 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4340">https://www.rfc-editor.org/info/rfc4340</a>&gt;</span>. </dd>
+4496c4599
+< <span class="refAuthor">Stewart, R., Ed.</span>, <span class="refTitle">"Stream Control Transmission Protocol"</span>, <span class="seriesInfo">RFC 4960</span>, <span class="seriesInfo">DOI 10.17487/RFC4960</span>, <time datetime="2007-09">September 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4960">https://www.rfc-editor.org/info/rfc4960</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Stewart, R., Ed.</span>, <span class="refTitle">"Stream Control Transmission Protocol"</span>, <span class="seriesInfo">RFC 4960</span>, <span class="seriesInfo">DOI 10.17487/RFC4960</span>, <time datetime="2007-09" class="refDate">September 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4960">https://www.rfc-editor.org/info/rfc4960</a>&gt;</span>. </dd>
+4500c4603
+< <span class="refAuthor">Marques, P.</span><span class="refAuthor">, Sheth, N.</span><span class="refAuthor">, Raszuk, R.</span><span class="refAuthor">, Greene, B.</span><span class="refAuthor">, Mauch, J.</span><span class="refAuthor">, and D. McPherson</span>, <span class="refTitle">"Dissemination of Flow Specification Rules"</span>, <span class="seriesInfo">RFC 5575</span>, <span class="seriesInfo">DOI 10.17487/RFC5575</span>, <time datetime="2009-08">August 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5575">https://www.rfc-editor.org/info/rfc5575</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Marques, P.</span>, <span class="refAuthor">Sheth, N.</span>, <span class="refAuthor">Raszuk, R.</span>, <span class="refAuthor">Greene, B.</span>, <span class="refAuthor">Mauch, J.</span>, and <span class="refAuthor">D. McPherson</span>, <span class="refTitle">"Dissemination of Flow Specification Rules"</span>, <span class="seriesInfo">RFC 5575</span>, <span class="seriesInfo">DOI 10.17487/RFC5575</span>, <time datetime="2009-08" class="refDate">August 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5575">https://www.rfc-editor.org/info/rfc5575</a>&gt;</span>. </dd>
+4504c4607
+< <span class="refAuthor">Touch, J.</span><span class="refAuthor">, Mankin, A.</span><span class="refAuthor">, and R. Bonica</span>, <span class="refTitle">"The TCP Authentication Option"</span>, <span class="seriesInfo">RFC 5925</span>, <span class="seriesInfo">DOI 10.17487/RFC5925</span>, <time datetime="2010-06">June 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5925">https://www.rfc-editor.org/info/rfc5925</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Touch, J.</span>, <span class="refAuthor">Mankin, A.</span>, and <span class="refAuthor">R. Bonica</span>, <span class="refTitle">"The TCP Authentication Option"</span>, <span class="seriesInfo">RFC 5925</span>, <span class="seriesInfo">DOI 10.17487/RFC5925</span>, <time datetime="2010-06" class="refDate">June 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5925">https://www.rfc-editor.org/info/rfc5925</a>&gt;</span>. </dd>
+4508c4611
+< <span class="refAuthor">Seggelmann, R.</span><span class="refAuthor">, Tuexen, M.</span><span class="refAuthor">, and M. Williams</span>, <span class="refTitle">"Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS) Heartbeat Extension"</span>, <span class="seriesInfo">RFC 6520</span>, <span class="seriesInfo">DOI 10.17487/RFC6520</span>, <time datetime="2012-02">February 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6520">https://www.rfc-editor.org/info/rfc6520</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Seggelmann, R.</span>, <span class="refAuthor">Tuexen, M.</span>, and <span class="refAuthor">M. Williams</span>, <span class="refTitle">"Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS) Heartbeat Extension"</span>, <span class="seriesInfo">RFC 6520</span>, <span class="seriesInfo">DOI 10.17487/RFC6520</span>, <time datetime="2012-02" class="refDate">February 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6520">https://www.rfc-editor.org/info/rfc6520</a>&gt;</span>. </dd>
+4512c4615
+< <span class="refAuthor">Hu, Z.</span><span class="refAuthor">, Zhu, L.</span><span class="refAuthor">, Heidemann, J.</span><span class="refAuthor">, Mankin, A.</span><span class="refAuthor">, Wessels, D.</span><span class="refAuthor">, and P. Hoffman</span>, <span class="refTitle">"Specification for DNS over Transport Layer Security (TLS)"</span>, <span class="seriesInfo">RFC 7858</span>, <span class="seriesInfo">DOI 10.17487/RFC7858</span>, <time datetime="2016-05">May 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7858">https://www.rfc-editor.org/info/rfc7858</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hu, Z.</span>, <span class="refAuthor">Zhu, L.</span>, <span class="refAuthor">Heidemann, J.</span>, <span class="refAuthor">Mankin, A.</span>, <span class="refAuthor">Wessels, D.</span>, and <span class="refAuthor">P. Hoffman</span>, <span class="refTitle">"Specification for DNS over Transport Layer Security (TLS)"</span>, <span class="seriesInfo">RFC 7858</span>, <span class="seriesInfo">DOI 10.17487/RFC7858</span>, <time datetime="2016-05" class="refDate">May 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7858">https://www.rfc-editor.org/info/rfc7858</a>&gt;</span>. </dd>
+4516c4619
+< <span class="refAuthor">Bjorklund, M.</span><span class="refAuthor"> and L. Berger, Ed.</span>, <span class="refTitle">"YANG Tree Diagrams"</span>, <span class="seriesInfo">BCP 215</span>, <span class="seriesInfo">RFC 8340</span>, <span class="seriesInfo">DOI 10.17487/RFC8340</span>, <time datetime="2018-03">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8340">https://www.rfc-editor.org/info/rfc8340</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bjorklund, M.</span> and <span class="refAuthor">L. Berger, Ed.</span>, <span class="refTitle">"YANG Tree Diagrams"</span>, <span class="seriesInfo">BCP 215</span>, <span class="seriesInfo">RFC 8340</span>, <span class="seriesInfo">DOI 10.17487/RFC8340</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8340">https://www.rfc-editor.org/info/rfc8340</a>&gt;</span>. </dd>
+4520c4623
+< <span class="refAuthor">Hoffman, P.</span><span class="refAuthor"> and P. McManus</span>, <span class="refTitle">"DNS Queries over HTTPS (DoH)"</span>, <span class="seriesInfo">RFC 8484</span>, <span class="seriesInfo">DOI 10.17487/RFC8484</span>, <time datetime="2018-10">October 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8484">https://www.rfc-editor.org/info/rfc8484</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hoffman, P.</span> and <span class="refAuthor">P. McManus</span>, <span class="refTitle">"DNS Queries over HTTPS (DoH)"</span>, <span class="seriesInfo">RFC 8484</span>, <span class="seriesInfo">DOI 10.17487/RFC8484</span>, <time datetime="2018-10" class="refDate">October 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8484">https://www.rfc-editor.org/info/rfc8484</a>&gt;</span>. </dd>
+4524c4627
+< <span class="refAuthor">Hoffman, P.</span><span class="refAuthor">, Sullivan, A.</span><span class="refAuthor">, and K. Fujiwara</span>, <span class="refTitle">"DNS Terminology"</span>, <span class="seriesInfo">BCP 219</span>, <span class="seriesInfo">RFC 8499</span>, <span class="seriesInfo">DOI 10.17487/RFC8499</span>, <time datetime="2019-01">January 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8499">https://www.rfc-editor.org/info/rfc8499</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hoffman, P.</span>, <span class="refAuthor">Sullivan, A.</span>, and <span class="refAuthor">K. Fujiwara</span>, <span class="refTitle">"DNS Terminology"</span>, <span class="seriesInfo">BCP 219</span>, <span class="seriesInfo">RFC 8499</span>, <span class="seriesInfo">DOI 10.17487/RFC8499</span>, <time datetime="2019-01" class="refDate">January 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8499">https://www.rfc-editor.org/info/rfc8499</a>&gt;</span>. </dd>
+4528c4631
+< <span class="refAuthor">Mortensen, A.</span><span class="refAuthor">, Reddy, T.</span><span class="refAuthor">, and R. Moskowitz</span>, <span class="refTitle">"DDoS Open Threat Signaling (DOTS) Requirements"</span>, <span class="seriesInfo">RFC 8612</span>, <span class="seriesInfo">DOI 10.17487/RFC8612</span>, <time datetime="2019-05">May 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8612">https://www.rfc-editor.org/info/rfc8612</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mortensen, A.</span>, <span class="refAuthor">Reddy, T.</span>, and <span class="refAuthor">R. Moskowitz</span>, <span class="refTitle">"DDoS Open Threat Signaling (DOTS) Requirements"</span>, <span class="seriesInfo">RFC 8612</span>, <span class="seriesInfo">DOI 10.17487/RFC8612</span>, <time datetime="2019-05" class="refDate">May 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8612">https://www.rfc-editor.org/info/rfc8612</a>&gt;</span>. </dd>
+4534c4637
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+4536c4639
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-examples-filtering-fragment" class="section-name selfRef">Examples: Filtering Fragments</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-examples-filtering-fragment" class="section-name selfRef">Examples: Filtering Fragments</a>
+4538,4540c4641,4643
+< <p id="section-appendix.a-1">This specification strongly recommends the use of 'fragment' for
+<       handling fragments.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2"><a href="#fragdnsv4" class="xref">Figure 34</a> shows the content of the POST
+---
+> <p id="appendix-A-1">This specification strongly recommends the use of 'fragment' for
+>       handling fragments.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2"><a href="#fragdnsv4" class="auto internal xref">Figure 34</a> shows the content of the POST
+4544,4546c4647,4649
+<       order):<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-appendix.a-3.1">"drop-all-fragments" ACE: discards all fragments.<a href="#section-appendix.a-3.1" class="pilcrow">¶</a>
+---
+>       order):<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="appendix-A-3.1">"drop-all-fragments" ACE: discards all fragments.<a href="#appendix-A-3.1" class="pilcrow">¶</a>
+4548,4549c4651,4652
+< <li id="section-appendix.a-3.2">"allow-dns-packets" ACE: accepts DNS packets destined to
+<           198.51.100.0/24.<a href="#section-appendix.a-3.2" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="appendix-A-3.2">"allow-dns-packets" ACE: accepts DNS packets destined to
+>           198.51.100.0/24.<a href="#appendix-A-3.2" class="pilcrow">¶</a>
+4554,4555c4657,4658
+<         <div id="section-appendix.a-4.1">
+< <pre class="sourcecode">
+---
+>         <div class="breakable sourcecode" id="appendix-A-4.1">
+> <pre>
+4612c4715
+< <p id="section-appendix.a-5"><a href="#fragdnsv6" class="xref">Figure 35</a> shows an example of a POST request issued
+---
+> <p id="appendix-A-5"><a href="#fragdnsv6" class="auto internal xref">Figure 35</a> shows an example of a POST request issued
+4615,4617c4718,4720
+<       packets. The following ACEs are defined (in this order):<a href="#section-appendix.a-5" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-appendix.a-6.1">"drop-all-fragments" ACE: discards all fragments (including
+---
+>       packets. The following ACEs are defined (in this order):<a href="#appendix-A-5" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="appendix-A-6.1">"drop-all-fragments" ACE: discards all fragments (including
+4619c4722
+<           header (44) are dropped.<a href="#section-appendix.a-6.1" class="pilcrow">¶</a>
+---
+>           header (44) are dropped.<a href="#appendix-A-6.1" class="pilcrow">¶</a>
+4621,4622c4724,4725
+< <li id="section-appendix.a-6.2">"allow-dns-packets" ACE: accepts DNS packets destined to
+<           2001:db8::/32.<a href="#section-appendix.a-6.2" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="appendix-A-6.2">"allow-dns-packets" ACE: accepts DNS packets destined to
+>           2001:db8::/32.<a href="#appendix-A-6.2" class="pilcrow">¶</a>
+4627,4628c4730,4731
+<         <div id="section-appendix.a-7.1">
+< <pre class="sourcecode">
+---
+>         <div class="breakable sourcecode" id="appendix-A-7.1">
+> <pre>
+4689c4792
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+4691c4794
+< <a href="#section-appendix.b" class="section-number selfRef">Appendix B. </a><a href="#name-examples-filtering-tcp-mess" class="section-name selfRef">Examples: Filtering TCP Messages</a>
+---
+> <a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-examples-filtering-tcp-mess" class="section-name selfRef">Examples: Filtering TCP Messages</a>
+4693c4796
+< <p id="section-appendix.b-1">This section provides examples to illustrate TCP-specific
+---
+> <p id="appendix-B-1">This section provides examples to illustrate TCP-specific
+4696,4701c4799,4804
+<       attacks.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+< <section id="section-b.1">
+<         <h2 id="name-discard-tcp-null-attack">
+< <a href="#section-b.1" class="section-number selfRef">B.1. </a><a href="#name-discard-tcp-null-attack" class="section-name selfRef">Discard TCP Null Attack</a>
+<         </h2>
+< <p id="section-b.1-1"><a href="#ex3" class="xref">Figure 36</a> shows an example of a DOTS request sent
+---
+>       attacks.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+> <section id="appendix-B.1">
+>         <h3 id="name-discard-tcp-null-attack">
+> <a href="#appendix-B.1" class="section-number selfRef">B.1. </a><a href="#name-discard-tcp-null-attack" class="section-name selfRef">Discard TCP Null Attack</a>
+>         </h3>
+> <p id="appendix-B.1-1"><a href="#ex3" class="auto internal xref">Figure 36</a> shows an example of a DOTS request sent
+4704c4807
+<         check against the (CWR, ECE, URG, ACK, PSH, RST, SYN, FIN) flags.<a href="#section-b.1-1" class="pilcrow">¶</a></p>
+---
+>         check against the (CWR, ECE, URG, ACK, PSH, RST, SYN, FIN) flags.<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
+4707,4708c4810,4811
+<           <div id="section-b.1-2.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="appendix-B.1-2.1">
+> <pre>
+4746,4751c4849,4854
+< <section id="section-b.2">
+<         <h2 id="name-rate-limit-syn-flooding">
+< <a href="#section-b.2" class="section-number selfRef">B.2. </a><a href="#name-rate-limit-syn-flooding" class="section-name selfRef">Rate-Limit SYN Flooding</a>
+<         </h2>
+< <p id="section-b.2-1"><a href="#syn-rate" class="xref">Figure 37</a> shows an ACL example to rate-limit
+<         incoming SYNs during a SYN flood attack.<a href="#section-b.2-1" class="pilcrow">¶</a></p>
+---
+> <section id="appendix-B.2">
+>         <h3 id="name-rate-limit-syn-flooding">
+> <a href="#appendix-B.2" class="section-number selfRef">B.2. </a><a href="#name-rate-limit-syn-flooding" class="section-name selfRef">Rate-Limit SYN Flooding</a>
+>         </h3>
+> <p id="appendix-B.2-1"><a href="#syn-rate" class="auto internal xref">Figure 37</a> shows an ACL example to rate-limit
+>         incoming SYNs during a SYN flood attack.<a href="#appendix-B.2-1" class="pilcrow">¶</a></p>
+4754,4755c4857,4858
+<           <div id="section-b.2-2.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="appendix-B.2-2.1">
+> <pre>
+4794,4799c4897,4902
+< <section id="section-b.3">
+<         <h2 id="name-rate-limit-ack-flooding">
+< <a href="#section-b.3" class="section-number selfRef">B.3. </a><a href="#name-rate-limit-ack-flooding" class="section-name selfRef">Rate-Limit ACK Flooding</a>
+<         </h2>
+< <p id="section-b.3-1"><a href="#ex1" class="xref">Figure 38</a> shows an ACL example to rate-limit
+<         incoming ACKs during an ACK flood attack.<a href="#section-b.3-1" class="pilcrow">¶</a></p>
+---
+> <section id="appendix-B.3">
+>         <h3 id="name-rate-limit-ack-flooding">
+> <a href="#appendix-B.3" class="section-number selfRef">B.3. </a><a href="#name-rate-limit-ack-flooding" class="section-name selfRef">Rate-Limit ACK Flooding</a>
+>         </h3>
+> <p id="appendix-B.3-1"><a href="#ex1" class="auto internal xref">Figure 38</a> shows an ACL example to rate-limit
+>         incoming ACKs during an ACK flood attack.<a href="#appendix-B.3-1" class="pilcrow">¶</a></p>
+4802,4803c4905,4906
+<           <div id="section-b.3-2.1">
+< <pre class="sourcecode">
+---
+>           <div class="sourcecode" id="appendix-B.3-2.1">
+> <pre>
+4846c4949
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
+4850c4953
+< <p id="section-appendix.c-1">Thanks to <span class="contact-name">Christian Jacquenet</span>, 
+---
+> <p id="appendix-C-1">Thanks to <span class="contact-name">Christian Jacquenet</span>, 
+4855,4856c4958,4959
+<       <span class="contact-name">Brian Trammel</span> for the discussion and comments.<a href="#section-appendix.c-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.c-2">The authors would like to give special thanks to <span class="contact-name">Kaname Nishizuka</span> and
+---
+>       <span class="contact-name">Brian Trammel</span> for the discussion and comments.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+> <p id="appendix-C-2">The authors would like to give special thanks to <span class="contact-name">Kaname Nishizuka</span> and
+4858,4861c4961,4964
+<       performing interop testing at IETF Hackathons.<a href="#section-appendix.c-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.c-3">Many thanks to <span class="contact-name">Benjamin Kaduk</span> for the detailed AD review.<a href="#section-appendix.c-3" class="pilcrow">¶</a></p>
+< <p id="section-appendix.c-4">Thanks to <span class="contact-name">Martin Björklund</span> for the guidance on RESTCONF.<a href="#section-appendix.c-4" class="pilcrow">¶</a></p>
+< <p id="section-appendix.c-5">Thanks to <span class="contact-name">Alexey Melnikov</span>, <span class="contact-name">Adam Roach</span>, 
+---
+>       performing interop testing at IETF Hackathons.<a href="#appendix-C-2" class="pilcrow">¶</a></p>
+> <p id="appendix-C-3">Many thanks to <span class="contact-name">Benjamin Kaduk</span> for the detailed AD review.<a href="#appendix-C-3" class="pilcrow">¶</a></p>
+> <p id="appendix-C-4">Thanks to <span class="contact-name">Martin Björklund</span> for the guidance on RESTCONF.<a href="#appendix-C-4" class="pilcrow">¶</a></p>
+> <p id="appendix-C-5">Thanks to <span class="contact-name">Alexey Melnikov</span>, <span class="contact-name">Adam Roach</span>, 
+4863c4966
+<        <span class="contact-name">Warren Kumari</span> for the review.<a href="#section-appendix.c-5" class="pilcrow">¶</a></p>
+---
+>        <span class="contact-name">Warren Kumari</span> for the review.<a href="#appendix-C-5" class="pilcrow">¶</a></p>
+4866c4969
+< <section id="section-appendix.d">
+---
+> <section id="appendix-D">
+4870,4871c4973,4974
+< <p id="section-appendix.d-1">The following people contributed substantially to the content of this
+<    document and should be considered coauthors:<a href="#section-appendix.d-1" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-D-1">The following people contributed substantially to the content of this
+>    document and should be considered coauthors:<a href="#appendix-D-1" class="pilcrow">¶</a></p>
+4929,4930c5032,5033
+< <p id="section-appendix.d-2">The following individuals have contributed to this
+<       document:<a href="#section-appendix.d-2" class="pilcrow">¶</a></p>
+---
+> <p id="appendix-D-2">The following individuals have contributed to this
+>       document:<a href="#appendix-D-2" class="pilcrow">¶</a></p>
+4948c5051
+< <section id="section-appendix.e">
+---
+> <section id="appendix-E">
