@@ -1,0 +1,1043 @@
+25c25
+< <meta content="xml2rfc 2.38.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.0" name="generator">
+32c32,48
+< <link href="rfc8680.xml" type="application/rfc+xml" rel="alternate">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.0
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 5.0.1
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.13
+> -->
+> <link href="rfc/rfc8680.xml" rel="alternate" type="application/rfc+xml">
+42c58
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+51a68,73
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+54d75
+<   width: extend-to-zoom;
+69c90
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+71a93
+>   overflow-wrap: break-word;
+157a180,188
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+172,175d202
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+176a204
+>   border: none;
+199a228,230
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+251c282
+< tt, code, pre, code {
+---
+> tt, code, pre {
+253c284
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+292a324,326
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+382a417,422
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+484c524
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+624d663
+< 
+646a686,688
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+714c756
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+814c856
+< tt, code, pre, code {
+---
+> tt, code, pre {
+819c861
+< pre.sourcecode,
+---
+> .sourcecode pre,
+855c897
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+933,938d974
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1009c1045
+<   margin: 0 0 0.25em 0;
+---
+>   margin-bottom: 0.25em;
+1042a1079
+>   .artwork > pre,
+1047,1054d1083
+< /*
+<   The margin-left: 0 on <dd> removes all distinction
+<   between levels from nested <dl>s.  Undo that.
+< */
+< dl.olPercent > dd,
+< dd {
+<   margin-left: revert;
+< }
+1058,1059c1087,1216
+< }</style>
+< <link href="rfc-local.css" type="text/css" rel="stylesheet">
+---
+> }
+> /* ol type a */
+> ol.type-a { list-style-type: lower-alpha; }
+> ol.type-A { list-style-type: upper-alpha; }
+> ol.type-i { list-style-type: lower-roman; }
+> ol.type-I { list-style-type: lower-roman; }
+> /* Apply the print table and row borders in general, on request from the RPC,
+> and increase the contrast between border and odd row background slightly */
+> table {
+>   border: 1px solid #ddd;
+> }
+> td {
+>   border-top: 1px solid #ddd;
+> }
+> tr {
+>   break-inside: avoid;
+> }
+> tr:nth-child(2n+1) > td {
+>   background-color: #f8f8f8;
+> }
+> /* Use style rules to govern display of the TOC. */
+> @media screen and (max-width: 1023px) {
+>   #toc nav { display: none; }
+>   #toc.active nav { display: block; }
+> }
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+> <link href="rfc-local.css" rel="stylesheet" type="text/css">
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-tsvwg-fecframe-ext-08" rel="prev">
+1062c1219
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-tsvwg-fecframe-ext-08" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1064,1065c1221,1222
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1171,1179c1328,1336
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< </li>
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.1">
+<                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-definitions-and-abbreviatio" class="xref">Definitions and Abbreviations</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+>                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-definitions-and-abbreviatio" class="internal xref">Definitions and Abbreviations</a></p>
+1181,1182c1338,1339
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.2">
+<                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+>                 <p id="section-toc.1-1.2.2.2.1" class="keepWithNext"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+1186,1187c1343,1344
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-summary-of-architecture-ove" class="xref">Summary of Architecture Overview</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-summary-of-architecture-ove" class="internal xref">Summary of Architecture Overview</a></p>
+1189,1193c1346,1350
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-procedural-overview" class="xref">Procedural Overview</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-general" class="xref">General</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-procedural-overview" class="internal xref">Procedural Overview</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1" class="keepWithNext"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-general" class="internal xref">General</a></p>
+1195,1196c1352,1353
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-sender-operation-with-slidi" class="xref">Sender Operation with Sliding Window FEC Codes</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1" class="keepWithNext"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-sender-operation-with-slidi" class="internal xref">Sender Operation with Sliding Window FEC Codes</a></p>
+1198,1199c1355,1356
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-receiver-operation-with-sli" class="xref">Receiver Operation with Sliding Window FEC Codes</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1" class="keepWithNext"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-receiver-operation-with-sli" class="internal xref">Receiver Operation with Sliding Window FEC Codes</a></p>
+1203,1207c1360,1364
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-protocol-specification" class="xref">Protocol Specification</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-general-2" class="xref">General</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-protocol-specification" class="internal xref">Protocol Specification</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1" class="keepWithNext"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-general-2" class="internal xref">General</a></p>
+1209,1210c1366,1367
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-fec-framework-configuration" class="xref">FEC Framework Configuration Information</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1" class="keepWithNext"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-fec-framework-configuration" class="internal xref">FEC Framework Configuration Information</a></p>
+1212,1213c1369,1370
+< <li class="toc ulEmpty" id="section-toc.1-1.5.2.3">
+<                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-fec-scheme-requirements" class="xref">FEC Scheme Requirements</a><a href="#section-toc.1-1.5.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
+>                 <p id="section-toc.1-1.5.2.3.1" class="keepWithNext"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-fec-scheme-requirements" class="internal xref">FEC Scheme Requirements</a></p>
+1217,1218c1374,1375
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-feedback" class="xref">Feedback</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-feedback" class="internal xref">Feedback</a></p>
+1220,1221c1377,1378
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-transport-protocols" class="xref">Transport Protocols</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-transport-protocols" class="internal xref">Transport Protocols</a></p>
+1223,1224c1380,1381
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-congestion-control" class="xref">Congestion Control</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-congestion-control" class="internal xref">Congestion Control</a></p>
+1226,1227c1383,1384
+< <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1" class="keepWithNext"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1229,1230c1386,1387
+< <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-operations-and-management-c" class="xref">Operations and Management Considerations</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1" class="keepWithNext"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-operations-and-management-c" class="internal xref">Operations and Management Considerations</a></p>
+1232,1233c1389,1390
+< <li class="toc ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1" class="keepWithNext"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1235,1239c1392,1396
+< <li class="toc ulEmpty" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-12" class="xref">12</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.12.2.1">
+<                 <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="xref">12.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.12.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1" class="keepWithNext"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1">
+>                 <p id="section-toc.1-1.12.2.1.1" class="keepWithNext"><a href="#section-12.1" class="auto internal xref">12.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1241,1242c1398,1399
+< <li class="toc ulEmpty" id="section-toc.1-1.12.2.2">
+<                 <p id="section-toc.1-1.12.2.2.1"><a href="#section-12.2" class="xref">12.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.12.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.2">
+>                 <p id="section-toc.1-1.12.2.2.1" class="keepWithNext"><a href="#section-12.2" class="auto internal xref">12.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1246,1247c1403,1404
+< <li class="toc ulEmpty" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-about-sliding-encoding-wind" class="xref">About Sliding Encoding Window Management (Informational)</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-about-sliding-encoding-wind" class="internal xref">About Sliding Encoding Window Management (Informational)</a></p>
+1249,1250c1406,1407
+< <li class="toc ulEmpty" id="section-toc.1-1.14">
+<             <p id="section-toc.1-1.14.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.14.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+>             <p id="section-toc.1-1.14.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1252,1253c1409,1410
+< <li class="toc ulEmpty" id="section-toc.1-1.15">
+<             <p id="section-toc.1-1.15.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.15.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
+>             <p id="section-toc.1-1.15.1" class="keepWithNext"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1280c1437
+< The FEC Building Block defined in <span>[<a href="#RFC5052" class="xref">RFC5052</a>]</span> provides a
+---
+> The FEC Building Block defined in <span>[<a href="#RFC5052" class="cite xref">RFC5052</a>]</span> provides a
+1287c1444
+< Then, FECFRAME <span>[<a href="#RFC6363" class="xref">RFC6363</a>]</span> provides a framework to define
+---
+> Then, FECFRAME <span>[<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> provides a framework to define
+1293c1450
+< (eMBMS) standard <span>[<a href="#MBMSTS" class="xref">MBMSTS</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
+---
+> (eMBMS) standard <span>[<a href="#MBMSTS" class="cite xref">MBMSTS</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
+1295,1297c1452,1454
+< However, <span>[<a href="#RFC6363" class="xref">RFC6363</a>]</span> only considers block FEC schemes defined in
+< accordance with the FEC Building Block <span>[<a href="#RFC5052" class="xref">RFC5052</a>]</span>
+< (e.g., <span>[<a href="#RFC6681" class="xref">RFC6681</a>]</span>, <span>[<a href="#RFC6816" class="xref">RFC6816</a>]</span>, or <span>[<a href="#RFC6865" class="xref">RFC6865</a>]</span>).
+---
+> However, <span>[<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> only considers block FEC schemes defined in
+> accordance with the FEC Building Block <span>[<a href="#RFC5052" class="cite xref">RFC5052</a>]</span>
+> (e.g., <span>[<a href="#RFC6681" class="cite xref">RFC6681</a>]</span>, <span>[<a href="#RFC6816" class="cite xref">RFC6816</a>]</span>, or <span>[<a href="#RFC6865" class="cite xref">RFC6865</a>]</span>).
+1318,1319c1475,1476
+< This document updates <span>[<a href="#RFC6363" class="xref">RFC6363</a>]</span> in order to also support FEC codes
+< based on a sliding encoding window (a.k.a., convolutional codes) <span>[<a href="#RFC8406" class="xref">RFC8406</a>]</span>.
+---
+> This document updates <span>[<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> in order to also support FEC codes
+> based on a sliding encoding window (a.k.a., convolutional codes) <span>[<a href="#RFC8406" class="cite xref">RFC8406</a>]</span>.
+1329c1486
+< <span>[<a href="#RFC8681" class="xref">RFC8681</a>]</span> provides an  example of such a FEC scheme for FECFRAME,
+---
+> <span>[<a href="#RFC8681" class="cite xref">RFC8681</a>]</span> provides an  example of such a FEC scheme for FECFRAME,
+1332,1334c1489,1491
+< This document is fully backward compatible with <span>[<a href="#RFC6363" class="xref">RFC6363</a>]</span>. Indeed:<a href="#section-1-6" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-1-7.1"> This FECFRAME update does not prevent or compromise in any way the support
+---
+> This document is fully backward compatible with <span>[<a href="#RFC6363" class="cite xref">RFC6363</a>]</span>. Indeed:<a href="#section-1-6" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="section-1-7.1"> This FECFRAME update does not prevent or compromise in any way the support
+1338c1495
+< <li id="section-1-7.2"> Each sliding window FEC scheme is associated with a specific FEC Encoding ID subject
+---
+>         <li class="normal" id="section-1-7.2"> Each sliding window FEC scheme is associated with a specific FEC Encoding ID subject
+1341c1498
+< <li id="section-1-7.3"> Any receiver -- for instance, a legacy receiver that only supports
+---
+>         <li class="normal" id="section-1-7.3"> Any receiver -- for instance, a legacy receiver that only supports
+1344c1501
+<  FEC Framework Configuration Information (see <span><a href="https://www.rfc-editor.org/rfc/rfc6363#section-5.5" class="relref">Section 5.5</a> of [<a href="#RFC6363" class="xref">RFC6363</a>]</span>).
+---
+>  FEC Framework Configuration Information (see <span><a href="https://rfc-editor.org/rfc/rfc6363#section-5.5" class="relref">Section 5.5</a> of [<a href="#RFC6363" class="cite xref">RFC6363</a>]</span>).
+1347c1504
+<  in the "encoding-id=" parameter of a "fec-repair-flow" attribute <span>[<a href="#RFC6364" class="xref">RFC6364</a>]</span>.
+---
+>  in the "encoding-id=" parameter of a "fec-repair-flow" attribute <span>[<a href="#RFC6364" class="cite xref">RFC6364</a>]</span>.
+1353c1510
+< This document leverages on <span>[<a href="#RFC6363" class="xref">RFC6363</a>]</span> and reuses its structure.
+---
+> This document leverages on <span>[<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> and reuses its structure.
+1355c1512
+< The only exception is <a href="#ArchitectureOverview" class="xref">Section 3</a>, which provides a quick
+---
+> The only exception is <a href="#ArchitectureOverview" class="auto internal xref">Section 3</a>, which provides a quick
+1369c1526
+< <p id="section-2.1-1">The following list of definitions and abbreviations is copied from <span>[<a href="#RFC6363" class="xref">RFC6363</a>]</span>,
+---
+> <p id="section-2.1-1">The following list of definitions and abbreviations is copied from <span>[<a href="#RFC6363" class="cite xref">RFC6363</a>]</span>,
+1372c1529
+< <dl class="dlNewline" id="section-2.1-2">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-2.1-2">
+1374c1531
+< <dd id="section-2.1-2.2"> The unit of source data provided as
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.2"> The unit of source data provided as
+1377a1535
+>           <dd class="break"></dd>
+1379c1537
+< <dd id="section-2.1-2.4"> A sequence of ADUs associated with a transport-layer flow
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.4"> A sequence of ADUs associated with a transport-layer flow
+1383a1542
+>           <dd class="break"></dd>
+1385c1544
+< <dd id="section-2.1-2.6"> Application-Layer Forward Error Correction.<a href="#section-2.1-2.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.6"> Application-Layer Forward Error Correction.<a href="#section-2.1-2.6" class="pilcrow">¶</a>
+1386a1546
+>           <dd class="break"></dd>
+1388c1548
+< <dd id="section-2.1-2.8"> Control protocol used to establish and control
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.8"> Control protocol used to establish and control
+1391a1552
+>           <dd class="break"></dd>
+1393c1554
+< <dd id="section-2.1-2.10"> A complete application protocol
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.10"> A complete application protocol
+1397a1559
+>           <dd class="break"></dd>
+1399c1561
+< <dd id="section-2.1-2.12"> An algorithm for encoding data such that the encoded data
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.12"> An algorithm for encoding data such that the encoded data
+1403a1566
+>           <dd class="break"></dd>
+1405c1568
+< <dd id="section-2.1-2.14"> A FEC code that operates on blocks, i.e., for
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.14"> A FEC code that operates on blocks, i.e., for
+1409a1573
+>           <dd class="break"></dd>
+1411c1575
+< <dd id="section-2.1-2.16"> A FEC code that can generate repair symbols
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.16"> A FEC code that can generate repair symbols
+1415a1580
+>           <dd class="break"></dd>
+1417c1582
+< <dd id="section-2.1-2.18"> A protocol framework for the definition of Content
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.18"> A protocol framework for the definition of Content
+1420a1586
+>           <dd class="break"></dd>
+1422c1588
+< <dd id="section-2.1-2.20"> Information that controls
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.20"> Information that controls
+1424a1591
+>           <dd class="break"></dd>
+1426c1593
+< <dd id="section-2.1-2.22"> Information that identifies the contents and provides positional information of a packet
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.22"> Information that identifies the contents and provides positional information of a packet
+1428a1596
+>           <dd class="break"></dd>
+1430c1598
+< <dd id="section-2.1-2.24"> At a sender (respectively, at a receiver), a
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.24"> At a sender (respectively, at a receiver), a
+1434a1603
+>           <dd class="break"></dd>
+1436c1605
+< <dd id="section-2.1-2.26"> A specification that defines the additional protocol
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.26"> A specification that defines the additional protocol
+1439a1609
+>           <dd class="break"></dd>
+1441c1611
+< <dd id="section-2.1-2.28"> At a sender (respectively, at a receiver), a
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.28"> At a sender (respectively, at a receiver), a
+1445a1616
+>           <dd class="break"></dd>
+1447c1618
+< <dd id="section-2.1-2.30"> The packet flow carrying FEC data.<a href="#section-2.1-2.30" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.30"> The packet flow carrying FEC data.<a href="#section-2.1-2.30" class="pilcrow">¶</a>
+1448a1620
+>           <dd class="break"></dd>
+1450c1622
+< <dd id="section-2.1-2.32"> A FEC Payload ID specifically for use with
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.32"> A FEC Payload ID specifically for use with
+1452a1625
+>           <dd class="break"></dd>
+1454c1627
+< <dd id="section-2.1-2.34"> The packet flow to which FEC protection is to be
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.34"> The packet flow to which FEC protection is to be
+1456a1630
+>           <dd class="break"></dd>
+1458c1632
+< <dd id="section-2.1-2.36"> A FEC Payload ID specifically for use with
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.36"> A FEC Payload ID specifically for use with
+1460a1635
+>           <dd class="break"></dd>
+1462c1637
+< <dd id="section-2.1-2.38"> A protocol used for the source flow being protected,
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.38"> A protocol used for the source flow being protected,
+1464a1640
+>           <dd class="break"></dd>
+1466c1642
+< <dd id="section-2.1-2.40"> The protocol used for the transport of the source and
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.40"> The protocol used for the transport of the source and
+1468c1644
+<       service, as UDP does (<span>[<a href="#RFC6363" class="xref">RFC6363</a>], <a href="https://www.rfc-editor.org/rfc/rfc6363#section-7" class="relref">Section 7</a></span>).<a href="#section-2.1-2.40" class="pilcrow">¶</a>
+---
+>       service, as UDP does (<span>[<a href="#RFC6363" class="cite xref">RFC6363</a>], <a href="https://rfc-editor.org/rfc/rfc6363#section-7" class="relref">Section 7</a></span>).<a href="#section-2.1-2.40" class="pilcrow">¶</a>
+1469a1646
+>           <dd class="break"></dd>
+1471c1648
+< <dd id="section-2.1-2.42"> Set of source symbols available at the sender/coding node
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.42"> Set of source symbols available at the sender/coding node
+1473a1651
+>           <dd class="break"></dd>
+1475c1653
+< <dd id="section-2.1-2.44"> Set of received or decoded source and repair symbols available
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.44"> Set of received or decoded source and repair symbols available
+1478a1657
+>           <dd class="break"></dd>
+1480c1659
+< <dd id="section-2.1-2.46"> The ratio between the number of source symbols and the
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.46"> The ratio between the number of source symbols and the
+1485a1665
+>           <dd class="break"></dd>
+1487c1667
+< <dd id="section-2.1-2.48"> Unit of data generated by the encoding process. With
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.48"> Unit of data generated by the encoding process. With
+1489a1670
+>           <dd class="break"></dd>
+1491c1672
+< <dd id="section-2.1-2.50"> A communication path where packets are either
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.50"> A communication path where packets are either
+1498a1680
+>           <dd class="break"></dd>
+1500c1682
+< <dd id="section-2.1-2.52"> Encoding symbol that is not a source symbol.<a href="#section-2.1-2.52" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.52"> Encoding symbol that is not a source symbol.<a href="#section-2.1-2.52" class="pilcrow">¶</a>
+1501a1684
+>           <dd class="break"></dd>
+1503c1686
+< <dd id="section-2.1-2.54"> Group of ADUs that are to be FEC protected as a single
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.54"> Group of ADUs that are to be FEC protected as a single
+1506a1690
+>           <dd class="break"></dd>
+1508c1692
+< <dd id="section-2.1-2.56"> Unit of data used during the encoding process.<a href="#section-2.1-2.56" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.56"> Unit of data used during the encoding process.<a href="#section-2.1-2.56" class="pilcrow">¶</a>
+1509a1694
+>           <dd class="break"></dd>
+1511c1696
+< <dd id="section-2.1-2.58"> FEC code in which the source symbols are part of the
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-2.58"> FEC code in which the source symbols are part of the
+1513a1699
+>         <dd class="break"></dd>
+1527c1713
+<     interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when, and only when, they appear in all capitals, as
+---
+>     interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they appear in all capitals, as
+1537c1723
+< The architecture of <span><a href="https://www.rfc-editor.org/rfc/rfc6363#section-3" class="relref">Section 3</a> of [<a href="#RFC6363" class="xref">RFC6363</a>]</span> equally applies to this
+---
+> The architecture of <span><a href="https://rfc-editor.org/rfc/rfc6363#section-3" class="relref">Section 3</a> of [<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> equally applies to this
+1543c1729
+<         <div class="artwork art-text alignLeft" id="section-3-2.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-3-2.1">
+1576c1762
+< The FECFRAME architecture is illustrated in <a href="#fig_archi" class="xref">Figure 1</a> for a block FEC scheme from the sender's
+---
+> The FECFRAME architecture is illustrated in <a href="#fig_archi" class="auto internal xref">Figure 1</a> for a block FEC scheme from the sender's
+1589c1775
+< precisely, <span><a href="https://www.rfc-editor.org/rfc/rfc6363#section-7" class="relref">Section 7</a> of [<a href="#RFC6363" class="xref">RFC6363</a>]</span> requires a
+---
+> precisely, <span><a href="https://rfc-editor.org/rfc/rfc6363#section-7" class="relref">Section 7</a> of [<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> requires a
+1612,1613c1798,1799
+< <ul>
+< <li id="section-3-6.1"> ADUs-to-source-symbols mapping:
+---
+> <ul class="normal">
+> <li class="normal" id="section-3-6.1"> ADUs-to-source-symbols mapping:
+1623c1809
+< <li id="section-3-6.2"> Assignment of decoded ADUs to flows in multi-flow configurations:
+---
+>         <li class="normal" id="section-3-6.2"> Assignment of decoded ADUs to flows in multi-flow configurations:
+1646,1648c1832,1834
+< <ul>
+< <li id="section-3-8.1">
+<           <span><a href="https://www.rfc-editor.org/rfc/rfc6363#section-8" class="relref">Section 8</a> of [<a href="#RFC6363" class="xref">RFC6363</a>]</span> does not detail any congestion control mechanisms and
+---
+> <ul class="normal">
+> <li class="normal" id="section-3-8.1">
+>           <span><a href="https://rfc-editor.org/rfc/rfc6363#section-8" class="relref">Section 8</a> of [<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> does not detail any congestion control mechanisms and
+1651c1837
+< <li id="section-3-8.2"> The possibility of having feedback from receiver(s) is considered
+---
+>         <li class="normal" id="section-3-8.2"> The possibility of having feedback from receiver(s) is considered
+1656c1842
+< <li id="section-3-8.3"> Flow adaptation at a FECFRAME sender (e.g., how to set the FEC
+---
+>         <li class="normal" id="section-3-8.3"> Flow adaptation at a FECFRAME sender (e.g., how to set the FEC
+1674c1860
+< The general considerations of <span><a href="https://www.rfc-editor.org/rfc/rfc6363#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC6363" class="xref">RFC6363</a>]</span> that
+---
+> The general considerations of <span><a href="https://rfc-editor.org/rfc/rfc6363#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> that
+1691,1692c1877,1878
+< The sender operation (<span>[<a href="#RFC6363" class="xref">RFC6363</a>], <a href="https://www.rfc-editor.org/rfc/rfc6363#section-4.2" class="relref">Section 4.2</a></span>)
+< and receiver operation (<span>[<a href="#RFC6363" class="xref">RFC6363</a>], <a href="https://www.rfc-editor.org/rfc/rfc6363#section-4.3" class="relref">Section 4.3</a></span>) are
+---
+> The sender operation (<span>[<a href="#RFC6363" class="cite xref">RFC6363</a>], <a href="https://rfc-editor.org/rfc/rfc6363#section-4.2" class="relref">Section 4.2</a></span>)
+> and receiver operation (<span>[<a href="#RFC6363" class="cite xref">RFC6363</a>], <a href="https://rfc-editor.org/rfc/rfc6363#section-4.3" class="relref">Section 4.3</a></span>) are
+1705c1891
+< <a href="#senderfigure-convolutional" class="xref">Figure 2</a>
+---
+> <a href="#senderfigure-convolutional" class="auto internal xref">Figure 2</a>
+1707c1893
+< <a href="#senderfigurertp-convolutional" class="xref">Figure 3</a>
+---
+> <a href="#senderfigurertp-convolutional" class="auto internal xref">Figure 3</a>
+1709c1895
+< <ol start="1" type="1" class="normal" id="section-4.2-2">
+---
+> <ol start="1" type="1" class="normal type-1" id="section-4.2-2">
+1717c1903
+<     <a href="#codingwindow-possibleManagement" class="xref">Appendix A</a> provides non-normative hints about what
+---
+>     <a href="#codingwindow-possibleManagement" class="auto internal xref">Appendix A</a> provides non-normative hints about what
+1726c1912
+< Figure 6 in <span>[<a href="#RFC6363" class="xref">RFC6363</a>]</span>,
+---
+> Figure 6 in <span>[<a href="#RFC6363" class="cite xref">RFC6363</a>]</span>,
+1746c1932
+<     according to Figure 7 in <span>[<a href="#RFC6363" class="xref">RFC6363</a>]</span>, 
+---
+>     according to Figure 7 in <span>[<a href="#RFC6363" class="cite xref">RFC6363</a>]</span>, 
+1756c1942
+<           <div class="artwork art-text alignLeft" id="section-4.2-3.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-4.2-3.1">
+1791c1977
+<           <div class="artwork art-text alignLeft" id="section-4.2-4.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-4.2-4.1">
+1836c2022
+< <a href="#receiverfigure" class="xref">Figure 4</a> 
+---
+> <a href="#receiverfigure" class="auto internal xref">Figure 4</a> 
+1838c2024
+< <a href="#receiverfigurertp" class="xref">Figure 5</a>
+---
+> <a href="#receiverfigurertp" class="auto internal xref">Figure 5</a>
+1842c2028
+< <span><a href="https://www.rfc-editor.org/rfc/rfc6363#section-4.3" class="relref">Section 4.3</a> of [<a href="#RFC6363" class="xref">RFC6363</a>]</span> ("Receiver Operation").
+---
+> <span><a href="https://rfc-editor.org/rfc/rfc6363#section-4.3" class="relref">Section 4.3</a> of [<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> ("Receiver Operation").
+1844c2030
+< <ol start="4" type="1" class="normal" id="section-4.3-2">
+---
+> <ol start="4" type="1" class="normal type-1" id="section-4.3-2">
+1861c2047
+<           <div class="artwork art-text alignLeft" id="section-4.3-3.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-4.3-3.1">
+1892c2078
+<           <div class="artwork art-text alignLeft" id="section-4.3-4.1">
+---
+>           <div class="alignLeft art-text artwork" id="section-4.3-4.1">
+1944c2130
+< The global formats of source data packets (i.e., <span>[<a href="#RFC6363" class="xref">RFC6363</a>]</span>, Figure 6) and repair data packets (i.e., <span>[<a href="#RFC6363" class="xref">RFC6363</a>]</span>, Figures 7 and 8) remain the same with Sliding Window FEC codes.
+---
+> The global formats of source data packets (i.e., <span>[<a href="#RFC6363" class="cite xref">RFC6363</a>]</span>, Figure 6) and repair data packets (i.e., <span>[<a href="#RFC6363" class="cite xref">RFC6363</a>]</span>, Figures 7 and 8) remain the same with Sliding Window FEC codes.
+1954c2140
+< The FEC Framework Configuration Information considerations of <span><a href="https://www.rfc-editor.org/rfc/rfc6363#section-5.5" class="relref">Section 5.5</a> of [<a href="#RFC6363" class="xref">RFC6363</a>]</span> equally
+---
+> The FEC Framework Configuration Information considerations of <span><a href="https://rfc-editor.org/rfc/rfc6363#section-5.5" class="relref">Section 5.5</a> of [<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> equally
+1964c2150
+< The FEC scheme requirements of <span><a href="https://www.rfc-editor.org/rfc/rfc6363#section-5.6" class="relref">Section 5.6</a> of [<a href="#RFC6363" class="xref">RFC6363</a>]</span> mostly apply to this FECFRAME extension and
+---
+> The FEC scheme requirements of <span><a href="https://rfc-editor.org/rfc/rfc6363#section-5.6" class="relref">Section 5.6</a> of [<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> mostly apply to this FECFRAME extension and
+1969c2155
+< <dl class="dlNewline" id="section-5.3-2">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-5.3-2">
+1986a2173
+>         <dd class="break"></dd>
+1990,1991c2177,2178
+< <ul>
+< <li id="section-5.3-4.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-5.3-4.1">
+1994c2181
+< <li id="section-5.3-4.2">
+---
+>           <li class="normal" id="section-5.3-4.2">
+1996c2183
+<  <a href="#codingwindow-possibleManagement" class="xref">Appendix A</a> provides non-normative hints about what 
+---
+>  <a href="#codingwindow-possibleManagement" class="auto internal xref">Appendix A</a> provides non-normative hints about what 
+1999c2186
+< <li id="section-5.3-4.3">
+---
+>           <li class="normal" id="section-5.3-4.3">
+2012c2199
+< The discussion in <span><a href="https://www.rfc-editor.org/rfc/rfc6363#section-6" class="relref">Section 6</a> of [<a href="#RFC6363" class="xref">RFC6363</a>]</span> equally applies to this FECFRAME extension and is not repeated
+---
+> The discussion in <span><a href="https://rfc-editor.org/rfc/rfc6363#section-6" class="relref">Section 6</a> of [<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> equally applies to this FECFRAME extension and is not repeated
+2021c2208
+< The discussion in <span><a href="https://www.rfc-editor.org/rfc/rfc6363#section-7" class="relref">Section 7</a> of [<a href="#RFC6363" class="xref">RFC6363</a>]</span> equally applies to this
+---
+> The discussion in <span><a href="https://rfc-editor.org/rfc/rfc6363#section-7" class="relref">Section 7</a> of [<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> equally applies to this
+2031c2218
+< The discussion in <span><a href="https://www.rfc-editor.org/rfc/rfc6363#section-8" class="relref">Section 8</a> of [<a href="#RFC6363" class="xref">RFC6363</a>]</span> equally applies to this
+---
+> The discussion in <span><a href="https://rfc-editor.org/rfc/rfc6363#section-8" class="relref">Section 8</a> of [<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> equally applies to this
+2041,2042c2228,2229
+< considerations of <span><a href="https://www.rfc-editor.org/rfc/rfc6363#section-9" class="relref">Section 9</a> of [<a href="#RFC6363" class="xref">RFC6363</a>]</span> apply to this document as well.  However, for the sake of
+< completeness, the following goal can be added to the list provided in <span><a href="https://www.rfc-editor.org/rfc/rfc6363#section-9.1" class="relref">Section 9.1</a> of [<a href="#RFC6363" class="xref">RFC6363</a>]</span> ("Problem
+---
+> considerations of <span><a href="https://rfc-editor.org/rfc/rfc6363#section-9" class="relref">Section 9</a> of [<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> apply to this document as well.  However, for the sake of
+> completeness, the following goal can be added to the list provided in <span><a href="https://rfc-editor.org/rfc/rfc6363#section-9.1" class="relref">Section 9.1</a> of [<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> ("Problem
+2044,2045c2231,2232
+< <ul>
+< <li id="section-9-2.1"> Attacks can try to corrupt source flows in order to modify the receiver application's behavior
+---
+> <ul class="normal">
+> <li class="normal" id="section-9-2.1"> Attacks can try to corrupt source flows in order to modify the receiver application's behavior
+2056c2243
+< All the considerations of <span><a href="https://www.rfc-editor.org/rfc/rfc6363#section-10" class="relref">Section 10</a> of [<a href="#RFC6363" class="xref">RFC6363</a>]</span> apply to this document as well.<a href="#section-10-1" class="pilcrow">¶</a></p>
+---
+> All the considerations of <span><a href="https://rfc-editor.org/rfc/rfc6363#section-10" class="relref">Section 10</a> of [<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> apply to this document as well.<a href="#section-10-1" class="pilcrow">¶</a></p>
+2067c2254
+< All the rules of <span><a href="https://www.rfc-editor.org/rfc/rfc6363#section-11" class="relref">Section 11</a> of [<a href="#RFC6363" class="xref">RFC6363</a>]</span> apply and are not repeated here.<a href="#section-11-2" class="pilcrow">¶</a></p>
+---
+> All the rules of <span><a href="https://rfc-editor.org/rfc/rfc6363#section-11" class="relref">Section 11</a> of [<a href="#RFC6363" class="cite xref">RFC6363</a>]</span> apply and are not repeated here.<a href="#section-11-2" class="pilcrow">¶</a></p>
+2081c2268,2269
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2084c2272,2273
+< <span class="refAuthor">Watson, M.</span><span class="refAuthor">, Begen, A.</span><span class="refAuthor">, and V. Roca</span>, <span class="refTitle">"Forward Error Correction (FEC) Framework"</span>, <span class="seriesInfo">RFC 6363</span>, <span class="seriesInfo">DOI 10.17487/RFC6363</span>, <time datetime="2011-10">October 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6363">https://www.rfc-editor.org/info/rfc6363</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Watson, M.</span>, <span class="refAuthor">Begen, A.</span>, and <span class="refAuthor">V. Roca</span>, <span class="refTitle">"Forward Error Correction (FEC) Framework"</span>, <span class="seriesInfo">RFC 6363</span>, <span class="seriesInfo">DOI 10.17487/RFC6363</span>, <time datetime="2011-10" class="refDate">October 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6363">https://www.rfc-editor.org/info/rfc6363</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2087c2276,2277
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2097c2287,2288
+< <span class="refAuthor">3GPP</span>, <span class="refTitle">"Multimedia Broadcast/Multicast Service (MBMS); Protocols and codecs"</span>, <span class="seriesInfo">3GPP TS 26.346</span>, <time datetime="2009-03">March 2009</time>, <span>&lt;<a href="http://ftp.3gpp.org/specs/html-info/26346.htm">http://ftp.3gpp.org/specs/html-info/26346.htm</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">3GPP</span>, <span class="refTitle">"Multimedia Broadcast/Multicast Service (MBMS); Protocols and codecs"</span>, <span class="seriesInfo">3GPP TS 26.346</span>, <time datetime="2009-03" class="refDate">March 2009</time>, <span>&lt;<a href="http://ftp.3gpp.org/specs/html-info/26346.htm">http://ftp.3gpp.org/specs/html-info/26346.htm</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2100c2291,2292
+< <span class="refAuthor">Watson, M.</span><span class="refAuthor">, Luby, M.</span><span class="refAuthor">, and L. Vicisano</span>, <span class="refTitle">"Forward Error Correction (FEC) Building Block"</span>, <span class="seriesInfo">RFC 5052</span>, <span class="seriesInfo">DOI 10.17487/RFC5052</span>, <time datetime="2007-08">August 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5052">https://www.rfc-editor.org/info/rfc5052</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Watson, M.</span>, <span class="refAuthor">Luby, M.</span>, and <span class="refAuthor">L. Vicisano</span>, <span class="refTitle">"Forward Error Correction (FEC) Building Block"</span>, <span class="seriesInfo">RFC 5052</span>, <span class="seriesInfo">DOI 10.17487/RFC5052</span>, <time datetime="2007-08" class="refDate">August 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5052">https://www.rfc-editor.org/info/rfc5052</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2103c2295,2296
+< <span class="refAuthor">Begen, A.</span>, <span class="refTitle">"Session Description Protocol Elements for the Forward Error Correction (FEC) Framework"</span>, <span class="seriesInfo">RFC 6364</span>, <span class="seriesInfo">DOI 10.17487/RFC6364</span>, <time datetime="2011-10">October 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6364">https://www.rfc-editor.org/info/rfc6364</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Begen, A.</span>, <span class="refTitle">"Session Description Protocol Elements for the Forward Error Correction (FEC) Framework"</span>, <span class="seriesInfo">RFC 6364</span>, <span class="seriesInfo">DOI 10.17487/RFC6364</span>, <time datetime="2011-10" class="refDate">October 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6364">https://www.rfc-editor.org/info/rfc6364</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2106c2299,2300
+< <span class="refAuthor">Watson, M.</span><span class="refAuthor">, Stockhammer, T.</span><span class="refAuthor">, and M. Luby</span>, <span class="refTitle">"Raptor Forward Error Correction (FEC) Schemes for FECFRAME"</span>, <span class="seriesInfo">RFC 6681</span>, <span class="seriesInfo">DOI 10.17487/RFC6681</span>, <time datetime="2012-08">August 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6681">https://www.rfc-editor.org/info/rfc6681</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Watson, M.</span>, <span class="refAuthor">Stockhammer, T.</span>, and <span class="refAuthor">M. Luby</span>, <span class="refTitle">"Raptor Forward Error Correction (FEC) Schemes for FECFRAME"</span>, <span class="seriesInfo">RFC 6681</span>, <span class="seriesInfo">DOI 10.17487/RFC6681</span>, <time datetime="2012-08" class="refDate">August 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6681">https://www.rfc-editor.org/info/rfc6681</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2109c2303,2304
+< <span class="refAuthor">Roca, V.</span><span class="refAuthor">, Cunche, M.</span><span class="refAuthor">, and J. Lacan</span>, <span class="refTitle">"Simple Low-Density Parity Check (LDPC) Staircase Forward Error Correction (FEC) Scheme for FECFRAME"</span>, <span class="seriesInfo">RFC 6816</span>, <span class="seriesInfo">DOI 10.17487/RFC6816</span>, <time datetime="2012-12">December 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6816">https://www.rfc-editor.org/info/rfc6816</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Roca, V.</span>, <span class="refAuthor">Cunche, M.</span>, and <span class="refAuthor">J. Lacan</span>, <span class="refTitle">"Simple Low-Density Parity Check (LDPC) Staircase Forward Error Correction (FEC) Scheme for FECFRAME"</span>, <span class="seriesInfo">RFC 6816</span>, <span class="seriesInfo">DOI 10.17487/RFC6816</span>, <time datetime="2012-12" class="refDate">December 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6816">https://www.rfc-editor.org/info/rfc6816</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2112c2307,2308
+< <span class="refAuthor">Roca, V.</span><span class="refAuthor">, Cunche, M.</span><span class="refAuthor">, Lacan, J.</span><span class="refAuthor">, Bouabdallah, A.</span><span class="refAuthor">, and K. Matsuzono</span>, <span class="refTitle">"Simple Reed-Solomon Forward Error Correction (FEC) Scheme for FECFRAME"</span>, <span class="seriesInfo">RFC 6865</span>, <span class="seriesInfo">DOI 10.17487/RFC6865</span>, <time datetime="2013-02">February 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6865">https://www.rfc-editor.org/info/rfc6865</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Roca, V.</span>, <span class="refAuthor">Cunche, M.</span>, <span class="refAuthor">Lacan, J.</span>, <span class="refAuthor">Bouabdallah, A.</span>, and <span class="refAuthor">K. Matsuzono</span>, <span class="refTitle">"Simple Reed-Solomon Forward Error Correction (FEC) Scheme for FECFRAME"</span>, <span class="seriesInfo">RFC 6865</span>, <span class="seriesInfo">DOI 10.17487/RFC6865</span>, <time datetime="2013-02" class="refDate">February 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6865">https://www.rfc-editor.org/info/rfc6865</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2115c2311,2312
+< <span class="refAuthor">Adamson, B.</span><span class="refAuthor">, Adjih, C.</span><span class="refAuthor">, Bilbao, J.</span><span class="refAuthor">, Firoiu, V.</span><span class="refAuthor">, Fitzek, F.</span><span class="refAuthor">, Ghanem, S.</span><span class="refAuthor">, Lochin, E.</span><span class="refAuthor">, Masucci, A.</span><span class="refAuthor">, Montpetit, M-J.</span><span class="refAuthor">, Pedersen, M.</span><span class="refAuthor">, Peralta, G.</span><span class="refAuthor">, Roca, V., Ed.</span><span class="refAuthor">, Saxena, P.</span><span class="refAuthor">, and S. Sivakumar</span>, <span class="refTitle">"Taxonomy of Coding Techniques for Efficient Network Communications"</span>, <span class="seriesInfo">RFC 8406</span>, <span class="seriesInfo">DOI 10.17487/RFC8406</span>, <time datetime="2018-06">June 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8406">https://www.rfc-editor.org/info/rfc8406</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Adamson, B.</span>, <span class="refAuthor">Adjih, C.</span>, <span class="refAuthor">Bilbao, J.</span>, <span class="refAuthor">Firoiu, V.</span>, <span class="refAuthor">Fitzek, F.</span>, <span class="refAuthor">Ghanem, S.</span>, <span class="refAuthor">Lochin, E.</span>, <span class="refAuthor">Masucci, A.</span>, <span class="refAuthor">Montpetit, M-J.</span>, <span class="refAuthor">Pedersen, M.</span>, <span class="refAuthor">Peralta, G.</span>, <span class="refAuthor">Roca, V., Ed.</span>, <span class="refAuthor">Saxena, P.</span>, and <span class="refAuthor">S. Sivakumar</span>, <span class="refTitle">"Taxonomy of Coding Techniques for Efficient Network Communications"</span>, <span class="seriesInfo">RFC 8406</span>, <span class="seriesInfo">DOI 10.17487/RFC8406</span>, <time datetime="2018-06" class="refDate">June 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8406">https://www.rfc-editor.org/info/rfc8406</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2118c2315,2316
+< <span class="refAuthor">Roca, V.</span><span class="refAuthor"> and B. Teibi</span>, <span class="refTitle">"Sliding Window Random Linear Code (RLC) Forward Erasure Correction (FEC) Schemes for FECFRAME"</span>, <span class="seriesInfo">RFC 8681</span>, <span class="seriesInfo">DOI 10.17487/RFC8681</span>, <time datetime="2020-01">January 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8681">https://www.rfc-editor.org/info/rfc8681</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Roca, V.</span> and <span class="refAuthor">B. Teibi</span>, <span class="refTitle">"Sliding Window Random Linear Code (RLC) Forward Erasure Correction (FEC) Schemes for FECFRAME"</span>, <span class="seriesInfo">RFC 8681</span>, <span class="seriesInfo">DOI 10.17487/RFC8681</span>, <time datetime="2020-01" class="refDate">January 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8681">https://www.rfc-editor.org/info/rfc8681</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+2123c2321
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2125c2323
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-about-sliding-encoding-wind" class="section-name selfRef">About Sliding Encoding Window Management (Informational)</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-about-sliding-encoding-wind" class="section-name selfRef">About Sliding Encoding Window Management (Informational)</a>
+2127c2325
+< <p id="section-appendix.a-1">
+---
+> <p id="appendix-A-1">
+2129,2130c2327,2328
+< This annex only provides a few informational hints.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2">
+---
+> This annex only provides a few informational hints.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2">
+2133,2138c2331,2336
+<    mapping specific to the FEC scheme has been done.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-3">
+< Source symbols are removed from the sliding encoding window. For instance:<a href="#section-appendix.a-3" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-appendix.a-4.1"> After a certain delay, when an "old" ADU of a real-time flow times out.
+<  The source symbol retention delay in the sliding encoding window should therefore be initialized according to the real-time features of incoming flow(s) when applicable.<a href="#section-appendix.a-4.1" class="pilcrow">¶</a>
+---
+>    mapping specific to the FEC scheme has been done.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+> <p id="appendix-A-3">
+> Source symbols are removed from the sliding encoding window. For instance:<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="appendix-A-4.1"> After a certain delay, when an "old" ADU of a real-time flow times out.
+>  The source symbol retention delay in the sliding encoding window should therefore be initialized according to the real-time features of incoming flow(s) when applicable.<a href="#appendix-A-4.1" class="pilcrow">¶</a>
+2140,2141c2338,2339
+< <li id="section-appendix.a-4.2"> Once the sliding encoding window has reached its maximum size (there is usually an upper limit to the sliding encoding window size).
+<  In that case, the oldest symbol is removed each time a new source symbol is added.<a href="#section-appendix.a-4.2" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="appendix-A-4.2"> Once the sliding encoding window has reached its maximum size (there is usually an upper limit to the sliding encoding window size).
+>  In that case, the oldest symbol is removed each time a new source symbol is added.<a href="#appendix-A-4.2" class="pilcrow">¶</a>
+2144,2148c2342,2346
+< <p id="section-appendix.a-5">
+< Several considerations can impact the management of this sliding encoding window:<a href="#section-appendix.a-5" class="pilcrow">¶</a></p>
+< <ul>
+< <li id="section-appendix.a-6.1"> At the source flows level: real-time constraints can limit the
+<  total time during which source symbols can remain in the encoding window.<a href="#section-appendix.a-6.1" class="pilcrow">¶</a>
+---
+> <p id="appendix-A-5">
+> Several considerations can impact the management of this sliding encoding window:<a href="#appendix-A-5" class="pilcrow">¶</a></p>
+> <ul class="normal">
+> <li class="normal" id="appendix-A-6.1"> At the source flows level: real-time constraints can limit the
+>  total time during which source symbols can remain in the encoding window.<a href="#appendix-A-6.1" class="pilcrow">¶</a>
+2150c2348
+< <li id="section-appendix.a-6.2"> At the FEC code level: theoretical or practical limitations (e.g., because of computational complexity) can limit the number of source symbols in the encoding window.<a href="#section-appendix.a-6.2" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="appendix-A-6.2"> At the FEC code level: theoretical or practical limitations (e.g., because of computational complexity) can limit the number of source symbols in the encoding window.<a href="#appendix-A-6.2" class="pilcrow">¶</a>
+2152c2350
+< <li id="section-appendix.a-6.3"> At the FEC scheme level: signaling and window management are intrinsically related.
+---
+>         <li class="normal" id="appendix-A-6.3"> At the FEC scheme level: signaling and window management are intrinsically related.
+2154c2352
+<  On the contrary, an encoding window always composed of a sequential set of source symbols simplifies signaling: providing the identity of the first source symbol plus its number is sufficient, which creates a fixed and relatively small transmission overhead.<a href="#section-appendix.a-6.3" class="pilcrow">¶</a>
+---
+>  On the contrary, an encoding window always composed of a sequential set of source symbols simplifies signaling: providing the identity of the first source symbol plus its number is sufficient, which creates a fixed and relatively small transmission overhead.<a href="#appendix-A-6.3" class="pilcrow">¶</a>
+2159c2357
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+2163c2361
+< <p id="section-appendix.b-1">
+---
+> <p id="appendix-B-1">
+2167,2168c2365,2366
+< this document.  This document being an extension of <span>[<a href="#RFC6363" class="xref">RFC6363</a>]</span>, the authors would also like to thank Mark Watson as the
+< main author of that RFC.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+---
+> this document.  This document being an extension of <span>[<a href="#RFC6363" class="cite xref">RFC6363</a>]</span>, the authors would also like to thank Mark Watson as the
+> main author of that RFC.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+2171c2369
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
+2188,2190c2386
+< <div dir="auto" class="left">
+< <span class="locality">Konya</span>/</div>
+< <div dir="auto" class="left"><span class="country-name">Turkey</span></div>
+---
+> <div dir="auto" class="left"><span class="locality">Konya</span></div>
+2198,2226c2394,2399
+< <script>var toc = document.getElementById("toc");
+< var tocToggle = toc.querySelector("h2");
+< var tocNav = toc.querySelector("nav");
+< 
+< // mobile menu toggle
+< tocToggle.onclick = function(event) {
+<     if (window.innerWidth < 1024) {
+<  var tocNavDisplay = tocNav.currentStyle ? tocNav.currentStyle.display : getComputedStyle(tocNav, null).display;
+<  if (tocNavDisplay == "none") {
+<      tocNav.style.display = "block";
+<  } else {
+<      tocNav.style.display = "none";
+<  }
+<     }
+< }
+< 
+< // toc anchor scroll to anchor
+< tocNav.addEventListener("click", function (event) {
+<     event.preventDefault();
+<     if (event.target.nodeName == 'A') {
+<  if (window.innerWidth < 1024) {
+<      tocNav.style.display = "none";
+<  }
+<  var href = event.target.getAttribute("href");
+<  var anchorId = href.substr(1);
+<  var anchor =  document.getElementById(anchorId);
+<  anchor.scrollIntoView(true);
+<  window.history.pushState("","",href);
+<     }
+---
+> <script>const toc = document.getElementById("toc");
+> toc.querySelector("h2").addEventListener("click", e => {
+>   toc.classList.toggle("active");
+> });
+> toc.querySelector("nav").addEventListener("click", e => {
+>   toc.classList.remove("active");
+2228,2236d2400
+< 
+< // switch toc mode when window resized
+< window.onresize = function () {
+<     if (window.innerWidth < 1024) {
+<  tocNav.style.display = "none";
+<     } else {
+<  tocNav.style.display = "block";
+<     }
+< }
