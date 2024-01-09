@@ -1,0 +1,514 @@
+23c23
+< <meta content="xml2rfc 2.42.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.1" name="generator">
+26c26,42
+< <link href="rfc8770.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.1
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.4
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.13
+> -->
+> <link href="rfc/rfc8770.xml" rel="alternate" type="application/rfc+xml">
+36c52
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+45a62,67
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+48d69
+<   width: extend-to-zoom;
+63c84
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+65a87
+>   overflow-wrap: break-word;
+151a174,182
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+166,169d196
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+170a198
+>   border: none;
+193a222,224
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+245c276
+< tt, code, pre, code {
+---
+> tt, code, pre {
+247c278
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+286a318,320
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+376a411,416
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+478c518
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+618d657
+< 
+640a680,682
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+708c750
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+808c850
+< tt, code, pre, code {
+---
+> tt, code, pre {
+813c855
+< pre.sourcecode,
+---
+> .sourcecode pre,
+849c891
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+927,932d968
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1036a1073
+>   .artwork > pre,
+1051c1088
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1057a1095,1097
+> tr {
+>   break-inside: avoid;
+> }
+1068c1108
+<   page-break-after: avoid;
+---
+>   break-after: avoid-page;
+1070a1111,1114
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+1073,1075c1117,1118
+<   page-break-inside: auto;
+<   orphpans: 6;
+<   widows: 6;
+---
+>   break-before: auto;
+>   break-after: auto;
+1078,1079c1121,1123
+< dl > dt {
+<   page-break-after: avoid;
+---
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+1081,1083c1125,1208
+< dl > dd {
+<   page-break-before: avoid;
+< }</style>
+---
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+1084a1210
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-ospf-ospfv2-hbit-12" rel="prev">
+1087c1213
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-ospf-ospfv2-hbit-12" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1089,1090c1215,1216
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1201,1203c1327,1329
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+1205,1206c1331,1332
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+1208,1209c1334,1335
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="xref">3</a>.  <a href="#name-host-bit-support" class="xref">Host-Bit Support</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-host-bit-support" class="internal xref">Host-Bit Support</a></p>
+1211,1212c1337,1338
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="xref">4</a>.  <a href="#name-spf-modifications" class="xref">SPF Modifications</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-spf-modifications" class="internal xref">SPF Modifications</a></p>
+1214,1215c1340,1341
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="xref">5</a>.  <a href="#name-autodiscovery-and-backward-" class="xref">Autodiscovery and Backward Compatibility</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-autodiscovery-and-backward-" class="internal xref">Autodiscovery and Backward Compatibility</a></p>
+1217,1218c1343,1344
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="xref">6</a>.  <a href="#name-ospf-as-external-lsas-nssa-" class="xref">OSPF AS-External-LSAs / NSSA-LSAs with Type 2 Metrics</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-ospf-as-external-lsas-nssa-" class="internal xref">OSPF AS-External-LSAs / NSSA-LSAs with Type 2 Metrics</a></p>
+1220,1221c1346,1347
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#section-7" class="xref">7</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1223,1224c1349,1350
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#section-8" class="xref">8</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1226,1230c1352,1356
+< <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1" class="keepWithNext"><a href="#section-9" class="xref">9</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.9.2.1">
+<                 <p id="section-toc.1-1.9.2.1.1" class="keepWithNext"><a href="#section-9.1" class="xref">9.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.9.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1" class="keepWithNext"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
+>                 <p id="section-toc.1-1.9.2.1.1" class="keepWithNext"><a href="#section-9.1" class="auto internal xref">9.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1232,1233c1358,1359
+< <li class="toc ulEmpty" id="section-toc.1-1.9.2.2">
+<                 <p id="section-toc.1-1.9.2.2.1" class="keepWithNext"><a href="#section-9.2" class="xref">9.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.9.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
+>                 <p id="section-toc.1-1.9.2.2.1" class="keepWithNext"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1237,1238c1363,1364
+< <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1" class="keepWithNext"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1240,1241c1366,1367
+< <li class="toc ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1" class="keepWithNext"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1" class="keepWithNext"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1280c1406
+<        <span>[<a href="#BGP-ORR" class="xref">BGP-ORR</a>]</span>.<a href="#section-1-3.4" class="pilcrow">¶</a>
+---
+>        <span>[<a href="#BGP-ORR" class="cite xref">BGP-ORR</a>]</span>.<a href="#section-1-3.4" class="pilcrow">¶</a>
+1288c1414
+<    shortest-path tree for an area, as described in <span><a href="https://www.rfc-editor.org/rfc/rfc2328#section-16.1" class="relref">Section 16.1</a> of [<a href="#RFC2328" class="xref">RFC2328</a>]</span>, is
+---
+>    shortest-path tree for an area, as described in <span><a href="https://rfc-editor.org/rfc/rfc2328#section-16.1" class="relref">Section 16.1</a> of [<a href="#RFC2328" class="cite xref">RFC2328</a>]</span>, is
+1290,1293c1416,1419
+<    have the H-bit set (see <a href="#sect-4" class="xref">Section 4</a>).  Furthermore, in order to repel
+<    traffic effectively, this document updates <span>[<a href="#RFC6987" class="xref">RFC6987</a>]</span> so that Type 2 External and Not-So-Stubby Area (NSSA)
+<    Link State Advertisements (LSAs) <span>[<a href="#RFC3101" class="xref">RFC3101</a>]</span>
+<    are advertised with a high cost (see <a href="#sect-6" class="xref">Section 6</a>).  OSPFv3 <span>[<a href="#RFC5340" class="xref">RFC5340</a>]</span> defines an
+---
+>    have the H-bit set (see <a href="#sect-4" class="auto internal xref">Section 4</a>).  Furthermore, in order to repel
+>    traffic effectively, this document updates <span>[<a href="#RFC6987" class="cite xref">RFC6987</a>]</span> so that Type 2 External and Not-So-Stubby Area (NSSA)
+>    Link State Advertisements (LSAs) <span>[<a href="#RFC3101" class="cite xref">RFC3101</a>]</span>
+>    are advertised with a high cost (see <a href="#sect-6" class="auto internal xref">Section 6</a>).  OSPFv3 <span>[<a href="#RFC5340" class="cite xref">RFC5340</a>]</span> defines an
+1309c1435
+<        <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when, and only
+---
+>        <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only
+1322c1448
+<    <a href="#sect-4" class="xref">Section 4</a>) by other OSPFv2 routers in the
+---
+>    <a href="#sect-4" class="auto internal xref">Section 4</a>) by other OSPFv2 routers in the
+1326c1452
+<    the behavior will be the same as in <span>[<a href="#RFC2328" class="xref">RFC2328</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
+---
+>    the behavior will be the same as in <span>[<a href="#RFC2328" class="cite xref">RFC2328</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
+1329c1455
+<         <div class="artwork art-text alignLeft" id="section-3-3.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-3-3.1">
+1369c1495
+<         <div class="artwork art-text alignLeft" id="section-3-5.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-3-5.1">
+1388c1514
+<    <span>[<a href="#RFC6987" class="xref">RFC6987</a>]</span>.<a href="#section-3-7" class="pilcrow">¶</a></p>
+---
+>    <span>[<a href="#RFC6987" class="cite xref">RFC6987</a>]</span>.<a href="#section-3-7" class="pilcrow">¶</a></p>
+1408,1409c1534,1535
+<    LSInfinity <span>[<a href="#RFC2328" class="xref">RFC2328</a>]</span> to
+<    repel traffic (see <a href="#sect-6" class="xref">Section 6</a> of this document).<a href="#section-3-9" class="pilcrow">¶</a></p>
+---
+>    LSInfinity <span>[<a href="#RFC2328" class="cite xref">RFC2328</a>]</span> to
+>    repel traffic (see <a href="#sect-6" class="auto internal xref">Section 6</a> of this document).<a href="#section-3-9" class="pilcrow">¶</a></p>
+1418c1544
+<    The SPF calculation described in <span><a href="https://www.rfc-editor.org/rfc/rfc2328#section-16.1" class="relref">Section 16.1</a> of [<a href="#RFC2328" class="xref">RFC2328</a>]</span> is
+---
+>    The SPF calculation described in <span><a href="https://rfc-editor.org/rfc/rfc2328#section-16.1" class="relref">Section 16.1</a> of [<a href="#RFC2328" class="cite xref">RFC2328</a>]</span> is
+1424,1426c1550,1552
+< <ul class="ulEmpty">
+< <li class="ulEmpty" id="section-4-2.1">
+<           <dl class="dlParallel" id="section-4-2.1.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-4-2.1">
+>           <span class="break"></span><dl class="dlParallel" id="section-4-2.1.1">
+1446a1573
+>           <dd class="break"></dd>
+1460,1461c1587,1588
+<    capability bit <span>[<a href="#RFC7770" class="xref">RFC7770</a>]</span>.  See
+<    <a href="#sect-7" class="xref">Section 7</a> (<a href="#tab-2" class="xref">Table 2</a>).<a href="#section-5-1" class="pilcrow">¶</a></p>
+---
+>    capability bit <span>[<a href="#RFC7770" class="cite xref">RFC7770</a>]</span>.  See
+>    <a href="#sect-7" class="auto internal xref">Section 7</a> (<a href="#tab-2" class="auto internal xref">Table 2</a>).<a href="#section-5-1" class="pilcrow">¶</a></p>
+1465c1592
+<    (<a href="#sect-7" class="xref">Section 7</a>)
+---
+>    (<a href="#sect-7" class="auto internal xref">Section 7</a>)
+1482,1483c1609,1610
+< <ul>
+< <li id="section-5-6.1">Implementations are <span class="bcp14">RECOMMENDED</span> to provide a configuration
+---
+> <ul class="normal">
+> <li class="normal" id="section-5-6.1">Implementations are <span class="bcp14">RECOMMENDED</span> to provide a configuration
+1489,1490c1616,1617
+< <li id="section-5-6.2">All routers with the H-bit set <span class="bcp14">MUST</span> advertise all of the router's
+<       non-stub links with a metric equal to MaxLinkMetric <span>[<a href="#RFC6987" class="xref">RFC6987</a>]</span> in
+---
+>         <li class="normal" id="section-5-6.2">All routers with the H-bit set <span class="bcp14">MUST</span> advertise all of the router's
+>       non-stub links with a metric equal to MaxLinkMetric <span>[<a href="#RFC6987" class="cite xref">RFC6987</a>]</span> in
+1495c1622
+< <li id="section-5-6.3">All routers supporting the H-bit <span class="bcp14">MUST</span> check the RI LSAs of all
+---
+>         <li class="normal" id="section-5-6.3">All routers supporting the H-bit <span class="bcp14">MUST</span> check the RI LSAs of all
+1498,1499c1625,1626
+<       advertise the OSPF Host Router capability (<a href="#sect-7" class="xref">Section 7</a>), then the SPF
+<       modifications described in <a href="#sect-4" class="xref">Section 4</a> <span class="bcp14">MUST NOT</span> be used in the area.<a href="#section-5-6.3" class="pilcrow">¶</a>
+---
+>       advertise the OSPF Host Router capability (<a href="#sect-7" class="auto internal xref">Section 7</a>), then the SPF
+>       modifications described in <a href="#sect-4" class="auto internal xref">Section 4</a> <span class="bcp14">MUST NOT</span> be used in the area.<a href="#section-5-6.3" class="pilcrow">¶</a>
+1511c1638
+<    NSSA-LSA <span>[<a href="#RFC3101" class="xref">RFC3101</a>]</span> with a Type 2 metric, the advertised Type 2 metric
+---
+>    NSSA-LSA <span>[<a href="#RFC3101" class="cite xref">RFC3101</a>]</span> with a Type 2 metric, the advertised Type 2 metric
+1514c1641
+<    in <span>[<a href="#RFC6987" class="xref">RFC6987</a>]</span> does not discourage transit
+---
+>    in <span>[<a href="#RFC6987" class="cite xref">RFC6987</a>]</span> does not discourage transit
+1517c1644
+<    Consequently, this document updates <span>[<a href="#RFC6987" class="xref">RFC6987</a>]</span> so that the Type 2 metric in any
+---
+>    Consequently, this document updates <span>[<a href="#RFC6987" class="cite xref">RFC6987</a>]</span> so that the Type 2 metric in any
+1519c1646
+<    LSInfinity-1 <span>[<a href="#RFC2328" class="xref">RFC2328</a>]</span>.
+---
+>    LSInfinity-1 <span>[<a href="#RFC2328" class="cite xref">RFC2328</a>]</span>.
+1591c1718
+<    considerations beyond those already known in OSPFv2 <span>[<a href="#RFC2328" class="xref">RFC2328</a>]</span>.  The
+---
+>    considerations beyond those already known in OSPFv2 <span>[<a href="#RFC2328" class="cite xref">RFC2328</a>]</span>.  The
+1598,1599c1725,1726
+< <ul>
+< <li id="section-8-2.1">The router does not have the capability but sends the H-bit set in
+---
+> <ul class="normal">
+> <li class="normal" id="section-8-2.1">The router does not have the capability but sends the H-bit set in
+1608c1735
+< <li id="section-8-2.2">The router has the capability but sends the H-bit clear in its
+---
+>         <li class="normal" id="section-8-2.2">The router has the capability but sends the H-bit clear in its
+1615c1742
+< <li id="section-8-2.3">The rogue router is on the only transit path for some destinations
+---
+>         <li class="normal" id="section-8-2.3">The rogue router is on the only transit path for some destinations
+1637c1764,1765
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1640c1768,1769
+< <span class="refAuthor">Moy, J.</span>, <span class="refTitle">"OSPF Version 2"</span>, <span class="seriesInfo">STD 54</span>, <span class="seriesInfo">RFC 2328</span>, <span class="seriesInfo">DOI 10.17487/RFC2328</span>, <time datetime="1998-04">April 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2328">https://www.rfc-editor.org/info/rfc2328</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Moy, J.</span>, <span class="refTitle">"OSPF Version 2"</span>, <span class="seriesInfo">STD 54</span>, <span class="seriesInfo">RFC 2328</span>, <span class="seriesInfo">DOI 10.17487/RFC2328</span>, <time datetime="1998-04" class="refDate">April 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2328">https://www.rfc-editor.org/info/rfc2328</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1643c1772,1773
+< <span class="refAuthor">Retana, A.</span><span class="refAuthor">, Nguyen, L.</span><span class="refAuthor">, Zinin, A.</span><span class="refAuthor">, White, R.</span><span class="refAuthor">, and D. McPherson</span>, <span class="refTitle">"OSPF Stub Router Advertisement"</span>, <span class="seriesInfo">RFC 6987</span>, <span class="seriesInfo">DOI 10.17487/RFC6987</span>, <time datetime="2013-09">September 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6987">https://www.rfc-editor.org/info/rfc6987</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Retana, A.</span>, <span class="refAuthor">Nguyen, L.</span>, <span class="refAuthor">Zinin, A.</span>, <span class="refAuthor">White, R.</span>, and <span class="refAuthor">D. McPherson</span>, <span class="refTitle">"OSPF Stub Router Advertisement"</span>, <span class="seriesInfo">RFC 6987</span>, <span class="seriesInfo">DOI 10.17487/RFC6987</span>, <time datetime="2013-09" class="refDate">September 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6987">https://www.rfc-editor.org/info/rfc6987</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1646c1776,1777
+< <span class="refAuthor">Lindem, A., Ed.</span><span class="refAuthor">, Shen, N.</span><span class="refAuthor">, Vasseur, JP.</span><span class="refAuthor">, Aggarwal, R.</span><span class="refAuthor">, and S. Shaffer</span>, <span class="refTitle">"Extensions to OSPF for Advertising Optional Router Capabilities"</span>, <span class="seriesInfo">RFC 7770</span>, <span class="seriesInfo">DOI 10.17487/RFC7770</span>, <time datetime="2016-02">February 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7770">https://www.rfc-editor.org/info/rfc7770</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Lindem, A., Ed.</span>, <span class="refAuthor">Shen, N.</span>, <span class="refAuthor">Vasseur, JP.</span>, <span class="refAuthor">Aggarwal, R.</span>, and <span class="refAuthor">S. Shaffer</span>, <span class="refTitle">"Extensions to OSPF for Advertising Optional Router Capabilities"</span>, <span class="seriesInfo">RFC 7770</span>, <span class="seriesInfo">DOI 10.17487/RFC7770</span>, <time datetime="2016-02" class="refDate">February 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7770">https://www.rfc-editor.org/info/rfc7770</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1649c1780,1781
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1659c1791,1792
+< <span class="refAuthor">Raszuk, R., Ed.</span><span class="refAuthor">, Cassar, C.</span><span class="refAuthor">, Aman, E.</span><span class="refAuthor">, Decraene, B.</span><span class="refAuthor">, and K. Wang</span>, <span class="refTitle">"BGP Optimal Route Reflection (BGP-ORR)"</span>, <span class="seriesInfo">Work in Progress, Internet-Draft, draft-ietf-idr-bgp-optimal-route-reflection-20</span>, <time datetime="2020-01-08">8 January 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-idr-bgp-optimal-route-reflection-20">https://tools.ietf.org/html/draft-ietf-idr-bgp-optimal-route-reflection-20</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Raszuk, R., Ed.</span>, <span class="refAuthor">Cassar, C.</span>, <span class="refAuthor">Aman, E.</span>, <span class="refAuthor">Decraene, B.</span>, and <span class="refAuthor">K. Wang</span>, <span class="refTitle">"BGP Optimal Route Reflection (BGP-ORR)"</span>, <span class="seriesInfo">Work in Progress, Internet-Draft, draft-ietf-idr-bgp-optimal-route-reflection-20</span>, <time datetime="2020-01-08" class="refDate">8 January 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-idr-bgp-optimal-route-reflection-20">https://tools.ietf.org/html/draft-ietf-idr-bgp-optimal-route-reflection-20</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1662c1795,1796
+< <span class="refAuthor">Murphy, P.</span>, <span class="refTitle">"The OSPF Not-So-Stubby Area (NSSA) Option"</span>, <span class="seriesInfo">RFC 3101</span>, <span class="seriesInfo">DOI 10.17487/RFC3101</span>, <time datetime="2003-01">January 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3101">https://www.rfc-editor.org/info/rfc3101</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Murphy, P.</span>, <span class="refTitle">"The OSPF Not-So-Stubby Area (NSSA) Option"</span>, <span class="seriesInfo">RFC 3101</span>, <span class="seriesInfo">DOI 10.17487/RFC3101</span>, <time datetime="2003-01" class="refDate">January 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3101">https://www.rfc-editor.org/info/rfc3101</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1665c1799,1800
+< <span class="refAuthor">Coltun, R.</span><span class="refAuthor">, Ferguson, D.</span><span class="refAuthor">, Moy, J.</span><span class="refAuthor">, and A. Lindem</span>, <span class="refTitle">"OSPF for IPv6"</span>, <span class="seriesInfo">RFC 5340</span>, <span class="seriesInfo">DOI 10.17487/RFC5340</span>, <time datetime="2008-07">July 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5340">https://www.rfc-editor.org/info/rfc5340</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Coltun, R.</span>, <span class="refAuthor">Ferguson, D.</span>, <span class="refAuthor">Moy, J.</span>, and <span class="refAuthor">A. Lindem</span>, <span class="refTitle">"OSPF for IPv6"</span>, <span class="seriesInfo">RFC 5340</span>, <span class="seriesInfo">DOI 10.17487/RFC5340</span>, <time datetime="2008-07" class="refDate">July 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5340">https://www.rfc-editor.org/info/rfc5340</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1670c1805
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+1674c1809
+< <p id="section-appendix.a-1">
+---
+> <p id="appendix-A-1">
+1676c1811
+<    the limitation in <span>[<a href="#RFC6987" class="xref">RFC6987</a>]</span>, and <span class="contact-name">Acee Lindem</span>, <span class="contact-name">Abhay Roy</span>, <span class="contact-name">David Ward</span>, <span class="contact-name">Burjiz Pithawala</span>, and <span class="contact-name">Michael Barnes</span> for their comments.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+>    the limitation in <span>[<a href="#RFC6987" class="cite xref">RFC6987</a>]</span>, and <span class="contact-name">Acee Lindem</span>, <span class="contact-name">Abhay Roy</span>, <span class="contact-name">David Ward</span>, <span class="contact-name">Burjiz Pithawala</span>, and <span class="contact-name">Michael Barnes</span> for their comments.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+1680c1815
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
