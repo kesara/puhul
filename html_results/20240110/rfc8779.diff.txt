@@ -1,0 +1,1420 @@
+23c23
+< <meta content="xml2rfc 2.47.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.1" name="generator">
+28c28,44
+< <link href="rfc8779.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.1
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.4
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.13
+> -->
+> <link href="rfc/rfc8779.xml" rel="alternate" type="application/rfc+xml">
+38c54
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+47a64,69
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+50d71
+<   width: extend-to-zoom;
+65c86
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+67a89
+>   overflow-wrap: break-word;
+153a176,184
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+168,171d198
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+172a200
+>   border: none;
+195a224,226
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+247c278
+< tt, code, pre, code {
+---
+> tt, code, pre {
+249c280
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+288a320,322
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+378a413,418
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+480c520
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+620d659
+< 
+642a682,684
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+710c752
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+810c852
+< tt, code, pre, code {
+---
+> tt, code, pre {
+815c857
+< pre.sourcecode,
+---
+> .sourcecode pre,
+851c893
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1032a1075
+>   .artwork > pre,
+1047c1090
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1053a1097,1099
+> tr {
+>   break-inside: avoid;
+> }
+1073c1119
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1104c1150
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1129c1175
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1131c1177,1178
+< ol.compact, .olCompact {
+---
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+1139c1186,1210
+< }</style>
+---
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+1140a1212
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-pce-gmpls-pcep-extensions-16" rel="prev">
+1143c1215
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-pce-gmpls-pcep-extensions-16" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1145,1146c1217,1218
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1252,1257c1324,1338
+< <nav class="toc"><ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+>                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-pcep-requirements-for-gmpls" class="internal xref">PCEP Requirements for GMPLS</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.3">
+>                 <p id="section-toc.1-1.1.2.3.1"><a href="#section-1.3" class="auto internal xref">1.3</a>.  <a href="#name-requirements-applicability" class="internal xref">Requirements Applicability</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.3.2.1">
+>                     <p id="section-toc.1-1.1.2.3.2.1.1" class="keepWithNext"><a href="#section-1.3.1" class="auto internal xref">1.3.1</a>.  <a href="#name-requirements-on-the-path-co" class="internal xref">Requirements on the Path Computation Request</a></p>
+1259,1269c1340,1341
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.1.2.2">
+<                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="xref">1.2</a>.  <a href="#name-pcep-requirements-for-gmpls" class="xref">PCEP Requirements for GMPLS</a><a href="#section-toc.1-1.1.2.2.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.1.2.3">
+<                 <p id="section-toc.1-1.1.2.3.1"><a href="#section-1.3" class="xref">1.3</a>.  <a href="#name-requirements-applicability" class="xref">Requirements Applicability</a><a href="#section-toc.1-1.1.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.1.2.3.2.1">
+<                     <p id="section-toc.1-1.1.2.3.2.1.1" class="keepWithNext"><a href="#section-1.3.1" class="xref">1.3.1</a>.  <a href="#name-requirements-on-the-path-co" class="xref">Requirements on the Path Computation Request</a><a href="#section-toc.1-1.1.2.3.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.1.2.3.2.2">
+<                     <p id="section-toc.1-1.1.2.3.2.2.1"><a href="#section-1.3.2" class="xref">1.3.2</a>.  <a href="#name-requirements-on-the-path-com" class="xref">Requirements on the Path Computation Response</a><a href="#section-toc.1-1.1.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.3.2.2">
+>                     <p id="section-toc.1-1.1.2.3.2.2.1"><a href="#section-1.3.2" class="auto internal xref">1.3.2</a>.  <a href="#name-requirements-on-the-path-com" class="internal xref">Requirements on the Path Computation Response</a></p>
+1273,1274c1345,1346
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.1.2.4">
+<                 <p id="section-toc.1-1.1.2.4.1"><a href="#section-1.4" class="xref">1.4</a>.  <a href="#name-existing-support-and-limita" class="xref">Existing Support and Limitations for GMPLS in Base PCEP Objects</a><a href="#section-toc.1-1.1.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.4">
+>                 <p id="section-toc.1-1.1.2.4.1"><a href="#section-1.4" class="auto internal xref">1.4</a>.  <a href="#name-existing-support-and-limita" class="internal xref">Existing Support and Limitations for GMPLS in Base PCEP Objects</a></p>
+1278,1285c1350,1357
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-pcep-objects-and-extensions" class="xref">PCEP Objects and Extensions</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.1">
+<                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-gmpls-capability-advertisem" class="xref">GMPLS Capability Advertisement</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.1.2.1">
+<                     <p id="section-toc.1-1.2.2.1.2.1.1"><a href="#section-2.1.1" class="xref">2.1.1</a>.  <a href="#name-gmpls-computation-tlv-in-th" class="xref">GMPLS Computation TLV in the Existing PCE Discovery Protocol</a><a href="#section-toc.1-1.2.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-pcep-objects-and-extensions" class="internal xref">PCEP Objects and Extensions</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+>                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-gmpls-capability-advertisem" class="internal xref">GMPLS Capability Advertisement</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.1">
+>                     <p id="section-toc.1-1.2.2.1.2.1.1"><a href="#section-2.1.1" class="auto internal xref">2.1.1</a>.  <a href="#name-gmpls-computation-tlv-in-th" class="internal xref">GMPLS Computation TLV in the Existing PCE Discovery Protocol</a></p>
+1287,1288c1359,1360
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.1.2.2">
+<                     <p id="section-toc.1-1.2.2.1.2.2.1"><a href="#section-2.1.2" class="xref">2.1.2</a>.  <a href="#name-open-object-extension-gmpls" class="xref">OPEN Object Extension GMPLS-CAPABILITY TLV</a><a href="#section-toc.1-1.2.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.2">
+>                     <p id="section-toc.1-1.2.2.1.2.2.1"><a href="#section-2.1.2" class="auto internal xref">2.1.2</a>.  <a href="#name-open-object-extension-gmpls" class="internal xref">OPEN Object Extension GMPLS-CAPABILITY TLV</a></p>
+1292,1293c1364,1365
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.2">
+<                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-rp-object-extension" class="xref">RP Object Extension</a><a href="#section-toc.1-1.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+>                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-rp-object-extension" class="internal xref">RP Object Extension</a></p>
+1295,1296c1367,1368
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.3">
+<                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-bandwidth-object-extensions" class="xref">BANDWIDTH Object Extensions</a><a href="#section-toc.1-1.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
+>                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="auto internal xref">2.3</a>.  <a href="#name-bandwidth-object-extensions" class="internal xref">BANDWIDTH Object Extensions</a></p>
+1298,1299c1370,1371
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.4">
+<                 <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="xref">2.4</a>.  <a href="#name-load-balancing-object-exten" class="xref">LOAD-BALANCING Object Extensions</a><a href="#section-toc.1-1.2.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.4">
+>                 <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="auto internal xref">2.4</a>.  <a href="#name-load-balancing-object-exten" class="internal xref">LOAD-BALANCING Object Extensions</a></p>
+1301,1305c1373,1377
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.5">
+<                 <p id="section-toc.1-1.2.2.5.1"><a href="#section-2.5" class="xref">2.5</a>.  <a href="#name-end-points-object-extension" class="xref">END-POINTS Object Extensions</a><a href="#section-toc.1-1.2.2.5.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.5.2.1">
+<                     <p id="section-toc.1-1.2.2.5.2.1.1"><a href="#section-2.5.1" class="xref">2.5.1</a>.  <a href="#name-generalized-endpoint-object" class="xref">Generalized Endpoint Object Type</a><a href="#section-toc.1-1.2.2.5.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.5">
+>                 <p id="section-toc.1-1.2.2.5.1"><a href="#section-2.5" class="auto internal xref">2.5</a>.  <a href="#name-end-points-object-extension" class="internal xref">END-POINTS Object Extensions</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.5.2.1">
+>                     <p id="section-toc.1-1.2.2.5.2.1.1"><a href="#section-2.5.1" class="auto internal xref">2.5.1</a>.  <a href="#name-generalized-endpoint-object" class="internal xref">Generalized Endpoint Object Type</a></p>
+1307,1308c1379,1380
+<                   <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.5.2.2">
+<                     <p id="section-toc.1-1.2.2.5.2.2.1"><a href="#section-2.5.2" class="xref">2.5.2</a>.  <a href="#name-end-points-tlv-extensions" class="xref">END-POINTS TLV Extensions</a><a href="#section-toc.1-1.2.2.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.5.2.2">
+>                     <p id="section-toc.1-1.2.2.5.2.2.1"><a href="#section-2.5.2" class="auto internal xref">2.5.2</a>.  <a href="#name-end-points-tlv-extensions" class="internal xref">END-POINTS TLV Extensions</a></p>
+1312,1313c1384,1385
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.6">
+<                 <p id="section-toc.1-1.2.2.6.1"><a href="#section-2.6" class="xref">2.6</a>.  <a href="#name-iro-extension" class="xref">IRO Extension</a><a href="#section-toc.1-1.2.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.6">
+>                 <p id="section-toc.1-1.2.2.6.1"><a href="#section-2.6" class="auto internal xref">2.6</a>.  <a href="#name-iro-extension" class="internal xref">IRO Extension</a></p>
+1315,1316c1387,1388
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.7">
+<                 <p id="section-toc.1-1.2.2.7.1"><a href="#section-2.7" class="xref">2.7</a>.  <a href="#name-xro-extension" class="xref">XRO Extension</a><a href="#section-toc.1-1.2.2.7.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.7">
+>                 <p id="section-toc.1-1.2.2.7.1"><a href="#section-2.7" class="auto internal xref">2.7</a>.  <a href="#name-xro-extension" class="internal xref">XRO Extension</a></p>
+1318,1319c1390,1391
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.8">
+<                 <p id="section-toc.1-1.2.2.8.1"><a href="#section-2.8" class="xref">2.8</a>.  <a href="#name-lspa-extensions" class="xref">LSPA Extensions</a><a href="#section-toc.1-1.2.2.8.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.8">
+>                 <p id="section-toc.1-1.2.2.8.1"><a href="#section-2.8" class="auto internal xref">2.8</a>.  <a href="#name-lspa-extensions" class="internal xref">LSPA Extensions</a></p>
+1321,1325c1393,1397
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.9">
+<                 <p id="section-toc.1-1.2.2.9.1"><a href="#section-2.9" class="xref">2.9</a>.  <a href="#name-no-path-object-extension" class="xref">NO-PATH Object Extension</a><a href="#section-toc.1-1.2.2.9.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.2.2.9.2.1">
+<                     <p id="section-toc.1-1.2.2.9.2.1.1"><a href="#section-2.9.1" class="xref">2.9.1</a>.  <a href="#name-extensions-to-no-path-vecto" class="xref">Extensions to NO-PATH-VECTOR TLV</a><a href="#section-toc.1-1.2.2.9.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.9">
+>                 <p id="section-toc.1-1.2.2.9.1"><a href="#section-2.9" class="auto internal xref">2.9</a>.  <a href="#name-no-path-object-extension" class="internal xref">NO-PATH Object Extension</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.9.2.1">
+>                     <p id="section-toc.1-1.2.2.9.2.1.1"><a href="#section-2.9.1" class="auto internal xref">2.9.1</a>.  <a href="#name-extensions-to-no-path-vecto" class="internal xref">Extensions to NO-PATH-VECTOR TLV</a></p>
+1331,1332c1403,1404
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-additional-error-types-and-" class="xref">Additional Error-Types and Error-Values Defined</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-additional-error-types-and-" class="internal xref">Additional Error-Types and Error-Values Defined</a></p>
+1334,1338c1406,1410
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-manageability-consideration" class="xref">Manageability Considerations</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-control-of-function-through" class="xref">Control of Function through Configuration and Policy</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-manageability-consideration" class="internal xref">Manageability Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-control-of-function-through" class="internal xref">Control of Function through Configuration and Policy</a></p>
+1340,1341c1412,1413
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-information-and-data-models" class="xref">Information and Data Models</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-information-and-data-models" class="internal xref">Information and Data Models</a></p>
+1343,1344c1415,1416
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-liveness-detection-and-moni" class="xref">Liveness Detection and Monitoring</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-liveness-detection-and-moni" class="internal xref">Liveness Detection and Monitoring</a></p>
+1346,1347c1418,1419
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.4">
+<                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-verifying-correct-operation" class="xref">Verifying Correct Operation</a><a href="#section-toc.1-1.4.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
+>                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-verifying-correct-operation" class="internal xref">Verifying Correct Operation</a></p>
+1349,1350c1421,1422
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.5">
+<                 <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="xref">4.5</a>.  <a href="#name-requirements-on-other-proto" class="xref">Requirements on Other Protocols and Functional Components</a><a href="#section-toc.1-1.4.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5">
+>                 <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="auto internal xref">4.5</a>.  <a href="#name-requirements-on-other-proto" class="internal xref">Requirements on Other Protocols and Functional Components</a></p>
+1352,1353c1424,1425
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.6">
+<                 <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="xref">4.6</a>.  <a href="#name-impact-on-network-operation" class="xref">Impact on Network Operation</a><a href="#section-toc.1-1.4.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.6">
+>                 <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="auto internal xref">4.6</a>.  <a href="#name-impact-on-network-operation" class="internal xref">Impact on Network Operation</a></p>
+1357,1361c1429,1433
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-pcep-objects" class="xref">PCEP Objects</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-pcep-objects" class="internal xref">PCEP Objects</a></p>
+1363,1364c1435,1436
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-endpoint-type-field-in-the-" class="xref">Endpoint Type Field in the Generalized END-POINTS Object</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-endpoint-type-field-in-the-" class="internal xref">Endpoint Type Field in the Generalized END-POINTS Object</a></p>
+1366,1367c1438,1439
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.3">
+<                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-new-pcep-tlvs" class="xref">New PCEP TLVs</a><a href="#section-toc.1-1.5.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
+>                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-new-pcep-tlvs" class="internal xref">New PCEP TLVs</a></p>
+1369,1370c1441,1442
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.4">
+<                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="xref">5.4</a>.  <a href="#name-rp-object-flag-field" class="xref">RP Object Flag Field</a><a href="#section-toc.1-1.5.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
+>                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-rp-object-flag-field" class="internal xref">RP Object Flag Field</a></p>
+1372,1373c1444,1445
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.5">
+<                 <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="xref">5.5</a>.  <a href="#name-new-pcep-error-codes" class="xref">New PCEP Error Codes</a><a href="#section-toc.1-1.5.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5">
+>                 <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="auto internal xref">5.5</a>.  <a href="#name-new-pcep-error-codes" class="internal xref">New PCEP Error Codes</a></p>
+1375,1376c1447,1448
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.6">
+<                 <p id="section-toc.1-1.5.2.6.1"><a href="#section-5.6" class="xref">5.6</a>.  <a href="#name-new-bits-in-no-path-vector-" class="xref">New Bits in NO-PATH-VECTOR TLV</a><a href="#section-toc.1-1.5.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.6">
+>                 <p id="section-toc.1-1.5.2.6.1"><a href="#section-5.6" class="auto internal xref">5.6</a>.  <a href="#name-new-bits-in-no-path-vector-" class="internal xref">New Bits in NO-PATH-VECTOR TLV</a></p>
+1378,1379c1450,1451
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.7">
+<                 <p id="section-toc.1-1.5.2.7.1"><a href="#section-5.7" class="xref">5.7</a>.  <a href="#name-new-subobject-for-the-inclu" class="xref">New Subobject for the Include Route Object</a><a href="#section-toc.1-1.5.2.7.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.7">
+>                 <p id="section-toc.1-1.5.2.7.1"><a href="#section-5.7" class="auto internal xref">5.7</a>.  <a href="#name-new-subobject-for-the-inclu" class="internal xref">New Subobject for the Include Route Object</a></p>
+1381,1382c1453,1454
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.8">
+<                 <p id="section-toc.1-1.5.2.8.1"><a href="#section-5.8" class="xref">5.8</a>.  <a href="#name-new-subobject-for-the-exclu" class="xref">New Subobject for the Exclude Route Object</a><a href="#section-toc.1-1.5.2.8.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.8">
+>                 <p id="section-toc.1-1.5.2.8.1"><a href="#section-5.8" class="auto internal xref">5.8</a>.  <a href="#name-new-subobject-for-the-exclu" class="internal xref">New Subobject for the Exclude Route Object</a></p>
+1384,1385c1456,1457
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.9">
+<                 <p id="section-toc.1-1.5.2.9.1"><a href="#section-5.9" class="xref">5.9</a>.  <a href="#name-new-gmpls-capability-tlv-fl" class="xref">New GMPLS-CAPABILITY TLV Flag Field</a><a href="#section-toc.1-1.5.2.9.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.9">
+>                 <p id="section-toc.1-1.5.2.9.1"><a href="#section-5.9" class="auto internal xref">5.9</a>.  <a href="#name-new-gmpls-capability-tlv-fl" class="internal xref">New GMPLS-CAPABILITY TLV Flag Field</a></p>
+1389,1390c1461,1462
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1392,1396c1464,1468
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty compact toc">
+< <li class="ulEmpty compact toc" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1398,1399c1470,1471
+<               <li class="ulEmpty compact toc" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1403,1404c1475,1476
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-load-balancing-usage-for-sd" class="xref">LOAD-BALANCING Usage for SDH Virtual Concatenation</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-load-balancing-usage-for-sd" class="internal xref">LOAD-BALANCING Usage for SDH Virtual Concatenation</a></p>
+1406,1407c1478,1479
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1409,1410c1481,1482
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+1412,1413c1484,1485
+<           <li class="ulEmpty compact toc" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-appendix.d" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1423c1495
+< <p id="section-1-1">Although the PCE architecture and framework for both MPLS and GMPLS networks are defined in <span>[<a href="#RFC4655" class="xref">RFC4655</a>]</span>, most pre-existing PCEP RFCs, such as <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>, <span>[<a href="#RFC5521" class="xref">RFC5521</a>]</span>, <span>[<a href="#RFC5541" class="xref">RFC5541</a>]</span>, and <span>[<a href="#RFC5520" class="xref">RFC5520</a>]</span>, are focused on MPLS networks and do not cover the wide range of GMPLS networks. This document complements these RFCs by addressing the extensions required for GMPLS applications and routing requests, for example, for Optical Transport Networks (OTNs) and Wavelength Switched Optical Networks (WSONs).<a href="#section-1-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-1-1">Although the PCE architecture and framework for both MPLS and GMPLS networks are defined in <span>[<a href="#RFC4655" class="cite xref">RFC4655</a>]</span>, most pre-existing PCEP RFCs, such as <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>, <span>[<a href="#RFC5521" class="cite xref">RFC5521</a>]</span>, <span>[<a href="#RFC5541" class="cite xref">RFC5541</a>]</span>, and <span>[<a href="#RFC5520" class="cite xref">RFC5520</a>]</span>, are focused on MPLS networks and do not cover the wide range of GMPLS networks. This document complements these RFCs by addressing the extensions required for GMPLS applications and routing requests, for example, for Optical Transport Networks (OTNs) and Wavelength Switched Optical Networks (WSONs).<a href="#section-1-1" class="pilcrow">¶</a></p>
+1425c1497
+<       extensions to support these applications are fully described in <span>[<a href="#RFC7025" class="xref">RFC7025</a>]</span> and <span>[<a href="#RFC7449" class="xref">RFC7449</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+---
+>       extensions to support these applications are fully described in <span>[<a href="#RFC7025" class="cite xref">RFC7025</a>]</span> and <span>[<a href="#RFC7449" class="cite xref">RFC7449</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+1431,1432c1503,1504
+<  This document uses terminologies from the PCE architecture document <span>[<a href="#RFC4655" class="xref">RFC4655</a>]</span>; the PCEP documents including <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>, <span>[<a href="#RFC5521" class="xref">RFC5521</a>]</span>, <span>[<a href="#RFC5541" class="xref">RFC5541</a>]</span>, <span>[<a href="#RFC5520" class="xref">RFC5520</a>]</span>, <span>[<a href="#RFC7025" class="xref">RFC7025</a>]</span>, and <span>[<a href="#RFC7449" class="xref">RFC7449</a>]</span>; 
+<  and the GMPLS documents such as <span>[<a href="#RFC3471" class="xref">RFC3471</a>]</span>, <span>[<a href="#RFC3473" class="xref">RFC3473</a>]</span>, and so
+---
+>  This document uses terminologies from the PCE architecture document <span>[<a href="#RFC4655" class="cite xref">RFC4655</a>]</span>; the PCEP documents including <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>, <span>[<a href="#RFC5521" class="cite xref">RFC5521</a>]</span>, <span>[<a href="#RFC5541" class="cite xref">RFC5541</a>]</span>, <span>[<a href="#RFC5520" class="cite xref">RFC5520</a>]</span>, <span>[<a href="#RFC7025" class="cite xref">RFC7025</a>]</span>, and <span>[<a href="#RFC7449" class="cite xref">RFC7449</a>]</span>; 
+>  and the GMPLS documents such as <span>[<a href="#RFC3471" class="cite xref">RFC3471</a>]</span>, <span>[<a href="#RFC3473" class="cite xref">RFC3473</a>]</span>, and so
+1446c1518
+<           <dd style="margin-left: 5.0em" id="section-1.1-2.6">Layer 2 Switch Capable <span>[<a href="#RFC3471" class="xref">RFC3471</a>]</span><a href="#section-1.1-2.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 5.0em" id="section-1.1-2.6">Layer 2 Switch Capable <span>[<a href="#RFC3471" class="cite xref">RFC3471</a>]</span><a href="#section-1.1-2.6" class="pilcrow">¶</a>
+1450c1522
+<           <dd style="margin-left: 5.0em" id="section-1.1-2.8">Lambda Switch Capable <span>[<a href="#RFC3471" class="xref">RFC3471</a>]</span><a href="#section-1.1-2.8" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 5.0em" id="section-1.1-2.8">Lambda Switch Capable <span>[<a href="#RFC3471" class="cite xref">RFC3471</a>]</span><a href="#section-1.1-2.8" class="pilcrow">¶</a>
+1466c1538
+<           <dd style="margin-left: 5.0em" id="section-1.1-2.16">Multiplier <span>[<a href="#RFC4328" class="xref">RFC4328</a>]</span> <span>[<a href="#RFC4606" class="xref">RFC4606</a>]</span><a href="#section-1.1-2.16" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 5.0em" id="section-1.1-2.16">Multiplier <span>[<a href="#RFC4328" class="cite xref">RFC4328</a>]</span> <span>[<a href="#RFC4606" class="cite xref">RFC4606</a>]</span><a href="#section-1.1-2.16" class="pilcrow">¶</a>
+1470c1542
+<           <dd style="margin-left: 5.0em" id="section-1.1-2.18">Number of Contiguous Components <span>[<a href="#RFC4606" class="xref">RFC4606</a>]</span><a href="#section-1.1-2.18" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 5.0em" id="section-1.1-2.18">Number of Contiguous Components <span>[<a href="#RFC4606" class="cite xref">RFC4606</a>]</span><a href="#section-1.1-2.18" class="pilcrow">¶</a>
+1474c1546
+<           <dd style="margin-left: 5.0em" id="section-1.1-2.20">Number of Virtual Components <span>[<a href="#RFC4328" class="xref">RFC4328</a>]</span> <span>[<a href="#RFC4606" class="xref">RFC4606</a>]</span><a href="#section-1.1-2.20" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 5.0em" id="section-1.1-2.20">Number of Virtual Components <span>[<a href="#RFC4328" class="cite xref">RFC4328</a>]</span> <span>[<a href="#RFC4606" class="cite xref">RFC4606</a>]</span><a href="#section-1.1-2.20" class="pilcrow">¶</a>
+1478c1550
+<           <dd style="margin-left: 5.0em" id="section-1.1-2.22">Optical Data Unit <span>[<a href="#G.709-v3" class="xref">G.709-v3</a>]</span><a href="#section-1.1-2.22" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 5.0em" id="section-1.1-2.22">Optical Data Unit <span>[<a href="#G.709-v3" class="cite xref">G.709-v3</a>]</span><a href="#section-1.1-2.22" class="pilcrow">¶</a>
+1482c1554
+<           <dd style="margin-left: 5.0em" id="section-1.1-2.24">Optical Transport Network <span>[<a href="#G.709-v3" class="xref">G.709-v3</a>]</span><a href="#section-1.1-2.24" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 5.0em" id="section-1.1-2.24">Optical Transport Network <span>[<a href="#G.709-v3" class="cite xref">G.709-v3</a>]</span><a href="#section-1.1-2.24" class="pilcrow">¶</a>
+1494c1566
+<           <dd style="margin-left: 5.0em" id="section-1.1-2.30">Path Computation Reply  <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span><a href="#section-1.1-2.30" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 5.0em" id="section-1.1-2.30">Path Computation Reply  <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span><a href="#section-1.1-2.30" class="pilcrow">¶</a>
+1498c1570
+<           <dd style="margin-left: 5.0em" id="section-1.1-2.32">Path Computation Request <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span><a href="#section-1.1-2.32" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 5.0em" id="section-1.1-2.32">Path Computation Request <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span><a href="#section-1.1-2.32" class="pilcrow">¶</a>
+1502c1574
+<           <dd style="margin-left: 5.0em" id="section-1.1-2.34">Requested Contiguous Concatenation <span>[<a href="#RFC4606" class="xref">RFC4606</a>]</span><a href="#section-1.1-2.34" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 5.0em" id="section-1.1-2.34">Requested Contiguous Concatenation <span>[<a href="#RFC4606" class="cite xref">RFC4606</a>]</span><a href="#section-1.1-2.34" class="pilcrow">¶</a>
+1530c1602
+<           <dd style="margin-left: 5.0em" id="section-1.1-2.48">Time-Division Multiplex Capable <span>[<a href="#RFC3471" class="xref">RFC3471</a>]</span><a href="#section-1.1-2.48" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 5.0em" id="section-1.1-2.48">Time-Division Multiplex Capable <span>[<a href="#RFC3471" class="cite xref">RFC3471</a>]</span><a href="#section-1.1-2.48" class="pilcrow">¶</a>
+1546c1618
+<          as described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when,
+---
+>          as described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when,
+1553c1625
+< <p id="section-1.2-1"><span>[<a href="#RFC7025" class="xref">RFC7025</a>]</span> describes the set of PCEP
+---
+> <p id="section-1.2-1"><span>[<a href="#RFC7025" class="cite xref">RFC7025</a>]</span> describes the set of PCEP
+1555c1627
+<         significant familiarity with <span>[<a href="#RFC7025" class="xref">RFC7025</a>]</span>
+---
+>         significant familiarity with <span>[<a href="#RFC7025" class="cite xref">RFC7025</a>]</span>
+1566c1638
+<             technology specific. For instance, in SDH/SONET and OTN networks <span>[<a href="#G.709-v3" class="xref">G.709-v3</a>]</span>, the concatenation type and the concatenation number have an influence on the switched data and on which link it can be supported.<a href="#section-1.2-2.2" class="pilcrow">¶</a>
+---
+>             technology specific. For instance, in SDH/SONET and OTN networks <span>[<a href="#G.709-v3" class="cite xref">G.709-v3</a>]</span>, the concatenation type and the concatenation number have an influence on the switched data and on which link it can be supported.<a href="#section-1.2-2.2" class="pilcrow">¶</a>
+1571c1643
+<             defined in <span>[<a href="#RFC3477" class="xref">RFC3477</a>]</span>.<a href="#section-1.2-2.4" class="pilcrow">¶</a>
+---
+>             defined in <span>[<a href="#RFC3477" class="cite xref">RFC3477</a>]</span>.<a href="#section-1.2-2.4" class="pilcrow">¶</a>
+1574c1646
+<             as wavelength labels as defined in <span>[<a href="#RFC6205" class="xref">RFC6205</a>]</span>. A PCC should also be able to
+---
+>             as wavelength labels as defined in <span>[<a href="#RFC6205" class="cite xref">RFC6205</a>]</span>. A PCC should also be able to
+1576c1648
+<             by RSVP-TE in  <span>[<a href="#RFC3473" class="xref">RFC3473</a>]</span>.<a href="#section-1.2-2.5" class="pilcrow">¶</a>
+---
+>             by RSVP-TE in  <span>[<a href="#RFC3473" class="cite xref">RFC3473</a>]</span>.<a href="#section-1.2-2.5" class="pilcrow">¶</a>
+1583,1584c1655,1656
+<           The requirements of <span>[<a href="#RFC7025" class="xref">RFC7025</a>]</span> apply to several objects conveyed by PCEP; this is described in <a href="#requirement-map" class="xref">Section 1.3</a>.          
+<           Some of the requirements of <span>[<a href="#RFC7025" class="xref">RFC7025</a>]</span> are
+---
+>           The requirements of <span>[<a href="#RFC7025" class="cite xref">RFC7025</a>]</span> apply to several objects conveyed by PCEP; this is described in <a href="#requirement-map" class="auto internal xref">Section 1.3</a>.          
+>           Some of the requirements of <span>[<a href="#RFC7025" class="cite xref">RFC7025</a>]</span> are
+1586c1658
+<           <a href="#existing-support" class="xref">Section 1.4</a>.<a href="#section-1.2-3" class="pilcrow">¶</a></p>
+---
+>           <a href="#existing-support" class="auto internal xref">Section 1.4</a>.<a href="#section-1.2-3" class="pilcrow">¶</a></p>
+1598c1670
+< <p id="section-1.3-1"> This section follows the organization of <span>[<a href="#RFC7025" class="xref">RFC7025</a>], <a href="https://www.rfc-editor.org/rfc/rfc7025#section-3" class="relref">Section 3</a></span> and indicates, for each requirement, the affected piece of information carried by PCEP and its scope.<a href="#section-1.3-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-1.3-1"> This section follows the organization of <span>[<a href="#RFC7025" class="cite xref">RFC7025</a>], <a href="https://rfc-editor.org/rfc/rfc7025#section-3" class="relref">Section 3</a></span> and indicates, for each requirement, the affected piece of information carried by PCEP and its scope.<a href="#section-1.3-1" class="pilcrow">¶</a></p>
+1605c1677
+< <dd id="section-1.3.1-1.1">Switching capability/type: As described in <span>[<a href="#RFC3471" class="xref">RFC3471</a>]</span>, this piece of information is used
+---
+> <dd style="margin-left: 1.5em" id="section-1.3.1-1.1">Switching capability/type: As described in <span>[<a href="#RFC3471" class="cite xref">RFC3471</a>]</span>, this piece of information is used
+1608c1680
+<               TE-LSP. This is applicable to the TE-LSP itself and also to the TE-LSP endpoint (carried in the END-POINTS object for MPLS networks in <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>) when considering multiple network layers.
+---
+>               TE-LSP. This is applicable to the TE-LSP itself and also to the TE-LSP endpoint (carried in the END-POINTS object for MPLS networks in <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>) when considering multiple network layers.
+1610c1682
+<  Inter-layer path computation requirements are addressed in <span>[<a href="#RFC8282" class="xref">RFC8282</a>]</span>, which focuses on the TE-LSP itself but
+---
+>  Inter-layer path computation requirements are addressed in <span>[<a href="#RFC8282" class="cite xref">RFC8282</a>]</span>, which focuses on the TE-LSP itself but
+1615c1687
+< <dd id="section-1.3.1-1.2">Encoding type: See (1).<a href="#section-1.3.1-1.2" class="pilcrow">¶</a>
+---
+> <dd style="margin-left: 1.5em" id="section-1.3.1-1.2">Encoding type: See (1).<a href="#section-1.3.1-1.2" class="pilcrow">¶</a>
+1619c1691
+< <dd id="section-1.3.1-1.3">Signal type: See (1).<a href="#section-1.3.1-1.3" class="pilcrow">¶</a>
+---
+> <dd style="margin-left: 1.5em" id="section-1.3.1-1.3">Signal type: See (1).<a href="#section-1.3.1-1.3" class="pilcrow">¶</a>
+1623c1695
+< <dd id="section-1.3.1-1.4">Concatenation type: This parameter and the concatenation
+---
+> <dd style="margin-left: 1.5em" id="section-1.3.1-1.4">Concatenation type: This parameter and the concatenation
+1628,1629c1700,1701
+<               to the BANDWIDTH object <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span> in MPLS networks. See concatenation
+<               information in <span>[<a href="#RFC4606" class="xref">RFC4606</a>]</span> and <span>[<a href="#RFC4328" class="xref">RFC4328</a>]</span>.<a href="#section-1.3.1-1.4" class="pilcrow">¶</a>
+---
+>               to the BANDWIDTH object <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span> in MPLS networks. See concatenation
+>               information in <span>[<a href="#RFC4606" class="cite xref">RFC4606</a>]</span> and <span>[<a href="#RFC4328" class="cite xref">RFC4328</a>]</span>.<a href="#section-1.3.1-1.4" class="pilcrow">¶</a>
+1633c1705
+< <dd id="section-1.3.1-1.5">Concatenation number: See (4).<a href="#section-1.3.1-1.5" class="pilcrow">¶</a>
+---
+> <dd style="margin-left: 1.5em" id="section-1.3.1-1.5">Concatenation number: See (4).<a href="#section-1.3.1-1.5" class="pilcrow">¶</a>
+1637c1709
+< <dd id="section-1.3.1-1.6">Technology-specific label(s): As described in <span>[<a href="#RFC3471" class="xref">RFC3471</a>]</span>, the GMPLS labels are specific to each switching technology. They can be specified on each link and also on the TE-LSP endpoints, in WSON networks, for instance, as described in <span>[<a href="#RFC6163" class="xref">RFC6163</a>]</span>. The label restriction can apply to endpoints, and on each hop, the related PCEP objects are END-POINTS, IRO, XRO, and RRO.<a href="#section-1.3.1-1.6" class="pilcrow">¶</a>
+---
+> <dd style="margin-left: 1.5em" id="section-1.3.1-1.6">Technology-specific label(s): As described in <span>[<a href="#RFC3471" class="cite xref">RFC3471</a>]</span>, the GMPLS labels are specific to each switching technology. They can be specified on each link and also on the TE-LSP endpoints, in WSON networks, for instance, as described in <span>[<a href="#RFC6163" class="cite xref">RFC6163</a>]</span>. The label restriction can apply to endpoints, and on each hop, the related PCEP objects are END-POINTS, IRO, XRO, and RRO.<a href="#section-1.3.1-1.6" class="pilcrow">¶</a>
+1641c1713
+< <dd id="section-1.3.1-1.7">End-to-End (E2E) path protection type: As defined in <span>[<a href="#RFC4872" class="xref">RFC4872</a>]</span>, this is applicable to the TE-LSP. In MPLS networks, the related PCEP object is LSPA (carrying local protection information).<a href="#section-1.3.1-1.7" class="pilcrow">¶</a>
+---
+> <dd style="margin-left: 1.5em" id="section-1.3.1-1.7">End-to-End (E2E) path protection type: As defined in <span>[<a href="#RFC4872" class="cite xref">RFC4872</a>]</span>, this is applicable to the TE-LSP. In MPLS networks, the related PCEP object is LSPA (carrying local protection information).<a href="#section-1.3.1-1.7" class="pilcrow">¶</a>
+1645c1717
+< <dd id="section-1.3.1-1.8">Administrative group: As defined in <span>[<a href="#RFC3630" class="xref">RFC3630</a>]</span>, this information is already carried in the LSPA object.<a href="#section-1.3.1-1.8" class="pilcrow">¶</a>
+---
+> <dd style="margin-left: 1.5em" id="section-1.3.1-1.8">Administrative group: As defined in <span>[<a href="#RFC3630" class="cite xref">RFC3630</a>]</span>, this information is already carried in the LSPA object.<a href="#section-1.3.1-1.8" class="pilcrow">¶</a>
+1649c1721
+< <dd id="section-1.3.1-1.9">Link protection type: As defined in <span>[<a href="#RFC4872" class="xref">RFC4872</a>]</span>, this is applicable to the TE-LSP and is carried in association with the E2E path protection type.<a href="#section-1.3.1-1.9" class="pilcrow">¶</a>
+---
+> <dd style="margin-left: 1.5em" id="section-1.3.1-1.9">Link protection type: As defined in <span>[<a href="#RFC4872" class="cite xref">RFC4872</a>]</span>, this is applicable to the TE-LSP and is carried in association with the E2E path protection type.<a href="#section-1.3.1-1.9" class="pilcrow">¶</a>
+1653c1725
+< <dd id="section-1.3.1-1.10">Support for unnumbered interfaces: As defined in <span>[<a href="#RFC3477" class="xref">RFC3477</a>]</span>. Its scope and related objects are the same as labels.<a href="#section-1.3.1-1.10" class="pilcrow">¶</a>
+---
+> <dd style="margin-left: 1.5em" id="section-1.3.1-1.10">Support for unnumbered interfaces: As defined in <span>[<a href="#RFC3477" class="cite xref">RFC3477</a>]</span>. Its scope and related objects are the same as labels.<a href="#section-1.3.1-1.10" class="pilcrow">¶</a>
+1657c1729
+< <dd id="section-1.3.1-1.11">Support for asymmetric bandwidth requests: As defined in <span>[<a href="#RFC6387" class="xref">RFC6387</a>]</span>, the scope is similar to (4).<a href="#section-1.3.1-1.11" class="pilcrow">¶</a>
+---
+> <dd style="margin-left: 1.5em" id="section-1.3.1-1.11">Support for asymmetric bandwidth requests: As defined in <span>[<a href="#RFC6387" class="cite xref">RFC6387</a>]</span>, the scope is similar to (4).<a href="#section-1.3.1-1.11" class="pilcrow">¶</a>
+1661c1733
+< <dd id="section-1.3.1-1.12">Support for explicit label control during the path
+---
+> <dd style="margin-left: 1.5em" id="section-1.3.1-1.12">Support for explicit label control during the path
+1667c1739
+< <dd id="section-1.3.1-1.13"> Support of label restrictions in the requests/responses:
+---
+> <dd style="margin-left: 1.5em" id="section-1.3.1-1.13"> Support of label restrictions in the requests/responses:
+1679c1751
+< <dd id="section-1.3.2-1.1">Path computation with concatenation: This is related to
+---
+> <dd style="margin-left: 1.5em" id="section-1.3.2-1.1">Path computation with concatenation: This is related to
+1687c1759
+< <dd id="section-1.3.2-1.2">Label constraint: The PCE should be able to include labels in the path returned to the PCC; the related object is the ERO object.<a href="#section-1.3.2-1.2" class="pilcrow">¶</a>
+---
+> <dd style="margin-left: 1.5em" id="section-1.3.2-1.2">Label constraint: The PCE should be able to include labels in the path returned to the PCC; the related object is the ERO object.<a href="#section-1.3.2-1.2" class="pilcrow">¶</a>
+1691c1763
+< <dd id="section-1.3.2-1.3">Roles of the routes: As defined in <span>[<a href="#RFC4872" class="xref">RFC4872</a>]</span>, this is applicable to the TE-LSP and is carried in association with the E2E path protection type.<a href="#section-1.3.2-1.3" class="pilcrow">¶</a>
+---
+> <dd style="margin-left: 1.5em" id="section-1.3.2-1.3">Roles of the routes: As defined in <span>[<a href="#RFC4872" class="cite xref">RFC4872</a>]</span>, this is applicable to the TE-LSP and is carried in association with the E2E path protection type.<a href="#section-1.3.2-1.3" class="pilcrow">¶</a>
+1703,1704c1775,1776
+< <p id="section-1.4-1"> The support provided by specifications in <span>[<a href="#RFC8282" class="xref">RFC8282</a>]</span> and <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>  for the
+<           requirements listed in <span>[<a href="#RFC7025" class="xref">RFC7025</a>]</span> is summarized in Tables <a href="#rfc7025_pcreq_reqss" class="xref">1</a> and <a href="#rfc7025_pcrep_reqss" class="xref">2</a>.  In
+---
+> <p id="section-1.4-1"> The support provided by specifications in <span>[<a href="#RFC8282" class="cite xref">RFC8282</a>]</span> and <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>  for the
+>           requirements listed in <span>[<a href="#RFC7025" class="cite xref">RFC7025</a>]</span> is summarized in Tables <a href="#rfc7025_pcreq_reqss" class="auto internal xref">1</a> and <a href="#rfc7025_pcrep_reqss" class="auto internal xref">2</a>.  In
+1821,1822c1893,1894
+< <p id="section-1.4-4">Per <a href="#requirement-map" class="xref">Section 1.3</a>, PCEP (as
+<         described in <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>, <span>[<a href="#RFC5521" class="xref">RFC5521</a>]</span>, and <span>[<a href="#RFC8282" class="xref">RFC8282</a>]</span>) supports the following objects, included in
+---
+> <p id="section-1.4-4">Per <a href="#requirement-map" class="auto internal xref">Section 1.3</a>, PCEP (as
+>         described in <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>, <span>[<a href="#RFC5521" class="cite xref">RFC5521</a>]</span>, and <span>[<a href="#RFC8282" class="cite xref">RFC8282</a>]</span>) supports the following objects, included in
+1825,1827c1897,1899
+< <p id="section-1.4-5">From <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>:<a href="#section-1.4-5" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-1.4-6.1">
+---
+> <p id="section-1.4-5">From <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>:<a href="#section-1.4-5" class="pilcrow">¶</a></p>
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-1.4-6.1">
+1830c1902
+<               <dd id="section-1.4-6.1.1.2">related to requirements 1, 2, 3, 6, 10, and 13. The object only supports numbered endpoints. The context specifies whether they are node identifiers or numbered interfaces.<a href="#section-1.4-6.1.1.2" class="pilcrow">¶</a>
+---
+>               <dd style="margin-left: 1.5em" id="section-1.4-6.1.1.2">related to requirements 1, 2, 3, 6, 10, and 13. The object only supports numbered endpoints. The context specifies whether they are node identifiers or numbered interfaces.<a href="#section-1.4-6.1.1.2" class="pilcrow">¶</a>
+1834c1906
+<               <dd id="section-1.4-6.1.1.4">related to requirements 4, 5, and 11. The data rate is encoded in the BANDWIDTH object (as an IEEE 32-bit float). <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span> does not include the ability to convey an encoding proper to all GMPLS-controlled networks.<a href="#section-1.4-6.1.1.4" class="pilcrow">¶</a>
+---
+>               <dd style="margin-left: 1.5em" id="section-1.4-6.1.1.4">related to requirements 4, 5, and 11. The data rate is encoded in the BANDWIDTH object (as an IEEE 32-bit float). <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span> does not include the ability to convey an encoding proper to all GMPLS-controlled networks.<a href="#section-1.4-6.1.1.4" class="pilcrow">¶</a>
+1838c1910
+<               <dd id="section-1.4-6.1.1.6">related to requirements 6, 10, 12, and 13. The ERO
+---
+>               <dd style="margin-left: 1.5em" id="section-1.4-6.1.1.6">related to requirements 6, 10, 12, and 13. The ERO
+1840c1912
+<           <span>[<a href="#RFC3209" class="xref">RFC3209</a>]</span>, <span>[<a href="#RFC3473" class="xref">RFC3473</a>]</span>, <span>[<a href="#RFC3477" class="xref">RFC3477</a>]</span>, and <span>[<a href="#RFC7570" class="xref">RFC7570</a>]</span> and
+---
+>           <span>[<a href="#RFC3209" class="cite xref">RFC3209</a>]</span>, <span>[<a href="#RFC3473" class="cite xref">RFC3473</a>]</span>, <span>[<a href="#RFC3477" class="cite xref">RFC3477</a>]</span>, and <span>[<a href="#RFC7570" class="cite xref">RFC7570</a>]</span> and
+1845c1917
+<               <dd id="section-1.4-6.1.1.8">related to requirements 7, 8, and 9. Requirement 8 (Administrative group) is already supported.<a href="#section-1.4-6.1.1.8" class="pilcrow">¶</a>
+---
+>               <dd style="margin-left: 1.5em" id="section-1.4-6.1.1.8">related to requirements 7, 8, and 9. Requirement 8 (Administrative group) is already supported.<a href="#section-1.4-6.1.1.8" class="pilcrow">¶</a>
+1851,1853c1923,1925
+< <p id="section-1.4-7">From <span>[<a href="#RFC5521" class="xref">RFC5521</a>]</span>:<a href="#section-1.4-7" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-1.4-8.1">
+---
+> <p id="section-1.4-7">From <span>[<a href="#RFC5521" class="cite xref">RFC5521</a>]</span>:<a href="#section-1.4-7" class="pilcrow">¶</a></p>
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-1.4-8.1">
+1864,1866c1936,1938
+< <p id="section-1.4-9">From <span>[<a href="#RFC8282" class="xref">RFC8282</a>]</span>:<a href="#section-1.4-9" class="pilcrow">¶</a></p>
+< <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-1.4-10.1">
+---
+> <p id="section-1.4-9">From <span>[<a href="#RFC8282" class="cite xref">RFC8282</a>]</span>:<a href="#section-1.4-9" class="pilcrow">¶</a></p>
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-1.4-10.1">
+1869c1941
+<               <dd id="section-1.4-10.1.1.2">addresses requirements 1, 2, and 3 for the TE-LSP and indicates which layer(s) should be considered. The object can be used to represent the RSVP-TE Generalized Label Request. It does not address the endpoints case of requirements 1, 2, and 3.<a href="#section-1.4-10.1.1.2" class="pilcrow">¶</a>
+---
+>               <dd style="margin-left: 1.5em" id="section-1.4-10.1.1.2">addresses requirements 1, 2, and 3 for the TE-LSP and indicates which layer(s) should be considered. The object can be used to represent the RSVP-TE Generalized Label Request. It does not address the endpoints case of requirements 1, 2, and 3.<a href="#section-1.4-10.1.1.2" class="pilcrow">¶</a>
+1873c1945
+<               <dd id="section-1.4-10.1.1.4">indicates the adaptation capabilities requested; it can also be used for the endpoints in case of mono-layer computation.<a href="#section-1.4-10.1.1.4" class="pilcrow">¶</a>
+---
+>               <dd style="margin-left: 1.5em" id="section-1.4-10.1.1.4">indicates the adaptation capabilities requested; it can also be used for the endpoints in case of mono-layer computation.<a href="#section-1.4-10.1.1.4" class="pilcrow">¶</a>
+1918c1990
+<         This section describes the necessary PCEP objects and extensions. The PCReq and PCRep messages are defined in <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>. This document does not change the existing grammar.<a href="#section-2-1" class="pilcrow">¶</a></p>
+---
+>         This section describes the necessary PCEP objects and extensions. The PCReq and PCRep messages are defined in <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>. This document does not change the existing grammar.<a href="#section-2-1" class="pilcrow">¶</a></p>
+1930c2002
+<     IGP-based PCE Discovery (PCED) is defined in <span>[<a href="#RFC5088" class="xref">RFC5088</a>]</span> and <span>[<a href="#RFC5089" class="xref">RFC5089</a>]</span> for the
+---
+>     IGP-based PCE Discovery (PCED) is defined in <span>[<a href="#RFC5088" class="cite xref">RFC5088</a>]</span> and <span>[<a href="#RFC5089" class="cite xref">RFC5089</a>]</span> for the
+1935c2007
+< <span class="bcp14">MUST</span> follow the procedures in <a href="#open-extensions" class="xref">Section 2.1.2</a> to further qualify the level of support during PCEP session establishment.<a href="#section-2.1.1-1" class="pilcrow">¶</a></p>
+---
+> <span class="bcp14">MUST</span> follow the procedures in <a href="#open-extensions" class="auto internal xref">Section 2.1.2</a> to further qualify the level of support during PCEP session establishment.<a href="#section-2.1.1-1" class="pilcrow">¶</a></p>
+1960c2032
+<     As documented in <a href="#iana-tlvs" class="xref">Section 5.3</a> ("New
+---
+>     As documented in <a href="#iana-tlvs" class="auto internal xref">Section 5.3</a> ("New
+1964c2036
+< <div class="artwork art-text alignLeft" id="section-2.1.2-4">
+---
+> <div class="alignLeft art-text artwork" id="section-2.1.2-4">
+1994c2066
+<          This corresponds to requirement 12 in <span><a href="https://www.rfc-editor.org/rfc/rfc7025#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC7025" class="xref">RFC7025</a>]</span>.
+---
+>          This corresponds to requirement 12 in <span><a href="https://rfc-editor.org/rfc/rfc7025#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC7025" class="cite xref">RFC7025</a>]</span>.
+2000,2001c2072,2073
+< <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-2.2-3.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-2.2-3.1">
+2004c2076
+<               <dd id="section-2.2-3.1.1.2">reserved<a href="#section-2.2-3.1.1.2" class="pilcrow">¶</a>
+---
+>               <dd style="margin-left: 1.5em" id="section-2.2-3.1.1.2">reserved<a href="#section-2.2-3.1.1.2" class="pilcrow">¶</a>
+2008c2080
+<               <dd id="section-2.2-3.1.1.4">node<a href="#section-2.2-3.1.1.4" class="pilcrow">¶</a>
+---
+>               <dd style="margin-left: 1.5em" id="section-2.2-3.1.1.4">node<a href="#section-2.2-3.1.1.4" class="pilcrow">¶</a>
+2012c2084
+<               <dd id="section-2.2-3.1.1.6">link<a href="#section-2.2-3.1.1.6" class="pilcrow">¶</a>
+---
+>               <dd style="margin-left: 1.5em" id="section-2.2-3.1.1.6">link<a href="#section-2.2-3.1.1.6" class="pilcrow">¶</a>
+2016c2088
+<               <dd id="section-2.2-3.1.1.8">label<a href="#section-2.2-3.1.1.8" class="pilcrow">¶</a>
+---
+>               <dd style="margin-left: 1.5em" id="section-2.2-3.1.1.8">label<a href="#section-2.2-3.1.1.8" class="pilcrow">¶</a>
+2025c2097
+<      granularity in the RP object included in the response. Otherwise, the PCE <span class="bcp14">MUST</span> use the reserved RG to leave the check of the ERO to the PCC. The RG flag is backward compatible with <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>: the value sent by an implementation (PCC or PCE) not supporting it will indicate a reserved value.<a href="#section-2.2-5" class="pilcrow">¶</a></p>
+---
+>      granularity in the RP object included in the response. Otherwise, the PCE <span class="bcp14">MUST</span> use the reserved RG to leave the check of the ERO to the PCC. The RG flag is backward compatible with <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>: the value sent by an implementation (PCC or PCE) not supporting it will indicate a reserved value.<a href="#section-2.2-5" class="pilcrow">¶</a></p>
+2034c2106
+<     Per <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>, the object carrying
+---
+>     Per <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>, the object carrying
+2036c2108
+<     types 1 and 2 defined in <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>
+---
+>     types 1 and 2 defined in <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>
+2039c2111
+<     to allow the object to express the bandwidth as described in <span>[<a href="#RFC7025" class="xref">RFC7025</a>]</span>.  RSVP-TE extensions for GMPLS
+---
+>     to allow the object to express the bandwidth as described in <span>[<a href="#RFC7025" class="cite xref">RFC7025</a>]</span>.  RSVP-TE extensions for GMPLS
+2047c2119
+< <li class="normal" id="section-2.3-3.1">Asymmetric bandwidth (different bandwidth in forward and reverse direction), as described in <span>[<a href="#RFC6387" class="xref">RFC6387</a>]</span>.<a href="#section-2.3-3.1" class="pilcrow">¶</a>
+---
+> <li class="normal" id="section-2.3-3.1">Asymmetric bandwidth (different bandwidth in forward and reverse direction), as described in <span>[<a href="#RFC6387" class="cite xref">RFC6387</a>]</span>.<a href="#section-2.3-3.1" class="pilcrow">¶</a>
+2053c2125
+<          This corresponds to requirements 3, 4, 5, and 11 in <span><a href="https://www.rfc-editor.org/rfc/rfc7025#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC7025" class="xref">RFC7025</a>]</span>.<a href="#section-2.3-4" class="pilcrow">¶</a></p>
+---
+>          This corresponds to requirements 3, 4, 5, and 11 in <span><a href="https://rfc-editor.org/rfc/rfc7025#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC7025" class="cite xref">RFC7025</a>]</span>.<a href="#section-2.3-4" class="pilcrow">¶</a></p>
+2056,2057c2128,2129
+< <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-2.3-6.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-2.3-6.1">
+2060c2132
+<               <dd id="section-2.3-6.1.1.2">Generalized bandwidth<a href="#section-2.3-6.1.1.2" class="pilcrow">¶</a>
+---
+>               <dd style="margin-left: 1.5em" id="section-2.3-6.1.1.2">Generalized bandwidth<a href="#section-2.3-6.1.1.2" class="pilcrow">¶</a>
+2064c2136
+<               <dd id="section-2.3-6.1.1.4">Generalized bandwidth of an existing TE-LSP for which a
+---
+>               <dd style="margin-left: 1.5em" id="section-2.3-6.1.1.4">Generalized bandwidth of an existing TE-LSP for which a
+2073c2145
+< <div class="artwork art-text alignLeft" id="section-2.3-8">
+---
+> <div class="alignLeft art-text artwork" id="section-2.3-8">
+2109c2181
+<          include TLVs that are different from the PCEP TLVs (e.g., the TLVs defined in <span>[<a href="#RFC6003" class="xref">RFC6003</a>]</span>).<a href="#section-2.3-12" class="pilcrow">¶</a></p>
+---
+>          include TLVs that are different from the PCEP TLVs (e.g., the TLVs defined in <span>[<a href="#RFC6003" class="cite xref">RFC6003</a>]</span>).<a href="#section-2.3-12" class="pilcrow">¶</a></p>
+2128c2200
+<                 <span>[<a href="#RFC2210" class="xref">RFC2210</a>]</span>
+---
+>                 <span>[<a href="#RFC2210" class="cite xref">RFC2210</a>]</span>
+2135c2207
+<                 <span>[<a href="#RFC4606" class="xref">RFC4606</a>]</span>
+---
+>                 <span>[<a href="#RFC4606" class="cite xref">RFC4606</a>]</span>
+2142c2214
+<                 <span>[<a href="#RFC4328" class="xref">RFC4328</a>]</span>
+---
+>                 <span>[<a href="#RFC4328" class="cite xref">RFC4328</a>]</span>
+2149c2221
+<                 <span>[<a href="#RFC6003" class="xref">RFC6003</a>]</span>
+---
+>                 <span>[<a href="#RFC6003" class="cite xref">RFC6003</a>]</span>
+2156c2228
+<                 <span>[<a href="#RFC7139" class="xref">RFC7139</a>]</span>
+---
+>                 <span>[<a href="#RFC7139" class="cite xref">RFC7139</a>]</span>
+2163c2235
+<                 <span>[<a href="#RFC7792" class="xref">RFC7792</a>]</span>
+---
+>                 <span>[<a href="#RFC7792" class="cite xref">RFC7792</a>]</span>
+2176,2177c2248,2249
+< <p id="section-2.3-15">The procedure described in <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span> for the PCRep is unchanged: a PCE <span class="bcp14">MAY</span> include the BANDWIDTH objects in the response to indicate the BANDWIDTH of the path.<a href="#section-2.3-15" class="pilcrow">¶</a></p>
+< <p id="section-2.3-16">As specified in <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>, in the case of the reoptimization of a TE-LSP, the bandwidth of the
+---
+> <p id="section-2.3-15">The procedure described in <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span> for the PCRep is unchanged: a PCE <span class="bcp14">MAY</span> include the BANDWIDTH objects in the response to indicate the BANDWIDTH of the path.<a href="#section-2.3-15" class="pilcrow">¶</a></p>
+> <p id="section-2.3-16">As specified in <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>, in the case of the reoptimization of a TE-LSP, the bandwidth of the
+2194c2266
+<          The LOAD-BALANCING object <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>
+---
+>          The LOAD-BALANCING object <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>
+2201c2273
+<          <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span> does not describe enough
+---
+>          <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span> does not describe enough
+2210c2282
+< <div class="artwork art-text alignLeft" id="section-2.4-5">
+---
+> <div class="alignLeft art-text artwork" id="section-2.4-5">
+2231c2303
+<           <dd id="section-2.4-6.2">the total length of
+---
+>           <dd style="margin-left: 1.5em" id="section-2.4-6.2">the total length of
+2236c2308
+<           <dd id="section-2.4-6.4">the total
+---
+>           <dd style="margin-left: 1.5em" id="section-2.4-6.4">the total
+2241c2313
+<           <dd id="section-2.4-6.6">the bandwidth specification type; it corresponds to RSVP-TE SENDER_TSPEC (Object Class 12) C-Types.<a href="#section-2.4-6.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-2.4-6.6">the bandwidth specification type; it corresponds to RSVP-TE SENDER_TSPEC (Object Class 12) C-Types.<a href="#section-2.4-6.6" class="pilcrow">¶</a>
+2245c2317
+<           <dd id="section-2.4-6.8">the maximum number of TE-LSPs in the set.<a href="#section-2.4-6.8" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-2.4-6.8">the maximum number of TE-LSPs in the set.<a href="#section-2.4-6.8" class="pilcrow">¶</a>
+2249c2321
+<           <dd id="section-2.4-6.10">specifies the minimum bandwidth specification of each
+---
+>           <dd style="margin-left: 1.5em" id="section-2.4-6.10">specifies the minimum bandwidth specification of each
+2254c2326
+<           <dd id="section-2.4-6.12">specifies the minimum reverse bandwidth specification of each
+---
+>           <dd style="margin-left: 1.5em" id="section-2.4-6.12">specifies the minimum reverse bandwidth specification of each
+2261,2262c2333,2334
+<         object; it can be found in <a href="#TSpec_encoding" class="xref">Table 3</a>
+<         in <a href="#generalized-bandwidth" class="xref">Section 2.3</a> of this document.<a href="#section-2.4-7" class="pilcrow">¶</a></p>
+---
+>         object; it can be found in <a href="#TSpec_encoding" class="auto internal xref">Table 3</a>
+>         in <a href="#generalized-bandwidth" class="auto internal xref">Section 2.3</a> of this document.<a href="#section-2.4-7" class="pilcrow">¶</a></p>
+2281c2353
+<         A simplified example for SDH is described in <a href="#appendix" class="xref">Appendix A</a>.<a href="#section-2.4-10" class="pilcrow">¶</a></p>
+---
+>         A simplified example for SDH is described in <a href="#appendix" class="auto internal xref">Appendix A</a>.<a href="#section-2.4-10" class="pilcrow">¶</a></p>
+2300c2372
+<            Per <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>, the source IP address and the destination IP address are used to identify those.
+---
+>            Per <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>, the source IP address and the destination IP address are used to identify those.
+2314c2386
+< <li class="normal" id="section-2.5-5.1">Be unnumbered as described in <span>[<a href="#RFC3477" class="xref">RFC3477</a>]</span>.<a href="#section-2.5-5.1" class="pilcrow">¶</a>
+---
+> <li class="normal" id="section-2.5-5.1">Be unnumbered as described in <span>[<a href="#RFC3477" class="cite xref">RFC3477</a>]</span>.<a href="#section-2.5-5.1" class="pilcrow">¶</a>
+2330c2402
+<            This corresponds to requirements 6 and 10 in <span><a href="https://www.rfc-editor.org/rfc/rfc7025#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC7025" class="xref">RFC7025</a>]</span>.<a href="#section-2.5-7" class="pilcrow">¶</a></p>
+---
+>            This corresponds to requirements 6 and 10 in <span><a href="https://rfc-editor.org/rfc/rfc7025#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC7025" class="cite xref">RFC7025</a>]</span>.<a href="#section-2.5-7" class="pilcrow">¶</a></p>
+2337c2409
+<             The Generalized Endpoint object type format consists of a body and a list of TLVs scoped to this object. The TLVs give the details of the endpoints and are described in <a href="#endpoints_tlvs" class="xref">Section 2.5.2</a>. 
+---
+>             The Generalized Endpoint object type format consists of a body and a list of TLVs scoped to this object. The TLVs give the details of the endpoints and are described in <a href="#endpoints_tlvs" class="auto internal xref">Section 2.5.2</a>. 
+2363c2435
+<     included when following <span>[<a href="#RFC4003" class="xref">RFC4003</a>]</span>
+---
+>     included when following <span>[<a href="#RFC4003" class="cite xref">RFC4003</a>]</span>
+2379c2451
+< <div class="artwork art-text alignLeft" id="section-2.5.1-4">
+---
+> <div class="alignLeft art-text artwork" id="section-2.5.1-4">
+2442c2514
+<      implementation supports P2MP path calculation.  The leaf types for P2MP are as per <span>[<a href="#RFC8306" class="xref">RFC8306</a>]</span>. A PCE not
+---
+>      implementation supports P2MP path calculation.  The leaf types for P2MP are as per <span>[<a href="#RFC8306" class="cite xref">RFC8306</a>]</span>. A PCE not
+2447c2519
+<             As per <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>, a PCE unable to
+---
+>             As per <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>, a PCE unable to
+2454,2456c2526,2528
+<             the grammar per <span>[<a href="#RFC5511" class="xref">RFC5511</a>]</span>:<a href="#section-2.5.1-8" class="pilcrow">¶</a></p>
+< <div id="section-2.5.1-9">
+< <pre class="sourcecode lang-rbnf">
+---
+>             the grammar per <span>[<a href="#RFC5511" class="cite xref">RFC5511</a>]</span>:<a href="#section-2.5.1-8" class="pilcrow">¶</a></p>
+> <div class="lang-rbnf sourcecode" id="section-2.5.1-9">
+> <pre>
+2482c2554
+<    procedure defined in <span>[<a href="#RFC8306" class="xref">RFC8306</a>], <a href="https://www.rfc-editor.org/rfc/rfc8306#section-3.10" class="relref">Section 3.10</a></span> also applies
+---
+>    procedure defined in <span>[<a href="#RFC8306" class="cite xref">RFC8306</a>], <a href="https://rfc-editor.org/rfc/rfc8306#section-3.10" class="relref">Section 3.10</a></span> also applies
+2485,2486c2557,2558
+< <div id="section-2.5.1-13">
+< <pre class="sourcecode">
+---
+> <div class="sourcecode" id="section-2.5.1-13">
+> <pre>
+2530c2602
+< <p id="section-2.5.2-1">All endpoint TLVs have the standard PCEP TLV header as defined in <span>[<a href="#RFC5440" class="xref">RFC5440</a>], <a href="https://www.rfc-editor.org/rfc/rfc5440#section-7.1" class="relref">Section 7.1</a></span>. For the Generalized Endpoint object type, the TLVs <span class="bcp14">MUST</span> follow the ordering defined in <a href="#endpoints_generalized" class="xref">Section 2.5.1</a>.<a href="#section-2.5.2-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-2.5.2-1">All endpoint TLVs have the standard PCEP TLV header as defined in <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>], <a href="https://rfc-editor.org/rfc/rfc5440#section-7.1" class="relref">Section 7.1</a></span>. For the Generalized Endpoint object type, the TLVs <span class="bcp14">MUST</span> follow the ordering defined in <a href="#endpoints_generalized" class="auto internal xref">Section 2.5.1</a>.<a href="#section-2.5.2-1" class="pilcrow">¶</a></p>
+2538c2610
+< <div class="artwork art-text alignLeft" id="section-2.5.2.1-2">
+---
+> <div class="alignLeft art-text artwork" id="section-2.5.2.1-2">
+2548c2620
+<             This TLV <span class="bcp14">MAY</span> be ignored, in which case a PCRep with NO-PATH <span class="bcp14">SHOULD</span> be returned, as described in <a href="#endpoints_generalized" class="xref">Section 2.5.1</a>.<a href="#section-2.5.2.1-3" class="pilcrow">¶</a></p>
+---
+>             This TLV <span class="bcp14">MAY</span> be ignored, in which case a PCRep with NO-PATH <span class="bcp14">SHOULD</span> be returned, as described in <a href="#endpoints_generalized" class="auto internal xref">Section 2.5.1</a>.<a href="#section-2.5.2.1-3" class="pilcrow">¶</a></p>
+2558c2630
+< <div class="artwork art-text alignLeft" id="section-2.5.2.2-2">
+---
+> <div class="alignLeft art-text artwork" id="section-2.5.2.2-2">
+2571c2643
+<             This TLV <span class="bcp14">MAY</span> be ignored, in which case a PCRep with NO-PATH <span class="bcp14">SHOULD</span> be returned, as described in <a href="#endpoints_generalized" class="xref">Section 2.5.1</a>.<a href="#section-2.5.2.2-3" class="pilcrow">¶</a></p>
+---
+>             This TLV <span class="bcp14">MAY</span> be ignored, in which case a PCRep with NO-PATH <span class="bcp14">SHOULD</span> be returned, as described in <a href="#endpoints_generalized" class="auto internal xref">Section 2.5.1</a>.<a href="#section-2.5.2.2-3" class="pilcrow">¶</a></p>
+2580c2652
+<             same semantic as in <span>[<a href="#RFC3477" class="xref">RFC3477</a>]</span>.
+---
+>             same semantic as in <span>[<a href="#RFC3477" class="cite xref">RFC3477</a>]</span>.
+2582c2654
+< <div class="artwork art-text alignLeft" id="section-2.5.2.3-2">
+---
+> <div class="alignLeft art-text artwork" id="section-2.5.2.3-2">
+2594c2666
+<             This TLV <span class="bcp14">MAY</span> be ignored, in which case a PCRep with NO-PATH <span class="bcp14">SHOULD</span> be returned, as described in <a href="#endpoints_generalized" class="xref">Section 2.5.1</a>.<a href="#section-2.5.2.3-3" class="pilcrow">¶</a></p>
+---
+>             This TLV <span class="bcp14">MAY</span> be ignored, in which case a PCRep with NO-PATH <span class="bcp14">SHOULD</span> be returned, as described in <a href="#endpoints_generalized" class="auto internal xref">Section 2.5.1</a>.<a href="#section-2.5.2.3-3" class="pilcrow">¶</a></p>
+2605c2677
+<             as described in <span><a href="https://www.rfc-editor.org/rfc/rfc3471#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC3471" class="xref">RFC3471</a>]</span> for the Generalized Label Request. The LSP
+---
+>             as described in <span><a href="https://rfc-editor.org/rfc/rfc3471#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC3471" class="cite xref">RFC3471</a>]</span> for the Generalized Label Request. The LSP
+2611c2683
+<             one are defined to satisfy requirement 13 in <span><a href="https://www.rfc-editor.org/rfc/rfc7025#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC7025" class="xref">RFC7025</a>]</span> for the
+---
+>             one are defined to satisfy requirement 13 in <span><a href="https://rfc-editor.org/rfc/rfc7025#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC7025" class="cite xref">RFC7025</a>]</span> for the
+2616c2688
+<             This TLV <span class="bcp14">MAY</span> be ignored, in which case a PCRep with NO-PATH <span class="bcp14">SHOULD</span> be returned, as described in <a href="#endpoints_generalized" class="xref">Section 2.5.1</a>.<a href="#section-2.5.2.4-2" class="pilcrow">¶</a></p>
+---
+>             This TLV <span class="bcp14">MAY</span> be ignored, in which case a PCRep with NO-PATH <span class="bcp14">SHOULD</span> be returned, as described in <a href="#endpoints_generalized" class="auto internal xref">Section 2.5.1</a>.<a href="#section-2.5.2.4-2" class="pilcrow">¶</a></p>
+2627c2699
+<             encoding and switching type. The REQ-ADAP-CAP object <span>[<a href="#RFC8282" class="xref">RFC8282</a>]</span> can be used in case of a
+---
+>             encoding and switching type. The REQ-ADAP-CAP object <span>[<a href="#RFC8282" class="cite xref">RFC8282</a>]</span> can be used in case of a
+2632c2704
+<             NO-PATH <span class="bcp14">SHOULD</span> be returned, as described in <a href="#endpoints_generalized" class="xref">Section 2.5.1</a>.  Per <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>, the LABEL-SET TLV is encoded as follows.
+---
+>             NO-PATH <span class="bcp14">SHOULD</span> be returned, as described in <a href="#endpoints_generalized" class="auto internal xref">Section 2.5.1</a>.  Per <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>, the LABEL-SET TLV is encoded as follows.
+2634c2706
+<             variable, and the value encoding follows <span><a href="https://www.rfc-editor.org/rfc/rfc3471#section-3.5" class="relref">Section 3.5</a> of [<a href="#RFC3471" class="xref">RFC3471</a>]</span>, with
+---
+>             variable, and the value encoding follows <span><a href="https://rfc-editor.org/rfc/rfc3471#section-3.5" class="relref">Section 3.5</a> of [<a href="#RFC3471" class="cite xref">RFC3471</a>]</span>, with
+2639,2640c2711,2712
+<               the semantic of Suggested Label as defined by <span>[<a href="#RFC3471" class="xref">RFC3471</a>]</span>.<a href="#section-2.5.2.5-1" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-2.5.2.5-2">
+---
+>               the semantic of Suggested Label as defined by <span>[<a href="#RFC3471" class="cite xref">RFC3471</a>]</span>.<a href="#section-2.5.2.5-1" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="section-2.5.2.5-2">
+2661c2733
+<               the label allocated on the first endpoint <span class="bcp14">MUST</span> be within the label set range. The Action parameter in the LABEL-SET indicates the type of list provided. These parameters are described by <span>[<a href="#RFC3471" class="xref">RFC3471</a>], <a href="https://www.rfc-editor.org/rfc/rfc3471#section-3.5.1" class="relref">Section 3.5.1</a></span>.<a href="#section-2.5.2.5-3" class="pilcrow">¶</a></p>
+---
+>               the label allocated on the first endpoint <span class="bcp14">MUST</span> be within the label set range. The Action parameter in the LABEL-SET indicates the type of list provided. These parameters are described by <span>[<a href="#RFC3471" class="cite xref">RFC3471</a>], <a href="https://rfc-editor.org/rfc/rfc3471#section-3.5.1" class="relref">Section 3.5.1</a></span>.<a href="#section-2.5.2.5-3" class="pilcrow">¶</a></p>
+2664,2665c2736,2737
+< <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-2.5.2.5-5.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-2.5.2.5-5.1">
+2730c2802
+< <p id="section-2.6-1">The IRO as defined in <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span> is used to
+---
+> <p id="section-2.6-1">The IRO as defined in <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span> is used to
+2732c2804
+<   label definition. In order to fulfill requirement 13 in <span><a href="https://www.rfc-editor.org/rfc/rfc7025#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC7025" class="xref">RFC7025</a>]</span>, the IRO needs to support the new subobject type as defined in <span>[<a href="#RFC3473" class="xref">RFC3473</a>]</span>:<a href="#section-2.6-1" class="pilcrow">¶</a></p>
+---
+>   label definition. In order to fulfill requirement 13 in <span><a href="https://rfc-editor.org/rfc/rfc7025#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC7025" class="cite xref">RFC7025</a>]</span>, the IRO needs to support the new subobject type as defined in <span>[<a href="#RFC3473" class="cite xref">RFC3473</a>]</span>:<a href="#section-2.6-1" class="pilcrow">¶</a></p>
+2768c2840
+< <p id="section-2.7-1">The XRO as defined in <span>[<a href="#RFC5521" class="xref">RFC5521</a>]</span> is used to
+---
+> <p id="section-2.7-1">The XRO as defined in <span>[<a href="#RFC5521" class="cite xref">RFC5521</a>]</span> is used to
+2770,2771c2842,2843
+<   labels <span>[<a href="#RFC6001" class="xref">RFC6001</a>]</span>. In order to fulfill requirement
+<   13 in <span><a href="https://www.rfc-editor.org/rfc/rfc7025#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC7025" class="xref">RFC7025</a>]</span>, the PCEP's XRO needs to
+---
+>   labels <span>[<a href="#RFC6001" class="cite xref">RFC6001</a>]</span>. In order to fulfill requirement
+>   13 in <span><a href="https://rfc-editor.org/rfc/rfc7025#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC7025" class="cite xref">RFC7025</a>]</span>, the PCEP's XRO needs to
+2775c2847
+<    of the ERO Label subobject defined in <span>[<a href="#RFC3473" class="xref">RFC3473</a>]</span> and the XRO subobject defined in <span>[<a href="#RFC5521" class="xref">RFC5521</a>]</span>. The
+---
+>    of the ERO Label subobject defined in <span>[<a href="#RFC3473" class="cite xref">RFC3473</a>]</span> and the XRO subobject defined in <span>[<a href="#RFC5521" class="cite xref">RFC5521</a>]</span>. The
+2777c2849
+< <div class="artwork art-text alignLeft" id="section-2.7-3">
+---
+> <div class="alignLeft art-text artwork" id="section-2.7-3">
+2791c2863
+<           <dd id="section-2.7-4.2">See <span>[<a href="#RFC5521" class="xref">RFC5521</a>]</span>.  The X bit indicates whether the exclusion is
+---
+>           <dd style="margin-left: 1.5em" id="section-2.7-4.2">See <span>[<a href="#RFC5521" class="cite xref">RFC5521</a>]</span>.  The X bit indicates whether the exclusion is
+2802c2874
+<           <dd id="section-2.7-4.4">The type of the XRO Label subobject is
+---
+>           <dd style="margin-left: 1.5em" id="section-2.7-4.4">The type of the XRO Label subobject is
+2807c2879
+<           <dd id="section-2.7-4.6">See <span>[<a href="#RFC5521" class="xref">RFC5521</a>]</span>. The total length of the subobject in bytes
+---
+>           <dd style="margin-left: 1.5em" id="section-2.7-4.6">See <span>[<a href="#RFC5521" class="cite xref">RFC5521</a>]</span>. The total length of the subobject in bytes
+2813c2885
+<           <dd id="section-2.7-4.8">See <span>[<a href="#RFC3471" class="xref">RFC3471</a>], <a href="https://www.rfc-editor.org/rfc/rfc3471#section-6.1" class="relref">Section 6.1</a></span>.<a href="#section-2.7-4.8" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-2.7-4.8">See <span>[<a href="#RFC3471" class="cite xref">RFC3471</a>], <a href="https://rfc-editor.org/rfc/rfc3471#section-6.1" class="relref">Section 6.1</a></span>.<a href="#section-2.7-4.8" class="pilcrow">¶</a>
+2817,2818c2889,2890
+<           <dd id="section-2.7-4.10">The C-Type of the included Label object
+<    as defined in <span>[<a href="#RFC3473" class="xref">RFC3473</a>]</span>.<a href="#section-2.7-4.10" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-2.7-4.10">The C-Type of the included Label object
+>    as defined in <span>[<a href="#RFC3473" class="cite xref">RFC3473</a>]</span>.<a href="#section-2.7-4.10" class="pilcrow">¶</a>
+2822c2894
+<           <dd id="section-2.7-4.12">See <span>[<a href="#RFC3471" class="xref">RFC3471</a>]</span>.<a href="#section-2.7-4.12" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-2.7-4.12">See <span>[<a href="#RFC3471" class="cite xref">RFC3471</a>]</span>.<a href="#section-2.7-4.12" class="pilcrow">¶</a>
+2857c2929
+<           A new TLV is defined to fulfill requirement 7 in <span><a href="https://www.rfc-editor.org/rfc/rfc7025#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC7025" class="xref">RFC7025</a>]</span> and requirement 3 in <span><a href="https://www.rfc-editor.org/rfc/rfc7025#section-3.2" class="relref">Section 3.2</a> of [<a href="#RFC7025" class="xref">RFC7025</a>]</span>. This TLV contains the information of the PROTECTION object defined by <span>[<a href="#RFC4872" class="xref">RFC4872</a>]</span> and can be used as a policy input.
+---
+>           A new TLV is defined to fulfill requirement 7 in <span><a href="https://rfc-editor.org/rfc/rfc7025#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC7025" class="cite xref">RFC7025</a>]</span> and requirement 3 in <span><a href="https://rfc-editor.org/rfc/rfc7025#section-3.2" class="relref">Section 3.2</a> of [<a href="#RFC7025" class="cite xref">RFC7025</a>]</span>. This TLV contains the information of the PROTECTION object defined by <span>[<a href="#RFC4872" class="cite xref">RFC4872</a>]</span> and can be used as a policy input.
+2860c2932
+< <div class="artwork art-text alignLeft" id="section-2.8-2">
+---
+> <div class="alignLeft art-text artwork" id="section-2.8-2">
+2873c2945
+< <p id="section-2.8-3">The content is as defined in <span>[<a href="#RFC4872" class="xref">RFC4872</a>], <a href="https://www.rfc-editor.org/rfc/rfc4872#section-14" class="relref">Section 14</a></span> and <span>[<a href="#RFC4873" class="xref">RFC4873</a>], <a href="https://www.rfc-editor.org/rfc/rfc4873#section-6.1" class="relref">Section 6.1</a></span>.<a href="#section-2.8-3" class="pilcrow">¶</a></p>
+---
+> <p id="section-2.8-3">The content is as defined in <span>[<a href="#RFC4872" class="cite xref">RFC4872</a>], <a href="https://rfc-editor.org/rfc/rfc4872#section-14" class="relref">Section 14</a></span> and <span>[<a href="#RFC4873" class="cite xref">RFC4873</a>], <a href="https://rfc-editor.org/rfc/rfc4873#section-6.1" class="relref">Section 6.1</a></span>.<a href="#section-2.8-3" class="pilcrow">¶</a></p>
+2906,2907c2978,2979
+< <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-2.9.1-2.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-2.9.1-2.1">
+2910c2982
+<                 <dd id="section-2.9.1-2.1.1.2">Protection Mismatch (1 bit). Specifies the mismatch of the protection type in the PROTECTION-ATTRIBUTE TLV in the request.<a href="#section-2.9.1-2.1.1.2" class="pilcrow">¶</a>
+---
+>                 <dd style="margin-left: 1.5em" id="section-2.9.1-2.1.1.2">Protection Mismatch (1 bit). Specifies the mismatch of the protection type in the PROTECTION-ATTRIBUTE TLV in the request.<a href="#section-2.9.1-2.1.1.2" class="pilcrow">¶</a>
+2914c2986
+<                 <dd id="section-2.9.1-2.1.1.4">No Resource (1 bit). Specifies that the resources are not currently sufficient to provide the path.<a href="#section-2.9.1-2.1.1.4" class="pilcrow">¶</a>
+---
+>                 <dd style="margin-left: 1.5em" id="section-2.9.1-2.1.1.4">No Resource (1 bit). Specifies that the resources are not currently sufficient to provide the path.<a href="#section-2.9.1-2.1.1.4" class="pilcrow">¶</a>
+2918c2990
+<                 <dd id="section-2.9.1-2.1.1.6">Granularity not supported
+---
+>                 <dd style="margin-left: 1.5em" id="section-2.9.1-2.1.1.6">Granularity not supported
+2924c2996
+<                 <dd id="section-2.9.1-2.1.1.8">No endpoint label resource (1 bit). Specifies that the PCE is not able to provide a path because of the endpoint label restriction.<a href="#section-2.9.1-2.1.1.8" class="pilcrow">¶</a>
+---
+>                 <dd style="margin-left: 1.5em" id="section-2.9.1-2.1.1.8">No endpoint label resource (1 bit). Specifies that the PCE is not able to provide a path because of the endpoint label restriction.<a href="#section-2.9.1-2.1.1.8" class="pilcrow">¶</a>
+2928c3000
+<                 <dd id="section-2.9.1-2.1.1.10">No endpoint label resource in range (1 bit). Specifies that the PCE is not able to provide a path because of the endpoint label set restriction.<a href="#section-2.9.1-2.1.1.10" class="pilcrow">¶</a>
+---
+>                 <dd style="margin-left: 1.5em" id="section-2.9.1-2.1.1.10">No endpoint label resource in range (1 bit). Specifies that the PCE is not able to provide a path because of the endpoint label set restriction.<a href="#section-2.9.1-2.1.1.10" class="pilcrow">¶</a>
+2932c3004
+<                 <dd id="section-2.9.1-2.1.1.12">No label resource in range (1
+---
+>                 <dd style="margin-left: 1.5em" id="section-2.9.1-2.1.1.12">No label resource in range (1
+2938c3010
+<                 <dd id="section-2.9.1-2.1.1.14">LOAD-BALANCING could not be performed
+---
+>                 <dd style="margin-left: 1.5em" id="section-2.9.1-2.1.1.14">LOAD-BALANCING could not be performed
+2965c3037
+<         Error-Types 1 to 10 are already defined in <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>. Additional Error-values are defined for
+---
+>         Error-Types 1 to 10 are already defined in <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>. Additional Error-values are defined for
+3102c3174
+< <p id="section-4-1">This section follows the guidance of <span>[<a href="#RFC6123" class="xref">RFC6123</a>]</span>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+---
+> <p id="section-4-1">This section follows the guidance of <span>[<a href="#RFC6123" class="cite xref">RFC6123</a>]</span>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+3110c3182
+<           <span>[<a href="#RFC5440" class="xref">RFC5440</a>], <a href="https://www.rfc-editor.org/rfc/rfc5440#section-8.1" class="relref">Section 8.1</a></span> also apply to this document.
+---
+>           <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>], <a href="https://rfc-editor.org/rfc/rfc5440#section-8.1" class="relref">Section 8.1</a></span> also apply to this document.
+3131c3203
+<           The configuration of the above parameters is applicable to the different sessions as described in <span>[<a href="#RFC5440" class="xref">RFC5440</a>], <a href="https://www.rfc-editor.org/rfc/rfc5440#section-8.1" class="relref">Section 8.1</a></span> (by default, per PCEP peer, etc.).<a href="#section-4.1-3" class="pilcrow">¶</a></p>
+---
+>           The configuration of the above parameters is applicable to the different sessions as described in <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>], <a href="https://rfc-editor.org/rfc/rfc5440#section-8.1" class="relref">Section 8.1</a></span> (by default, per PCEP peer, etc.).<a href="#section-4.1-3" class="pilcrow">¶</a></p>
+3140,3141c3212,3213
+<           <span>[<a href="#RFC5440" class="xref">RFC5440</a>], <a href="https://www.rfc-editor.org/rfc/rfc5440#section-8.2" class="relref">Section 8.2</a></span> also apply to this document.
+<           This document  does not introduce any new ERO subobjects; the ERO information model is already covered in <span>[<a href="#RFC4802" class="xref">RFC4802</a>]</span>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+---
+>           <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>], <a href="https://rfc-editor.org/rfc/rfc5440#section-8.2" class="relref">Section 8.2</a></span> also apply to this document.
+>           This document  does not introduce any new ERO subobjects; the ERO information model is already covered in <span>[<a href="#RFC4802" class="cite xref">RFC4802</a>]</span>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+3150c3222
+<           monitoring in <span>[<a href="#RFC4657" class="xref">RFC4657</a>]</span> and <span>[<a href="#RFC5440" class="xref">RFC5440</a>], <a href="https://www.rfc-editor.org/rfc/rfc5440#section-8.3" class="relref">Section 8.3</a></span>.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+---
+>           monitoring in <span>[<a href="#RFC4657" class="cite xref">RFC4657</a>]</span> and <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>], <a href="https://rfc-editor.org/rfc/rfc5440#section-8.3" class="relref">Section 8.3</a></span>.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+3157c3229
+<           This document makes no change to the basic operations of PCEP and the considerations described in <span>[<a href="#RFC5440" class="xref">RFC5440</a>], <a href="https://www.rfc-editor.org/rfc/rfc5440#section-8.4" class="relref">Section 8.4</a></span>.
+---
+>           This document makes no change to the basic operations of PCEP and the considerations described in <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>], <a href="https://rfc-editor.org/rfc/rfc5440#section-8.4" class="relref">Section 8.4</a></span>.
+3173c3245
+< <p id="section-4.6-1">This document makes no change to the basic operations of PCEP and the considerations described in <span>[<a href="#RFC5440" class="xref">RFC5440</a>], <a href="https://www.rfc-editor.org/rfc/rfc5440#section-8.6" class="relref">Section 8.6</a></span>.
+---
+> <p id="section-4.6-1">This document makes no change to the basic operations of PCEP and the considerations described in <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>], <a href="https://rfc-editor.org/rfc/rfc5440#section-8.6" class="relref">Section 8.6</a></span>.
+3190c3262
+< <p id="section-5.1-1">New object types are defined in Sections <a href="#generalized-bandwidth" class="xref">2.3</a>, <a href="#generalized-load-balancing" class="xref">2.4</a>, and <a href="#endpoints_generalized" class="xref">2.5.1</a>.  IANA has made
+---
+> <p id="section-5.1-1">New object types are defined in Sections <a href="#generalized-bandwidth" class="auto internal xref">2.3</a>, <a href="#generalized-load-balancing" class="auto internal xref">2.4</a>, and <a href="#endpoints_generalized" class="auto internal xref">2.5.1</a>.  IANA has made
+3209c3281
+<               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#generalized-bandwidth" class="xref">Section 2.3</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#generalized-bandwidth" class="auto internal xref">Section 2.3</a>
+3217c3289
+<               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#generalized-bandwidth" class="xref">Section 2.3</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#generalized-bandwidth" class="auto internal xref">Section 2.3</a>
+3224c3296
+<               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#generalized-load-balancing" class="xref">Section 2.4</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#generalized-load-balancing" class="auto internal xref">Section 2.4</a>
+3231c3303
+<               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#endpoints_extensions" class="xref">Section 2.5</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#endpoints_extensions" class="auto internal xref">Section 2.5</a>
+3246c3318
+<         Standards Action <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>. Each
+---
+>         Standards Action <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>. Each
+3260c3332
+<     (see <a href="#endpoints_generalized_endpoint-type" class="xref">Table 4</a> in <a href="#endpoints_generalized" class="xref">Section 2.5.1</a>):<a href="#section-5.2-5" class="pilcrow">¶</a></p>
+---
+>     (see <a href="#endpoints_generalized_endpoint-type" class="auto internal xref">Table 4</a> in <a href="#endpoints_generalized" class="auto internal xref">Section 2.5.1</a>):<a href="#section-5.2-5" class="pilcrow">¶</a></p>
+3307c3379
+<    IANA manages a registry for PCEP TLV code points (see <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>), which
+---
+>    IANA manages a registry for PCEP TLV code points (see <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>), which
+3325c3397
+<               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#endpoints_tlvs_ipv4" class="xref">Section 2.5.2.1</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#endpoints_tlvs_ipv4" class="auto internal xref">Section 2.5.2.1</a>
+3331c3403
+<               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#endpoints_tlvs_ipv6" class="xref">Section 2.5.2.2</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#endpoints_tlvs_ipv6" class="auto internal xref">Section 2.5.2.2</a>
+3337c3409
+<               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#endpoints_tlvs_unnumbered-if" class="xref">Section 2.5.2.3</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#endpoints_tlvs_unnumbered-if" class="auto internal xref">Section 2.5.2.3</a>
+3343c3415
+<               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#endpoints_tlvs_label-request" class="xref">Section 2.5.2.4</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#endpoints_tlvs_label-request" class="auto internal xref">Section 2.5.2.4</a>
+3349c3421
+<               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#endpoints_tlvs_labels" class="xref">Section 2.5.2.5</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#endpoints_tlvs_labels" class="auto internal xref">Section 2.5.2.5</a>
+3355c3427
+<               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#lspa" class="xref">Section 2.8</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#lspa" class="auto internal xref">Section 2.8</a>
+3361c3433
+<               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#open-extensions" class="xref">Section 2.1.2</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#open-extensions" class="auto internal xref">Section 2.1.2</a>
+3373c3445
+<    A new flag is defined in <a href="#rp-extensions" class="xref">Section 2.2</a> for the Flags field of the RP object.  IANA has
+---
+>    A new flag is defined in <a href="#rp-extensions" class="auto internal xref">Section 2.2</a> for the Flags field of the RP object.  IANA has
+3389c3461
+<               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#rp-extensions" class="xref">Section 2.2</a>
+---
+>               <td class="text-left" rowspan="1" colspan="1">RFC 8779, <a href="#rp-extensions" class="auto internal xref">Section 2.2</a>
+3399c3471
+< <p id="section-5.5-1">New PCEP Error-Types and Error-values are defined in <a href="#error-codes" class="xref">Section 3</a>. IANA has made the
+---
+> <p id="section-5.5-1">New PCEP Error-Types and Error-values are defined in <a href="#error-codes" class="auto internal xref">Section 3</a>. IANA has made the
+3418c3490
+<                 <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>
+---
+>                 <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>
+3452c3524
+<                 <span>[<a href="#RFC5440" class="xref">RFC5440</a>]</span>
+---
+>                 <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>
+3550c3622
+< <p id="section-5.6-1">New NO-PATH-VECTOR TLV bits are defined in <a href="#no-path_bits" class="xref">Section 2.9.1</a>.  IANA has made the
+---
+> <p id="section-5.6-1">New NO-PATH-VECTOR TLV bits are defined in <a href="#no-path_bits" class="auto internal xref">Section 2.9.1</a>.  IANA has made the
+3664c3736
+< <p id="section-5.9-2">New bit numbers are to be assigned by Standards Action <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>. 
+---
+> <p id="section-5.9-2">New bit numbers are to be assigned by Standards Action <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>]</span>. 
+3694,3695c3766,3767
+< <ul class="ulEmpty normal">
+< <li class="ulEmpty normal" id="section-6-2.1">
+---
+> <ul class="normal ulEmpty">
+> <li class="normal ulEmpty" id="section-6-2.1">
+3698c3770
+<             <dd id="section-6-2.1.1.2">A legitimate PCC could request a path for a GMPLS LSP to
+---
+>             <dd style="margin-left: 1.5em" id="section-6-2.1.1.2">A legitimate PCC could request a path for a GMPLS LSP to
+3715c3787
+<             <dd id="section-6-2.1.1.4">A malicious PCC, acting as a legitimate PCC, requesting LSP
+---
+>             <dd style="margin-left: 1.5em" id="section-6-2.1.1.4">A malicious PCC, acting as a legitimate PCC, requesting LSP
+3723c3795
+<             <dd id="section-6-2.1.1.6">As in the previous case, knowledge of an infrastructure can
+---
+>             <dd style="margin-left: 1.5em" id="section-6-2.1.1.6">As in the previous case, knowledge of an infrastructure can
+3734c3806
+<         cannot be completely trusted.  <span>[<a href="#RFC8253" class="xref">RFC8253</a>]</span> provides origin
+---
+>         cannot be completely trusted.  <span>[<a href="#RFC8253" class="cite xref">RFC8253</a>]</span> provides origin
+3743c3815
+<         can be used (following <span>[<a href="#RFC5920" class="xref">RFC5920</a>], <a href="https://www.rfc-editor.org/rfc/rfc5920#section-5.8" class="relref">Section 5.8</a></span>) to verify the data-plane connectivity and deviation from constraints.<a href="#section-6-4" class="pilcrow">¶</a></p>
+---
+>         can be used (following <span>[<a href="#RFC5920" class="cite xref">RFC5920</a>], <a href="https://rfc-editor.org/rfc/rfc5920#section-5.8" class="relref">Section 5.8</a></span>) to verify the data-plane connectivity and deviation from constraints.<a href="#section-6-4" class="pilcrow">¶</a></p>
+3746c3818
+<  Security (TLS) to enhance PCEP security is described in <span>[<a href="#RFC8253" class="xref">RFC8253</a>]</span>. The document describes the initiation
+---
+>  Security (TLS) to enhance PCEP security is described in <span>[<a href="#RFC8253" class="cite xref">RFC8253</a>]</span>. The document describes the initiation
+3749c3821
+<  of errors in the security checks. PCE and PCC <span class="bcp14">SHOULD</span> use the mechanism in <span>[<a href="#RFC8253" class="xref">RFC8253</a>]</span> to protect against malicious
+---
+>  of errors in the security checks. PCE and PCC <span class="bcp14">SHOULD</span> use the mechanism in <span>[<a href="#RFC8253" class="cite xref">RFC8253</a>]</span> to protect against malicious
+3752c3824
+<  Finally, as mentioned by <span>[<a href="#RFC7025" class="xref">RFC7025</a>]</span>, the PCEP extensions that support GMPLS should
+---
+>  Finally, as mentioned by <span>[<a href="#RFC7025" class="cite xref">RFC7025</a>]</span>, the PCEP extensions that support GMPLS should
+3757c3829
+<  control plane for such networks. For an overview of the security considerations, not only related to PCE/PCEP, and vulnerabilities of a GMPLS control plane, see <span>[<a href="#RFC5920" class="xref">RFC5920</a>]</span>.<a href="#section-6-6" class="pilcrow">¶</a></p>
+---
+>  control plane for such networks. For an overview of the security considerations, not only related to PCE/PCEP, and vulnerabilities of a GMPLS control plane, see <span>[<a href="#RFC5920" class="cite xref">RFC5920</a>]</span>.<a href="#section-6-6" class="pilcrow">¶</a></p>
+3782c3854
+< <span class="refAuthor">Awduche, D.</span><span class="refAuthor">, Berger, L.</span><span class="refAuthor">, Gan, D.</span><span class="refAuthor">, Li, T.</span><span class="refAuthor">, Srinivasan, V.</span><span class="refAuthor">, and G. Swallow</span>, <span class="refTitle">"RSVP-TE: Extensions to RSVP for LSP Tunnels"</span>, <span class="seriesInfo">RFC 3209</span>, <span class="seriesInfo">DOI 10.17487/RFC3209</span>, <time datetime="2001-12" class="refDate">December 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3209">https://www.rfc-editor.org/info/rfc3209</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Awduche, D.</span>, <span class="refAuthor">Berger, L.</span>, <span class="refAuthor">Gan, D.</span>, <span class="refAuthor">Li, T.</span>, <span class="refAuthor">Srinivasan, V.</span>, and <span class="refAuthor">G. Swallow</span>, <span class="refTitle">"RSVP-TE: Extensions to RSVP for LSP Tunnels"</span>, <span class="seriesInfo">RFC 3209</span>, <span class="seriesInfo">DOI 10.17487/RFC3209</span>, <time datetime="2001-12" class="refDate">December 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3209">https://www.rfc-editor.org/info/rfc3209</a>&gt;</span>. </dd>
+3794c3866
+< <span class="refAuthor">Kompella, K.</span><span class="refAuthor"> and Y. Rekhter</span>, <span class="refTitle">"Signalling Unnumbered Links in Resource ReSerVation Protocol - Traffic Engineering (RSVP-TE)"</span>, <span class="seriesInfo">RFC 3477</span>, <span class="seriesInfo">DOI 10.17487/RFC3477</span>, <time datetime="2003-01" class="refDate">January 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3477">https://www.rfc-editor.org/info/rfc3477</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Kompella, K.</span> and <span class="refAuthor">Y. Rekhter</span>, <span class="refTitle">"Signalling Unnumbered Links in Resource ReSerVation Protocol - Traffic Engineering (RSVP-TE)"</span>, <span class="seriesInfo">RFC 3477</span>, <span class="seriesInfo">DOI 10.17487/RFC3477</span>, <time datetime="2003-01" class="refDate">January 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3477">https://www.rfc-editor.org/info/rfc3477</a>&gt;</span>. </dd>
+3798c3870
+< <span class="refAuthor">Katz, D.</span><span class="refAuthor">, Kompella, K.</span><span class="refAuthor">, and D. Yeung</span>, <span class="refTitle">"Traffic Engineering (TE) Extensions to OSPF Version 2"</span>, <span class="seriesInfo">RFC 3630</span>, <span class="seriesInfo">DOI 10.17487/RFC3630</span>, <time datetime="2003-09" class="refDate">September 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3630">https://www.rfc-editor.org/info/rfc3630</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Katz, D.</span>, <span class="refAuthor">Kompella, K.</span>, and <span class="refAuthor">D. Yeung</span>, <span class="refTitle">"Traffic Engineering (TE) Extensions to OSPF Version 2"</span>, <span class="seriesInfo">RFC 3630</span>, <span class="seriesInfo">DOI 10.17487/RFC3630</span>, <time datetime="2003-09" class="refDate">September 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3630">https://www.rfc-editor.org/info/rfc3630</a>&gt;</span>. </dd>
+3810c3882
+< <span class="refAuthor">Mannie, E.</span><span class="refAuthor"> and D. Papadimitriou</span>, <span class="refTitle">"Generalized Multi-Protocol Label Switching (GMPLS) Extensions for Synchronous Optical Network (SONET) and Synchronous Digital Hierarchy (SDH) Control"</span>, <span class="seriesInfo">RFC 4606</span>, <span class="seriesInfo">DOI 10.17487/RFC4606</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4606">https://www.rfc-editor.org/info/rfc4606</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Mannie, E.</span> and <span class="refAuthor">D. Papadimitriou</span>, <span class="refTitle">"Generalized Multi-Protocol Label Switching (GMPLS) Extensions for Synchronous Optical Network (SONET) and Synchronous Digital Hierarchy (SDH) Control"</span>, <span class="seriesInfo">RFC 4606</span>, <span class="seriesInfo">DOI 10.17487/RFC4606</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4606">https://www.rfc-editor.org/info/rfc4606</a>&gt;</span>. </dd>
+3814c3886
+< <span class="refAuthor">Nadeau, T., Ed.</span><span class="refAuthor"> and A. Farrel, Ed.</span>, <span class="refTitle">"Generalized Multiprotocol Label Switching (GMPLS) Traffic Engineering Management Information Base"</span>, <span class="seriesInfo">RFC 4802</span>, <span class="seriesInfo">DOI 10.17487/RFC4802</span>, <time datetime="2007-02" class="refDate">February 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4802">https://www.rfc-editor.org/info/rfc4802</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Nadeau, T., Ed.</span> and <span class="refAuthor">A. Farrel, Ed.</span>, <span class="refTitle">"Generalized Multiprotocol Label Switching (GMPLS) Traffic Engineering Management Information Base"</span>, <span class="seriesInfo">RFC 4802</span>, <span class="seriesInfo">DOI 10.17487/RFC4802</span>, <time datetime="2007-02" class="refDate">February 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4802">https://www.rfc-editor.org/info/rfc4802</a>&gt;</span>. </dd>
+3818c3890
+< <span class="refAuthor">Lang, J.P., Ed.</span><span class="refAuthor">, Rekhter, Y., Ed.</span><span class="refAuthor">, and D. Papadimitriou, Ed.</span>, <span class="refTitle">"RSVP-TE Extensions in Support of End-to-End Generalized Multi-Protocol Label Switching (GMPLS) Recovery"</span>, <span class="seriesInfo">RFC 4872</span>, <span class="seriesInfo">DOI 10.17487/RFC4872</span>, <time datetime="2007-05" class="refDate">May 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4872">https://www.rfc-editor.org/info/rfc4872</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Lang, J.P., Ed.</span>, <span class="refAuthor">Rekhter, Y., Ed.</span>, and <span class="refAuthor">D. Papadimitriou, Ed.</span>, <span class="refTitle">"RSVP-TE Extensions in Support of End-to-End Generalized Multi-Protocol Label Switching (GMPLS) Recovery"</span>, <span class="seriesInfo">RFC 4872</span>, <span class="seriesInfo">DOI 10.17487/RFC4872</span>, <time datetime="2007-05" class="refDate">May 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4872">https://www.rfc-editor.org/info/rfc4872</a>&gt;</span>. </dd>
+3822c3894
+< <span class="refAuthor">Berger, L.</span><span class="refAuthor">, Bryskin, I.</span><span class="refAuthor">, Papadimitriou, D.</span><span class="refAuthor">, and A. Farrel</span>, <span class="refTitle">"GMPLS Segment Recovery"</span>, <span class="seriesInfo">RFC 4873</span>, <span class="seriesInfo">DOI 10.17487/RFC4873</span>, <time datetime="2007-05" class="refDate">May 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4873">https://www.rfc-editor.org/info/rfc4873</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Berger, L.</span>, <span class="refAuthor">Bryskin, I.</span>, <span class="refAuthor">Papadimitriou, D.</span>, and <span class="refAuthor">A. Farrel</span>, <span class="refTitle">"GMPLS Segment Recovery"</span>, <span class="seriesInfo">RFC 4873</span>, <span class="seriesInfo">DOI 10.17487/RFC4873</span>, <time datetime="2007-05" class="refDate">May 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4873">https://www.rfc-editor.org/info/rfc4873</a>&gt;</span>. </dd>
+3826c3898
+< <span class="refAuthor">Le Roux, JL., Ed.</span><span class="refAuthor">, Vasseur, JP., Ed.</span><span class="refAuthor">, Ikejiri, Y.</span><span class="refAuthor">, and R. Zhang</span>, <span class="refTitle">"OSPF Protocol Extensions for Path Computation Element (PCE) Discovery"</span>, <span class="seriesInfo">RFC 5088</span>, <span class="seriesInfo">DOI 10.17487/RFC5088</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5088">https://www.rfc-editor.org/info/rfc5088</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Le Roux, JL., Ed.</span>, <span class="refAuthor">Vasseur, JP., Ed.</span>, <span class="refAuthor">Ikejiri, Y.</span>, and <span class="refAuthor">R. Zhang</span>, <span class="refTitle">"OSPF Protocol Extensions for Path Computation Element (PCE) Discovery"</span>, <span class="seriesInfo">RFC 5088</span>, <span class="seriesInfo">DOI 10.17487/RFC5088</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5088">https://www.rfc-editor.org/info/rfc5088</a>&gt;</span>. </dd>
+3830c3902
+< <span class="refAuthor">Le Roux, JL., Ed.</span><span class="refAuthor">, Vasseur, JP., Ed.</span><span class="refAuthor">, Ikejiri, Y.</span><span class="refAuthor">, and R. Zhang</span>, <span class="refTitle">"IS-IS Protocol Extensions for Path Computation Element (PCE) Discovery"</span>, <span class="seriesInfo">RFC 5089</span>, <span class="seriesInfo">DOI 10.17487/RFC5089</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5089">https://www.rfc-editor.org/info/rfc5089</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Le Roux, JL., Ed.</span>, <span class="refAuthor">Vasseur, JP., Ed.</span>, <span class="refAuthor">Ikejiri, Y.</span>, and <span class="refAuthor">R. Zhang</span>, <span class="refTitle">"IS-IS Protocol Extensions for Path Computation Element (PCE) Discovery"</span>, <span class="seriesInfo">RFC 5089</span>, <span class="seriesInfo">DOI 10.17487/RFC5089</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5089">https://www.rfc-editor.org/info/rfc5089</a>&gt;</span>. </dd>
+3834c3906
+< <span class="refAuthor">Vasseur, JP., Ed.</span><span class="refAuthor"> and JL. Le Roux, Ed.</span>, <span class="refTitle">"Path Computation Element (PCE) Communication Protocol (PCEP)"</span>, <span class="seriesInfo">RFC 5440</span>, <span class="seriesInfo">DOI 10.17487/RFC5440</span>, <time datetime="2009-03" class="refDate">March 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5440">https://www.rfc-editor.org/info/rfc5440</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Vasseur, JP., Ed.</span> and <span class="refAuthor">JL. Le Roux, Ed.</span>, <span class="refTitle">"Path Computation Element (PCE) Communication Protocol (PCEP)"</span>, <span class="seriesInfo">RFC 5440</span>, <span class="seriesInfo">DOI 10.17487/RFC5440</span>, <time datetime="2009-03" class="refDate">March 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5440">https://www.rfc-editor.org/info/rfc5440</a>&gt;</span>. </dd>
+3842c3914
+< <span class="refAuthor">Bradford, R., Ed.</span><span class="refAuthor">, Vasseur, JP.</span><span class="refAuthor">, and A. Farrel</span>, <span class="refTitle">"Preserving Topology Confidentiality in Inter-Domain Path Computation Using a Path-Key-Based Mechanism"</span>, <span class="seriesInfo">RFC 5520</span>, <span class="seriesInfo">DOI 10.17487/RFC5520</span>, <time datetime="2009-04" class="refDate">April 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5520">https://www.rfc-editor.org/info/rfc5520</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradford, R., Ed.</span>, <span class="refAuthor">Vasseur, JP.</span>, and <span class="refAuthor">A. Farrel</span>, <span class="refTitle">"Preserving Topology Confidentiality in Inter-Domain Path Computation Using a Path-Key-Based Mechanism"</span>, <span class="seriesInfo">RFC 5520</span>, <span class="seriesInfo">DOI 10.17487/RFC5520</span>, <time datetime="2009-04" class="refDate">April 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5520">https://www.rfc-editor.org/info/rfc5520</a>&gt;</span>. </dd>
+3846c3918
+< <span class="refAuthor">Oki, E.</span><span class="refAuthor">, Takeda, T.</span><span class="refAuthor">, and A. Farrel</span>, <span class="refTitle">"Extensions to the Path Computation Element Communication Protocol (PCEP) for Route Exclusions"</span>, <span class="seriesInfo">RFC 5521</span>, <span class="seriesInfo">DOI 10.17487/RFC5521</span>, <time datetime="2009-04" class="refDate">April 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5521">https://www.rfc-editor.org/info/rfc5521</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Oki, E.</span>, <span class="refAuthor">Takeda, T.</span>, and <span class="refAuthor">A. Farrel</span>, <span class="refTitle">"Extensions to the Path Computation Element Communication Protocol (PCEP) for Route Exclusions"</span>, <span class="seriesInfo">RFC 5521</span>, <span class="seriesInfo">DOI 10.17487/RFC5521</span>, <time datetime="2009-04" class="refDate">April 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5521">https://www.rfc-editor.org/info/rfc5521</a>&gt;</span>. </dd>
+3850c3922
+< <span class="refAuthor">Le Roux, JL.</span><span class="refAuthor">, Vasseur, JP.</span><span class="refAuthor">, and Y. Lee</span>, <span class="refTitle">"Encoding of Objective Functions in the Path Computation Element Communication Protocol (PCEP)"</span>, <span class="seriesInfo">RFC 5541</span>, <span class="seriesInfo">DOI 10.17487/RFC5541</span>, <time datetime="2009-06" class="refDate">June 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5541">https://www.rfc-editor.org/info/rfc5541</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Le Roux, JL.</span>, <span class="refAuthor">Vasseur, JP.</span>, and <span class="refAuthor">Y. Lee</span>, <span class="refTitle">"Encoding of Objective Functions in the Path Computation Element Communication Protocol (PCEP)"</span>, <span class="seriesInfo">RFC 5541</span>, <span class="seriesInfo">DOI 10.17487/RFC5541</span>, <time datetime="2009-06" class="refDate">June 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5541">https://www.rfc-editor.org/info/rfc5541</a>&gt;</span>. </dd>
+3854c3926
+< <span class="refAuthor">Papadimitriou, D.</span><span class="refAuthor">, Vigoureux, M.</span><span class="refAuthor">, Shiomoto, K.</span><span class="refAuthor">, Brungard, D.</span><span class="refAuthor">, and JL. Le Roux</span>, <span class="refTitle">"Generalized MPLS (GMPLS) Protocol Extensions for Multi-Layer and Multi-Region Networks (MLN/MRN)"</span>, <span class="seriesInfo">RFC 6001</span>, <span class="seriesInfo">DOI 10.17487/RFC6001</span>, <time datetime="2010-10" class="refDate">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6001">https://www.rfc-editor.org/info/rfc6001</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Papadimitriou, D.</span>, <span class="refAuthor">Vigoureux, M.</span>, <span class="refAuthor">Shiomoto, K.</span>, <span class="refAuthor">Brungard, D.</span>, and <span class="refAuthor">JL. Le Roux</span>, <span class="refTitle">"Generalized MPLS (GMPLS) Protocol Extensions for Multi-Layer and Multi-Region Networks (MLN/MRN)"</span>, <span class="seriesInfo">RFC 6001</span>, <span class="seriesInfo">DOI 10.17487/RFC6001</span>, <time datetime="2010-10" class="refDate">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6001">https://www.rfc-editor.org/info/rfc6001</a>&gt;</span>. </dd>
+3862c3934
+< <span class="refAuthor">Otani, T., Ed.</span><span class="refAuthor"> and D. Li, Ed.</span>, <span class="refTitle">"Generalized Labels for Lambda-Switch-Capable (LSC) Label Switching Routers"</span>, <span class="seriesInfo">RFC 6205</span>, <span class="seriesInfo">DOI 10.17487/RFC6205</span>, <time datetime="2011-03" class="refDate">March 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6205">https://www.rfc-editor.org/info/rfc6205</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Otani, T., Ed.</span> and <span class="refAuthor">D. Li, Ed.</span>, <span class="refTitle">"Generalized Labels for Lambda-Switch-Capable (LSC) Label Switching Routers"</span>, <span class="seriesInfo">RFC 6205</span>, <span class="seriesInfo">DOI 10.17487/RFC6205</span>, <time datetime="2011-03" class="refDate">March 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6205">https://www.rfc-editor.org/info/rfc6205</a>&gt;</span>. </dd>
+3866c3938
+< <span class="refAuthor">Takacs, A.</span><span class="refAuthor">, Berger, L.</span><span class="refAuthor">, Caviglia, D.</span><span class="refAuthor">, Fedyk, D.</span><span class="refAuthor">, and J. Meuric</span>, <span class="refTitle">"GMPLS Asymmetric Bandwidth Bidirectional Label Switched Paths (LSPs)"</span>, <span class="seriesInfo">RFC 6387</span>, <span class="seriesInfo">DOI 10.17487/RFC6387</span>, <time datetime="2011-09" class="refDate">September 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6387">https://www.rfc-editor.org/info/rfc6387</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Takacs, A.</span>, <span class="refAuthor">Berger, L.</span>, <span class="refAuthor">Caviglia, D.</span>, <span class="refAuthor">Fedyk, D.</span>, and <span class="refAuthor">J. Meuric</span>, <span class="refTitle">"GMPLS Asymmetric Bandwidth Bidirectional Label Switched Paths (LSPs)"</span>, <span class="seriesInfo">RFC 6387</span>, <span class="seriesInfo">DOI 10.17487/RFC6387</span>, <time datetime="2011-09" class="refDate">September 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6387">https://www.rfc-editor.org/info/rfc6387</a>&gt;</span>. </dd>
+3870c3942
+< <span class="refAuthor">Zhang, F., Ed.</span><span class="refAuthor">, Zhang, G.</span><span class="refAuthor">, Belotti, S.</span><span class="refAuthor">, Ceccarelli, D.</span><span class="refAuthor">, and K. Pithewan</span>, <span class="refTitle">"GMPLS Signaling Extensions for Control of Evolving G.709 Optical Transport Networks"</span>, <span class="seriesInfo">RFC 7139</span>, <span class="seriesInfo">DOI 10.17487/RFC7139</span>, <time datetime="2014-03" class="refDate">March 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7139">https://www.rfc-editor.org/info/rfc7139</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Zhang, F., Ed.</span>, <span class="refAuthor">Zhang, G.</span>, <span class="refAuthor">Belotti, S.</span>, <span class="refAuthor">Ceccarelli, D.</span>, and <span class="refAuthor">K. Pithewan</span>, <span class="refTitle">"GMPLS Signaling Extensions for Control of Evolving G.709 Optical Transport Networks"</span>, <span class="seriesInfo">RFC 7139</span>, <span class="seriesInfo">DOI 10.17487/RFC7139</span>, <time datetime="2014-03" class="refDate">March 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7139">https://www.rfc-editor.org/info/rfc7139</a>&gt;</span>. </dd>
+3874c3946
+< <span class="refAuthor">Margaria, C., Ed.</span><span class="refAuthor">, Martinelli, G.</span><span class="refAuthor">, Balls, S.</span><span class="refAuthor">, and B. Wright</span>, <span class="refTitle">"Label Switched Path (LSP) Attribute in the Explicit Route Object (ERO)"</span>, <span class="seriesInfo">RFC 7570</span>, <span class="seriesInfo">DOI 10.17487/RFC7570</span>, <time datetime="2015-07" class="refDate">July 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7570">https://www.rfc-editor.org/info/rfc7570</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Margaria, C., Ed.</span>, <span class="refAuthor">Martinelli, G.</span>, <span class="refAuthor">Balls, S.</span>, and <span class="refAuthor">B. Wright</span>, <span class="refTitle">"Label Switched Path (LSP) Attribute in the Explicit Route Object (ERO)"</span>, <span class="seriesInfo">RFC 7570</span>, <span class="seriesInfo">DOI 10.17487/RFC7570</span>, <time datetime="2015-07" class="refDate">July 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7570">https://www.rfc-editor.org/info/rfc7570</a>&gt;</span>. </dd>
+3878c3950
+< <span class="refAuthor">Zhang, F.</span><span class="refAuthor">, Zhang, X.</span><span class="refAuthor">, Farrel, A.</span><span class="refAuthor">, Gonzalez de Dios, O.</span><span class="refAuthor">, and D. Ceccarelli</span>, <span class="refTitle">"RSVP-TE Signaling Extensions in Support of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) Networks"</span>, <span class="seriesInfo">RFC 7792</span>, <span class="seriesInfo">DOI 10.17487/RFC7792</span>, <time datetime="2016-03" class="refDate">March 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7792">https://www.rfc-editor.org/info/rfc7792</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Zhang, F.</span>, <span class="refAuthor">Zhang, X.</span>, <span class="refAuthor">Farrel, A.</span>, <span class="refAuthor">Gonzalez de Dios, O.</span>, and <span class="refAuthor">D. Ceccarelli</span>, <span class="refTitle">"RSVP-TE Signaling Extensions in Support of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) Networks"</span>, <span class="seriesInfo">RFC 7792</span>, <span class="seriesInfo">DOI 10.17487/RFC7792</span>, <time datetime="2016-03" class="refDate">March 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7792">https://www.rfc-editor.org/info/rfc7792</a>&gt;</span>. </dd>
+3882c3954
+< <span class="refAuthor">Cotton, M.</span><span class="refAuthor">, Leiba, B.</span><span class="refAuthor">, and T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cotton, M.</span>, <span class="refAuthor">Leiba, B.</span>, and <span class="refAuthor">T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8126">https://www.rfc-editor.org/info/rfc8126</a>&gt;</span>. </dd>
+3890c3962
+< <span class="refAuthor">Lopez, D.</span><span class="refAuthor">, Gonzalez de Dios, O.</span><span class="refAuthor">, Wu, Q.</span><span class="refAuthor">, and D. Dhody</span>, <span class="refTitle">"PCEPS: Usage of TLS to Provide a Secure Transport for the Path Computation Element Communication Protocol (PCEP)"</span>, <span class="seriesInfo">RFC 8253</span>, <span class="seriesInfo">DOI 10.17487/RFC8253</span>, <time datetime="2017-10" class="refDate">October 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8253">https://www.rfc-editor.org/info/rfc8253</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Lopez, D.</span>, <span class="refAuthor">Gonzalez de Dios, O.</span>, <span class="refAuthor">Wu, Q.</span>, and <span class="refAuthor">D. Dhody</span>, <span class="refTitle">"PCEPS: Usage of TLS to Provide a Secure Transport for the Path Computation Element Communication Protocol (PCEP)"</span>, <span class="seriesInfo">RFC 8253</span>, <span class="seriesInfo">DOI 10.17487/RFC8253</span>, <time datetime="2017-10" class="refDate">October 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8253">https://www.rfc-editor.org/info/rfc8253</a>&gt;</span>. </dd>
+3894c3966
+< <span class="refAuthor">Oki, E.</span><span class="refAuthor">, Takeda, T.</span><span class="refAuthor">, Farrel, A.</span><span class="refAuthor">, and F. Zhang</span>, <span class="refTitle">"Extensions to the Path Computation Element Communication Protocol (PCEP) for Inter-Layer MPLS and GMPLS Traffic Engineering"</span>, <span class="seriesInfo">RFC 8282</span>, <span class="seriesInfo">DOI 10.17487/RFC8282</span>, <time datetime="2017-12" class="refDate">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8282">https://www.rfc-editor.org/info/rfc8282</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Oki, E.</span>, <span class="refAuthor">Takeda, T.</span>, <span class="refAuthor">Farrel, A.</span>, and <span class="refAuthor">F. Zhang</span>, <span class="refTitle">"Extensions to the Path Computation Element Communication Protocol (PCEP) for Inter-Layer MPLS and GMPLS Traffic Engineering"</span>, <span class="seriesInfo">RFC 8282</span>, <span class="seriesInfo">DOI 10.17487/RFC8282</span>, <time datetime="2017-12" class="refDate">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8282">https://www.rfc-editor.org/info/rfc8282</a>&gt;</span>. </dd>
+3898c3970
+< <span class="refAuthor">Zhao, Q.</span><span class="refAuthor">, Dhody, D., Ed.</span><span class="refAuthor">, Palleti, R.</span><span class="refAuthor">, and D. King</span>, <span class="refTitle">"Extensions to the Path Computation Element Communication Protocol (PCEP) for Point-to-Multipoint Traffic Engineering Label Switched Paths"</span>, <span class="seriesInfo">RFC 8306</span>, <span class="seriesInfo">DOI 10.17487/RFC8306</span>, <time datetime="2017-11" class="refDate">November 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8306">https://www.rfc-editor.org/info/rfc8306</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Zhao, Q.</span>, <span class="refAuthor">Dhody, D., Ed.</span>, <span class="refAuthor">Palleti, R.</span>, and <span class="refAuthor">D. King</span>, <span class="refTitle">"Extensions to the Path Computation Element Communication Protocol (PCEP) for Point-to-Multipoint Traffic Engineering Label Switched Paths"</span>, <span class="seriesInfo">RFC 8306</span>, <span class="seriesInfo">DOI 10.17487/RFC8306</span>, <time datetime="2017-11" class="refDate">November 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8306">https://www.rfc-editor.org/info/rfc8306</a>&gt;</span>. </dd>
+3909c3981
+< <span class="refAuthor">Farrel, A.</span><span class="refAuthor">, Vasseur, J.-P.</span><span class="refAuthor">, and J. Ash</span>, <span class="refTitle">"A Path Computation Element (PCE)-Based Architecture"</span>, <span class="seriesInfo">RFC 4655</span>, <span class="seriesInfo">DOI 10.17487/RFC4655</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4655">https://www.rfc-editor.org/info/rfc4655</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Farrel, A.</span>, <span class="refAuthor">Vasseur, J.-P.</span>, and <span class="refAuthor">J. Ash</span>, <span class="refTitle">"A Path Computation Element (PCE)-Based Architecture"</span>, <span class="seriesInfo">RFC 4655</span>, <span class="seriesInfo">DOI 10.17487/RFC4655</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4655">https://www.rfc-editor.org/info/rfc4655</a>&gt;</span>. </dd>
+3913c3985
+< <span class="refAuthor">Ash, J., Ed.</span><span class="refAuthor"> and J.L. Le Roux, Ed.</span>, <span class="refTitle">"Path Computation Element (PCE) Communication Protocol Generic Requirements"</span>, <span class="seriesInfo">RFC 4657</span>, <span class="seriesInfo">DOI 10.17487/RFC4657</span>, <time datetime="2006-09" class="refDate">September 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4657">https://www.rfc-editor.org/info/rfc4657</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Ash, J., Ed.</span> and <span class="refAuthor">J.L. Le Roux, Ed.</span>, <span class="refTitle">"Path Computation Element (PCE) Communication Protocol Generic Requirements"</span>, <span class="seriesInfo">RFC 4657</span>, <span class="seriesInfo">DOI 10.17487/RFC4657</span>, <time datetime="2006-09" class="refDate">September 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4657">https://www.rfc-editor.org/info/rfc4657</a>&gt;</span>. </dd>
+3925c3997
+< <span class="refAuthor">Lee, Y., Ed.</span><span class="refAuthor">, Bernstein, G., Ed.</span><span class="refAuthor">, and W. Imajuku</span>, <span class="refTitle">"Framework for GMPLS and Path Computation Element (PCE) Control of Wavelength Switched Optical Networks (WSONs)"</span>, <span class="seriesInfo">RFC 6163</span>, <span class="seriesInfo">DOI 10.17487/RFC6163</span>, <time datetime="2011-04" class="refDate">April 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6163">https://www.rfc-editor.org/info/rfc6163</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Lee, Y., Ed.</span>, <span class="refAuthor">Bernstein, G., Ed.</span>, and <span class="refAuthor">W. Imajuku</span>, <span class="refTitle">"Framework for GMPLS and Path Computation Element (PCE) Control of Wavelength Switched Optical Networks (WSONs)"</span>, <span class="seriesInfo">RFC 6163</span>, <span class="seriesInfo">DOI 10.17487/RFC6163</span>, <time datetime="2011-04" class="refDate">April 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6163">https://www.rfc-editor.org/info/rfc6163</a>&gt;</span>. </dd>
+3929c4001
+< <span class="refAuthor">Otani, T.</span><span class="refAuthor">, Ogaki, K.</span><span class="refAuthor">, Caviglia, D.</span><span class="refAuthor">, Zhang, F.</span><span class="refAuthor">, and C. Margaria</span>, <span class="refTitle">"Requirements for GMPLS Applications of PCE"</span>, <span class="seriesInfo">RFC 7025</span>, <span class="seriesInfo">DOI 10.17487/RFC7025</span>, <time datetime="2013-09" class="refDate">September 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7025">https://www.rfc-editor.org/info/rfc7025</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Otani, T.</span>, <span class="refAuthor">Ogaki, K.</span>, <span class="refAuthor">Caviglia, D.</span>, <span class="refAuthor">Zhang, F.</span>, and <span class="refAuthor">C. Margaria</span>, <span class="refTitle">"Requirements for GMPLS Applications of PCE"</span>, <span class="seriesInfo">RFC 7025</span>, <span class="seriesInfo">DOI 10.17487/RFC7025</span>, <time datetime="2013-09" class="refDate">September 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7025">https://www.rfc-editor.org/info/rfc7025</a>&gt;</span>. </dd>
+3933c4005
+< <span class="refAuthor">Lee, Y., Ed.</span><span class="refAuthor">, Bernstein, G., Ed.</span><span class="refAuthor">, Martensson, J.</span><span class="refAuthor">, Takeda, T.</span><span class="refAuthor">, Tsuritani, T.</span><span class="refAuthor">, and O. Gonzalez de Dios</span>, <span class="refTitle">"Path Computation Element Communication Protocol (PCEP) Requirements for Wavelength Switched Optical Network (WSON) Routing and Wavelength Assignment"</span>, <span class="seriesInfo">RFC 7449</span>, <span class="seriesInfo">DOI 10.17487/RFC7449</span>, <time datetime="2015-02" class="refDate">February 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7449">https://www.rfc-editor.org/info/rfc7449</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Lee, Y., Ed.</span>, <span class="refAuthor">Bernstein, G., Ed.</span>, <span class="refAuthor">Martensson, J.</span>, <span class="refAuthor">Takeda, T.</span>, <span class="refAuthor">Tsuritani, T.</span>, and <span class="refAuthor">O. Gonzalez de Dios</span>, <span class="refTitle">"Path Computation Element Communication Protocol (PCEP) Requirements for Wavelength Switched Optical Network (WSON) Routing and Wavelength Assignment"</span>, <span class="seriesInfo">RFC 7449</span>, <span class="seriesInfo">DOI 10.17487/RFC7449</span>, <time datetime="2015-02" class="refDate">February 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7449">https://www.rfc-editor.org/info/rfc7449</a>&gt;</span>. </dd>
+3939c4011
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+3941c4013
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-load-balancing-usage-for-sd" class="section-name selfRef">LOAD-BALANCING Usage for SDH Virtual Concatenation</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-load-balancing-usage-for-sd" class="section-name selfRef">LOAD-BALANCING Usage for SDH Virtual Concatenation</a>
+3943c4015
+< <p id="section-appendix.a-1">As an example, a request for one co-signaled n x VC-4 TE-LSP
+---
+> <p id="appendix-A-1">As an example, a request for one co-signaled n x VC-4 TE-LSP
+3961c4033
+<       Spec from the LOAD-BALANCING object of the corresponding request.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+>       Spec from the LOAD-BALANCING object of the corresponding request.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+3964c4036
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+3968c4040
+< <p id="section-appendix.b-1">
+---
+> <p id="appendix-B-1">
+3973,3974c4045,4046
+<         no. 317999.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-2">
+---
+>         no. 317999.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+> <p id="appendix-B-2">
+3978,3979c4050,4051
+<         their review and useful comments.<a href="#section-appendix.b-2" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-3"> Thanks to <span class="contact-name">Alisa Cooper</span>, <span class="contact-name">Benjamin Kaduk</span>, <span class="contact-name">Elwyn Davies</span>,
+---
+>         their review and useful comments.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+> <p id="appendix-B-3"> Thanks to <span class="contact-name">Alisa Cooper</span>, <span class="contact-name">Benjamin Kaduk</span>, <span class="contact-name">Elwyn Davies</span>,
+3981c4053
+<       IESG-related comments.<a href="#section-appendix.b-3" class="pilcrow">¶</a></p>
+---
+>       IESG-related comments.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
+3983c4055
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
+4083c4155
+< <section id="section-appendix.d">
+---
+> <section id="appendix-D">

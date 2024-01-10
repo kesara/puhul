@@ -1,0 +1,652 @@
+28c28
+< <meta content="xml2rfc 2.47.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.1" name="generator">
+30c30,46
+< <link href="rfc8805.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.1
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.2
+>     lxml 4.9.4
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.13
+> -->
+> <link href="rfc/rfc8805.xml" rel="alternate" type="application/rfc+xml">
+40c56
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+49a66,71
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+52d73
+<   width: extend-to-zoom;
+67c88
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+69a91
+>   overflow-wrap: break-word;
+155a178,186
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+170,173d200
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+174a202
+>   border: none;
+197a226,228
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+249c280
+< tt, code, pre, code {
+---
+> tt, code, pre {
+251c282
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+290a322,324
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+380a415,420
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+482c522
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+622d661
+< 
+644a684,686
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+712c754
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+812c854
+< tt, code, pre, code {
+---
+> tt, code, pre {
+817c859
+< pre.sourcecode,
+---
+> .sourcecode pre,
+853c895
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1034a1077
+>   .artwork > pre,
+1049c1092
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1055a1099,1101
+> tr {
+>   break-inside: avoid;
+> }
+1075c1121
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1106c1152
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1131c1177
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1133c1179,1180
+< ol.compact, .olCompact {
+---
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+1141c1188,1212
+< }</style>
+---
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+1142a1214
+> <link href="https://datatracker.ietf.org/doc/draft-google-self-published-geofeeds-09" rel="prev">
+1145c1217
+<   <link href="https://datatracker.ietf.org/doc/draft-google-self-published-geofeeds-09" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1147,1148c1219,1220
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1262,1267c1334,1339
+< <nav class="toc"><ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-motivation" class="xref">Motivation</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-motivation" class="internal xref">Motivation</a></p>
+1269,1270c1341,1342
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.1.2.2">
+<                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="xref">1.2</a>.  <a href="#name-requirements-notation" class="xref">Requirements Notation</a><a href="#section-toc.1-1.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+>                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-requirements-notation" class="internal xref">Requirements Notation</a></p>
+1272,1273c1344,1345
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.1.2.3">
+<                 <p id="section-toc.1-1.1.2.3.1" class="keepWithNext"><a href="#section-1.3" class="xref">1.3</a>.  <a href="#name-assumptions-about-publicati" class="xref">Assumptions about Publication</a><a href="#section-toc.1-1.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.3">
+>                 <p id="section-toc.1-1.1.2.3.1" class="keepWithNext"><a href="#section-1.3" class="auto internal xref">1.3</a>.  <a href="#name-assumptions-about-publicati" class="internal xref">Assumptions about Publication</a></p>
+1277,1290c1349,1362
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-self-published-ip-geolocati" class="xref">Self-Published IP Geolocation Feeds</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.2.2.1">
+<                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-specification" class="xref">Specification</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.2.2.1.2.1">
+<                     <p id="section-toc.1-1.2.2.1.2.1.1"><a href="#section-2.1.1" class="xref">2.1.1</a>.  <a href="#name-geolocation-feed-individual" class="xref">Geolocation Feed Individual Entry Fields</a><a href="#section-toc.1-1.2.2.1.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.2.2.1.2.1.2.1">
+<                         <p id="section-toc.1-1.2.2.1.2.1.2.1.1"><a href="#section-2.1.1.1" class="xref">2.1.1.1</a>.  <a href="#name-ip-prefix" class="xref">IP Prefix</a><a href="#section-toc.1-1.2.2.1.2.1.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+<                       <li class="toc compact ulEmpty" id="section-toc.1-1.2.2.1.2.1.2.2">
+<                         <p id="section-toc.1-1.2.2.1.2.1.2.2.1"><a href="#section-2.1.1.2" class="xref">2.1.1.2</a>.  <a href="#name-alpha2code-previously-count" class="xref">Alpha2code (Previously: 'country')</a><a href="#section-toc.1-1.2.2.1.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-self-published-ip-geolocati" class="internal xref">Self-Published IP Geolocation Feeds</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+>                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-specification" class="internal xref">Specification</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.1">
+>                     <p id="section-toc.1-1.2.2.1.2.1.1"><a href="#section-2.1.1" class="auto internal xref">2.1.1</a>.  <a href="#name-geolocation-feed-individual" class="internal xref">Geolocation Feed Individual Entry Fields</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.1.2.1">
+>                         <p id="section-toc.1-1.2.2.1.2.1.2.1.1"><a href="#section-2.1.1.1" class="auto internal xref">2.1.1.1</a>.  <a href="#name-ip-prefix" class="internal xref">IP Prefix</a></p>
+> </li>
+>                       <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.1.2.2">
+>                         <p id="section-toc.1-1.2.2.1.2.1.2.2.1"><a href="#section-2.1.1.2" class="auto internal xref">2.1.1.2</a>.  <a href="#name-alpha2code-previously-count" class="internal xref">Alpha2code (Previously: 'country')</a></p>
+1292,1293c1364,1365
+<                       <li class="toc compact ulEmpty" id="section-toc.1-1.2.2.1.2.1.2.3">
+<                         <p id="section-toc.1-1.2.2.1.2.1.2.3.1"><a href="#section-2.1.1.3" class="xref">2.1.1.3</a>.  <a href="#name-region" class="xref">Region</a><a href="#section-toc.1-1.2.2.1.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>                       <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.1.2.3">
+>                         <p id="section-toc.1-1.2.2.1.2.1.2.3.1"><a href="#section-2.1.1.3" class="auto internal xref">2.1.1.3</a>.  <a href="#name-region" class="internal xref">Region</a></p>
+1295,1296c1367,1368
+<                       <li class="toc compact ulEmpty" id="section-toc.1-1.2.2.1.2.1.2.4">
+<                         <p id="section-toc.1-1.2.2.1.2.1.2.4.1"><a href="#section-2.1.1.4" class="xref">2.1.1.4</a>.  <a href="#name-city" class="xref">City</a><a href="#section-toc.1-1.2.2.1.2.1.2.4.1" class="pilcrow">¶</a></p>
+---
+>                       <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.1.2.4">
+>                         <p id="section-toc.1-1.2.2.1.2.1.2.4.1"><a href="#section-2.1.1.4" class="auto internal xref">2.1.1.4</a>.  <a href="#name-city" class="internal xref">City</a></p>
+1298,1299c1370,1371
+<                       <li class="toc compact ulEmpty" id="section-toc.1-1.2.2.1.2.1.2.5">
+<                         <p id="section-toc.1-1.2.2.1.2.1.2.5.1"><a href="#section-2.1.1.5" class="xref">2.1.1.5</a>.  <a href="#name-postal-code" class="xref">Postal Code</a><a href="#section-toc.1-1.2.2.1.2.1.2.5.1" class="pilcrow">¶</a></p>
+---
+>                       <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.1.2.5">
+>                         <p id="section-toc.1-1.2.2.1.2.1.2.5.1"><a href="#section-2.1.1.5" class="auto internal xref">2.1.1.5</a>.  <a href="#name-postal-code" class="internal xref">Postal Code</a></p>
+1303,1304c1375,1376
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.2.2.1.2.2">
+<                     <p id="section-toc.1-1.2.2.1.2.2.1"><a href="#section-2.1.2" class="xref">2.1.2</a>.  <a href="#name-prefixes-with-no-geolocatio" class="xref">Prefixes with No Geolocation Information</a><a href="#section-toc.1-1.2.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.2">
+>                     <p id="section-toc.1-1.2.2.1.2.2.1"><a href="#section-2.1.2" class="auto internal xref">2.1.2</a>.  <a href="#name-prefixes-with-no-geolocatio" class="internal xref">Prefixes with No Geolocation Information</a></p>
+1306,1307c1378,1379
+<                   <li class="toc compact ulEmpty" id="section-toc.1-1.2.2.1.2.3">
+<                     <p id="section-toc.1-1.2.2.1.2.3.1"><a href="#section-2.1.3" class="xref">2.1.3</a>.  <a href="#name-additional-parsing-requirem" class="xref">Additional Parsing Requirements</a><a href="#section-toc.1-1.2.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.3">
+>                     <p id="section-toc.1-1.2.2.1.2.3.1"><a href="#section-2.1.3" class="auto internal xref">2.1.3</a>.  <a href="#name-additional-parsing-requirem" class="internal xref">Additional Parsing Requirements</a></p>
+1311,1312c1383,1384
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.2.2.2">
+<                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-examples" class="xref">Examples</a><a href="#section-toc.1-1.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+>                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-examples" class="internal xref">Examples</a></p>
+1316,1320c1388,1392
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-consuming-self-published-ip" class="xref">Consuming Self-Published IP Geolocation Feeds</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-feed-integrity" class="xref">Feed Integrity</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-consuming-self-published-ip" class="internal xref">Consuming Self-Published IP Geolocation Feeds</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-feed-integrity" class="internal xref">Feed Integrity</a></p>
+1322,1323c1394,1395
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-verification-of-authority" class="xref">Verification of Authority</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-verification-of-authority" class="internal xref">Verification of Authority</a></p>
+1325,1326c1397,1398
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.3.2.3">
+<                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-verification-of-accuracy" class="xref">Verification of Accuracy</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+>                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-verification-of-accuracy" class="internal xref">Verification of Accuracy</a></p>
+1328,1329c1400,1401
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.3.2.4">
+<                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="xref">3.4</a>.  <a href="#name-refreshing-feed-information" class="xref">Refreshing Feed Information</a><a href="#section-toc.1-1.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+>                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-refreshing-feed-information" class="internal xref">Refreshing Feed Information</a></p>
+1333,1334c1405,1406
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-privacy-considerations" class="xref">Privacy Considerations</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-privacy-considerations" class="internal xref">Privacy Considerations</a></p>
+1336,1337c1408,1409
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-relation-to-other-work" class="xref">Relation to Other Work</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-relation-to-other-work" class="internal xref">Relation to Other Work</a></p>
+1339,1340c1411,1412
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1342,1349c1414,1421
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-planned-future-work" class="xref">Planned Future Work</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< </li>
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-finding-self-published-ip-g" class="xref">Finding Self-Published IP Geolocation Feeds</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.8.2.1">
+<                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-ad-hoc-well-known-uris" class="xref">Ad Hoc 'Well-Known' URIs</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-planned-future-work" class="internal xref">Planned Future Work</a></p>
+> </li>
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-finding-self-published-ip-g" class="internal xref">Finding Self-Published IP Geolocation Feeds</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+>                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-ad-hoc-well-known-uris" class="internal xref">Ad Hoc 'Well-Known' URIs</a></p>
+1351,1352c1423,1424
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.8.2.2">
+<                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-other-mechanisms" class="xref">Other Mechanisms</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+>                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-other-mechanisms" class="internal xref">Other Mechanisms</a></p>
+1356,1357c1428,1429
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1359,1363c1431,1435
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+< <ul class="toc compact ulEmpty">
+< <li class="toc compact ulEmpty" id="section-toc.1-1.10.2.1">
+<                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="xref">10.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.10.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
+>                 <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="auto internal xref">10.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1365,1366c1437,1438
+<               <li class="toc compact ulEmpty" id="section-toc.1-1.10.2.2">
+<                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="xref">10.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.10.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
+>                 <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="auto internal xref">10.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1370,1371c1442,1443
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-sample-python-validation-co" class="xref">Sample Python Validation Code</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-sample-python-validation-co" class="internal xref">Sample Python Validation Code</a></p>
+1373,1374c1445,1446
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1376,1377c1448,1449
+<           <li class="toc compact ulEmpty" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1425c1497
+<     described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> 
+---
+>     described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> 
+1440c1512
+<         a given prefix to further protect privacy (see <a href="#spec" class="xref">Section 2.1</a>
+---
+>         a given prefix to further protect privacy (see <a href="#spec" class="auto internal xref">Section 2.1</a>
+1448c1520
+<         cryptographic keys, and Sender Policy Framework (SPF) records <span>[<a href="#RFC7208" class="xref">RFC7208</a>]</span> in the DNS.<a href="#section-1.3-2" class="pilcrow">¶</a></p>
+---
+>         cryptographic keys, and Sender Policy Framework (SPF) records <span>[<a href="#RFC7208" class="cite xref">RFC7208</a>]</span> in the DNS.<a href="#section-1.3-2" class="pilcrow">¶</a></p>
+1479c1551
+< <p id="section-2.1-2">Feeds <span class="bcp14">MUST</span> use UTF-8 <span>[<a href="#RFC3629" class="xref">RFC3629</a>]</span> character encoding. 
+---
+> <p id="section-2.1-2">Feeds <span class="bcp14">MUST</span> use UTF-8 <span>[<a href="#RFC3629" class="cite xref">RFC3629</a>]</span> character encoding. 
+1481c1553
+<         <span>[<a href="#RFC4180" class="xref">RFC4180</a>]</span>), and blank lines are ignored.
+---
+>         <span>[<a href="#RFC4180" class="cite xref">RFC4180</a>]</span>), and blank lines are ignored.
+1484c1556
+<         strictly follow <span>[<a href="#RFC4180" class="xref">RFC4180</a>]</span>, which has no
+---
+>         strictly follow <span>[<a href="#RFC4180" class="cite xref">RFC4180</a>]</span>, which has no
+1487c1559
+<  as comma-separated values (CSV), as described in <span>[<a href="#RFC4180" class="xref">RFC4180</a>]</span>. Each feed entry is a text line of
+---
+>  as comma-separated values (CSV), as described in <span>[<a href="#RFC4180" class="cite xref">RFC4180</a>]</span>. Each feed entry is a text line of
+1489c1561
+< <div class="artwork art-text alignLeft" id="section-2.1-4">
+---
+> <div class="alignLeft art-text artwork" id="section-2.1-4">
+1508,1509c1580,1581
+<      with <span><a href="https://www.rfc-editor.org/rfc/rfc4632#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC4632" class="xref">RFC4632</a>]</span> for
+<      IPv4 or <span><a href="https://www.rfc-editor.org/rfc/rfc4291#section-2.3" class="relref">Section 2.3</a> of [<a href="#RFC4291" class="xref">RFC4291</a>]</span>
+---
+>      with <span><a href="https://rfc-editor.org/rfc/rfc4632#section-3.1" class="relref">Section 3.1</a> of [<a href="#RFC4632" class="cite xref">RFC4632</a>]</span> for
+>      IPv4 or <span><a href="https://rfc-editor.org/rfc/rfc4291#section-2.3" class="relref">Section 2.3</a> of [<a href="#RFC4291" class="cite xref">RFC4291</a>]</span>
+1520c1592
+<             ISO country code conforming to ISO 3166-1 alpha 2 <span>[<a href="#ISO.3166.1alpha2" class="xref">ISO.3166.1alpha2</a>]</span>. Parsers
+---
+>             ISO country code conforming to ISO 3166-1 alpha 2 <span>[<a href="#ISO.3166.1alpha2" class="cite xref">ISO.3166.1alpha2</a>]</span>. Parsers
+1528c1600
+<      codes from the "Exceptionally reserved codes" <span>[<a href="#ISO-GLOSSARY" class="xref">ISO-GLOSSARY</a>]</span> set.<a href="#section-2.1.1.2-3" class="pilcrow">¶</a></p>
+---
+>      codes from the "Exceptionally reserved codes" <span>[<a href="#ISO-GLOSSARY" class="cite xref">ISO-GLOSSARY</a>]</span> set.<a href="#section-2.1.1.2-3" class="pilcrow">¶</a></p>
+1538c1610
+<      <span>[<a href="#ISO.3166.2" class="xref">ISO.3166.2</a>]</span>. Parsers
+---
+>      <span>[<a href="#ISO.3166.2" class="cite xref">ISO.3166.2</a>]</span>. Parsers
+1563c1635
+<      field due to the granularity of this information. See <a href="#privacy" class="xref">Section 4</a> for additional discussion.<a href="#section-2.1.1.5-1" class="pilcrow">¶</a></p>
+---
+>      field due to the granularity of this information. See <a href="#privacy" class="auto internal xref">Section 4</a> for additional discussion.<a href="#section-2.1.1.5-1" class="pilcrow">¶</a></p>
+1581c1653
+< <div class="artwork art-text alignLeft" id="section-2.1.2-3">
+---
+> <div class="alignLeft art-text artwork" id="section-2.1.2-3">
+1600c1672
+< <p id="section-2.1.3-2">While publishers <span class="bcp14">SHOULD</span> follow <span>[<a href="#RFC5952" class="xref">RFC5952</a>]</span> for IPv6 prefix fields,
+---
+> <p id="section-2.1.3-2">While publishers <span class="bcp14">SHOULD</span> follow <span>[<a href="#RFC5952" class="cite xref">RFC5952</a>]</span> for IPv6 prefix fields,
+1620c1692
+<    <span class="bcp14">MUST</span> still be considered valid. Per <a href="#future_work" class="xref">Section 7</a>, no extensions to this format
+---
+>    <span class="bcp14">MUST</span> still be considered valid. Per <a href="#future_work" class="auto internal xref">Section 7</a>, no extensions to this format
+1632c1704
+< <div class="artwork art-text alignLeft" id="section-2.2-2">
+---
+> <div class="alignLeft art-text artwork" id="section-2.2-2">
+1643,1644c1715,1716
+<         and append the new meeting information. The <span>[<a href="#GEO_IETF" class="xref">GEO_IETF</a>]</span>, at the time of this writing, contains:<a href="#section-2.2-3" class="pilcrow">¶</a></p>
+< <div class="artwork art-text alignLeft" id="section-2.2-4">
+---
+>         and append the new meeting information. The <span>[<a href="#GEO_IETF" class="cite xref">GEO_IETF</a>]</span>, at the time of this writing, contains:<a href="#section-2.2-3" class="pilcrow">¶</a></p>
+> <div class="alignLeft art-text artwork" id="section-2.2-4">
+1657c1729
+<         with each new event. <span>[<a href="#GEO_RIPE_NCC" class="xref">GEO_RIPE_NCC</a>]</span>, at the time of
+---
+>         with each new event. <span>[<a href="#GEO_RIPE_NCC" class="cite xref">GEO_RIPE_NCC</a>]</span>, at the time of
+1659c1731
+< <div class="artwork art-text alignLeft" id="section-2.2-6">
+---
+> <div class="alignLeft art-text artwork" id="section-2.2-6">
+1666c1738
+<         portable conference network prefixes. <span>[<a href="#GEO_ICANN" class="xref">GEO_ICANN</a>]</span>, at
+---
+>         portable conference network prefixes. <span>[<a href="#GEO_ICANN" class="cite xref">GEO_ICANN</a>]</span>, at
+1668c1740
+< <div class="artwork art-text alignLeft" id="section-2.2-8">
+---
+> <div class="alignLeft art-text artwork" id="section-2.2-8">
+1674c1746
+< <p id="section-2.2-9">A longer example is the <span>[<a href="#GEO_Google" class="xref">GEO_Google</a>]</span> Google Corp
+---
+> <p id="section-2.2-9">A longer example is the <span>[<a href="#GEO_Google" class="cite xref">GEO_Google</a>]</span> Google Corp
+1699c1771
+<  HTTP over TLS <span>[<a href="#RFC2818" class="xref">RFC2818</a>]</span>. Whenever
+---
+>  HTTP over TLS <span>[<a href="#RFC2818" class="cite xref">RFC2818</a>]</span>. Whenever
+1751,1752c1823,1824
+<         expiration model (<span>[<a href="#RFC7234" class="xref">RFC7234</a>]</span>). Specifically, publishers can 
+<         include either an Expires header (<span><a href="https://www.rfc-editor.org/rfc/rfc7234#section-5.3" class="relref">Section 5.3</a> of [<a href="#RFC7234" class="xref">RFC7234</a>]</span>) or a Cache-Control header (<span><a href="https://www.rfc-editor.org/rfc/rfc7234#section-5.2" class="relref">Section 5.2</a> of [<a href="#RFC7234" class="xref">RFC7234</a>]</span>) specifying the
+---
+>         expiration model (<span>[<a href="#RFC7234" class="cite xref">RFC7234</a>]</span>). Specifically, publishers can 
+>         include either an Expires header (<span><a href="https://rfc-editor.org/rfc/rfc7234#section-5.3" class="relref">Section 5.3</a> of [<a href="#RFC7234" class="cite xref">RFC7234</a>]</span>) or a Cache-Control header (<span><a href="https://rfc-editor.org/rfc/rfc7234#section-5.2" class="relref">Section 5.2</a> of [<a href="#RFC7234" class="cite xref">RFC7234</a>]</span>) specifying the
+1766c1838
+<       comprehension of the security considerations (<span><a href="https://www.rfc-editor.org/rfc/rfc6772#section-13" class="relref">Section 13</a> of [<a href="#RFC6772" class="xref">RFC6772</a>]</span>) of a chosen geolocation policy is
+---
+>       comprehension of the security considerations (<span><a href="https://rfc-editor.org/rfc/rfc6772#section-13" class="relref">Section 13</a> of [<a href="#RFC6772" class="cite xref">RFC6772</a>]</span>) of a chosen geolocation policy is
+1768,1769c1840,1841
+<       limitations of information obscurity (<span><a href="https://www.rfc-editor.org/rfc/rfc6772#section-13.5" class="relref">Section 13.5</a> of [<a href="#RFC6772" class="xref">RFC6772</a>]</span>) (see also <span>[<a href="#RFC6772" class="xref">RFC6772</a>]</span>).<a href="#section-4-1" class="pilcrow">¶</a></p>
+< <p id="section-4-2">As noted in <a href="#spec" class="xref">Section 2.1</a>, each location
+---
+>       limitations of information obscurity (<span><a href="https://rfc-editor.org/rfc/rfc6772#section-13.5" class="relref">Section 13.5</a> of [<a href="#RFC6772" class="cite xref">RFC6772</a>]</span>) (see also <span>[<a href="#RFC6772" class="cite xref">RFC6772</a>]</span>).<a href="#section-4-1" class="pilcrow">¶</a></p>
+> <p id="section-4-2">As noted in <a href="#spec" class="auto internal xref">Section 2.1</a>, each location
+1774c1846
+<       In particular, the Postal Code field (<a href="#postal" class="xref">Section 2.1.1.5</a>) can
+---
+>       In particular, the Postal Code field (<a href="#postal" class="auto internal xref">Section 2.1.1.5</a>) can
+1788c1860
+<       Working Group <span>[<a href="#GEOPRIV" class="xref">GEOPRIV</a>]</span>, Richard Barnes
+---
+>       Working Group <span>[<a href="#GEOPRIV" class="cite xref">GEOPRIV</a>]</span>, Richard Barnes
+1792,1794c1864,1866
+<       feeds are equivalent to the following XML structure (<span>[<a href="#RFC5139" class="xref">RFC5139</a>]</span> <span>[<a href="#W3C.REC-xml-20081126" class="xref">W3C.REC-xml-20081126</a>]</span>):<a href="#section-5-1" class="pilcrow">¶</a></p>
+< <div id="section-5-2">
+< <pre class="sourcecode lang-xml">
+---
+>       feeds are equivalent to the following XML structure (<span>[<a href="#RFC5139" class="cite xref">RFC5139</a>]</span> <span>[<a href="#W3C.REC-xml-20081126" class="cite xref">W3C.REC-xml-20081126</a>]</span>):<a href="#section-5-1" class="pilcrow">¶</a></p>
+> <div class="lang-xml sourcecode" id="section-5-2">
+> <pre>
+1805c1877
+<       <span><a href="https://www.rfc-editor.org/rfc/rfc6772#section-6.5.1" class="relref">Section 6.5.1</a> of [<a href="#RFC6772" class="xref">RFC6772</a>]</span> level of
+---
+>       <span><a href="https://rfc-editor.org/rfc/rfc6772#section-6.5.1" class="relref">Section 6.5.1</a> of [<a href="#RFC6772" class="cite xref">RFC6772</a>]</span> level of
+1807,1808c1879,1880
+< <div id="section-5-4">
+< <pre class="sourcecode lang-xml">
+---
+> <div class="lang-xml sourcecode" id="section-5-4">
+> <pre>
+1837c1909
+<       the discussion in <a href="#integrity" class="xref">Section 3.1</a>).<a href="#section-6-2" class="pilcrow">¶</a></p>
+---
+>       the discussion in <a href="#integrity" class="auto internal xref">Section 3.1</a>).<a href="#section-6-2" class="pilcrow">¶</a></p>
+1840,1841c1912,1913
+<       configuration errors (see the discussion in Sections <a href="#authority" class="xref">3.2</a> 
+<       and <a href="#accuracy" class="xref">3.3</a>).<a href="#section-6-3" class="pilcrow">¶</a></p>
+---
+>       configuration errors (see the discussion in Sections <a href="#authority" class="auto internal xref">3.2</a> 
+>       and <a href="#accuracy" class="auto internal xref">3.3</a>).<a href="#section-6-3" class="pilcrow">¶</a></p>
+1857c1929
+<       Notation (JSON) <span>[<a href="#RFC8259" class="xref">RFC8259</a>]</span>,
+---
+>       Notation (JSON) <span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span>,
+1882c1954
+<         of HTTPS URIs exchanged in email threads. Three example URIs (<span>[<a href="#GEO_IETF" class="xref">GEO_IETF</a>]</span>, <span>[<a href="#GEO_RIPE_NCC" class="xref">GEO_RIPE_NCC</a>]</span>, and <span>[<a href="#GEO_ICANN" class="xref">GEO_ICANN</a>]</span>)
+---
+>         of HTTPS URIs exchanged in email threads. Three example URIs (<span>[<a href="#GEO_IETF" class="cite xref">GEO_IETF</a>]</span>, <span>[<a href="#GEO_RIPE_NCC" class="cite xref">GEO_RIPE_NCC</a>]</span>, and <span>[<a href="#GEO_ICANN" class="cite xref">GEO_ICANN</a>]</span>)
+1909c1981
+<         WHOIS service <span>[<a href="#RFC3912" class="xref">RFC3912</a>]</span> operated by
+---
+>         WHOIS service <span>[<a href="#RFC3912" class="cite xref">RFC3912</a>]</span> operated by
+1954c2026
+< <span class="refAuthor">Hinden, R.</span><span class="refAuthor"> and S. Deering</span>, <span class="refTitle">"IP Version 6 Addressing Architecture"</span>, <span class="seriesInfo">RFC 4291</span>, <span class="seriesInfo">DOI 10.17487/RFC4291</span>, <time datetime="2006-02" class="refDate">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4291">https://www.rfc-editor.org/info/rfc4291</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hinden, R.</span> and <span class="refAuthor">S. Deering</span>, <span class="refTitle">"IP Version 6 Addressing Architecture"</span>, <span class="seriesInfo">RFC 4291</span>, <span class="seriesInfo">DOI 10.17487/RFC4291</span>, <time datetime="2006-02" class="refDate">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4291">https://www.rfc-editor.org/info/rfc4291</a>&gt;</span>. </dd>
+1958c2030
+< <span class="refAuthor">Fuller, V.</span><span class="refAuthor"> and T. Li</span>, <span class="refTitle">"Classless Inter-domain Routing (CIDR): The Internet Address Assignment and Aggregation Plan"</span>, <span class="seriesInfo">BCP 122</span>, <span class="seriesInfo">RFC 4632</span>, <span class="seriesInfo">DOI 10.17487/RFC4632</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4632">https://www.rfc-editor.org/info/rfc4632</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fuller, V.</span> and <span class="refAuthor">T. Li</span>, <span class="refTitle">"Classless Inter-domain Routing (CIDR): The Internet Address Assignment and Aggregation Plan"</span>, <span class="seriesInfo">BCP 122</span>, <span class="seriesInfo">RFC 4632</span>, <span class="seriesInfo">DOI 10.17487/RFC4632</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4632">https://www.rfc-editor.org/info/rfc4632</a>&gt;</span>. </dd>
+1962c2034
+< <span class="refAuthor">Kawamura, S.</span><span class="refAuthor"> and M. Kawashima</span>, <span class="refTitle">"A Recommendation for IPv6 Address Text Representation"</span>, <span class="seriesInfo">RFC 5952</span>, <span class="seriesInfo">DOI 10.17487/RFC5952</span>, <time datetime="2010-08" class="refDate">August 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5952">https://www.rfc-editor.org/info/rfc5952</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Kawamura, S.</span> and <span class="refAuthor">M. Kawashima</span>, <span class="refTitle">"A Recommendation for IPv6 Address Text Representation"</span>, <span class="seriesInfo">RFC 5952</span>, <span class="seriesInfo">DOI 10.17487/RFC5952</span>, <time datetime="2010-08" class="refDate">August 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5952">https://www.rfc-editor.org/info/rfc5952</a>&gt;</span>. </dd>
+1966c2038
+< <span class="refAuthor">Fielding, R., Ed.</span><span class="refAuthor">, Nottingham, M., Ed.</span><span class="refAuthor">, and J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Caching"</span>, <span class="seriesInfo">RFC 7234</span>, <span class="seriesInfo">DOI 10.17487/RFC7234</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7234">https://www.rfc-editor.org/info/rfc7234</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Fielding, R., Ed.</span>, <span class="refAuthor">Nottingham, M., Ed.</span>, and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Caching"</span>, <span class="seriesInfo">RFC 7234</span>, <span class="seriesInfo">DOI 10.17487/RFC7234</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7234">https://www.rfc-editor.org/info/rfc7234</a>&gt;</span>. </dd>
+1974c2046
+< <span class="refAuthor">Bray, T.</span><span class="refAuthor">, Paoli, J.</span><span class="refAuthor">, Sperberg-McQueen, M.</span><span class="refAuthor">, Maler, E.</span><span class="refAuthor">, and F. Yergeau</span>, <span class="refTitle">"Extensible Markup Language (XML) 1.0 (Fifth Edition)"</span>, <span class="seriesInfo">World Wide Web Consortium Recommendation REC-xml-20081126</span>, <time datetime="2008-11" class="refDate">November 2008</time>, <span>&lt;<a href="http://www.w3.org/TR/2008/REC-xml-20081126">http://www.w3.org/TR/2008/REC-xml-20081126</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bray, T.</span>, <span class="refAuthor">Paoli, J.</span>, <span class="refAuthor">Sperberg-McQueen, M.</span>, <span class="refAuthor">Maler, E.</span>, and <span class="refAuthor">F. Yergeau</span>, <span class="refTitle">"Extensible Markup Language (XML) 1.0 (Fifth Edition)"</span>, <span class="seriesInfo">World Wide Web Consortium Recommendation REC-xml-20081126</span>, <time datetime="2008-11" class="refDate">November 2008</time>, <span>&lt;<a href="http://www.w3.org/TR/2008/REC-xml-20081126">http://www.w3.org/TR/2008/REC-xml-20081126</a>&gt;</span>. </dd>
+1985c2057
+< <span class="refAuthor">IETF</span>, <span class="refTitle">"Geographic Location/Privacy (geopriv)"</span>, <span></span>, <span>&lt;<a href="http://datatracker.ietf.org/wg/geopriv/">http://datatracker.ietf.org/wg/geopriv/</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">IETF</span>, <span class="refTitle">"Geographic Location/Privacy (geopriv)"</span>, <span>&lt;<a href="http://datatracker.ietf.org/wg/geopriv/">http://datatracker.ietf.org/wg/geopriv/</a>&gt;</span>. </dd>
+2005c2077
+< <span class="refAuthor">Shields, M.</span><span class="refAuthor"> and P. Moody</span>, <span class="refTitle">"Google's Python IP address manipulation library"</span>, <span></span>, <span>&lt;<a href="http://code.google.com/p/ipaddr-py/">http://code.google.com/p/ipaddr-py/</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Shields, M.</span> and <span class="refAuthor">P. Moody</span>, <span class="refTitle">"Google's Python IP address manipulation library"</span>, <span>&lt;<a href="http://code.google.com/p/ipaddr-py/">http://code.google.com/p/ipaddr-py/</a>&gt;</span>. </dd>
+2009c2081
+< <span class="refAuthor">ISO</span>, <span class="refTitle">"Glossary for ISO 3166"</span>, <span></span>, <span>&lt;<a href="https://www.iso.org/glossary-for-iso-3166.html">https://www.iso.org/glossary-for-iso-3166.html</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">ISO</span>, <span class="refTitle">"Glossary for ISO 3166"</span>, <span>&lt;<a href="https://www.iso.org/glossary-for-iso-3166.html">https://www.iso.org/glossary-for-iso-3166.html</a>&gt;</span>. </dd>
+2021c2093
+< <span class="refAuthor">Thomson, M.</span><span class="refAuthor"> and J. Winterbottom</span>, <span class="refTitle">"Revised Civic Location Format for Presence Information Data Format Location Object (PIDF-LO)"</span>, <span class="seriesInfo">RFC 5139</span>, <span class="seriesInfo">DOI 10.17487/RFC5139</span>, <time datetime="2008-02" class="refDate">February 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5139">https://www.rfc-editor.org/info/rfc5139</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Thomson, M.</span> and <span class="refAuthor">J. Winterbottom</span>, <span class="refTitle">"Revised Civic Location Format for Presence Information Data Format Location Object (PIDF-LO)"</span>, <span class="seriesInfo">RFC 5139</span>, <span class="seriesInfo">DOI 10.17487/RFC5139</span>, <time datetime="2008-02" class="refDate">February 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5139">https://www.rfc-editor.org/info/rfc5139</a>&gt;</span>. </dd>
+2025c2097
+< <span class="refAuthor">Schulzrinne, H., Ed.</span><span class="refAuthor">, Tschofenig, H., Ed.</span><span class="refAuthor">, Cuellar, J.</span><span class="refAuthor">, Polk, J.</span><span class="refAuthor">, Morris, J.</span><span class="refAuthor">, and M. Thomson</span>, <span class="refTitle">"Geolocation Policy: A Document Format for Expressing Privacy Preferences for Location Information"</span>, <span class="seriesInfo">RFC 6772</span>, <span class="seriesInfo">DOI 10.17487/RFC6772</span>, <time datetime="2013-01" class="refDate">January 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6772">https://www.rfc-editor.org/info/rfc6772</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Schulzrinne, H., Ed.</span>, <span class="refAuthor">Tschofenig, H., Ed.</span>, <span class="refAuthor">Cuellar, J.</span>, <span class="refAuthor">Polk, J.</span>, <span class="refAuthor">Morris, J.</span>, and <span class="refAuthor">M. Thomson</span>, <span class="refTitle">"Geolocation Policy: A Document Format for Expressing Privacy Preferences for Location Information"</span>, <span class="seriesInfo">RFC 6772</span>, <span class="seriesInfo">DOI 10.17487/RFC6772</span>, <time datetime="2013-01" class="refDate">January 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6772">https://www.rfc-editor.org/info/rfc6772</a>&gt;</span>. </dd>
+2038c2110
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2040c2112
+< <a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-sample-python-validation-co" class="section-name selfRef">Sample Python Validation Code</a>
+---
+> <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-sample-python-validation-co" class="section-name selfRef">Sample Python Validation Code</a>
+2042c2114
+< <p id="section-appendix.a-1">Included here is a simple format validator in Python for
+---
+> <p id="appendix-A-1">Included here is a simple format validator in Python for
+2049,2050c2121,2122
+<       validator <span class="bcp14">MUST</span> also ensure IP prefix uniqueness.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.a-2">The main source file "ipgeo_feed_validator.py" follows. It requires
+---
+>       validator <span class="bcp14">MUST</span> also ensure IP prefix uniqueness.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+> <p id="appendix-A-2">The main source file "ipgeo_feed_validator.py" follows. It requires
+2052,2054c2124,2126
+<       parsing and validation <span>[<a href="#IPADDR_PY" class="xref">IPADDR_PY</a>]</span>.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+< <div id="section-appendix.a-3">
+< <pre class="sourcecode lang-python">&lt;CODE BEGINS&gt;
+---
+>       parsing and validation <span>[<a href="#IPADDR_PY" class="cite xref">IPADDR_PY</a>]</span>.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+> <div class="breakable lang-python sourcecode" id="appendix-A-3">
+> <pre>&lt;CODE BEGINS&gt;
+2237c2309
+< &lt;CODE ENDS&gt;</pre><a href="#section-appendix.a-3" class="pilcrow">¶</a>
+---
+> &lt;CODE ENDS&gt;</pre><a href="#appendix-A-3" class="pilcrow">¶</a>
+2239c2311
+< <p id="section-appendix.a-4">A unit test file, "ipgeo_feed_validator_test.py" is provided as well.
+---
+> <p id="appendix-A-4">A unit test file, "ipgeo_feed_validator_test.py" is provided as well.
+2241,2243c2313,2315
+<       correct handling of non-ASCII UTF-8 strings.<a href="#section-appendix.a-4" class="pilcrow">¶</a></p>
+< <div id="section-appendix.a-5">
+< <pre class="sourcecode lang-python">&lt;CODE BEGINS&gt;
+---
+>       correct handling of non-ASCII UTF-8 strings.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+> <div class="breakable lang-python sourcecode" id="appendix-A-5">
+> <pre>&lt;CODE BEGINS&gt;
+2356c2428
+< &lt;CODE ENDS&gt;</pre><a href="#section-appendix.a-5" class="pilcrow">¶</a>
+---
+> &lt;CODE ENDS&gt;</pre><a href="#appendix-A-5" class="pilcrow">¶</a>
+2359c2431
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
+2363c2435
+< <p id="section-appendix.b-1">The authors would like to express their gratitude to reviewers and
+---
+> <p id="appendix-B-1">The authors would like to express their gratitude to reviewers and
+2368,2370c2440,2442
+<       <span class="contact-name">Menno Schepers</span>, <span class="contact-name">Justyna       Sidorska</span>, <span class="contact-name">Pim van Pelt</span>, and <span class="contact-name">Bjoern A. Zeeb</span>.<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+< <p id="section-appendix.b-2">In particular, <span class="contact-name">Richard L. Barnes</span> and <span class="contact-name">Andy Newton</span> contributed substantial review,
+<       text, and advice.<a href="#section-appendix.b-2" class="pilcrow">¶</a></p>
+---
+>       <span class="contact-name">Menno Schepers</span>, <span class="contact-name">Justyna       Sidorska</span>, <span class="contact-name">Pim van Pelt</span>, and <span class="contact-name">Bjoern A. Zeeb</span>.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+> <p id="appendix-B-2">In particular, <span class="contact-name">Richard L. Barnes</span> and <span class="contact-name">Andy Newton</span> contributed substantial review,
+>       text, and advice.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+2373c2445
+< <section id="section-appendix.c">
+---
+> <section id="appendix-C">
