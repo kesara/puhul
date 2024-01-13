@@ -1,0 +1,574 @@
+14c14
+< <meta content="xml2rfc 2.47.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.1" name="generator">
+21c21,37
+< <link href="rfc8874.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.1
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.3
+>     lxml 4.9.4
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.13
+> -->
+> <link href="rfc/rfc8874.xml" rel="alternate" type="application/rfc+xml">
+31c47
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+40a57,62
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+43d64
+<   width: extend-to-zoom;
+58c79
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+60a82
+>   overflow-wrap: break-word;
+146a169,177
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+161,164d191
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+165a193
+>   border: none;
+188a217,219
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+240c271
+< tt, code, pre, code {
+---
+> tt, code, pre {
+242c273
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+281a313,315
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+371a406,411
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+473c513
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+613d652
+< 
+635a675,677
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+703c745
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+803c845
+< tt, code, pre, code {
+---
+> tt, code, pre {
+808c850
+< pre.sourcecode,
+---
+> .sourcecode pre,
+844c886
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+1025a1068
+>   .artwork > pre,
+1040c1083
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1046a1090,1092
+> tr {
+>   break-inside: avoid;
+> }
+1066c1112
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1097c1143
+< /* Text in compact lists should not get extra bottim margin space,
+---
+> /* Text in compact lists should not get extra bottom margin space,
+1122c1168
+< /* Tweak the comact list text */
+---
+> /* Tweak the compact list text */
+1124c1170,1171
+< ol.compact, .olCompact {
+---
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+1132c1179,1203
+< }</style>
+---
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+1133a1205
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-git-using-github-06" rel="prev">
+1136c1208
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-git-using-github-06" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1138,1139c1210,1211
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1233,1241c1305,1313
+< <nav class="toc"><ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.1.2.1">
+<                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-distributed-version-control" class="xref">Distributed Version Control Systems</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.1.2.2">
+<                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="xref">1.2</a>.  <a href="#name-github" class="xref">GitHub</a><a href="#section-toc.1-1.1.2.2.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+>                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-distributed-version-control" class="internal xref">Distributed Version Control Systems</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+>                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-github" class="internal xref">GitHub</a></p>
+1243,1244c1315,1316
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.1.2.3">
+<                 <p id="section-toc.1-1.1.2.3.1" class="keepWithNext"><a href="#section-1.3" class="xref">1.3</a>.  <a href="#name-other-services" class="xref">Other Services</a><a href="#section-toc.1-1.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.3">
+>                 <p id="section-toc.1-1.1.2.3.1" class="keepWithNext"><a href="#section-1.3" class="auto internal xref">1.3</a>.  <a href="#name-other-services" class="internal xref">Other Services</a></p>
+1246,1247c1318,1319
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.1.2.4">
+<                 <p id="section-toc.1-1.1.2.4.1"><a href="#section-1.4" class="xref">1.4</a>.  <a href="#name-document-goals" class="xref">Document Goals</a><a href="#section-toc.1-1.1.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.4">
+>                 <p id="section-toc.1-1.1.2.4.1"><a href="#section-1.4" class="auto internal xref">1.4</a>.  <a href="#name-document-goals" class="internal xref">Document Goals</a></p>
+1249,1250c1321,1322
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.1.2.5">
+<                 <p id="section-toc.1-1.1.2.5.1"><a href="#section-1.5" class="xref">1.5</a>.  <a href="#name-notational-conventions" class="xref">Notational Conventions</a><a href="#section-toc.1-1.1.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.5">
+>                 <p id="section-toc.1-1.1.2.5.1"><a href="#section-1.5" class="auto internal xref">1.5</a>.  <a href="#name-notational-conventions" class="internal xref">Notational Conventions</a></p>
+1254,1258c1326,1330
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-administrative-policies" class="xref">Administrative Policies</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.2.2.1">
+<                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-organizations" class="xref">Organizations</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-administrative-policies" class="internal xref">Administrative Policies</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+>                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-organizations" class="internal xref">Organizations</a></p>
+1260,1261c1332,1333
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.2.2.2">
+<                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-communicating-policies" class="xref">Communicating Policies</a><a href="#section-toc.1-1.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+>                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-communicating-policies" class="internal xref">Communicating Policies</a></p>
+1265,1269c1337,1341
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-deciding-to-use-github" class="xref">Deciding to Use GitHub</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-what-to-use-github-for" class="xref">What to Use GitHub For</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-deciding-to-use-github" class="internal xref">Deciding to Use GitHub</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-what-to-use-github-for" class="internal xref">What to Use GitHub For</a></p>
+1271,1272c1343,1344
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-repositories" class="xref">Repositories</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-repositories" class="internal xref">Repositories</a></p>
+1274,1275c1346,1347
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.3.2.3">
+<                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-editors-and-contributors" class="xref">Editors and Contributors</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+>                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-editors-and-contributors" class="internal xref">Editors and Contributors</a></p>
+1277,1278c1349,1350
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.3.2.4">
+<                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="xref">3.4</a>.  <a href="#name-document-formats" class="xref">Document Formats</a><a href="#section-toc.1-1.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+>                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-document-formats" class="internal xref">Document Formats</a></p>
+1282,1289c1354,1361
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-contribution-methods" class="xref">Contribution Methods</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-issue-tracker" class="xref">Issue Tracker</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.1.2.1">
+<                     <p id="section-toc.1-1.4.2.1.2.1.1"><a href="#section-4.1.1" class="xref">4.1.1</a>.  <a href="#name-issue-labels" class="xref">Issue Labels</a><a href="#section-toc.1-1.4.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-contribution-methods" class="internal xref">Contribution Methods</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-issue-tracker" class="internal xref">Issue Tracker</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.1">
+>                     <p id="section-toc.1-1.4.2.1.2.1.1"><a href="#section-4.1.1" class="auto internal xref">4.1.1</a>.  <a href="#name-issue-labels" class="internal xref">Issue Labels</a></p>
+1291,1292c1363,1364
+<                   <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.1.2.2">
+<                     <p id="section-toc.1-1.4.2.1.2.2.1"><a href="#section-4.1.2" class="xref">4.1.2</a>.  <a href="#name-closing-issues" class="xref">Closing Issues</a><a href="#section-toc.1-1.4.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.2">
+>                     <p id="section-toc.1-1.4.2.1.2.2.1"><a href="#section-4.1.2" class="auto internal xref">4.1.2</a>.  <a href="#name-closing-issues" class="internal xref">Closing Issues</a></p>
+1294,1295c1366,1367
+<                   <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.1.2.3">
+<                     <p id="section-toc.1-1.4.2.1.2.3.1"><a href="#section-4.1.3" class="xref">4.1.3</a>.  <a href="#name-reopening-issues" class="xref">Reopening Issues</a><a href="#section-toc.1-1.4.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.3">
+>                     <p id="section-toc.1-1.4.2.1.2.3.1"><a href="#section-4.1.3" class="auto internal xref">4.1.3</a>.  <a href="#name-reopening-issues" class="internal xref">Reopening Issues</a></p>
+1299,1303c1371,1375
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-pull-requests" class="xref">Pull Requests</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.2.2.1">
+<                     <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="xref">4.2.1</a>.  <a href="#name-discussion-on-pull-requests" class="xref">Discussion on Pull Requests</a><a href="#section-toc.1-1.4.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-pull-requests" class="internal xref">Pull Requests</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.1">
+>                     <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="auto internal xref">4.2.1</a>.  <a href="#name-discussion-on-pull-requests" class="internal xref">Discussion on Pull Requests</a></p>
+1305,1306c1377,1378
+<                   <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.2.2.2">
+<                     <p id="section-toc.1-1.4.2.2.2.2.1"><a href="#section-4.2.2" class="xref">4.2.2</a>.  <a href="#name-merging-pull-requests" class="xref">Merging Pull Requests</a><a href="#section-toc.1-1.4.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.2">
+>                     <p id="section-toc.1-1.4.2.2.2.2.1"><a href="#section-4.2.2" class="auto internal xref">4.2.2</a>.  <a href="#name-merging-pull-requests" class="internal xref">Merging Pull Requests</a></p>
+1310,1311c1382,1383
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-monitoring-activity" class="xref">Monitoring Activity</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-monitoring-activity" class="internal xref">Monitoring Activity</a></p>
+1315,1328c1387,1400
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-typical-working-group-polic" class="xref">Typical Working Group Policies</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.5.2.1">
+<                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-document-management-mode" class="xref">Document Management Mode</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.5.2.2">
+<                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-issue-tracking-mode" class="xref">Issue Tracking Mode</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+< </li>
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.5.2.3">
+<                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-issue-discussion-mode" class="xref">Issue Discussion Mode</a><a href="#section-toc.1-1.5.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.5.2.3.2.1">
+<                     <p id="section-toc.1-1.5.2.3.2.1.1"><a href="#section-5.3.1" class="xref">5.3.1</a>.  <a href="#name-early-design-phases" class="xref">Early Design Phases</a><a href="#section-toc.1-1.5.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-typical-working-group-polic" class="internal xref">Typical Working Group Policies</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+>                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-document-management-mode" class="internal xref">Document Management Mode</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+>                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-issue-tracking-mode" class="internal xref">Issue Tracking Mode</a></p>
+> </li>
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
+>                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-issue-discussion-mode" class="internal xref">Issue Discussion Mode</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.1">
+>                     <p id="section-toc.1-1.5.2.3.2.1.1"><a href="#section-5.3.1" class="auto internal xref">5.3.1</a>.  <a href="#name-early-design-phases" class="internal xref">Early Design Phases</a></p>
+1330,1331c1402,1403
+<                   <li class="compact ulEmpty toc" id="section-toc.1-1.5.2.3.2.2">
+<                     <p id="section-toc.1-1.5.2.3.2.2.1"><a href="#section-5.3.2" class="xref">5.3.2</a>.  <a href="#name-managing-mature-documents" class="xref">Managing Mature Documents</a><a href="#section-toc.1-1.5.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.2">
+>                     <p id="section-toc.1-1.5.2.3.2.2.1"><a href="#section-5.3.2" class="auto internal xref">5.3.2</a>.  <a href="#name-managing-mature-documents" class="internal xref">Managing Mature Documents</a></p>
+1335,1339c1407,1411
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.5.2.4">
+<                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="xref">5.4</a>.  <a href="#name-issue-labeling-schemes" class="xref">Issue Labeling Schemes</a><a href="#section-toc.1-1.5.2.4.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.5.2.4.2.1">
+<                     <p id="section-toc.1-1.5.2.4.2.1.1"><a href="#section-5.4.1" class="xref">5.4.1</a>.  <a href="#name-editorial-design-labeling" class="xref">Editorial/Design Labeling</a><a href="#section-toc.1-1.5.2.4.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
+>                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-issue-labeling-schemes" class="internal xref">Issue Labeling Schemes</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4.2.1">
+>                     <p id="section-toc.1-1.5.2.4.2.1.1"><a href="#section-5.4.1" class="auto internal xref">5.4.1</a>.  <a href="#name-editorial-design-labeling" class="internal xref">Editorial/Design Labeling</a></p>
+1341,1342c1413,1414
+<                   <li class="compact ulEmpty toc" id="section-toc.1-1.5.2.4.2.2">
+<                     <p id="section-toc.1-1.5.2.4.2.2.1"><a href="#section-5.4.2" class="xref">5.4.2</a>.  <a href="#name-decision-labeling" class="xref">Decision Labeling</a><a href="#section-toc.1-1.5.2.4.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4.2.2">
+>                     <p id="section-toc.1-1.5.2.4.2.2.1"><a href="#section-5.4.2" class="auto internal xref">5.4.2</a>.  <a href="#name-decision-labeling" class="internal xref">Decision Labeling</a></p>
+1344,1345c1416,1417
+<                   <li class="compact ulEmpty toc" id="section-toc.1-1.5.2.4.2.3">
+<                     <p id="section-toc.1-1.5.2.4.2.3.1"><a href="#section-5.4.3" class="xref">5.4.3</a>.  <a href="#name-component-labeling" class="xref">Component Labeling</a><a href="#section-toc.1-1.5.2.4.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4.2.3">
+>                     <p id="section-toc.1-1.5.2.4.2.3.1"><a href="#section-5.4.3" class="auto internal xref">5.4.3</a>.  <a href="#name-component-labeling" class="internal xref">Component Labeling</a></p>
+1347,1348c1419,1420
+<                   <li class="compact ulEmpty toc" id="section-toc.1-1.5.2.4.2.4">
+<                     <p id="section-toc.1-1.5.2.4.2.4.1"><a href="#section-5.4.4" class="xref">5.4.4</a>.  <a href="#name-other-labels" class="xref">Other Labels</a><a href="#section-toc.1-1.5.2.4.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4.2.4">
+>                     <p id="section-toc.1-1.5.2.4.2.4.1"><a href="#section-5.4.4" class="auto internal xref">5.4.4</a>.  <a href="#name-other-labels" class="internal xref">Other Labels</a></p>
+1354,1355c1426,1427
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-internet-draft-publication" class="xref">Internet-Draft Publication</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-internet-draft-publication" class="internal xref">Internet-Draft Publication</a></p>
+1357,1358c1429,1430
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-assessing-consensus" class="xref">Assessing Consensus</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-assessing-consensus" class="internal xref">Assessing Consensus</a></p>
+1360,1361c1432,1433
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-continuous-integration" class="xref">Continuous Integration</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-continuous-integration" class="internal xref">Continuous Integration</a></p>
+1363,1364c1435,1436
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-advice-to-editors" class="xref">Advice to Editors</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-advice-to-editors" class="internal xref">Advice to Editors</a></p>
+1366,1367c1438,1439
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1369,1370c1441,1442
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1372,1376c1444,1448
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.12">
+<             <p id="section-toc.1-1.12.1"><a href="#section-12" class="xref">12</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
+< <ul class="compact ulEmpty toc">
+< <li class="compact ulEmpty toc" id="section-toc.1-1.12.2.1">
+<                 <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="xref">12.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.12.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+>             <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1">
+>                 <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="auto internal xref">12.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1378,1379c1450,1451
+<               <li class="compact ulEmpty toc" id="section-toc.1-1.12.2.2">
+<                 <p id="section-toc.1-1.12.2.2.1"><a href="#section-12.2" class="xref">12.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.12.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.2">
+>                 <p id="section-toc.1-1.12.2.2.1"><a href="#section-12.2" class="auto internal xref">12.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1383,1384c1455,1456
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.13">
+<             <p id="section-toc.1-1.13.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+>             <p id="section-toc.1-1.13.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1386,1387c1458,1459
+<           <li class="compact ulEmpty toc" id="section-toc.1-1.14">
+<             <p id="section-toc.1-1.14.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.14.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+>             <p id="section-toc.1-1.14.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1417c1489
+<       established by RFC 2418 <span>[<a href="#RFC2418" class="xref">RFC2418</a>]</span>.  This
+---
+>       established by RFC 2418 <span>[<a href="#RFC2418" class="cite xref">RFC2418</a>]</span>.  This
+1421c1493
+< <p id="section-1-5">A companion document, <span>[<a href="#RFC8875" class="xref">RFC8875</a>]</span>,
+---
+> <p id="section-1-5">A companion document, <span>[<a href="#RFC8875" class="cite xref">RFC8875</a>]</span>,
+1490c1562
+<         upon and clearly communicated within the working group (see <a href="#policy" class="xref">Section 2</a>).  The remainder of the document
+---
+>         upon and clearly communicated within the working group (see <a href="#policy" class="auto internal xref">Section 2</a>).  The remainder of the document
+1518,1519c1590,1591
+<     to be interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span>
+<           <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when, and only when, they appear in all capitals,
+---
+>     to be interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span>
+>           <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they appear in all capitals,
+1522c1594
+<         <span>[<a href="#GLOSSARY" class="xref">GLOSSARY</a>]</span> for information on these
+---
+>         <span>[<a href="#GLOSSARY" class="cite xref">GLOSSARY</a>]</span> for information on these
+1545c1617
+<         in <span>[<a href="#RFC8875" class="xref">RFC8875</a>]</span>.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+---
+>         in <span>[<a href="#RFC8875" class="cite xref">RFC8875</a>]</span>.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+1560c1632
+< in <span>[<a href="#RFC8875" class="xref">RFC8875</a>]</span>.<a href="#section-2.1-5" class="pilcrow">¶</a></p>
+---
+> in <span>[<a href="#RFC8875" class="cite xref">RFC8875</a>]</span>.<a href="#section-2.1-5" class="pilcrow">¶</a></p>
+1608c1680
+<       permitted as described in <a href="#mode-discuss" class="xref">Section 5.3</a>.<a href="#section-3-2" class="pilcrow">¶</a></p>
+---
+>       permitted as described in <a href="#mode-discuss" class="auto internal xref">Section 5.3</a>.<a href="#section-3-2" class="pilcrow">¶</a></p>
+1615c1687
+<         will rely upon.  <a href="#features" class="xref">Section 4</a> contains a
+---
+>         will rely upon.  <a href="#features" class="auto internal xref">Section 4</a> contains a
+1625c1697
+< <p id="section-3.1-4">The set of GitHub features (<a href="#features" class="xref">Section 4</a>) that the working group relies upon need to be
+---
+> <p id="section-3.1-4">The set of GitHub features (<a href="#features" class="auto internal xref">Section 4</a>) that the working group relies upon need to be
+1643c1715
+<         IETF Note Well and bear notices; see <a href="#notices" class="xref">Section 2.2</a>.  This recognizes that editors have traditionally
+---
+>         IETF Note Well and bear notices; see <a href="#notices" class="auto internal xref">Section 2.2</a>.  This recognizes that editors have traditionally
+1685c1757
+<         repository is more difficult (<a href="#editors" class="xref">Section 3.3</a>).<a href="#section-3.2-6" class="pilcrow">¶</a></p>
+---
+>         repository is more difficult (<a href="#editors" class="auto internal xref">Section 3.3</a>).<a href="#section-3.2-6" class="pilcrow">¶</a></p>
+1719c1791
+< <p id="section-3.4-1">In addition to the canonical XML format <span>[<a href="#RFC7991" class="xref">RFC7991</a>]</span>, document editors might choose to use a different
+---
+> <p id="section-3.4-1">In addition to the canonical XML format <span>[<a href="#RFC7991" class="cite xref">RFC7991</a>]</span>, document editors might choose to use a different
+1758c1830
+<         the use of the GitHub issue tracker are the primary subject of <a href="#modes" class="xref">Section 5</a>.<a href="#section-4.1-4" class="pilcrow">¶</a></p>
+---
+>         the use of the GitHub issue tracker are the primary subject of <a href="#modes" class="auto internal xref">Section 5</a>.<a href="#section-4.1-4" class="pilcrow">¶</a></p>
+1774c1846
+<           labels, and who can apply and remove these labels.  <a href="#labels" class="xref">Section 5.4</a> describes some basic strategies
+---
+>           labels, and who can apply and remove these labels.  <a href="#labels" class="auto internal xref">Section 5.4</a> describes some basic strategies
+1829c1901
+<         repository. See <a href="#mature-documents" class="xref">Section 5.3.2</a> for
+---
+>         repository. See <a href="#mature-documents" class="auto internal xref">Section 5.3.2</a> for
+2019c2091
+<         the design team process (see <span><a href="https://www.rfc-editor.org/rfc/rfc2418#section-6.5" class="relref">Section 6.5</a> of [<a href="#RFC2418" class="xref">RFC2418</a>]</span>).<a href="#section-5.3-4" class="pilcrow">¶</a></p>
+---
+>         the design team process (see <span><a href="https://rfc-editor.org/rfc/rfc2418#section-6.5" class="relref">Section 6.5</a> of [<a href="#RFC2418" class="cite xref">RFC2418</a>]</span>).<a href="#section-5.3-4" class="pilcrow">¶</a></p>
+2044c2116
+<           checkpoints like Working Group Last Call (WGLC; <span><a href="https://www.rfc-editor.org/rfc/rfc2418#section-7.4" class="relref">Section 7.4</a> of [<a href="#RFC2418" class="xref">RFC2418</a>]</span>) provide
+---
+>           checkpoints like Working Group Last Call (WGLC; <span><a href="https://rfc-editor.org/rfc/rfc2418#section-7.4" class="relref">Section 7.4</a> of [<a href="#RFC2418" class="cite xref">RFC2418</a>]</span>) provide
+2064c2136
+<           (see <a href="#label-design" class="xref">Section 5.4.1</a>) and to close
+---
+>           (see <a href="#label-design" class="auto internal xref">Section 5.4.1</a>) and to close
+2101c2173
+< <p id="section-5.4-2">A design/editorial split (see <a href="#label-design" class="xref">Section 5.4.1</a>) is useful in all cases in which the issue tracking
+---
+> <p id="section-5.4-2">A design/editorial split (see <a href="#label-design" class="auto internal xref">Section 5.4.1</a>) is useful in all cases in which the issue tracking
+2155c2227
+< issues for which formal working group decisions have been made (<span><a href="https://www.rfc-editor.org/rfc/rfc2418#section-6.1" class="relref">Section 6.1</a> of [<a href="#RFC2418" class="xref">RFC2418</a>]</span>).<a href="#section-5.4.2-4" class="pilcrow">¶</a></p>
+---
+> issues for which formal working group decisions have been made (<span><a href="https://rfc-editor.org/rfc/rfc2418#section-6.1" class="relref">Section 6.1</a> of [<a href="#RFC2418" class="cite xref">RFC2418</a>]</span>).<a href="#section-5.4.2-4" class="pilcrow">¶</a></p>
+2207c2279
+< <p id="section-6-2"><span><a href="https://www.rfc-editor.org/rfc/rfc2418#section-7.1" class="relref">Section 7.1</a> of [<a href="#RFC2418" class="xref">RFC2418</a>]</span> recommends
+---
+> <p id="section-6-2"><span><a href="https://rfc-editor.org/rfc/rfc2418#section-7.1" class="relref">Section 7.1</a> of [<a href="#RFC2418" class="cite xref">RFC2418</a>]</span> recommends
+2234c2306
+<       made by the chairs <span>[<a href="#RFC2026" class="xref">RFC2026</a>]</span>.<a href="#section-7-1" class="pilcrow">¶</a></p>
+---
+>       made by the chairs <span>[<a href="#RFC2026" class="cite xref">RFC2026</a>]</span>.<a href="#section-7-1" class="pilcrow">¶</a></p>
+2243c2315
+< <p id="section-7-3">As described in <span>[<a href="#RFC2418" class="xref">RFC2418</a>]</span>, chairs
+---
+> <p id="section-7-3">As described in <span>[<a href="#RFC2418" class="cite xref">RFC2418</a>]</span>, chairs
+2257c2329
+<       ultimately, through Working Group Last Call; see <span><a href="https://www.rfc-editor.org/rfc/rfc2418#section-7.4" class="relref">Section 7.4</a> of [<a href="#RFC2418" class="xref">RFC2418</a>]</span>.<a href="#section-7-5" class="pilcrow">¶</a></p>
+---
+>       ultimately, through Working Group Last Call; see <span><a href="https://rfc-editor.org/rfc/rfc2418#section-7.4" class="relref">Section 7.4</a> of [<a href="#RFC2418" class="cite xref">RFC2418</a>]</span>.<a href="#section-7-5" class="pilcrow">¶</a></p>
+2335c2407
+< <p id="section-10-4">As specified in <span>[<a href="#RFC8875" class="xref">RFC8875</a>]</span>, backup copies of repositories and other important
+---
+> <p id="section-10-4">As specified in <span>[<a href="#RFC8875" class="cite xref">RFC8875</a>]</span>, backup copies of repositories and other important
+2402c2474
+< <span class="refAuthor">Cooper, A.</span><span class="refAuthor"> and P. Hoffman</span>, <span class="refTitle">"Working Group GitHub Administration"</span>, <span class="seriesInfo">RFC 8875</span>, <span class="seriesInfo">DOI 10.17487/RFC8875</span>, <time datetime="2020-08" class="refDate">August 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8875">https://www.rfc-editor.org/info/rfc8875</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cooper, A.</span> and <span class="refAuthor">P. Hoffman</span>, <span class="refTitle">"Working Group GitHub Administration"</span>, <span class="seriesInfo">RFC 8875</span>, <span class="seriesInfo">DOI 10.17487/RFC8875</span>, <time datetime="2020-08" class="refDate">August 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8875">https://www.rfc-editor.org/info/rfc8875</a>&gt;</span>. </dd>
+2408c2480
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2412c2484
+< <p id="section-appendix.a-1">This work would not have been possible without the hard work of those
+---
+> <p id="appendix-A-1">This work would not have been possible without the hard work of those
+2415c2487
+<       provided significant input.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+>       provided significant input.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+2419c2491
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
