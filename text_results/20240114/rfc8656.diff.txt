@@ -1,0 +1,147 @@
+490c490
+<            +----------------------------+---------------------+
+---
+>            +============================+=====================+
+1333,1345c1333,1344
+<    1.   The TURN server provided by the local or access network MAY
+<         allow an unauthenticated request in order to accept Allocation
+<         requests from new and/or guest users in the network who do not
+<         necessarily possess long-term credentials for STUN
+<         authentication.  The security implications of STUN and making
+<         STUN authentication optional are discussed in [RFC8155].
+<         Otherwise, the server MUST require that the request be
+<         authenticated.  If the request is authenticated, the
+<         authentication MUST be done either using the long-term
+<         credential mechanism of [RFC8489] or using the STUN Extension
+<         for Third-Party Authorization [RFC7635] unless the client and
+<         server agree to use another mechanism through some procedure
+<         outside the scope of this document.
+---
+>    1. The TURN server provided by the local or access network MAY allow
+>       an unauthenticated request in order to accept Allocation requests
+>       from new and/or guest users in the network who do not necessarily
+>       possess long-term credentials for STUN authentication.  The
+>       security implications of STUN and making STUN authentication
+>       optional are discussed in [RFC8155].  Otherwise, the server MUST
+>       require that the request be authenticated.  If the request is
+>       authenticated, the authentication MUST be done either using the
+>       long-term credential mechanism of [RFC8489] or using the STUN
+>       Extension for Third-Party Authorization [RFC7635] unless the
+>       client and server agree to use another mechanism through some
+>       procedure outside the scope of this document.
+1348,1349c1347,1348
+<         existing allocation.  If yes, the server rejects the request
+<         with a 437 (Allocation Mismatch) error.
+---
+>       existing allocation.  If yes, the server rejects the request with
+>       a 437 (Allocation Mismatch) error.
+1360,1363c1359,1362
+<         but the server does not support sending UDP datagrams with the
+<         DF bit set to 1 (see Sections 14 and 15), then the server treats
+<         the DONT-FRAGMENT attribute in the Allocate request as an
+<         unknown comprehension-required attribute.
+---
+>       but the server does not support sending UDP datagrams with the DF
+>       bit set to 1 (see Sections 14 and 15), then the server treats the
+>       DONT-FRAGMENT attribute in the Allocate request as an unknown
+>       comprehension-required attribute.
+1366,1384c1365,1382
+<         attribute.  If yes, and the request also contains an EVEN-PORT
+<         or REQUESTED-ADDRESS-FAMILY or ADDITIONAL-ADDRESS-FAMILY
+<         attribute, the server rejects the request with a 400 (Bad
+<         Request) error.  Otherwise, it checks to see if the token is
+<         valid (i.e., the token is in range and has not expired, and the
+<         corresponding relayed transport address is still available).  If
+<         the token is not valid for some reason, the server rejects the
+<         request with a 508 (Insufficient Capacity) error.
+< 
+<    6.   The server checks if the request contains both REQUESTED-
+<         ADDRESS-FAMILY and ADDITIONAL-ADDRESS-FAMILY attributes.  If
+<         yes, then the server rejects the request with a 400 (Bad
+<         Request) error.
+< 
+<    7.   If the server does not support the address family requested by
+<         the client in REQUESTED-ADDRESS-FAMILY, or if the allocation of
+<         the requested address family is disabled by local policy, it
+<         MUST generate an Allocate error response, and it MUST include an
+<         ERROR-CODE attribute with the 440 (Address Family not Supported)
+---
+>       attribute.  If yes, and the request also contains an EVEN-PORT or
+>       REQUESTED-ADDRESS-FAMILY or ADDITIONAL-ADDRESS-FAMILY attribute,
+>       the server rejects the request with a 400 (Bad Request) error.
+>       Otherwise, it checks to see if the token is valid (i.e., the token
+>       is in range and has not expired, and the corresponding relayed
+>       transport address is still available).  If the token is not valid
+>       for some reason, the server rejects the request with a 508
+>       (Insufficient Capacity) error.
+> 
+>    6. The server checks if the request contains both REQUESTED-ADDRESS-
+>       FAMILY and ADDITIONAL-ADDRESS-FAMILY attributes.  If yes, then the
+>       server rejects the request with a 400 (Bad Request) error.
+> 
+>    7. If the server does not support the address family requested by the
+>       client in REQUESTED-ADDRESS-FAMILY, or if the allocation of the
+>       requested address family is disabled by local policy, it MUST
+>       generate an Allocate error response, and it MUST include an ERROR-
+>       CODE attribute with the 440 (Address Family not Supported)
+1394,1395c1392,1393
+<         with the R bit set to 1.  If yes, and the request also contains
+<         an ADDITIONAL-ADDRESS-FAMILY attribute, the server rejects the
+---
+>       with the R bit set to 1.  If yes, and the request also contains an
+>       ADDITIONAL-ADDRESS-FAMILY attribute, the server rejects the
+1397,1400c1395,1398
+<         checks if it can satisfy the request (i.e., can allocate a
+<         relayed transport address as described below).  If the server
+<         cannot satisfy the request, then the server rejects the request
+<         with a 508 (Insufficient Capacity) error.
+---
+>       checks if it can satisfy the request (i.e., can allocate a relayed
+>       transport address as described below).  If the server cannot
+>       satisfy the request, then the server rejects the request with a
+>       508 (Insufficient Capacity) error.
+1407,1419c1405,1417
+<         the server cannot satisfy the request, then the server rejects
+<         the request with a 508 (Insufficient Capacity) error.  If the
+<         server can partially meet the request, i.e., if it can only
+<         allocate one relayed transport address of a specific address
+<         type, then it includes ADDRESS-ERROR-CODE attribute in the
+<         success response to inform the client the reason for partial
+<         failure of the request.  The error code value signaled in the
+<         ADDRESS-ERROR-CODE attribute could be 440 (Address Family not
+<         Supported) or 508 (Insufficient Capacity).  If the server can
+<         fully meet the request, then the server allocates one IPv4 and
+<         one IPv6 relay address and returns an Allocate success response
+<         containing the relayed transport addresses assigned to the dual
+<         allocation in two XOR-RELAYED-ADDRESS attributes.
+---
+>       the server cannot satisfy the request, then the server rejects the
+>       request with a 508 (Insufficient Capacity) error.  If the server
+>       can partially meet the request, i.e., if it can only allocate one
+>       relayed transport address of a specific address type, then it
+>       includes ADDRESS-ERROR-CODE attribute in the success response to
+>       inform the client the reason for partial failure of the request.
+>       The error code value signaled in the ADDRESS-ERROR-CODE attribute
+>       could be 440 (Address Family not Supported) or 508 (Insufficient
+>       Capacity).  If the server can fully meet the request, then the
+>       server allocates one IPv4 and one IPv6 relay address and returns
+>       an Allocate success response containing the relayed transport
+>       addresses assigned to the dual allocation in two XOR-RELAYED-
+>       ADDRESS attributes.
+1424,1427c1422,1424
+<         server is free to define this allocation quota any way it
+<         wishes, but it SHOULD define it based on the username used to
+<         authenticate the request and not on the client's transport
+<         address.
+---
+>       server is free to define this allocation quota any way it wishes,
+>       but it SHOULD define it based on the username used to authenticate
+>       the request and not on the client's transport address.
+4418d4414
+< 
+4426d4421
+< 
+4435d4429
+< 
+4443d4436
+< 
