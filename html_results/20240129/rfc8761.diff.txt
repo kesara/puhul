@@ -1,0 +1,1014 @@
+19c19
+< <meta content="xml2rfc 2.43.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.1" name="generator">
+26c26,42
+< <link href="rfc8761.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.1
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.3
+>     lxml 4.9.4
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.13
+> -->
+> <link href="rfc/rfc8761.xml" rel="alternate" type="application/rfc+xml">
+36c52
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+45a62,67
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+48d69
+<   width: extend-to-zoom;
+63c84
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+65a87
+>   overflow-wrap: break-word;
+151a174,182
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+166,169d196
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+170a198
+>   border: none;
+193a222,224
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+245c276
+< tt, code, pre, code {
+---
+> tt, code, pre {
+247c278
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+286a318,320
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+376a411,416
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+478c518
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+618d657
+< 
+640a680,682
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+708c750
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+808c850
+< tt, code, pre, code {
+---
+> tt, code, pre {
+813c855
+< pre.sourcecode,
+---
+> .sourcecode pre,
+849c891
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+927,932d968
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1036a1073
+>   .artwork > pre,
+1051c1088
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1057a1095,1097
+> tr {
+>   break-inside: avoid;
+> }
+1077c1117
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1081a1122
+>   break-before: auto;
+1086d1126
+<   break-inside: avoid-page;
+1091d1130
+<   break-inside: avoid-page;
+1092a1132,1133
+>   orphans: 3;
+>   widows: 3
+1094c1135
+< dd.break {
+---
+> span.break, dd.break {
+1106c1147,1208
+< }</style>
+---
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+1107a1210
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-netvc-requirements-10" rel="prev">
+1110c1213
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-netvc-requirements-10" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1112,1113c1215,1216
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1214,1216c1317,1319
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+1218,1222c1321,1325
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology-used-in-this-do" class="xref">Terminology Used in This Document</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.1">
+<                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-definitions" class="xref">Definitions</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology-used-in-this-do" class="internal xref">Terminology Used in This Document</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+>                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-definitions" class="internal xref">Definitions</a></p>
+1224,1225c1327,1328
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.2">
+<                 <p id="section-toc.1-1.2.2.2.1" class="keepWithNext"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-abbreviations" class="xref">Abbreviations</a><a href="#section-toc.1-1.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+>                 <p id="section-toc.1-1.2.2.2.1" class="keepWithNext"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-abbreviations" class="internal xref">Abbreviations</a></p>
+1229,1233c1332,1336
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-applications" class="xref">Applications</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.1">
+<                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-internet-video-streaming" class="xref">Internet Video Streaming</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-applications" class="internal xref">Applications</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+>                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-internet-video-streaming" class="internal xref">Internet Video Streaming</a></p>
+1235,1236c1338,1339
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.2">
+<                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-internet-protocol-televisio" class="xref">Internet Protocol Television (IPTV)</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+>                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-internet-protocol-televisio" class="internal xref">Internet Protocol Television (IPTV)</a></p>
+1238,1239c1341,1342
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.3">
+<                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-video-conferencing" class="xref">Video Conferencing</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+>                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-video-conferencing" class="internal xref">Video Conferencing</a></p>
+1241,1242c1344,1345
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.4">
+<                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="xref">3.4</a>.  <a href="#name-video-sharing" class="xref">Video Sharing</a><a href="#section-toc.1-1.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+>                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-video-sharing" class="internal xref">Video Sharing</a></p>
+1244,1245c1347,1348
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.5">
+<                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="xref">3.5</a>.  <a href="#name-screencasting" class="xref">Screencasting</a><a href="#section-toc.1-1.3.2.5.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
+>                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-screencasting" class="internal xref">Screencasting</a></p>
+1247,1248c1350,1351
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.6">
+<                 <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="xref">3.6</a>.  <a href="#name-game-streaming" class="xref">Game Streaming</a><a href="#section-toc.1-1.3.2.6.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.6">
+>                 <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="auto internal xref">3.6</a>.  <a href="#name-game-streaming" class="internal xref">Game Streaming</a></p>
+1250,1251c1353,1354
+< <li class="toc ulEmpty" id="section-toc.1-1.3.2.7">
+<                 <p id="section-toc.1-1.3.2.7.1"><a href="#section-3.7" class="xref">3.7</a>.  <a href="#name-video-monitoring-and-survei" class="xref">Video Monitoring and Surveillance</a><a href="#section-toc.1-1.3.2.7.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.7">
+>                 <p id="section-toc.1-1.3.2.7.1"><a href="#section-3.7" class="auto internal xref">3.7</a>.  <a href="#name-video-monitoring-and-survei" class="internal xref">Video Monitoring and Surveillance</a></p>
+1255,1262c1358,1365
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-requirements" class="xref">Requirements</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1">
+<                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-general-requirements" class="xref">General Requirements</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1.2.1">
+<                     <p id="section-toc.1-1.4.2.1.2.1.1"><a href="#section-4.1.1" class="xref">4.1.1</a>.  <a href="#name-coding-efficiency" class="xref">Coding Efficiency</a><a href="#section-toc.1-1.4.2.1.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-requirements" class="internal xref">Requirements</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+>                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-general-requirements" class="internal xref">General Requirements</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.1">
+>                     <p id="section-toc.1-1.4.2.1.2.1.1"><a href="#section-4.1.1" class="auto internal xref">4.1.1</a>.  <a href="#name-coding-efficiency" class="internal xref">Coding Efficiency</a></p>
+1264,1265c1367,1368
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1.2.2">
+<                     <p id="section-toc.1-1.4.2.1.2.2.1"><a href="#section-4.1.2" class="xref">4.1.2</a>.  <a href="#name-profiles-and-levels" class="xref">Profiles and Levels</a><a href="#section-toc.1-1.4.2.1.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.2">
+>                     <p id="section-toc.1-1.4.2.1.2.2.1"><a href="#section-4.1.2" class="auto internal xref">4.1.2</a>.  <a href="#name-profiles-and-levels" class="internal xref">Profiles and Levels</a></p>
+1267,1268c1370,1371
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1.2.3">
+<                     <p id="section-toc.1-1.4.2.1.2.3.1"><a href="#section-4.1.3" class="xref">4.1.3</a>.  <a href="#name-bitstream-syntax" class="xref">Bitstream Syntax</a><a href="#section-toc.1-1.4.2.1.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.3">
+>                     <p id="section-toc.1-1.4.2.1.2.3.1"><a href="#section-4.1.3" class="auto internal xref">4.1.3</a>.  <a href="#name-bitstream-syntax" class="internal xref">Bitstream Syntax</a></p>
+1270,1271c1373,1374
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1.2.4">
+<                     <p id="section-toc.1-1.4.2.1.2.4.1"><a href="#section-4.1.4" class="xref">4.1.4</a>.  <a href="#name-parsing-and-identification-" class="xref">Parsing and Identification of Sample Components</a><a href="#section-toc.1-1.4.2.1.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.4">
+>                     <p id="section-toc.1-1.4.2.1.2.4.1"><a href="#section-4.1.4" class="auto internal xref">4.1.4</a>.  <a href="#name-parsing-and-identification-" class="internal xref">Parsing and Identification of Sample Components</a></p>
+1273,1274c1376,1377
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1.2.5">
+<                     <p id="section-toc.1-1.4.2.1.2.5.1"><a href="#section-4.1.5" class="xref">4.1.5</a>.  <a href="#name-perceptual-quality-tools" class="xref">Perceptual Quality Tools</a><a href="#section-toc.1-1.4.2.1.2.5.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.5">
+>                     <p id="section-toc.1-1.4.2.1.2.5.1"><a href="#section-4.1.5" class="auto internal xref">4.1.5</a>.  <a href="#name-perceptual-quality-tools" class="internal xref">Perceptual Quality Tools</a></p>
+1276,1277c1379,1380
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1.2.6">
+<                     <p id="section-toc.1-1.4.2.1.2.6.1"><a href="#section-4.1.6" class="xref">4.1.6</a>.  <a href="#name-buffer-model" class="xref">Buffer Model</a><a href="#section-toc.1-1.4.2.1.2.6.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.6">
+>                     <p id="section-toc.1-1.4.2.1.2.6.1"><a href="#section-4.1.6" class="auto internal xref">4.1.6</a>.  <a href="#name-buffer-model" class="internal xref">Buffer Model</a></p>
+1279,1280c1382,1383
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.1.2.7">
+<                     <p id="section-toc.1-1.4.2.1.2.7.1"><a href="#section-4.1.7" class="xref">4.1.7</a>.  <a href="#name-integration" class="xref">Integration</a><a href="#section-toc.1-1.4.2.1.2.7.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.7">
+>                     <p id="section-toc.1-1.4.2.1.2.7.1"><a href="#section-4.1.7" class="auto internal xref">4.1.7</a>.  <a href="#name-integration" class="internal xref">Integration</a></p>
+1284,1288c1387,1391
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.2">
+<                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-basic-requirements" class="xref">Basic Requirements</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.2.2.1">
+<                     <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="xref">4.2.1</a>.  <a href="#name-input-source-formats" class="xref">Input Source Formats</a><a href="#section-toc.1-1.4.2.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+>                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-basic-requirements" class="internal xref">Basic Requirements</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.1">
+>                     <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="auto internal xref">4.2.1</a>.  <a href="#name-input-source-formats" class="internal xref">Input Source Formats</a></p>
+1290,1291c1393,1394
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.2.2.2">
+<                     <p id="section-toc.1-1.4.2.2.2.2.1"><a href="#section-4.2.2" class="xref">4.2.2</a>.  <a href="#name-coding-delay" class="xref">Coding Delay</a><a href="#section-toc.1-1.4.2.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.2">
+>                     <p id="section-toc.1-1.4.2.2.2.2.1"><a href="#section-4.2.2" class="auto internal xref">4.2.2</a>.  <a href="#name-coding-delay" class="internal xref">Coding Delay</a></p>
+1293,1294c1396,1397
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.2.2.3">
+<                     <p id="section-toc.1-1.4.2.2.2.3.1"><a href="#section-4.2.3" class="xref">4.2.3</a>.  <a href="#name-complexity" class="xref">Complexity</a><a href="#section-toc.1-1.4.2.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.3">
+>                     <p id="section-toc.1-1.4.2.2.2.3.1"><a href="#section-4.2.3" class="auto internal xref">4.2.3</a>.  <a href="#name-complexity" class="internal xref">Complexity</a></p>
+1296,1297c1399,1400
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.2.2.4">
+<                     <p id="section-toc.1-1.4.2.2.2.4.1"><a href="#section-4.2.4" class="xref">4.2.4</a>.  <a href="#name-scalability" class="xref">Scalability</a><a href="#section-toc.1-1.4.2.2.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.4">
+>                     <p id="section-toc.1-1.4.2.2.2.4.1"><a href="#section-4.2.4" class="auto internal xref">4.2.4</a>.  <a href="#name-scalability" class="internal xref">Scalability</a></p>
+1299,1300c1402,1403
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.2.2.5">
+<                     <p id="section-toc.1-1.4.2.2.2.5.1"><a href="#section-4.2.5" class="xref">4.2.5</a>.  <a href="#name-error-resilience" class="xref">Error Resilience</a><a href="#section-toc.1-1.4.2.2.2.5.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.5">
+>                     <p id="section-toc.1-1.4.2.2.2.5.1"><a href="#section-4.2.5" class="auto internal xref">4.2.5</a>.  <a href="#name-error-resilience" class="internal xref">Error Resilience</a></p>
+1304,1308c1407,1411
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.3">
+<                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-optional-requirements" class="xref">Optional Requirements</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.3.2.1">
+<                     <p id="section-toc.1-1.4.2.3.2.1.1"><a href="#section-4.3.1" class="xref">4.3.1</a>.  <a href="#name-input-source-formats-2" class="xref">Input Source Formats</a><a href="#section-toc.1-1.4.2.3.2.1.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+>                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-optional-requirements" class="internal xref">Optional Requirements</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.1">
+>                     <p id="section-toc.1-1.4.2.3.2.1.1"><a href="#section-4.3.1" class="auto internal xref">4.3.1</a>.  <a href="#name-input-source-formats-2" class="internal xref">Input Source Formats</a></p>
+1310,1311c1413,1414
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.3.2.2">
+<                     <p id="section-toc.1-1.4.2.3.2.2.1"><a href="#section-4.3.2" class="xref">4.3.2</a>.  <a href="#name-scalability-2" class="xref">Scalability</a><a href="#section-toc.1-1.4.2.3.2.2.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.2">
+>                     <p id="section-toc.1-1.4.2.3.2.2.1"><a href="#section-4.3.2" class="auto internal xref">4.3.2</a>.  <a href="#name-scalability-2" class="internal xref">Scalability</a></p>
+1313,1314c1416,1417
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.3.2.3">
+<                     <p id="section-toc.1-1.4.2.3.2.3.1"><a href="#section-4.3.3" class="xref">4.3.3</a>.  <a href="#name-complexity-2" class="xref">Complexity</a><a href="#section-toc.1-1.4.2.3.2.3.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.3">
+>                     <p id="section-toc.1-1.4.2.3.2.3.1"><a href="#section-4.3.3" class="auto internal xref">4.3.3</a>.  <a href="#name-complexity-2" class="internal xref">Complexity</a></p>
+1316,1317c1419,1420
+< <li class="toc ulEmpty" id="section-toc.1-1.4.2.3.2.4">
+<                     <p id="section-toc.1-1.4.2.3.2.4.1"><a href="#section-4.3.4" class="xref">4.3.4</a>.  <a href="#name-coding-efficiency-2" class="xref">Coding Efficiency</a><a href="#section-toc.1-1.4.2.3.2.4.1" class="pilcrow">¶</a></p>
+---
+>                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.4">
+>                     <p id="section-toc.1-1.4.2.3.2.4.1"><a href="#section-4.3.4" class="auto internal xref">4.3.4</a>.  <a href="#name-coding-efficiency-2" class="internal xref">Coding Efficiency</a></p>
+1323,1324c1426,1427
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-evaluation-methodology" class="xref">Evaluation Methodology</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-evaluation-methodology" class="internal xref">Evaluation Methodology</a></p>
+1326,1327c1429,1430
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1329,1330c1432,1433
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1332,1336c1435,1439
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.8.2.1">
+<                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+>                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1338,1339c1441,1442
+< <li class="toc ulEmpty" id="section-toc.1-1.8.2.2">
+<                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+>                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1343,1344c1446,1447
+< <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+1346,1347c1449,1450
+< <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1373,1374c1476,1477
+< <ul>
+< <li id="section-1-2.1">If the amount of delay is not crucial for an application, then reliable
+---
+> <ul class="normal">
+> <li class="normal" id="section-1-2.1">If the amount of delay is not crucial for an application, then reliable
+1378c1481
+< <li id="section-1-2.2">If the amount of delay must be kept low, then either data transmission
+---
+>         <li class="normal" id="section-1-2.2">If the amount of delay must be kept low, then either data transmission
+1396c1499
+< <dl class="dlNewline" id="section-2.1-1">
+---
+> <span class="break"></span><dl class="dlNewline" id="section-2.1-1">
+1398c1501
+< <dd id="section-2.1-1.2">A set of techniques that allows a greater dynamic range of exposures or
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-1.2">A set of techniques that allows a greater dynamic range of exposures or
+1403c1506
+< <span>[<a href="#HDR" class="xref">7</a>]</span>.<a href="#section-2.1-1.2" class="pilcrow">¶</a>
+---
+> <span>[<a href="#HDR" class="cite xref">7</a>]</span>.<a href="#section-2.1-1.2" class="pilcrow">¶</a>
+1407c1510
+< <dd id="section-2.1-1.4">The period of time between the two closest independently decodable frames
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-1.4">The period of time between the two closest independently decodable frames
+1412c1515
+< <dd id="section-2.1-1.6">A point in a two-dimensional rate-distortion space where the values of
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-1.6">A point in a two-dimensional rate-distortion space where the values of
+1417c1520
+< <dd id="section-2.1-1.8">A form or manner of lossy compression where the data that are lost
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-1.8">A form or manner of lossy compression where the data that are lost
+1419c1522
+< the compressed data appear identical to the uncompressed data <span>[<a href="#COMPRESSION" class="xref">8</a>]</span>.<a href="#section-2.1-1.8" class="pilcrow">¶</a>
+---
+> the compressed data appear identical to the uncompressed data <span>[<a href="#COMPRESSION" class="cite xref">8</a>]</span>.<a href="#section-2.1-1.8" class="pilcrow">¶</a>
+1423c1526
+< <dd id="section-2.1-1.10">A certain complete color subset (e.g., considered in ITU-R BT.2020 <span>[<a href="#BT2020-2" class="xref">1</a>]</span>) that supports a wider range of colors (i.e., an extended
+---
+>           <dd style="margin-left: 1.5em" id="section-2.1-1.10">A certain complete color subset (e.g., considered in ITU-R BT.2020 <span>[<a href="#BT2020-2" class="cite xref">1</a>]</span>) that supports a wider range of colors (i.e., an extended
+1426c1529
+< model) than conventional color gamuts (e.g., considered in ITU-R BT.601 <span>[<a href="#BT601" class="xref">17</a>]</span> or BT.709 <span>[<a href="#BT709" class="xref">20</a>]</span>).<a href="#section-2.1-1.10" class="pilcrow">¶</a>
+---
+> model) than conventional color gamuts (e.g., considered in ITU-R BT.601 <span>[<a href="#BT601" class="cite xref">17</a>]</span> or BT.709 <span>[<a href="#BT709" class="cite xref">20</a>]</span>).<a href="#section-2.1-1.10" class="pilcrow">¶</a>
+1437c1540
+< <dl class="dlParallel" id="section-2.2-1">
+---
+> <span class="break"></span><dl class="dlParallel" id="section-2.2-1">
+1587c1690
+< combination of resolutions and bitrates is shown in <a href="#vid-stream" class="xref">Table 1</a>.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+---
+> combination of resolutions and bitrates is shown in <a href="#vid-stream" class="auto internal xref">Table 1</a>.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+1589,1590c1692,1693
+< <ul>
+< <li id="section-3.1-3.1">Video is encoded in the cloud by software encoders.<a href="#section-3.1-3.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.1-3.1">Video is encoded in the cloud by software encoders.<a href="#section-3.1-3.1" class="pilcrow">¶</a>
+1592c1695
+< <li id="section-3.1-3.2">Source video is split into chunks, each of which is encoded separately, in parallel.<a href="#section-3.1-3.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-3.2">Source video is split into chunks, each of which is encoded separately, in parallel.<a href="#section-3.1-3.2" class="pilcrow">¶</a>
+1594c1697
+< <li id="section-3.1-3.3">Closed-GOP encoding with intrapicture intervals of 2-5
+---
+>           <li class="normal" id="section-3.1-3.3">Closed-GOP encoding with intrapicture intervals of 2-5
+1597c1700
+< <li id="section-3.1-3.4">Encoding is perceptually optimized. Perceptual quality is important and should be considered during the codec development.<a href="#section-3.1-3.4" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-3.4">Encoding is perceptually optimized. Perceptual quality is important and should be considered during the codec development.<a href="#section-3.1-3.4" class="pilcrow">¶</a>
+1669c1772
+< <span>[<a href="#BT2020-2" class="xref">1</a>]</span>.<a href="#section-3.1-6" class="pilcrow">¶</a></p>
+---
+> <span>[<a href="#BT2020-2" class="cite xref">1</a>]</span>.<a href="#section-3.1-6" class="pilcrow">¶</a></p>
+1671,1672c1774,1775
+< <ul>
+< <li id="section-3.1-8.1">High encoder complexity (up to 10x and more) can be tolerated since
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.1-8.1">High encoder complexity (up to 10x and more) can be tolerated since
+1675c1778
+< <li id="section-3.1-8.2">Decoding complexity should be kept at reasonable levels to enable efficient decoder implementation.<a href="#section-3.1-8.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-8.2">Decoding complexity should be kept at reasonable levels to enable efficient decoder implementation.<a href="#section-3.1-8.2" class="pilcrow">¶</a>
+1677c1780
+< <li id="section-3.1-8.3">
+---
+>           <li class="normal" id="section-3.1-8.3">
+1679,1680c1782,1783
+< <ul>
+< <li id="section-3.1-8.3.2.1">High Dynamic Range (HDR), Wide Color Gamut (WCG), high-resolution
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.1-8.3.2.1">High Dynamic Range (HDR), Wide Color Gamut (WCG), high-resolution
+1684c1787
+< <li id="section-3.1-8.3.2.2">Improvement of coding efficiency at both lower and higher resolutions is
+---
+>               <li class="normal" id="section-3.1-8.3.2.2">Improvement of coding efficiency at both lower and higher resolutions is
+1688c1791
+< <li id="section-3.1-8.3.2.3">Improvement on both "easy" and "difficult" content in terms
+---
+>               <li class="normal" id="section-3.1-8.3.2.3">Improvement on both "easy" and "difficult" content in terms
+1692c1795
+< <li id="section-3.1-8.3.2.4">Film grain (and sometimes other types of noise) is often present in movies
+---
+>               <li class="normal" id="section-3.1-8.3.2.4">Film grain (and sometimes other types of noise) is often present in movies
+1697c1800
+< <li id="section-3.1-8.4">Significant improvements in compression efficiency between generations of
+---
+>           <li class="normal" id="section-3.1-8.4">Significant improvements in compression efficiency between generations of
+1701c1804
+< <li id="section-3.1-8.5">Random access points are inserted frequently (one per 2-5 seconds) to enable switching between resolutions and fast-forward playback.<a href="#section-3.1-8.5" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.1-8.5">Random access points are inserted frequently (one per 2-5 seconds) to enable switching between resolutions and fast-forward playback.<a href="#section-3.1-8.5" class="pilcrow">¶</a>
+1703c1806
+< <li id="section-3.1-8.6">The elementary stream should have a model that allows easy parsing and
+---
+>           <li class="normal" id="section-3.1-8.6">The elementary stream should have a model that allows easy parsing and
+1706c1809
+< <li id="section-3.1-8.7">Middle QP values are normally used in streaming; this is also the range
+---
+>           <li class="normal" id="section-3.1-8.7">Middle QP values are normally used in streaming; this is also the range
+1709c1812
+< <li id="section-3.1-8.8">Scalability or other forms of supporting multiple quality representations
+---
+>           <li class="normal" id="section-3.1-8.8">Scalability or other forms of supporting multiple quality representations
+1720,1721c1823,1824
+< <ul>
+< <li id="section-3.2-2.1">unicast (e.g., for video on demand), where delay is not crucial; and<a href="#section-3.2-2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.2-2.1">unicast (e.g., for video on demand), where delay is not crucial; and<a href="#section-3.2-2.1" class="pilcrow">¶</a>
+1723c1826
+< <li id="section-3.2-2.2">multicast/broadcast (e.g., for transmitting news) where
+---
+>           <li class="normal" id="section-3.2-2.2">multicast/broadcast (e.g., for transmitting news) where
+1732,1733c1835,1836
+< <ul>
+< <li id="section-3.2-4.1">Temporal (frame-rate) scalability; and<a href="#section-3.2-4.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.2-4.1">Temporal (frame-rate) scalability; and<a href="#section-3.2-4.1" class="pilcrow">¶</a>
+1735c1838
+< <li id="section-3.2-4.2">Resolution and quality (SNR) scalability.<a href="#section-3.2-4.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.2-4.2">Resolution and quality (SNR) scalability.<a href="#section-3.2-4.2" class="pilcrow">¶</a>
+1740c1843
+< are presented in <a href="#IPTV" class="xref">Table 2</a>.<a href="#section-3.2-5" class="pilcrow">¶</a></p>
+---
+> are presented in <a href="#IPTV" class="auto internal xref">Table 2</a>.<a href="#section-3.2-5" class="pilcrow">¶</a></p>
+1801c1904
+< from Table 2 in <span>[<a href="#BT2020-2" class="xref">1</a>]</span>.<a href="#section-3.2-8" class="pilcrow">¶</a></p>
+---
+> from Table 2 in <span>[<a href="#BT2020-2" class="cite xref">1</a>]</span>.<a href="#section-3.2-8" class="pilcrow">¶</a></p>
+1812,1814c1915,1917
+< <ul>
+< <li id="section-3.3-2.1">Delay should be kept as low as possible (the preferable and maximum
+< end-to-end delay values should be less than 100 ms <span>[<a href="#SG-16" class="xref">9</a>]</span> and 320 ms <span>[<a href="#G1091" class="xref">2</a>]</span>, respectively);<a href="#section-3.3-2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.3-2.1">Delay should be kept as low as possible (the preferable and maximum
+> end-to-end delay values should be less than 100 ms <span>[<a href="#SG-16" class="cite xref">9</a>]</span> and 320 ms <span>[<a href="#G1091" class="cite xref">2</a>]</span>, respectively);<a href="#section-3.3-2.1" class="pilcrow">¶</a>
+1816c1919
+< <li id="section-3.3-2.2">Temporal (frame-rate) scalability; and<a href="#section-3.3-2.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.3-2.2">Temporal (frame-rate) scalability; and<a href="#section-3.3-2.2" class="pilcrow">¶</a>
+1818c1921
+< <li id="section-3.3-2.3">Error robustness.<a href="#section-3.3-2.3" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.3-2.3">Error robustness.<a href="#section-3.3-2.3" class="pilcrow">¶</a>
+1824c1927
+< and PAMs are presented in <a href="#vid-conf" class="xref">Table 3</a>.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
+---
+> and PAMs are presented in <a href="#vid-conf" class="auto internal xref">Table 3</a>.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
+1882,1883c1985,1986
+< <ul>
+< <li id="section-3.4-2.1">Random access to pictures for downloaded video data;<a href="#section-3.4-2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.4-2.1">Random access to pictures for downloaded video data;<a href="#section-3.4-2.1" class="pilcrow">¶</a>
+1885c1988
+< <li id="section-3.4-2.2">Temporal (frame-rate) scalability; and<a href="#section-3.4-2.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.4-2.2">Temporal (frame-rate) scalability; and<a href="#section-3.4-2.2" class="pilcrow">¶</a>
+1887c1990
+< <li id="section-3.4-2.3">Error robustness.<a href="#section-3.4-2.3" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.4-2.3">Error robustness.<a href="#section-3.4-2.3" class="pilcrow">¶</a>
+1893c1996
+< and PAMs are presented in <a href="#vid-share" class="xref">Table 4</a>.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
+---
+> and PAMs are presented in <a href="#vid-share" class="auto internal xref">Table 4</a>.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
+1895,1896c1998,1999
+< Typical values of resolutions and frame rates in <a href="#vid-share" class="xref">Table 4</a> are taken from
+< <span>[<a href="#YOUTUBE" class="xref">10</a>]</span>.<a href="#section-3.4-4" class="pilcrow">¶</a></p>
+---
+> Typical values of resolutions and frame rates in <a href="#vid-share" class="auto internal xref">Table 4</a> are taken from
+> <span>[<a href="#YOUTUBE" class="cite xref">10</a>]</span>.<a href="#section-3.4-4" class="pilcrow">¶</a></p>
+1952c2055
+< mathematically (numerically) lossless <span>[<a href="#HEVC-EXT" class="xref">11</a>]</span>. 
+---
+> mathematically (numerically) lossless <span>[<a href="#HEVC-EXT" class="cite xref">11</a>]</span>. 
+1958c2061
+< sharp edges with distinct colors <span>[<a href="#HEVC-EXT" class="xref">11</a>]</span>, virtual desktop
+---
+> sharp edges with distinct colors <span>[<a href="#HEVC-EXT" class="cite xref">11</a>]</span>, virtual desktop
+1966c2069
+< and YCbCr 4:4:4 <span>[<a href="#HEVC-EXT" class="xref">11</a>]</span>. 
+---
+> and YCbCr 4:4:4 <span>[<a href="#HEVC-EXT" class="cite xref">11</a>]</span>. 
+1968c2071
+< frame rates, and PAMs are presented in <a href="#screencast" class="xref">Table 5</a>.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
+---
+> frame rates, and PAMs are presented in <a href="#screencast" class="auto internal xref">Table 5</a>.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
+2070c2173
+< any device with a wired or wireless broadband connection <span>[<a href="#GAME" class="xref">12</a>]</span>. There are low-latency requirements for transmitting user interactions and
+---
+> any device with a wired or wireless broadband connection <span>[<a href="#GAME" class="cite xref">12</a>]</span>. There are low-latency requirements for transmitting user interactions and
+2073c2176
+< <span>[<a href="#GAME" class="xref">12</a>]</span>. An example of this application is Nvidia Grid <span>[<a href="#GAME" class="xref">12</a>]</span>. 
+---
+> <span>[<a href="#GAME" class="cite xref">12</a>]</span>. An example of this application is Nvidia Grid <span>[<a href="#GAME" class="cite xref">12</a>]</span>. 
+2075,2077c2178,2180
+< played by people over the Internet in real time or for later viewing <span>[<a href="#GAME" class="xref">12</a>]</span>. There are many companies, such as Twitch and YY in China, that enable
+< game broadcasting <span>[<a href="#GAME" class="xref">12</a>]</span>. Games typically contain a lot of
+< sharp edges and large motion <span>[<a href="#GAME" class="xref">12</a>]</span>. The main requirements are
+---
+> played by people over the Internet in real time or for later viewing <span>[<a href="#GAME" class="cite xref">12</a>]</span>. There are many companies, such as Twitch and YY in China, that enable
+> game broadcasting <span>[<a href="#GAME" class="cite xref">12</a>]</span>. Games typically contain a lot of
+> sharp edges and large motion <span>[<a href="#GAME" class="cite xref">12</a>]</span>. The main requirements are
+2079,2080c2182,2183
+< <ul>
+< <li id="section-3.6-2.1">Random access to pictures for game broadcasting;<a href="#section-3.6-2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-3.6-2.1">Random access to pictures for game broadcasting;<a href="#section-3.6-2.1" class="pilcrow">¶</a>
+2082c2185
+< <li id="section-3.6-2.2">Temporal (frame-rate) scalability; and<a href="#section-3.6-2.2" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.6-2.2">Temporal (frame-rate) scalability; and<a href="#section-3.6-2.2" class="pilcrow">¶</a>
+2084c2187
+< <li id="section-3.6-2.3">Error robustness.<a href="#section-3.6-2.3" class="pilcrow">¶</a>
+---
+>           <li class="normal" id="section-3.6-2.3">Error robustness.<a href="#section-3.6-2.3" class="pilcrow">¶</a>
+2090c2193
+< and PAMs are similar to ones presented in <a href="#vid-conf" class="xref">Table 3</a>.<a href="#section-3.6-3" class="pilcrow">¶</a></p>
+---
+> and PAMs are similar to ones presented in <a href="#vid-conf" class="auto internal xref">Table 3</a>.<a href="#section-3.6-3" class="pilcrow">¶</a></p>
+2111c2214
+< applications are presented in <a href="#monitoring" class="xref">Table 6</a>.<a href="#section-3.7-1" class="pilcrow">¶</a></p>
+---
+> applications are presented in <a href="#monitoring" class="auto internal xref">Table 6</a>.<a href="#section-3.7-1" class="pilcrow">¶</a></p>
+2181c2284
+< cases in <a href="#apps" class="xref">Section 3</a>. The codec should provide higher coding efficiency over
+---
+> cases in <a href="#apps" class="auto internal xref">Section 3</a>. The codec should provide higher coding efficiency over
+2183c2286
+< accordance with the methodology described in <a href="#eval-method" class="xref">Section 5</a> of this document. For
+---
+> accordance with the methodology described in <a href="#eval-method" class="auto internal xref">Section 5</a> of this document. For
+2199c2302
+< supported is presented in <a href="#codec-levels" class="xref">Table 7</a>. An actual level
+---
+> supported is presented in <a href="#codec-levels" class="auto internal xref">Table 7</a>. An actual level
+2317c2420
+< the sample components (such as Annex B of ISO/IEC 14496-10 <span>[<a href="#ISO14496-10" class="xref">18</a>]</span> or ISO/IEC 14496-15 <span>[<a href="#ISO14496-15" class="xref">19</a>]</span>). In
+---
+> the sample components (such as Annex B of ISO/IEC 14496-10 <span>[<a href="#ISO14496-10" class="cite xref">18</a>]</span> or ISO/IEC 14496-15 <span>[<a href="#ISO14496-15" class="cite xref">19</a>]</span>). In
+2363,2364c2466,2467
+< <ul>
+< <li id="section-4.2.1-2.1">Bit depth: 8 and 10 bits (up to 12 bits for a high profile) per color component.<a href="#section-4.2.1-2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.2.1-2.1">Bit depth: 8 and 10 bits (up to 12 bits for a high profile) per color component.<a href="#section-4.2.1-2.1" class="pilcrow">¶</a>
+2366c2469
+< <li id="section-4.2.1-2.2">
+---
+>             <li class="normal" id="section-4.2.1-2.2">
+2368,2369c2471,2472
+< <ul>
+< <li id="section-4.2.1-2.2.2.1">YCbCr 4:2:0<a href="#section-4.2.1-2.2.2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.2.1-2.2.2.1">YCbCr 4:2:0<a href="#section-4.2.1-2.2.2.1" class="pilcrow">¶</a>
+2371c2474
+< <li id="section-4.2.1-2.2.2.2">YCbCr 4:4:4, YCbCr 4:2:2, and YCbCr 4:0:0 (preferably in different profile(s))<a href="#section-4.2.1-2.2.2.2" class="pilcrow">¶</a>
+---
+>                 <li class="normal" id="section-4.2.1-2.2.2.2">YCbCr 4:4:4, YCbCr 4:2:2, and YCbCr 4:0:0 (preferably in different profile(s))<a href="#section-4.2.1-2.2.2.2" class="pilcrow">¶</a>
+2375c2478
+< <li id="section-4.2.1-2.3">For profiles with bit depth of 10 bits per sample or higher, support of high dynamic range and wide color gamut.<a href="#section-4.2.1-2.3" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-4.2.1-2.3">For profiles with bit depth of 10 bits per sample or higher, support of high dynamic range and wide color gamut.<a href="#section-4.2.1-2.3" class="pilcrow">¶</a>
+2377c2480
+< <li id="section-4.2.1-2.4">Support of arbitrary resolution according to the level constraints for
+---
+>             <li class="normal" id="section-4.2.1-2.4">Support of arbitrary resolution according to the level constraints for
+2382c2485
+< Exemplary input source formats for codec profiles are shown in <a href="#exemplary" class="xref">Table 8</a>.<a href="#section-4.2.1-3" class="pilcrow">¶</a></p>
+---
+> Exemplary input source formats for codec profiles are shown in <a href="#exemplary" class="auto internal xref">Table 8</a>.<a href="#section-4.2.1-3" class="pilcrow">¶</a></p>
+2423,2424c2526,2527
+< <ul>
+< <li id="section-4.2.2-2.1">
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.2.2-2.1">
+2427,2428c2530,2531
+< <ul>
+< <li id="section-4.2.2-2.1.2.1">Note: End-to-end delay should be no more than 320 ms <span>[<a href="#G1091" class="xref">2</a>]</span>, but it is preferable for its value to be less than 100 ms <span>[<a href="#SG-16" class="xref">9</a>]</span>.<a href="#section-4.2.2-2.1.2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.2.2-2.1.2.1">Note: End-to-end delay should be no more than 320 ms <span>[<a href="#G1091" class="cite xref">2</a>]</span>, but it is preferable for its value to be less than 100 ms <span>[<a href="#SG-16" class="cite xref">9</a>]</span>.<a href="#section-4.2.2-2.1.2.1" class="pilcrow">¶</a>
+2432c2535
+< <li id="section-4.2.2-2.2">Support of efficient random access point encoding (such as intracoding and
+---
+>             <li class="normal" id="section-4.2.2-2.2">Support of efficient random access point encoding (such as intracoding and
+2436c2539
+< <li id="section-4.2.2-2.3">Support of configurations with nonzero structural delay (such as
+---
+>             <li class="normal" id="section-4.2.2-2.3">Support of configurations with nonzero structural delay (such as
+2450,2451c2553,2554
+< <ul>
+< <li id="section-4.2.3-2.1">Feasible real-time implementation of both an encoder and a decoder
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.2.3-2.1">Feasible real-time implementation of both an encoder and a decoder
+2459c2562
+< <li id="section-4.2.3-2.2">High-complexity software encoder implementations used by offline encoding
+---
+>             <li class="normal" id="section-4.2.3-2.2">High-complexity software encoder implementations used by offline encoding
+2472,2473c2575,2576
+< <ul>
+< <li id="section-4.2.4-2.1">Temporal (frame-rate) scalability should be supported.<a href="#section-4.2.4-2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.2.4-2.1">Temporal (frame-rate) scalability should be supported.<a href="#section-4.2.4-2.1" class="pilcrow">¶</a>
+2485,2486c2588,2589
+< <ul>
+< <li id="section-4.2.5-2.1">Tools that are complementary to the error-protection
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.2.5-2.1">Tools that are complementary to the error-protection
+2489c2592
+< <li id="section-4.2.5-2.2">The codec should support mechanisms that facilitate packetization of a bitstream for common network protocols.<a href="#section-4.2.5-2.2" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-4.2.5-2.2">The codec should support mechanisms that facilitate packetization of a bitstream for common network protocols.<a href="#section-4.2.5-2.2" class="pilcrow">¶</a>
+2491c2594
+< <li id="section-4.2.5-2.3">Packetization mechanisms should enable frame-level error recovery by means of retransmission or error concealment.<a href="#section-4.2.5-2.3" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-4.2.5-2.3">Packetization mechanisms should enable frame-level error recovery by means of retransmission or error concealment.<a href="#section-4.2.5-2.3" class="pilcrow">¶</a>
+2493c2596
+< <li id="section-4.2.5-2.4">The codec should support effective mechanisms for allowing decoding and reconstruction of significant parts of pictures in the event that parts of the picture data are lost in transmission.<a href="#section-4.2.5-2.4" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-4.2.5-2.4">The codec should support effective mechanisms for allowing decoding and reconstruction of significant parts of pictures in the event that parts of the picture data are lost in transmission.<a href="#section-4.2.5-2.4" class="pilcrow">¶</a>
+2495c2598
+< <li id="section-4.2.5-2.5">The bitstream specification shall support independently decodable subframe
+---
+>             <li class="normal" id="section-4.2.5-2.5">The bitstream specification shall support independently decodable subframe
+2515,2516c2618,2619
+< <ul>
+< <li id="section-4.3.1-2.1">Bit depth: up to 16 bits per color component.<a href="#section-4.3.1-2.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.3.1-2.1">Bit depth: up to 16 bits per color component.<a href="#section-4.3.1-2.1" class="pilcrow">¶</a>
+2518c2621
+< <li id="section-4.3.1-2.2">Color sampling formats: RGB 4:4:4.<a href="#section-4.3.1-2.2" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-4.3.1-2.2">Color sampling formats: RGB 4:4:4.<a href="#section-4.3.1-2.2" class="pilcrow">¶</a>
+2520c2623
+< <li id="section-4.3.1-2.3">Auxiliary channel (e.g., alpha channel) support.<a href="#section-4.3.1-2.3" class="pilcrow">¶</a>
+---
+>             <li class="normal" id="section-4.3.1-2.3">Auxiliary channel (e.g., alpha channel) support.<a href="#section-4.3.1-2.3" class="pilcrow">¶</a>
+2531,2533c2634,2636
+< <ul>
+< <li id="section-4.3.2-2.1">Resolution and quality (SNR) scalability that provides a low-compression
+< efficiency penalty (increase of up to 5% of BD-rate <span>[<a href="#PSNR" class="xref">13</a>]</span> per
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.3.2-2.1">Resolution and quality (SNR) scalability that provides a low-compression
+> efficiency penalty (increase of up to 5% of BD-rate <span>[<a href="#PSNR" class="cite xref">13</a>]</span> per
+2539c2642
+< <li id="section-4.3.2-2.2">Computational complexity scalability (i.e., computational complexity is
+---
+>             <li class="normal" id="section-4.3.2-2.2">Computational complexity scalability (i.e., computational complexity is
+2551,2552c2654,2655
+< <ul>
+< <li id="section-4.3.3-2.1">High-level multicore parallelism: encoder and decoder operation,
+---
+> <ul class="normal">
+> <li class="normal" id="section-4.3.3-2.1">High-level multicore parallelism: encoder and decoder operation,
+2558c2661
+< <li id="section-4.3.3-2.2">Low-level instruction-set parallelism: favor algorithms that are SIMD/GPU
+---
+>             <li class="normal" id="section-4.3.3-2.2">Low-level instruction-set parallelism: favor algorithms that are SIMD/GPU
+2577c2680
+< <p id="section-5-1">As shown in <a href="#QP" class="xref">Figure 1</a>, compression performance testing is
+---
+> <p id="section-5-1">As shown in <a href="#QP" class="auto internal xref">Figure 1</a>, compression performance testing is
+2579,2580c2682,2683
+< <ul>
+< <li id="section-5-2.1">Low bitrate range (LBR) is the range that contains the four lowest
+---
+> <ul class="normal">
+> <li class="normal" id="section-5-2.1">Low bitrate range (LBR) is the range that contains the four lowest
+2584c2687
+< <li id="section-5-2.2">Medium bitrate range (MBR) is the range that contains the four medium
+---
+>         <li class="normal" id="section-5-2.2">Medium bitrate range (MBR) is the range that contains the four medium
+2587c2690
+< <li id="section-5-2.3">High bitrate range (HBR) is the range that contains the four highest
+---
+>         <li class="normal" id="section-5-2.3">High bitrate range (HBR) is the range that contains the four highest
+2593c2696
+< set of ten QP (quantization parameter) values should be specified as in <span>[<a href="#I-D.ietf-netvc-testing" class="xref">14</a>]</span>, and corresponding quality values should be
+---
+> set of ten QP (quantization parameter) values should be specified as in <span>[<a href="#I-D.ietf-netvc-testing" class="cite xref">14</a>]</span>, and corresponding quality values should be
+2597c2700
+< <a href="#QP" class="xref">Figure 1</a>, QP and quality values are denoted as "QP0"-"QP9" and
+---
+> <a href="#QP" class="auto internal xref">Figure 1</a>, QP and quality values are denoted as "QP0"-"QP9" and
+2606c2709
+< <div class="artwork art-text alignLeft" id="section-5-4">
+---
+> <div class="alignLeft art-text artwork" id="section-5-4">
+2623c2726
+<         <div class="artwork art-text alignLeft" id="section-5-6.1">
+---
+>         <div class="alignLeft art-text artwork" id="section-5-6.1">
+2652c2755
+< <span>[<a href="#ISO29170-1" class="xref">3</a>]</span> and MS-SSIM <span>[<a href="#ISO29170-1" class="xref">3</a>]</span> <span>[<a href="#MULTI-SCALE" class="xref">15</a>]</span>) are separately computed. In the case of the YCbCr
+---
+> <span>[<a href="#ISO29170-1" class="cite xref">3</a>]</span> and MS-SSIM <span>[<a href="#ISO29170-1" class="cite xref">3</a>]</span> <span>[<a href="#MULTI-SCALE" class="cite xref">15</a>]</span>) are separately computed. In the case of the YCbCr
+2662c2765
+< <p id="section-5-9">Finally, to obtain an integral estimation, BD-rate savings <span>[<a href="#PSNR" class="xref">13</a>]</span> should be
+---
+> <p id="section-5-9">Finally, to obtain an integral estimation, BD-rate savings <span>[<a href="#PSNR" class="cite xref">13</a>]</span> should be
+2666c2769
+< for the reference codec, are defined in <span>[<a href="#I-D.ietf-netvc-testing" class="xref">14</a>]</span>. Testing processes should use the
+---
+> for the reference codec, are defined in <span>[<a href="#I-D.ietf-netvc-testing" class="cite xref">14</a>]</span>. Testing processes should use the
+2669c2772
+< <span>[<a href="#ISO23008-2" class="xref">4</a>]</span><span>[<a href="#H265" class="xref">5</a>]</span> or VP9 must be used. The reference source
+---
+> <span>[<a href="#ISO23008-2" class="cite xref">4</a>]</span><span>[<a href="#H265" class="cite xref">5</a>]</span> or VP9 must be used. The reference source
+2671,2673c2774,2776
+< can be found at <span>[<a href="#HEVC" class="xref">6</a>]</span>. The HEVC/H.265 codec must be configured
+< according to <span>[<a href="#CONDITIONS" class="xref">16</a>]</span>
+< and <a href="#intra-period" class="xref">Table 9</a>.<a href="#section-5-9" class="pilcrow">¶</a></p>
+---
+> can be found at <span>[<a href="#HEVC" class="cite xref">6</a>]</span>. The HEVC/H.265 codec must be configured
+> according to <span>[<a href="#CONDITIONS" class="cite xref">16</a>]</span>
+> and <a href="#intra-period" class="auto internal xref">Table 9</a>.<a href="#section-5-9" class="pilcrow">¶</a></p>
+2684c2787
+<             <th class="text-left" rowspan="1" colspan="1">HEVC/H.265 encoding mode according to <span>[<a href="#CONDITIONS" class="xref">16</a>]</span>
+---
+>             <th class="text-left" rowspan="1" colspan="1">HEVC/H.265 encoding mode according to <span>[<a href="#CONDITIONS" class="cite xref">16</a>]</span>
+2708c2811
+< <p id="section-5-11">According to the coding efficiency requirement described in <a href="#efficiency" class="xref">Section 4.1.1</a>, BD-rate savings calculated for each color plane and
+---
+> <p id="section-5-11">According to the coding efficiency requirement described in <a href="#efficiency" class="auto internal xref">Section 4.1.1</a>, BD-rate savings calculated for each color plane and
+2711,2712c2814,2815
+< <ul>
+< <li id="section-5-12.1">25% if calculated over the whole bitrate range; and<a href="#section-5-12.1" class="pilcrow">¶</a>
+---
+> <ul class="normal">
+> <li class="normal" id="section-5-12.1">25% if calculated over the whole bitrate range; and<a href="#section-5-12.1" class="pilcrow">¶</a>
+2714c2817
+< <li id="section-5-12.2">15% if calculated for each bitrate subrange (LBR, MBR, HBR).<a href="#section-5-12.2" class="pilcrow">¶</a>
+---
+>         <li class="normal" id="section-5-12.2">15% if calculated for each bitrate subrange (LBR, MBR, HBR).<a href="#section-5-12.2" class="pilcrow">¶</a>
+2721c2824
+< <div class="artwork art-text alignLeft" id="section-5-14">
+---
+> <div class="alignLeft art-text artwork" id="section-5-14">
+2730c2833
+< in Section 2.1 of <span>[<a href="#ISO29170-1" class="xref">3</a>]</span>. For perception-oriented tools that primarily impact subjective quality, additional tests may also be individually assigned even for intermediate evaluation, subject to a decision of the NETVC WG.<a href="#section-5-16" class="pilcrow">¶</a></p>
+---
+> in Section 2.1 of <span>[<a href="#ISO29170-1" class="cite xref">3</a>]</span>. For perception-oriented tools that primarily impact subjective quality, additional tests may also be individually assigned even for intermediate evaluation, subject to a decision of the NETVC WG.<a href="#section-5-16" class="pilcrow">¶</a></p>
+2760c2863
+< <span class="refAuthor">ITU-R</span>, <span class="refTitle">"Parameter values for ultra-high definition television systems for production and international programme exchange"</span>, <span class="seriesInfo">ITU-R Recommendation BT.2020-2</span>, <time datetime="2015-10">October 2015</time>, <span>&lt;<a href="https://www.itu.int/rec/R-REC-BT.2020-2-201510-I/en">https://www.itu.int/rec/R-REC-BT.2020-2-201510-I/en</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">ITU-R</span>, <span class="refTitle">"Parameter values for ultra-high definition television systems for production and international programme exchange"</span>, <span class="seriesInfo">ITU-R Recommendation BT.2020-2</span>, <time datetime="2015-10" class="refDate">October 2015</time>, <span>&lt;<a href="https://www.itu.int/rec/R-REC-BT.2020-2-201510-I/en">https://www.itu.int/rec/R-REC-BT.2020-2-201510-I/en</a>&gt;</span>. </dd>
+2764c2867
+< <span class="refAuthor">ITU-T</span>, <span class="refTitle">"Quality of Experience requirements for telepresence services"</span>, <span class="seriesInfo">ITU-T Recommendation G.1091</span>, <time datetime="2014-10">October 2014</time>, <span>&lt;<a href="https://www.itu.int/rec/T-REC-G.1091/en">https://www.itu.int/rec/T-REC-G.1091/en</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">ITU-T</span>, <span class="refTitle">"Quality of Experience requirements for telepresence services"</span>, <span class="seriesInfo">ITU-T Recommendation G.1091</span>, <time datetime="2014-10" class="refDate">October 2014</time>, <span>&lt;<a href="https://www.itu.int/rec/T-REC-G.1091/en">https://www.itu.int/rec/T-REC-G.1091/en</a>&gt;</span>. </dd>
+2768c2871
+< <span class="refAuthor">ISO</span>, <span class="refTitle">"Information technology -- Advanced image coding and evaluation -- Part 1: Guidelines for image coding system evaluation"</span>, <span class="seriesInfo">ISO/IEC TR 29170-1:2017</span>, <time datetime="2017-10">October 2017</time>, <span>&lt;<a href="https://www.iso.org/standard/63637.html">https://www.iso.org/standard/63637.html</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">ISO</span>, <span class="refTitle">"Information technology -- Advanced image coding and evaluation -- Part 1: Guidelines for image coding system evaluation"</span>, <span class="seriesInfo">ISO/IEC TR 29170-1:2017</span>, <time datetime="2017-10" class="refDate">October 2017</time>, <span>&lt;<a href="https://www.iso.org/standard/63637.html">https://www.iso.org/standard/63637.html</a>&gt;</span>. </dd>
+2772c2875
+< <span class="refAuthor">ISO</span>, <span class="refTitle">"Information technology -- High efficiency coding and media delivery in heterogeneous environments -- Part 2: High efficiency video coding"</span>, <span class="seriesInfo">ISO/IEC 23008-2:2015</span>, <time datetime="2018-05">May 2018</time>, <span>&lt;<a href="https://www.iso.org/standard/67660.html">https://www.iso.org/standard/67660.html</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">ISO</span>, <span class="refTitle">"Information technology -- High efficiency coding and media delivery in heterogeneous environments -- Part 2: High efficiency video coding"</span>, <span class="seriesInfo">ISO/IEC 23008-2:2015</span>, <time datetime="2018-05" class="refDate">May 2018</time>, <span>&lt;<a href="https://www.iso.org/standard/67660.html">https://www.iso.org/standard/67660.html</a>&gt;</span>. </dd>
+2776c2879
+< <span class="refAuthor">ITU-T</span>, <span class="refTitle">"High efficiency video coding"</span>, <span class="seriesInfo">ITU-T Recommendation H.265</span>, <time datetime="2019-11">November 2019</time>, <span>&lt;<a href="https://www.itu.int/rec/T-REC-H.265">https://www.itu.int/rec/T-REC-H.265</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">ITU-T</span>, <span class="refTitle">"High efficiency video coding"</span>, <span class="seriesInfo">ITU-T Recommendation H.265</span>, <time datetime="2019-11" class="refDate">November 2019</time>, <span>&lt;<a href="https://www.itu.int/rec/T-REC-H.265">https://www.itu.int/rec/T-REC-H.265</a>&gt;</span>. </dd>
+2799c2902
+< <span class="refAuthor">Wenger, S.</span>, <span class="refTitle">"The case for scalability support in version 1 of Future Video Coding"</span>, <span class="seriesInfo">SG 16 (Study Period 2013) Contribution 988</span>, <time datetime="2015-09">September 2015</time>, <span>&lt;<a href="https://www.itu.int/md/T13-SG16-C-0988/en">https://www.itu.int/md/T13-SG16-C-0988/en</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Wenger, S.</span>, <span class="refTitle">"The case for scalability support in version 1 of Future Video Coding"</span>, <span class="seriesInfo">SG 16 (Study Period 2013) Contribution 988</span>, <time datetime="2015-09" class="refDate">September 2015</time>, <span>&lt;<a href="https://www.itu.int/md/T13-SG16-C-0988/en">https://www.itu.int/md/T13-SG16-C-0988/en</a>&gt;</span>. </dd>
+2807c2910
+< <span class="refAuthor">Yu, H., Ed.</span><span class="refAuthor">, McCann, K., Ed.</span><span class="refAuthor">, Cohen, R., Ed.</span><span class="refAuthor">, and P. Amon, Ed.</span>, <span class="refTitle">"Requirements for an extension of HEVC for coding of screen content"</span>, <span class="seriesInfo">ISO/IEC JTC 1/SC 29/WG 11 Moving Picture Experts Group MPEG2013/N14174</span>, <span class="seriesInfo">San Jose, USA</span>, <time datetime="2014-01">January 2014</time>, <span>&lt;<a href="https://mpeg.chiariglione.org/standards/mpeg-h/high-efficiency-video-coding/requirements-extension-hevc-coding-screen-content">https://mpeg.chiariglione.org/standards/mpeg-h/high-efficiency-video-coding/requirements-extension-hevc-coding-screen-content</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Yu, H., Ed.</span>, <span class="refAuthor">McCann, K., Ed.</span>, <span class="refAuthor">Cohen, R., Ed.</span>, and <span class="refAuthor">P. Amon, Ed.</span>, <span class="refTitle">"Requirements for an extension of HEVC for coding of screen content"</span>, <span class="seriesInfo">ISO/IEC JTC 1/SC 29/WG 11 Moving Picture Experts Group MPEG2013/N14174</span>, <span class="seriesInfo">San Jose, USA</span>, <time datetime="2014-01" class="refDate">January 2014</time>, <span>&lt;<a href="https://mpeg.chiariglione.org/standards/mpeg-h/high-efficiency-video-coding/requirements-extension-hevc-coding-screen-content">https://mpeg.chiariglione.org/standards/mpeg-h/high-efficiency-video-coding/requirements-extension-hevc-coding-screen-content</a>&gt;</span>. </dd>
+2811c2914
+< <span class="refAuthor">Parhy, M.</span>, <span class="refTitle">"Game streaming requirement for Future Video Coding"</span>, <span class="seriesInfo">ISO/IEC JTC 1/SC 29/WG 11 Moving Picture Experts Group N36771</span>, <span class="seriesInfo">Warsaw, Poland</span>, <time datetime="2015-06">June 2015</time>. </dd>
+---
+> <span class="refAuthor">Parhy, M.</span>, <span class="refTitle">"Game streaming requirement for Future Video Coding"</span>, <span class="seriesInfo">ISO/IEC JTC 1/SC 29/WG 11 Moving Picture Experts Group N36771</span>, <span class="seriesInfo">Warsaw, Poland</span>, <time datetime="2015-06" class="refDate">June 2015</time>. </dd>
+2815c2918
+< <span class="refAuthor">Bjontegaard, G.</span>, <span class="refTitle">"Calculation of average PSNR differences between RD-curves"</span>, <span class="seriesInfo">SG 16 VCEG-M33</span>, <time datetime="2001-04">April 2001</time>, <span>&lt;<a href="https://www.itu.int/wftp3/av-arch/video-site/0104_Aus/">https://www.itu.int/wftp3/av-arch/video-site/0104_Aus/</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bjontegaard, G.</span>, <span class="refTitle">"Calculation of average PSNR differences between RD-curves"</span>, <span class="seriesInfo">SG 16 VCEG-M33</span>, <time datetime="2001-04" class="refDate">April 2001</time>, <span>&lt;<a href="https://www.itu.int/wftp3/av-arch/video-site/0104_Aus/">https://www.itu.int/wftp3/av-arch/video-site/0104_Aus/</a>&gt;</span>. </dd>
+2819c2922
+< <span class="refAuthor">Daede, T.</span><span class="refAuthor">, Norkin, A.</span><span class="refAuthor">, and I. Brailovskiy</span>, <span class="refTitle">"Video Codec Testing and Quality Measurement"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netvc-testing-09</span>, <time datetime="2020-01-31">31 January 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-netvc-testing-09">https://tools.ietf.org/html/draft-ietf-netvc-testing-09</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Daede, T.</span>, <span class="refAuthor">Norkin, A.</span>, and <span class="refAuthor">I. Brailovskiy</span>, <span class="refTitle">"Video Codec Testing and Quality Measurement"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netvc-testing-09</span>, <time datetime="2020-01-31" class="refDate">31 January 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-netvc-testing-09">https://tools.ietf.org/html/draft-ietf-netvc-testing-09</a>&gt;</span>. </dd>
+2823c2926
+< <span class="refAuthor">Wang, Z.</span><span class="refAuthor">, Simoncelli, E.P.</span><span class="refAuthor">, and A.C. Bovik</span>, <span class="refTitle">"Multiscale structural similarity for image quality assessment"</span>, <span class="seriesInfo">IEEE Thirty-Seventh Asilomar Conference on        Signals, Systems and Computers</span>, <span class="seriesInfo">DOI 10.1109/ACSSC.2003.1292216</span>, <time datetime="2003-11">November 2003</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/1292216">https://ieeexplore.ieee.org/document/1292216</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Wang, Z.</span>, <span class="refAuthor">Simoncelli, E.P.</span>, and <span class="refAuthor">A.C. Bovik</span>, <span class="refTitle">"Multiscale structural similarity for image quality assessment"</span>, <span class="seriesInfo">IEEE Thirty-Seventh Asilomar Conference on        Signals, Systems and Computers</span>, <span class="seriesInfo">DOI 10.1109/ACSSC.2003.1292216</span>, <time datetime="2003-11" class="refDate">November 2003</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/1292216">https://ieeexplore.ieee.org/document/1292216</a>&gt;</span>. </dd>
+2827c2930
+< <span class="refAuthor">Bossen, F.</span>, <span class="refTitle">"Common HM test conditions and software reference configurations"</span>, <span class="seriesInfo">Joint Collaborative Team on Video Coding (JCT-VC) of          the ITU-T Video Coding Experts Group (ITU-T Q.6/SG 16)          and ISO/IEC Moving Picture Experts Group (ISO/IEC JTC          1/SC 29/WG 11) </span>, <span class="seriesInfo">Document JCTVC-L1100</span>, <time datetime="2013-04">April 2013</time>, <span>&lt;<a href="http://phenix.it-sudparis.eu/jct/doc_end_user/current_document.php?id=7281">http://phenix.it-sudparis.eu/jct/doc_end_user/current_document.php?id=7281</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bossen, F.</span>, <span class="refTitle">"Common HM test conditions and software reference configurations"</span>, <span class="seriesInfo">Joint Collaborative Team on Video Coding (JCT-VC) of          the ITU-T Video Coding Experts Group (ITU-T Q.6/SG 16)          and ISO/IEC Moving Picture Experts Group (ISO/IEC JTC          1/SC 29/WG 11) </span>, <span class="seriesInfo">Document JCTVC-L1100</span>, <time datetime="2013-04" class="refDate">April 2013</time>, <span>&lt;<a href="http://phenix.it-sudparis.eu/jct/doc_end_user/current_document.php?id=7281">http://phenix.it-sudparis.eu/jct/doc_end_user/current_document.php?id=7281</a>&gt;</span>. </dd>
+2831c2934
+< <span class="refAuthor">ITU-R</span>, <span class="refTitle">"Studio encoding parameters of digital television for standard 4:3 and wide screen 16:9 aspect ratios"</span>, <span class="seriesInfo">ITU-R Recommendation BT.601</span>, <time datetime="2011-03">March 2011</time>, <span>&lt;<a href="https://www.itu.int/rec/R-REC-BT.601/">https://www.itu.int/rec/R-REC-BT.601/</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">ITU-R</span>, <span class="refTitle">"Studio encoding parameters of digital television for standard 4:3 and wide screen 16:9 aspect ratios"</span>, <span class="seriesInfo">ITU-R Recommendation BT.601</span>, <time datetime="2011-03" class="refDate">March 2011</time>, <span>&lt;<a href="https://www.itu.int/rec/R-REC-BT.601/">https://www.itu.int/rec/R-REC-BT.601/</a>&gt;</span>. </dd>
+2843c2946
+< <span class="refAuthor">ITU-R</span>, <span class="refTitle">"Parameter values for the HDTV standards for production and international programme exchange"</span>, <span class="seriesInfo">ITU-R Recommendation BT.709</span>, <time datetime="2015-06">June 2015</time>, <span>&lt;<a href="https://www.itu.int/rec/R-REC-BT.709">https://www.itu.int/rec/R-REC-BT.709</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">ITU-R</span>, <span class="refTitle">"Parameter values for the HDTV standards for production and international programme exchange"</span>, <span class="seriesInfo">ITU-R Recommendation BT.709</span>, <time datetime="2015-06" class="refDate">June 2015</time>, <span>&lt;<a href="https://www.itu.int/rec/R-REC-BT.709">https://www.itu.int/rec/R-REC-BT.709</a>&gt;</span>. </dd>
+2849c2952
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+2853c2956
+< <p id="section-appendix.a-1">The authors would like to thank <span class="contact-name">Mr. Paul Coverdale</span>,
+---
+> <p id="appendix-A-1">The authors would like to thank <span class="contact-name">Mr. Paul Coverdale</span>,
+2858c2961
+< document.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+> document.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+2862c2965
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
