@@ -1,0 +1,438 @@
+19c19
+< <meta content="xml2rfc 2.41.0" name="generator">
+---
+> <meta content="xml2rfc 3.19.1" name="generator">
+24c24,40
+< <link href="rfc8774.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.1
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.3
+>     lxml 4.9.4
+>     platformdirs 4.1.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.13
+> -->
+> <link href="rfc/rfc8774.xml" rel="alternate" type="application/rfc+xml">
+34c50
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+43a60,65
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+46d67
+<   width: extend-to-zoom;
+61c82
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+63a85
+>   overflow-wrap: break-word;
+149a172,180
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+164,167d194
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+168a196
+>   border: none;
+191a220,222
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+243c274
+< tt, code, pre, code {
+---
+> tt, code, pre {
+245c276
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+284a316,318
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+374a409,414
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+476c516
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+616d655
+< 
+638a678,680
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+706c748
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+806c848
+< tt, code, pre, code {
+---
+> tt, code, pre {
+811c853
+< pre.sourcecode,
+---
+> .sourcecode pre,
+847c889
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+925,930d966
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1034a1071
+>   .artwork > pre,
+1049c1086
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1055a1093,1095
+> tr {
+>   break-inside: avoid;
+> }
+1063a1104,1205
+> /* Add support for keepWithNext */
+> .keepWithNext {
+>   break-after: avoid-page;
+>   break-after: avoid-page;
+> }
+> /* Add support for keepWithPrevious */
+> .keepWithPrevious {
+>   break-before: avoid-page;
+> }
+> /* Change the approach to avoiding breaks inside artwork etc. */
+> figure, pre, table, .artwork, .sourcecode  {
+>   break-before: auto;
+>   break-after: auto;
+> }
+> /* Avoid breaks between <dt> and <dd> */
+> dl {
+>   break-before: auto;
+>   break-inside: auto;
+> }
+> dt {
+>   break-before: auto;
+>   break-after: avoid-page;
+> }
+> dd {
+>   break-before: avoid-page;
+>   break-after: auto;
+>   orphans: 3;
+>   widows: 3
+> }
+> span.break, dd.break {
+>   margin-bottom: 0;
+>   min-height: 0;
+>   break-before: auto;
+>   break-inside: auto;
+>   break-after: auto;
+> }
+> /* Undo break-before ToC */
+> @media print {
+>   #toc {
+>     break-before: auto;
+>   }
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+1065a1208
+> <link href="https://datatracker.ietf.org/doc/draft-welzl-quantumbug-00" rel="prev">
+1068c1211
+<   <link href="https://datatracker.ietf.org/doc/draft-welzl-quantumbug-00" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1070,1071c1213,1214
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1164,1166c1307,1309
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+1168,1172c1311,1315
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-protocols-and-protocol-mech" class="xref">Protocols and Protocol Mechanisms That Will Fail</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.1">
+<                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-ledbat" class="xref">LEDBAT</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-protocols-and-protocol-mech" class="internal xref">Protocols and Protocol Mechanisms That Will Fail</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+>                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-ledbat" class="internal xref">LEDBAT</a></p>
+1174,1175c1317,1318
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.2">
+<                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-multipath-tcp-mptcp" class="xref">Multipath TCP (MPTCP)</a><a href="#section-toc.1-1.2.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+>                 <p id="section-toc.1-1.2.2.2.1" class="keepWithNext"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-multipath-tcp-mptcp" class="internal xref">Multipath TCP (MPTCP)</a></p>
+1177,1178c1320,1321
+< <li class="toc ulEmpty" id="section-toc.1-1.2.2.3">
+<                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-rtp-circuit-breakers" class="xref">RTP Circuit Breakers</a><a href="#section-toc.1-1.2.2.3.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
+>                 <p id="section-toc.1-1.2.2.3.1" class="keepWithNext"><a href="#section-2.3" class="auto internal xref">2.3</a>.  <a href="#name-rtp-circuit-breakers" class="internal xref">RTP Circuit Breakers</a></p>
+1182,1183c1325,1326
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-what-can-be-done" class="xref">What can be done?</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-what-can-be-done" class="internal xref">What can be done?</a></p>
+1185,1186c1328,1329
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-conclusion" class="xref">Conclusion</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1" class="keepWithNext"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-conclusion" class="internal xref">Conclusion</a></p>
+1188,1189c1331,1332
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1" class="keepWithNext"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+1191,1192c1334,1335
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1" class="keepWithNext"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1194,1198c1337,1341
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.1">
+<                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1" class="keepWithNext"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+>                 <p id="section-toc.1-1.7.2.1.1" class="keepWithNext"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1200,1201c1343,1344
+< <li class="toc ulEmpty" id="section-toc.1-1.7.2.2">
+<                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+>                 <p id="section-toc.1-1.7.2.2.1" class="keepWithNext"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1205,1206c1348,1349
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1" class="keepWithNext"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+1217c1360
+< <p id="section-1-1"><span>[<a href="#RFC6921" class="xref">RFC6921</a>]</span> discusses faster-than-light
+---
+> <p id="section-1-1"><span>[<a href="#RFC6921" class="cite xref">RFC6921</a>]</span> discusses faster-than-light
+1237c1380
+<       "0-RTT" situations (e.g., TCP with "TCP Fast Open" (TFO) <span>[<a href="#RFC7413" class="xref">RFC7413</a>]</span>, TLS 1.3 <span>[<a href="#RFC8446" class="xref">RFC8446</a>]</span>, and QUIC <span>[<a href="#I-D.ietf-quic-transport" class="xref">QUIC-TRANS</a>]</span>). Many others will fail in interesting ways; we coin
+---
+>       "0-RTT" situations (e.g., TCP with "TCP Fast Open" (TFO) <span>[<a href="#RFC7413" class="cite xref">RFC7413</a>]</span>, TLS 1.3 <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>, and QUIC <span>[<a href="#I-D.ietf-quic-transport" class="cite xref">QUIC-TRANS</a>]</span>). Many others will fail in interesting ways; we coin
+1260c1403
+<  mechanism <span>[<a href="#RFC6817" class="xref">RFC6817</a>]</span> is a very
+---
+>  mechanism <span>[<a href="#RFC6817" class="cite xref">RFC6817</a>]</span> is a very
+1263c1406
+<  when the algorithm described in <span><a href="https://www.rfc-editor.org/rfc/rfc6817#section-2.4.2" class="relref">Section 2.4.2</a> of [<a href="#RFC6817" class="xref">RFC6817</a>]</span> obtains a delay
+---
+>  when the algorithm described in <span><a href="https://rfc-editor.org/rfc/rfc6817#section-2.4.2" class="relref">Section 2.4.2</a> of [<a href="#RFC6817" class="cite xref">RFC6817</a>]</span> obtains a delay
+1288,1289c1431,1432
+<  <span>[<a href="#RFC6356" class="xref">RFC6356</a>]</span> requires calculating a value
+<  called "alpha". Equation 2 in <span>[<a href="#RFC6356" class="xref">RFC6356</a>]</span>
+---
+>  <span>[<a href="#RFC6356" class="cite xref">RFC6356</a>]</span> requires calculating a value
+>  called "alpha". Equation 2 in <span>[<a href="#RFC6356" class="cite xref">RFC6356</a>]</span>
+1300c1443
+< <p id="section-2.3-1">The RTP Circuit Breakers <span>[<a href="#RFC8083" class="xref">RFC8083</a>]</span>
+---
+> <p id="section-2.3-1">The RTP Circuit Breakers <span>[<a href="#RFC8083" class="cite xref">RFC8083</a>]</span>
+1303c1446
+< <div class="artwork art-text alignLeft" id="section-2.3-2">
+---
+> <div class="alignLeft art-text artwork" id="section-2.3-2">
+1312c1455
+<      discuss in <a href="#Solution" class="xref">Section 3</a>, t_RTO is
+---
+>      discuss in <a href="#Solution" class="auto internal xref">Section 3</a>, t_RTO is
+1316c1459
+< <div class="artwork art-text alignLeft" id="section-2.3-4">
+---
+> <div class="alignLeft art-text artwork" id="section-2.3-4">
+1322c1465
+< <p id="section-2.3-5">Unfortunately, <span>[<a href="#RFC8083" class="xref">RFC8083</a>]</span> states:
+---
+> <p id="section-2.3-5">Unfortunately, <span>[<a href="#RFC8083" class="cite xref">RFC8083</a>]</span> states:
+1337c1480
+<       Its retransmission timeout is lower-bounded by 1 second <span>[<a href="#RFC6298" class="xref">RFC6298</a>]</span>. Moreover, while its cwnd may grow up to the maximum storable number, data
+---
+>       Its retransmission timeout is lower-bounded by 1 second <span>[<a href="#RFC6298" class="cite xref">RFC6298</a>]</span>. Moreover, while its cwnd may grow up to the maximum storable number, data
+1345c1488
+<       option <span>[<a href="#I-D.ietf-tsvwg-udp-options" class="xref">UDP-OPT</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
+---
+>       option <span>[<a href="#I-D.ietf-tsvwg-udp-options" class="cite xref">UDP-OPT</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
+1354c1497
+<       comprehensive list of all RFCs containing "0-RTT" mistakes (taking <span>[<a href="#RFC2626" class="xref">RFC2626</a>]</span> as a guideline), and update all
+---
+>       comprehensive list of all RFCs containing "0-RTT" mistakes (taking <span>[<a href="#RFC2626" class="cite xref">RFC2626</a>]</span> as a guideline), and update all
+1357c1500
+<       specifications. With DNS over TCP <span>[<a href="#RFC7766" class="xref">RFC7766</a>]</span>, name resolution to find the server containing the
+---
+>       specifications. With DNS over TCP <span>[<a href="#RFC7766" class="cite xref">RFC7766</a>]</span>, name resolution to find the server containing the
+1393c1536,1537
+< <span class="refAuthor">Nesser II, P.</span>, <span class="refTitle">"The Internet and the Millennium Problem (Year 2000)"</span>, <span class="seriesInfo">RFC 2626</span>, <span class="seriesInfo">DOI 10.17487/RFC2626</span>, <time datetime="1999-06">June 1999</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2626">https://www.rfc-editor.org/info/rfc2626</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Nesser II, P.</span>, <span class="refTitle">"The Internet and the Millennium Problem (Year 2000)"</span>, <span class="seriesInfo">RFC 2626</span>, <span class="seriesInfo">DOI 10.17487/RFC2626</span>, <time datetime="1999-06" class="refDate">June 1999</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2626">https://www.rfc-editor.org/info/rfc2626</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1396c1540,1541
+< <span class="refAuthor">Hinden, R.</span>, <span class="refTitle">"Design Considerations for Faster-Than-Light (FTL) Communication"</span>, <span class="seriesInfo">RFC 6921</span>, <span class="seriesInfo">DOI 10.17487/RFC6921</span>, <time datetime="2013-04">April 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6921">https://www.rfc-editor.org/info/rfc6921</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Hinden, R.</span>, <span class="refTitle">"Design Considerations for Faster-Than-Light (FTL) Communication"</span>, <span class="seriesInfo">RFC 6921</span>, <span class="seriesInfo">DOI 10.17487/RFC6921</span>, <time datetime="2013-04" class="refDate">April 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6921">https://www.rfc-editor.org/info/rfc6921</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1406c1551,1552
+< <span class="refAuthor">Iyengar, J.</span><span class="refAuthor"> and M. Thomson</span>, <span class="refTitle">"QUIC: A UDP-Based Multiplexed and Secure Transport"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-quic-transport-27</span>, <time datetime="2020-02-21">21 February 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-quic-transport-27">https://tools.ietf.org/html/draft-ietf-quic-transport-27</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Iyengar, J.</span> and <span class="refAuthor">M. Thomson</span>, <span class="refTitle">"QUIC: A UDP-Based Multiplexed and Secure Transport"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-quic-transport-27</span>, <time datetime="2020-02-21" class="refDate">21 February 2020</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-quic-transport-27">https://tools.ietf.org/html/draft-ietf-quic-transport-27</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1409c1555,1556
+< <span class="refAuthor">Paxson, V.</span><span class="refAuthor">, Allman, M.</span><span class="refAuthor">, Chu, J.</span><span class="refAuthor">, and M. Sargent</span>, <span class="refTitle">"Computing TCP's Retransmission Timer"</span>, <span class="seriesInfo">RFC 6298</span>, <span class="seriesInfo">DOI 10.17487/RFC6298</span>, <time datetime="2011-06">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6298">https://www.rfc-editor.org/info/rfc6298</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Paxson, V.</span>, <span class="refAuthor">Allman, M.</span>, <span class="refAuthor">Chu, J.</span>, and <span class="refAuthor">M. Sargent</span>, <span class="refTitle">"Computing TCP's Retransmission Timer"</span>, <span class="seriesInfo">RFC 6298</span>, <span class="seriesInfo">DOI 10.17487/RFC6298</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6298">https://www.rfc-editor.org/info/rfc6298</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1412c1559,1560
+< <span class="refAuthor">Raiciu, C.</span><span class="refAuthor">, Handley, M.</span><span class="refAuthor">, and D. Wischik</span>, <span class="refTitle">"Coupled Congestion Control for Multipath Transport Protocols"</span>, <span class="seriesInfo">RFC 6356</span>, <span class="seriesInfo">DOI 10.17487/RFC6356</span>, <time datetime="2011-10">October 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6356">https://www.rfc-editor.org/info/rfc6356</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Raiciu, C.</span>, <span class="refAuthor">Handley, M.</span>, and <span class="refAuthor">D. Wischik</span>, <span class="refTitle">"Coupled Congestion Control for Multipath Transport Protocols"</span>, <span class="seriesInfo">RFC 6356</span>, <span class="seriesInfo">DOI 10.17487/RFC6356</span>, <time datetime="2011-10" class="refDate">October 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6356">https://www.rfc-editor.org/info/rfc6356</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1415c1563,1564
+< <span class="refAuthor">Shalunov, S.</span><span class="refAuthor">, Hazel, G.</span><span class="refAuthor">, Iyengar, J.</span><span class="refAuthor">, and M. Kuehlewind</span>, <span class="refTitle">"Low Extra Delay Background Transport (LEDBAT)"</span>, <span class="seriesInfo">RFC 6817</span>, <span class="seriesInfo">DOI 10.17487/RFC6817</span>, <time datetime="2012-12">December 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6817">https://www.rfc-editor.org/info/rfc6817</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Shalunov, S.</span>, <span class="refAuthor">Hazel, G.</span>, <span class="refAuthor">Iyengar, J.</span>, and <span class="refAuthor">M. Kuehlewind</span>, <span class="refTitle">"Low Extra Delay Background Transport (LEDBAT)"</span>, <span class="seriesInfo">RFC 6817</span>, <span class="seriesInfo">DOI 10.17487/RFC6817</span>, <time datetime="2012-12" class="refDate">December 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6817">https://www.rfc-editor.org/info/rfc6817</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1418c1567,1568
+< <span class="refAuthor">Cheng, Y.</span><span class="refAuthor">, Chu, J.</span><span class="refAuthor">, Radhakrishnan, S.</span><span class="refAuthor">, and A. Jain</span>, <span class="refTitle">"TCP Fast Open"</span>, <span class="seriesInfo">RFC 7413</span>, <span class="seriesInfo">DOI 10.17487/RFC7413</span>, <time datetime="2014-12">December 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7413">https://www.rfc-editor.org/info/rfc7413</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Cheng, Y.</span>, <span class="refAuthor">Chu, J.</span>, <span class="refAuthor">Radhakrishnan, S.</span>, and <span class="refAuthor">A. Jain</span>, <span class="refTitle">"TCP Fast Open"</span>, <span class="seriesInfo">RFC 7413</span>, <span class="seriesInfo">DOI 10.17487/RFC7413</span>, <time datetime="2014-12" class="refDate">December 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7413">https://www.rfc-editor.org/info/rfc7413</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1421c1571,1572
+< <span class="refAuthor">Dickinson, J.</span><span class="refAuthor">, Dickinson, S.</span><span class="refAuthor">, Bellis, R.</span><span class="refAuthor">, Mankin, A.</span><span class="refAuthor">, and D. Wessels</span>, <span class="refTitle">"DNS Transport over TCP - Implementation Requirements"</span>, <span class="seriesInfo">RFC 7766</span>, <span class="seriesInfo">DOI 10.17487/RFC7766</span>, <time datetime="2016-03">March 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7766">https://www.rfc-editor.org/info/rfc7766</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Dickinson, J.</span>, <span class="refAuthor">Dickinson, S.</span>, <span class="refAuthor">Bellis, R.</span>, <span class="refAuthor">Mankin, A.</span>, and <span class="refAuthor">D. Wessels</span>, <span class="refTitle">"DNS Transport over TCP - Implementation Requirements"</span>, <span class="seriesInfo">RFC 7766</span>, <span class="seriesInfo">DOI 10.17487/RFC7766</span>, <time datetime="2016-03" class="refDate">March 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7766">https://www.rfc-editor.org/info/rfc7766</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1424c1575,1576
+< <span class="refAuthor">Perkins, C.</span><span class="refAuthor"> and V. Singh</span>, <span class="refTitle">"Multimedia Congestion Control: Circuit Breakers for Unicast RTP Sessions"</span>, <span class="seriesInfo">RFC 8083</span>, <span class="seriesInfo">DOI 10.17487/RFC8083</span>, <time datetime="2017-03">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8083">https://www.rfc-editor.org/info/rfc8083</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Perkins, C.</span> and <span class="refAuthor">V. Singh</span>, <span class="refTitle">"Multimedia Congestion Control: Circuit Breakers for Unicast RTP Sessions"</span>, <span class="seriesInfo">RFC 8083</span>, <span class="seriesInfo">DOI 10.17487/RFC8083</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8083">https://www.rfc-editor.org/info/rfc8083</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1427c1579,1580
+< <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8446">https://www.rfc-editor.org/info/rfc8446</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8446">https://www.rfc-editor.org/info/rfc8446</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1430c1583,1584
+< <span class="refAuthor">Touch, J.</span>, <span class="refTitle">"Transport Options for UDP"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tsvwg-udp-options-08</span>, <time datetime="2019-09-12">12 September 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-tsvwg-udp-options-08">https://tools.ietf.org/html/draft-ietf-tsvwg-udp-options-08</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Touch, J.</span>, <span class="refTitle">"Transport Options for UDP"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tsvwg-udp-options-08</span>, <time datetime="2019-09-12" class="refDate">12 September 2019</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-ietf-tsvwg-udp-options-08">https://tools.ietf.org/html/draft-ietf-tsvwg-udp-options-08</a>&gt;</span>. </dd>
+> <dd class="break"></dd>
+1435c1589
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
