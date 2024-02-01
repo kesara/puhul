@@ -1,0 +1,156 @@
+138c138
+<    By including a "cnf" (confirmation) claim in a CWT, the issuer of the
+---
+>    By including a cnf (confirmation) claim in a CWT, the issuer of the
+141c141
+<    possession of that key.  The value of the "cnf" claim is a CBOR map
+---
+>    possession of that key.  The value of the cnf claim is a CBOR map
+147,155c147,154
+<    applications may use the CWT "sub" (subject) claim [RFC8392] to
+<    identify the presenter.  Other applications may use the "iss"
+<    (issuer) claim [RFC8392] to identify the presenter.  In some
+<    applications, the subject identifier might be relative to the issuer
+<    identified by the "iss" claim.  The actual mechanism used is
+<    dependent upon the application.  The case in which the presenter is
+<    the subject of the CWT is analogous to Security Assertion Markup
+<    Language (SAML) 2.0 [OASIS.saml-core-2.0-os] SubjectConfirmation
+<    usage.
+---
+>    applications may use the CWT sub (subject) claim [RFC8392] to
+>    identify the presenter.  Other applications may use the iss (issuer)
+>    claim [RFC8392] to identify the presenter.  In some applications, the
+>    subject identifier might be relative to the issuer identified by the
+>    iss claim.  The actual mechanism used is dependent upon the
+>    application.  The case in which the presenter is the subject of the
+>    CWT is analogous to Security Assertion Markup Language (SAML) 2.0
+>    [OASIS.saml-core-2.0-os] SubjectConfirmation usage.
+159,160c158,159
+<    The "cnf" claim in the CWT is used to carry confirmation methods.
+<    Some of them use proof-of-possession keys, while others do not.  This
+---
+>    The cnf claim in the CWT is used to carry confirmation methods.  Some
+>    of them use proof-of-possession keys, while others do not.  This
+175c174
+<    for CWT "cnf" member values and registers the members defined by this
+---
+>    for CWT cnf member values and registers the members defined by this
+180,190c179,188
+<    The "cnf" claim value MUST represent only a single proof-of-
+<    possession key.  At most one of the "COSE_Key" and
+<    "Encrypted_COSE_Key" confirmation values defined in Table 1 may be
+<    present.  Note that if an application needs to represent multiple
+<    proof-of-possession keys in the same CWT, one way for it to achieve
+<    this is to use other claim names (in addition to "cnf") to hold the
+<    additional proof-of-possession key information.  These claims could
+<    use the same syntax and semantics as the "cnf" claim.  Those claims
+<    would be defined by applications or other specifications and could be
+<    registered in the IANA "CBOR Web Token (CWT) Claims" registry
+<    [IANA.CWT.Claims].
+---
+>    The cnf claim value MUST represent only a single proof-of-possession
+>    key.  At most one of the COSE_Key and Encrypted_COSE_Key confirmation
+>    values defined in Table 1 may be present.  Note that if an
+>    application needs to represent multiple proof-of-possession keys in
+>    the same CWT, one way for it to achieve this is to use other claim
+>    names (in addition to cnf) to hold the additional proof-of-possession
+>    key information.  These claims could use the same syntax and
+>    semantics as the cnf claim.  Those claims would be defined by
+>    applications or other specifications and could be registered in the
+>    IANA "CBOR Web Token (CWT) Claims" registry [IANA.CWT.Claims].
+192c190
+<        +--------------------+-----+-------------------------------+
+---
+>        +====================+=====+===============================+
+202c200
+<         Table 1: Summary of the "cnf" Names, Keys, and Value Types
+---
+>          Table 1: Summary of the cnf Names, Keys, and Value Types
+207c205
+<    "COSE_Key" member is a COSE_Key [RFC8152] representing the
+---
+>    COSE_Key member is a COSE_Key [RFC8152] representing the
+229c227
+<    "kid" (Key ID) member.
+---
+>    kid (Key ID) member.
+231c229
+<    The "COSE_Key" member MAY also be used for a COSE_Key representing a
+---
+>    The COSE_Key member MAY also be used for a COSE_Key representing a
+241c239
+<    "Encrypted_COSE_Key" member is an encrypted COSE_Key [RFC8152]
+---
+>    Encrypted_COSE_Key member is an encrypted COSE_Key [RFC8152]
+246c244
+<    subsequently be encrypted for use in the "Encrypted_COSE_Key" member:
+---
+>    subsequently be encrypted for use in the Encrypted_COSE_Key member:
+259c257
+<    an encrypted symmetric key as the "Encrypted_COSE_Key" member value:
+---
+>    an encrypted symmetric key as the Encrypted_COSE_Key member value:
+288,289c286,287
+<    the presenter's proof of possession of the key by including a "cnf"
+<    claim in the CWT whose value is a CBOR map containing a "kid" member
+---
+>    the presenter's proof of possession of the key by including a cnf
+>    claim in the CWT whose value is a CBOR map containing a kid member
+304,306c302,304
+<    The content of the "kid" value is application specific.  For
+<    instance, some applications may choose to use a cryptographic hash of
+<    the public key value as the "kid" value.
+---
+>    The content of the kid value is application specific.  For instance,
+>    some applications may choose to use a cryptographic hash of the
+>    public key value as the kid value.
+466c464
+<    This specification registers the "cnf" claim in the IANA "CBOR Web
+---
+>    This specification registers the cnf claim in the IANA "CBOR Web
+472c470
+<    *  Claim Name: "cnf"
+---
+>    *  Claim Name: cnf
+476c474
+<    *  JWT Claim Name: "cnf"
+---
+>    *  JWT Claim Name: cnf
+489c487
+<    registry for CWT "cnf" member values.  The registry records the
+---
+>    registry for CWT cnf member values.  The registry records the
+530c528
+<    *  Confirmation Method Name: "COSE_Key"
+---
+>    *  Confirmation Method Name: COSE_Key
+532c530
+<    *  JWT Confirmation Method Name: "jwk"
+---
+>    *  JWT Confirmation Method Name: jwk
+538c536
+<    *  Confirmation Method Name: "Encrypted_COSE_Key"
+---
+>    *  Confirmation Method Name: Encrypted_COSE_Key
+540c538
+<    *  JWT Confirmation Method Name: "jwe"
+---
+>    *  JWT Confirmation Method Name: jwe
+548c546
+<    *  Confirmation Method Name: "kid"
+---
+>    *  Confirmation Method Name: kid
+550c548
+<    *  JWT Confirmation Method Name: "kid"
+---
+>    *  JWT Confirmation Method Name: kid
+650d647
+< 
+660d656
+< 
+668d663
+< 
+674d668
+< 
+682d675
+< 
