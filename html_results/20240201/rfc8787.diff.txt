@@ -1,0 +1,457 @@
+23c23
+< <meta content="xml2rfc 2.45.1" name="generator">
+---
+> <meta content="xml2rfc 3.19.2" name="generator">
+28c28,44
+< <link href="rfc8787.xml" rel="alternate" type="application/rfc+xml">
+---
+> <!-- Generator version information:
+>   xml2rfc 3.19.2
+>     Python 3.11.7
+>     ConfigArgParse 1.7
+>     google-i18n-address 3.1.0
+>     intervaltree 3.1.0
+>     Jinja2 3.1.3
+>     lxml 4.9.4
+>     platformdirs 4.2.0
+>     pycountry 23.12.11
+>     PyYAML 6.0.1
+>     requests 2.31.0
+>     setuptools 65.5.0
+>     six 1.16.0
+>     wcwidth 0.2.13
+> -->
+> <link href="rfc/rfc8787.xml" rel="alternate" type="application/rfc+xml">
+38c54
+<   commented changes found necssary during the development of the v3
+---
+>   commented changes found necessary during the development of the v3
+47a64,69
+> :root {
+>   --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+>   --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+>   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+> }
+> 
+50d71
+<   width: extend-to-zoom;
+65c86
+<   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+---
+>   font-family: var(--font-sans);
+67a89
+>   overflow-wrap: break-word;
+153a176,184
+> svg[font-family~="serif" i], svg [font-family~="serif" i] {
+>   font-family: var(--font-serif);
+> }
+> svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+>   font-family: var(--font-sans);
+> }
+> svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+>   font-family: var(--font-mono);
+> }
+168,171d198
+<   border: none;
+<   /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+<      support flexbox yet.
+<   */
+172a200
+>   border: none;
+195a224,226
+> ul.ulBare, li.ulBare {
+>   margin-left: 0em !important;
+> }
+247c278
+< tt, code, pre, code {
+---
+> tt, code, pre {
+249c280
+<   font-family: 'Roboto Mono', monospace;
+---
+>   font-family: var(--font-mono);
+288a320,322
+> blockquote > *:last-child {
+>   margin-bottom: 0;
+> }
+378a413,418
+> /* Fix PDF info block run off issue */
+> @media print {
+>   #identifiers dd {
+>     float: none;
+>   }
+> }
+480c520
+<   font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+---
+>   font-family: var(--font-sans);
+620d659
+< 
+642a682,684
+>   .breakable pre {
+>     break-inside: auto;
+>   }
+710c752
+<   /* The follwing is commented out here, but set appropriately by in code, as
+---
+>   /* The following is commented out here, but set appropriately by in code, as
+810c852
+< tt, code, pre, code {
+---
+> tt, code, pre {
+815c857
+< pre.sourcecode,
+---
+> .sourcecode pre,
+851c893
+< /* Make the alternative author contact informatio look less like just another
+---
+> /* Make the alternative author contact information look less like just another
+929,934d970
+< /* Avoid wrapping of URLs in references */
+< @media screen {
+<   .references a {
+<     white-space: nowrap;
+<   }
+< }
+1038a1075
+>   .artwork > pre,
+1053c1090
+< and increase the contrast between border and odd row background sligthtly */
+---
+> and increase the contrast between border and odd row background slightly */
+1059a1097,1099
+> tr {
+>   break-inside: avoid;
+> }
+1079c1119
+<   break-before: avoid-page;
+---
+>   break-before: auto;
+1083a1124
+>   break-before: auto;
+1096c1137
+< dd.break {
+---
+> span.break, dd.break {
+1108c1149,1210
+< }</style>
+---
+> }
+> /* Text in compact lists should not get extra bottom margin space,
+>    since that would makes the list not compact */
+> ul.compact p, .ulCompact p,
+> ol.compact p, .olCompact p {
+>  margin: 0;
+> }
+> /* But the list as a whole needs the extra space at the end */
+> section ul.compact,
+> section .ulCompact,
+> section ol.compact,
+> section .olCompact {
+>   margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+> }
+> /* The tt and code background above interferes with for instance table cell
+>    backgrounds.  Changed to something a bit more selective. */
+> tt, code {
+>   background-color: transparent;
+> }
+> p tt, p code, li tt, li code {
+>   background-color: #f8f8f8;
+> }
+> /* Tweak the pre margin -- 0px doesn't come out well */
+> pre {
+>    margin-top: 0.5px;
+> }
+> /* Tweak the compact list text */
+> ul.compact, .ulCompact,
+> ol.compact, .olCompact,
+> dl.compact, .dlCompact {
+>   line-height: normal;
+> }
+> /* Don't add top margin for nested lists */
+> li > ul, li > ol, li > dl,
+> dd > ul, dd > ol, dd > dl,
+> dl > dd > dl {
+>   margin-top: initial;
+> }
+> /* Elements that should not be rendered on the same line as a <dt> */
+> /* This should match the element list in writer.text.TextWriter.render_dl() */
+> dd > div.artwork:first-child,
+> dd > aside:first-child,
+> dd > figure:first-child,
+> dd > ol:first-child,
+> dd > div.sourcecode:first-child,
+> dd > table:first-child,
+> dd > ul:first-child {
+>   clear: left;
+> }
+> /* fix for weird browser behaviour when <dd/> is empty */
+> dt+dd:empty::before{
+>   content: "\00a0";
+> }
+> /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+> li > p {
+>   margin-bottom: 0.5em
+> }
+> /* Don't let p margin spill out from inside list items */
+> li > p:last-of-type:only-child {
+>   margin-bottom: 0;
+> }
+> </style>
+1109a1212
+> <link href="https://datatracker.ietf.org/doc/draft-ietf-sipcore-locparam-06" rel="prev">
+1112c1215
+<   <link href="https://datatracker.ietf.org/doc/draft-ietf-sipcore-locparam-06" rel="prev">
+---
+>   <script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+1114,1115c1217,1218
+< <body>
+< <script src="https://www.rfc-editor.org/js/metadata.min.js"></script>
+---
+> <body class="xml2rfc">
+> <script src="metadata.min.js"></script>
+1225,1227c1328,1330
+< <nav class="toc"><ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.1">
+<             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
+---
+> <nav class="toc"><ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+>             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+1229,1230c1332,1333
+< <li class="toc ulEmpty" id="section-toc.1-1.2">
+<             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+>             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+1232,1233c1335,1336
+< <li class="toc ulEmpty" id="section-toc.1-1.3">
+<             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="xref">3</a>.  <a href="#name-rationale" class="xref">Rationale</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+>             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-rationale" class="internal xref">Rationale</a></p>
+1235,1236c1338,1339
+< <li class="toc ulEmpty" id="section-toc.1-1.4">
+<             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-mechanism" class="xref">Mechanism</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+>             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-mechanism" class="internal xref">Mechanism</a></p>
+1238,1239c1341,1342
+< <li class="toc ulEmpty" id="section-toc.1-1.5">
+<             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-example" class="xref">Example</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+>             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-example" class="internal xref">Example</a></p>
+1241,1242c1344,1345
+< <li class="toc ulEmpty" id="section-toc.1-1.6">
+<             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-privacy-considerations" class="xref">Privacy Considerations</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+>             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-privacy-considerations" class="internal xref">Privacy Considerations</a></p>
+1244,1245c1347,1348
+< <li class="toc ulEmpty" id="section-toc.1-1.7">
+<             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+>             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+1247,1251c1350,1354
+< <li class="toc ulEmpty" id="section-toc.1-1.8">
+<             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.8.2.1">
+<                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-registration-of-loc-src-par" class="xref">Registration of "loc-src" Parameter for Geolocation Header Field</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+>             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+>                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-registration-of-loc-src-par" class="internal xref">Registration of "loc-src" Parameter for Geolocation Header Field</a></p>
+1255,1259c1358,1362
+< <li class="toc ulEmpty" id="section-toc.1-1.9">
+<             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
+< <ul class="toc ulEmpty">
+< <li class="toc ulEmpty" id="section-toc.1-1.9.2.1">
+<                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="xref">9.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.9.2.1.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+>             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-references" class="internal xref">References</a></p>
+> <ul class="compact toc ulBare ulEmpty">
+> <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
+>                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="auto internal xref">9.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+1261,1262c1364,1365
+< <li class="toc ulEmpty" id="section-toc.1-1.9.2.2">
+<                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="xref">9.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.9.2.2.1" class="pilcrow">¶</a></p>
+---
+>               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
+>                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+1266,1267c1369,1370
+< <li class="toc ulEmpty" id="section-toc.1-1.10">
+<             <p id="section-toc.1-1.10.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+>             <p id="section-toc.1-1.10.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+1269,1270c1372,1373
+< <li class="toc ulEmpty" id="section-toc.1-1.11">
+<             <p id="section-toc.1-1.11.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
+---
+>           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+>             <p id="section-toc.1-1.11.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+1282c1385
+<    The SIP Geolocation specification <span>[<a href="#RFC6442" class="xref">RFC6442</a>]</span> describes the "Geolocation" SIP header field,
+---
+>    The SIP Geolocation specification <span>[<a href="#RFC6442" class="cite xref">RFC6442</a>]</span> describes the "Geolocation" SIP header field,
+1284c1387
+<    information. <span>[<a href="#RFC6442" class="xref">RFC6442</a>]</span> specifies
+---
+>    information. <span>[<a href="#RFC6442" class="cite xref">RFC6442</a>]</span> specifies
+1286c1389
+<    request that already contains a locationValue.  <span>[<a href="#RFC6442" class="xref">RFC6442</a>]</span> also states that if a SIP intermediary adds
+---
+>    request that already contains a locationValue.  <span>[<a href="#RFC6442" class="cite xref">RFC6442</a>]</span> also states that if a SIP intermediary adds
+1290c1393
+<    However, some communications architectures, such as 3GPP <span>[<a href="#TS23-167" class="xref">TS23-167</a>]</span> and ETSI <span>[<a href="#M493" class="xref">M493</a>]</span>, prefer to use information provided by edge
+---
+>    However, some communications architectures, such as 3GPP <span>[<a href="#TS23-167" class="cite xref">TS23-167</a>]</span> and ETSI <span>[<a href="#M493" class="cite xref">M493</a>]</span>, prefer to use information provided by edge
+1297c1400
+<    <span>[<a href="#RFC6442" class="xref">RFC6442</a>]</span> stipulates that the order
+---
+>    <span>[<a href="#RFC6442" class="cite xref">RFC6442</a>]</span> stipulates that the order
+1308c1411
+<   This document extends the Geolocation header field of <span>[<a href="#RFC6442" class="xref">RFC6442</a>]</span> by allowing an entity adding the
+---
+>   This document extends the Geolocation header field of <span>[<a href="#RFC6442" class="cite xref">RFC6442</a>]</span> by allowing an entity adding the
+1327,1328c1430,1431
+<     to be interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span>
+<         <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when, and only when, they appear in all capitals,
+---
+>     to be interpreted as described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span>
+>         <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they appear in all capitals,
+1357c1460
+<          where Spec(T) as described in <span>[<a href="#RFC3325" class="xref">RFC3325</a>]</span> exists.<a href="#section-3-4" class="pilcrow">¶</a></p>
+---
+>          where Spec(T) as described in <span>[<a href="#RFC3325" class="cite xref">RFC3325</a>]</span> exists.<a href="#section-3-4" class="pilcrow">¶</a></p>
+1363c1466
+<         The functional architecture to support emergency caller location described within ETSI <span>[<a href="#M493" class="xref">M493</a>]</span> is an
+---
+>         The functional architecture to support emergency caller location described within ETSI <span>[<a href="#M493" class="cite xref">M493</a>]</span> is an
+1375c1478
+<     defined in <span>[<a href="#RFC6442" class="xref">RFC6442</a>]</span> that identifies the hostname of the entity
+---
+>     defined in <span>[<a href="#RFC6442" class="cite xref">RFC6442</a>]</span> that identifies the hostname of the entity
+1378c1481
+<       The Augmented BNF (ABNF) <span>[<a href="#RFC5234" class="xref">RFC5234</a>]</span> for this parameter is shown in <a href="#ABNF" class="xref">Figure 1</a>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+---
+>       The Augmented BNF (ABNF) <span>[<a href="#RFC5234" class="cite xref">RFC5234</a>]</span> for this parameter is shown in <a href="#ABNF" class="auto internal xref">Figure 1</a>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+1381,1382c1484,1485
+<         <div id="section-4-2.1">
+< <pre class="sourcecode lang-abnf">
+---
+>         <div class="lang-abnf sourcecode" id="section-4-2.1">
+> <pre>
+1415c1518
+<  content-indirection (cid:) URI per <span>[<a href="#RFC4483" class="xref">RFC4483</a>]</span>, and this is provided by the UE. The second
+---
+>  content-indirection (cid:) URI per <span>[<a href="#RFC4483" class="cite xref">RFC4483</a>]</span>, and this is provided by the UE. The second
+1420,1421c1523,1524
+<         <div id="section-5-2.1">
+< <pre class="sourcecode">
+---
+>         <div class="sourcecode" id="section-5-2.1">
+> <pre>
+1451c1554
+<          <span>[<a href="#RFC6442" class="xref">RFC6442</a>]</span>. While the addition of the "loc-src"
+---
+>          <span>[<a href="#RFC6442" class="cite xref">RFC6442</a>]</span>. While the addition of the "loc-src"
+1454c1557
+<     than adding a proxy identity to the Record-Route header field (privacy defined in <span>[<a href="#RFC3323" class="xref">RFC3323</a>]</span>).<a href="#section-6-1" class="pilcrow">¶</a></p>
+---
+>     than adding a proxy identity to the Record-Route header field (privacy defined in <span>[<a href="#RFC3323" class="cite xref">RFC3323</a>]</span>).<a href="#section-6-1" class="pilcrow">¶</a></p>
+1468c1571
+< <p id="section-7-2"> As already stated in <span>[<a href="#RFC6442" class="xref">RFC6442</a>]</span>,
+---
+> <p id="section-7-2"> As already stated in <span>[<a href="#RFC6442" class="cite xref">RFC6442</a>]</span>,
+1478c1581
+< using multiple locations and loc-src may end in compatibility issues. <span>[<a href="#RFC6442" class="xref">RFC6442</a>]</span> already addresses the issue of multiple
+---
+> using multiple locations and loc-src may end in compatibility issues. <span>[<a href="#RFC6442" class="cite xref">RFC6442</a>]</span> already addresses the issue of multiple
+1496c1599
+<     Parameter Values" subregistry (created by <span>[<a href="#RFC3968" class="xref">RFC3968</a>]</span>) of the
+---
+>     Parameter Values" subregistry (created by <span>[<a href="#RFC3968" class="cite xref">RFC3968</a>]</span>) of the
+1499c1602
+< <dl class="dlParallel" id="section-8.1-2">
+---
+> <span class="break"></span><dl class="dlParallel" id="section-8.1-2">
+1501c1604
+< <dd id="section-8.1-2.2">Geolocation<a href="#section-8.1-2.2" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-8.1-2.2">Geolocation<a href="#section-8.1-2.2" class="pilcrow">¶</a>
+1505c1608
+< <dd id="section-8.1-2.4">loc-src<a href="#section-8.1-2.4" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-8.1-2.4">loc-src<a href="#section-8.1-2.4" class="pilcrow">¶</a>
+1509c1612
+< <dd id="section-8.1-2.6">No<a href="#section-8.1-2.6" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-8.1-2.6">No<a href="#section-8.1-2.6" class="pilcrow">¶</a>
+1513c1616
+< <dd id="section-8.1-2.8">RFC 8787<a href="#section-8.1-2.8" class="pilcrow">¶</a>
+---
+>           <dd style="margin-left: 1.5em" id="section-8.1-2.8">RFC 8787<a href="#section-8.1-2.8" class="pilcrow">¶</a>
+1531c1634
+< <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+1535c1638
+< <span class="refAuthor">Peterson, J.</span>, <span class="refTitle">"A Privacy Mechanism for the Session Initiation Protocol (SIP)"</span>, <span class="seriesInfo">RFC 3323</span>, <span class="seriesInfo">DOI 10.17487/RFC3323</span>, <time datetime="2002-11">November 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3323">https://www.rfc-editor.org/info/rfc3323</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Peterson, J.</span>, <span class="refTitle">"A Privacy Mechanism for the Session Initiation Protocol (SIP)"</span>, <span class="seriesInfo">RFC 3323</span>, <span class="seriesInfo">DOI 10.17487/RFC3323</span>, <time datetime="2002-11" class="refDate">November 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3323">https://www.rfc-editor.org/info/rfc3323</a>&gt;</span>. </dd>
+1539c1642
+< <span class="refAuthor">Jennings, C.</span><span class="refAuthor">, Peterson, J.</span><span class="refAuthor">, and M. Watson</span>, <span class="refTitle">"Private Extensions to the Session Initiation Protocol (SIP) for Asserted Identity within Trusted Networks"</span>, <span class="seriesInfo">RFC 3325</span>, <span class="seriesInfo">DOI 10.17487/RFC3325</span>, <time datetime="2002-11">November 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3325">https://www.rfc-editor.org/info/rfc3325</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Jennings, C.</span>, <span class="refAuthor">Peterson, J.</span>, and <span class="refAuthor">M. Watson</span>, <span class="refTitle">"Private Extensions to the Session Initiation Protocol (SIP) for Asserted Identity within Trusted Networks"</span>, <span class="seriesInfo">RFC 3325</span>, <span class="seriesInfo">DOI 10.17487/RFC3325</span>, <time datetime="2002-11" class="refDate">November 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3325">https://www.rfc-editor.org/info/rfc3325</a>&gt;</span>. </dd>
+1543c1646
+< <span class="refAuthor">Camarillo, G.</span>, <span class="refTitle">"The Internet Assigned Number Authority (IANA) Header Field Parameter Registry for the Session Initiation Protocol (SIP)"</span>, <span class="seriesInfo">BCP 98</span>, <span class="seriesInfo">RFC 3968</span>, <span class="seriesInfo">DOI 10.17487/RFC3968</span>, <time datetime="2004-12">December 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3968">https://www.rfc-editor.org/info/rfc3968</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Camarillo, G.</span>, <span class="refTitle">"The Internet Assigned Number Authority (IANA) Header Field Parameter Registry for the Session Initiation Protocol (SIP)"</span>, <span class="seriesInfo">BCP 98</span>, <span class="seriesInfo">RFC 3968</span>, <span class="seriesInfo">DOI 10.17487/RFC3968</span>, <time datetime="2004-12" class="refDate">December 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3968">https://www.rfc-editor.org/info/rfc3968</a>&gt;</span>. </dd>
+1547c1650
+< <span class="refAuthor">Crocker, D., Ed.</span><span class="refAuthor"> and P. Overell</span>, <span class="refTitle">"Augmented BNF for Syntax Specifications: ABNF"</span>, <span class="seriesInfo">STD 68</span>, <span class="seriesInfo">RFC 5234</span>, <span class="seriesInfo">DOI 10.17487/RFC5234</span>, <time datetime="2008-01">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5234">https://www.rfc-editor.org/info/rfc5234</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Crocker, D., Ed.</span> and <span class="refAuthor">P. Overell</span>, <span class="refTitle">"Augmented BNF for Syntax Specifications: ABNF"</span>, <span class="seriesInfo">STD 68</span>, <span class="seriesInfo">RFC 5234</span>, <span class="seriesInfo">DOI 10.17487/RFC5234</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5234">https://www.rfc-editor.org/info/rfc5234</a>&gt;</span>. </dd>
+1551c1654
+< <span class="refAuthor">Polk, J.</span><span class="refAuthor">, Rosen, B.</span><span class="refAuthor">, and J. Peterson</span>, <span class="refTitle">"Location Conveyance for the Session Initiation Protocol"</span>, <span class="seriesInfo">RFC 6442</span>, <span class="seriesInfo">DOI 10.17487/RFC6442</span>, <time datetime="2011-12">December 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6442">https://www.rfc-editor.org/info/rfc6442</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Polk, J.</span>, <span class="refAuthor">Rosen, B.</span>, and <span class="refAuthor">J. Peterson</span>, <span class="refTitle">"Location Conveyance for the Session Initiation Protocol"</span>, <span class="seriesInfo">RFC 6442</span>, <span class="seriesInfo">DOI 10.17487/RFC6442</span>, <time datetime="2011-12" class="refDate">December 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6442">https://www.rfc-editor.org/info/rfc6442</a>&gt;</span>. </dd>
+1555c1658
+< <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+1567c1670
+<           </span>, <time datetime="2015-02">February 2015</time>. </dd>
+---
+>           </span>, <time datetime="2015-02" class="refDate">February 2015</time>. </dd>
+1571c1674
+< <span class="refAuthor">Burger, E., Ed.</span>, <span class="refTitle">"A Mechanism for Content Indirection in Session Initiation Protocol (SIP) Messages"</span>, <span class="seriesInfo">RFC 4483</span>, <span class="seriesInfo">DOI 10.17487/RFC4483</span>, <time datetime="2006-05">May 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4483">https://www.rfc-editor.org/info/rfc4483</a>&gt;</span>. </dd>
+---
+> <span class="refAuthor">Burger, E., Ed.</span>, <span class="refTitle">"A Mechanism for Content Indirection in Session Initiation Protocol (SIP) Messages"</span>, <span class="seriesInfo">RFC 4483</span>, <span class="seriesInfo">DOI 10.17487/RFC4483</span>, <time datetime="2006-05" class="refDate">May 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4483">https://www.rfc-editor.org/info/rfc4483</a>&gt;</span>. </dd>
+1576c1679
+<           </span>, <time datetime="2015-03">March 2015</time>. </dd>
+---
+>           </span>, <time datetime="2015-03" class="refDate">March 2015</time>. </dd>
+1581c1684
+< <section id="section-appendix.a">
+---
+> <section id="appendix-A">
+1585c1688
+< <p id="section-appendix.a-1">The authors would like to thank <span class="contact-name">Dale Worley</span>,
+---
+> <p id="appendix-A-1">The authors would like to thank <span class="contact-name">Dale Worley</span>,
+1589c1692
+<       <span class="contact-name">Robert Sparks</span>.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+---
+>       <span class="contact-name">Robert Sparks</span>.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+1592c1695
+< <section id="section-appendix.b">
+---
+> <section id="appendix-B">
