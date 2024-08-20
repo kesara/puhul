@@ -47,7 +47,7 @@ def compare(rfc_dir, results_dir):
 
 
 results_dir = f"{RESULTS_DIRECTORY}/{datetime.utcnow().strftime('%Y%m%d')}"
-if len(sys.argv) > 1:
+if len(argv) > 1:
     results_dir = f"{RESULTS_DIRECTORY}/{datetime.utcnow().strftime('%Y%m%d')}_{argv[1]}"
 
 if not path.exists(results_dir):
