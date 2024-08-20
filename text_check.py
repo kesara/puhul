@@ -1,6 +1,7 @@
 from datetime import datetime
 from os import listdir, makedirs, path
 from subprocess import run as proc_run, CalledProcessError
+from sys import argv
 
 RFC_DIRECTORY = "rfc"
 RESULTS_DIRECTORY = "text_results"
@@ -46,6 +47,9 @@ def compare(rfc_dir, results_dir):
 
 
 results_dir = f"{RESULTS_DIRECTORY}/{datetime.utcnow().strftime('%Y%m%d')}"
+if len(sys.argv) > 1:
+    results_dir = f"{RESULTS_DIRECTORY}/{datetime.utcnow().strftime('%Y%m%d')}_{argv[1]}"
+
 if not path.exists(results_dir):
     makedirs(results_dir)
     save_xml2rfc_versions(results_dir)
